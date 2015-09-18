@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+#Global variable declaration
+#This files needs to be sourced out 
+
+D_LOG_FILE="/tmp/nd_debug.log"
+E_LOG_FILE="/tmp/nd_error.log"
+MAIL_CONFIG_FILE_MAIN="/home/netstorm/work/lib/EmailSender.properties"
+MAIL_CONFIG_FILE_ORIG="/home/netstorm/work/lib/EmailSender.properties.save"
+MAIL_CONFIG_FILE_PRE_SETUP="/home/netstorm/work/lib/PreTestSetup.properties"
+PYTHON_TOOL="python /home/automation/workbench/automation/nscore/bin/ndi_text_to_xml.py"
+DB_UPLOAD="python /home/automation/workbench/automation/nscore/lib/db_upload.py"
+COMPONENT="Netstorm"
+DATABASE="/home/automation/workbench/automation/nscore/lib/analytics.db"

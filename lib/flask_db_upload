@@ -1,0 +1,197 @@
+#!/usr/bin/env python
+
+'''
+  Tool to upload data to sqlite Database 
+  @author - Ankur Srivastava
+  Date - 05 January 2015 
+'''
+import logging
+import sys
+
+LOG = logging.Logger("FLASK_DB_UPLOAD")
+
+streamHandler = logging.StreamHandler(sys.stdout)
+logFormat = logging.Formatter('%(asctime)s|%(name)s|%(levelname)s|%(lineno)d|%(message)s')
+streamHandler.setFormatter(logFormat)
+
+LOG.addHandler(streamHandler)
+LOG.setLevel(logging.INFO)
+
+LOG.info('Logging started')
+
+# Class to hold the TestResults object
+class TestResultsModel(object):
+    def __init__(self, tid, release, version, component, status, category, description):
+        self.tid         = tid
+        self.release     = release
+        self.version     = version
+        self.component   = component
+        self.status      = status
+        self.category    = category
+        self.description = description
+
+    # Returns the testresults as dictionary of items
+    def asDict(self):
+        testresults = {
+           'tid'         : self.tid,
+           'release'     : self.release,
+           'version'     : self.version,
+           'component'   : self.component,
+           'status'      : self.status,
+           'category'    : self.category,
+           'description' : self.description
+        }
+        return testresults
+
+
+# upload_to_db the testresults object,
+# where object is a list of all testcases
+def upload_to_db(testresults, database):
+    '''Uploads the testresults to database all at once'''
+
+    import sqlite3
+
+    # TODO Need to make this configurable
+    #DATABASE="/home/automation/workbench/automation/nscore/lib/analytics/analytics.db"
+    LOG.debug('Connecting to database %s' %database)
+    DATABASE =  database
+    connection = sqlite3.connect(DATABASE)
+
+    data = []
+    # Create a list to hold all data and upload it with executemany
+    for result in testresults:
+        data.append((result['tid'], 
+            result['rel'],
+            result['ver'], 
+            result['comp'],
+            result['status'],
+            result['category'],
+            result['description']))
+   
+    #LOG.debug(data)
+    LOG.info('Total data to be uploaded = %d' %(len(data)))
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT id FROM release WHERE name = "4.1.3"')
+    release_id = cursor.fetchone()
+    cursor.execute('SELECT id FROM component WHERE name = "NetStorm"')
+    comp_id = cursor.fetchone()
+    cursor.execute('SELECT id FROM category WHERE name = "smoke"')
+    category_id = cursor.fetchone()
+    cursor.execute('SELECT id FROM testcase WHERE id=(SELECT MAX(id) FROM testcase)')
+    max_id = cursor.fetchone()
+
+    cursor.executemany('''INSERT INTO 
+            testcase 
+            VALUES(?, ?, ?, ?, ?, ?, ?)''', (max_id[0] + 1, data['tid'], release_id[0], data['ver'], comp_id[0], data['status'], category_id[0], data['description']))
+    connection.commit()
+    cursor.close()
+    LOG.info('Automation results uploaded successfully')
+
+
+
+def parserCommandLine():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--input",
+                        help="The Input Test Results File in text format",
+                        required=True)
+
+    parser.add_argument("-d", "--database",
+                        help="The SQLite Database to connect to",
+                        required=True)
+    
+    parser.add_argument("-t", "--test-id",
+                        help="Testcase ID",
+                        required=True)
+    parser.add_argument("-cat", "--category-of-test",
+                        help="Smoke/Regression/Performance",
+                        required=True)
+    
+    parser.add_argument("-r", "--release",
+                        help="The release information",
+                        required=True)
+    
+    parser.add_argument("-v", "--version",
+                        help="Current version",
+                        required=True)
+    
+    parser.add_argument("-comp", "--component",
+                        help="Component",
+                        required=True)
+     
+    #parser.add_argument("-trun", "--test-run",
+    #                   help="Test run number",
+    #                   required=False)
+     
+    parser.add_argument("-s", "--status",
+                        help="Status of the testcase executed",
+                        required=True)
+    
+    parser.add_argument("-des", "--description",
+                        help="Description of the testcase run",
+                        required=True)
+    return parser
+
+
+def process(testresultFile, tid, rel, ver, comp, status, category, description):
+    '''Returns testresults models as a list''' 
+    l = []
+    with open(testresultFile, 'r') as f:
+        for line in f:
+            if line.startswith("TestID") or (line.strip() == "") or line.startswith("Failed"):
+                continue
+
+            tid, rel, ver, comp, status, category, description = line.split(",")
+            l.append(TestResultsModel(tid, rel, ver, comp, status, category, description))
+    return l
+
+
+def main():
+    parser = parserCommandLine()
+    opts = parser.parse_args()
+
+    infile  = opts.input
+  
+    tid = opts.test-id
+    category = opts.catagory-of-test
+    rel = opts.release
+    ver = opts.version
+    comp = opts.component
+    #trun = opts.tRun
+    status = opts.status
+    description = opts.description
+    
+    database = opts.database
+
+    if not rel:
+        rel = "NA"
+    
+    if not ver:
+        ver = "NA"
+    
+    if not comp:
+        comp = "NA"
+     
+    if not tid:
+        comp = "NA"
+    
+    if not category:
+        category = "NA"
+
+    if not status:
+        status = "NA"
+
+    if not description:
+        description = "NA"
+
+
+    LOG.debug('tid = %s, Release = %s, Version = %s, Component = %s, status = %s, category = %s, description = %s, Database = %s',
+            tid, rel, ver, comp, status, category, description, database)
+
+    upload_to_db(process(infile, tid, rel, ver, comp, status, category, description), database)
+
+
+if __name__ == "__main__":
+    main()
+

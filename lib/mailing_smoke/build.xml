@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!--Declaring the main project for NSCore SMOKE Test. By default this will execute the Smoke.conf testsuite.-->
+<project name="core-smoke" basedir="." default="Smoke">
+
+   <!--Following target will check vnc process is running or not If vnc will not be in running state this will start a new
+       vnc process-->
+   <target name="vnc-status-check">
+       <exec executable="ps" outputproperty="vnc.file">
+           <arg value="-ef"/>
+           <arg value="|"/>
+           <arg value="grep"/>
+           <arg value="vnc"/>
+        </exec>
+        <fail message="VNC is not running start the vnc port" unless="vnc.file"/>
+   </target>
+  <target name="vnc-process-restart" depends="vnc-status-check">
+      <exec executable="vncserver" outputproperty="action.file">
+          <arg value=":2"/>
+      </exec>
+      <fail message="Vnc process not started please check" unless="action.file"/>
+   </target>
+  
+  <!--Following property invloves all necessary variables used in rescpetive targets-->
+    <property file="build.properties"/>
+
+    
+    <!--The following target will check wheather the directories/files is present in required paths prior to the copy operation
+        if the files/directories will be present there this target will delete the existing files/directories-->
+    <target name="clean" description="clean">
+        <delete dir="${scripts.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${scenarios.files.abs.path}" failonerror="false"/>
+        <delete dir="${testcases.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${testsuites.files.abs.path}" failonerror="false"/>
+    </target>
+    
+   <!--The following target "copy-of-testscenario-sctructure" is to copy all the test scenario structure to their respective run
+        time locations. This target will be executed after running the previous "delete.if.exists" target-->
+    <target name="copy-of-testscenario-sctructure" depends="clean">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+     
+    <!--The following target "copy-hpd-file" is to copy the configuration file hpd_Regression.cong from NS machine /var/www/hpd/conf
+        location to NO machine /var/www/hpd/conf/hpd.conf file. This target will get executed after completion of "copy-of-
+        testscenario-sctructure" target-->
+
+    <target name="copy-hpd-file">
+        <scp file="${hpd.conf.ns}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+
+    <!--The following target "hpd-process-restart" is to restart hpd of NO machine and check hpd is running properly or not.This target
+        will be executed after execution of above target "copy-hpd-file"--> 
+    
+    <target name="hpd-process-restart" depends="copy-hpd-file, copy-of-testscenario-sctructure">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+   <!--Copy of httpd.conf file to remote machine-->
+    <target name="copy-httpd-conf-file">
+        <scp file="${httpd.conf.ns}" todir="${remote.user}@${remote.host1}:${httpd.conf.no}" password="${remote.password1}" trust="true"/>
+    </target>
+
+    <!--The following target "httpd-process-restart" is to restart httpd of NO machine and check httpd is running properly or not.This         target will be executed after execution of above target "copy-httpd-conf-file"-->
+
+    <target name="httpd-process-restart">
+        <sshexec host="${remote.host1}" username="${remote.user}" password="${remote.password1}" command="${command.httpd.restart}" trust="true"/>
+        <sleep seconds="10"/>
+        <sshexec host="${remote.host1}" username="${remote.user}" password="${remote.password1}" command="${command.httpd.status}" trust="true" outputproperty="httpd.process"/>
+        <fail message="HTTPD is not running please see httpd_error.log first" unless="httpd.process"/>
+    </target>
+
+
+    <!--This is a debugging purposed target to run smoke test in debugging mode-->
+    <target name="debug" depends="copy-of-testscenario-sctructure">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Smoke"/>
+         </exec>
+    </target>
+    
+    <!--This is the man target which will run the main testsuite after completion of above all targets-->
+    <target name="Smoke" depends="hpd-process-restart, vnc-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Smoke"/>
+            <arg value="0"/>
+            <arg value="--email"/>
+
+        </exec>
+    </target>
+
+</project>

@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Name        : Flask Admin
+# Purpose     : To stop/start/restart flask server
+# Author      : Ankur Srivastava
+# Conventions : Four space indentation. No leading or trailing whitespaces
+##########################################################################
+
+# Global variable declarations
+FLASK_HOME="${HOME}/webapp"
+FLASK_APP_HOME="${HOME}/webapp/app"
+FLASK_APP_CMD="python ${HOME}/webapp/start.py"
+LOGS_DIR="${FLASK_HOME}/logs"
+NOHUP_FILE="${LOGS_DIR}/start.log"
+
+# Function definations
+function check_and_create_nohup_file(){
+    [ ! -d $LOGS_DIR ] && mkdir -p $LOGS_DIR
+    touch $NOHUP_FILE
+}
+
+function xecho(){
+    level=$1
+    messg=$2
+    echo "[$level] $messg"
+}
+
+function get_pid(){
+    PID=$(pgrep -f "$FLASK_APP_CMD")
+    echo $PID
+}
+
+function start_flask_server(){
+   check_and_create_nohup_file
+   xecho "INFO" "Starting Flask Development server on port: 5000"
+   nohup $FLASK_APP_CMD 1>${NOHUP_FILE} 2>&1 &
+   xecho "INFO" "Writing logs to $NOHUP_FILE"
+   xecho "INFO" "Server started with pid($(get_pid))"
+}
+
+function stop_flask_server(){
+    PID=$(get_pid)
+    [ -z $PID ] && xecho "INFO" "Server not running" && return
+
+    xecho "INFO" "Stopping server with PID($PID)"
+    kill $PID
+    RC=$?
+    [ $RC -eq 0 ] && xecho "INFO" "Server stopped successfully"
+}
+
+function check_and_start_flask_server(){
+    PID=$(get_pid)
+    [ ! -z $PID ] && xecho "INFO" "Server already running with PID($PID)" && return
+    start_flask_server
+}
+
+function flask_status(){
+    PID=$(get_pid) 
+    [ -z $PID ] && xecho "INFO" "Server is stopped" || xecho "INFO" "Server running with PID($PID)"
+}
+
+function restart_flask_server(){
+    sleep_time=$1
+    [ -z $sleep_time ] && sleep_time=2
+    stop_flask_server
+    sleep $sleep_time
+    check_and_start_flask_server
+}
+
+function usage(){
+    echo -e "Incorrect Usage:
+flask_admin <options>
+where options in,
+     start    - to start flask server
+     stop     - to stop flask server
+     restart  - to restart
+     status   - to check flask status
+Eg:
+    flask_admin start
+    flask_admin stop
+    flask_admin restart\n"
+    exit 1
+}
+
+option=$1
+
+[ -z $option ] && usage
+
+case $option in
+    start) check_and_start_flask_server ;;
+     stop) stop_flask_server ;;
+  restart) restart_flask_server ;;
+   status) flask_status;;
+        *)  xecho "ERROR" "Incorrect arguments" ;;
+        ?)  xecho "ERROR" "Incorrect arguments" ;;
+esac
+

@@ -1,0 +1,201 @@
+#!/bin/bash
+#------------------------------------------------------------
+D_LOG_FILE=/tmp/regression.debug
+E_LOG_FILE=/tmp/regression.error
+COMPONENT_ID=`grep  "CONFIG" /etc/cav.conf  |awk '{print $2}' |cut -d '>' -f1`
+TEST_CYCLE_NUM=`cat $TEMP_FILE|grep "Test Cycle Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g'`
+TSR_NUM=`cat $TEMP_FILE|grep "Test Suite Run Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g'`
+TS_LOG_DIR="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/$TSR_NUM/logs"
+SAVED_STRING=`echo $VAR_VALUE_SUM_RESULT | cut -d "," -f5|sed 's/"//g'`
+RELEASE_ID=`cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3`
+BUILD_ID=`cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2`
+#Testidx will be passed as second args by ts_run in check status itself
+T_RUN_ID=$2
+T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/ns_logs/req_rep"
+echo "TS_LOG_DIR="$TS_LOG_DIR >/tmp/a
+
+testsuite_name(){
+    testsuitname=$1
+    echo "$testsuitname"
+}
+
+get_tname(){
+    T_NAME=`grep -e TNAME $NS_WDIR/logs/TR${T_RUN_ID}/scenario |awk '{print $2}'`
+    echo ${T_NAME}
+}
+
+get_testidx(){
+    echo "${T_RUN_ID}"
+}
+
+debug_log(){
+    if [ "XX$DEBUG" == "XX0" ];then
+      return
+    else
+      echo "$(date +"%F %X") |TR`get_testidx`|`get_tname`| $*" >> $D_LOG_FILE
+    fi
+}
+
+error_log(){
+    debug_log $* >> ${D_LOG_FILE}
+    echo "$(date +"%F %X") | $*" >> ${E_LOG_FILE}
+}
+
+log_msg(){
+    echo -e $*
+    echo -e $* >> ${R_FILE}
+}
+
+log_status_and_exit(){
+    STATUS="$1"
+    msg="$2"
+    if [ "XX${STATUS}" == "XXPASS" ]; then
+        log_msg "TESTRESULT\t\t\t= PASS ,$msg"
+        log_msg "+-----------------------------------------------------+"
+        exit 0
+    else
+        log_msg "TESTRESULT\t\t\t= FAIL , $msg"
+        log_msg "+-----------------------------------------------------+"
+        exit -1
+    fi
+}
+
+gen_report(){
+    log_msg "Test Case Name\t\t\t= `get_tname`"
+    log_msg "Test Run Number\t\t\t= $T_RUN_ID"
+    log_msg "Duration\t\t\t= $SD_DURATION"
+    log_msg "TCP Connections Total\t\t= $SD_TotalConn"
+    log_msg "TCP Connections Success\t\t= $SD_TotalSuccConn"
+    log_msg "Total Pass Pct\t\t\t= $SD_TotalPassPct"
+    log_msg "Url Total\t\t\t= $SD_TotalURLHits"
+    log_msg "Url Success\t\t\t= $SD_TotalSuccURL"
+    log_msg "URL Failures\t\t\t= $SD_URLFailures"
+    log_msg "URL Hits/Sec\t\t\t= $SD_URLHitsPerSec"
+    log_msg "TCP Tx Throughput(Kbps)\t\t= $SD_TcpTx"
+    log_msg "TCP Rx Throughput(Kbps)\t\t= $SD_TcpRx"
+    log_msg "Ethernet Tx Throughput(Kbps)\t= $SD_EthTx"
+    log_msg "Ethernet Rx Throughput(Kbps)\t= $SD_EthRx"
+    log_msg "Total page fail(count)\t"= $PAGE_FAIL
+}
+
+set_test_summary_ex(){
+    PASS_COUNT=`grep -cw "pass" $R_FILE`
+    FAIL_COUNT=`grep -cw "fail" $R_FILE`
+    TOTAL_CASES=`cat $R_FILE| grep -v ^Test| wc -l`
+    echo -e "\nFailed: $FAIL_COUNT test(s), Passed: $PASS_COUNT test(s), Total: $TOTAL_CASES test(s)" >> $R_FILE
+}
+
+get_failed_test_count(){
+    FAIL_COUNT=`grep -ci ",FAIL," $R_FILE`
+    echo $FAIL_COUNT
+}
+
+get_passed_test_count(){
+    PASS_COUNT=`grep -ci ",PASS," $R_FILE`
+    echo $PASS_COUNT
+}
+
+get_total_test_count(){
+    TOTAL_COUNT=$(($(get_passed_test_count) + $(get_failed_test_count)))
+    echo $TOTAL_COUNT
+}
+
+set_test_summary(){
+    COUNT=`grep -cw "PASS" $R_FILE`
+    TOTAL_CASES=`grep -c "TESTRESULT" $R_FILE`
+    echo -e "SUMMARY\t\t\t\t= $COUNT/$TOTAL_CASES cases passed" >>$R_FILE
+}
+
+set_results_header(){
+    echo "*-----------------------------------------------------*" >>$R_FILE
+    echo "     Test Executed By  : `whoami`" >> $R_FILE
+    echo "     Date/Time         : `date +%D`/`date +%X`" >> $R_FILE
+    echo "*-----------------------------------------------------*" >>$R_FILE
+}
+
+set_results_header_ex(){
+    echo "TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description" >> $R_FILE
+}
+
+component_name(){
+    T_Name=`get_tname`
+    TestSuite=`echo $T_Name |cut -d '-' -f1`
+    echo "$TestSuite"
+}
+
+log_status_and_exit_ex(){
+    status="${1}"
+    status_show=${status,,}
+    remarks="${2}"
+    if [ "$COMPONENT_ID" == "NS" ];then
+	COMP=NetStorm
+    fi
+    test_type=`component_name`
+    test_name=${test_type,,}
+    if [ "$test_name" == "smoke" ];then
+	categoryid=1
+    else
+	categoryid=2
+    fi
+    echo "`get_tname`,`get_testidx`,${RELEASE_ID},${BUILD_ID},${COMP},${status_show},${categoryid},${remarks}" >>$R_FILE
+    [ "X$status" = "XFAIL" ] && exit -1
+}
+
+get_cycle_num()
+{
+    echo "`date +%m%d%y_%H%M%S`"
+}
+
+get_major_minor_info()
+{
+    MAJOR=$(cat $NS_WDIR/etc/version|head -1|cut -d " " -f2 )
+    MINOR=$(cat $NS_WDIR/etc/version|tail -1|cut -d " " -f2 )
+    echo "${MAJOR}.${MINOR}"
+}
+
+get_avg_trans_resp_time(){
+    transName=$1
+    [ -z $transName ] && transName="ALL"
+
+    responseTime=`cat $NS_WDIR/logs/TR${T_RUN_ID}/trans_detail.dat | grep "$transName" | cut -d '|' -f 3| sed 's/ //'`
+    echo $responseTime
+}
+
+remote_exec(){
+    svr="${1}"
+    cmd="${2}"
+    nsu_server_admin -i -s "${svr}" -c "${cmd}" 2>/dev/null| grep -v "Making" | sed '/^$/d'
+    RC=$?
+}
+
+project_name(){
+    testsuitname=$1
+    if [ "X$testsuitname" == "XRegression" ]; then
+         echo "Regression/Regression"
+    fi
+    if [ "X$testsuitname" == "XSmoke" ]; then
+         echo "Smoke/Smoke"
+    fi
+    if [ "X$testsuitname" == "XPerformance" ] || [ "X$testsuitname" == "XPerformance_Cps" ]; then
+         echo "Performance/Performance"
+    fi
+}
+
+remote_ssh(){
+    host="$1"
+    cmd="$2"
+
+    default_user="root"
+    default_passwd="abeona" 
+
+    user=${default_user}
+    passwd=${default_passwd}
+
+    #Safety Checks, If user and password is provided override them
+    [ ! -z $3 ] && user="$3"
+    [ ! -z $4 ] && passwd="$4"
+
+    PYTHON_SSH="python /home/regression/bin/ssh.py"
+
+    ${PYTHON_SSH} ${host} ${user} ${passwd} "${cmd}"
+}

@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+version=`nsu_get_version | head -1 | awk -F " " '{print $2}'`
+build=`nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g'`
+buildtimestamp=$(date)
+
+pre_test_mail() {
+	echo -e "BUILD STARTED\n\nProject: Netstorm Core Performance\nDate of build: $buildtimestamp\n\n\nAutomation Team,\nCavisson Systems Inc." >/home/automation/workbench/automation/nscore/lib/start_mail
+
+	echo "curr.release = $version" >mail.properties
+	echo "curr.build = $build" >>mail.properties
+	echo "startup.mail.file = /home/automation/workbench/automation/nscore/lib/start_mail" >>mail.properties
+	echo "configured.mail.list = niraj.panda@cavisson.com" >>mail.properties
+}
+
+pre_test_mail

@@ -1,0 +1,261 @@
+#!/usr/bin/env bash
+
+# include  libraries
+
+source $NS_WDIR/lib/automation_util
+source $NS_WDIR/lib/automation_config.dat #Required for config variables
+export TEMP_FILE=/tmp/ns_run.$$
+
+init() {
+  CUR_DIR=$(pwd)
+  #Get Release Specific Information
+  RELEASE=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
+  MAJOR=$(cat $NS_WDIR/etc/version | head -1 |cut -d "." -f4)
+  MINOR=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
+
+  #Results directory to store the automation result.
+  R_DIR="${CUR_DIR}/results/$RELEASE/${MAJOR}.${MINOR}"
+
+  mkdir -p "${R_DIR}"
+
+  #Temporary File.
+  T_FILE=/tmp/ns_run.$$
+
+  #Result File.
+  CYCLENO=$(get_cycle_num)
+  R_FILE="${R_DIR}/${testSuite}_${CYCLENO}.txt"
+  XML_FILE="${R_DIR}/${testSuite}_${CYCLENO}.xml"
+  
+  export R_FILE
+  export XML_FILE
+
+}
+
+run(){
+# Call to this function starts the automation.
+# Waits till successfull completion message is not recieved.
+    testSuite="$1"            #placeholder to store the current running test suite
+    debug_opt="$2"            #placeholder to store debug
+
+    cd $NS_WDIR
+
+    echo "INFO: Starting automation using command bin/ts_run"
+    echo "INFO: Running TestSuite = '$testSuite'"
+
+    # running test in backend
+    Project=$(project_name $testSuite)
+    bin/ts_run -n ${Project}/${testSuite} |tee $TEMP_FILE    
+
+
+    #Check return code. If RC=2, automation timed out case. RC=0 Success
+    RC=$?
+
+    [ $RC -ne 0 ] && {
+       echo "ERROR: Possible test case failure. Check logs..."
+       # Don't cleanup here.. 
+    } || {
+       echo "INFO: NSCore automation has ended"
+    }
+
+     [ "X$debug_opt" == "X--debug" ] && {
+       copy_logs
+     }
+
+       set_test_summary_ex
+}
+# Cleanup function. To remove temporary files if being used.
+clean_up()
+{
+    echo "INFO: Cleaning up temporary files."
+    rm -f ${T_FILE}
+}
+
+# To copy TR's in current directory logs folder.
+# Only when --debug option is passed while running the shell;
+copy_logs()
+{
+
+    cur_dir=`pwd`
+    mkdir -p ${CUR_DIR}/logs
+
+    sleep 1
+    for trNum in $(grep TestRun ${T_FILE} |awk -F'=' '{print $2}')
+    do
+        if [ -d $NS_WDIR/logs/TR${trNum} ];then
+          echo "DEBUG: Copying test runs to ${CUR_DIR}/logs"
+          cp -r $NS_WDIR/logs/TR${trNum} ${CUR_DIR}/logs/
+          echo "DEBUG: Copied TR${trNum}"
+        else
+          echo "ERROR: TestRun not found"
+        fi
+    done
+
+}
+
+# Common method to update email properties.
+# Excepts a file as input containing name=value pair
+# Each name as placeholder will be replaced by corresponding values
+update_email_properties(){                                                           
+    file="$1"         
+    while read content 
+    do          
+        sed -i "s=${content}=g" ${MAIL_CONFIG_FILE_MAIN}
+        cp  ${MAIL_CONFIG_FILE_MAIN} /home/automation/workbench/automation/nscore/lib        
+    done <$file                                                                        
+}
+
+send_automation_started_email()
+{
+  echo "Sending automation started message to configured email list"
+  TMP_FILE=$0.$$
+  cp ${MAIL_CONFIG_FILE_PRE_SETUP} ${MAIL_CONFIG_FILE_MAIN}
+  echo "%BUILD_INFO%=$(get_major_minor_info)" >$TMP_FILE
+  echo "%BUILD_DATE%=$(date)" >>$TMP_FILE
+  echo "%STATUS%=STARTED" >>$TMP_FILE
+  echo "%TEST_SUITE%"=$(testsuite_name $testSuite) >>$TMP_FILE
+  update_email_properties $TMP_FILE
+  
+  rm -f $TMP_FILE
+  cd ../lib
+  java -jar EmailAgent.jar 1>/dev/null 2>/dev/null
+  RC=$?
+  if [ $RC -eq 0 ];then
+    echo "Email sent successfully"
+  else
+    echo "Start email delivery failure"
+  fi
+  #PopBack to current directory
+  cd - 1>/dev/null 2>/dev/null
+}
+
+#Email results to configured list in properties file
+email_results()
+{
+    RESULT_FILE="${1}"
+    XML_FILE="${2}"
+    # Changing back to original directory. Run method may have cause the current
+    # directory to $NS_WDIR
+    cd - 1>/dev/null  2>/dev/null #Suppress the output to /dev/null
+    
+    echo "Sending email results to configured email list"
+    NUM_FAIL=$(grep -c ",fail," ${RESULT_FILE})
+    NUM_PASS=$(grep -c ",pass," ${RESULT_FILE})
+    SUMMARY=$(grep "^Failed:" ${RESULT_FILE})
+    STATUS=SUCCESS
+    B_STATUS="Build Successful"
+    if [[ ( ${NUM_FAIL} -eq 0  &&  ${NUM_PASS} -eq 0 )  || ( ${NUM_FAIL} -gt 0 ) ]]  ;then
+      STATUS=FAILED
+      B_STATUS="Build Failed"
+    fi
+
+    if [ -f .last ];then
+      LAST_STATUS=`cat .last 2>/dev/null`
+      if [ "X$LAST_STATUS" == "XFAILED" ] && [ "X$STATUS" == "XSUCCESS" ] ;then
+        B_STATUS="Build is back to normal!"
+      fi
+    fi
+
+  TMP_FILE=$0.$$
+
+  cp $MAIL_CONFIG_FILE_ORIG $MAIL_CONFIG_FILE_MAIN
+  echo "%BUILD_INFO%=$(get_major_minor_info)" >$TMP_FILE
+  echo "%RESULT_FILE%=${XML_FILE}" >>$TMP_FILE
+  echo "%BUILD_DATE%=${curr_date_time}" >>$TMP_FILE
+  echo "%BUILD_DURATION%=${BUILD_DURATION}" >>$TMP_FILE
+  echo "%TEST_SUMMARY%=${SUMMARY}" >>$TMP_FILE
+  echo "%STATUS%=${STATUS}" >>$TMP_FILE
+  echo "%B_STATUS%=${B_STATUS}" >>$TMP_FILE
+  echo "%TEST_SUITE%"=$(testsuite_name $testSuite) >>$TMP_FILE 
+  #cat "$TMP_FILE"
+  update_email_properties $TMP_FILE
+  
+  rm -f $TMP_FILE
+  
+  cd ../lib
+  java -jar EmailAgent.jar 1>/dev/null 2>/dev/null
+  RC=$?
+  if [ $RC -eq 0 ];then
+    echo "Email delivered successfully"
+  else
+    echo "Email delivery failure"
+  fi
+  cd - 1>/dev/null 2>/dev/null
+  #mv lib/EmailSender.properties.old lib/EmailSender.properties
+  echo $STATUS > .last
+}
+
+
+#To get the test case count
+get_test_case_count() {
+
+  testcases=$(cat testsuites/${testSuite}.conf |grep -v "#" | cut -d ' ' -f2)
+  count=0
+  for testcase in ${testcases}
+  do
+    i=$(grep -c "^Perf" testcases/${testcase}/iteration.spec)
+    count=$(($count + $i))
+  done
+  echo ${count}
+}
+
+#Execution begins here
+main() {
+
+  #Setup enviroment for netdiagnostics automation suite.
+  echo "INFO: Initializing test environment "
+  init
+  #display test case count
+  
+  echo "Total Cases to test in ${testSuite} suite = $(get_test_case_count)"
+
+  #This function creates the header for result file.
+  set_results_header_ex
+
+
+  #use --clean to remove old files and copy entirely new files
+
+
+  export curr_date_time=$(date)
+  #Send start automation message
+  echo "Going to send mail"
+  [ "X${email_opt}" = "X--email" ] && send_automation_started_email
+  #Call to run  to start automation
+  run "${testSuite}" "${debug_opt}"
+  
+  clean_up
+
+  #Parse the txt file and create results in xml format- NEW
+
+  echo "INFO: Writing testresults in XML format to ${XML_FILE} "
+  ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_total_test_count)
+
+  #With new format.
+  [ "X${email_opt}" = "X--email" ] && email_results "${R_FILE}" "${XML_FILE}"
+
+  #DATABASE OPERATION UTILITIES
+  #TSR_DIR=`ls -ltr $NS_WDIR/logs/tsr | tail -1 | awk '{print $9}'`
+  TSR_DIR=`ls -1 $NS_WDIR/logs/tsr | tail -1`
+  PERF_R_FILE=$NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV
+ 
+  if [ "$testSuite" == "Performance_Cps" ];then
+      cat $PERF_R_FILE |head -2 |tail -1 >/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+  else
+      hps=`grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1`
+      echo $hps >>/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+      throughput=`grep  "Performance_throughput_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1`   
+      echo $throughput >>/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+  fi 
+  exit 0
+}
+
+#Permit only 'automation' user to run test
+[ "X${USER}" != "Xautomation" ] && echo "ERROR: You must log in with 'automation' user" && exit -1
+
+#Store all command line arguments to shell
+testSuite="${1}"
+debug_opt="${2}"
+email_opt="${3}"
+
+
+#Calling main
+main

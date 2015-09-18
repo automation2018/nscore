@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<!--Declaring the main project for Perfomance Test. By default this will execute the perf target.-->
+
+<project name="core-performance" basedir="." default="perf">
+
+
+  <!--Following property invloves all necessary variables used in rescpetive targets-->
+    <property file="build.properties"/>
+
+    <target name="dir.check">
+        <fileset dir="${scripts.dirs.abs.path}" id="fileset"/>
+        <fileset dir="${scenarios.files.abs.path}" id="fileset"/>
+        <fileset dir="${testcases.dirs.abs.path}" id="fileset"/>
+        <fileset dir="${testsuites.files.abs.path}" id="fileset"/>
+        <pathconvert refid="fileset" property="dir.contains-files" setonempty="false"/>
+    </target>    
+    
+    <!--The following target will check wheather the directories/files is present in required paths prior to the copy operation
+        if the files/directories will be present there this target will delete the existing files/directories-->
+    <target name="clean" description="clean">
+        <delete dir="${scripts.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${scenarios.files.abs.path}" failonerror="false"/>
+        <delete dir="${testcases.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${testsuites.files.abs.path}" failonerror="false"/>
+    </target>
+    
+   <!--The following target "copy-of-testscenario-sctructure" is to copy all the test scenario structure to their respective run
+        time locations. This target will be executed after running the previous "delete.if.exists" target-->
+    <target name="copy-of-testscenario-sctructure" depends="clean">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+     
+    <!--The following target "copy-hpd-file" is to copy the configuration file hpd_Regression.cong from NS machine /var/www/hpd/conf
+        location to NO machine /var/www/hpd/conf/hpd.conf file. This target will get executed after completion of "copy-of-
+        testscenario-sctructure" target-->
+
+    <target name="copy-hpd-file">
+        <scp file="${hpd.conf.perf}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+
+    <target name="copy-hpd-hps-file">
+        <scp file="${hpd.conf.perf.hps}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+
+
+    <!--The following target "hpd-process-restart" is to restart hpd of NO machine and check hpd is running properly or not.This target
+        will be executed after execution of above target "copy-hpd-file"--> 
+    
+    <target name="hpd-process-restart" depends="copy-hpd-file, copy-of-testscenario-sctructure">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+     <target name="hpd-process-restart-for-hps-and-throughput" depends="copy-hpd-hps-file">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+   
+    <!--This is a debugging purposed target to run smoke test in debugging mode-->
+    <target name="debug" depends="copy-of-testscenario-sctructure">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+         </exec>
+    </target>
+    
+    <!--This is the man target which will run the main testsuite after completion of above all targets-->
+    <target name="Performance_Cps" depends="hpd-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance_Cps"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <target name="Performance" depends="Performance_Cps, hpd-process-restart-for-hps-and-throughput">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+<!--<target name="perf" depends="get_start_mail_values, Test-StartUp-Mail, Performance, get_start_test_results, Mail-With-TestResults">-->
+    <target name="perf" depends="Performance">
+        <exec executable="python">
+            <arg value="${perf.db_upload}"/>
+            <arg value="${perf.input.file}"/>
+            <arg value="${perf.database}"/>
+            <arg value="True"/>
+        </exec>
+    </target>
+    
+    <target name="get_start_mail_values">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <target name="Test-StartUp-Mail" depends="get_start_mail_values">
+        <property file="mail.properties"/>
+        <mail mailhost="websrv.cavisson.com" mailport="587" messageMimeType="text/html" subject="Performance: NSCore ${curr.release} B${curr.build} - Started" messagefile="${startup.mail.file}">
+	    <from address="automation@cavisson.com"/>
+	    <to address="${configured.mail.list.to}"/>
+            <cc address="${configured.mail.list.cc}"/>
+        </mail>
+    </target>
+
+   <target name="get_start_test_results" depends="Test-StartUp-Mail"> 
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_results"/>
+        </exec>
+    </target>
+   
+   <target name="Mail-With-TestResults" depends="get_start_test_results">
+       <property file="mail.properties"/>
+       <mail mailhost="websrv.cavisson.com" mailport="587" messageMimeType="text/html" subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" messagefile="${mail.result.file}">
+           <from address="automation@cavisson.com"/>   		   
+           <to address="${configured.mail.list.to}"/>
+           <cc address="${configured.mail.list.cc}"/>
+           <attachments> <fileset dir="${perf.results.dir}">
+               <include name="${first.attachment}"/>
+               <include name="${second.attachment}"/> </fileset>
+           </attachments>	   
+       </mail>	       
+   </target>	   
+
+</project>

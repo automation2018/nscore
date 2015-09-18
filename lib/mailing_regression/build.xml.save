@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<!--Declaring the main project for NSCore Regression. By default this will execute the Regression testsuite.-->
+
+<project name="core-regresion" basedir="." default="Regression">
+    
+   <!--Following property invloves all necessary variables used in rescpetive targets-->
+    
+    <property file="build.properties"/>
+     
+    <!--The following target will check wheather the directories/files is present in required paths prior to the copy operation
+        if the files/directories will be present there this target will delete the existing files/directories-->
+
+    <target name="delete.if.exists">  
+        <delete includeemptydirs="true" verbose="false" if="${(directory::exists(directory))}">
+            <fileset basedir="${directory}">  
+                <include name="**/*.*" />  
+            </fileset> 
+        </delete>
+    </target> 
+
+    <!--The following target "copy-of-testscenario-sctructure" is to copy all the test scenario structure to their respective run
+        time locations. This target will be executed after running the previous "delete.if.exists" target-->
+    
+
+    <target name="copy-of-testscenario-sctructure"  depends="clean">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+    
+<target name="clean" description="clean">
+        <delete dir="${scripts.dir}" failonerror="false"/>
+        <delete dir="${scenarios.dir}" failonerror="false"/>
+        <delete dir="${testcases.dir}" failonerror="false"/>
+        <delete dir="${testsuites.dir}" failonerror="false"/>
+    </target>     
+    <!--The following target "copy-hpd-file" is to copy the configuration file hpd_Regression.cong from NS machine /var/www/hpd/conf
+        location to NO machine /var/www/hpd/conf/hpd.conf file. This target will get executed after completion of "copy-of-
+        testscenario-sctructure" target-->
+
+    <target name="copy-hpd-file" depends="copy-of-testscenario-sctructure">
+        <scp file="${hpd.conf.ns}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+
+    <!--The following target "hpd-process-restart" is to restart hpd of NO machine and check hpd is running properly or not.This target
+        will be executed after execution of above target "copy-hpd-file"--> 
+    
+    <target name="hpd-process-restart" depends="copy-hpd-file">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+   <!--This is the man target which will run the main testsuite after completion of above all targets-->
+    
+    <target name="Regression" depends="hpd-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Regression"/>
+            <arg value="0"/>
+            <arg value="--email"/>
+        </exec>
+    </target>
+
+    <!--This is a debugging purposed target to run smoke test in debugging mode-->
+    <target name="debug" depends="copy-of-testscenario-sctructure">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Regression"/>
+         </exec>
+    </target>
+    
+   
+</project>

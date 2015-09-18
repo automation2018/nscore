@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+version=`nsu_get_version | head -1 | awk -F " " '{print $2}'`
+build=`nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g'`
+buildtimestamp=$(date)
+perf_result_dir="/home/automation/workbench/automation/nscore/performance/results/${version}/.${build}"
+
+total=`grep "^Failed" $perf_result_dir/*.txt | cut -d ':' -f2,3,4,5 | awk '{print $8}' | awk '{ print $1+$2; }' | awk ' { sum += $1 } END { print sum; }'`
+pass=`grep "^Failed" $perf_result_dir/*.txt | cut -d ':' -f2,3,4,5 | awk '{print $5}' | awk '{ print $1+$2; }' | awk ' { sum += $1 } END { print sum; }'`
+fail=`grep "^Failed" $perf_result_dir/*.txt | cut -d ':' -f2,3,4,5 | awk '{print $2}' | awk '{ print $1+$2; }' | awk ' { sum += $1 } END { print sum; }'`
+	
+statusbody=`echo "Failed: $fail test(s), Passed: $pass test(s), Total: $total test(s)"`
+cps=`grep "CPS" /home/automation/workbench/automation/nscore/performance/.perf/PerfResult | cut -d ',' -f8`
+hps=`grep "HPS" /home/automation/workbench/automation/nscore/performance/.perf/PerfResult | cut -d ',' -f9`
+throughput=`grep "THROUGHPUT" /home/automation/workbench/automation/nscore/performance/.perf/PerfResult | cut -d ',' -f10`
+
+if [ "$total" == "$pass" ];then
+    STATUS=Successful
+else
+    STATUS=Failed
+fi
+
+post_test_mail() {
+	echo -e "GENERAL INFO\n\nBuild $STATUS\nProject: NSCore Performance\nDate of build: $buildtimestamp\n\nTest Results\n***************\n$statusbody\n\nCPS : $cps, HPS : $hps, THROUGHPUT : $throughput \n\nView Results Online - http://10.10.30.37:5000/\n\nAutomation Team,\nCavisson Systems Inc." >/home/automation/workbench/automation/nscore/lib/mail_results
+
+	echo "curr.release = $version" >mail.properties
+	echo "curr.build = $build" >>mail.properties
+	echo "configured.mail.list = niraj.panda@cavisson.com" >>mail.properties
+	echo -e "buil.status.header = $STATUS" >>mail.properties
+	echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results" >>mail.properties
+	echo -e "perf.results.dir = $perf_result_dir" >>mail.properties
+}
+
+post_test_mail

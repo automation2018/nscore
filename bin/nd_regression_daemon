@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Shell to start netdiagnostics regression from build machine 
+# This shell will be invoked remotely 
+#
+#set -o pipefail 
+#set -o errexit 
+
+_is_ant_present_() 
+{
+  su  ${reg_user} -c 'which ant' 1>/dev/null
+  RC=$? 
+  [ ${RC} -eq 0 ] && return 0 || return 1
+}
+
+_init_env_()
+{
+  reg_user="regression"
+  reg_home_dir="/home/regression/work/local/automation/nde/"
+  build_file="build.xml" 
+  trigger_opts="regression"
+  
+  _is_ant_present_
+
+  RC=$? 
+ 
+ [ ${RC} -eq 0 ] && \
+  start_reg_cmd="ant -f $build_file $trigger_opts" || \
+  start_reg_cmd="./nd_ts_run regression --nodebug --noemail" 
+}
+
+_main_()
+{
+  check_if_regression_is_already_running
+  echo "[INFO] Initializing environment" 
+  _init_env_ 
+  cd "${reg_home_dir}"
+  export NS_WDIR=/home/netstorm/work
+
+  echo "[INFO] Starting regression in background" 
+  nohup su  ${reg_user} -c "${start_reg_cmd}" >/tmp/regression.out 2>&1 &
+  PID=$!
+  
+  echo "[INFO] Background Job PID=$PID"
+  sleep 2
+ 
+  ps ax | grep $PID | grep -v grep >/dev/null 
+  RC=$? 
+  [ $RC -eq 0 ] && { 
+    echo "[INFO] NetDiagnostics Regression started" 
+  } || { 
+    echo "[WARN] Unable to start regression daemon"
+    exit -1 
+  }
+}
+
+check_if_regression_is_already_running(){
+  echo "[INFO] Checking other regression processes" 
+  REGRESSION_PID=$(ps -ef| grep ant | grep "regression"| grep -v "grep"| awk '{print $2}')
+  if [ "X$REGRESSION_PID" != "X" ]; then
+    echo "[WARN] Found  regression process(PID = "$REGRESSION_PID")"
+    echo "[INFO] Cleaning old processes" 
+    kill -9 $REGRESSION_PID
+    sleep 5
+    echo "[WARN] Not starting regression"
+    exit -1   
+  else
+    echo "[INFO] Regression Health is OK"
+  fi 
+   
+}
+
+#Entry Point 
+_main_

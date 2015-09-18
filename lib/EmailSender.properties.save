@@ -1,0 +1,13 @@
+#-----------------------------------------------------#
+# To send email without attachment just comment the   #
+# mail.msg.attachment key                             #
+#-----------------------------------------------------#
+mail.username=automation@cavisson.com
+mail.password=compass
+mail.smtp.host=websrv.cavisson.com
+mail.smtp.port=587
+mail.to.list=dl-qa-teamleads@cavisson.com;arun.yadav@cavisson.com;neeraj@cavisson.com;functionalheads@cavisson.com;
+mail.cc.list=dl-qa-nsc@cavisson.com
+mail.msg.subject=%TEST_SUITE%: NetStorm Core %BUILD_INFO% - %B_STATUS% 
+mail.msg.body=GENERAL INFO \n\nBUILD %STATUS% \nProject: Core %TEST_SUITE% \nDate of build: %BUILD_DATE%   \n\nTest Results\n\n%TEST_SUMMARY%\n\nView Results Online - http://10.10.30.37:5000/\n\n\n\nAutomation Team,\nCavisson Systems Inc.
+mail.msg.attachment=%RESULT_FILE%
