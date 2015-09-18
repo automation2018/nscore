@@ -1,0 +1,100 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+Smoke_SAVE_STRING_API_TEST,4503,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_STRING_API_TEST Passed
+Smoke_EVAL_STRING_API_TEST,4504,4.1.3,6,NetStorm,pass,2,Smoke_EVAL_STRING_API_TEST Passed
+Smoke_ADV_PARAM_API_TEST,4505,4.1.3,6,NetStorm,pass,2,Smoke_ADV_PARAM_API_TEST Passed
+Smoke_ADV_PARAM_API_TEST_FAIL,4506,4.1.3,6,NetStorm,pass,2,Smoke_ADV_PARAM_API_TEST_FAIL Passed
+Smoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST,4507,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST Passed
+Smoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST,4508,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST Passed
+Smoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST,4509,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST Passed
+Smoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST,4510,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST Passed
+Smoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST,4511,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST Passed
+Smoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST,4512,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST Passed
+Smoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST,4513,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST Passed
+Smoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST,4514,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST Passed
+Smoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST,4515,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST Passed
+Smoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST,4516,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST Passed
+Smoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST,4517,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST Passed
+Smoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST,4518,4.1.3,6,NetStorm,pass,2,Smoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST Passed
+Smoke_SET_INT_VAL_API_TEST,4519,4.1.3,6,NetStorm,pass,2,Smoke_SET_INT_VAL_API_TEST Passed
+Smoke_GET_INT_VAL_API_TEST,4520,4.1.3,6,NetStorm,pass,2,Smoke_GET_INT_VAL_API_TEST Passed
+Smoke_GET_RANDOM_STR_API_TEST,4521,4.1.3,6,NetStorm,pass,2,Smoke_GET_RANDOM_STR_API_TEST Passed
+Smoke_GETTERS_API_TEST,4522,4.1.3,6,NetStorm,pass,2,Smoke_GETTERS_API_TEST Passed
+Smoke_CHK_STR_CPY_API_TEST,4523,4.1.3,6,NetStorm,pass,2,Smoke_CHK_STR_CPY_API_TEST Passed
+SMOKE-002-001,4524,4.1.3,6,NetStorm,pass,2,Smoke_Http_auth_Basic_apache_main_param_session passed
+SMOKE-002-002,4525,4.1.3,6,NetStorm,pass,2,Smoke_Http_auth_Basic_apache_main_param_use passed
+SMOKE-002-003,4526,4.1.3,6,NetStorm,pass,2,Smoke_Http_auth_Basic_apache_PageDump passed
+SMOKE-002-004,4527,4.1.3,6,NetStorm,pass,2,Smoke_Http_auth_Basic_main_CheckWithKA passed
+SMOKE-002-005,4528,4.1.3,6,NetStorm,pass,2,Smoke_Http_auth_Basic_main_CVfailWithOutKA  passed
+SMOKE-003-001,4529,4.1.3,6,NetStorm,pass,2,Autofetch one main url five autofetch url Passed
+SMOKE-003-002,4530,4.1.3,6,NetStorm,pass,2,Autofetch disabled Passed
+SMOKE-003-003,4531,4.1.3,6,NetStorm,pass,2,Autofetch enabled two embedded url Passed
+SMOKE-003-004,4532,4.1.3,6,NetStorm,pass,2,Autofetch disabled two embedded url Passed
+SMOKE-004-001,4533,4.1.3,6,NetStorm,pass,2,Smoke_TenDSrvrURL_Sce2Dep passed
+SMOKE-004-002,4534,4.1.3,6,NetStorm,pass,2,Smoke_OneDSrvr_RelativePath passed
+SMOKE-004-003,4535,4.1.3,6,NetStorm,pass,2,Smoke_DifHost_Redirection passed
+SMOKE-004-004,4536,4.1.3,6,NetStorm,pass,2,Smoke_RltvToObslt_Redirection passed
+SMOKE-004-005,4537,4.1.3,6,NetStorm,pass,2,Smoke_DifProto_Redirection passed
+SMOKE-005-001,4538,4.1.3,6,NetStorm,pass,2,Smoke_4UrlT_WOExpCookie_CMode1 passed
+SMOKE-005-002,4539,4.1.3,6,NetStorm,pass,2,Smoke_4UrlT_WExpCookie_CMode1 passed
+SMOKE-005-003,4540,4.1.3,6,NetStorm,pass,2,Smoke_4UrlT_ExpCookie_CMode1 passed
+SMOKE-005-004,4541,4.1.3,6,NetStorm,pass,2,Smoke_2UrlT_ClineCookie_CMode1 passed
+SMOKE-006-001,4542,4.1.3,6,NetStorm,fail,2,Smoke_KeepAlive_KA_100 Failed
+SMOKE-006-002,4543,4.1.3,6,NetStorm,fail,2,Smoke_KeepAlive_KA_0 Failed
+SMOKE-007-001,4544,4.1.3,6,NetStorm,pass,2,Smoke_OneUrl_MultiPart_With_Boundary passed
+SMOKE-007-002,4545,4.1.3,6,NetStorm,pass,2,Smoke_OneUrl_MultiPart_Without_Boundary passed
+SMOKE-007-003,4546,4.1.3,6,NetStorm,pass,2,Smoke_OneUrl_MultiPart_NestedBoundries passed
+SMOKE-008-001,4547,4.1.3,6,NetStorm,pass,2,Smoke_PageThink_Constant Passed
+SMOKE-008-002,4548,4.1.3,6,NetStorm,pass,2,Smoke_PageThink_Uni_Dist Passed
+SMOKE-008-003,4549,4.1.3,6,NetStorm,pass,2,Smoke_PageThink_Int_Dist Passed
+SMOKE-008-004,4550,4.1.3,6,NetStorm,pass,2,Smoke_PageThink_Spcfc_Page Passed
+SMOKE-008-005,4551,4.1.3,6,NetStorm,pass,2,Smoke_PageThink_Overide_Mul Passed
+SMOKE-008-006,4552,4.1.3,6,NetStorm,fail,2,Smoke_PageThink_Overide_Random_Pct Failed
+Smoke_SEARCH_TWOMAIN_URL,4553,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_TWOMAIN_URL passed
+Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength,4554,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed
+Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset,4555,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset,4556,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset,4557,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed
+Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset,4558,4.1.3,6,NetStorm,pass,2,Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail,4560,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail,4561,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail,4562,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail,4563,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue,4564,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop,4565,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail,4566,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed
+Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail,4567,4.1.3,6,NetStorm,pass,2,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail passed
+Smoke_FileParam_FiveMainURL_ChangeOnUse,4568,4.1.3,6,NetStorm,pass,2,Smoke_FileParam_FiveMainURL_ChangeOnUse passed
+Smoke_FileParam_FiveMainURL_ChangeOnSession,4569,4.1.3,6,NetStorm,pass,2,Smoke_FileParam_FiveMainURL_ChangeOnSession passed
+SMOKE-010-001,4570,4.1.3,6,NetStorm,pass,2,Smoke_TypeA_DNS Passed
+SMOKE-010-002,4571,4.1.3,6,NetStorm,pass,2,Smoke_TypeAAAA_DNS Passed
+SMOKE-010-003,4572,4.1.3,6,NetStorm,pass,2,Smoke_TypeMX_DNS Passed
+SMOKE-010-004,4573,4.1.3,6,NetStorm,pass,2,Smoke_TypeNS_DNS Passed
+SMOKE-010-005,4574,4.1.3,6,NetStorm,pass,2,Smoke_TypeSOA_DNS Passed
+SMOKE-010-006,4575,4.1.3,6,NetStorm,pass,2,Smoke_TypePTR_DNS Passed
+SMOKE-010-007,4576,4.1.3,6,NetStorm,pass,2,Smoke_TypeCNAME_DNS Passed
+SMOKE-010-008,4577,4.1.3,6,NetStorm,pass,2,Smoke_POP3 Passed
+SMOKE-010-009,4578,4.1.3,6,NetStorm,pass,2,Smoke_FTP_TXT_TYPE_PASSIVE Passed
+SMOKE-010-010,4579,4.1.3,6,NetStorm,pass,2,Smoke_FTP_BIN_TYPE_PASSIVE Passed
+SMOKE-010-011,4580,4.1.3,6,NetStorm,pass,2,Smoke_FTP_TXT_TYPE_ACTIVE Passed
+SMOKE-010-012,4581,4.1.3,6,NetStorm,pass,2,Smoke_FTP_BIN_TYPE_ACTIVE Passed
+SMOKE-010-013,4582,4.1.3,6,NetStorm,pass,2,Smoke_SMTP Passed
+SMOKE-010-014,4583,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_HEADER Failed
+SMOKE-010-015,4584,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_TEXT Failed
+SMOKE-010-016,4585,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_BODY Failed
+SMOKE-010-017,4586,4.1.3,6,NetStorm,pass,2,Smoke_HESSIAN_V1 Passed
+SMOKE-010-018,4587,4.1.3,6,NetStorm,pass,2,Smoke_HESSIAN_V2 Passed
+SMOKE-011-001,4588,4.1.3,6,NetStorm,pass,2,RBU basic functionalities Passed
+SMOKE-011-003,4589,4.1.3,6,NetStorm,pass,2,RBU headers for firefox browser Passed
+SMOKE-011-004,4590,4.1.3,6,NetStorm,pass,2,RBU headers for firefox browser Passed
+SMOKE-011-002,4591,4.1.3,6,NetStorm,pass,2,RBU basic functionalities Passed
+SMOKE-011-005,4592,4.1.3,6,NetStorm,pass,2,RBU headers for chromium browser Passed
+SMOKE-011-006,4593,4.1.3,6,NetStorm,pass,2,RBU headers for chromium browser Passed
+SMOKE-012-004,4594,4.1.3,6,NetStorm,pass,2,Smoke_RunLogic_Sequence Passed
+SMOKE-013-001,4595,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_BeforeFirstTrans_10U_alluser_release Passed
+SMOKE-013-002,4596,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_BeforeFirstTrans_10U_5user_release   passed
+SMOKE-013-003,4597,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut Passed
+SMOKE-013-004,4598,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_InBetweenTrans_10U_alluser_release Passed
+SMOKE-013-005,4599,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_BeforeFirstPage_10U_alluser_release Passed
+SMOKE-013-006,4600,4.1.3,6,NetStorm,pass,2,Smoke_Sync_Point_InBtweenPage_10U_5user_release Passed
+
+Failed: 0 test(s), Passed: 0 test(s), Total: 97 test(s)

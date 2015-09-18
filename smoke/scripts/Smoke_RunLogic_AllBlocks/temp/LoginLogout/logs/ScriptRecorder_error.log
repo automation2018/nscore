@@ -1,0 +1,22 @@
+7/1 11:20:35|ScriptStopForRedesign|onPageStart|This is Ungrouped Request page so this is ignored
+7/1 11:20:35|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/images/banner_merctur.jpg
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|Exception in converting Variant to array for the URL = http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif|Following is the stack trace:
+com.jacob.com.ComFailException: Variant not array
+	at com.jacob.com.Variant.toVariantSafeArray(Native Method)
+	at com.jacob.com.Variant.toSafeArray(Variant.java:2122)
+	at ScriptStopForRedesign.onPageStart(ScriptStopForRedesign.java:959)
+	at ScriptStopForRedesign.stopRecording(ScriptStopForRedesign.java:1745)
+	at ScriptStopForRedesign.generateScript(ScriptStopForRedesign.java:1813)
+	at ScriptStart.run(ScriptStart.java:105)
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/flights.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/home.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/signoff.gif
+7/1 11:20:36|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/images/banner_merctur.jpg
+7/1 11:20:37|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif
+7/1 11:20:37|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif
+7/1 11:20:37|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/Merc10-dev/images/login.gif
+7/1 11:20:37|ScriptStopForRedesign|onPageStart|request Line and host name is empty. URL data ignored. url = http://127.0.0.1/tours/vep/images/velocigen.gif
+7/1 11:20:43|ScriptUtils|deleteDirectory|Error in deleting file - C:\Users\Cavisson\Desktop\recorder\scripts/default/default/HPDToursRunlogic/registrations.spec

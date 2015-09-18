@@ -1,0 +1,14 @@
+payload={
+    "MessageType" : "EmailConfirm",
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.2.5.4",
+    "BundleVersion" : "2.2.5.8",
+    "TransactionDate" : {
+        "theDate" : 634795862197911250,
+        "dateTimeKind" : "Local",
+        "dateString" : "{TransactionDateVar}"
+    },
+    "CardId" : "{CC_CardId}",
+    "Email" : "{EmailAdd}"
+}

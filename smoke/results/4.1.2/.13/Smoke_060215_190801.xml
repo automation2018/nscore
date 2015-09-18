@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="1" total="0">
+        <testcase id="SMOKE_IMAP_FETCH_HEADER">
+            <testrun>TR2223</testrun>
+            <status>PASS</status>
+            <description>SMOKE_IMAP_FETCH_HEADER Passed</description>
+        </testcase>
+        <testcase id="SMOKE_IMAP_FETCH_TEXT">
+            <testrun>TR2224</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_IMAP_FETCH_TEXT Failed</description>
+        </testcase>
+        <testcase id="SMOKE_IMAP_FETCH_BODY">
+            <testrun>TR2225</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_IMAP_FETCH_BODY Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

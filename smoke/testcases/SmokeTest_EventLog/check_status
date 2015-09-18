@@ -1,0 +1,173 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+EVENT_LOG="$NS_WDIR/logs/TR$T_RUN_ID/event.log"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-016-001") handle_smoke_001_case ;;
+        "SMOKE-016-002") handle_smoke_002_case ;;
+        "SMOKE-016-003") handle_smoke_003_case ;;
+        "SMOKE-016-004") handle_smoke_004_case ;;
+        "SMOKE-016-005") handle_smoke_005_case ;;
+        "SMOKE-016-006") handle_smoke_006_case ;;
+        "SMOKE-016-007") handle_smoke_007_case ;;
+        "SMOKE-016-008") handle_smoke_008_case ;;
+        "SMOKE-016-009") handle_smoke_009_case ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+function get_nofilter_event_status() {
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    EVENTS_TIME=$(cat ${EVENT_LOG} | cut -d "|" -f1 | sed 1d)
+    LOG_INTERVAL_FLAG=0  
+    START_LOG_TIME=00
+
+    for t in $EVENT_TIME; do
+        if [ "$t" == "00:00:00" ]; then
+            continue
+        else
+            CURRENT_LOG_TIME=$(echo $t | cut -d ":" -f3)
+            DIFF=$((CURRENT_LOG_TIME - START_LOG_TIME))
+            START_LOG_TIME=$CURRENT_LOG_TIME
+            if [ $DIFF -gt 5 ] ; then
+                LOG_INTERVAL_FLAG=1
+                break
+            fi
+        fi    
+    done
+
+    if [ $LOG_LINE_COUNT -gt 1 ] && [ $LOG_INTERVAL_FLAG -eq 0 ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+function handle_smoke_001_case(){
+    get_nofilter_event_status
+    FLAG=$?
+
+    if [ $FLAG -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "do not filter all events will be logged condition verified"
+    else
+        log_status_and_exit_ex "FAIL" "no events got logged for conditon;do not filter all events will be logged"
+    fi
+}
+
+
+function handle_smoke_002_case(){
+    get_nofilter_event_status
+    FLAG=$?
+    
+    if [ $FLAG -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "do not filter all events will be logged condition verified"
+    else
+        log_status_and_exit_ex "FAIL" "no events got logged for conditon;do not filter all events will be logged"
+    fi
+}
+
+
+function handle_smoke_003_case(){
+    get_nofilter_event_status
+    FLAG=$?
+    
+    if [ $FLAG -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "do not filter all events will be logged condition verified"
+    else
+        log_status_and_exit_ex "FAIL" "no events got logged for conditon;do not filter all events will be logged"
+    fi
+}
+
+
+function handle_smoke_004_case(){
+    get_nofilter_event_status
+    FLAG=$?
+    
+    if [ $FLAG -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "do not filter all events will be logged condition verified"
+    else
+        log_status_and_exit_ex "FAIL" "no events got logged for conditon;do not filter all events will be logged"
+    fi
+}
+
+
+function handle_smoke_005_case(){
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    #TODO need to add additional codes to validate mode 1 events    
+    #events should be logged as per state change only
+
+    if [ $LOG_LINE_COUNT -gt 1 ]; then
+        log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per state change mode(1) tested"
+    else
+        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per state change mode(1)"
+    fi
+}
+
+
+function handle_smoke_006_case(){
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    #TODO need to add additional codes to validate mode 1 events    
+    #events should be logged as per events count
+    
+    if [ $LOG_LINE_COUNT -gt 1 ]; then
+        log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per events count mode(2) tested"
+    else
+        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per event counts mode(2)"
+    fi
+}
+
+
+function handle_smoke_007_case(){
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    #TODO need to add additional codes to validate mode 1 events    
+    #events should be logged as per events occuring time
+    
+    if [ $LOG_LINE_COUNT -gt 1 ]; then
+        log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per events time  mode(2) tested"
+    else
+        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per event time mode(2)"
+    fi
+}
+
+
+function handle_smoke_008_case(){
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    #TODO need to add additional codes to validate mode 1 events    
+    #there should not be any filtering of events occur;hence each event should be logged irrespective of severity
+    
+    if [ $LOG_LINE_COUNT -gt 1 ]; then
+        log_status_and_exit_ex "PASS" "log events as per event definition file with no flter(0) mode tested"
+    else
+        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with no flter(0) mode"
+    fi
+}
+
+
+function handle_smoke_009_case(){
+    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
+    
+    #there should not be any events logged in event.log file
+    #hence only file header should be printed 
+    #thats why validating case with file line count as 1 
+    if [ $LOG_LINE_COUNT -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "no events being logged for filter all events;no events will be logged configuration setting"
+    else
+        log_status_and_exit_ex "FAIL" "some events has been logged for configuration;filter all events;no events will be logged"
+    fi
+}
+
+
+main
+
+exit 0

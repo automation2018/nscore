@@ -1,0 +1,23 @@
+payload={
+    "MessageType" : "DiscAction",
+    "MessageId" : "{MessageIdVar}",
+    "EngineVersion" : "1.1.0.156",
+    "BundleVersion" : "2.2.2.83",
+    "KioskId" :  {KioskIdVar},
+
+    "UserName" : "User123",
+    "JobName" : "VMZ-Thin",
+    "ActionDate" : {
+        "theDate":634938387863496415,
+        "dateTimeKind":"Local",
+        "dateString":"{TransactionDateVar}"
+    },
+    "Actions" : [ {
+        "Barcode" : "{Barcode1}",
+        "Action" : 0
+    }, {
+        "Barcode" : "{Barcode2}",
+        "Action" : 1
+    } ],
+    "UseMessageControl" : false
+}

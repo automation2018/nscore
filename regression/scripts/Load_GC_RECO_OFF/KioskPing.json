@@ -1,0 +1,41 @@
+payload={
+    "MessageType" : "KioskPing",
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.2.6.4",
+    "BundleVersion" : "2.2.6.24",
+    "UseMessageControl" : false,
+    "Versions" : {
+        "Hal Service" : "1.0.7.83",
+        "Hal Client" : "1.0.6.46",
+        "Kiosk Engine" : "1.2.6.4",
+        "BrokerServices" : "1.2.6.4",
+        "HardwareServices" : "1.2.6.4",
+        "KioskServices" : "1.2.6.4",
+        "TicketServices" : "1.2.6.4",
+        "UpdateServices" : "1.2.6.4",
+        "Content Legal" : "1.1.2.1",
+        "Content Pricing" : "1.0.2.31",
+        "Content Promotion" : "1.0.0.98",
+        "Content Vend Screen Marketing" : "1.1.0.98",
+        "Control Panel Application" : "1.2.6.1",
+        "Field Maintenance Application" : "1.5.2.1",
+        "Library Rental Common" : "1.1.6.4",
+        "Library Tickets" : "1.0.3.10",
+        "Rental Application" : "2.2.6.24"
+    },
+    "Statistics" : {
+        "Deck1" : "90",
+        "Deck2" : "90",
+        "Deck3" : "90",
+        "Deck4" : "90",
+        "Deck5" : "90",
+        "Deck6" : "90",
+        "Deck7" : "90",
+        "Deck8" : "90",
+        "QLMDeckNumber" : "0",
+        "Stat597Zero" : "Stat597ZeroValue",
+        "MerchType" : "{MerchType}"
+    }
+}
+

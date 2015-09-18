@@ -1,0 +1,85 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+#fill_report_summary
+T_NAME=$(get_tname)
+
+if [ "XX$T_NAME" == "XXSMOKE-004-001" ]; then
+    Location_Var=`grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+    Location_Var1=`grep -w "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 |head -1 |tail -1`
+    Location_Var2=`grep -w "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 |head -2 |tail -1`
+    if [ "XX$SD_TotalSuccURL" == "XX3" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ "XX$Location_Var" == "XX2" ] && \
+       [ "$Location_Var1" == " /Smoke_Redirect/url2.html" ] && \
+       [ "$Location_Var2" == " /Smoke_Redirect/url3.html" ] ; then 
+        log_status_and_exit_ex "PASS" "Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed"
+    else 
+	log_status_and_exit_ex "FAIL" "Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Failed" 
+    fi
+fi 
+
+if [ "XX$T_NAME" == "XXSMOKE-004-002" ]; then
+    Location_Var=`grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 `
+    Location_Var1=`grep -w "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 |head -1 |tail -1`
+    if [ "XX$SD_TotalSuccURL" == "XX2" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ "XX$Location_Var" == "XX1" ]; then
+        log_status_and_exit_ex "PASS" "Auto Redirect One Depth Server URL with relative path Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Auto Redirect One Depth Server URL with relative path Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-004-003" ]; then
+    Location_Var=`grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 `
+    Host_Val=`grep -r "Host: " $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat |head -2 |tail -1| cut -d ':' -f2`
+    if [ "XX$SD_TotalSuccURL" == "XX2" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ "XX$Location_Var" == "XX1" ] && \
+       [ "XX$Host_Val" == "XX www.google.com2" ]; then
+        log_status_and_exit_ex "PASS" "Auto Redirect For Different Host Test Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Auto Redirect For Different Host Test Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-004-004" ]; then
+    Location_Var=`grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 `
+    Host_Val=`grep -r "Host: " $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat |head -2 |tail -1| cut -d ':' -f2`
+    if [ "XX$SD_TotalSuccURL" == "XX5" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ "XX$Location_Var" == "XX4" ] && \
+       [ "$Host_Val" == " 192.168.255.2" ]; then
+        log_status_and_exit_ex "PASS" "Auto Redirect For Relative To Absolute redirection Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Auto Redirect For Relative To Absolute redirection Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-004-005" ]; then
+    Location_Var=`grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2 `
+    Host_Val=`grep -r "Host: " $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat |head -2 |tail -1| cut -d ':' -f2`
+    if [ "XX$SD_TotalSuccURL" == "XX5" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ "XX$Location_Var" == "XX4" ]; then
+        log_status_and_exit_ex "PASS" "Auto Redirect For Different Protocol Url Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Auto Redirect For Different Protocol Url Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-004-006" ]; then
+    page1_loc_var_count=$(grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2)
+    page2_loc_var_count=$(grep -c "Location: " $T_ID_REQ_PATH/url_rep_0_0_0_1_0_0_0_1_0.dat |cut -d ':' -f2)
+    if [ "XX$SD_TotalSuccURL" == "XX4" ] && \
+       [ "XX$SD_URLFailures" == "XX0" ] && \
+       [ $page1_loc_var_count -eq 0 ] && \
+       [ $page2_loc_var_count -eq 1 ];then
+        log_status_and_exit_ex "PASS" "Manual redirection smoke test Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Manual redirection smoke test Failed"
+    fi
+fi
+
+exit 0

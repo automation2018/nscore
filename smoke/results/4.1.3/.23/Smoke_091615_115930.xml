@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="7" total="9">
+        <testcase id="SMOKE-017-001">
+            <testrun>10072</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-017-002">
+            <testrun>10073</testrun>
+            <status>fail</status>
+            <description>no events got logged for conditon;do not filter all events will be logged</description>
+        </testcase>
+        <testcase id="SMOKE-017-003">
+            <testrun>10074</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-017-004">
+            <testrun>10075</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-017-005">
+            <testrun>10076</testrun>
+            <status>pass</status>
+            <description>log events as per event definition file with log event as per state change mode(1) tested</description>
+        </testcase>
+        <testcase id="SMOKE-017-006">
+            <testrun>10077</testrun>
+            <status>fail</status>
+            <description>no events being logged in case of;log events as per event definition file with log event as per event counts mode(2)</description>
+        </testcase>
+        <testcase id="SMOKE-017-007">
+            <testrun>10078</testrun>
+            <status>pass</status>
+            <description>log events as per event definition file with log event as per events time  mode(2) tested</description>
+        </testcase>
+        <testcase id="SMOKE-017-008">
+            <testrun>10079</testrun>
+            <status>pass</status>
+            <description>log events as per event definition file with no flter(0) mode tested</description>
+        </testcase>
+        <testcase id="SMOKE-017-009">
+            <testrun>10080</testrun>
+            <status>pass</status>
+            <description>no events being logged for filter all events;no events will be logged configuration setting</description>
+        </testcase>
+    </testsuite>
+</testsuites>

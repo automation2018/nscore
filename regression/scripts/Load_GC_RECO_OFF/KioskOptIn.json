@@ -1,0 +1,21 @@
+payload={
+    "MessageType" : "KioskOptIn",
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.2.5.4",
+    "BundleVersion" : "2.2.5.8",
+    "CardHash" : "{CardHash}",
+    "RequestDate" : {
+        "theDate" : 634795862197911250,
+        "dateTimeKind" : "Local",
+        "dateString" : "{TransactionDateVar}"
+    },
+    "OptInItems" : [ {
+        "Item_Type" : {ItemTypeVar},
+        "ItemId" : {ItemIDVar},
+        "OptInMethodType" : 1,
+        "OptInMethodData" : "{Email}",
+        "TemplateName" : "{TemplateName}",
+        "CampaignName" : "{CampaignName}"
+    } ]
+}

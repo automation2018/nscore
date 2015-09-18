@@ -1,0 +1,191 @@
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+File Name      : AdvancedNetstorm.css
+File Type      : CSS Style Sheet
+Date of Creation  : 12 July 2011
+Created by      : Ritesh Sharma
+//////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/** For Webkit/Safari table cols are not fixed without this property   **/
+@media screen and (-webkit-min-device-pixel-ratio:0) 
+{
+  .resizable
+    {
+    table-layout:fixed;
+  }
+}
+
+/* 
+ #ie10 will only be red in MSIE 10, 
+ both in high contrast (display setting) and default mode 
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+{
+  .resizable
+    { 
+    table-layout:fixed;
+  }
+}
+
+.resizable
+{
+  table-layout:fixed;
+}
+
+.tableRowOddNew
+{
+  background-color:FFFFFF;
+  color:#000000;
+}
+
+.tableRowEvenNew
+{
+
+  background-color:f7fcff;
+  color:#000000;
+  
+ 
+}
+
+.tableRowOddNewGray
+{
+  background-color:EBEBEB;
+  color:#000000;
+}
+
+.tableRowEvenNewGray
+{
+
+  background-color:EBEBEB;
+  color:#000000;
+  
+ 
+}
+.tableCell
+{ 
+  border-top:1px solid white;
+  border-right:1px solid #ADC6E9;
+  border-bottom:1px solid #ADC6E9;
+  border-left:1px solid white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+ }
+ 
+ .checkd
+ {
+
+   overflow: hidden;
+   text-overflow: ellipsis
+ }
+
+
+
+
+td.tableHeaderLockedEnhance, tr.tableHeaderLockedEnhance
+{
+    color:#000080;
+    font-size:10px;
+    font-weight:bold;
+    height:20px;
+    left: expression(document.getElementById("ScrollablePane").scrollRight); 
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+    background:url("../images/tableHeader.png") #B1C9EA repeat-x top;
+}
+
+
+td.tableHeaderLock, tr.tableHeaderLock
+{
+    color:#000080;
+    font-size:10px;
+    font-weight:bold;
+    height:20px;
+     
+    position:relative;
+    z-index: 10;
+    overflow: hidden;
+    background:url("../images/tableHeader.png") #B1C9EA repeat-x top;
+    top:expression(document.getElementById("ScrollablePane").scrollTop-0);
+}
+
+
+th.resize-handle-active 
+{
+  cursor: col-resize;
+}
+
+th.resize-handle-de-active 
+{
+  cursor: default;
+}
+
+div.resize-handle 
+{
+  cursor:col-resize;
+  
+  border-right: 1px solid #1E90FF;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.smallcheckbox
+{
+   
+   width: 12px;
+  
+} 
+
+.scrollbarColorChange
+{
+scrollbar-face-color:F5F5F5; scrollbar-arrow-color:gray; scrollbar-3dlight-color:#CDD8AB
+}
+
+
+.tableHeaderforMozila
+{
+ color:#000080;
+ font-size:10px;
+ font-weight:bold;
+ height:20px;
+       
+ position:absloute;
+ z-index: 10;
+ overflow: hidden;
+ background:url("../images/tableHeader.png") #B1C9EA repeat-x top;
+
+}
+
+
+/*//////////////////////////////Header Left Side Fields Created by Richa Shastri/////////////*/
+.HeaderLeft
+{
+  background-color:F0F0F0;
+  color:#000000;
+}
+.HeaderRight
+ {
+background-color:FFFFFF;
+  
+ }
+
+.Summary
+{
+  background-color:F6F6F6;
+  color:#000000;
+} 
+
+td.tableHeaderLockedOld, tr.tableHeaderLockedOld
+{
+   color:#000080;
+   font-size:10px;
+   font-weight:bold;
+   height:20px;
+   background-color:#F2F2F2;
+   left: expression(document.getElementById("ScrollablePane").scrollRight); /* IE5+ only */
+   
+  z-index: 10;
+}
+

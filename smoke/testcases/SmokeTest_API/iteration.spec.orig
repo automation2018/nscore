@@ -1,0 +1,40 @@
+#######################################################################################################################
+#  Iteration suit for C api's                          								      #
+#  Use "NA" to replace strings where values are not applicable(FILE_NAME and inputString)                             #
+#  Use -1 to replace integers where values are not applicable(FILE_MODE and TEST_CASE_TYPE_NUM)                       #
+#  $ Replaces values from iteration.spec to scenario and % replaces values from iteration.spec to flow file in script #
+#######################################################################################################################
+$TestDescription|$ScriptName|$User|%inputString|%API_TYPE|%TEST_CASE_TYPE_NUM|%FILE_NAME|%FILE_MODE
+
+######################################################################################################################
+SAVE_STRING_API_TEST|StringAPI|1|"This is a test string to be saved in decl var using save_string_api"|SAVE_STRING|0|"NA"|-1
+
+#EVAL_STRING_API_TEST|StringAPI|1|"NA"|EVAL_STRING|0|"NA"|-1
+
+#ADV_PARAM_API_TEST|StringAPI|1|"NA"|ADV_PARAM|0|"NA"|-1
+
+#ADV_PARAM_API_TEST_FAIL|StringAPI|1|"NA"|ADV_PARAM|1|"NA"|-1
+
+#SAVE_DATA_VAR_API_RELATIVE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"save.data"|NS_APPEND_FILE
+
+#SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/home/netstorm/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/root/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"save.data"|NS_APPEND_FILE
+
+#SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/home/netstorm/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/root/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE
+
+#SAVE_DATA_EX_API_RELATIVE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"save.data"|NS_APPEND_FILE
+
+#SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/home/netstorm/work/save.data"|NS_TRUNC_FILE 
+
+#SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/root/save.data"|NS_APPEND_FILE
+
+#SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST|StringAPI|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE

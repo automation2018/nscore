@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="5" total="6">
+        <testcase id="SMOKE-004-001">
+            <testrun>8010</testrun>
+            <status>pass</status>
+            <description>Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-002">
+            <testrun>8011</testrun>
+            <status>pass</status>
+            <description>Auto Redirect One Depth Server URL with relative path Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-003">
+            <testrun>8012</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Different Host Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-004">
+            <testrun>8013</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Relative To Absolute redirection Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-005">
+            <testrun>8014</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Different Protocol Url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-006">
+            <testrun>8015</testrun>
+            <status>fail</status>
+            <description>Manual redirection smoke test Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

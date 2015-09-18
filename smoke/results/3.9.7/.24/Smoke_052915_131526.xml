@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="2" total="0">
+        <testcase id="SMOKE_OneUrl_MultiPart_With_Boundary">
+            <testrun>TR1774</testrun>
+            <status>PASS</status>
+            <description>passed:</description>
+        </testcase>
+        <testcase id="SMOKE_OneUrl_MultiPart_Without_Boundary">
+            <testrun>TR1775</testrun>
+            <status>PASS</status>
+            <description>passed:</description>
+        </testcase>
+        <testcase id="SMOKE_MultiPart_Nested">
+            <testrun>TR1776</testrun>
+            <status>FAIL</status>
+            <description>failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,162 @@
+#!/bin/bash
+
+#Making avalable of all utlities from lib file
+source $NS_WDIR/lib/automation_util
+
+T_NAME=$(get_tname)
+PAGE_FAIL=$(grep -r "Page Failures" $NS_WDIR/logs/TR$T_RUN_ID/summary.data |awk '{print $2}' | cut -d '|' -f2)
+
+function get_firefox_headers_info(){
+    UAgent=`grep "User-Agent" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}' | cut -d '' -f1`
+    Via=`grep "Via" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2,3 | cut -d '' -f1`
+    Url=`grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d '' -f1`
+    CustHeader=`grep "automation" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d '' -f1`
+}
+
+function get_chromium_headers_info(){
+    UAgent=`grep "User-Agent" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}' | cut -d '' -f1`
+    Via=`grep "Via" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2,3 | cut -d '' -f1`
+    Url=`grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d '' -f1`
+    CustHeader=`grep "automation" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d '' -f1`
+}
+
+function compare_firefox_header(){
+    get_firefox_headers_info
+    compare_csv_and_har_values
+    if [ "$UAgent" == "RBU_FIREFOX_USER_AGENT" ] && \
+       [ "$Via" == "Netstorm Firefox" ] && \
+       [ "$Url" == "GET http://10.10.30.38/tours/index.html HTTP/1.1" ] && \
+       [ "$RESPONSE" == "TRUE" ] && \
+       [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ $PAGE_FAIL -eq 0 ] && \
+       [ "$CustHeader" == "automation: header" ];then
+       log_status_and_exit_ex "PASS" "RBU headers for firefox browser Passed"
+    else
+       log_status_and_exit_ex "FAIL" "RBU headers for firefox browser Failed"
+    fi
+}
+
+function compare_chrome_header(){
+    get_chromium_headers_info
+    compare_csv_and_har_values
+    if [ "$UAgent" == "RBU_CHROME_USER_AGENT" ] && \
+       [ "$Via" == "System Chrome" ] && \
+       [ "$Url" == "GET http://10.10.30.38/tours/index.html HTTP/1.1" ] && \
+       [ "$RESPONSE" == "TRUE" ] && \
+       [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ $PAGE_FAIL -eq 0 ] && \
+       [ "$CustHeader" == "automation: header" ];then
+       log_status_and_exit_ex "PASS" "RBU headers for chromium browser Passed"
+    else
+       log_status_and_exit_ex "FAIL" "RBU headers for chromium browser Failed"
+    fi
+}
+
+function har_values(){
+    HAR_STRING_1=`grep "Har-File" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}' | cut -d '' -f1`
+    HAR_STRING_2=`grep "Har-File" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}' | cut -d '' -f1`
+    HAR_FILE_1="P_FirstView"+"demo"+$HAR_STRING_1
+    HAR_FILE_2="P_RepeatView"+"demo"+$HAR_STRING_2
+}
+
+#This module fetch data from harp_csv files
+function get_csv_values(){
+    #################################################CSV Data For First Page###########################################
+    csvDomLoad_1=`awk -F "," '{print $3}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv | awk 'NR==2'`
+    csvDomLoad1=$(echo "$csvDomLoad_1 * 1000" | bc | awk '{printf "%.0f\n", $1}')
+    csvOnLoad_1=`awk -F "," '{print $4}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv | awk 'NR==2'`
+    csvOnLoad1=$(echo "$csvOnLoad_1 * 1000" | bc| awk '{printf "%.0f\n", $1}')
+    csvPageLoad1=`awk -F "," '{print $5}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv | awk 'NR==2'`
+    csvNormalRequests1=`awk -F "," '{print $6}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv | awk 'NR==2'`
+    csvBrowserCacheRequests1=`awk -F "," '{print $7}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv | awk 'NR==2'`
+    #################################################CSV Data For Second Page##########################################
+    csvDomLoad_2=`awk -F "," '{print $3}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv | awk 'NR==2'`
+    csvDomLoad2=$(echo "$csvDomLoad_2 * 1000" | bc | awk '{printf "%.0f\n", $1}')
+    csvOnLoad_2=`awk -F "," '{print $4}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv | awk 'NR==2'`
+    csvOnLoad2=$(echo "$csvOnLoad_2 * 1000" | bc| awk '{printf "%.0f\n", $1}')
+    csvPageLoad2=`awk -F "," '{print $5}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv | awk 'NR==2'`
+    csvNormalRequests2=`awk -F "," '{print $6}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv | awk 'NR==2'`
+    csvBrowserCacheRequests2=`awk -F "," '{print $7}' $NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv | awk 'NR==2'`
+}
+
+#This module will fetch data from .har files 
+function get_har_values(){
+    har_values
+    #############################################HAR Data for First Page#############################################
+    totalRequests1=`grep "\"url"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_1 | wc -l`
+    grep "\"_cav_cache_provider"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_1 >/tmp/cached_requests_file_1
+    harBrowserCacheRequests1=`egrep -v "NA|Origin|Akamai|Cloudfront" </tmp/cached_requests_file_1 | wc -l`
+    harNormalRequests1=`expr $totalRequests1 - $harBrowserCacheRequests1`
+    harOnLoad1=`grep "\"onLoad"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_1 | awk -F " " '{print $2}' | awk -F "," '{print $1}'`
+    harDomLoad1=`grep "\"onContentLoad"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_1 | awk -F " " '{print $2}' | awk -F "," '{print $1}'`
+    ############################################HAR Data for Second Page#############################################
+    totalRequests2=`grep "\"url"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_2 | wc -l`
+    grep "\"_cav_cache_provider"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_2 >/tmp/cached_requests_file_2
+    harBrowserCacheRequests2=`egrep -v "NA|Origin|Akamai|Cloudfront" </tmp/cached_requests_file_2 | wc -l`
+    harNormalRequests2=`expr $totalRequests2 - $harBrowserCacheRequests2`
+    harOnLoad2=`grep "\"onLoad"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_2 | awk -F " " '{print $2}' | awk -F "," '{print $1}'`
+    harDomLoad2=`grep "\"onContentLoad"\"\: $NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/$HAR_FILE_2 | awk -F " " '{print $2}' | awk -F "," '{print $1}'`
+}
+
+#This module will be used to check the final status of each cases
+function check_summary_value(){
+    compare_csv_and_har_values
+    if [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ "$RESPONSE" == "TRUE" ] && \
+       [ $PAGE_FAIL -eq 0 ];then
+	log_status_and_exit_ex "PASS" "RBU basic functionalities Passed"   
+    else
+	log_status_and_exit_ex "FAIL" "RBU basic functionalities Failed"
+    fi
+}
+
+#This module will comapre har and csv data and send status to check_summary_value module
+function compare_csv_and_har_values(){
+    get_har_values
+    get_csv_values
+    if [ "$csvDomLoad1" == "$harDomLoad1" ] && \
+       [ "$csvOnLoad1" == "$harOnLoad1" ] && \
+       [ "$csvDomLoad2" == "$harDomLoad2" ] && \
+       [ "$csvOnLoad2" == "$harOnLoad2" ] && \
+       [ $totalRequests1 -ge $totalRequests2 ];then
+	RESPONSE=TRUE
+    else
+	RESPONSE=FALSE
+	log_status_and_exit_ex "FAIL" "RBU case failed due to mismatch in csv and har values"
+    fi
+}
+
+#This module will fetch the T_NAME and call neccesary modules for further operations
+function match_tname_and_forward(){
+    if [ "XX$T_NAME" == "XXSMOKE-011-001" ];then
+	check_summary_value 
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-002" ];then
+	check_summary_value
+    fi
+    
+    if [ "XX$T_NAME" == "XXSMOKE-011-003" ];then
+       compare_firefox_header
+    fi
+    
+    if [ "XX$T_NAME" == "XXSMOKE-011-004" ];then
+       compare_firefox_header
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-005" ];then
+       compare_chrome_header
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-006" ];then
+       compare_chrome_header
+    fi
+}
+
+#master module 
+match_tname_and_forward
+
+exit 0

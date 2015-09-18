@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="16" total="16">
+        <testcase id="SMOKE-009-001">
+            <testrun>4819</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-002">
+            <testrun>4820</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-003">
+            <testrun>4821</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-004">
+            <testrun>4822</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-005">
+            <testrun>4823</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-006">
+            <testrun>4824</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-007">
+            <testrun>4825</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-008">
+            <testrun>4826</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-009">
+            <testrun>4827</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-010">
+            <testrun>4828</testrun>
+            <status>pass</status>
+            <description> Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-011">
+            <testrun>4829</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-012">
+            <testrun>4830</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-013">
+            <testrun>4831</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-014">
+            <testrun>4832</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail  passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-015">
+            <testrun>4833</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnUse passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-016">
+            <testrun>4834</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnSession passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,259 @@
+
+
+
+
+
+
+
+
+
+<!--  
+  Name   : correlationHeader.jspf
+  Author : jyoti
+  Purpose: This is for correlation GUI. It it to be included in all JSP
+           on the top for for following :
+           - Import of packages 
+           - Initialization of beans and js
+           - JSP variables which are common to all JSPs
+  Notes  :
+    None
+  Modification History:
+    29/03/10  : jyoti :3.6.2 -Initial Version
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- This is required for firefox b'coz it does not refresh the screen.when we select the option then click on another tab or OK button after again open the same screen . It does not show the changed value means it takes value from the cache.when we reload the screen then it gives new value. -->
+
+
+<link rel="stylesheet" href="../css/AdvancedNetstorm.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="../css/Netstorm.css" type="text/css" media="all"/>
+
+
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="../yui/css/container.css" />
+
+<script type="text/javascript" src="../js/jquery-latest.js"></script>
+<script language="javascript" src="corrSettingHints.js"></script>
+<script language="javascript" src="../js/sortableTable.js"></script>
+<script type="text/javascript" src="../js/jquery-impromptu.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery-impromptu.css">
+<script language="javascript" src="corrUtils.js"></script>
+
+<script language="javascript" src="../js/sortableTable.js"></script>
+<!----<script language="javascript" src="help.js"></script>--->
+<script language="javascript" src="../js/nsUtils.js"></script>
+
+
+   <script type="text/javascript" src="../js/prototype.js"></script>
+   <script type="text/javascript" src="../js/fastinit.js"></script>
+   <script type="text/javascript" src="../js/tablekit.js"></script>
+
+
+<script language="javascript"  src="../js/tableEnhancement.js"></script>
+<script language="javascript"  src="../js/tablePagination.js"></script>
+
+<script language="javascript" src="../js/validation.js"></script>
+<script language="javascript" src="corrValidateCondition.js"></script>
+<script language="javascript" src="../js/nsStringUtils.js"></script>
+<script language="javascript" src="../js/help.js"></script>
+
+<script language="javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script language="javascript" src="../yui/js/container_core-min.js"></script>
+<script language="javascript" src="../yui/js/menu-min.js"></script>
+
+
+<!-- Combo-handled YUI JS files: -->
+<!--<script type="text/javascript" src="./../../../yui.yahooapis.com/combo_2.8.2r1_build_yahoo-dom-event_yahoo-dom-event.js"></script>
+<script type="text/javascript" src="./../../../yui.yahooapis.com/combo__2.8.2r1_build_container_container_core-min.js"></script>
+<script type="text/javascript" src="./../../../yui.yahooapis.com/combo_2.8.2r1_build_menu_menu-min.js"></script>-->
+
+
+<script language="javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script language="javascript" src="../yui/js/container_core-min.js"></script>
+<script language="javascript" src="../yui/js/menu-min.js"></script>
+
+<script type="text/javascript" src="../yui/js/connection-min.js"></script>
+<script type="text/javascript" src="../yui/js/animation-min.js"></script>
+<script type="text/javascript" src="../yui/js/dragdrop-min.js"></script>
+<script type="text/javascript" src="../yui/js/container-min.js"></script>
+
+
+<script> YAHOO.namespace("example.container"); </script>
+
+<script type="text/javascript">
+<!--
+// this is put up for help pop-up
+// Override the default settings to point to the parent directory
+//
+
+
+//-->
+</script>
+<script language="javascript">
+
+
+
+
+
+
+  
+
+
+
+
+window.onbeforeunload = confirmExit
+
+function confirmExit()
+{
+  if (warnMessage != null) 
+  {
+    return warnMessage;
+  }
+}
+
+var warnMessage = null;
+jQuery(document).ready(function() {
+   jQuery('input:not(:button,:submit),textarea,select').change(function () {
+
+	//window.opener.isDataChanged = true;	
+        warnMessage = "You have unsaved changes on this page!";
+	//alert("The value of the flag is "+isDataChanged)
+    });
+    jQuery('input:submit').click(function(e) {
+        warnMessage = null;
+    });
+});
+
+
+
+
+function onLoadFunction()
+{
+
+ //alert("test");
+}
+
+
+function validate()
+{
+  //alert(opener.document.getElementById('destFile') frmMain);
+  //opener.getElementById('destFile').value = "Arun Goel";
+
+  if(document.frmMap.FileUpload.value == "")
+  {
+    alert("Please browse the file");
+    return false;
+  }
+ 
+  return true;
+  
+  // if(!document.frmMap.FileUpload.value == "")
+  //   submitJSP("browser", document.frmMap.FileUpload.value)
+  
+}
+  
+function finish()
+{
+  var value = "&strMode=addFileParam&rowId=-1";
+  
+  var frameName = "Right_Frame_Parameter";
+  if('' == '')
+  {
+    if('corrEditFileParam.jsp' == "corrViewURL.jsp")
+    {
+      frameName = "Hpd_Right_Frame";
+      value = "&hostName=" + 'null';
+    }
+    //alert("delimeter = "+',');
+    window.open('corrEditFileParam.jsp'+"?destFile="+ 'LSImport1Prd10ColorwayEach_1.xls' +"&strAction=finish" + "&uploadCheck="+'true' + value  + "&deli="+ ',', frameName);
+    window.close();
+  }
+  else
+  {
+    window.opener.location.href = 'corrEditFileParam.jsp'+"?destFile="+ 'LSImport1Prd10ColorwayEach_1.xls' +"&strAction=finish" + value + "&deli="+ ','  + "&uploadCheck="+'true';
+    window.focus();
+    window.close();
+  }
+}
+
+</script>
+
+<html>
+  <head>
+    
+    <title>Correlation Upload Data File</title>
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    
+    <link rel="stylesheet" href="../css/Netstorm.css" type="text/css" media="all"/>
+
+  </head>
+<body onload="onLoadFunction()">
+  
+  
+<br><table border=0 class = table width=98% class=managetbl align=center>
+<form name="frmMap" method="Post" ENCTYPE="multipart/form-data" action="corrUploadDataFile.jsp?strOperName=Upload&sourceFile="+document.frmMap.FileUpload.value>
+
+<input type="hidden" name="strOperName" value="">
+<input type="hidden" name="strOperValue" value="">
+
+<tr class=tableRowEven><th colspan=4 align=left><b><I>Step1</b></I>&nbsp;Choose File </th></tr>
+<tr class=tableRowOdd><td colspan=4 align=left >Click on Browse button to choose the file. </td></tr>
+<tr class=tableRowEven>
+  <td colspan=3><b>Browse File </b></td>
+  <td><input type=file name="FileUpload" style='width:75%;'> </td>
+</tr>
+<tr class=tableRowOdd>
+  <td colspan=4><b><I>Step2</b></I><b>&nbsp;Upload File </b><br>
+    Click on the "Upload File" button. Please wait till your file appears under File Name. 
+  </td>
+    
+</tr>
+<tr class=tableRowEven>
+<td colspan=4>
+  <table>
+      <tr><td><b>File Name</b></td></tr>
+      <tr> <td> /var/Controller_Proxy/hpd/correlation/Kohls/default/services/test/LSImport1Prd10ColorwayEach_1.xls </td></tr>
+
+</table></td>
+    
+  </tr>
+  <tr class=tableRowOdd>
+    <td colspan=4><input class=button type=submit name=submitbutton value="Upload File" onclick=validate()></td>
+    </tr>
+    </form>
+    
+
+   
+    <tr class=tableRowEven><td colspan=4 align=left><b><I>Step3</b></I>&nbsp;Click on Finish button to complete the process.</td></tr>
+    <tr class=tableRowOdd><td colspan=3 align=left><span id=finishspan><input class=button type=button name=finish value="&nbsp;Finish&nbsp;" onClick="finish()"></td></span>
+      <td>
+        <form name="unloadFile">
+          <input type=hidden name=initialRequest value=initialRequest></input>
+        </form>
+      </td>
+    </tr>
+    
+  </table>
+  </body>
+</html>
+
+

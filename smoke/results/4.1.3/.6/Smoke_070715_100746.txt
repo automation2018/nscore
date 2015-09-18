@@ -1,0 +1,21 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-010-001,4601,4.1.3,6,NetStorm,pass,2,Smoke_TypeA_DNS Passed
+SMOKE-010-002,4602,4.1.3,6,NetStorm,pass,2,Smoke_TypeAAAA_DNS Passed
+SMOKE-010-003,4603,4.1.3,6,NetStorm,pass,2,Smoke_TypeMX_DNS Passed
+SMOKE-010-004,4604,4.1.3,6,NetStorm,pass,2,Smoke_TypeNS_DNS Passed
+SMOKE-010-005,4605,4.1.3,6,NetStorm,pass,2,Smoke_TypeSOA_DNS Passed
+SMOKE-010-006,4606,4.1.3,6,NetStorm,pass,2,Smoke_TypePTR_DNS Passed
+SMOKE-010-007,4607,4.1.3,6,NetStorm,pass,2,Smoke_TypeCNAME_DNS Passed
+SMOKE-010-008,4608,4.1.3,6,NetStorm,pass,2,Smoke_POP3 Passed
+SMOKE-010-009,4609,4.1.3,6,NetStorm,pass,2,Smoke_FTP_TXT_TYPE_PASSIVE Passed
+SMOKE-010-010,4610,4.1.3,6,NetStorm,pass,2,Smoke_FTP_BIN_TYPE_PASSIVE Passed
+SMOKE-010-011,4611,4.1.3,6,NetStorm,pass,2,Smoke_FTP_TXT_TYPE_ACTIVE Passed
+SMOKE-010-012,4612,4.1.3,6,NetStorm,pass,2,Smoke_FTP_BIN_TYPE_ACTIVE Passed
+SMOKE-010-013,4613,4.1.3,6,NetStorm,pass,2,Smoke_SMTP Passed
+SMOKE-010-014,4614,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_HEADER Failed
+SMOKE-010-015,4615,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_TEXT Failed
+SMOKE-010-016,4616,4.1.3,6,NetStorm,fail,2,Smoke_IMAP_FETCH_BODY Failed
+SMOKE-010-017,4617,4.1.3,6,NetStorm,pass,2,Smoke_HESSIAN_V1 Passed
+SMOKE-010-018,4618,4.1.3,6,NetStorm,pass,2,Smoke_HESSIAN_V2 Passed
+
+Failed: 0 test(s), Passed: 0 test(s), Total: 18 test(s)

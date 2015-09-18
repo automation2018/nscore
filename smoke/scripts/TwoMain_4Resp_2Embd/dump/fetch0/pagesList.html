@@ -1,0 +1,62 @@
+<!-- Netstorm GUI4  -->
+<html>
+<head><title>Page Response Snapshots for recorded script</title></head>
+<!-- Title of the screen -->
+  <link rel="stylesheet" href="/netstorm/css/Netstorm.css" type="text/css" /link>
+  <script language="javascript">
+
+    function showRecordedPageOnFrame(url)
+    {
+      parent.Dump.location = url;
+    }
+    //These functions highlight the row when we pass/hover on current row
+    function over(row)
+    {
+      row.oldBackgroundColor = row.style.backgroundColor;
+      row.style.backgroundColor = 'FFFFCC';
+    }
+
+    function out(row)
+    {
+      row.style.backgroundColor = row.oldBackgroundColor;
+    }
+
+</script>
+</head>
+<body onLoad=showRecordedPageOnFrame('127.0.0.1/custom/samples/autofetch/url_page1.html')>
+  <form id="form1" name="form1" method="post" action="">
+       <table border="0" cellpadding="0" cellspacing="0" id="header">
+       <tr><td width="95%" align="left" valign="top"><img src="/netstorm/images/logo.png"/></td>
+       <tr><td align="center" colspan="2">
+       <table width="98%" cellpadding="0" cellspacing="0">
+       <tr ><td colspan="2" align="left" class="screenTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response Page Snapshots </td></tr></table></td></tr></table><table  cellpadding="0" cellspacing="0" id="text">
+       <tr><td align="center">
+       <br /><br /></table>
+  <table cellpadding="0" cellspacing="0" class="table" width="98%" align="center" max-width=1200px>
+       <td width="970" align="center" class="tableTitle">Page Dump Table</td>       </tr><tr>
+       <td colspan="2" align="center" valign="top">
+       <table width =" 100%" border="0"  align =" center" cellpadding =" 0" cellspacing =" 0" id="table02" style="width:100%; display;">
+       <tr align="center" class="tableHeader">
+       <td height="20"><b>Page Number</b></td>
+       <td><b>Page Name</b></td>
+ <tr align="center" class="tableRowOdd" onmouseover='over(this);' onmouseout='out(this);'>
+     <td height="20" valign =" middle"><a href=javascript:showRecordedPageOnFrame('./headers/page_1.txt')>01</a></td>
+<td valign =" middle" ><a href=javascript:showRecordedPageOnFrame('./127.0.0.1/custom/samples/autofetch/url_page1.html')>url_page1_html</a></td>
+ <tr align="center" class="tableRowEven" onmouseover='over(this);' onmouseout='out(this);'>
+     <td height="20" valign =" middle"><a href=javascript:showRecordedPageOnFrame('./headers/page_2.txt')>02</a></td>
+<td valign =" middle" ><a href=javascript:showRecordedPageOnFrame('./127.0.0.1/custom/samples/autofetch/url_page2.html')>url_page2_html</a></td>
+ <tr align="center" class="tableRowOdd" onmouseover='over(this);' onmouseout='out(this);'>
+     <td height="20" valign =" middle"><a href=javascript:showRecordedPageOnFrame('./headers/page_3.txt')>03</a></td>
+<td valign =" middle" ><a href=javascript:showRecordedPageOnFrame('./127.0.0.1/custom/samples/autofetch/url_page3.html')>url_page3_html</a></td>
+ </td></tr>
+ </table>
+ </table>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <br>
+<br>
+<tr>
+ </table>
+<br/>
+</form>
+</body>
+</html>

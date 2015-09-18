@@ -1,0 +1,14 @@
+//nsl_static_var(param_file:1, File=File, Refresh=USE, Mode=SEQUENTIAL, EncodeMode=All);
+nsl_static_var(MAIL_SEQ:1, File=seq, Refresh=SESSION, FIRSTDATALINE=1, EncodeMode=All, MODE=UNIQUE);
+//nsl_decl_var(dec_para);
+//nsl_decl_var(dec_para1);
+//nsl_decl_var(dec_para2);
+//nsl_random_number_var(Random_para, Min=1, Max=5, Format=%01lu, Refresh=SESSION);
+//nsl_unique_number_var(Unique_para, Format=%01lu, Refresh=SESSION);
+//nsl_index_file_var(Ind_para, File=Username, indexVar=dec_para, EncodeMode=All);
+//nsl_web_find(TEXT="Shikha Chaudhary", PAGE=*, ID="Message not found", ActionOnFail=STOP);
+//nsl_decl_array(dec_arr,Size=5,DefaultValue="1");
+//nsl_search_var(SearchTitle, PAGE=*, LB="<title>", RB="</title>", SaveOffset=0, RETAINPREVALUE="YES", EncodeMode=None);
+//nsl_search_var(RBUSeacrchVar, PAGE=index_html, LB="<title>", RB="</title>", RETAINPREVALUE="YES", EncodeMode=None);
+//nsl_search_var(var, PAGE=Search_Param, LB="<http://www.avast.", RB="/>", SaveOffset=0, RETAINPREVALUE="YES", EncodeMode=None);
+nsl_decl_var(ImapS_Dec);

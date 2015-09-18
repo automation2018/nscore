@@ -1,0 +1,53 @@
+payload={
+    "TransactionDate" : {
+        "theDate" : 634165184912011934,
+        "dateTimeKind" : "Local",
+        "dateString" : "{TransactionDateVar}"
+    },
+     "CreditCard" : {
+        "FirstName" : "{CCFirstNameVar}",
+        "LastName" : "{CCLastNameVar}",
+        "Number" : "{CCNumVar}",
+        "PostalCode" : "{CCPostalCodeVar}",
+        "ExpirationMonth" : "{CCExpirationMonthVar}",
+        "ExpirationYear" : "{CCExpirationYearVar}",
+        "KeyId" :{CCKeyIdVar} ,
+        "CardId" : "{CCIdVar}",
+        "LastFour" : "{CCLastFourVar}",
+        "CardType" :{CCTypeVar} ,
+        "Track2" : "{CCTrack2Var}"
+},
+    "Contents" : {
+        "rental" : {
+            "Items" : [ {
+                "Barcode" : "{BarcodeDVDVar}",
+                "ProductFamily" : "movies",
+                "VendStatus" : "{VendStatusVar}",
+                "ProductType" : "dvd",
+                "Prices" : {
+                    "initialnight" : 1,
+                    "extranight" : 1,
+                    "nonreturn" : 24,
+                    "expirationprice" : 1,
+                    "nonreturndays" : 24
+                }
+            } ],
+            "Totals" : {
+                "TaxRate" : 5,
+                "Subtotal" : 0,
+		 "DiscountedSubtotal" : 0,
+                "TaxAmount" : "0",
+                "GrandTotal" : 0
+            }
+        }
+    },
+    "DiscountCode" : null,
+    "DiscountValue" : 0,
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.1.0.156",
+    "BundleVersion" : "2.2.2.83",
+    "ReferenceNumber" : {FailRefNumVar},
+    "MessageType" : "Reconcile"
+}
+

@@ -1,0 +1,167 @@
+--Request
+GET /cgi-bin/welcome HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: http://127.0.0.1/cgi-bin/findflight?firstName=Tiger&lastName=Scott&address1=4261+Stevenson+Blvd.&address2=Fremont%2C+CA+94538&pass1=Scott+Tiger&creditCard=&expDate=&oldCCOption=&numPassengers=1&seatType=Coach&seatPref=None&outboundFlight=000%7C0%7C07-06-2011&advanceDiscount=&.cgifields=saveCC&buyFlights.x=71&buyFlights.y=16
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Content-length: 0000002957
+Connection: Keep-Alive
+Content-type: text/html
+----
+
+--Request
+GET /tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/login.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/images/banner_merctur.jpg HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/jpeg
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/vep/images/velocigen.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/login.gif HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/images/banner_merctur.jpg HTTP/1.1
+Accept: image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer: http://127.0.0.1/cgi-bin/welcome
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1
+Connection: Keep-Alive
+--Response
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: image/jpeg
+Connection: Keep-Alive
+----
+
+--Request
+
+--Response
+Response Header: Aborted
+----
+
+

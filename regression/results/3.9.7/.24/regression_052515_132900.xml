@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="4" passed="0" total="1">
+        <testcase id="REGRESSION001">
+            <testrun>TR1072</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for Tcp_Send_throuput_Change is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="Regression002">
+            <testrun>TR1073</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for Running_User_Change_Pct is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="Regression3_Withoutwan">
+            <testrun>TR1074</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for Running_User_Change_Pct is more than 5%:Regression003</description>
+        </testcase>
+        <testcase id="Regression4_Withoutwan">
+            <testrun>TR1075</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for Running_User_Change_Pct is more than 5%:Regression004</description>
+        </testcase>
+    </testsuite>
+</testsuites>

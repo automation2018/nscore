@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="3" passed="15" total="18">
+        <testcase id="SMOKE-010-001">
+            <testrun>4601</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-002">
+            <testrun>4602</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeAAAA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-003">
+            <testrun>4603</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeMX_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-004">
+            <testrun>4604</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeNS_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-005">
+            <testrun>4605</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeSOA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-006">
+            <testrun>4606</testrun>
+            <status>pass</status>
+            <description>Smoke_TypePTR_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-007">
+            <testrun>4607</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeCNAME_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-008">
+            <testrun>4608</testrun>
+            <status>pass</status>
+            <description>Smoke_POP3 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-009">
+            <testrun>4609</testrun>
+            <status>pass</status>
+            <description>Smoke_FTP_TXT_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-010">
+            <testrun>4610</testrun>
+            <status>pass</status>
+            <description>Smoke_FTP_BIN_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-011">
+            <testrun>4611</testrun>
+            <status>pass</status>
+            <description>Smoke_FTP_TXT_TYPE_ACTIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-012">
+            <testrun>4612</testrun>
+            <status>pass</status>
+            <description>Smoke_FTP_BIN_TYPE_ACTIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-013">
+            <testrun>4613</testrun>
+            <status>pass</status>
+            <description>Smoke_SMTP Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-014">
+            <testrun>4614</testrun>
+            <status>fail</status>
+            <description>Smoke_IMAP_FETCH_HEADER Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-015">
+            <testrun>4615</testrun>
+            <status>fail</status>
+            <description>Smoke_IMAP_FETCH_TEXT Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-016">
+            <testrun>4616</testrun>
+            <status>fail</status>
+            <description>Smoke_IMAP_FETCH_BODY Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-017">
+            <testrun>4617</testrun>
+            <status>pass</status>
+            <description>Smoke_HESSIAN_V1 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-018">
+            <testrun>4618</testrun>
+            <status>pass</status>
+            <description>Smoke_HESSIAN_V2 Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,51 @@
+#!/bin/bash
+
+TESTRUN_ID=$2
+echo "Test Run Number is "=$TESTRUN_ID
+TEST_NAME=`grep -e "TNAME" $NS_WDIR/logs/TR$TESTRUN_ID/scenario |awk '{print $2}'`
+echo "The name of the test"=$TEST_NAME
+TESTRUN_WITH_PATH=$NS_WDIR/logs/TR$TESTRUN_ID
+echo "test run with path"=$TESTRUN_WITH_PATH
+
+if [ "$TEST_NAME" == "FourUrlTest_WithoutExpCookie_CookieMode1" ];then 
+               Cookie_Name=`grep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |cut -d "=" -f2`	
+ 	       echo "the name of the cookie"=$Cookie_Name
+		elif [ "$Cookie_Name" == "arun" ];then
+		      Cookie_Name2=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_0_2_0_0_0_2_0.dat |cut -d "=" -f2`
+		      echo "Cookie_name for url_req_0_0_0_2_0_0_0_2_0"=$Cookie_Name2
+ 		      elif [ "$Cookie_Name2" == "shyam" ];then
+		      Cookie_Name3=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_0_3_0_0_0_3_0.dat |cut -d "=" -f2`
+		      echo "Cookie_name for url_req_0_0_0_3_0_0_0_3_0"=$Cookie_Name3
+		      elif [ "$Cookie_Name3" == "netstorm" ];then
+		      Cookie_Name4=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_1_0_0_0_0_0_0.dat |cut -d "=" -f2`		       	            echo "Cookie_name for url_req_0_0_1_0_0_0_0_0_0"=$Cookie_Name4
+                      elif [ "$Cookie_Name4" == "nckjansjvnjasnv9090987" ];then
+                      Cookie_Name5=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_1_1_0_0_0_1_0.dat |cut -d "=" -f2`  
+		      echo "Cookie_name for url_req_0_0_1_1_0_0_0_1_0"=$Cookie_Name5
+		      elif [ "$Cookie_Name5" == "alwaysKeepSmiling" ];then
+                      Cookie_Name6=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_1_2_0_0_0_2_0.dat |cut -d "=" -f2`
+		      echo "Cookie_name for url_req_0_0_1_2_0_0_0_2_0"=$Cookie_Name6
+		      elif [ "$Cookie_Name6" == "ae$%" ];then
+                      Cookie_Name7=`egrep -e "Cookie: name" $TESTRUN_WITH_PATH/url_req_0_0_1_3_0_0_0_3_0.dat |cut -d "=" -f2`
+		      echo "Cookie_name for url_req_0_0_1_3_0_0_0_3_0"=$Cookie_Name7
+		      elif [ "$Cookie_Name7" == "there" ];then
+		      STATUS="PASS"
+	       else
+			    STATUS="FAIL"
+fi
+
+
+
+function log_msg() 
+ {
+  echo $* 
+  echo $* >> $TEST_RESULT_FILE
+}
+
+if [ "XX$STATUS" == "XXFAIL" ]; then
+  log_msg "TESTRESULT           :$STATUS"
+  exit -1 
+  else
+  log_msg "TESTRESULT		:$STATUS" 
+fi 
+exit 0
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="3" total="3">
+        <testcase id="SMOKE-014-001">
+            <testrun>6281</testrun>
+            <status>pass</status>
+            <description>NS add header with Main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-002">
+            <testrun>6282</testrun>
+            <status>pass</status>
+            <description>NS add header with Embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-003">
+            <testrun>6283</testrun>
+            <status>pass</status>
+            <description>NS add header with both Main and Embedded urls Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

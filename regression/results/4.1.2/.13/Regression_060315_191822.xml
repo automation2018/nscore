@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="3" passed="1" total="4">
+        <testcase id="REGRESSION001">
+            <testrun>TR2264</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for SSL_Total_New_Change is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="REGRESSION002">
+            <testrun>TR2265</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for SSL_Total_New_Change is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="REGRESSION003">
+            <testrun>TR2266</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for SSL_Total_New_Change is more than 5%:Regression003</description>
+        </testcase>
+        <testcase id="REGRESSION004">
+            <testrun>TR2267</testrun>
+            <status>PASS</status>
+            <description>Regression004 is passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

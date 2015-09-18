@@ -1,0 +1,9 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+REG-001-001,9933,4.1.3,23,NetStorm,pass,2,Regression for FCU RampUp in Step mode test Passed
+REG-002-001,9934,4.1.3,23,NetStorm,pass,2,Regression for FCU RampUp in Rate Mode test passed
+REG-003-001,9935,4.1.3,23,NetStorm,pass,2,Regression for FSR Mode 1 test Passed
+REG-004-001,9936,4.1.3,23,NetStorm,fail,2,Regression for FSR Mode 2 test failed as diff from baseline for Running_User_Change_Pct is more than 5%:Regression004
+REG-005-001,9937,4.1.3,23,NetStorm,pass,2,Regression Test for RAL is Passed
+REG-006-001,9938,4.1.3,23,NetStorm,pass,2,Regression test for Netstorm supported protocols Passed
+
+Failed: 1 test(s), Passed: 5 test(s), Total: 6 test(s)

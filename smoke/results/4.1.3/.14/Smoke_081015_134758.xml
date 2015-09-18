@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="3" total="3">
+        <testcase id="SMOKE-015-001">
+            <testrun>7757</testrun>
+            <status>pass</status>
+            <description>NetworkCache test for both cacheable and non-cacheable request Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-002">
+            <testrun>7758</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having default URL Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-003">
+            <testrun>7759</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having parameterized requests Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

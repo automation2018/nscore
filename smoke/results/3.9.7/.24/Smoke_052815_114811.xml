@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="4" total="0">
+        <testcase id="SMOKE_Http_auth_Basic_apache_main_param_session">
+            <testrun>TR1542</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Http_auth_Basic_apache_main_param_session passed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_apache_main_param_use">
+            <testrun>TR1543</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Http_auth_Basic_apache_main_param_use passed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_apache_PageDump">
+            <testrun>TR1544</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Http_auth_Basic_apache_PageDump passed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_main_CheckWithKA">
+            <testrun>TR1545</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Http_auth_Basic_main_CheckWithKA passed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_main_CVfailWithOutKA">
+            <testrun>TR1546</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_main_CVfailWithOutKA failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

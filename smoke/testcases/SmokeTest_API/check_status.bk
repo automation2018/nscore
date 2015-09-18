@@ -1,0 +1,258 @@
+#!/bin/bash
+
+
+#For using common functions need to call this library
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+DEBUG=1
+TESTRUN_ID=$(get_testidx)
+
+#This variable holds the path where the save_data() api writes in case of absolue path is used.
+SAVED_FILE_WITH_PATH=$(echo $VAR_VALUE_SUM_RESULT |cut -d "," -f8|sed 's/"//g')  
+
+#################################################
+get_status_from_test_report() 
+{
+  debug_log "Method called -- get_status_from_test_report()"
+  STRING_TO_SEARCH=$1
+  debug_log "String to search = $STRING_TO_SEARCH"
+  TS_N=$2  #For getting the test case name 
+  debug_log "Test case name = $TS_N"
+  echo "TS_LOG_DIR =$TS_LOG_DIR"
+  LINE_NUM=`grep -n $STRING_TO_SEARCH $TS_LOG_DIR/$TS_N/test_run.report|cut -d ":" -f1`
+  debug_log "$STRING_TO_SEARCH is found at line number = $LINE_NUM"
+  STATUS_LINE_NUM=`expr $LINE_NUM + 2`
+  RESPONSE=`sed -n $(echo $STATUS_LINE_NUM)p $TS_LOG_DIR/$TS_N/test_run.report|cut -d "=" -f2`
+  debug_log "RESPONSE obtained = $RESPONSE"
+  debug_log "End method - get_status_from_test_report()"
+}
+
+#################################################
+get_url_query_param_var() 
+{
+  debug_log "Method called - get_url_query_param_var()"
+  url_req_id_file=$1
+  if [ "XX$url_req_id_file" == "XX" ];then
+    url_req_id_file=url_req_0_0_0_0_0_0_0_1_0
+   #url_req_id_file=url_req_0_0_0_0_0_0_0_0_0
+    debug_log "url_req_id = $url_req_id_file"
+    echo "$(grep GET $T_ID_REQ_PATH/${url_req_id_file}.dat | cut -d "H" -f1| cut -d '?' -f2|sed 's/[ \t]*$//')"
+  else
+    debug_log "url_req_id = $url_req_id_file"
+    echo "$(grep GET $T_ID_REQ_PATH/${url_req_id_file}.dat | cut -d " " -f2| cut -d '?' -f2|sed 's/[ \t]*$//')"
+  fi
+  debug_log "End method - get_url_query_param_var()"
+}
+
+#################################################
+get_status_for_save_data_api() 
+{
+     debug_log "Method called - get_status_for_save_data_api()"
+     FILE_PATH=$1
+     echo "FILE_PATH=$FILE_PATH"
+     debug_log "File With Path=$FILE_PATH"
+     if [ ! -f $FILE_PATH ];then
+        error_log "No Permission to create the file or File doesn't exists"
+        error_log "Failed For $T_NAME"
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+        return
+     fi
+     RESPONSE=`cat $FILE_PATH`
+     echo "RESPONSE=$RESPONSE"
+     debug_log "RESPONSE obtained=$RESPONSE"
+     RESPONSE_QUERY=`get_url_query_param_var`
+     echo "Response query is=$RESPONSE_QUERY"
+     echo "Save string is=$SAVED_STRING"
+     debug_log "RESPONSE obtained from QUERY VAR=$RESPONSE_QUERY"
+     if [ "XX$RESPONSE" == "XX" -o "XX$RESPONSE_QUERY" == "XX" ]; then
+        error_log "Response and Response from Query = NULL| STATUS=FAIL for $ITER_TNAME"
+        log_status_and_exit_ex "FAIL" "$T_NAME failed"
+     fi
+     
+     if [ "XX$SAVED_STRING" == "XX$RESPONSE" -a "XX$RESPONSE" == "XX$RESPONSE_QUERY" ]; then
+       # get_status_from_test_report NS_SAVE_DATA_VAR  SmokeTest_API_1_1 
+        debug_log "SAVED_STRING=$SAVED_STRING , RESPONSE=$RESPONSE , RESPONSE_QUERY=$RESPONSE_QUERY|STATUS=PASS"
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+     else
+        error_log "SAVED_STRING, RESPONSE & RESPONSE_QUERY Do not match"
+     fi
+     debug_log "End method - get_status_for_save_data_api()"
+}
+######################################################
+get_status_for_cookie_api() 
+{
+     debug_log "Method called - get_status_for_cookie_api()"
+     url_req_id_file=$1
+     debug_log "url_req_id_file=$url_req_id_file"
+     RESPONSE_QUERY=`get_url_query_param_var $url_req_id_file`
+     debug_log "RESPONSE obtained from QUERY VAR=$RESPONSE_QUERY"
+     REQUEST_ACTUAL=$(echo $VAR_VALUE_SUM_RESULT |cut -d "," -f11|sed 's/"//g')
+     debug_log "Actual Request = $REQUEST_ACTUAL"
+     if [ "XX$REQUEST_ACTUAL" == "XX$RESPONSE_QUERY" ];then
+        debug_log "Passed for $ITER_TNAME| STATUS=PASS"
+        STATUS=PASS
+     else
+        error_log "Failed for $ITER_TNAME|STATUS=FAIL"
+        STATUS=FAIL
+     fi
+     debug_log "End method - get_status_for_cookie_api()"
+}
+
+####################################################
+
+function check_and_set_status() 
+{
+  debug_log "Method called - check_and_set_status()"
+  debug_log "Testcase Name=$T_NAME"
+
+  if [ "XX$T_NAME" == "XXSmoke_" ]; then
+     error_log "Test case name not found |STATUS=FAIL" 
+     log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     return 
+  fi  
+  
+  if [ "XX$T_NAME" == "XXSmoke_SET_INT_VAL_API_TEST" ];then 
+    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+  fi  
+  
+  if [ "XX$T_NAME" == "XXSmoke_GET_INT_VAL_API_TEST" ];then 
+    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+  fi  
+  if [ "XX$T_NAME" == "XXSmoke_GET_RANDOM_STR_API_TEST" ];then 
+    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+  fi  
+  
+  if [ "XX$T_NAME" == "XXSmoke_GETTERS_API_TEST" ];then 
+    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+  fi 
+  
+  if [ "XX$T_NAME" == "XXSmoke_CHK_STR_CPY_API_TEST" ];then 
+    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+  fi 
+  
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_STRING_API_TEST" ]; then 
+    echo "T_NAME=$T_NAME"
+    RESPONSE=`get_url_query_param_var`
+    echo "RESPONSE=$RESPONSE"
+    echo "SAVED_STRING=$SAVED_STRING"
+    if [ "XX$SAVED_STRING" == "XX$RESPONSE" ]; then
+        debug_log "SAVED STRING == RESPONSE |STATUS=PASS" 
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        error_log "Response do not match. SAVED STRING=$SAVED_STRING ,RESPONSE=$RESPONSE | STATUS=FAIL for $T_NAME"
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+  fi  
+  
+  if [ "XX$T_NAME" == "XXSmoke_EVAL_STRING_API_TEST" ]; then
+     echo "T_NAME=$T_NAME"
+     get_status_from_test_report NS_EVAL_STRING  SmokeTest_API_1_2 #passing static name. Unable to get it on run time
+     echo "Respose is =$RESPONSE"
+     if [ "XX$RESPONSE" == "XXPASS" ];then
+         log_status_and_exit_ex "PASS" "$T_NAME Passed"
+     else 
+         log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+
+
+  fi
+ 
+  if [ "XX$T_NAME" == "XXSmoke_ADV_PARAM_API_TEST" ];then 
+     get_status_from_test_report NS_ADVANCE_PARAM SmokeTest_API_1_3 #passing static name. Unable to get it on run time
+     echo "Respose is =$RESPONSE"
+     if [ "XX$RESPONSE" == "XXPASS" ];then
+         log_status_and_exit_ex "PASS" "$T_NAME Passed"
+     else
+         log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+
+  fi
+ 
+  if [ "XX$T_NAME" == "XXSmoke_ADV_PARAM_API_TEST_FAIL" ];then
+     get_status_from_test_report NS_ADVANCE_PARAM SmokeTest_API_1_4  #passing static name. Unable to get it on run time
+     echo "Respose is =$RESPONSE"
+     if [ "XX$RESPONSE" != "XXPASS" ];then
+         log_status_and_exit_ex "PASS" "$T_NAME Passed"
+     else
+         log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+
+  fi
+ 
+#Cases for ns_save_data_var() 
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST" ];then 
+   get_status_for_save_data_api $NS_WDIR/logs/TR$TESTRUN_ID/save.data
+  fi 
+
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST" ];then
+     echo "SAVED_FILE_WITH_PATH=$SAVED_FILE_WITH_PATH"
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH 
+  fi 
+
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST" ];then
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+     if [ "X$STATUS" = "XFAIL" ];then
+       log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+  fi  
+
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST" ];then
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+     if [ "X$STATUS" = "XFAIL" ];then
+       log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+  fi 
+ 
+#Cases for ns_save_data_eval 
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST" ];then
+   get_status_for_save_data_api $NS_WDIR/logs/TR$TESTRUN_ID/save.data
+  fi
+
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST" ];then
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+  fi
+   
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST" ];then
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH  
+     if [ "X$STATUS" = "XFAIL" ];then
+       log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+  fi
+  
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST" ];then
+     get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+     if [ "X$STATUS" = "XFAIL" ];then
+       log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+     fi
+  fi
+
+#Cases for ns_save_data_ex 
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST" ];then
+      get_status_for_save_data_api $NS_WDIR/logs/TR$TESTRUN_ID/save.data
+  fi
+  
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST" ];then
+      get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+  fi 
+ 
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST" ];then
+      get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+  fi
+ 
+  if [ "XX$T_NAME" == "XXSmoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST" ];then
+      get_status_for_save_data_api $SAVED_FILE_WITH_PATH
+  fi
+
+#Cases for ns_get_cookie_val_ex   
+  if [ "XX$T_NAME" == "XXSmoke_GET_COOKIE_VAL_EX_API_TEST" ];then 
+     get_status_for_cookie_api url_req_0_0_0_1_0_0_0_1_0
+  fi
+ 
+  if [ "XX$T_NAME" == "XXSmoke_SET_COOKIE_VAL_EX_API_TEST" ];then 
+     get_status_for_cookie_api url_req_0_0_0_2_0_0_0_3_0
+  fi  
+  debug_log "End method - check_and_set_status()"  
+}
+
+check_and_set_status
+exit 0

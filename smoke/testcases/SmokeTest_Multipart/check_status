@@ -1,0 +1,64 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+if [ "XX$T_NAME" == "XXSMOKE-007-001" ];then
+    BOUNDARY=`grep -w "boundary" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat |awk -F '=' '{print $2}'`
+    Total_Boundary1_START=`grep -c -w  "\-\-AaB03x" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    Total_Boundary1_End=`grep -c -w  "\-\-AaB03x\-\-" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    Cav_Include_Param_Data=`grep -o "This is a text file." $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+        if [ "$BOUNDARY" == "AaB03x" ] && \
+           [ $Total_Boundary1_START -eq 1 ] && \
+           [ $Total_Boundary1_End -eq  1 ]  && \
+           [ "$Cav_Include_Param_Data" == "This is a text file." ] && \
+           [ "XX$SD_TotalSuccURL" == "XX2" ];then
+             log_status_and_exit_ex "PASS" "One Url MultiPart With Boundary Passed"
+        else
+             log_status_and_exit_ex "FAIL" "One Url MultiPart With Boundary Failed"
+        fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-007-002" ];then
+     BOUNDARY=`grep -w "boundary" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat |awk -F '=' '{print $2}'`
+     Total_Boundary1_START=`grep -c -w  "\-\-file_multipart_${T_RUN_ID}_0\-\-\-\-\-\-\-\-\-\-" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+     Total_Boundary1_End=`grep -c -w  "\-\-file_multipart_${T_RUN_ID}_0\-\-\-\-\-\-\-\-\-\-\-\-" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+     Cav_Include_Param_Data=`grep -o "This is a text file." $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+     if [ "$BOUNDARY" == "" ] \
+         && [ $Total_Boundary1_START -eq 1 ] \
+         && [ $Total_Boundary1_End -eq  1 ] \
+         && [ "$Cav_Include_Param_Data" == "This is a text file." ] \
+         && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+         log_status_and_exit_ex "PASS" "One Url MultiPart Without Boundary Passed"
+     else
+         log_status_and_exit_ex "FAIL" "One Url MultiPart Without Boundary Failed"
+     fi 
+fi
+         
+if [ "XX$T_NAME" == "XXSMOKE-007-003" ];then
+    BOUNDARY_COUNT_Page1=`grep -w "boundary" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | wc -l`
+    BOUNDARY_COUNT_Page2=`grep -w "boundary" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | wc -l`
+    First_Boundary=`grep -c -w  "\-\-AaBx2c" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    End_Boundary=`grep -c -w  "\-\-AaBx2c\-\-" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    Inline_Body_Val_1=`grep -o "Hi This is Cavisson1" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    Second_Req_Begin_Boundary=`grep -c -w  "\-\-CCBx2c" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat`
+    Second_Req_End_Boundary=`grep -c -w  "\-\-CCBx2c\-\-" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat` 
+    Inline_Body_Val_2=`grep -o "Hi This is Cavisson2" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat`
+    Auto_Create_Boundary_Login=`grep -o "\-\-login_${T_RUN_ID}_2\-\-\-\-\-\-\-\-\-\-" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | awk 'NR==1{print}'`
+    XML_File_Content=`grep -o "ns\-core\-smoke" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat`
+                 
+
+        if [ $BOUNDARY_COUNT_Page1 -eq 2  ] && [ $BOUNDARY_COUNT_Page2 -eq 3 ] && [ $First_Boundary -eq  2 ] \
+		     && [ $End_Boundary -eq 1 ] && [ $SD_TotalSuccURL -eq 9 ] && [ $Second_Req_Begin_Boundary -eq  1 ] \
+		     && [ $Second_Req_End_Boundary -eq 1 ] && [ "$Inline_Body_Val_1" == "Hi This is Cavisson1" ] \
+                     && [ "$Inline_Body_Val_2" == "Hi This is Cavisson2" ] && [ "$Auto_Create_Boundary_Login" == "--login_${T_RUN_ID}_2----------" ] && [ "$XML_File_Content" == "ns-core-smoke" ];then
+                     echo "Going to pass..."
+		     log_status_and_exit_ex "PASS" "One Url MultiPart Nested Boundries Passed"
+                 else
+                     echo "Going to fail..."
+                     log_status_and_exit_ex "FAIL" "One Url MultiPart Nested Boundries Failed"
+                 fi
+fi
+
+exit 0
+

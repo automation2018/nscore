@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="1" total="2">
+        <testcase id="SMOKE-010-017">
+            <testrun>7357</testrun>
+            <status>pass</status>
+            <description>Hessian Protocol version 1.0 Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-018">
+            <testrun>7358</testrun>
+            <status>fail</status>
+            <description>Hessian Protocol version 2.0 Test Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

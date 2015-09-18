@@ -1,0 +1,91 @@
+main()
+{
+  int next_page, think_time;
+//Define Any NS Variables here. Do not remove or modify this line
+nsl_search_var(abc, PAGE=index_html, LB="userSession value=", RB=">");
+nsl_search_var(jkjh, PAGE=findflight, LB="jhk", RB="jhkjhk", Search=Variable, Var=abc);
+nsl_search_var(yjy, PAGE=reservation, LB="ukuyk", RB="jhkjhk", Search=Variable, Var=abc);
+
+//End of NS Variable decalarations. Do not remove or modifify this line
+
+  next_page = init_script();
+
+  while(next_page != -1) {
+    switch(next_page) {
+      case index_html:
+        think_time = pre_page_index_html();
+        web_url (index_html,
+          METHOD=GET,
+          URL=http://127.0.0.1/tours/index.html,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=4);
+        next_page = check_page_index_html();
+        break;
+
+      case login:
+        think_time = pre_page_login();
+        web_url (login,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/login?userSession=75893.0884568651DQADHfApHDHfcDtccpfAttcf&username={abc}&password={abc}&JSFormSubmit=off&login.x=0&login.y=0,
+          HEADER=Accept-Language: en-us,en-securid{abc},
+          NUM_EMBED=7);
+        next_page = check_page_login();
+        break;
+
+      case reservation:
+        think_time = pre_page_reservation();
+        web_url (reservation,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/reservation,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=8);
+        next_page = check_page_reservation();
+        break;
+
+      case findflight:
+        think_time = pre_page_findflight();
+        web_url (findflight,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/findflight?depart=London&departDate=06-10-2010&arrive=Zurich&returnDate=06-11-2010&numPassengers=1&seatPref=Window&seatType=Coach&findFlights.x=28&findFlights.y=8,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=9);
+        next_page = check_page_findflight();
+        break;
+
+      case findflight_2:
+        think_time = pre_page_findflight_2();
+        web_url (findflight_2,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=290%7C133%7C06-10-2010&hidden_outboundFlight_button1=291%7C121%7C06-10-2010&hidden_outboundFlight_button2=292%7C127%7C06-10-2010&hidden_outboundFlight_button3=293%7C108%7C06-10-2010&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=Window&reserveFlights.x=73&reserveFlights.y=22,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=9);
+        next_page = check_page_findflight_2();
+        break;
+
+      case findflight_3:
+        think_time = pre_page_findflight_3();
+        web_url (findflight_3,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/findflight?firstName=Tiger&lastName=Scott&address1=4261+Stevenson+Blvd.&address2=Fremont%2C+CA+94538&pass1=Scott+Tiger&creditCard=56578687&expDate=&oldCCOption=&numPassengers=1&seatType=Coach&seatPref=Window&outboundFlight=290%7C133%7C06-10-2010&advanceDiscount=&.cgifields=saveCC&buyFlights.x=90&buyFlights.y=13,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=8);
+        next_page = check_page_findflight_3();
+        break;
+
+      case welcome:
+        think_time = pre_page_welcome();
+        web_url (welcome,
+          METHOD=GET,
+          URL=http://127.0.0.1/cgi-bin/welcome,
+          HEADER=Accept-Language: en-us,en-securid,
+          NUM_EMBED=5);
+        next_page = check_page_welcome();
+        break;
+
+      default:
+        next_page = -1;
+    }
+    do_think(think_time);
+  }
+  exit_script();
+}

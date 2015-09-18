@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="3" total="0">
+        <testcase id="SMOKE_4UrlT_WOExpCookie_CMode1">
+            <testrun>TR1468</testrun>
+            <status>PASS</status>
+            <description>SMOKE_4UrlT_WOExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_4UrlT_WExpCookie_CMode1">
+            <testrun>TR1469</testrun>
+            <status>PASS</status>
+            <description>SMOKE_4UrlT_WExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_4UrlT_ExpCookie_CMode1">
+            <testrun>TR1470</testrun>
+            <status>PASS</status>
+            <description>SMOKE_4UrlT_ExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_2UrlT_ClineCookie_CMode1">
+            <testrun>TR1471</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_2UrlT_ClineCookie_CMode1 failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

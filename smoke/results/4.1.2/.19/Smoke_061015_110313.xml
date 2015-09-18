@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="5" total="0">
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_alluser_release">
+            <testrun>TR2956</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_alluser_release Failed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_5user_release">
+            <testrun>TR2957</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_5user_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut">
+            <testrun>TR2958</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_InBetweenTrans_10U_alluser_release">
+            <testrun>TR2959</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_InBetweenTrans_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstPage_10U_alluser_release">
+            <testrun>TR2960</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstPage_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_InBtweenPage_10U_5user_release">
+            <testrun>TR2961</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_InBtweenPage_10U_5user_release Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

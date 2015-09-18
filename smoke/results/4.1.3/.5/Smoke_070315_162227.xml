@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="4" passed="0" total="4">
+        <testcase id="Smoke_AF_OneMain_FiveAFURL">
+            <testrun>4340</testrun>
+            <status>fail</status>
+            <description>Smoke_AF_OneMain_FiveAFURL Failed</description>
+        </testcase>
+        <testcase id="Smoke_AF_OneMain_FiveAFedURL_AFOFF">
+            <testrun>4341</testrun>
+            <status>fail</status>
+            <description>Smoke_AF_OneMain_FiveAFedURL_AFOFF failed</description>
+        </testcase>
+        <testcase id="Smoke_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn">
+            <testrun>4342</testrun>
+            <status>fail</status>
+            <description>Smoke_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn failed</description>
+        </testcase>
+        <testcase id="Smoke_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF">
+            <testrun>4343</testrun>
+            <status>fail</status>
+            <description>Smoke_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

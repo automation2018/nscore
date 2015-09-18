@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="4" total="0">
+        <testcase id="SMOKE_POP3">
+            <testrun>TR2056</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_POP3 failed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_TXT_TYPE_PASSIVE">
+            <testrun>TR2057</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_TXT_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_BIN_TYPE_PASSIVE">
+            <testrun>TR2058</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_BIN_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_TXT_TYPE_ACTIVE">
+            <testrun>TR2059</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_TXT_TYPE_ACTIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_BIN_TYPE_ACTIVE">
+            <testrun>TR2060</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_BIN_TYPE_ACTIVE Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

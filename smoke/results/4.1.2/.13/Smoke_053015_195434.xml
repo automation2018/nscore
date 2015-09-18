@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="1" total="0">
+        <testcase id="SMOKE_FTP_TXT_TYPE_PASSIVE">
+            <testrun>TR2022</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_TXT_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_BIN_TYPE_PASSIVE">
+            <testrun>TR2023</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_FTP_BIN_TYPE_PASSIVE failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

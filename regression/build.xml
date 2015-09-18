@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+
+<!--Task: Declaring project name-->
+<project name="core-regresion" basedir="." default="run">
+    
+    <!--Task: File to declare all build variable values-->
+    <property file="build.properties"/>
+    
+    <!--Task: Delete already exists file in test scenario directories locations--> 
+    <target name="delete.if.exists">  
+        <delete includeemptydirs="true" verbose="false" if="${(directory::exists(directory))}">
+            <fileset basedir="${directory}">  
+                <include name="**/*.*" />  
+            </fileset> 
+        </delete>
+    </target> 
+
+    <!--Task: Copy test scenario directory structure and modifies the modes-->
+    <target name="copy-of-testscenario-sctructure"  depends="clean">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+
+    <!--Task: Delete test scenario directories-->    
+    <target name="clean" description="clean">
+        <delete dir="${scripts.dir}" failonerror="false"/>
+        <delete dir="${scenarios.dir}" failonerror="false"/>
+        <delete dir="${testcases.dir}" failonerror="false"/>
+        <delete dir="${testsuites.dir}" failonerror="false"/>
+    </target>     
+
+    <!--Task: Copy hpd.conf file to modify hpd configuration for regression suite-->
+    <target name="copy-hpd-file" depends="copy-of-testscenario-sctructure">
+        <scp file="${hpd.conf.ns}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+   
+    <!--Task: Restart and checks the status of hpd/NO server--> 
+    <target name="hpd-process-restart" depends="copy-hpd-file">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+    <!--Task: Starts execution of regression testsuite.-->
+    <target name="Regression" depends="send-startup-mail, hpd-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Regression"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <!--Task: To debug perticular test execution and changes-->
+    <target name="debug" depends="hpd-process-restart">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Regression"/>
+            <arg value="0"/>
+         </exec>
+    </target>
+    
+    <!--Task: Update mail.properties prior to Test Start Mail Send--> 
+    <target name="get_start_mail_values">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <!--Task: Send regression automation start mail-->
+    <target name="send-startup-mail" depends="get_start_mail_values">
+        <property file="mail.properties"/>
+        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="Regression: NSCore ${curr.release} B${curr.build} - Started" messagefile="${startup.mail.file}">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    </target>
+
+   <!--Task: Update mail.properties prior to automation result mail Send--> 
+   <target name="get_test_results">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_results"/>
+        </exec>
+    </target>
+   
+   <!--Task: Send regression automation results with attachments-->
+   <target name="send-email" depends="get_test_results"> 
+       <property file="mail.properties"/>
+       <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="Regression: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" messagefile="${mail.result.file}">
+           <from address="automation@cavisson.com"/>   		   
+           <attachments> 
+               <fileset dir="${reg.results.dir}">
+                   <include name="${first.attachment}"/>
+               </fileset>
+           </attachments>	   
+       </mail>	       
+   </target>	   
+  
+   <!--Task: Declaring default target to initiate build--> 
+   <target name="run" depends="Regression, send-email">
+   </target>
+   
+   <!--Task: Declaring default target to initiate debug build process--> 
+   <target name="reg-debug" depends="debug">
+   </target>
+   
+</project>

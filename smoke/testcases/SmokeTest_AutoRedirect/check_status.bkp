@@ -1,0 +1,47 @@
+#!/bin/bash
+
+TESTRUN_ID=$2
+echo "Test Run Number is "=$TESTRUN_ID
+TEST_NAME=`grep -e "TNAME" $NS_WDIR/logs/TR$TESTRUN_ID/scenario |awk '{print $2}'`
+echo "The name of the test"=$TEST_NAME
+TESTRUN_WITH_PATH=$NS_WDIR/logs/TR$TESTRUN_ID
+echo "test run with path"=$TESTRUN_WITH_PATH
+ITERATION_VAR=$VAR_VALUE_SUM_RESULT
+DEPTH=`echo "$ITERATION_VAR" | cut -d , -f3`
+echo "the depth is:" $DEPTH
+REQUEST=`cat $TESTRUN_WITH_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | grep "GET" |wc -l`
+echo "the number of request is " $REQUEST
+#if [ "$TEST_NAME" == "SEARCH_TWOMAIN_URL" ];then 
+#	 RESPONSE=`cat $TESTRUN_WITH_PATH/url_req_0_0_* | grep -o class2K.html?9`
+#		 if [ "$RESPONSE" == "class2K.html?9" ];then
+#			    STATUS="PASS"
+#			    else
+#			    STATUS="FAIL"
+#	         fi 
+#fi
+
+
+#if [ "$TEST_NAME" == "SEARCH_FAIL_TWOMAIN_URL" ];then
+#         RESPONSE_SEARCH_FAIL=`cat $TESTRUN_WITH_PATH/url_req_0_0_* | grep -o class2K.html?9`
+#                 if [ "$RESPONSE_SEARCH_FAIL" == "class2K.html?9" ];then
+#                            STATUS="PASS"
+#                            else
+#                            STATUS="FAIL"
+#                 fi
+#fi
+
+#function log_msg() 
+# {
+#  echo $* 
+#  echo $* >> $TEST_RESULT_FILE
+#}
+
+#if [ "XX$STATUS" == "XXFAIL" ]; then
+#  log_msg "TESTRESULT           :$STATUS"
+#  exit -1 
+#  else
+#  log_msg "TESTRESULT		:$STATUS" 
+#fi 
+
+exit 0
+

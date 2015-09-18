@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="19" total="0">
+        <testcase id="SMOKE_SEARCH_TWOMAIN_URL">
+            <testrun>TR1293</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_FAIL_TWOMAIN_URL">
+            <testrun>TR1294</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_FAIL_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLength">
+            <testrun>TR1295</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLength passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>TR1296</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>TR1297</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>TR1298</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>TR1299</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_FoundFail">
+            <testrun>TR1301</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_NotFoundFail">
+            <testrun>TR1302</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail">
+            <testrun>TR1303</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail">
+            <testrun>TR1304</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue">
+            <testrun>TR1305</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue failed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop">
+            <testrun>TR1306</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop failed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail">
+            <testrun>TR1307</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail">
+            <testrun>TR1308</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_FileParam_FiveMainURL_ChangeOnUse">
+            <testrun>TR1309</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FileParam_FiveMainURL_ChangeOnUse passed</description>
+        </testcase>
+        <testcase id="SMOKE_FileParam_FiveMainURL_ChangeOnSession">
+            <testrun>TR1310</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FileParam_FiveMainURL_ChangeOnSession passed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFURL">
+            <testrun>TR1311</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFURL failed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_AFOFF">
+            <testrun>TR1312</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_AFOFF failed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn">
+            <testrun>TR1313</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn failed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF">
+            <testrun>TR1314</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

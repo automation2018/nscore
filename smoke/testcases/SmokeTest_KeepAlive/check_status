@@ -1,0 +1,31 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+variable_values()
+
+{
+conn_value=`grep "TCP Total Connections Open(NA)" /home/netstorm/work/logs/TR$T_RUN_ID/summary_gdf.data | cut -d '|' -f8 |cut -d '.' -f1`
+echo "connection value is=$conn_value"
+
+}
+
+if [ $T_NAME == "SMOKE-006-001" ];then
+  variable_values
+  if [ $conn_value -eq 8 ];then
+      log_status_and_exit_ex "PASS" "KeepAlive with percentage 100 Passed"
+  else 
+      log_status_and_exit_ex "FAIL" "KeepAlive with percentage 100 Failed"
+  fi
+fi
+
+if [ $T_NAME == "SMOKE-006-002" ];then
+  variable_values  
+  if [ $conn_value -eq 570 ];then
+        log_status_and_exit_ex "PASS" "KeepAlive with percentage 0 Passed"
+    else
+        log_status_and_exit_ex "FAIL" "KeepAlive with percentage 0 Failed"
+    fi
+fi  
+exit 0

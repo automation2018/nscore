@@ -1,0 +1,778 @@
+﻿/*
+	960 Grid System ~ Core CSS.
+	Learn more ~ http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/* =Containers
+--------------------------------------------------------------------------------*/
+
+.container_12,
+.container_16
+{
+/*	width: 92%;
+	margin-left: 4%;
+	margin-right: 4%;*/
+	width: 95%;
+/*	margin-left: 2%;
+	margin-right: 2%;*/
+}
+
+.container_16tab
+{
+/*	width: 92%;
+	margin-left: 4%;
+	margin-right: 4%;*/
+	width: 98%;
+	margin-left: 2%;
+	margin-right: 2%; background-color:#fff;
+}
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16
+{
+	display: inline;
+	float: left;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.noMargin{
+	margin:0;
+	background-color:#ff0;
+}
+
+.container_12 .grid_3,
+.container_16 .grid_4
+{
+	width: 23%; 
+}
+.container_16 .grid_41
+{
+	width:100%; 
+}
+
+.container_12 .grid_6,
+.container_16 .grid_8
+{
+	width: 48%;
+}
+
+.container_12 .grid_9,
+.container_16 .grid_12
+{
+	width: 75%; height:15px;
+}
+
+.container_12 .grid_12,
+.container_16 .grid_16
+{
+	width: 96%;
+}
+
+/* =Grid >> Children (Alpha ~ First, Omega ~ Last)
+--------------------------------------------------------------------------------*/
+
+.alpha
+{
+	margin-left: 0;
+}
+
+.omega
+{
+	margin-right: 0;
+}
+
+/* =Grid >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .grid_1
+{
+	width: 6.333%;
+}
+
+.container_12 .grid_2
+{
+	width: 14.666%;
+}
+
+.container_12 .grid_4
+{
+	width: 31.333%;
+}
+
+.container_12 .grid_5
+{
+	width: 39.666%;
+}
+
+.container_12 .grid_7
+{
+	width: 56.333%;
+}
+
+.container_12 .grid_8
+{
+	width: 64.666%;
+}
+
+.container_12 .grid_10
+{
+	width: 81.333%;
+}
+
+.container_12 .grid_11
+{
+	width: 89.666%;
+}
+
+/* =Grid >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .grid_1
+{
+	width: 4.25%;
+}
+
+.container_16 .grid_2
+{
+	width: 10.5%;
+}
+
+.container_16 .grid_3
+{
+	width: 16.75%;
+}
+
+.container_16 .grid_5
+{
+	width: 30.25%;
+}
+
+.container_16 .grid_6
+{
+	width: 35.5%;
+}
+
+.container_16 .grid_7
+{
+	width:100.5%;
+}
+
+.container_16 .grid_71
+{
+	width: 100%;
+}
+.container_16 .grid_9
+{
+	width: 54.25%;
+}
+
+.container_16 .grid_10
+{
+	width: 60.5%;
+}
+
+.container_16 .grid_11
+{
+	width: 66.75%;
+}
+
+.container_16 .grid_13
+{
+	width: 79.25%;
+}
+
+.container_16 .grid_14
+{
+	width: 85.5%;
+}
+
+.container_16 .grid_15
+{
+	width: 91.75%;
+}
+
+/* =Prefix Extra Space >> Global
+--------------------------------------------------------------------------------*/
+
+.container_12 .prefix_3,
+.container_16 .prefix_4
+{
+	padding-left: 25%;
+}
+
+.container_12 .prefix_6,
+.container_16 .prefix_8
+{
+	padding-left: 50%;
+}
+
+.container_12 .prefix_9,
+.container_16 .prefix_12
+{
+	padding-left: 75%;
+}
+
+/* =Prefix Extra Space >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .prefix_1
+{
+	padding-left: 8.333%;
+}
+
+.container_12 .prefix_2
+{
+	padding-left: 16.666%;
+}
+
+.container_12 .prefix_4
+{
+	padding-left: 33.333%;
+}
+
+.container_12 .prefix_5
+{
+	padding-left: 41.666%;
+}
+
+.container_12 .prefix_7
+{
+	padding-left: 58.333%;
+}
+
+.container_12 .prefix_8
+{
+	padding-left: 66.666%;
+}
+
+.container_12 .prefix_10
+{
+	padding-left: 83.333%;
+}
+
+.container_12 .prefix_11
+{
+	padding-left: 91.666%;
+}
+
+/* =Prefix Extra Space >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .prefix_1
+{
+	padding-left: 6.25%;
+}
+
+.container_16 .prefix_2
+{
+	padding-left: 12.5%;
+}
+
+.container_16 .prefix_3
+{
+	padding-left: 18.75%;
+}
+
+.container_16 .prefix_5
+{
+	padding-left: 31.25%;
+}
+
+.container_16 .prefix_6
+{
+	padding-left: 37.5%;
+}
+
+.container_16 .prefix_7
+{
+	padding-left: 43.75%;
+}
+
+.container_16 .prefix_9
+{
+	padding-left: 56.25%;
+}
+
+.container_16 .prefix_10
+{
+	padding-left: 62.5%;
+}
+
+.container_16 .prefix_11
+{
+	padding-left: 68.75%;
+}
+
+.container_16 .prefix_13
+{
+	padding-left: 81.25%;
+}
+
+.container_16 .prefix_14
+{
+	padding-left: 87.5%;
+}
+
+.container_16 .prefix_15
+{
+	padding-left: 93.75%;
+}
+
+/* =Suffix Extra Space >> Global
+--------------------------------------------------------------------------------*/
+
+.container_12 .suffix_3,
+.container_16 .suffix_4
+{
+	padding-right: 25%;
+}
+
+.container_12 .suffix_6,
+.container_16 .suffix_8
+{
+	padding-right: 50%;
+}
+
+.container_12 .suffix_9,
+.container_16 .suffix_12
+{
+	padding-right: 75%;
+}
+
+/* =Suffix Extra Space >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .suffix_1
+{
+	padding-right: 8.333%;
+}
+
+.container_12 .suffix_2
+{
+	padding-right: 16.666%;
+}
+
+.container_12 .suffix_4
+{
+	padding-right: 33.333%;
+}
+
+.container_12 .suffix_5
+{
+	padding-right: 41.666%;
+}
+
+.container_12 .suffix_7
+{
+	padding-right: 58.333%;
+}
+
+.container_12 .suffix_8
+{
+	padding-right: 66.666%;
+}
+
+.container_12 .suffix_10
+{
+	padding-right: 83.333%;
+}
+
+.container_12 .suffix_11
+{
+	padding-right: 91.666%;
+}
+
+/* =Suffix Extra Space >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .suffix_1
+{
+	padding-right: 6.25%;
+}
+
+.container_16 .suffix_2
+{
+	padding-right: 16.5%;
+}
+
+.container_16 .suffix_3
+{
+	padding-right: 18.75%;
+}
+
+.container_16 .suffix_5
+{
+	padding-right: 31.25%;
+}
+
+.container_16 .suffix_6
+{
+	padding-right: 37.5%;
+}
+
+.container_16 .suffix_7
+{
+	padding-right: 43.75%;
+}
+
+.container_16 .suffix_9
+{
+	padding-right: 56.25%;
+}
+
+.container_16 .suffix_10
+{
+	padding-right: 62.5%;
+}
+
+.container_16 .suffix_11
+{
+	padding-right: 68.75%;
+}
+
+.container_16 .suffix_13
+{
+	padding-right: 81.25%;
+}
+
+.container_16 .suffix_14
+{
+	padding-right: 87.5%;
+}
+
+.container_16 .suffix_15
+{
+	padding-right: 93.75%;
+}
+
+/* =Clear Floated Elements
+--------------------------------------------------------------------------------*/
+
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear
+{
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+.clearfix:after
+{
+	clear: both;
+	content: '.';
+	display: block;
+	visibility: hidden;
+	height: 0;
+}
+
+.clearfix
+{
+	display: inline-block;
+}
+
+* html .clearfix
+{
+	height: 1%;
+}
+
+.clearfix
+{
+	display: block;
+}
+
+
+/*
+-----------------------------------------------
+Grey Box Method - Layout CSS
+----------------------------------------------- */
+
+body {
+	background: #fff;
+	color: #333;
+	font-size: 11px;
+	padding: 0 0 0px;
+}
+
+/* 960 grid system container background
+----------------------------------------------- */
+.container_12,
+.container_16 {
+	background:#fff; width:100%; margin:0 1px 0 2px;
+}
+
+
+/* headings
+----------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {line-height:1.2em; margin-bottom:.3em;}
+h2 {margin-top:1em;}
+h5 {font-size:1.2em;}
+h6 {font-size:1em; text-transform:uppercase;}
+
+
+h1 a {
+	font-weight:normal;
+}
+
+
+/* branding
+----------------------------------------------- */
+h1#branding {
+	font-weight:normal;
+	font-size:3em;
+	text-align:left;
+	background:#f4f4f4;
+	padding:.7em 1em;
+	margin-bottom:0;
+}
+
+
+
+/* boxes
+----------------------------------------------- */
+.box {
+	background:#FCFCFC;
+	margin-bottom:20px;
+	/*padding:10px 10px 1px 10px;*/
+	padding:5px 10px 5px 8px;
+	box-shadow: 0 0 3px #ccc;
+}
+.box2 {
+	background:#FCFCFC;
+	margin-bottom:20px;
+	/*padding:10px 10px 1px 10px;*/
+	padding:5px 10px 5px 8px; margin-left:-8px;
+	box-shadow: 0 0 3px #ccc;
+}
+.box h2 {
+	font-size:1.8em;
+	height:25px;
+	color:#000080;	
+	font-weight: bold;
+	background:#F2F2F2;
+	margin:0px -10px 0 -10px;
+	padding:6px 12px;
+	/*border-top: 4px solid #86A3BD;*/
+}
+.box h2 a,
+.box h2 a.visible {
+	color:#000;
+	font-weight: bold;
+	background:#FCFCFC url("../img/minus_g.png") 97% 50% no-repeat;
+	display:block;
+	padding:6px 12px;
+	margin:-6px -12px;
+	border:none;
+}
+.grid_4 .box h2 a {
+	background-position: 97% 50%;
+}
+.grid_5 .box h2 a {
+	background-position: 98% 50%;
+}
+.grid_12 .box h2 a {
+	background-position: 99% 50%;
+}
+
+
+.box h2 a.hidden,
+.box h2 a.hidden:hover {
+	background-image: url("../img/plus_g.png");
+}
+.box h2 a:hover {
+	background-color:#86A3BD;
+	color:#fff;
+}
+.block {
+	padding-top:10px;
+}
+div.menu {
+	padding:0;
+}
+div.menu h2 {
+	margin:0;
+}
+div.menu .block {
+	padding-top:0;
+}
+
+
+
+.boxSpecial {
+	background:#f4f4f4;
+	margin-bottom:20px;
+	margin-top:14px;
+	/*padding:10px 10px 1px 10px;*/
+	/*padding:5px 10px 5px 10px;
+	box-shadow: 0 0 3px #ccc;*/
+}
+.boxSpecial h2 {
+	color:#666;
+	font-weight:normal;
+	font-size:1em;
+	border-bottom:1px solid #ccc;
+	text-weight:normal;
+	margin:0;
+	margin-bottom:10px;
+}
+.boxSpecial h2 a,
+.boxSpecial h2 a.visible {
+	color:black;
+	font-weight:bold;
+	font-size:1em;
+	border-bottom:1px solid #ccc;
+	text-weight:normal;
+	background:#f4f4f4 url("../img/minus_g.png") 97% 50% no-repeat;
+	display:block;
+	padding:6px 5px;
+	border:none;
+}
+.boxSpecial h2 a.hidden,
+.boxSpecial h2 a.hidden:hover {
+	background-image: url("../img/plus_g.png");
+}
+.boxSpecial h2 a:hover {
+	color:#000;
+}
+
+
+
+/* paragraphs, quotes and lists
+----------------------------------------------- */
+p {
+	/*margin:1em;*/
+	margin:0;
+	padding: 5px;
+}
+blockquote {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size:1.2em;
+	padding-left:1em;
+	border-left:4px solid #ccc;
+}
+blockquote cite {
+	font-size:.9em;
+}
+ul, ol {
+	padding-top:0;
+}
+
+
+
+
+
+/* articles
+----------------------------------------------- */
+.articles {
+	padding:0;
+}
+.articles h2 {
+	margin:0;
+}
+#articles {
+	padding-top:0;
+}
+.article {
+	border-top:1px solid #666;
+	padding-top:.5em;
+}
+.box .article {
+	border-top:3px solid #fff;
+	padding:13px 10px 0 10px;
+}
+.article h2 {
+	font-size:2em;
+	font-weight:normal;
+	text-transform:none;
+	color:#333;
+	background:transparent;
+	padding:0;
+	margin:0;
+	border:none;
+}
+.article h3 {
+	margin-bottom:.2em;
+	font-size:1.6em;
+}
+.box .first {
+	border-top:none;
+}
+.article h4 {
+	font-size:1.2em;
+	text-transform:uppercase;
+	margin-bottom:.5em;
+}
+.article a.image {
+	float:left; 
+	margin:3px 10px 3px 0; 
+	padding:4px;
+	border:1px solid #bbb;
+	background:#fff;
+}
+.article a.image:hover {
+	border:1px solid #666;
+}
+.article a.image img {
+	float:left; 
+}
+.article p.meta {
+	color:#666;
+	border-top:1px dotted #999;
+	border-bottom:1px dotted #999;
+	padding:.3em 0;
+	margin-bottom:.8em;
+}
+
+
+/* AJAX sliding shelf
+----------------------------------------------- */
+#loading {float:right; margin-right:14px; margin-top:-2px;}
+.block {padding-bottom:1px;}
+.block2{padding-left:50px; padding-bottom:8px;}
+
+
+
+
+
+#tabs-1 h1{text-align:center; font-size:22px;}
+#tabs-1 p{text-align:justify; font-size:10px;}
+
+#tabs-2 h1{text-align:center; font-size:22px;}
+#tabs-2 p{text-align:justify; font-size:10px;}
+
+#tabs-3 h1{text-align:center; font-size:22px;}
+#tabs-3 p{text-align:justify; font-size:10px;}
+
+

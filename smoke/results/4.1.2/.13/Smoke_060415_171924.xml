@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="2" total="0">
+        <testcase id="SMOKE_SAVE_STRING_API_TEST">
+            <testrun>TR2321</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_STRING_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_EVAL_STRING_API_TEST">
+            <testrun>TR2322</testrun>
+            <status>PASS</status>
+            <description>SMOKE_EVAL_STRING_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_ADV_PARAM_API_TEST">
+            <testrun>TR2323</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_ADV_PARAM_API_TEST Failed</description>
+        </testcase>
+        <testcase id="SMOKE_ADV_PARAM_API_TEST_FAIL">
+            <testrun>TR2324</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_ADV_PARAM_API_TEST_FAIL Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="4" passed="3" total="7">
+        <testcase id="SMOKE-003-009">
+            <testrun>9777</testrun>
+            <status>pass</status>
+            <description>No jsp based url being requested after excluding jsp based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-010">
+            <testrun>9778</testrun>
+            <status>pass</status>
+            <description>jsp based url being requested after including jsp based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-011">
+            <testrun>9779</testrun>
+            <status>fail</status>
+            <description>jsp or js based url were requested after excluding js+ based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-012">
+            <testrun>9780</testrun>
+            <status>fail</status>
+            <description>jsp and js both inlines have been included for js? pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-013">
+            <testrun>9781</testrun>
+            <status>pass</status>
+            <description>js inlines have been filtered out but jsp being included for jsp? pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-014">
+            <testrun>9782</testrun>
+            <status>fail</status>
+            <description>some of js or jsp inlines have not been included for js* pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-015">
+            <testrun>9783</testrun>
+            <status>fail</status>
+            <description>some of js or jsp inlines have not been included for j[sp]+ pattern</description>
+        </testcase>
+    </testsuite>
+</testsuites>

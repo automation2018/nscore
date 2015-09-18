@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="3" total="4">
+        <testcase id="SMOKE-017-001">
+            <testrun>10041</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-017-002">
+            <testrun>10042</testrun>
+            <status>fail</status>
+            <description>no events got logged for conditon;do not filter all events will be logged</description>
+        </testcase>
+        <testcase id="SMOKE-017-003">
+            <testrun>10043</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-017-004">
+            <testrun>10044</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="18" total="19">
+        <testcase id="SMOKE-009-001">
+            <testrun>6449</testrun>
+            <status>pass</status>
+            <description>Search in two main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-002">
+            <testrun>6450</testrun>
+            <status>pass</status>
+            <description>Search in two main url with savelength mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-003">
+            <testrun>6451</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-004">
+            <testrun>6452</testrun>
+            <status>fail</status>
+            <description>Search for two main url with save length and save offset mode Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-005">
+            <testrun>6453</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode in 2 pages Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-006">
+            <testrun>6454</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode in 2 pages Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-007">
+            <testrun>6455</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-008">
+            <testrun>6456</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-009">
+            <testrun>6457</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-010">
+            <testrun>6458</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-011">
+            <testrun>6459</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found and ActionOnfailContinue Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-012">
+            <testrun>6460</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found ActionOnfailStop Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-013">
+            <testrun>6461</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found comparing from a file Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-014">
+            <testrun>6462</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-015">
+            <testrun>6463</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 main url ChangeOnUse Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-016">
+            <testrun>6464</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 main url ChangeOnSession Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-017">
+            <testrun>6465</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 url ModeWeighted Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-018">
+            <testrun>6466</testrun>
+            <status>pass</status>
+            <description>Serach Param for two main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-019">
+            <testrun>6467</testrun>
+            <status>pass</status>
+            <description>Search Param for 5 url with single page search savelenght and saveoffset and ORD all Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,22 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-009-001,6121,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_TWOMAIN_URL passed
+SMOKE-009-002,6122,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed
+SMOKE-009-003,6123,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+SMOKE-009-004,6124,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+SMOKE-009-005,6125,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed
+SMOKE-009-006,6126,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed
+SMOKE-009-007,6127,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed
+SMOKE-009-008,6128,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed
+SMOKE-009-009,6129,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed
+SMOKE-009-010,6130,4.1.3,9,NetStorm,pass,1, Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed
+SMOKE-009-011,6131,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed
+SMOKE-009-012,6132,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed
+SMOKE-009-013,6133,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed
+SMOKE-009-014,6134,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail  passed
+SMOKE-009-015,6135,4.1.3,9,NetStorm,pass,1,Smoke_FileParam_FiveMainURL_ChangeOnUse passed
+SMOKE-009-016,6136,4.1.3,9,NetStorm,pass,1,Smoke_FileParam_FiveMainURL_ChangeOnSession passed
+SMOKE-009-017,6137,4.1.3,9,NetStorm,pass,1,FileParam_5Url_ModeWeighted Passed
+SMOKE-009-018,6138,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_FAIL_TWOMAIN_URL Passed
+SMOKE-009-019,6139,4.1.3,9,NetStorm,pass,1,Search_Param5Url_SinglePagesSearch_SaveLengthWihtSaveOffset_ORD_ALL Passed
+
+Failed: 0 test(s), Passed: 19 test(s), Total: 19 test(s)

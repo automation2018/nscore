@@ -1,0 +1,41 @@
+payload={  
+    "MessageType" : "{AuthMsgType}",
+    "MessageId" : "{MessageIdVar}",
+    "EngineVersion" : "1.1.0.156",
+    "BundleVersion" : "2.2.2.83",
+    "KioskId" :  {KioskIdVar},
+    "DiscountCode" : {DiscountCode},
+    "DiscountValue" : {DiscountValue},
+    "CreditCard" : {
+        "FirstName" : "{CCFirstNameVar}",
+        "LastName" : "{CCLastNameVar}",
+        "Number" : "{CCNumVar}",
+        "PostalCode" : "{CCPostalCodeVar}",
+       "ExpirationMonth" : "{CCExpirationMonthVar}",
+        "ExpirationYear" : "{CCExpirationYearVar}",
+        "KeyId" : {CCKeyIdVar},
+        "CardId" : "{CCIdVar}",
+        "LastFour" : "{CCLastFourVar}",
+        "CardType" : {CCTypeVar},
+        "Track2" : "{CCTrack2Var}"
+    },
+    "Contents" : { 
+
+     {PurchaseItemBlockVar}{RentalItemBlockVar} ],
+            "Totals" : { 
+                "TaxRate" : {RentalTaxRateVar},
+                "SubTotal" : {RentalSubTotalVar},
+                "TaxAmount" : "{RentalTaxAmountVar}",
+                "GrandTotal" : {RentalGrandTotalVar},
+                "DiscountedSubtotal" : {RentalDiscountedSubtotalVar}
+            }
+        }
+    },
+    "TransactionDate" : {
+        "theDate" : 634181777310156250,
+        "dateTimeKind" : "Local",
+        "dateString" : "{TransactionDateVar}"
+    },
+   "UseCredits" : "OptedIn"
+}
+

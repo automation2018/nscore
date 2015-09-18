@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="1" total="2">
+        <testcase id="SMOKE-003-005">
+            <testrun>5427</testrun>
+            <status>pass</status>
+            <description>G_INLINE_INCLUDE_DOMAIN_PATTERN Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-006">
+            <testrun>5428</testrun>
+            <status>fail</status>
+            <description>G_INLINE_EXCLUDE_DOMAIN_PATTERN Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

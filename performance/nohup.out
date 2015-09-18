@@ -1,0 +1,198 @@
+Buildfile: /home/automation/workbench/automation/nscore/performance/build.xml
+
+get_start_mail_values:
+
+Test-StartUp-Mail:
+     [mail] Sending email: Performance: NSCore 4.1.2 B32 - Started
+     [mail] Sent email with 0 attachments
+
+copy-hpd-file:
+      [scp] Connecting to 10.10.30.38:22
+      [scp] done.
+
+clean:
+   [delete] Deleting directory /home/netstorm/work/scripts/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/scenarios/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/testcases/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/testsuites/Performance/Performance
+
+copy-of-testscenario-sctructure:
+     [copy] Copying 12 files to /home/netstorm/work/scripts/Performance/Performance
+     [copy] Copying 6 files to /home/netstorm/work/scenarios/Performance/Performance
+     [copy] Copying 20 files to /home/netstorm/work/testcases/Performance/Performance
+     [copy] Copying 2 files to /home/netstorm/work/testsuites/Performance/Performance
+     [copy] Copying 3 files to /home/netstorm/work/lib
+
+hpd-process-restart:
+  [sshexec] Connecting to 10.10.30.38:22
+  [sshexec] cmd : service hpd restart
+  [sshexec] Restarting hpd ... 
+  [sshexec] Stop signal sent to controller successfully
+  [sshexec] Correlation Project = samples
+  [sshexec] Starting processing of URL files. It may take several minutes based on file sizes.
+  [sshexec] Completed processing of URL files.
+  [sshexec] Connecting to 10.10.30.38:22
+  [sshexec] cmd : service hpd show
+  [sshexec] 4 S root     35577     1 10  80   0 - 71044 pause  15:47 ?        00:00:02 /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36493 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36494 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36495 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36496 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36497 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36498 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36499 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36500 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36501 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     36502 35577  0  80   0 - 71141 ep_pol 15:47 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+
+Performance_Cps:
+     [info] INFO: Initializing test environment 
+     [info] Total Cases to test in Performance_Cps suite = 4
+     [info] INFO: Starting automation using command bin/ts_run
+     [info] INFO: Running TestSuite = 'Performance_Cps'
+     [info] IP_ADDR = 10.10.30.37
+     [info] Test Cycle Number = 081015_154744
+     [info] Test Suite Run Number = 2413
+     [info] Starting execution of test case - cps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - cps
+     [info] gui.data file is not present for TestRun=7889
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - cps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - cps
+     [info] gui.data file is not present for TestRun=7890
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - cps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - cps
+     [info] gui.data file is not present for TestRun=7891
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - cps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - cps
+     [info] gui.data file is not present for TestRun=7892
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Test Suite execution is completed!!!
+     [info] INFO: NSCore automation has ended
+     [info] INFO: Cleaning up temporary files.
+
+copy-hpd-hps-file:
+      [scp] Connecting to 10.10.30.38:22
+      [scp] done.
+
+hpd-process-restart-for-hps-and-throughput:
+  [sshexec] Connecting to 10.10.30.38:22
+  [sshexec] cmd : service hpd restart
+  [sshexec] Restarting hpd ... 
+  [sshexec] Stop signal sent to controller successfully
+  [sshexec] Correlation Project = samples
+  [sshexec] Starting processing of URL files. It may take several minutes based on file sizes.
+  [sshexec] Completed processing of URL files.
+  [sshexec] Connecting to 10.10.30.38:22
+  [sshexec] cmd : service hpd show
+  [sshexec] 4 S root     38174     1 10  80   0 - 71044 pause  16:00 ?        00:00:02 /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39090 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39091 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39092 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39093 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39094 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39095 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39096 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39097 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39098 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     39099 38174  0  80   0 - 71141 ep_pol 16:00 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+
+Performance:
+     [info] INFO: Initializing test environment 
+     [info] Total Cases to test in Performance suite = 9
+     [info] INFO: Starting automation using command bin/ts_run
+     [info] INFO: Running TestSuite = 'Performance'
+     [info] IP_ADDR = 10.10.30.37
+     [info] Test Cycle Number = 081015_160051
+     [info] Test Suite Run Number = 2414
+     [info] Starting execution of test case - hps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - hps
+     [info] gui.data file is not present for TestRun=7893
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - hps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - hps
+     [info] gui.data file is not present for TestRun=7894
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - hps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - hps
+     [info] gui.data file is not present for TestRun=7895
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - hps
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - hps
+     [info] gui.data file is not present for TestRun=7896
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - throughput
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - throughput
+     [info] gui.data file is not present for TestRun=7897
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - throughput
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - throughput
+     [info] gui.data file is not present for TestRun=7898
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - throughput
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - throughput
+     [info] gui.data file is not present for TestRun=7899
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - throughput
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - throughput
+     [info] gui.data file is not present for TestRun=7900
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - concurrency
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - concurrency
+     [info] gui.data file is not present for TestRun=7901
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Test Suite execution is completed!!!
+     [info] INFO: NSCore automation has ended
+     [info] INFO: Cleaning up temporary files.
+
+get_test_results:
+
+Mail-With-TestResults:
+     [mail] Sending email: Performance: NSCore 4.1.2 B32 - Successful
+     [mail] Sent email with 2 attachments
+
+perf:
+
+BUILD SUCCESSFUL
+Total time: 49 minutes 30 seconds

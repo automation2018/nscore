@@ -1,0 +1,415 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="17" passed="65" total="0">
+        <testcase id="SMOKE_SEARCH_TWOMAIN_URL">
+            <testrun>TR2663</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLength">
+            <testrun>TR2664</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLength passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>TR2665</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>TR2666</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>TR2667</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>TR2668</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_FoundFail">
+            <testrun>TR2670</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_NotFoundFail">
+            <testrun>TR2671</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail">
+            <testrun>TR2672</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail">
+            <testrun>TR2673</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue">
+            <testrun>TR2674</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop">
+            <testrun>TR2675</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail">
+            <testrun>TR2676</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail">
+            <testrun>TR2677</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE_FileParam_FiveMainURL_ChangeOnUse">
+            <testrun>TR2678</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FileParam_FiveMainURL_ChangeOnUse passed</description>
+        </testcase>
+        <testcase id="SMOKE_FileParam_FiveMainURL_ChangeOnSession">
+            <testrun>TR2679</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FileParam_FiveMainURL_ChangeOnSession passed</description>
+        </testcase>
+        <testcase id="SMOKE_TenDSrvrURL_Sce2Dep">
+            <testrun>TR2680</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TenDSrvrURL_Sce2Dep passed</description>
+        </testcase>
+        <testcase id="SMOKE_OneDSrvr_RelativePath">
+            <testrun>TR2681</testrun>
+            <status>PASS</status>
+            <description>SMOKE_OneDSrvr_RelativePath passed</description>
+        </testcase>
+        <testcase id="SMOKE_DifHost_Redirection">
+            <testrun>TR2682</testrun>
+            <status>PASS</status>
+            <description>SMOKE_DifHost_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE_RltvToObslt_Redirection">
+            <testrun>TR2683</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RltvToObslt_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE_DifProto_Redirection">
+            <testrun>TR2684</testrun>
+            <status>PASS</status>
+            <description>SMOKE_DifProto_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_STRING_API_TEST">
+            <testrun>TR2685</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_STRING_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_EVAL_STRING_API_TEST">
+            <testrun>TR2686</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_EVAL_STRING_API_TEST Failed</description>
+        </testcase>
+        <testcase id="SMOKE_ADV_PARAM_API_TEST">
+            <testrun>TR2687</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_ADV_PARAM_API_TEST Failed</description>
+        </testcase>
+        <testcase id="SMOKE_ADV_PARAM_API_TEST_FAIL">
+            <testrun>TR2688</testrun>
+            <status>PASS</status>
+            <description>SMOKE_ADV_PARAM_API_TEST_FAIL Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST">
+            <testrun>TR2689</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>TR2691</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST">
+            <testrun>TR2692</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST">
+            <testrun>TR2693</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>TR2695</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST">
+            <testrun>TR2696</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EX_API_RELATIVE_PATH_TEST">
+            <testrun>TR2697</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EX_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>TR2699</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST">
+            <testrun>TR2700</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SET_INT_VAL_API_TEST">
+            <testrun>TR2701</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_GET_INT_VAL_API_TEST">
+            <testrun>TR2702</testrun>
+            <status>PASS</status>
+            <description>SMOKE_GET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_GET_RANDOM_STR_API_TEST">
+            <testrun>TR2703</testrun>
+            <status>PASS</status>
+            <description>SMOKE_GET_RANDOM_STR_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_GETTERS_API_TEST">
+            <testrun>TR2704</testrun>
+            <status>PASS</status>
+            <description>SMOKE_GETTERS_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_CHK_STR_CPY_API_TEST">
+            <testrun>TR2705</testrun>
+            <status>PASS</status>
+            <description>SMOKE_CHK_STR_CPY_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_4UrlT_WOExpCookie_CMode1">
+            <testrun>TR2706</testrun>
+            <status>PASS</status>
+            <description>SMOKE_4UrlT_WOExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_4UrlT_WExpCookie_CMode1">
+            <testrun>TR2707</testrun>
+            <status>PASS</status>
+            <description>SMOKE_4UrlT_WExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_4UrlT_ExpCookie_CMode1">
+            <testrun>TR2708</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_4UrlT_ExpCookie_CMode1 failed</description>
+        </testcase>
+        <testcase id="SMOKE_2UrlT_ClineCookie_CMode1">
+            <testrun>TR2709</testrun>
+            <status>PASS</status>
+            <description>SMOKE_2UrlT_ClineCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFURL">
+            <testrun>TR2710</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFURL Passed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_AFOFF">
+            <testrun>TR2711</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_AFOFF Passed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn">
+            <testrun>TR2712</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOn Passed</description>
+        </testcase>
+        <testcase id="SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF">
+            <testrun>TR2713</testrun>
+            <status>PASS</status>
+            <description>SMOKE_AF_OneMain_FiveAFedURL_TwoEmbd_AFOFF Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_apache_main_param_session">
+            <testrun>TR2714</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_apache_main_param_session failed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_apache_main_param_use">
+            <testrun>TR2715</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_apache_main_param_use failed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_apache_PageDump">
+            <testrun>TR2716</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_apache_PageDump failed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_main_CheckWithKA">
+            <testrun>TR2717</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_main_CheckWithKA failed</description>
+        </testcase>
+        <testcase id="SMOKE_Http_auth_Basic_main_CVfailWithOutKA">
+            <testrun>TR2718</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Http_auth_Basic_main_CVfailWithOutKA failed</description>
+        </testcase>
+        <testcase id="SMOKE_OneUrl_MultiPart_With_Boundary">
+            <testrun>TR2719</testrun>
+            <status>PASS</status>
+            <description>passed</description>
+        </testcase>
+        <testcase id="SMOKE_OneUrl_MultiPart_Without_Boundary">
+            <testrun>TR2720</testrun>
+            <status>PASS</status>
+            <description>passed</description>
+        </testcase>
+        <testcase id="SMOKE_MultiPart_Nested">
+            <testrun>TR2721</testrun>
+            <status>PASS</status>
+            <description>passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeA_DNS">
+            <testrun>TR2722</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeA_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeAAAA_DNS">
+            <testrun>TR2723</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeAAAA_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeMX_DNS">
+            <testrun>TR2724</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeMX_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeNS_DNS">
+            <testrun>TR2725</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeNS_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeSOA_DNS">
+            <testrun>TR2726</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeSOA_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypePTR_DNS">
+            <testrun>TR2727</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypePTR_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeCNAME_DNS">
+            <testrun>TR2728</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeCNAME_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_POP3">
+            <testrun>TR2729</testrun>
+            <status>PASS</status>
+            <description>SMOKE_POP3 Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_TXT_TYPE_PASSIVE">
+            <testrun>TR2730</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_TXT_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_BIN_TYPE_PASSIVE">
+            <testrun>TR2731</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_BIN_TYPE_PASSIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_TXT_TYPE_ACTIVE">
+            <testrun>TR2732</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_TXT_TYPE_ACTIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_FTP_BIN_TYPE_ACTIVE">
+            <testrun>TR2733</testrun>
+            <status>PASS</status>
+            <description>SMOKE_FTP_BIN_TYPE_ACTIVE Passed</description>
+        </testcase>
+        <testcase id="SMOKE_IMAP_FETCH_HEADER">
+            <testrun>TR2735</testrun>
+            <status>PASS</status>
+            <description>SMOKE_IMAP_FETCH_HEADER Passed</description>
+        </testcase>
+        <testcase id="SMOKE_IMAP_FETCH_TEXT">
+            <testrun>TR2736</testrun>
+            <status>PASS</status>
+            <description>SMOKE_IMAP_FETCH_TEXT Passed</description>
+        </testcase>
+        <testcase id="SMOKE_IMAP_FETCH_BODY">
+            <testrun>TR2737</testrun>
+            <status>PASS</status>
+            <description>SMOKE_IMAP_FETCH_BODY Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_FIREFOX_ALL_FEATURES_NO_HEADER">
+            <testrun>TR2738</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_FIREFOX_ALL_FEATURES_NO_HEADER Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_FIREFOX_ALL_FEATURES_WITH_HEADER_GET">
+            <testrun>TR2739</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_FIREFOX_ALL_FEATURES_WITH_HEADER_GET Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_FIREFOX_ALL_FEATURES_WITH_HEADER_POST">
+            <testrun>TR2740</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_FIREFOX_ALL_FEATURES_WITH_HEADER_POST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_NO_HEADER">
+            <testrun>TR2741</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_NO_HEADER Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_HEADER_GET">
+            <testrun>TR2742</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_HEADER_GET Passed</description>
+        </testcase>
+        <testcase id="SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_HEADER_POST">
+            <testrun>TR2743</testrun>
+            <status>PASS</status>
+            <description>SMOKE_RBU_CHROME_ALL_FEATURES_CACHE_ENABLE_HEADER_POST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_alluser_release">
+            <testrun>TR2744</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_alluser_release Failed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_5user_release">
+            <testrun>TR2745</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_5user_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut">
+            <testrun>TR2746</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_InBetweenTrans_10U_alluser_release">
+            <testrun>TR2747</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_InBetweenTrans_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_BeforeFirstPage_10U_alluser_release">
+            <testrun>TR2748</testrun>
+            <status>PASS</status>
+            <description>SMOKE_Sync_Point_BeforeFirstPage_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE_Sync_Point_InBtweenPage_10U_5user_release">
+            <testrun>TR2749</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_Sync_Point_InBtweenPage_10U_5user_release Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

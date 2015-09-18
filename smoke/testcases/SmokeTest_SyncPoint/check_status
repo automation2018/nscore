@@ -1,0 +1,87 @@
+#!/bin/bash
+. $NS_WDIR/lib/automation_util
+
+T_Name=$(get_tname)
+
+sync_point_user()
+{
+    Sync_Users=`grep "SyncPoint Vusers" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+    Succ_Msg=`grep -w "Release target reached" $NS_WDIR/logs/TR$T_RUN_ID/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+    FirstTrans_Time=`grep -w "hpd_page1_trans1" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+    FirstPage_Time=`grep -w "hpd_page1_trans1" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+    InBtween_Trans_Time=`grep -w "hpd_page5_trans5" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+    TimeOut_Info=`grep -w "Vuser inter arrival timeout" $NS_WDIR/logs/TR$T_RUN_ID/ready_reports/sync_point_summary.report|awk -F '|' '{print $10}'`
+    InbtweenPage_Time=`grep -w "hpd_page2_trans2" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+}
+
+sync_point_user
+
+if [ "XX$T_Name" == "XXSMOKE-013-001" ];then
+    if [ $Sync_Users -eq 9 ] && \
+       [ $SD_TotalSuccURL -eq 230 ] && \
+       [ "xx$Succ_Msg" == "xxRelease target reached." ] && \
+       [ $FirstTrans_Time -le 1 ];then
+        log_status_and_exit_ex "PASS" "SyncPoint Before FirstTrans 10Users all users release Passed"                      
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint Before FirstTrans 10Users all users release Failed"
+    fi
+fi
+
+if [ "xx$T_Name" == "xxSMOKE-013-002" ];then
+    if [ $Sync_Users -eq 4 ] && \
+       [ $SD_TotalSuccURL -eq 230 ] && \
+       [ "xx$Succ_Msg" == "xxRelease target reached." ] && \
+       [ $FirstTrans_Time -le 1 ];then
+        log_status_and_exit_ex "PASS" "SyncPoint Before FirstTrans 10Users 5 users release  Passed"
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint Before FirstTrans 10Users 5 users release  Failed"
+    fi
+fi
+
+
+if [ "XX$T_Name" == "XXSMOKE-013-003" ]; then
+    if [ $Sync_Users -eq 10 ] && \
+       [ "XX$TimeOut_Info" == "XXVuser inter arrival timeout" ] && \
+       [ $FirstTrans_Time -le 1 ]; then
+        log_status_and_exit_ex "PASS" "SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed"
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint Before FirstTrans 10Users 20 users release timeout Failed"
+    fi
+fi
+			
+
+if [ "XX$T_Name" == "XXSMOKE-013-004" ];then
+    if [ $Sync_Users -eq 9 ] && \
+       [ $SD_TotalSuccURL -eq 230 ] && \
+       [ "xx$Succ_Msg" == "xxRelease target reached." ] && \
+       [ $InBtween_Trans_Time -le 1 ];then
+        log_status_and_exit_ex "PASS" "SyncPoint In Between Transasctions 10 Users all users release Passed"
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint In Between Transasctions 10 Users all users release Failed"                
+    fi
+fi
+
+if [ "XX$T_Name" == "XXSMOKE-013-005" ];then
+    if [ $Sync_Users -ge 8 ] && \
+       [ $SD_TotalSuccURL -eq 230 ] && \
+       [ "xx$Succ_Msg" == "xxRelease target reached." ] && \
+       [ $FirstPage_Time -le 5 ];then
+        log_status_and_exit_ex "PASS" "SyncPoint Before First Page 10 Users all users release Passed"
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint Before First Page 10 Users all users release Failed"
+    fi
+fi
+
+
+if [ "XX$T_Name" == "XXSMOKE-013-006" ];then
+    if [ $Sync_Users -eq 4 ] && \
+       [ $SD_TotalSuccURL -eq 230 ] && \
+       [ "xx$Succ_Msg" == "xxRelease target reached." ] && \
+       [ $InbtweenPage_Time -le 5 ];then
+        log_status_and_exit_ex "PASS" "SyncPoint In Between Pages 10Users 5users release Passed"
+    else
+        log_status_and_exit_ex "FAIL" "SyncPoint In Btween Pages 10Users 5users release Failed" 
+    fi
+fi
+
+exit 0

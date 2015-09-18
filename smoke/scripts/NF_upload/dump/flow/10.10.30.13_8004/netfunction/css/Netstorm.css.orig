@@ -1,0 +1,876 @@
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+File Name      : Netstorm.css
+File Type      : CSS Style Sheet
+Date of Creation  : 18 April 2008
+Created by      : Abhinav 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+html, body
+{
+  margin: 0;
+  padding: 0;
+  border: 0px none;
+  height: 100%; 
+  text-align:center
+}
+  
+img, a img, form 
+{ 
+  margin: 0;
+  padding: 0; 
+  border: 0px none;
+  text-decoration: none 
+}
+
+/* ////////// define the parent font for other elements to inherit /////////////*/
+
+html, body, p, div, table, span 
+{ 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: normal;
+  text-align:justify;
+  color:#474747;
+}
+
+strong
+{
+  font-weight:bolder;
+}
+  
+b
+{
+  font-weight:bolder;
+}
+
+/* ///////////////////////////Define page Background And Link//////////////////////*/
+body 
+{
+  text-align: center;
+}
+
+a, a:active, a:visited  
+{
+  color:#995088;text-decoration:underline;font-size:11px;
+}
+  
+a:hover 
+{
+  color: #ff1212;text-decoration:none;
+}
+
+/*/////////////// Change the link of testRun on ScreenTitle/////////////////*/
+
+#TitleTR a 
+{ 
+  color: darksalmon;
+}
+
+#TitleTR a:visited 
+{ 
+  color: #FFD685;
+}
+
+#TitleTR a:hover 
+{
+  color: red;
+  text-decoration: none;
+  font-weight: bold; 
+}
+
+/*///////////////////////////For analyze GUI //////////////////*/
+
+.backGroundOfLeftPane
+{
+  background-color:#f4f9ff;
+}
+
+/* /////////////////////////////Header Section////////////////////////////*/
+
+#header
+{
+  width:100%;
+  height:80px;
+  /**background-image:url(../images/bg_header.png);
+  background-repeat:repeat-x;**/
+  background-color:#F2F2F2;
+  background-repeat:repeat-x;
+}
+
+
+#headerWithOutScreenTitle
+{
+  width:100%;
+  height:60px;
+  background-image:url(../images/bg_header.png);
+  background-repeat:repeat-x;
+}
+
+.logoSize
+{
+  width:140;
+  height:27;
+}
+
+/*//////////////////////Menus Header////////////////////////////*/
+
+#MenuHeader a 
+{ 
+  color: gray;
+  #text-decoration: underline;
+  text-decoration: none;
+}
+
+#MenuHeader a:visited 
+{ 
+  color: solid gray;
+}
+
+#MenuHeader a:hover 
+{
+  color: black;
+  text-decoration: none;
+  /**font-weight: bold;**/ 
+}
+
+
+/*//////////////////////////GUI Scrren Title in the header row ////////////////////////////////*/
+  
+/**.screenTitle
+{
+  color:white;
+  font-size:11px;
+  font-weight:bold;
+  background-color:#073FA0;
+  height:22px;
+  text-align: left;
+  padding-left: 10px;
+}**/
+
+
+.screenTitle
+{
+  color:#000080;
+  font-size:20px;
+  font-weight:bold;
+  background-color:#F2F2F2;
+  height:20px;
+  text-align: left;
+  padding-left: 10px;
+  text-align:center;
+ /** border:solid 1px #808080;**/
+
+  border-left:1px solid #ECE9DA;
+  /**border-bottom:1px solid #808080;**/
+  border-right:1px solid #ECE9DA;
+
+}
+
+.screenTitleWithout
+{
+  color:#000080;
+  font-size:20px;
+  font-weight:bold;
+  background-color:#F2F2F2;
+  height:20px;
+  text-align: left;
+  padding-left: 10px;
+  text-align:center;
+ /** border:solid 1px #808080;**/
+
+  border-left:0px solid #ECE9DA;
+  /**border-bottom:1px solid #808080;**/
+  border-right:0px solid #ECE9DA;
+
+}
+
+.filterBorder
+{
+  border:solid 1px #ECE9DA;
+
+  border-left:1px solid #ECE9DA;
+  border-bottom:1px solid #ECE9DA;
+  border-right:1px solid #ECE9DA;
+
+}
+
+/*////////////////////////Text Section//////////////////////////////////////*/    
+ 
+#middlePart
+{
+  width:100%;
+  background-repeat:repeat;
+  /* background-repeat:repeat-y; 
+  background-image:url(../images/bg_text.png);*/
+}
+
+/*////////////////////////Footer Section///////////////////////////////////*/
+
+#footer
+{
+  /*height="38";
+  width="6";
+  horizontal-align:bottom
+  background-image:url(../images/bg_footer.png);
+  background-repeat:repeat-x;*/
+}
+
+
+.unDeletableTR
+{
+  background-color:#DEEDFE; 
+}
+
+.archiveTR
+{
+  background-color:cyan; 
+}
+ 
+/*/////////////////////////Table Section////////////////////////////////////*/
+
+.table
+{
+  border-top:2px solid #BCD0EF;
+  border-left:1px solid #BCD0EF;
+  border-bottom:1px solid #BCD0EF;
+  border-right:1px solid #BCD0EF;
+  font-size:10px;
+  color:blue;
+  /**scrollbar-face-color:#3B5998; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB**/
+  
+
+}
+
+
+.table_upgrade
+{
+  
+  font-size:12px;
+  color:black;
+  /**scrollbar-face-color:#3B5998; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB**/
+  scrollbar-face-color:gray; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB
+
+}
+
+
+.table_upgrade2
+{
+  border-top:2px solid #BCD0EF;
+  border-left:1px solid #BCD0EF;
+  border-bottom:1px solid #BCD0EF;
+  border-right:1px solid #BCD0EF;
+  font-size:10px;
+  color:black;
+  /**scrollbar-face-color:#3B5998; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB**/
+  scrollbar-face-color:gray; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB
+
+}
+
+
+
+
+.table_updateAdmin
+{
+  
+  border-left:1px solid #BCD0EF;
+  font-size:10px;
+  color:blue;
+  /**scrollbar-face-color:#3B5998; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB**/
+  scrollbar-face-color:gray; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB
+
+}
+
+ 
+.standardTabEffect
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  background-color: #FFFF00;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  -webkit-border-radius-topleft: 15px;
+  -webkit-border-radius-topright: 15px;
+  border-radius-topleft: 15px;
+  border-radius-topright: 15px;
+  border: 4px solid #FF0000;
+  padding: 10px;
+  color: #FF0000;
+  text-decoration: none;
+  font-weight: bold
+ }
+ 
+.tableHeader
+{
+  color:#000080;
+  font-size:10px;
+  font-weight:bold;
+  height:20px;
+  background-color:#F2F2F2;
+}
+
+tr.tableInputRow td
+{
+  /*How to decorate particular row*/
+  border-bottom:1px solid #073FA0;
+}
+
+.borderTableHeader
+{
+  border-top:1px solid;
+  border-left:1px solid #BCD0EF;
+  border-bottom:1px solid #BCD0EF;
+  border-right:1px solid #BCD0EF;
+
+  /*color:#FFD685; #073FA0
+  font-size:10px;
+  font-weight:bold;
+  background-color:#073FA0;*/
+}
+
+.tableTitle
+{  
+  color:#073991;
+  background-color:#E8EFFA;
+  font-size:11px;
+  font-weight:bold;
+  height:20px;
+  text-align:left;
+  padding-left: 10px;
+}
+
+.tableWithOptions
+{
+  border-top:1px solid #073FA0;
+  border-left:1px solid #073FA0;
+  border-bottom:1px solid #073FA0;
+  border-right:1px solid #073FA0;
+  color:#073991;
+  background-color:#FFD685;
+  font-size:11px;
+}
+.tableRowWithHeight
+{
+  height:20px;
+}
+
+.tableRow
+{
+}
+  
+.tableRowOdd
+{
+  background-color:#FFF9EC;
+  color:#000000;
+}
+
+.tableRowEven
+{
+  background-color:#FFFFF9;
+  color:#000000;
+}
+
+/*///////////////////////////////Border Section///////////////////////////////*/
+
+tr.borderTop td
+{
+  border-top:1px solid #C0D0EC;
+  height:18px;
+}
+  
+tr.borderLeft td
+{
+  border-left:medium solid #C0D0EC;
+}
+  
+tr.borderBottom td
+{
+  border-bottom:1px solid #C0D0EC;
+}
+
+tr.borderRight td
+{ 
+  border-right:1px solid #C0D0EC;
+}
+
+td.borderRight
+{
+  border-right:1px solid #C0D0EC;
+}
+
+td.borderLeftRight
+{
+  border-right:1px solid #C0D0EC;
+  border-left:1px solid #C0D0EC;
+}
+
+  
+.fieldLableWithBottomBorder
+{
+  color:#545454;
+  font-size:10px;
+  font-weight:bold;
+  border-bottom:1px solid #C0D0EC;
+}
+
+.fieldLable 
+{
+  color:#545454;
+  font-size:11px;
+  font-weight:bold;
+ }
+
+.fieldLableRight 
+{
+  color:#545454;
+  font-size:11px;
+  font-weight:bold;
+  text-align:right;
+  padding-right: 15px;
+}
+
+ .fieldLableLeft 
+{
+  color:#545454;
+  font-size:11px;
+  font-weight:bold;
+  text-align:left;
+ }
+
+.fieldMainLable 
+{
+  color:#545454;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.fieldOptionLable 
+{
+  color:#545454;
+  font-size:11px; 
+}
+
+.fieldOptionLableRight 
+{
+  color:#545454;
+  font-size:11px;
+  text-align:right;
+  padding-right: 10px;
+}
+
+.fieldOptionLableLeft 
+{
+  color:#545454;
+  font-size:11px;
+  text-align:left;
+}
+
+.textNote
+{
+  font-size:12px;
+  width:100%;
+  color:blue;
+  text-align:left;
+}
+
+.fieldValue 
+{
+ color:#373737;
+ font-size:9px;
+}
+
+.fieldValueWithBottomBorder 
+{
+ color:#545454;
+ font-size:11px;
+ border-bottom:1px solid #C0D0EC;
+}
+
+.fieldLableOnColor 
+{
+  color:black;
+  font-size:10px;
+  text-align:right;
+  font-weight:bold;
+  /* background-color:#F0F8FF;*/
+}
+
+.fieldLableOnColorNoAlign 
+{
+  color:black;
+  font-size:10px;
+  font-weight:bold;
+  /* background-color:#F0F8FF;*/
+}
+
+.valueOfListBox 
+{
+  font-size:10px;
+}
+
+.valueOfTextBox 
+{
+  font-size:10px;
+}
+
+.textField
+{
+  font-size:12px;
+  width:15%;
+}
+
+.lableBox
+{  
+  color:white;
+  font-size:10px;
+  background-color:#073FA0;
+  border:2px solid #C0D0EC;
+}
+
+.fieldValueOfTextBox 
+{
+  width:35%;
+}
+
+/*///////////////////////////Button Section/////////////////////////////////*/
+    
+.button
+{ 
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  height:20px;
+  background-color:#F2F2F2;
+  border-color:#D9DFEA;
+  color:#000080;
+  font-size:11px;
+  text-align:center;
+  padding-bottom:1px;
+  border-bottom:1px solid #0E1F5B;
+  border-right:1px solid #0E1F5B;
+  border-left:1px solid white;
+  border-top:1px solid white;
+  margin:2px;
+  /**  Working in:-  rounded corners for Firefox, Safari/Chrome, Opera and IE9. **/
+  -moz-border-radius: 5px;
+  border-radius: 5px;  
+}
+
+      
+#button
+  { 
+    background-color: transparent;
+    border: 0px;
+    
+    /*background-image: url(../images/close.gif);*/
+  }
+
+/*////////////////////////////Sorting Section//////////////////////////////////*/
+
+.sort-table thead td {
+  border:     1px solid;
+  border-color: ButtonHighlight ButtonShadow
+          ButtonShadow ButtonHighlight;
+  cursor:     default;
+}
+
+
+.sort-arrow 
+{
+  width:          9px;
+  height:         9px;
+  background-position:  center center;
+  background-repeat:    no-repeat;
+  margin:         0 2px;
+}
+
+.sort-arrow.descending 
+{
+  background-image:   url("../images/downArrow.gif");
+}
+
+.sort-arrow.ascending
+{
+  background-image:   url("../images/upArrow.gif");
+}
+
+
+/*////////////////////////Start Tab button/////////////////////////////*/
+
+.tabMenu
+{
+  text-align: center;
+  width: 100%; /*leave this value as is in most cases*/
+  line-height:  12px;
+}
+
+.tabMenu ul
+{
+  margin: 0; 
+  padding: 0;
+  display: inline;
+  list-style-type: none;
+  float: left;
+  border: 1px solid #564c66; /*dark purple border*/
+  border-width: 1px 1;
+  background: #F1F1F1 ;
+  font-weight:bold;
+}
+
+.tabMenu ul li
+{
+  display: inline;
+}
+
+.tabMenu ul li a
+{
+  float: left;
+  color: black; /*text color*/
+  padding: 4px 8px;
+  text-decoration: none;
+  border-right: 1px solid #564c66; /*dark purple divider between menu items*/
+}
+
+.tabMenu ul li a:visited
+{
+  color: black;
+}
+
+.tabMenu ul li .current
+{
+  background: #6D84B4;
+  color: white !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/ 
+}
+
+.tabMenu ul li a:hover
+{
+  color: black !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/
+  text-decoration: underline;
+}
+
+input.tollButton 
+{ 
+  color:#050;
+  font-family:'trebuchet ms',helvetica,sans-serif;
+  font-size:80%;
+  font-size:11px;
+  font-weight:bold;
+}
+
+input.tollButton:hover 
+{
+  background: #d5a654; 
+}
+
+input.tollButton:active 
+{
+  border-color: #234 #89a #89a #234; 
+}
+
+
+/*//////////Tables with fixed header and dynamic body////////////*/
+
+/* Fixed Table Header will work only with IE+ only */
+
+
+thead#pfh tr {
+top: expression(document.getElementById("ScrollablePane").scrollTop-2); /* IE5+ only */
+z-index: 20;
+}
+
+td.tableHeaderLocked, tr.tableHeaderLocked
+{
+  color:#000080;
+  font-size:10px;
+  font-weight:bold;
+  height:20px;
+  background-color:#F2F2F2;
+  left: expression(document.getElementById("ScrollablePane").scrollRight); /* IE5+ only */
+  position: relative;
+  z-index: 10;
+}
+
+thead#pfh2 tr {
+top: expression(document.getElementById("ScrollablePane2").scrollTop-2); /* IE5+ only */
+z-index: 20;
+}
+
+td.tableHeaderLocked2, tr.tableHeaderLocked2
+{
+  color:#000080;
+  font-size:10px;
+  font-weight:bold;
+  height:20px;
+  background-color:#F2F2F2;
+  left: expression(document.getElementById("ScrollablePane2").scrollRight); /* IE5+ only */
+  position: relative;
+  z-index: 10;
+}
+
+td.tableHeaderLocked1, tr.tableHeaderLocked1
+{
+  color:#000080;
+  font-size:10px;
+  font-weight:bold;
+  height:20px; 
+  background-color:#F2F2F2;
+  z-index: 10;
+}
+
+td.tableInputRowLocked, tr.tableInputRowLocked
+{
+  border-bottom:1px solid #073FA0;
+  background-color:#FFFFFF;
+  left: expression(document.getElementById("ScrollablePane").scrollRight); /* IE5+ only */
+  position: relative;
+  z-index: 10;
+}
+
+/*////////////////////////Start Tab button/////////////////////////////*/
+
+.tabSubMenu
+{
+  text-align: center;
+  width: 100%; /*leave this value as is in most cases*/
+  line-height:  12px;
+}
+
+.tabSubMenu ul
+{
+  margin: 0; 
+  padding: 0;
+  display: inline;
+  list-style-type: none;
+  float: left;
+  border: 1px solid #564c66; /*dark purple border*/
+  border-width: 1px 1;
+  background: #F1F1F1 ;
+  font-weight:bold;
+}
+
+.tabSubMenu ul li
+{
+  display: inline;
+}
+
+.tabSubMenu ul li a
+{
+  float: left;
+  color: black; /*text color*/
+  padding: 5px 11px;
+  text-decoration: none;
+  border-right: 1px solid #564c66; /*dark purple divider between menu items*/
+}
+
+.tabSubMenu ul li a:visited
+{
+  color: black;
+}
+
+.tabSubMenu ul li .current
+{
+  background: #6D84B4;
+  color: white !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/ 
+}
+
+.tabSubMenu ul li a:hover
+{
+  color: black !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/
+  text-decoration: underline;
+}
+/*////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+/*//////////////////////// Tab button For URL informations of the Script/////////////////////////////*/
+
+.tabMenuR
+{
+  text-align: center;
+  width: 100%;
+  height:100%/*leave this value as is in most cases*/
+  line-height:  10px;
+}
+
+.tabMenuR ul
+{
+  margin: 0; 
+  padding: 0;
+  display: inline;
+  list-style-type: none;
+  float: left;
+  border: 1px solid #564c66; /*dark purple border*/
+  border-width: 1px 1;
+  background: #F1F1F1 ;
+  font-weight:bold;
+}
+
+.tabMenuR ul li
+{
+  display: inline;
+}
+
+.tabMenuR ul li a
+{
+  float: left;
+  color: black; /*text color*/
+  padding: 4px 8px;
+  text-decoration: none;
+  border-right: 2px solid #564c66; /*dark purple divider between menu items*/
+}
+
+.tabMenuR ul li a:visited
+{
+  color: black;
+}
+
+.tabMenuR ul li .current
+{
+  background: #6D84B4;
+  color: white !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/ 
+}
+
+.tabMenuR ul li a:hover
+{
+  color: black !important; /*text color of selected and active item*/
+  padding-top: 6px; /*shift text down 1px for selected and active item*/
+  padding-bottom: 4px; /*shift text down 1px for selected and active item*/
+  text-decoration: underline;
+}
+
+.hide
+{
+  display: none;
+}
+
+.show
+{
+  display: '';
+}
+
+/*//////////////////////////////////////////////////////////////////*/
+
+
+.tableIPAddress
+{
+  border-top:1px solid #ABADB3;
+  border-left:1px solid #ABADB3;
+  border-bottom:1px solid #ABADB3;
+  border-right:1px solid #ABADB3;
+  font-size:10px;
+  color:black;
+  /**scrollbar-face-color:#3B5998; scrollbar-arrow-color:#FFF; scrollbar-3dlight-color:#CDD8AB**/
+}

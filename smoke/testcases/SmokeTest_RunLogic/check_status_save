@@ -1,0 +1,91 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+
+T_NAME=$(get_tname)
+
+function smoke_runlogic_switch()
+{
+    ExecutedTxName=`cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | awk 'NR==2'`
+}
+
+function smoke_runlogic_sequence()
+{
+    TotalSuccTxnCount=`grep "Trans. Success" $NS_WDIR/logs/TR$T_RUN_ID/summary.data | cut -d '|' -f5`
+    TxnExecutionSequence=`cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | sed -n '2,5p' | tr '\n' ',' | cut -d ',' -f1,2,3,4`
+}
+
+function smoke_runlogic_percentage()
+{
+    get_random_value=`grep get_random_number $NS_WDIR/logs/TR$T_RUN_ID/debug.log | awk 'NR==3' | cut -d '|' -f12 | cut -d ',' -f1 | awk '{print $3}'`
+    per_value_1=`grep $T_NAME $NS_WDIR/testcases/Smoke/Smoke/SmokeTest_RunLogic/iteration.spec | cut -d '|' -f6`
+    per_value_2=`grep $T_NAME $NS_WDIR/testcases/Smoke/Smoke/SmokeTest_RunLogic/iteration.spec | cut -d '|' -f7`
+    ExecutedTxName=`cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | awk 'NR==2'`
+    if [ $get_random_value -le $per_value_1 ];then
+       TxExec=TxnLoginLogout
+    else
+       TxExec=TxnPassenger
+    fi
+}
+
+case $T_NAME in 
+  "Smoke_RunLogic_Switch_default_negtvOne") smoke_runlogic_switch
+                                            if [ "$ExecutedTxName" == "TxnTours" ];then
+                                                log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                                            else
+                                                log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                                            fi;;
+  "Smoke_RunLogic_Switch_zero") smoke_runlogic_switch
+                                if [ "$ExecutedTxName" == "TxnLoginLogout" ];then
+                                    log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                                else
+                                    log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                                fi;;
+  "Smoke_RunLogic_Switch_one") smoke_runlogic_switch
+                               if [ "$ExecutedTxName" == "TxnPassenger" ];then
+                                   log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                               else
+                                   log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                               fi;;
+  "Smoke_RunLogic_Switch_negtvTwo") smoke_runlogic_switch
+                                    if [ "$ExecutedTxName" == "TxnReservation" ];then
+                                        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                                    else
+                                        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                                    fi;;
+  "Smoke_RunLogic_Switch_default_five") smoke_runlogic_switch
+                                        if [ "$ExecutedTxName" == "TxnTours" ];then
+                                            log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                                        else
+                                            log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                                        fi;;
+  "Smoke_RunLogic_Sequence") smoke_runlogic_sequence
+                             if [ "$TotalSuccTxnCount" == "4" ] && \
+                                [ "$TxnExecutionSequence" == "TxnLoginLogout,TxnPassengerDetail,TxnReservation,TxnTours" ];then
+                                 log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                             else
+                                 log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                             fi;;
+  "Smoke_RunLogic_Percentage_1") smoke_runlogic_percentage
+                             if [ "$ExecutedTxName" == "$TxExec" ];then
+                                 log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                             else
+                                 log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                             fi;;
+  "Smoke_RunLogic_Percentage_2") smoke_runlogic_percentage
+                             if [ "$ExecutedTxName" == "$TxExec" ];then
+                                 log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                             else
+                                 log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                             fi;;
+  "Smoke_RunLogic_Percentage_3") smoke_runlogic_percentage
+                             if [ "$ExecutedTxName" == "$TxExec" ];then
+                                 log_status_and_exit_ex "PASS" "$T_NAME Passed"
+                             else
+                                 log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+                             fi;;
+  *) echo "T_NAME is not matched any of the listed testcases";;
+
+esac
+
+exit 0

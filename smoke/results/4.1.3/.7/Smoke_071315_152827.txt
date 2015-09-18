@@ -1,0 +1,11 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-003-001,5435,4.1.3,7,NetStorm,pass,1,Autofetch one main url five autofetch url Passed
+SMOKE-003-002,5436,4.1.3,7,NetStorm,pass,1,Autofetch disabled Passed
+SMOKE-003-003,5437,4.1.3,7,NetStorm,pass,1,Autofetch enabled two embedded url Passed
+SMOKE-003-004,5438,4.1.3,7,NetStorm,pass,1,Autofetch disabled two embedded url Passed
+SMOKE-003-005,5439,4.1.3,7,NetStorm,pass,1,G_INLINE_INCLUDE_DOMAIN_PATTERN Passed
+SMOKE-003-006,5440,4.1.3,7,NetStorm,pass,1,G_INLINE_EXCLUDE_DOMAIN_PATTERN Passed
+SMOKE-003-007,5441,4.1.3,7,NetStorm,pass,1,G_INLINE_INCLUDE_URL_PATTERN ALL Passed
+SMOKE-003-008,5442,4.1.3,7,NetStorm,pass,1,G_INLINE_EXCLUDE_URL_PATTERN ALL Passed
+
+Failed: 0 test(s), Passed: 8 test(s), Total: 8 test(s)

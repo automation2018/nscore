@@ -1,0 +1,16 @@
+payload={ 
+    "MessageType" : "Return",
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.1.0.156",
+    "BundleVersion" : "2.2.2.83",
+    "ReturnDate" : { 
+        "theDate" : 634181778245781250,
+        "dateTimeKind" : "Local",
+        "dateString" : "{TransactionDateVar}"
+    },
+    "ReturnType" : 6,
+    "Barcode" : "{ReturnBarcodeVar}",
+    "Deck" : {DeckVar},
+    "Slot" : {SlotVar}
+}

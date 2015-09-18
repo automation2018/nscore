@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="8" total="8">
+        <testcase id="SMOKE-003-001">
+            <testrun>4914</testrun>
+            <status>pass</status>
+            <description>Autofetch one main url five autofetch url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-002">
+            <testrun>4915</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-003">
+            <testrun>4916</testrun>
+            <status>pass</status>
+            <description>Autofetch enabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-004">
+            <testrun>4917</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-005">
+            <testrun>4918</testrun>
+            <status>pass</status>
+            <description>G_INLINE_INCLUDE_DOMAIN_PATTERN Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-006">
+            <testrun>4919</testrun>
+            <status>pass</status>
+            <description>G_INLINE_EXCLUDE_DOMAIN_PATTERN Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-007">
+            <testrun>4920</testrun>
+            <status>pass</status>
+            <description>G_INLINE_INCLUDE_URL_PATTERN ALL Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-008">
+            <testrun>4921</testrun>
+            <status>pass</status>
+            <description>G_INLINE_EXCLUDE_URL_PATTERN ALL Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

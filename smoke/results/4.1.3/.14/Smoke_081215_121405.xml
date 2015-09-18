@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="2" total="3">
+        <testcase id="SMOKE-012-001">
+            <testrun>7972</testrun>
+            <status>pass</status>
+            <description>Runlogic for percentaged block flow test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-002">
+            <testrun>7973</testrun>
+            <status>fail</status>
+            <description>Runlogic for percentaged block flow test Failed</description>
+        </testcase>
+        <testcase id="SMOKE-012-003">
+            <testrun>7974</testrun>
+            <status>pass</status>
+            <description>Runlogic for percentaged block flow test Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

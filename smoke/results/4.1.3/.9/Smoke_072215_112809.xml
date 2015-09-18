@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="18" passed="17" total="35">
+        <testcase id="SMOKE-009-001">
+            <testrun>6081</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-001">
+            <testrun>6081</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-002">
+            <testrun>6082</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-002">
+            <testrun>6082</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-003">
+            <testrun>6083</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-003">
+            <testrun>6083</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-004">
+            <testrun>6084</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-004">
+            <testrun>6084</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-005">
+            <testrun>6085</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-005">
+            <testrun>6085</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-006">
+            <testrun>6086</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-006">
+            <testrun>6086</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-007">
+            <testrun>6087</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-007">
+            <testrun>6087</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-008">
+            <testrun>6088</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-008">
+            <testrun>6088</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-009">
+            <testrun>6089</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-009">
+            <testrun>6089</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-010">
+            <testrun>6090</testrun>
+            <status>pass</status>
+            <description> Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-010">
+            <testrun>6090</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-011">
+            <testrun>6091</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-011">
+            <testrun>6091</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-012">
+            <testrun>6092</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-012">
+            <testrun>6092</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-013">
+            <testrun>6093</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-013">
+            <testrun>6093</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-014">
+            <testrun>6094</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail  passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-014">
+            <testrun>6094</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-015">
+            <testrun>6095</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnUse passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-015">
+            <testrun>6095</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-016">
+            <testrun>6096</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnSession passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-016">
+            <testrun>6096</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-017">
+            <testrun>6097</testrun>
+            <status>pass</status>
+            <description>FileParam_5Url_ModeWeighted Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-018">
+            <testrun>6098</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+        <testcase id="SMOKE-009-019">
+            <testrun>6099</testrun>
+            <status>fail</status>
+            <description>FileParam_5Url_ModeWeighted Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

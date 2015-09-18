@@ -1,0 +1,273 @@
+#!/bin/bash
+
+#Making avalable of all utlities from lib file
+source $NS_WDIR/lib/automation_util
+
+#Declaring global variables
+T_NAME=$(get_tname)
+PAGE_FAIL=$(grep -r "Page Failures" $NS_WDIR/logs/TR$T_RUN_ID/summary.data |awk '{print $2}' | cut -d '|' -f2)
+FV_CSV_FILE="$NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_FirstView.csv"
+RV_CSV_FILE="$NS_WDIR/logs/TR$T_RUN_ID/reports/harp_csv/10_RepeatView.csv"
+
+HAR_DIR_PATH="$NS_WDIR/logs/TR$T_RUN_ID/rbu_logs/harp_files/"    
+HAR_STRING_1=$(grep "Har-File" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}' | cut -d '' -f1)
+HAR_STRING_2=$(grep "Har-File" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}' | cut -d '' -f1)
+
+FV_HAR_FILE="${HAR_DIR_PATH}""P_FirstView"+"demo"+"${HAR_STRING_1}"
+RV_HAR_FILE="${HAR_DIR_PATH}""P_RepeatView"+"demo"+"${HAR_STRING_2}"
+FV_TMP_FILE="/tmp/cached_requests_file_1"
+RV_TMP_FILE="/tmp/cached_requests_file_2"
+
+URL_REQ_FILE="$T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat"
+#End of declaring variables
+
+
+#This module fetch data from harp_csv files
+function get_csv_data(){
+    #CSV Data For First Page
+    csvDomLoad_1=$(awk -F "," '{print $3}' ${FV_CSV_FILE} | awk 'NR==2')
+    csvDomLoad1=$(echo "$csvDomLoad_1 * 1000" | bc | awk '{printf "%.0f\n", $1}')
+    csvOnLoad_1=$(awk -F "," '{print $4}' ${FV_CSV_FILE} | awk 'NR==2')
+    csvOnLoad1=$(echo "$csvOnLoad_1 * 1000" | bc| awk '{printf "%.0f\n", $1}')
+    csvPageLoad1=$(awk -F "," '{print $5}' ${FV_CSV_FILE} | awk 'NR==2')
+    csvNormalRequests1=$(awk -F "," '{print $6}' ${FV_CSV_FILE} | awk 'NR==2')
+    csvBrowserCacheRequests1=$(awk -F "," '{print $7}' ${FV_CSV_FILE} | awk 'NR==2')
+    
+    #CSV Data For Second Page
+    csvDomLoad_2=$(awk -F "," '{print $3}' ${RV_CSV_FILE} | awk 'NR==2')
+    csvDomLoad2=$(echo "$csvDomLoad_2 * 1000" | bc | awk '{printf "%.0f\n", $1}')
+    csvOnLoad_2=$(awk -F "," '{print $4}' ${RV_CSV_FILE} | awk 'NR==2')
+    csvOnLoad2=$(echo "$csvOnLoad_2 * 1000" | bc| awk '{printf "%.0f\n", $1}')
+    csvPageLoad2=$(awk -F "," '{print $5}' ${RV_CSV_FILE} | awk 'NR==2')
+    csvNormalRequests2=$(awk -F "," '{print $6}' ${RV_CSV_FILE} | awk 'NR==2')
+    csvBrowserCacheRequests2=$(awk -F "," '{print $7}' ${RV_CSV_FILE} | awk 'NR==2')
+}
+
+
+#This module will fetch data from .har files 
+function get_har_data(){
+    #HAR Data for First Page
+    totalRequests1=$(grep "\"url"\"\: ${FV_HAR_FILE} | wc -l)
+    grep "\"_cav_cache_provider"\"\: ${FV_HAR_FILE} >${FV_TMP_FILE}
+    harBrowserCacheRequests1=$(egrep -v "NA\|Origin\|Akamai\|Cloudfront" <${FV_TMP_FILE} | wc -l)
+    harNormalRequests1=$(expr $totalRequests1 - $harBrowserCacheRequests1)
+    harOnLoad1=$(grep "\"onLoad"\"\: ${FV_HAR_FILE} | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+    harDomLoad1=$(grep "\"onContentLoad"\"\: ${FV_HAR_FILE} | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+    
+    #HAR Data for Second Page
+    totalRequests2=$(grep "\"url"\"\: ${RV_HAR_FILE} | wc -l)
+    grep "\"_cav_cache_provider"\"\: ${RV_HAR_FILE} >${RV_TMP_FILE}
+    harBrowserCacheRequests2=$(egrep -v "NA\|Origin\|Akamai\|Cloudfront" <${RV_TMP_FILE} | wc -l)
+    harNormalRequests2=$(expr $totalRequests2 - $harBrowserCacheRequests2)
+    harOnLoad2=$(grep "\"onLoad"\"\: ${RV_HAR_FILE} | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+    harDomLoad2=$(grep "\"onContentLoad"\"\: ${RV_HAR_FILE} | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+}
+
+
+#This module will comapre har and csv data and send status to handale_rbu_basic_functions_case module
+function compare_csv_and_har_values(){
+    local RC=0
+    
+    if [ ! -f "${FV_HAR_FILE}" ] || \
+       [ ! -f "${RV_HAR_FILE}" ] || \
+       [ ! -f "${FV_CSV_FILE}" ] || \
+       [ ! -f "${RV_CSV_FILE}" ] ; then
+        RC=1
+        return $RC
+    fi
+
+    get_har_data
+    get_csv_data
+
+    if [ "$csvDomLoad1" == "$harDomLoad1" ] && \
+       [ "$csvOnLoad1" == "$harOnLoad1" ] && \
+       [ "$csvDomLoad2" == "$harDomLoad2" ] && \
+       [ "$csvOnLoad2" == "$harOnLoad2" ] && \
+       [ $totalRequests1 -ge $totalRequests2 ];then
+        RC=2
+        return $RC
+    else
+	RC=3
+        return $RC
+    fi
+   
+    return $RC
+}
+
+
+function get_firefox_headers_info(){
+    #echo "inside firefox header info getter module"
+    UAgent=$(grep "User-Agent" ${URL_REQ_FILE} | awk '{print $2}' | cut -d '' -f1)
+    Via=$(grep "Via" ${URL_REQ_FILE} | cut -d " " -f2,3 | cut -d '' -f1)
+    Url=$(grep "GET" ${URL_REQ_FILE} | cut -d '' -f1)
+    CustHeader=$(grep "automation" ${URL_REQ_FILE} | cut -d '' -f1)
+    local HEADER_FLAG=0
+
+    if [ "$UAgent" == "RBU_FIREFOX_USER_AGENT" ] && \
+       [ "$Via" == "Netstorm Firefox" ] && \
+       [ "$Url" == "GET http://10.10.30.38/tours/index.html HTTP/1.1" ] && \
+       [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ $PAGE_FAIL -eq 0 ] && \
+       [ "$CustHeader" == "automation: header" ];then
+        #echo "Matched"
+        HEADER_FLAG=1
+        #echo "HEADER_FLAG=$HEADER_FLAG"
+        return $HEADER_FLAG
+    else
+        #echo "Didn't match"
+        HEADER_FLAG=2
+        #echo "HEADER_FLAG=$HEADER_FLAG"
+        return $HEADER_FLAG
+    fi
+    
+    #echo "HEADER_FLAG=$HEADER_FLAG"
+    return $HEADER_FLAG
+}
+
+
+function get_chromium_headers_info(){
+    #echo "inside chrome header info getter module"
+    UAgent=$(grep "User-Agent" ${URL_REQ_FILE} | awk '{print $2}' | cut -d '' -f1)
+    Via=$(grep "Via" ${URL_REQ_FILE} | cut -d " " -f2,3 | cut -d '' -f1)
+    Url=$(grep "GET" ${URL_REQ_FILE} | cut -d '' -f1)
+    CustHeader=$(grep "automation" ${URL_REQ_FILE} | cut -d '' -f1)
+    local HEADER_FLAG=0
+  
+    if [ "$UAgent" == "RBU_CHROME_USER_AGENT" ] && \
+       [ "$Via" == "System Chrome" ] && \
+       [ "$Url" == "GET http://10.10.30.38/tours/index.html HTTP/1.1" ] && \
+       [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ $PAGE_FAIL -eq 0 ] && \
+       [ "$CustHeader" == "automation: header" ];then
+        #echo "Matched"
+        HEADER_FLAG=1
+        return $HEADER_FLAG
+    else
+        #echo "Didn't match"
+        HEADER_FLAG=2
+        return $HEADER_FLAG
+    fi
+    
+    #echo "HEADER_FLAG=$HEADER_FLAG"
+    return $HEADER_FLAG
+}
+
+
+function handale_firefox_custom_header_case(){
+    method=$1
+    compare_csv_and_har_values
+    RC=$?
+    #echo "RC=$RC"
+    
+    if [ $RC -eq 1 ] ; then 
+        log_status_and_exit_ex "FAIL" "some of the har or csv files are not made for current testcase"
+    elif [ $RC -eq 3 ] ;then    
+        log_status_and_exit_ex "FAIL" "values mismatch between har and csv files"
+    elif [ $RC -eq 0 ] ;then    
+        log_status_and_exit_ex "FAIL" "some code modules in check staus are skipped"
+    else    
+        STATUS=Success
+    fi
+    
+    #echo "calling firefox header info getter module"
+    get_firefox_headers_info
+    HEADER_FLAG=$?
+
+    if [ $HEADER_FLAG -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "firefox custom header for $method requests informations for were matched as per conditions"
+    else
+        log_status_and_exit_ex "FAIL" "firefox custom header informations were mismatched for $method requests"
+    fi
+}
+
+
+function handale_chrome_custom_header_case(){
+    method=$1
+    compare_csv_and_har_values
+    RC=$?
+    #echo "RC=$RC"
+     
+    if [ $RC -eq 1 ] ; then 
+        log_status_and_exit_ex "FAIL" "some of the har or csv files are not made for current testcase"
+    elif [ $RC -eq 3 ] ;then    
+        log_status_and_exit_ex "FAIL" "values mismatch between har and csv files"
+    elif [ $RC -eq 0 ] ;then    
+        log_status_and_exit_ex "FAIL" "some code modules in check staus are skipped"
+    else    
+        STATUS=Success
+    fi
+   
+    #echo "calling chrome header info getter module"
+    get_chromium_headers_info
+    HEADER_FLAG=$?
+
+    if [ $HEADER_FLAG -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "chromium custom header for $method requests informations were matched as per conditions"
+    else
+        log_status_and_exit_ex "FAIL" "chromium custom header informations were mismatched for $method requests"
+    fi
+}
+
+
+#This module will be used to check the final status of each cases
+function handale_rbu_basic_functions_case(){
+    compare_csv_and_har_values
+
+    RC=$?
+      
+    if [ $RC -eq 1 ] ; then 
+        log_status_and_exit_ex "FAIL" "some of the har or csv files are not made for current testcase"
+    elif [ $RC -eq 3 ] ;then    
+        log_status_and_exit_ex "FAIL" "values mismatch between har and csv files"
+    elif [ $RC -eq 0 ] ;then    
+        log_status_and_exit_ex "FAIL" "some codes modules in check staus were skipped during execution"
+    else [ $RC -eq 2 ] 
+        STATUS=Success
+    fi
+
+    echo "STATUS=$STATUS"
+
+    if [ $SD_TotalSuccURL -eq 2 ] && \
+       [ $SD_URLFailures -eq 0 ] && \
+       [ $PAGE_FAIL -eq 0 ];then
+	log_status_and_exit_ex "PASS" "har and csv values found equal; also no url failures occured for rbu test"   
+    else
+	log_status_and_exit_ex "FAIL" "url failures occured during the test"
+    fi
+}
+
+
+#This module will fetch the T_NAME and call neccesary modules for further operations
+function match_tname_and_forward(){
+    if [ "XX$T_NAME" == "XXSMOKE-011-001" ];then
+	handale_rbu_basic_functions_case 
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-002" ];then
+	handale_rbu_basic_functions_case
+    fi
+    
+    if [ "XX$T_NAME" == "XXSMOKE-011-003" ];then
+       handale_firefox_custom_header_case GET
+    fi
+    
+    if [ "XX$T_NAME" == "XXSMOKE-011-004" ];then
+       handale_firefox_custom_header_case POST
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-005" ];then
+       handale_chrome_custom_header_case GET
+    fi
+
+    if [ "XX$T_NAME" == "XXSMOKE-011-006" ];then
+       handale_chrome_custom_header_case POST
+    fi
+}
+
+
+#master module 
+match_tname_and_forward
+
+exit 0

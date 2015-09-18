@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="3" passed="0" total="0">
+        <testcase id="SMOKE_TenDSrvrURL_Sce2Dep">
+            <testrun>TR1415</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TenDSrvrURL_Sce2Dep failed</description>
+        </testcase>
+        <testcase id="SMOKE_OneDSrvr_RelativePath">
+            <testrun>TR1416</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_OneDSrvr_RelativePath failed</description>
+        </testcase>
+        <testcase id="SMOKE_DifHost_Redirection">
+            <testrun>TR1417</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_DifHost_Redirection failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

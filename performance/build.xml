@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<!--Declaring the main project for Perfomance Test. By default this will execute the perf target.-->
+<project name="core-performance" basedir="." default="perf">
+
+
+    <!--Task: Declaring build variable values-->
+    <property file="build.properties"/>
+
+    <target name="dir.check">
+        <fileset dir="${scripts.dirs.abs.path}" id="fileset"/>
+        <fileset dir="${scenarios.files.abs.path}" id="fileset"/>
+        <fileset dir="${testcases.dirs.abs.path}" id="fileset"/>
+        <fileset dir="${testsuites.files.abs.path}" id="fileset"/>
+        <pathconvert refid="fileset" property="dir.contains-files" setonempty="false"/>
+    </target>    
+    
+    <!--Task: Clean the test scenario directories from respective paths-->
+    <target name="clean" description="clean">
+        <delete dir="${scripts.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${scenarios.files.abs.path}" failonerror="false"/>
+        <delete dir="${testcases.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${testsuites.files.abs.path}" failonerror="false"/>
+    </target>
+    
+    <!--Task: Copy and modify the test scenario directories to rescpective locations-->
+    <target name="copy-of-testscenario-sctructure" depends="clean">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+     
+    <!--Task: Remote copy hpd.conf file to NO server to run CPS metric-->
+    <target name="copy-hpd-file">
+        <scp file="${hpd.conf.perf}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+
+    <!--Task: Remote copy hpd.conf file to NO server to run HPS, Throughput & Concurrency metric-->
+    <target name="copy-hpd-hps-file">
+        <scp file="${hpd.conf.perf.hps}" todir="${remote.user}@${remote.host}:${hpd.conf.no}" password="${remote.password}" trust="true"/>
+    </target>
+   
+    <!--Task: Restart NO server to run CPS metric--> 
+    <target name="hpd-process-restart" depends="copy-hpd-file, copy-of-testscenario-sctructure">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+    <!--Task: Restart NO server to run HPS,  HPS, Throughput & Concurrency metric--> 
+    <target name="hpd-process-restart-for-hps-and-throughput" depends="copy-hpd-hps-file">
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.restart}" trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}" username="${remote.user}" password="${remote.password}" command="${command.hpd.show}" trust="true" outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+   
+    <!--Task: For debugging of performance suite-->
+    <target name="debug" depends="copy-of-testscenario-sctructure">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+         </exec>
+    </target>
+    
+    <!--Task: This target runs the automation suite for CPS metric-->
+    <target name="Performance_Cps" depends="hpd-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance_Cps"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <!--Task: This target runs the automation suite for HPS, Throughput & Concurrency metric-->
+    <target name="Performance" depends="Performance_Cps, hpd-process-restart-for-hps-and-throughput">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <!--Task: Upload test results to analalytics.db-->
+    <target name="perf" depends="Test-StartUp-Mail, Performance, Mail-With-TestResults">
+        <exec executable="python">
+            <arg value="${perf.db_upload}"/>
+            <arg value="${perf.input.file}"/>
+            <arg value="${perf.database}"/>
+            <arg value="True"/>
+        </exec>
+    </target>
+   
+    <!--Task: Update mail.properties prior to Test Start Mail Send--> 
+    <target name="get_start_mail_values">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <!--Task: Send Performance Automation start mail-->
+    <target name="Test-StartUp-Mail" depends="get_start_mail_values">
+        <property file="mail.properties"/>
+        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="Performance: NSCore ${curr.release} B${curr.build} - Started" messagefile="${startup.mail.file}">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    </target>
+
+   <!--Task: Update mail.properties prior to automation result mail Send--> 
+   <target name="get_test_results">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_results"/>
+        </exec>
+    </target>
+   
+   <!--Task: Send Performance Automation Results with attachments-->
+   <target name="Mail-With-TestResults" depends="get_test_results"> 
+       <property file="mail.properties"/>
+       <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" messagefile="${mail.result.file}">
+           <from address="automation@cavisson.com"/>   		   
+           <attachments> <fileset dir="${perf.results.dir}">
+               <include name="${first.attachment}"/>
+               <include name="${second.attachment}"/> </fileset>
+           </attachments>	   
+       </mail>	       
+   </target>	   
+
+</project>

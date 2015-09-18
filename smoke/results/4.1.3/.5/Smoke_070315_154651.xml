@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="3" passed="0" total="3">
+        <testcase id="Smoke_OneUrl_MultiPart_With_Boundary">
+            <testrun>4329</testrun>
+            <status>fail</status>
+            <description>Smoke_OneUrl_MultiPart_With_Boundary failed</description>
+        </testcase>
+        <testcase id="Smoke_OneUrl_MultiPart_Without_Boundary">
+            <testrun>4330</testrun>
+            <status>fail</status>
+            <description>Smoke_OneUrl_MultiPart_Without_Boundary failed</description>
+        </testcase>
+        <testcase id="Smoke_MultiPart_Nested">
+            <testrun>4331</testrun>
+            <status>fail</status>
+            <description>Smoke_MultiPart_Nested failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

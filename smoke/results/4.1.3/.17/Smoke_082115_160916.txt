@@ -1,0 +1,123 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-001-001,8304,4.1.3,17,NetStorm,pass,1,ns_save_string() api Passed
+SMOKE-001-002,8305,4.1.3,17,NetStorm,pass,1,ns_eval_string() Passed
+SMOKE-001-003,8306,4.1.3,17,NetStorm,pass,1,ns_adv_param() Passed
+SMOKE-001-004,8307,4.1.3,17,NetStorm,pass,1,ns_adv_param() negative condition Passed
+SMOKE-001-005,8308,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-006,8309,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-007,8310,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-008,8311,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-009,8312,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-010,8313,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-011,8314,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-012,8315,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-013,8316,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-014,8317,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-015,8318,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-016,8319,4.1.3,17,NetStorm,pass,1,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-017,8320,4.1.3,17,NetStorm,pass,1,Smoke_SET_INT_VAL_API_TEST Passed
+SMOKE-001-018,8321,4.1.3,17,NetStorm,pass,1,Smoke_GET_INT_VAL_API_TEST Passed
+SMOKE-001-019,8322,4.1.3,17,NetStorm,pass,1,Smoke_GET_RANDOM_STR_API_TEST Passed
+SMOKE-001-020,8323,4.1.3,17,NetStorm,pass,1,Smoke_GETTERS_API_TEST Passed
+SMOKE-001-021,8324,4.1.3,17,NetStorm,pass,1,Smoke_CHK_STR_CPY_API_TEST Passed
+SMOKE-003-001,8325,4.1.3,17,NetStorm,pass,1,Autofetch one main url five autofetch url Passed
+SMOKE-003-002,8326,4.1.3,17,NetStorm,pass,1,Autofetch disabled Passed
+SMOKE-003-003,8327,4.1.3,17,NetStorm,pass,1,Autofetch enabled two embedded url Passed
+SMOKE-003-004,8328,4.1.3,17,NetStorm,pass,1,Autofetch disabled two embedded url Passed
+SMOKE-003-005,8329,4.1.3,17,NetStorm,pass,1,Autofetch Inline Include Domain Passed
+SMOKE-003-006,8330,4.1.3,17,NetStorm,pass,1,Autofetch Inline Exclude Domain Passed
+SMOKE-003-007,8331,4.1.3,17,NetStorm,pass,1,Autofetch Inline Include Url Pattern Passed
+SMOKE-003-008,8332,4.1.3,17,NetStorm,pass,1,Autofetch Inline Exclude Url Pattern Passed
+SMOKE-004-001,8333,4.1.3,17,NetStorm,pass,1,Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed
+SMOKE-004-002,8334,4.1.3,17,NetStorm,pass,1,Auto Redirect One Depth Server URL with relative path Passed
+SMOKE-004-003,8335,4.1.3,17,NetStorm,pass,1,Auto Redirect For Different Host Test Passed
+SMOKE-004-004,8336,4.1.3,17,NetStorm,pass,1,Auto Redirect For Relative To Absolute redirection Passed
+SMOKE-004-005,8337,4.1.3,17,NetStorm,pass,1,Auto Redirect For Different Protocol Url Passed
+SMOKE-004-006,8338,4.1.3,17,NetStorm,fail,1,Manual redirection smoke test Failed
+SMOKE-005-001,8339,4.1.3,17,NetStorm,pass,1,Four URL Test without expiry cookie and cookie mode 1 Passed
+SMOKE-005-002,8340,4.1.3,17,NetStorm,pass,1,Four URL Test with expiry cookie and cookie mode 1 Passed
+SMOKE-005-003,8341,4.1.3,17,NetStorm,pass,1,Four URL Test with expiry code and cookie mode 1  Passed
+SMOKE-005-004,8342,4.1.3,17,NetStorm,pass,1,Two URL Test with command line cookie and cookie mode 1 Passed
+SMOKE-006-001,8343,4.1.3,17,NetStorm,pass,1,KeepAlive with percentage 100 Passed
+SMOKE-006-002,8344,4.1.3,17,NetStorm,pass,1,KeepAlive with percentage 0 Passed
+SMOKE-007-001,8345,4.1.3,17,NetStorm,pass,1,One Url MultiPart With Boundary Passed
+SMOKE-007-002,8346,4.1.3,17,NetStorm,pass,1,One Url MultiPart Without Boundary Passed
+SMOKE-007-003,8347,4.1.3,17,NetStorm,pass,1,One Url MultiPart Nested Boundries Passed
+SMOKE-008-001,8348,4.1.3,17,NetStorm,pass,1,Page think time with constant mode Passed
+SMOKE-008-002,8349,4.1.3,17,NetStorm,pass,1,Page think time with uniform distribution mode Passed
+SMOKE-008-003,8350,4.1.3,17,NetStorm,pass,1,Page think time with internet type distribution mode Passed
+SMOKE-008-004,8351,4.1.3,17,NetStorm,pass,1,Page think time keyword for specific page Passed
+SMOKE-008-005,8352,4.1.3,17,NetStorm,pass,1,Page think time keyword with overide and multiply values Passed
+SMOKE-008-006,8353,4.1.3,17,NetStorm,pass,1,Page think time keyword with overide random percentage values Passed
+SMOKE-009-001,8354,4.1.3,17,NetStorm,pass,1,Search in two main url Passed
+SMOKE-009-002,8355,4.1.3,17,NetStorm,pass,1,Search in two main url with savelength mode Passed
+SMOKE-009-003,8356,4.1.3,17,NetStorm,pass,1,Search for two main url with save length and save offset mode  Passed
+SMOKE-009-004,8357,4.1.3,17,NetStorm,pass,1,Search for two main url with save length and save offset mode Passed
+SMOKE-009-005,8358,4.1.3,17,NetStorm,pass,1,Search for two main url with save length and save offset mode in 2 pages Passed
+SMOKE-009-006,8359,4.1.3,17,NetStorm,pass,1,Search for two main url with save length and save offset mode in 2 pages Passed
+SMOKE-009-007,8360,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value found Passed
+SMOKE-009-008,8361,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value not found Passed
+SMOKE-009-009,8362,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix found Passed
+SMOKE-009-010,8363,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix not found Passed
+SMOKE-009-011,8364,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix found and ActionOnfailContinue Passed
+SMOKE-009-012,8365,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix not found ActionOnfailStop Passed
+SMOKE-009-013,8366,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix found comparing from a file Passed
+SMOKE-009-014,8367,4.1.3,17,NetStorm,pass,1,Checkpoint with two main url check value with prefix and suffix not found Passed
+SMOKE-009-015,8368,4.1.3,17,NetStorm,pass,1,File Parameter 5 main url ChangeOnUse Passed
+SMOKE-009-016,8369,4.1.3,17,NetStorm,pass,1,File Parameter 5 main url ChangeOnSession Passed
+SMOKE-009-017,8370,4.1.3,17,NetStorm,pass,1,File Parameter 5 url ModeWeighted Passed
+SMOKE-009-018,8371,4.1.3,17,NetStorm,pass,1,Serach Param for two main url Passed
+SMOKE-009-019,8372,4.1.3,17,NetStorm,pass,1,Search Param for 5 url with single page search savelenght and saveoffset and ORD all Passed
+SMOKE-010-001,8373,4.1.3,17,NetStorm,pass,1,DNS A type query Passed
+SMOKE-010-002,8374,4.1.3,17,NetStorm,pass,1,DNS AAAA type query Passed
+SMOKE-010-003,8375,4.1.3,17,NetStorm,pass,1,DNS MX type query Passed
+SMOKE-010-004,8376,4.1.3,17,NetStorm,pass,1,DNS NS type query Passed
+SMOKE-010-005,8377,4.1.3,17,NetStorm,pass,1,DNS SOA type query Passed
+SMOKE-010-006,8378,4.1.3,17,NetStorm,pass,1,DNS PTR type query Passed
+SMOKE-010-007,8379,4.1.3,17,NetStorm,pass,1,DNS CNAME type query Passed
+SMOKE-010-008,8380,4.1.3,17,NetStorm,pass,1,POP3 testcase Passed
+SMOKE-010-009,8381,4.1.3,17,NetStorm,pass,1,Ftp test for text data and passive mode Passed
+SMOKE-010-010,8382,4.1.3,17,NetStorm,pass,1,Ftp test for binary data and passive mode Passed
+SMOKE-010-011,8383,4.1.3,17,NetStorm,pass,1,Ftp test for text data and active mode Passed
+SMOKE-010-012,8384,4.1.3,17,NetStorm,pass,1,Ftp test for binary data and active mode Passed
+SMOKE-010-013,8385,4.1.3,17,NetStorm,pass,1,SMTP test Passed
+SMOKE-010-014,8386,4.1.3,17,NetStorm,pass,1,IMAP test for FETCH HEADER Passed
+SMOKE-010-015,8387,4.1.3,17,NetStorm,pass,1,IMAP test for FETCH TEXT Passed
+SMOKE-010-016,8388,4.1.3,17,NetStorm,pass,1,IMAP test for FETCH BODY Passed
+SMOKE-010-017,8389,4.1.3,17,NetStorm,pass,1,Hessian Protocol version 1.0 Test Passed
+SMOKE-010-018,8390,4.1.3,17,NetStorm,pass,1,Hessian Protocol version 2.0 Test Passed
+SMOKE-011-001,8391,4.1.3,17,NetStorm,pass,1,RBU basic functionalities Passed
+SMOKE-011-002,8392,4.1.3,17,NetStorm,fail,1,RBU basic functionalities Failed
+SMOKE-011-003,8393,4.1.3,17,NetStorm,pass,1,RBU headers for firefox browser Passed
+SMOKE-011-004,8394,4.1.3,17,NetStorm,pass,1,RBU headers for firefox browser Passed
+SMOKE-011-005,8395,4.1.3,17,NetStorm,pass,1,RBU headers for chromium browser Passed
+SMOKE-011-006,8396,4.1.3,17,NetStorm,pass,1,RBU headers for chromium browser Passed
+SMOKE-012-001,8397,4.1.3,17,NetStorm,pass,1,Runlogic for percentaged block flow test Passed
+SMOKE-012-002,8398,4.1.3,17,NetStorm,pass,1,Runlogic for percentaged block flow test Passed
+SMOKE-012-003,8399,4.1.3,17,NetStorm,pass,1,Runlogic for percentaged block flow test Passed
+SMOKE-012-004,8400,4.1.3,17,NetStorm,pass,1,Runlogic for sequence flows test Passed
+SMOKE-012-005,8401,4.1.3,17,NetStorm,pass,1,Runlogic for handle_switch_case block test Passed
+SMOKE-012-006,8402,4.1.3,17,NetStorm,pass,1,Runlogic for handle_switch_case block test Passed
+SMOKE-012-007,8403,4.1.3,17,NetStorm,pass,1,Runlogic for handle_switch_case block test Passed
+SMOKE-012-008,8404,4.1.3,17,NetStorm,pass,1,Runlogic for handle_switch_case block test Passed
+SMOKE-012-009,8405,4.1.3,17,NetStorm,pass,1,Runlogic for handle_switch_case block test Passed
+SMOKE-013-001,8406,4.1.3,17,NetStorm,pass,1,SyncPoint Before FirstTrans 10Users all users release Passed
+SMOKE-013-002,8407,4.1.3,17,NetStorm,pass,1,SyncPoint Before FirstTrans 10Users 5 users release  Passed
+SMOKE-013-003,8408,4.1.3,17,NetStorm,pass,1,SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed
+SMOKE-013-004,8409,4.1.3,17,NetStorm,pass,1,SyncPoint In Between Transasctions 10 Users all users release Passed
+SMOKE-013-005,8410,4.1.3,17,NetStorm,pass,1,SyncPoint Before First Page 10 Users all users release Passed
+SMOKE-013-006,8411,4.1.3,17,NetStorm,pass,1,SyncPoint In Between Pages 10Users 5users release Passed
+SMOKE-014-001,8412,4.1.3,17,NetStorm,pass,1,NS add header with Main url Passed
+SMOKE-014-002,8413,4.1.3,17,NetStorm,pass,1,NS add header with Embedded url Passed
+SMOKE-014-003,8414,4.1.3,17,NetStorm,pass,1,NS add header with both Main and Embedded urls Passed
+SMOKE-014-004,8415,4.1.3,17,NetStorm,pass,1,NS auto add header with Main urls Passed
+SMOKE-014-005,8416,4.1.3,17,NetStorm,pass,1,NS auto add header with Embedded urls Passed
+SMOKE-014-006,8417,4.1.3,17,NetStorm,pass,1,NS auto add header with Mix Mode urls Passed
+SMOKE-014-007,8418,4.1.3,17,NetStorm,pass,1,NS clean-up header Passed
+SMOKE-014-008,8419,4.1.3,17,NetStorm,pass,1,NS remove auto header Passed
+SMOKE-014-009,8420,4.1.3,17,NetStorm,pass,1,NS add and remove header combined Passed
+SMOKE-015-001,8421,4.1.3,17,NetStorm,pass,1,NetworkCache test for both cacheable and non-cacheable request Passed
+SMOKE-015-002,8422,4.1.3,17,NetStorm,pass,1,NetworkCache test with NetOcean server having default URL Passed
+SMOKE-015-003,8423,4.1.3,17,NetStorm,pass,1,NetworkCache test with NetOcean server having parameterized requests Passed
+
+Failed: 2 test(s), Passed: 118 test(s), Total: 120 test(s)

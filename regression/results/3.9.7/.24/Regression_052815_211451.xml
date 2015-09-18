@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="2" total="3">
+        <testcase id="REGRESSION001">
+            <testrun>TR1742</testrun>
+            <status>PASS</status>
+            <description>Regression001 is passed</description>
+        </testcase>
+        <testcase id="REGRESSION003_Withoutwan">
+            <testrun>TR1743</testrun>
+            <status>FAIL</status>
+            <description>Diff from baseline for Running_User_Change_Pct is more than 5%:Regression003</description>
+        </testcase>
+        <testcase id="REGRESSION004_Withoutwan">
+            <testrun>TR1744</testrun>
+            <status>PASS</status>
+            <description>Regression004 is passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

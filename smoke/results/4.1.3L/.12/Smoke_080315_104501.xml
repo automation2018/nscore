@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="17" total="18">
+        <testcase id="SMOKE-013-001">
+            <testrun>7050</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users all users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-002">
+            <testrun>7051</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users 5 users release  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-003">
+            <testrun>7052</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-004">
+            <testrun>7053</testrun>
+            <status>pass</status>
+            <description>SyncPoint In Between Transasctions 10 Users all users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-005">
+            <testrun>7054</testrun>
+            <status>fail</status>
+            <description>SyncPoint Before First Page 10 Users all users release Failed</description>
+        </testcase>
+        <testcase id="SMOKE-013-006">
+            <testrun>7055</testrun>
+            <status>pass</status>
+            <description>SyncPoint In Between Pages 10Users 5users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-001">
+            <testrun>7056</testrun>
+            <status>pass</status>
+            <description>NS add header with Main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-002">
+            <testrun>7057</testrun>
+            <status>pass</status>
+            <description>NS add header with Embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-003">
+            <testrun>7058</testrun>
+            <status>pass</status>
+            <description>NS add header with both Main and Embedded urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-004">
+            <testrun>7059</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Main urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-005">
+            <testrun>7060</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Embedded urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-006">
+            <testrun>7061</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Mix Mode urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-007">
+            <testrun>7062</testrun>
+            <status>pass</status>
+            <description>NS clean-up header Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-008">
+            <testrun>7063</testrun>
+            <status>pass</status>
+            <description>NS remove auto header Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-009">
+            <testrun>7064</testrun>
+            <status>pass</status>
+            <description>NS add and remove header combined Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-001">
+            <testrun>7065</testrun>
+            <status>pass</status>
+            <description>NetworkCache test for both cacheable and non-cacheable request Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-002">
+            <testrun>7066</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having default URL Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-003">
+            <testrun>7067</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having parameterized requests Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

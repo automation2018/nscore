@@ -1,0 +1,304 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset="><!--
+  Name   : login.jsp
+  Author : Prateek/Neeraj
+  Purpose: NetStorm Login screen . It provides access to the following:
+           - Recorder GUI
+           - Contoller GUI
+           - Real Time Graphs GUI
+           - Analyze GUI
+
+  Notes  :    None
+  Creation Date:
+    06/18/05:Prateek:0.1 - Initial Version
+    
+  Modification History:
+    06/18/05:Prateek:0.1 - Initial Version
+    12/06/10:Ankit Khanijau:3.7.6 - Look and Feel feature usin YUI.
+    
+-->    
+
+
+
+
+<!-- This is required for firefox b'coz it does not refresh the screen.when we select the option then click on another tab or OK button after again open the same screen . It does not show the changed value means it takes value from the cache.when we reload the screen then it gives new value. -->
+
+
+
+
+
+
+
+<script language="javascript" src="../js/sortableTable.js"></script>
+<script language="javascript" src="../js/validation.js"></script>
+
+<script language="javascript" src="../js/nsStringUtils.js"></script>
+<script language="javascript" src="../js/nsDateUtils.js"></script>
+<script language="javascript" src="../js/nsUtils.js"></script>
+
+<script language="javascript" src="../js/help.js"></script>
+
+<script language="javascript" src="adminUtils.js"></script>
+
+<!-- Combo-handled YUI JS files: -->
+<!--<script type="text/javascript" src="./../../../yui.yahooapis.com/combo_2.8.2r1_build_yahoo-dom-event_yahoo-dom-event.js"></script>
+<script type="text/javascript" src="./../../../yui.yahooapis.com/combo__2.8.2r1_build_container_container_core-min.js"></script>
+<script type="text/javascript" src="./../../../yui.yahooapis.com/combo_2.8.2r1_build_menu_menu-min.js"></script>-->
+
+<script language="javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script language="javascript" src="../yui/js/container_core-min.js"></script>
+<script language="javascript" src="../yui/js/menu-min.js"></script>
+
+
+
+<script language="javascript">
+
+
+  /*
+  Name   : admCmdErrorCheck.jspf
+  Author : Vikas
+  Purpose: To show error message when error generated in execution of command
+           
+  Notes  :
+    None
+  Modification History:
+    4/21/06: Vikas: 1.0 - Initial Version
+*/
+
+ 
+
+
+// var message="";
+var strUserAgent = navigator.userAgent.toLowerCase();
+var isIE = strUserAgent.indexOf("msie") > -1;
+
+function sub(action)
+{
+  if(isIE)
+  {
+    if(action.keyCode == 13)
+    validate();
+  }
+  else if(action.which == 13)
+    validate();
+}
+
+function onLoadFunction()
+{
+  // If any command on button click failed, then show error widnow without closing
+  // parent window
+  if(false)
+  {
+    window.open('admCmdError.jsp', "_blank", "height=500, width=600, toolbar=no, menubar=no, location=no, directories=no, resizable=no, status=no");
+  }
+
+  // window.resizeTo(600,600); 
+  init();
+  
+  var setFocusOnUserID = document.getElementById("Userid");
+  //if(setFocusOnUserID == "")
+    setFocusOnUserID.focus();
+}
+
+function validate()
+{
+  var userId = document.getElementById("Userid").value;
+  var password = document.getElementById("Password").value;
+  
+  if(userId != "")
+  {
+    userId = trim(userId);
+    userId = trim(userId);
+  }
+  if(password != "")
+  {
+    password = trim(password);
+    password = trim(password);
+  }
+ 
+  if(userId.length == 0 || userId.indexOf(" ") != -1)
+  {
+    alert("User name is blank");
+    var setFocusOnUserID = document.getElementById("Userid");
+    setFocusOnUserID.focus(); 
+    return false;
+  }
+
+ /* if((Userid == "root") || (Userid == "netstorm"))
+  {
+    alert("User cannot be root or netstorm");
+    document.frmMain.txtUserid.focus();
+  return false;
+  }*/
+
+  if(password.length == 0)
+  {
+    alert("Password is blank");
+    var setFocusOnPassword = document.getElementById("Password");
+    setFocusOnPassword.focus();
+    return false;
+  }
+
+  //Passin of userId and password as : in Mozilla, username & password is not get by request.getParameter() method due to merging of existing code with YUI.
+  submitJSP("loginUser", userId + " " + password);
+}
+
+function openChangePassword()
+{
+  window.open("changePassword.jsp", '_blank');
+}
+
+
+function blink(layerName)
+{
+  var i = 0;
+
+  if(i%2==0)
+    eval("document.getElementById('" + layerName + "').style.visibility='visible'");
+  else
+    eval("document.getElementById('" + layerName + "').style.visibility='hidden'");
+  if(i<1)
+    i++;
+  else
+    i--;
+}//end of function blink
+
+
+
+function init()
+{
+  if (!YAHOO.example.container.wait)
+  {
+    // Initialize the temporary Panel to display while waiting for external content to load
+
+    YAHOO.example.container.frmMain = new YAHOO.widget.Panel("frmMain", { width: "460px", height: "290px", fixedcenter: true, close: false, draggable:false, zindex:3, modal: true, visible: false});
+
+    //YAHOO.example.container.frmMain.setHeader("Please sign in to access NetStorm");
+    YAHOO.example.container.frmMain.setHeader("Please sign in to access NetFunction"+'(Controller_Proxy)');
+    YAHOO.example.container.frmMain.setFooter("Copyright &copy; 2014, Cavisson Systems Inc. All rights reserved.");
+    YAHOO.example.container.frmMain.render(document.body);
+ }
+
+ // Show the Panel
+ YAHOO.example.container.frmMain.show();
+}
+
+</script>
+
+
+
+
+<title>Welcome to NetFunction (Controller_Proxy)</title>
+
+<link rel="stylesheet" type="text/css" href="../yui/css/fonts-min.css">
+<link rel="stylesheet" type="text/css" href="../yui/css/container.css">
+
+<script type="text/javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="../yui/js/connection-min.js"></script>
+<script type="text/javascript" src="../yui/js/animation-min.js"></script>
+<script type="text/javascript" src="../yui/js/dragdrop-min.js"></script>
+<script type="text/javascript" src="../yui/js/container-min.js"></script>
+
+<script> YAHOO.namespace("example.container"); </script>
+
+</head><body class="yui-skin-sam masked" onload="onLoadFunction()" onbeforeunload="onBeforeUnLoadFunction()" onunload="onUnLoadFunction()" onresize="window.location.href=window.location.href"><iframe style="position: absolute; visibility: visible; background-color: transparent; border-width: 0pt; width: 2em; height: 2em; left: 0pt; top: -27px;" title="Text Resize Monitor" id="_yuiResizeMonitor"></iframe><div style="z-index: 2; height: 343px; width: 684px; display: block;" id="frmMain_mask" class="mask"> </div><div style="visibility: visible; left: 111px; top: 25px; z-index: 3;" id="frmMain_c" class="yui-panel-container shadow"><div style="visibility: inherit; width: 460px; height: 290px;" class="yui-module yui-overlay yui-panel" id="frmMain"><div style="cursor: auto;" class="hd">Please sign in to access NetFunction(Controller_Proxy)</div>
+  <div style="height: 221px;" class="bd">
+
+      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+          <td align="center" width="100%"> <span valign="middle" style="height: 50px; font-size: 35px;">   <span valign="bottom"><img src="../images/netFunctionLogo.png"></span></span></td>
+        </tr>
+      </tbody></table>
+
+      <!--<table align = center class = borderTableHeader bgcolor=#8888FF  border=0 cellpadding=0 cellspacing=0 width=99% valign=top>
+        <tr>
+         <td class = "screenTitle" style='font-size: 12px;'>&nbsp;Login</tr>
+      </table>      <br>
+-->
+
+
+      <table class="table" align="center" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+         
+
+         <td align="center" valign="top" width="50%">
+
+           <table border="0" cellpadding="0" cellspacing="0" width="95%">
+
+
+
+             <!--<tr><td><div class="fieldMainLable"><b> NetFunction</b></div> </td> </tr>-->
+
+             <tbody><tr align="center"> <td>
+                 <font color="red" face="Tahoma" size="2">
+                   <div id="message" style="visibility: hidden;"> The User id or password is incorrect.</div>
+                   
+                 </font>
+             </td></tr>
+            
+             <!--<tr><td align="center">Please sign-in:&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>-->
+             <tr><td> </td></tr>
+
+             <tr align="center"> <td>
+                 <div class="fieldLable">
+                   <img src="../images/user.jpg"> Username  
+                     <input class="fieldValueOfTextBox" maxlength="64" id="Userid" name="txtUserid" size="25" tabindex="1" onkeypress="sub(event);" type="text">
+                 </div>
+                 <script>document.getElementById('Userid').focus()</script> 
+
+             </td> </tr>
+
+             <tr><td> </td></tr>
+
+             <tr align="center"><td>
+                 <div class="fieldLable">
+                   <img src="../images/pwd.jpg"> Password  
+                     <input class="fieldValueOfTextBox" maxlength="64" id="Password" name="txtPassword" size="25" oncopy="return false" onpaste="return false" tabindex="2" onkeypress="sub(event);" type="password">
+                 </div>
+             </td></tr>
+
+             <tr><td> </td></tr>
+
+             <tr><td>
+                 <table width="65%"><tbody><tr align="center"><td align="right">  
+                       <input tabindex="3" value="Sign-in" onclick="validate();" type="Button">   
+                       <input tabindex="4" value="Cancel" onclick="window.close()" ;="" type="Button">
+                 </td></tr></tbody></table>
+             </td></tr>
+
+             <tr><td> </td></tr>
+
+           </tbody></table>
+
+         </td></tr></tbody></table>
+          
+          <!--<script>
+           if(isIE)
+             document.write("<table width = '98%' align = 'center'>");
+           else
+           { 
+             document.write("<table width = '65%' align = 'center'>");
+           }
+         </script>   
+         <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+           <tr><td>
+           &nbsp;
+              <font color="blue" size="2" face="Tahoma"><marquee direction="left" bgcolor="#f4f9ff" scrollamount="2">Copyright &copy; 2014, Cavisson Systems Inc. All rights reserved.</marquee>
+              </font>
+           </td></tr>
+         </table>-->
+       
+       </div>
+   <div class="ft">Copyright © 2014, Cavisson Systems Inc. All rights reserved.</div></div><div class="underlay"></div></div>
+
+<form name="frmMain" method="post">
+
+<!-- We can't move hidden variables before form b'couz form is the object/component which holds hidden variable value,so document.strOperName.value is incorrect statement & hidden variables should be inside form-->
+
+<input name="strOperName" value="" type="hidden">
+<input name="strOperValue" value="" type="hidden">
+
+ 
+
+</form>
+</body></html>

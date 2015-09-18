@@ -1,0 +1,38 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-009-017,6039,4.1.3,9,NetStorm,pass,1,FileParam_5Url_ModeWeighted Passed
+SMOKE-009-015,6040,4.1.3,9,NetStorm,pass,1,Smoke_FileParam_FiveMainURL_ChangeOnUse passed
+SMOKE-009-015,6040,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-011,6041,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed
+SMOKE-009-011,6041,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-002,6042,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed
+SMOKE-009-002,6042,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-001,6043,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_TWOMAIN_URL passed
+SMOKE-009-001,6043,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-003,6044,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+SMOKE-009-003,6044,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-004,6045,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed
+SMOKE-009-004,6045,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-005,6046,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed
+SMOKE-009-005,6046,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-019,6047,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-006,6048,4.1.3,9,NetStorm,pass,1,Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed
+SMOKE-009-006,6048,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-007,6049,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed
+SMOKE-009-007,6049,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-008,6050,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed
+SMOKE-009-008,6050,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-009,6051,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed
+SMOKE-009-009,6051,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-010,6052,4.1.3,9,NetStorm,pass,1, Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed
+SMOKE-009-010,6052,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-012,6053,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed
+SMOKE-009-012,6053,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-013,6054,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed
+SMOKE-009-013,6054,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-014,6055,4.1.3,9,NetStorm,pass,1,Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail  passed
+SMOKE-009-014,6055,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-016,6056,4.1.3,9,NetStorm,pass,1,Smoke_FileParam_FiveMainURL_ChangeOnSession passed
+SMOKE-009-016,6056,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+SMOKE-009-018,6057,4.1.3,9,NetStorm,fail,1,FileParam_5Url_ModeWeighted Failed
+
+Failed: 18 test(s), Passed: 17 test(s), Total: 35 test(s)

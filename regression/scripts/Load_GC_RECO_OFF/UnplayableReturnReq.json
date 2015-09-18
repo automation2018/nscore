@@ -1,0 +1,14 @@
+payload={
+    "Barcode" : "{ReturnBarcodeVar}",
+    "Email" : "sneelam@abc.com",
+    "ReturnDate" : {
+        "theDate" : 634262349000000000,
+        "dateTimeKind" : "Unspecified",
+        "dateString" : "{TransactionDateVar}"
+    },
+    "MessageId" : "{MessageIdVar}",
+    "KioskId" : {KioskIdVar},
+    "EngineVersion" : "1.1.0.161",
+    "BundleVersion" : "2.2.2.83",
+    "MessageType" : "UnplayableReturn"
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="6" total="0">
+        <testcase id="SMOKE_TypeA_DNS">
+            <testrun>TR2962</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypeA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeAAAA_DNS">
+            <testrun>TR2963</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypeAAAA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeMX_DNS">
+            <testrun>TR2964</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_TypeMX_DNS failed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeNS_DNS">
+            <testrun>TR2965</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypeNS_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeSOA_DNS">
+            <testrun>TR2966</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypeSOA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypePTR_DNS">
+            <testrun>TR2967</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypePTR_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE_TypeCNAME_DNS">
+            <testrun>TR2968</testrun>
+            <status>PASS</status>
+            <description>SMOKE_TypeCNAME_DNS Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

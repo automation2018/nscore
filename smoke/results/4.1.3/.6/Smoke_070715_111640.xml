@@ -1,0 +1,430 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="83" total="85">
+        <testcase id="Smoke_SAVE_STRING_API_TEST">
+            <testrun>4658</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_STRING_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_EVAL_STRING_API_TEST">
+            <testrun>4659</testrun>
+            <status>pass</status>
+            <description>Smoke_EVAL_STRING_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_ADV_PARAM_API_TEST">
+            <testrun>4660</testrun>
+            <status>pass</status>
+            <description>Smoke_ADV_PARAM_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_ADV_PARAM_API_TEST_FAIL">
+            <testrun>4661</testrun>
+            <status>pass</status>
+            <description>Smoke_ADV_PARAM_API_TEST_FAIL Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST">
+            <testrun>4662</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST">
+            <testrun>4663</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>4664</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST">
+            <testrun>4665</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST">
+            <testrun>4666</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST">
+            <testrun>4667</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>4668</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST">
+            <testrun>4669</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST">
+            <testrun>4670</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST">
+            <testrun>4671</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>4672</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST">
+            <testrun>4673</testrun>
+            <status>pass</status>
+            <description>Smoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_SET_INT_VAL_API_TEST">
+            <testrun>4674</testrun>
+            <status>pass</status>
+            <description>Smoke_SET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_GET_INT_VAL_API_TEST">
+            <testrun>4675</testrun>
+            <status>pass</status>
+            <description>Smoke_GET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_GET_RANDOM_STR_API_TEST">
+            <testrun>4676</testrun>
+            <status>pass</status>
+            <description>Smoke_GET_RANDOM_STR_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_GETTERS_API_TEST">
+            <testrun>4677</testrun>
+            <status>pass</status>
+            <description>Smoke_GETTERS_API_TEST Passed</description>
+        </testcase>
+        <testcase id="Smoke_CHK_STR_CPY_API_TEST">
+            <testrun>4678</testrun>
+            <status>pass</status>
+            <description>Smoke_CHK_STR_CPY_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-002-001">
+            <testrun>4679</testrun>
+            <status>pass</status>
+            <description>Smoke_Http_auth_Basic_apache_main_param_session passed</description>
+        </testcase>
+        <testcase id="SMOKE-002-002">
+            <testrun>4680</testrun>
+            <status>pass</status>
+            <description>Smoke_Http_auth_Basic_apache_main_param_use passed</description>
+        </testcase>
+        <testcase id="SMOKE-002-003">
+            <testrun>4681</testrun>
+            <status>pass</status>
+            <description>Smoke_Http_auth_Basic_apache_PageDump passed</description>
+        </testcase>
+        <testcase id="SMOKE-002-004">
+            <testrun>4682</testrun>
+            <status>pass</status>
+            <description>Smoke_Http_auth_Basic_main_CheckWithKA passed</description>
+        </testcase>
+        <testcase id="SMOKE-002-005">
+            <testrun>4683</testrun>
+            <status>pass</status>
+            <description>Smoke_Http_auth_Basic_main_CVfailWithOutKA  passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-001">
+            <testrun>4684</testrun>
+            <status>pass</status>
+            <description>Autofetch one main url five autofetch url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-002">
+            <testrun>4685</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-003">
+            <testrun>4686</testrun>
+            <status>pass</status>
+            <description>Autofetch enabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-004">
+            <testrun>4687</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-001">
+            <testrun>4688</testrun>
+            <status>pass</status>
+            <description>Smoke_TenDSrvrURL_Sce2Dep passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-002">
+            <testrun>4689</testrun>
+            <status>pass</status>
+            <description>Smoke_OneDSrvr_RelativePath passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-003">
+            <testrun>4690</testrun>
+            <status>pass</status>
+            <description>Smoke_DifHost_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-004">
+            <testrun>4691</testrun>
+            <status>pass</status>
+            <description>Smoke_RltvToObslt_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-005">
+            <testrun>4692</testrun>
+            <status>pass</status>
+            <description>Smoke_DifProto_Redirection passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-001">
+            <testrun>4693</testrun>
+            <status>pass</status>
+            <description>Smoke_4UrlT_WOExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-002">
+            <testrun>4694</testrun>
+            <status>pass</status>
+            <description>Smoke_4UrlT_WExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-003">
+            <testrun>4695</testrun>
+            <status>pass</status>
+            <description>Smoke_4UrlT_ExpCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-004">
+            <testrun>4696</testrun>
+            <status>pass</status>
+            <description>Smoke_2UrlT_ClineCookie_CMode1 passed</description>
+        </testcase>
+        <testcase id="SMOKE-006-001">
+            <testrun>4697</testrun>
+            <status>fail</status>
+            <description>Smoke_KeepAlive_KA_100 Failed</description>
+        </testcase>
+        <testcase id="SMOKE-006-002">
+            <testrun>4698</testrun>
+            <status>fail</status>
+            <description>Smoke_KeepAlive_KA_0 Failed</description>
+        </testcase>
+        <testcase id="SMOKE-007-001">
+            <testrun>4699</testrun>
+            <status>pass</status>
+            <description>Smoke_OneUrl_MultiPart_With_Boundary passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-002">
+            <testrun>4700</testrun>
+            <status>pass</status>
+            <description>Smoke_OneUrl_MultiPart_Without_Boundary passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-003">
+            <testrun>4701</testrun>
+            <status>pass</status>
+            <description>Smoke_OneUrl_MultiPart_NestedBoundries passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-001">
+            <testrun>4702</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Constant Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-002">
+            <testrun>4703</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Uni_Dist Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-003">
+            <testrun>4704</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Int_Dist Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-004">
+            <testrun>4705</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Spcfc_Page Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-005">
+            <testrun>4706</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Overide_Mul Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-006">
+            <testrun>4707</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Overide_Random_Pct Passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_TWOMAIN_URL">
+            <testrun>4708</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_TWOMAIN_URL passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength">
+            <testrun>4709</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>4710</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset">
+            <testrun>4711</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>4712</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset">
+            <testrun>4713</testrun>
+            <status>pass</status>
+            <description>Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail">
+            <testrun>4715</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail">
+            <testrun>4716</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail">
+            <testrun>4717</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail">
+            <testrun>4718</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue">
+            <testrun>4719</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop">
+            <testrun>4720</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail">
+            <testrun>4721</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail">
+            <testrun>4722</testrun>
+            <status>pass</status>
+            <description>Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail passed</description>
+        </testcase>
+        <testcase id="Smoke_FileParam_FiveMainURL_ChangeOnUse">
+            <testrun>4723</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnUse passed</description>
+        </testcase>
+        <testcase id="Smoke_FileParam_FiveMainURL_ChangeOnSession">
+            <testrun>4724</testrun>
+            <status>pass</status>
+            <description>Smoke_FileParam_FiveMainURL_ChangeOnSession passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-001">
+            <testrun>4725</testrun>
+            <status>pass</status>
+            <description>Smoke_TypeA_DNS Passed</description>
+        </testcase>
+        <testcase id="SMOKE-011-002">
+            <testrun>4746</testrun>
+            <status>pass</status>
+            <description>RBU basic functionalities Passed</description>
+        </testcase>
+        <testcase id="SMOKE-011-005">
+            <testrun>4747</testrun>
+            <status>pass</status>
+            <description>RBU headers for chromium browser Passed</description>
+        </testcase>
+        <testcase id="SMOKE-011-006">
+            <testrun>4748</testrun>
+            <status>pass</status>
+            <description>RBU headers for chromium browser Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-001">
+            <testrun>4749</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Percentage_1 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-002">
+            <testrun>4750</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Percentage_2 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-003">
+            <testrun>4751</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Percentage_3 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-004">
+            <testrun>4752</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Sequence Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-005">
+            <testrun>4753</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Switch_default_negtvOne Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-006">
+            <testrun>4754</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Switch_zero Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-007">
+            <testrun>4755</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Switch_one Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-008">
+            <testrun>4756</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Switch_negtvTwo Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-009">
+            <testrun>4757</testrun>
+            <status>pass</status>
+            <description>Smoke_RunLogic_Switch_default_five Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-001">
+            <testrun>4758</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_BeforeFirstTrans_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-002">
+            <testrun>4759</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_BeforeFirstTrans_10U_5user_release   passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-003">
+            <testrun>4760</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-004">
+            <testrun>4761</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_InBetweenTrans_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-005">
+            <testrun>4762</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_BeforeFirstPage_10U_alluser_release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-006">
+            <testrun>4763</testrun>
+            <status>pass</status>
+            <description>Smoke_Sync_Point_InBtweenPage_10U_5user_release Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

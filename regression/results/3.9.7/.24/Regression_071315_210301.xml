@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="1" total="3">
+        <testcase id="REGRESSION001">
+            <testrun>5444</testrun>
+            <status>fail</status>
+            <description>Diff from baseline for Eth_Send_throuput_Change is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="REGRESSION001">
+            <testrun>5444</testrun>
+            <status>fail</status>
+            <description>Diff from baseline for Eth_Rcv_throuput_Change is more than 5%:Regression001</description>
+        </testcase>
+        <testcase id="REGRESSION001">
+            <testrun>5444</testrun>
+            <status>pass</status>
+            <description>Regression001 is passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

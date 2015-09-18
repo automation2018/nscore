@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="2" total="0">
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST">
+            <testrun>TR2356</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST">
+            <testrun>TR2357</testrun>
+            <status>PASS</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST">
+            <testrun>TR2358</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST failed</description>
+        </testcase>
+        <testcase id="SMOKE_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST">
+            <testrun>TR2359</testrun>
+            <status>FAIL</status>
+            <description>SMOKE_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

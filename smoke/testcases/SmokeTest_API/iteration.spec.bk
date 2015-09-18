@@ -1,0 +1,49 @@
+#######################################################################################################################
+#  Iteration suit for C api's                          								      #
+#  Use "NA" to replace strings where values are not applicable(FILE_NAME and inputString)                             #
+#  Use -1 to replace integers where values are not applicable(FILE_MODE and TEST_CASE_TYPE_NUM)                       #
+#  $ Replaces values from iteration.spec to scenario and % replaces values from iteration.spec to flow file in script #
+#######################################################################################################################
+$TestDescription|$ScriptName|$User|%inputString|%API_TYPE|%TEST_CASE_TYPE_NUM|%FILE_NAME|%FILE_MODE
+######################################################################################################################
+Smoke_SAVE_STRING_API_TEST|API|1|"string to be saved decl var using save_string_api"|SAVE_STRING|0|"NA"|-1
+
+Smoke_EVAL_STRING_API_TEST|API|1|"NA"|EVAL_STRING|0|"NA"|-1
+
+Smoke_ADV_PARAM_API_TEST|API|1|"NA"|ADV_PARAM|0|"NA"|-1
+
+Smoke_ADV_PARAM_API_TEST_FAIL|API|1|"NA"|ADV_PARAM|1|"NA"|-1
+
+Smoke_SAVE_DATA_VAR_API_RELATIVE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"save.data"|NS_APPEND_FILE
+
+Smoke_SAVE_DATA_VAR_API_ABSOLUTE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/home/netstorm/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_VAR_API_NO_PERMISSION_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/root/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_VAR_API_WRONG_PATH_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_VAR api"|SAVE_DATA_VAR|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_EVAL_API_RELATIVE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"save.data"|NS_APPEND_FILE
+
+Smoke_SAVE_DATA_EVAL_API_ABSOLUTE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/home/netstorm/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_EVAL_API_NO_PERMISSION_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/root/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_EVAL_API_WRONG_PATH_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_EVAL api"|SAVE_DATA_EVAL|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE
+
+Smoke_SAVE_DATA_EX_API_RELATIVE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"save.data"|NS_APPEND_FILE
+
+Smoke_SAVE_DATA_EX_API_ABSOLUTE_PATH_TEST|API|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/home/netstorm/work/save.data"|NS_TRUNC_FILE 
+
+Smoke_SAVE_DATA_EX_API_NO_PERMISSION_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/root/save.data"|NS_APPEND_FILE
+
+Smoke_SAVE_DATA_EX_API_WRONG_PATH_FAIL_TEST|API|1|"Testing NS_SAVE_DATA_EX api"|SAVE_DATA_EX|-1|"/ThisPathDoNotExists/save.data"|NS_TRUNC_FILE
+
+Smoke_SET_INT_VAL_API_TEST|API|1|351988|SET_INT_VAL|0|"NA"|-1
+
+Smoke_GET_INT_VAL_API_TEST|API|1|"NA"|GET_INT_VAL|0|"NA"|-1
+
+Smoke_GET_RANDOM_STR_API_TEST|API|1|"a-z0-9A-Z._"|GET_RANDOM_STR|0|"NA"|-1 
+
+Smoke_GETTERS_API_TEST|API|1|"NA"|GETTERS|0|"NA"|-1  
+
+Smoke_CHK_STR_CPY_API_TEST|API|1|"Ever wondered why Jack and Jill went up the hill?"|CHK_STR_CPY|0|"NA"|-1

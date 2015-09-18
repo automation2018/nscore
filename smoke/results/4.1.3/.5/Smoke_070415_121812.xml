@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="7" total="8">
+        <testcase id="SMOKE-007-003">
+            <testrun>4382</testrun>
+            <status>pass</status>
+            <description>SMOKE-007-003 passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-003">
+            <testrun>4382</testrun>
+            <status>fail</status>
+            <description>Smoke_MultiPart_Content_Type failed</description>
+        </testcase>
+        <testcase id="SMOKE-008-001">
+            <testrun>4383</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Constant Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-002">
+            <testrun>4384</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Uni_Dist Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-003">
+            <testrun>4385</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Int_Dist Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-004">
+            <testrun>4386</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Spcfc_Page Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-005">
+            <testrun>4387</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Overide_Mul Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-006">
+            <testrun>4388</testrun>
+            <status>pass</status>
+            <description>Smoke_PageThink_Overide_Random_Pct Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

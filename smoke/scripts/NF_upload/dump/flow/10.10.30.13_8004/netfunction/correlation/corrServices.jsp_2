@@ -1,0 +1,2794 @@
+
+<!--  
+  Name    : corrServices.jsp
+  Author  : 
+  Purpose : 
+
+  Modification History:
+    29/03/10  : jyoti :3.6.2 -Initial Version
+  Notes   : None
+-->
+<style type="text/css">
+.pg-normal {
+	color: #0000FF;
+	font-weight: normal;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.pg-selected {
+	color: #800080;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+</style>
+
+
+<!--  
+  Name   : correlationHeader.jspf
+  Author : jyoti
+  Purpose: This is for correlation GUI. It it to be included in all JSP
+           on the top for for following :
+           - Import of packages 
+           - Initialization of beans and js
+           - JSP variables which are common to all JSPs
+  Notes  :
+    None
+  Modification History:
+    29/03/10  : jyoti :3.6.2 -Initial Version
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- This is required for firefox b'coz it does not refresh the screen.when we select the option then click on another tab or OK button after again open the same screen . It does not show the changed value means it takes value from the cache.when we reload the screen then it gives new value. -->
+
+
+<link rel="stylesheet" href="../css/AdvancedNetstorm.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="../css/Netstorm.css" type="text/css" media="all"/>
+
+
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="../yui/css/container.css" />
+
+<script type="text/javascript" src="../js/jquery-latest.js"></script>
+<script language="javascript" src="corrSettingHints.js"></script>
+<script language="javascript" src="../js/sortableTable.js"></script>
+<script type="text/javascript" src="../js/jquery-impromptu.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery-impromptu.css">
+<script language="javascript" src="corrUtils.js"></script>
+
+<script language="javascript" src="../js/sortableTable.js"></script>
+<!----<script language="javascript" src="help.js"></script>--->
+<script language="javascript" src="../js/nsUtils.js"></script>
+
+
+   <script type="text/javascript" src="../js/prototype.js"></script>
+   <script type="text/javascript" src="../js/fastinit.js"></script>
+   <script type="text/javascript" src="../js/tablekit.js"></script>
+
+
+<script language="javascript"  src="../js/tableEnhancement.js"></script>
+<script language="javascript"  src="../js/tablePagination.js"></script>
+
+<script language="javascript" src="../js/validation.js"></script>
+<script language="javascript" src="corrValidateCondition.js"></script>
+<script language="javascript" src="../js/nsStringUtils.js"></script>
+<script language="javascript" src="../js/help.js"></script>
+
+<script language="javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script language="javascript" src="../yui/js/container_core-min.js"></script>
+<script language="javascript" src="../yui/js/menu-min.js"></script>
+
+
+<!-- Combo-handled YUI JS files: -->
+<!--<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?&2.8.2r1/build/container/container_core-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.2r1/build/menu/menu-min.js"></script>-->
+
+
+<script language="javascript" src="../yui/js/yahoo-dom-event.js"></script>
+<script language="javascript" src="../yui/js/container_core-min.js"></script>
+<script language="javascript" src="../yui/js/menu-min.js"></script>
+
+<script type="text/javascript" src="../yui/js/connection-min.js"></script>
+<script type="text/javascript" src="../yui/js/animation-min.js"></script>
+<script type="text/javascript" src="../yui/js/dragdrop-min.js"></script>
+<script type="text/javascript" src="../yui/js/container-min.js"></script>
+
+
+<script> YAHOO.namespace("example.container"); </script>
+
+<script type="text/javascript">
+<!--
+// this is put up for help pop-up
+// Override the default settings to point to the parent directory
+//
+
+
+//-->
+</script>
+<script language="javascript">
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+var windowLength=GetWidth();
+var shiftLastCheckVaue=null;//this value for multiple shift
+var lastId=null;
+var arrSelectedRows = new Array(); // Array to store indexes of rows that are selected by the user
+var arrUrl = new Array();
+var arrURL1 = new Array();
+var arrService = new Array();
+var arrService1 = new Array();
+var arrStatus = new Array();
+var arrHost = new Array();
+var arrIndex =new Array();
+var arrUrlListByHost = new Array();
+var selectedRows=new Array();
+var arrURLState = new Array();
+var arrServiceMode = new Array();
+jQuery.noConflict();
+
+var ImageSortFlag = "1";
+var ImageVarCol = "12";
+
+arrStatus[0] = 'enabled'
+arrStatus[1] = 'enabled'
+arrStatus[2] = 'enabled'
+ImageVarCol= '12'
+ImageSortFlag= '1'
+arrUrlListByHost[0] = '/cavisson.com'
+arrUrlListByHost[1] = '/SIXBeanXapiJaxWS/KohlsGetViewPackSlipServiceService'
+arrUrlListByHost[2] = '/TestIndexParamWithRanNum'
+arrUrl[0] = '/cavisson.com'
+arrHost[0] = 'default'
+arrService[0] = 'test'
+arrURLState[0] = 'enabled'
+arrServiceMode[0] = 'Simulate'
+arrIndex[0] = '0'
+arrUrl[1] = '/SIXBeanXapiJaxWS/KohlsGetViewPackSlipServiceService'
+arrHost[1] = 'default'
+arrService[1] = 'KohlsSK'
+arrURLState[1] = 'enabled'
+arrServiceMode[1] = 'Simulate'
+arrIndex[1] = '1'
+arrUrl[2] = '/TestIndexParamWithRanNum'
+arrHost[2] = 'default'
+arrService[2] = 'TestService'
+arrURLState[2] = 'enabled'
+arrServiceMode[2] = 'Simulate'
+arrIndex[2] = '2'
+
+
+var serviceCount = '3' - 0;
+var tableName = "Services";
+//alert(true);
+
+function onLoadFunction()
+{   
+  document.getElementById("frmchild").style.display='none';
+  
+  if("yes" == "no")
+    document.frmMain.chkShowPagination.checked = "true";
+   
+  if('' != '' && '' != '')
+  {
+    if( !"".contains(",") && !"".contains(","))
+      alert("Service - " + "" + " either in Mixed mode or in old format and service - " + '' + " doesn't have forward location, so you can edit these services to change mode.");
+    else if("".contains(",") && !"".contains(","))
+        alert("Services - " + "" + " either in Mixed mode or in old format and service - " + '' + " doesn't have forward location, so you can edit these services to change mode.");
+    else if(!"".contains(",") && "".contains(","))
+        alert("Service - " + "" + " either in Mixed mode or in old format and services - " + '' + " don't have forward location, so you can edit these services to change mode.");
+    else if (!"".contains(",") && !"".contains(","))
+        alert("Services - " + "" + " either in Mixed mode or in old format and services - " + "" + " don't have forward location, so you can edit these services to change mode.");
+    window.open('corrServices.jsp', '_self');
+  }
+  else if('' != '')
+  {
+    if("".contains(",") )
+       alert("Services - " + "" + " either in Mixed mode or in old format, so you can edit these services to change mode.");
+    else
+       alert("Service - " + "" + " either in Mixed mode or in old format, so you can edit this services to change mode.");
+        
+    window.open('corrServices.jsp', '_self');
+  }
+  else if('' != '')
+  {
+    if("".contains(","))
+       alert("Services - " + "" + " don't have forward location, so you can edit these services to change mode.");
+    else
+       alert("Service - " + "" + " doesn't have forward location, so you can edit this service to change mode.");
+             
+    window.open('corrServices.jsp', '_self');
+  }
+   
+  if('' != '')
+  {
+     if(!(''.contains(",")))
+       alert("Service - " + '' + " is already enable with the same request URL.");
+     else
+       alert("Services - " + '' + " is already enable with the same request URL.");
+      
+     window.open('corrServices.jsp', '_self');
+  }
+   
+  removeOnloadImage();
+   
+  if('false'=='true')
+  {
+    alert('');
+  } 
+
+  if('' != "")
+  {
+     alert('')
+     window.open('corrServices.jsp', '_self');
+  }	
+	
+  if('' != "")
+  {
+     alert('');
+     window.open('corrServices.jsp', '_self');
+  }
+   document.frmMain.Edit.disabled = true;
+   document.frmMain.Edit.style.color = 'AEA0BF';
+   document.frmMain.Copy.disabled = true;
+   document.frmMain.Copy.style.color = 'AEA0BF';
+   document.frmMain.Delete.disabled = true;
+   document.frmMain.Delete.style.color = 'AEA0BF';
+   document.frmMain.Test.disabled = true;
+   document.frmMain.Test.style.color = 'AEA0BF';
+   document.frmMain.ExportService.disabled = true;
+   document.frmMain.ExportService.style.color = 'AEA0BF';
+   document.frmMain.ActiveService.disabled = true;
+   document.frmMain.ActiveService.style.color = 'AEA0BF';
+   document.frmMain.InActiveService.disabled = true;
+   document.frmMain.InActiveService.style.color = 'AEA0BF';
+   
+   document.frmMain.ForwardMode.disabled = true;
+   document.frmMain.ForwardMode.style.color = 'AEA0BF';
+   document.frmMain.SimulateMode.disabled = true;
+   document.frmMain.SimulateMode.style.color = 'AEA0BF';
+   
+   document.frmMain.Commit.disabled = true;
+   document.frmMain.Commit.style.color = 'AEA0BF';
+   document.frmMain.Update.disabled = true;
+   document.frmMain.Update.style.color = 'AEA0BF';
+   document.frmMain.Log.disabled = true;
+   document.frmMain.Log.style.color = 'AEA0BF';
+   
+   if('' == "delUrlResp" || '' == "activeInactiveService" )
+   {
+     submitJSP("refresh", "");
+   }
+   
+   if(('' == "exportService"))
+   {
+     if('0' > "0")
+     {
+       alert("" + '');
+     }
+   }   
+ 
+   var values = '';
+   
+   if(values != '')
+   {
+     var arrValue = values.split("%%");
+     
+     var serviceTypeObj = document.getElementById("ServiceType");
+     var serviceStatObj  = document.getElementById("State");
+     var servcieModeObj = document.getElementById("Mode");
+     var serviceModifiedVal =document.getElementById("LastModified");
+     servcieModeObj .value = arrValue[0];
+     serviceTypeObj.value = arrValue[1];
+     serviceStatObj.value = arrValue[2];
+     serviceModifiedVal.value = arrValue[3];
+     if(arrValue.length > 4)
+     document.frmMain.txtKeyword.value = arrValue[4];
+   }
+  
+   //Check for Observer Group Users.
+     
+}
+
+//Disable Control if user type is Observer.
+function disableControls()
+{
+   document.frmMain.Edit.disabled = true;
+   document.frmMain.Edit.style.color = 'AEA0BF';
+
+   document.frmMain.Copy.disabled = true;
+   document.frmMain.Copy.style.color = 'AEA0BF';
+   
+   document.frmMain.Delete.disabled = true;
+   document.frmMain.Delete.style.color = 'AEA0BF';
+   
+   //document.frmMain.Test.disabled = true;
+   //document.frmMain.Test.style.color = 'AEA0BF';
+   
+   document.frmMain.ExportService.disabled = true;
+   document.frmMain.ExportService.style.color = 'AEA0BF';
+   
+   document.frmMain.ImportService.disabled = true;
+   document.frmMain.ImportService.style.color = 'AEA0BF';
+   
+   document.frmMain.ActiveService.disabled = true;
+   document.frmMain.ActiveService.style.color = 'AEA0BF';
+   
+   document.frmMain.InActiveService.disabled = true;
+   document.frmMain.InActiveService.style.color = 'AEA0BF';
+   
+   document.frmMain.Activate.disabled = true;
+   document.frmMain.Activate.style.color = 'AEA0BF'   
+   
+   document.frmMain.ForwardMode.disabled = true;
+   document.frmMain.ForwardMode.style.color = 'AEA0BF';
+   
+   document.frmMain.SimulateMode.disabled = true;
+   document.frmMain.SimulateMode.style.color = 'AEA0BF';
+   
+   document.frmMain.Commit.disabled = true;
+   document.frmMain.Commit.style.color = 'AEA0BF';
+   
+   document.frmMain.Update.disabled = true;
+   document.frmMain.Update.style.color = 'AEA0BF'; 
+}
+
+function openTemplateWin(varUrl, varHost, varServiceName ,currentVersion)
+{
+  varUrl = ReplaceAll(varUrl, "&", "@$@")
+  varUrl = ReplaceAll(varUrl, "%", "@*@")
+  varUrl = ReplaceAll(varUrl, "#", "@!@")
+  varUrl = ReplaceAll(varUrl, "+", "@_@")
+ 
+  var varTemplateUrl = "corrServiceEdit.jsp?strTemplateUrl="+varUrl+"&strFld1="+varUrl+"&strFld2="+varHost+"&strFld3="+varServiceName +"&currentVersion=" + currentVersion;
+
+  //myWindow = window.open(varTemplateUrl, 'parameterSetting');
+  myWindow = window.open(varTemplateUrl, '_self');
+  myWindow.focus();
+}
+
+function openParameterWin(varUrl, varHost, varServiceName)
+{
+  varSettingUrl = "corrMain.jsp?strUrl="+varUrl+"&strHost="+varHost+"&strService="+varServiceName;
+  //myWindow = window.open(varSettingUrl, 'templateSetting');
+  myWindow = window.open(varSettingUrl, 'templateSetting');
+  myWindow.focus();
+}
+
+function recycleCallPageWindow()
+{
+  var url = "corrRecycle.jsp";
+  myWindow = window.open(url,'ReCycleWindow','width=700,height=360,scrollbars=1');
+  myWindow.moveTo(screen.width/2-300,screen.height/2-250);
+  myWindow.focus();
+}
+
+function undoInit()
+{
+  var content = document.getElementById("frmchild");
+  var callback = {
+      success : function(o) {
+      
+       YAHOO.example.container.frmchild.hide();
+      },
+      failure : function(o) {
+	
+	YAHOO.example.container.frmchild.hide();
+      }
+  }
+    
+  // Show the Panel
+  YAHOO.example.container.frmchild.show();
+
+  // Connect to our data source and load the data
+  var conn = YAHOO.util.Connect.asyncRequest("GET", "corrServices.jsp", callback);
+}
+
+function undoInitEdit()
+{
+  var content = document.getElementById("frmchild1");
+  var callback = {
+      success : function(o) {
+
+       YAHOO.example.container.frmchild1.hide();
+      },
+      failure : function(o) {
+
+        YAHOO.example.container.frmchild1.hide();
+      }
+  }
+
+  // Show the Panel
+     YAHOO.example.container.frmchild1.show();
+  
+  // Connect to our data source and load the data
+      var conn = YAHOO.util.Connect.asyncRequest("GET", "corrServices.jsp", callback);
+}
+
+
+function init()
+{
+  if (!YAHOO.example.container.wait)
+  {
+    document.getElementById('TableHeader').setAttribute("class", 'tableHeaderforMozila');
+    // Initialize the temporary Panel to display while waiting for external content to load
+
+    YAHOO.example.container.frmchild = new YAHOO.widget.Panel("frmchild", { width: "560px", height: "200px", fixedcenter: true, close: false, draggable:false, zindex:3, modal: true, visible: false});
+
+    YAHOO.example.container.frmchild.setHeader("Copy Service");
+   // YAHOO.example.container.frmchild.setHeader("Copy Service "+arrService[getSelectedServices1()]+" with URL "+getSelectedServices()+" to:");
+   
+    //YAHOO.example.container.frmchild.setFooter("Copyright &copy; 2011, Cavisson Systems Inc. All rights reserved.");
+    YAHOO.example.container.frmchild.render(document.body);
+  }
+  // Show the Panel
+  YAHOO.example.container.frmchild.show();
+}
+
+
+function initEdit()
+{
+  if (!YAHOO.example.container.wait)
+  {
+    document.getElementById('TableHeader').setAttribute("class", 'tableHeaderforMozila');
+    // Initialize the temporary Panel to display while waiting for external content to load
+
+    YAHOO.example.container.frmchild1 = new YAHOO.widget.Panel("frmchild1", { width: "660px", height: "260px", fixedcenter: true, close: false, draggable:false, zindex:6, modal: true, visible: false});
+
+    YAHOO.example.container.frmchild1.setHeader("Edit Service Name and URL");
+   // YAHOO.example.container.frmchild1.setHeader("Copy Service "+arrService[getSelectedServices1()]+" with URL "+getSelectedServices()+" to:");
+   
+    //YAHOO.example.container.frmchild1.setFooter("Copyright &copy; 2011, Cavisson Systems Inc. All rights reserved.");
+    YAHOO.example.container.frmchild1.render(document.body);
+  }
+  // Show the Panel
+  YAHOO.example.container.frmchild1.show();
+}
+
+function valAllowCharacter(txtValue)
+{
+  var pattern = /^[a-zA-Z0-9~`!@^*()_;:,./ -]*$/;
+
+  if (!txtValue.value.match(pattern))
+  {    
+    alert("Please enter valid characters.\r\nAllowed characters are alpha, numeric, and  special characters (~ ` ! @ ^ * ( ) _ ; : , . - /)");
+    txtValue.focus();
+    return false;
+  }
+  return true;
+}
+
+//String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+
+function validate()
+{
+  var varHost = 'default';
+  var varUrl = document.getElementById("txtUrl").value;
+  
+  if(varUrl.charAt(0) != '/')
+    varUrl = "/" + varUrl;
+  var varService = document.getElementById("txtService").value;
+
+  if(isValidServiceName(document.getElementById("txtService")) == false)
+    return false;
+
+  if(isDupRecord(trimString(varService), varHost, "", arrService, arrHost, "", "Service Information", "Service Name is already in use please specify any other name") == true)
+    return false;
+  
+  if(trimString(varUrl) == "")
+  {
+    alert("Please enter URL.")
+    document.frmMain.txtUrl.focus();
+    return false;
+  }
+
+  if(document.getElementById("txtUrl").value.contains(",") || document.getElementById("txtUrl").value.contains("\""))
+  {
+    alert("Please enter valid characters.\r\nNot allowed characters are double quotes and comma.");
+    return false;
+  }
+  
+  return true;
+}
+
+function validateEdit()
+ {    
+   //var varUrl = document.frmMain.txtURL1.value;
+   var varUrl = document.getElementById("txtURLEdit").value;
+   //var varService = document.frmMain.txtServiceName1.value;
+   var varService = document.getElementById("txtServiceNameEdit").value;
+   var index = getSelectedServices1();
+   var varOldService = arrService[index];
+  
+   if(trim(varUrl).charAt(0)!='/')
+     varUrl='/'+trim(varUrl);
+ 
+   if(varService == "")
+   {
+     alert("Please enter service.")
+    //document.frmMain.txtServiceName1.focus();
+     document.getElementById("txtServiceNameEdit").focus();
+     return false;
+   }
+ 
+   //if(isValidServiceName(document.frmMain.txtServiceName1) == false)
+   if(isValidServiceName(document.getElementById("txtServiceNameEdit")) == false)
+     return false;
+
+   
+   if(trimString(varService) != trimString(varOldService))
+   {
+     if(isDupRecord(trimString(varService),  "" , "" , arrService,  "" , "", "Service Information", "Service Name is already there. Please assign other name") == true)
+       return false;
+   }    
+ 
+   if(trimString(varUrl) == "")
+   {
+     alert("Please enter URL.")
+    //document.frmMain.txtURL1.focus();
+     document.getElementById("txtURLEdit").focus();
+     return false;
+   }
+ 
+   if(trimString(varUrl) == "/")
+   {
+     alert("Please enter valid URL.")
+     //document.frmMain.txtURL1.focus();
+     document.getElementById("txtURLEdit").focus();
+     return false;
+   }
+
+   
+   if(!document.getElementById("chkRegx").checked )
+   {
+     if(document.getElementById("txtURLEdit").value.contains(",") || document.getElementById("txtURLEdit").value.contains("\""))
+     {
+       alert("Please enter valid characters.\r\nNot allowed characters are double quotes and comma.");
+       return false;
+     }
+   }
+   else
+   {
+     for(i = 0 ; i < varUrl.length ; i++)
+       {
+         if(varUrl.charAt(i) == '.')
+         {
+            if((i -1) > -1)
+            {
+              if(varUrl.charAt(i-1) != '\\')
+              {
+                if(confirm("Please use dot(.) in URL with back slash(\\). Example: /abc/index\\.html") == false)
+                {
+                  return false;
+                  
+                }
+                else
+                  return true;
+              }
+            }
+            else
+            {
+              if(confirm("Please use dot(.) in URL with back slash(\\). Example: /abc/index\\.html") == false)
+   	      {
+   	        return false;
+   	        
+              }
+              else
+                return true;
+            }
+         }
+      }
+   }
+   
+   if(trimString(varUrl).contains(" "))
+   {
+     alert("Space is not allowed in URL.");
+     return false;
+   }
+
+  
+   return true;
+ }
+
+function clickOk()
+{
+  if(validate() == false)
+    return;
+  var service = document.getElementById("txtService").value;
+  var url = document.getElementById("txtUrl").value;
+
+  serviceCount = ('3' - 0);
+  var index = getSelectedServices1();
+  
+  if(trimString(url).charAt(0) != '/')
+    url = "/" + trimString(url);
+    
+ varUrl = url;
+
+ var duplicateWithCase = 'no';
+  
+  for(i = 0 ; i < arrUrl.length ; i++ )
+  {
+    if('1' == '1')
+    {
+       if(trimString(varUrl).toLowerCase() == trimString(arrUrl[i]).toLowerCase() && arrURLState[i] == 'enabled')
+       {
+          if(trimString(varUrl) != trimString(arrUrl[i]))
+          {
+            duplicateWithCase = "duplicate";
+          }
+          
+          break ;
+       }
+    }
+  }
+    
+  submitJSP("ok", service+"%%%"+url+"%%%"+arrUrl[index]+"%%%"+arrHost[index]+"%%%"+arrService[index] + "%%%" + duplicateWithCase)
+}
+
+function clickOKEdit()
+{
+   if(validateEdit() == false)
+   return;
+  
+  var varUrl = document.getElementById("txtURLEdit").value;
+  var varService = document.getElementById("txtServiceNameEdit").value;
+  var varChkRegx = 0;
+  var varChkURLIgnoreCase = 0;
+  var varChkCompleteMatch = 0;
+  
+  if(document.getElementById("chkRegx").checked == true)
+   varChkRegx = "1";
+ 
+  if(document.getElementById("chkURLIgnoreCase").checked == true)
+    varChkURLIgnoreCase = 1;
+
+  
+  if(document.getElementById("chkCompleteMatch").checked == true)
+    varChkCompleteMatch = 1;
+  
+  if(trim(varUrl).charAt(0)!='/')
+    varUrl='/'+trim(varUrl);
+  
+  var dupMsg = "No";
+  var IgnoreCase = "No";
+  var index = getSelectedServices1();
+  var varOldURL = arrUrl[index];
+  
+  if(trimString(varOldURL) != trimString(varUrl))
+  {
+    for(var i = 0 ; i < arrUrl.length ; i++ )
+    {
+      if(('1' == '0') && (document.getElementById("chkURLIgnoreCase").checked == false))
+      {
+        if(trimString(arrUrl[i]) == trimString(varUrl) && arrStatus[i] == 'enabled')
+        {
+          dupMsg = "Yes";
+          index = i;
+          break ;
+        }
+      }
+      else
+      {
+        if(trimString(varUrl).toLowerCase() == trimString(arrUrl[i]).toLowerCase() && arrStatus[i] == 'enabled')
+        {
+	      IgnoreCase = "Yes"
+	      index = i;
+	      if(trimString(varUrl) != trimString(arrUrl[i]))
+	      {
+	        dupMsg = "Yes";
+	      }
+	           
+	      break ;
+        }
+      }
+    }
+  }
+    
+  if(IgnoreCase == 'Yes')
+  {
+    if(confirm("Duplicate URL !\n\n\rService " + arrService[index] + " is already enable with the same request URL " +varUrl + " and ENABLE_URL_IGNORE_CASE is enabled. If you will save this service " + varService + " with this URL, then it will be disabled. Do you want to continue ?") == false) 
+      return ;
+  
+  }
+  else if(dupMsg == 'Yes')
+  {
+    if(confirm("Duplicate URL !\n\n\rService " + arrService[index] + " is already enable with the same request URL " +varUrl + ". If you will save this service " + varService + " with this URL, then it will be disabled. Do you want to continue ?") == false) 
+      return ;  
+  }
+  
+  
+  submitJSP("editService", arrUrl[index]+"%%%"+arrService[index]+"%%%"+varUrl+"%%%"+varService+"%%%"+varChkRegx+"%%%"+varChkURLIgnoreCase+"%%%"+varChkCompleteMatch + "%%%" + dupMsg)
+      
+}
+
+function clickCancel()
+{
+  submitJSP("cancel", "")
+}
+
+function clickLog()
+{
+  serviceCount = ('3' - 0);
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+  
+  var index = getSelectedServices1(); 
+  varUrl = arrUrl[index]
+  varHost= arrHost[index]
+  varServiceName = arrService[index]
+  varSettingUrl = "corrVersion.jsp?strUrl="+varUrl+"&strHost="+varHost+"&strService="+varServiceName;
+  submitJSP("TestLog", arrUrl[index] + "%%" + arrHost[index] + "%%" + arrService[index]);
+}
+
+function clickUpdate()
+{
+  
+  serviceCount = ('3' - 0);
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+  
+  var index = getSelectedServices1(); 
+  varUrl = arrUrl[index]
+  varHost= arrHost[index]
+  varServiceName = arrService[index]
+  varSettingUrl = "corrVersion.jsp?strUrl="+varUrl+"&strHost="+varHost+"&strService="+varServiceName;
+  submitJSP("TestUpdate", arrUrl[index] + "%%" + arrHost[index] + "%%" + arrService[index])
+
+}
+
+function showAllServiceInSamePage()
+{
+  var ShowPage = "";
+  if(document.frmMain.chkShowPagination.checked)
+    ShowPage = "no";
+  else
+    ShowPage = "yes";
+    
+  submitJSP("showPagination", ShowPage );
+}
+
+function clickCommit()
+{
+  serviceCount = ('3' - 0);
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+    
+  var index = getSelectedServices1(); 
+  varUrl = arrUrl[index]
+  varHost= arrHost[index]
+  varServiceName = arrService[index]
+  
+  varUrl = ReplaceAll(varUrl, "&", "@$@")
+  varUrl = ReplaceAll(varUrl, "%", "@*@")
+  varUrl = ReplaceAll(varUrl, "#", "@!@")
+  varUrl = ReplaceAll(varUrl, "+", "@_@")
+  
+  varSettingUrl = "corrCVSCommitService.jsp?strUrl="+varUrl+"&strFld1="+varUrl+"&strFld2="+varHost+"&strFld3="+varServiceName;
+  
+  myWindowCommit = window.open(varSettingUrl, 'CVSCommit','width=700,height=350,scrollbars=1');
+  myWindowCommit.moveTo(screen.width/2-300,screen.height/2-250)
+  myWindowCommit.focus();
+}
+
+function viewUrlDetails(url)
+{
+  submitJSP("editUrlResp", url)
+}
+
+function viewRespFileDetails(url, host, service)
+{
+  submitJSP("ResponseFile", url + " " + host + " " + service)
+}
+
+function viewReqDetails(Request, value1, value2)
+{
+  if(value1 == "NA")
+  {
+    submitJSP(Request, "abc " + value2)
+  }
+  else
+  {
+    submitJSP(Request, value1 + " " + value2)
+  }
+}
+
+function viewServiceTime(rowId, value)
+{
+  submitJSP("ServiceTime", value)
+}
+
+function viewQueryVarDetails(url, count)
+{
+  submitJSP("QueryVar", url + " " + count)
+}
+
+function viewVariablesDetails(url, host, service)
+{
+  //alert(service);
+  var UrlHostService = url + " " + host + " " + service;
+  
+  submitJSP("variable", UrlHostService)
+}
+
+function viewComments(url, host, service)
+{
+  var UrlHostService = url + " " + host + " " + service;
+  
+  submitJSP("comments", UrlHostService)
+
+}
+
+function clickAdd()
+{
+  submitJSP("addUrlResp", "")
+}
+
+function clickCapture()
+{
+  submitJSP("capture", "")
+}
+
+function getArraySelectedService()
+{
+  var Services = "";
+  serviceCount = ('3' - 0);
+  
+  if(serviceCount > 1)
+  {
+      for(var i = 0; i < serviceCount; i++)
+      {  
+        if(document.frmMain.chkRow[i].checked == true)
+        {
+           if(Services == "")
+             Services = arrService[document.frmMain.chkRow[i].value]  ;
+           else
+             Services = Services + "%%" + arrService[document.frmMain.chkRow[i].value];
+         }
+      }
+  }
+  else
+  { 
+    
+    if(document.frmMain.chkRow.checked == true)
+    {
+      Services = arrService[document.frmMain.chkRow.value] ;
+    }
+  }
+  
+       
+  return Services;
+}
+
+function clickDelete()
+{ 
+  if(document.frmMain.chkMain.checked==true)
+  {
+   if(('3' - 0) == 1)
+   {
+     if(confirm("Are you sure you want to delete service "+arrService[getSelectedServices1()]) == true)
+     {
+       submitJSP("delUrlResp", getArraySelectedService())
+     } 
+     else
+      return ;
+   } 
+   else if(valForDelete(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName) == false)
+      return;
+   else 
+   {
+     submitJSP("delUrlResp", getArraySelectedService())
+   }  
+  }
+  else
+  {
+    if(getSelectedServices123()==1)
+    {
+      if(confirm("Are you sure you want to delete service "+arrService[getSelectedServices1()]) == true)
+      {
+        submitJSP("delUrlResp", getArraySelectedService())
+      }  
+    }
+    else
+    {
+      if(confirm("Are you sure you want to delete  the  "+(parseInt(getSelectedServices123())) +" selected services") == true)
+      {
+        submitJSP("delUrlResp", getArraySelectedService())
+      } 
+    }
+  } 
+}
+
+function getSelectedServices()
+{
+  var service = "NotSelected";
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    { 
+   
+      if(document.frmMain.chkRow[i].checked == true)
+        service = arrUrl[document.frmMain.chkRow[i].value]; 
+    }
+  }
+  else
+    service = arrUrl[document.frmMain.chkRow.value]; 
+    
+  return(service);
+}
+
+function getSelectedServices1()
+{
+  var service = "NotSelected";
+ 
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    { 
+      if(document.frmMain.chkRow[i].checked == true)
+        service = document.frmMain.chkRow[i].value; 
+    }
+  }
+  else
+    service = document.frmMain.chkRow.value; 
+    
+  return(service);
+}
+
+function getSelectedServices123()
+{ 
+  var j=0;
+  serviceCount = ('3' - 0);
+ 
+  
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    {  
+      if(document.frmMain.chkRow[i].checked == true)
+      {
+         j=j+1 ; 
+      }
+    }
+  }
+  else
+    j=0
+    
+  return j;
+}
+
+
+
+function clickTest()
+{
+  serviceCount = ('3' - 0);
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+  
+  var index = getSelectedServices1();
+  submitJSP("TestUrl", arrUrl[index] + " " + arrHost[index] + " " + arrService[index])
+}
+
+function clickActivate()
+{
+  var varProgressBarArea = document.getElementById("ProgressBarArea");
+  submitJSP("restartHPD", "")
+    
+  if( getBrowserType() == "IE")
+  {
+    varProgressBarArea.innerHTML = "<br><table  align='center' cellpadding='0' cellspacing='0' class='table' width=98% max-width=1200px><tr height = 20px><td align='left' class='tableTitle'>Please Wait</td></tr><tr><td align='center' valign='top'><br><table align = center width = 98% ><thead><tr><td><b>Activating services it may take some time. Please wait &nbsp;</b><img align=center src= ../images/recordingAnimation.gif></td></tr></thead></table></td></tr></table>";
+  } 
+  else
+  {
+     varProgressBarArea.innerHTML = "<br><table  align='center' cellpadding='0' cellspacing='0' class='table' width=98% max-width=1200px><tr height = 20px><td align='left' class='tableTitle'>Please Wait</td></tr><tr><td align='center' valign='top'><br><table align = center width = 98% ><thead><tr><td><b>Activating services it may take some time. Please wait</b> <img align=center src= '../images/recordingAnimation.gif'></td></tr></thead></table></td></tr></table>";
+  }
+}
+function clickClose()
+{
+  window.close();
+}
+
+function clickCopy()
+{ 
+  document.getElementById("frmchild").style.display='';
+  serviceCount = ('3' - 0);
+  
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+
+  document.getElementById('txtService').value='CopyOf'+arrService[getSelectedServices1()]
+  
+  var urlString=getSelectedServices();
+  var temp=urlString.substring(0,urlString.lastIndexOf("/")+1)
+  
+  urlString='/copyOf'+ temp +urlString.substring(urlString.lastIndexOf("/")+1);
+  document.getElementById('txtUrl').value=urlString;
+  label = document.getElementById('Label')
+  varServiceVal = arrService[getSelectedServices1()];
+  
+  if(varServiceVal.length > 16)
+   varServiceVal = varServiceVal.substring(0,15) + "...";
+   
+  varURLVal = getSelectedServices();   
+  
+  if(varURLVal.length > 20)
+   varURLVal = varURLVal.substring(0,19) + "...";
+   
+  label.innerHTML = "<b class = fieldValueOfTextBox>Copy Service "+varServiceVal+" with URL "+varURLVal+" to:</b>"; 
+  init();
+ 
+}
+
+function clickEdit()
+{ 
+  document.getElementById("frmchild1").style.display='';
+  serviceCount = ('3' - 0);
+  
+  if(valForUpdate(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, tableName)== false)
+    return;
+
+  document.getElementById('txtServiceNameEdit').value=arrService[getSelectedServices1()]
+  
+  var urlString=getSelectedServices();
+  var temp=urlString.substring(0,urlString.lastIndexOf("/")+1)
+  
+  urlString=temp +urlString.substring(urlString.lastIndexOf("/")+1);
+  document.getElementById('txtURLEdit').value=urlString;
+  label = document.getElementById('Label')
+  varServiceVal = arrService[getSelectedServices1()];
+  
+  if(varServiceVal.length > 16)
+   varServiceVal = varServiceVal.substring(0,15) + "...";
+   
+  varURLVal = getSelectedServices();   
+  
+  if(varURLVal.length > 20)
+   varURLVal = varURLVal.substring(0,19) + "...";
+   
+  label.innerHTML = "<b class = fieldValueOfTextBox>Edit Service "+varServiceVal+" with URL "+varURLVal+" to:</b>"; 
+  initEdit();
+ 
+}
+
+function clickExportService()
+{
+  var html = '<div id="lblEnterName">'+
+   '<div class="textinput"><label for="" class = divClass>Enter export file name:&nbsp; <span></span><span id="optionsearchstatus"></span></label><input type="text" id="entryId" style=\'width:200px;\' name="entry" value="" placeholder="Export file name"></div>' +
+   '<div id="searchoptionswrapper"><table id="searchoptions" class="radioTable" cellpadding="0" cellspacing="0"><tbody></tbody></table></div>'+
+   '</div>';
+  var name = jQuery.prompt(html,{
+  title: '',
+  buttons: { OK:true,Cancel:false },
+  submit: function(e,v,m,f){
+  var flag = true;
+  if(v)
+  {
+   tarName = document.getElementById("entryId").value
+  
+   if(tarName == "")
+   {
+      alert("Please enter tar Name.");
+      return false;
+   }
+    
+   var pattern = /^[a-zA-Z][a-zA-Z0-9_]*$/;
+      
+   if (!tarName.match(pattern))
+   {
+      alert("Please enter valid file name.\r\nIt must start with alpha.\r\nOther allowed characters are alpha, numeric or underscore");
+      
+      return false;
+   }
+   clickExportServiceOper(document.getElementById("entryId").value);
+    
+  }
+  return flag;
+  }
+ });
+
+}
+
+function clickExportServiceOper(tarName)
+{
+
+  submitJSP("exportService", getArraySelectedService() + "@@@" + tarName ); 
+}
+
+function clickImportService()
+{
+  var width = 700;
+  var height = 300;
+  var left = parseInt((screen.availWidth/2) - (width/2));
+  var top = parseInt((screen.availHeight/2) - (height/2));
+  var detail = width + "_" + height + "_" + left + "_" + top;
+  var windowFeatures = "width=" + width + ",height=" + height + ",status,resizable,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top  + ",scrollbars=1";
+  
+  var dataFile = '/var/Controller_Proxy/hpd/correlation/Kohls/default/services/';
+  
+  window.open("corrNewUploadFile.jsp?destFile="+dataFile+"&rowId=0&mode=service&redirectFile=corrServices.jsp","upload",windowFeatures);
+}
+
+function ActiveInactiveService(operation)
+{
+
+  var j=0;
+    
+  var DisableServiceIndex = new Array();
+  var EnableServiceIndex = new Array();
+    
+  serviceCount = ('3' - 0);
+  var kk = 0;
+  var mm = 0;
+  
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    {  
+      if(document.frmMain.chkRow[i].checked == true)
+      {
+        if(arrURLState[document.frmMain.chkRow[i].value] == "enabled")
+        {
+          EnableServiceIndex[kk] = document.frmMain.chkRow[i].value;
+          kk++;
+          
+        }
+        else if(arrURLState[document.frmMain.chkRow[i].value] == "disabled")
+        {
+          DisableServiceIndex[mm] = document.frmMain.chkRow[i].value;
+          mm++;
+        }
+      }
+    }
+  }
+  else
+  {
+    if(document.frmMain.chkRow.checked == true )
+    {
+      if(arrURLState[document.frmMain.chkRow.value] == "enabled")
+      {
+        EnableServiceIndex[kk] = document.frmMain.chkRow.value;
+        kk++;
+      }
+      else if(arrURLState[document.frmMain.chkRow.value] == "disabled")
+      {
+        DisableServiceIndex[mm] = document.frmMain.chkRow.value; 
+        mm++;
+      }
+    }
+  }
+  
+  if(EnableServiceIndex.length > 0 && DisableServiceIndex.length > 0)
+  {
+    if(operation == "active")
+    {
+      
+      var msgService = arrService [ EnableServiceIndex[0] ];
+      
+      for(var k = 1 ; k < EnableServiceIndex.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[EnableServiceIndex[k]];
+      
+      }      
+      
+      if(confirm("Following service(s) are already in enable state. Are you sure to make other service(s) enable?\r\nService(s) - " + msgService ) == false)
+      {
+        return;
+      }
+      
+      var ServiceNames = arrService [ DisableServiceIndex[0] ];
+      
+      for(var k = 1 ; k < DisableServiceIndex.length ; k++ )
+      {
+        ServiceNames = ServiceNames + "%%" + arrService[DisableServiceIndex[k]];
+      
+      }
+      
+      submitJSP("activeService",ServiceNames); 
+    }
+    else
+    {
+      var msgService = arrService [ DisableServiceIndex[0] ];
+            
+      for(var k = 1 ; k < DisableServiceIndex.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[DisableServiceIndex[k]];     
+      }
+    
+      if(confirm("Following service(s) are already in disable state. Are you sure to make other service(s) disable?\r\nService(s) - " + msgService ) == false)
+      {
+        return;
+      }
+      
+      var ServiceNames = arrService[ EnableServiceIndex[0] ];
+            
+      for(var k = 1 ; k < EnableServiceIndex.length ; k++ )
+      {
+        ServiceNames = ServiceNames + "%%" + arrService[EnableServiceIndex[k]];   
+      }
+            
+      submitJSP("inactiveService",ServiceNames); 
+    }
+  
+  }
+  else if( EnableServiceIndex.length > 0)
+  {
+    
+    var ServiceNames = arrService[EnableServiceIndex[0]];
+      
+    for(var k = 1 ; k < EnableServiceIndex.length ; k++ )
+    {
+     
+      ServiceNames = ServiceNames + "%%" + arrService[EnableServiceIndex[k]];
+      
+    }
+      
+    submitJSP("inactiveService",ServiceNames); 
+    
+  }
+  else if(DisableServiceIndex.length > 0)
+  {
+    var ServiceNames = arrService[ DisableServiceIndex[0] ];
+   
+    for(var k = 1 ; k < DisableServiceIndex.length ; k++ )
+    {   
+      ServiceNames = ServiceNames + "%%" + arrService[DisableServiceIndex[k]];
+      
+    }
+    
+    submitJSP("activeService",ServiceNames); 
+  }
+  
+}
+
+
+function changeMode(operation)
+{
+  var arrSimulateService = new Array();
+  var arrMixedService = new Array();
+  var arrLiveService = new Array();
+  
+  serviceCount = ('3' - 0);
+  
+  var jj = 0;
+  var kk = 0;
+  var ll = 0;
+  
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    {  
+      if(document.frmMain.chkRow[i].checked == true)
+      {
+         if(arrServiceMode[document.frmMain.chkRow[i].value] == "Forward")
+         {
+           arrLiveService[jj] = document.frmMain.chkRow[i].value;
+           jj++;
+         }
+         else if(arrServiceMode[document.frmMain.chkRow[i].value] == "Simulate")
+         {
+           arrSimulateService [kk] = document.frmMain.chkRow[i].value;
+           kk++;
+         }
+         else
+         {
+           arrMixedService [ll] = document.frmMain.chkRow[i].value;
+           ll++;
+         }
+      }
+    }
+  }
+  else
+  {
+    if(document.frmMain.chkRow.checked == true )
+    {
+       if(arrServiceMode[document.frmMain.chkRow.value] == "Forward")
+       {
+         arrLiveService = document.frmMain.chkRow.value;
+         jj++;
+       }
+       else if(arrURLState[document.frmMain.chkRow.value] == "Simulate")
+       {
+         arrSimulateService = document.frmMain.chkRow.value;
+         kk++;
+       }
+       else
+       {
+         arrMixedService = document.frmMain.chkRow.value;
+         kk++;
+       }
+    }
+  }
+  
+  
+  if(arrLiveService.length > 0 && arrSimulateService.length > 0 && arrMixedService.length > 0)
+  {
+    if(operation == "Forward")
+    {
+    
+      var msgService = arrService [ arrLiveService[0] ];
+            
+      for(var k = 1 ; k < arrLiveService.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[arrLiveService[k]];     
+      }
+          
+      if(confirm("Following service(s) are already in forward mode. Are you sure to make other service(s) in forward mode?\r\nService(s) - " + msgService) == false)
+      {
+        return;
+      }
+        
+      var ServiceNames = arrService [ arrSimulateService[0] ];
+        
+      for(var k = 1 ; k < arrSimulateService.length ; k++ )
+      {
+        ServiceNames = ServiceNames + "%%" + arrService[arrSimulateService[k]];
+        
+      }
+        
+      var MixedService = arrService [ arrMixedService[0] ];
+      
+      for(var k = 1 ; k < arrMixedService.length ; k++ )
+      {
+        MixedService = MixedService + "%%" + arrService[arrMixedService[k]];      
+      }
+     
+      submitJSP("forwardMode",ServiceNames +  ";" + MixedService); 
+    }
+    else
+    {
+      var msgService = arrService [ arrSimulateService[0] ];
+            
+      for(var k = 1 ; k < arrSimulateService.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[arrSimulateService[k]];     
+      }
+          
+      if(confirm("Following service(s) are already in Simulate mode. Are you sure to make other service(s) in Simulate mode?\r\nService(s) - " + msgService) == false)
+      {
+        return;
+      }
+       
+      var ServiceNames = arrService[ arrLiveService[0] ];
+              
+      for(var k = 1 ; k < arrLiveService.length ; k++ )
+      {
+         ServiceNames = ServiceNames + "%%" + arrService[arrLiveService[k]];   
+      }
+       
+      var MixedService = arrService [ arrMixedService[0] ];
+      
+      for(var k = 1 ; k < arrMixedService.length ; k++ )
+      {
+        MixedService = MixedService + "%%" + arrService[arrMixedService[k]];      
+      }     
+      
+      submitJSP("simulateMode" , ServiceNames +  ";" + MixedService); 
+    }
+    
+  }
+  else if( arrLiveService.length > 0 && arrMixedService.length > 0)
+  {
+      
+    var ServiceNames = arrService[arrLiveService[0]];
+        
+    for(var k = 1 ; k < arrLiveService.length ; k++ )
+    {
+      ServiceNames = ServiceNames + "%%" + arrService[arrLiveService[k]];
+        
+    }
+    
+    var MixedService = arrService [ arrMixedService[0] ];
+          
+    for(var k = 1 ; k < arrMixedService.length ; k++ )
+    {
+      MixedService = MixedService + "%%" + arrService[arrMixedService[k]];      
+    }     
+          
+    submitJSP("simulateMode",ServiceNames +  ";" + MixedService); 
+      
+  }
+  else if(arrSimulateService.length > 0 && arrMixedService.length > 0)
+  {
+    var ServiceNames = arrService[arrSimulateService[0]];
+        
+    for(var k = 1 ; k < arrSimulateService.length ; k++ )
+    {
+      ServiceNames = ServiceNames + "%%" + arrService[arrSimulateService[k]];
+        
+    }
+    
+    var MixedService = arrService [ arrMixedService[0] ];
+          
+    for(var k = 1 ; k < arrMixedService.length ; k++ )
+    {
+      MixedService = MixedService + "%%" + arrService[arrMixedService[k]];      
+    }     
+          
+    submitJSP("forwardMode",ServiceNames +  ";" + MixedService);  
+ 
+  }
+  else if(arrSimulateService.length > 0 && arrLiveService.length > 0)
+  {
+  
+    if(operation == "Forward")
+    {
+    
+      var msgService = arrService [ arrLiveService[0] ];
+            
+      for(var k = 1 ; k < arrLiveService.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[arrLiveService[k]];     
+      }
+          
+      if(confirm("Following service(s) are already in forward mode. Are you sure to make other service(s) in forward mode?\r\nService(s) - " + msgService) == false)
+      {
+        return;
+      }
+       
+      var ServiceNames = arrService [ arrSimulateService[0] ];
+        
+      for(var k = 1 ; k < arrSimulateService.length ; k++ )
+      {
+        ServiceNames = ServiceNames + "%%" + arrService[arrSimulateService[k]];
+        
+      }
+        
+      submitJSP("forwardMode",ServiceNames ); 
+    }
+    else
+    {
+      var msgService = arrService [ arrSimulateService[0] ];
+            
+      for(var k = 1 ; k < arrSimulateService.length ; k++ )
+      {
+        msgService = msgService + ", " + arrService[arrSimulateService[k]];     
+      }
+          
+      if(confirm("Following service(s) are already in Simulate mode. Are you sure to make other service(s) in Simulate mode?\r\nService(s) - " + msgService) == false)
+      {
+        return;
+      }
+      
+      var ServiceNames = arrService[ arrLiveService[0] ];
+              
+      for(var k = 1 ; k < arrLiveService.length ; k++ )
+      {
+         ServiceNames = ServiceNames + "%%" + arrService[arrLiveService[k]];   
+      }
+       
+      submitJSP("simulateMode" , ServiceNames ); 
+    }  
+  
+  }
+  else if(arrSimulateService.length > 0)
+  {
+    var ServiceNames = arrService[arrSimulateService[0]];
+        
+    for(var k = 1 ; k < arrSimulateService.length ; k++ )
+    {
+      ServiceNames = ServiceNames + "%%" + arrService[arrSimulateService[k]];
+        
+    }
+   
+    submitJSP("forwardMode",ServiceNames );
+  }
+  else if(arrLiveService.length > 0)
+  {
+    var ServiceNames = arrService[arrLiveService[0]];
+        
+    for(var k = 1 ; k < arrLiveService.length ; k++ )
+    {
+      ServiceNames = ServiceNames + "%%" + arrService[arrLiveService[k]];
+        
+    }
+    
+    submitJSP("simulateMode",ServiceNames );
+  } 
+  else if(arrMixedService.length > 0)
+  {
+    alert("Selected services are in Mixed mode or old format, so you can edit those services to change mode")
+    return;
+  }
+
+}
+
+function clickChkMain()
+{ 
+ // Clear highlighting on all rows
+ //changeToOriginalColor(arrSelectedRows);
+  if(document.frmMain.chkMain.checked)
+  {
+    if('3' ==1)
+    {
+       disableButton(false,false,false,false,false,false,false,false);
+    }
+    else
+    {
+      disableButton(true,true,false,true,false,true,true,true);
+    }
+  }
+  else
+  {
+    disableButton(true,true,true,true,true,true,true,true);
+  }
+
+
+ shiftLastCheckVaue=null;
+ 
+ changeAllChecksByChangeColorForPaging(('3' - '0'), document.frmMain.chkMain, document.frmMain.chkRow, "" , document.frmMain.chkMain.checked,arrSelectedRows,'0');
+ 
+ ActiveInactiveProperty();
+ 
+ changeModeProperty();
+
+ //Check for Observer Group Users.
+  
+}
+
+function disableButton(updateedit,updatecopy,updatedelete,updatetest,updateexport,updateCommit,updateUpdate,updateLog)
+{ 
+
+if(updateedit)
+ {
+   document.frmMain.Edit.disabled = updateedit;
+   document.frmMain.Edit.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Edit.disabled = updateedit;
+   document.frmMain.Edit.style.color = '';
+ }
+ 
+ if(updatecopy)
+ {
+   document.frmMain.Copy.disabled = updatecopy;
+   document.frmMain.Copy.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Copy.disabled = updatecopy;
+   document.frmMain.Copy.style.color = '';
+ }
+ 
+ if(updatedelete)
+ {
+   document.frmMain.Delete.disabled = updatedelete;
+   document.frmMain.Delete.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Delete.disabled = updatedelete;
+   document.frmMain.Delete.style.color = '';
+ }
+ 
+ if(updatetest)
+ {
+   document.frmMain.Test.disabled = updatetest;
+   document.frmMain.Test.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Test.disabled = updatetest;
+   document.frmMain.Test.style.color = '';
+ }
+ 
+ if(updateexport)
+ {
+   document.frmMain.ExportService.disabled = updateexport;
+   document.frmMain.ExportService.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.ExportService.disabled = updateexport;
+   document.frmMain.ExportService.style.color = '';
+ }
+ 
+ if(updateCommit)
+ {
+   document.frmMain.Commit.disabled = updateCommit;
+   document.frmMain.Commit.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Commit.disabled = updateCommit;
+   document.frmMain.Commit.style.color = '';  
+ }
+ 
+ if(updateUpdate)
+ {
+   document.frmMain.Update.disabled = updateUpdate;
+   document.frmMain.Update.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Update.disabled = updateUpdate;
+   document.frmMain.Update.style.color = '';
+ }
+ 
+ if(updateLog)
+ {
+   document.frmMain.Log.disabled = updateLog;
+   document.frmMain.Log.style.color = 'AEA0BF';
+ }
+ else
+ {
+   document.frmMain.Log.disabled = updateLog;
+   document.frmMain.Log.style.color = '';
+ }
+ 
+}
+
+function ActiveInactiveProperty()
+{
+  var j=0;
+  
+  var DisableServiceCount = 0;
+  var EnableServiceCount = 0;
+  
+  serviceCount = ('3' - 0);
+  
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    {  
+      if(document.frmMain.chkRow[i].checked == true)
+      {
+         if(arrURLState[document.frmMain.chkRow[i].value] == "enabled")
+           EnableServiceCount++;
+         else if(arrURLState[document.frmMain.chkRow[i].value] == "disabled")
+           DisableServiceCount++;
+      }
+    }
+  }
+  else
+  {
+    if(document.frmMain.chkRow.checked == true )
+    {
+       if(arrURLState[document.frmMain.chkRow.value] == "enabled")
+         EnableServiceCount++;
+       else if(arrURLState[document.frmMain.chkRow.value] == "disabled")
+         DisableServiceCount++;
+      
+    }
+  }
+  
+  if(DisableServiceCount > 0 && EnableServiceCount > 0)
+  {
+    document.frmMain.ActiveService.disabled =false; 
+    document.frmMain.ActiveService.style.color = '';
+    
+    document.frmMain.InActiveService.disabled =false; 
+    document.frmMain.InActiveService.style.color = '';
+   
+  }
+  else if(DisableServiceCount > 0)
+  {
+    document.frmMain.ActiveService.disabled =false; 
+    document.frmMain.ActiveService.style.color = '';
+    
+    document.frmMain.InActiveService.disabled =true; 
+    document.frmMain.InActiveService.style.color = 'AEA0BF';    
+  
+  }
+  else if (EnableServiceCount > 0)
+  {
+    document.frmMain.ActiveService.disabled =true; 
+    document.frmMain.ActiveService.style.color = 'AEA0BF';
+      
+    document.frmMain.InActiveService.disabled =false; 
+    document.frmMain.InActiveService.style.color = ''; 
+  
+  }
+  else
+  {
+    document.frmMain.ActiveService.disabled =true; 
+    document.frmMain.ActiveService.style.color = 'AEA0BF';
+      
+    document.frmMain.InActiveService.disabled =true; 
+    document.frmMain.InActiveService.style.color = 'AEA0BF';
+  
+  }
+  
+}
+
+function changeModeProperty()
+{
+  var j=0;
+  
+  var LiveServiceCount = 0;
+  var SimulateServiceCount = 0;
+  var MixedServiceCount = 0;
+  
+  serviceCount = ('3' - 0);
+  
+  if(serviceCount > 1)
+  {
+    for(var i = 0; i < serviceCount; i++)
+    {  
+      if(document.frmMain.chkRow[i].checked == true)
+      {
+         if(arrServiceMode[document.frmMain.chkRow[i].value] == "Forward")
+           LiveServiceCount++;
+         else if(arrServiceMode[document.frmMain.chkRow[i].value] == "Simulate")
+           SimulateServiceCount++;
+         else
+           MixedServiceCount++;
+      }
+    }
+  }
+  else
+  {
+    if(document.frmMain.chkRow.checked == true )
+    {
+       if(arrServiceMode[document.frmMain.chkRow.value] == "Forward")
+         LiveServiceCount++;
+       else if(arrURLState[document.frmMain.chkRow.value] == "Simulate")
+         SimulateServiceCount++;
+       else
+         MixedServiceCount++;
+    }
+  }
+  
+  if(LiveServiceCount > 0 && MixedServiceCount > 0 && SimulateServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =false; 
+    document.frmMain.ForwardMode.style.color = '';
+    
+    document.frmMain.SimulateMode.disabled =false; 
+    document.frmMain.SimulateMode.style.color = '';
+   
+  }
+  else if(LiveServiceCount > 0 && SimulateServiceCount > 0 )
+  {
+    document.frmMain.ForwardMode.disabled =false; 
+    document.frmMain.ForwardMode.style.color = '';
+    
+    document.frmMain.SimulateMode.disabled =false; 
+    document.frmMain.SimulateMode.style.color = '';   
+  
+  }
+  else if (LiveServiceCount > 0 && MixedServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =true; 
+    document.frmMain.ForwardMode.style.color = 'AEA0BF';
+    
+    document.frmMain.SimulateMode.disabled =false; 
+    document.frmMain.SimulateMode.style.color = ''; 
+  
+  }
+  else if( SimulateServiceCount > 0 && MixedServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =false; 
+    document.frmMain.ForwardMode.style.color = '';
+    
+    document.frmMain.SimulateMode.disabled =true; 
+    document.frmMain.SimulateMode.style.color = 'AEA0BF'; 
+  }
+  else if(MixedServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =true; 
+    document.frmMain.ForwardMode.style.color = 'AEA0BF';
+    
+    document.frmMain.SimulateMode.disabled =true; 
+    document.frmMain.SimulateMode.style.color = 'AEA0BF';  
+  
+  }
+  else if(SimulateServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =false; 
+    document.frmMain.ForwardMode.style.color = '';
+      
+    document.frmMain.SimulateMode.disabled =true; 
+    document.frmMain.SimulateMode.style.color = 'AEA0BF';  
+    
+  }
+  else if(LiveServiceCount > 0)
+  {
+    document.frmMain.ForwardMode.disabled =true; 
+    document.frmMain.ForwardMode.style.color = 'AEA0BF';
+      
+    document.frmMain.SimulateMode.disabled =false; 
+    document.frmMain.SimulateMode.style.color = '';  
+    
+  }
+  else
+  {
+    document.frmMain.ForwardMode.disabled =true; 
+    document.frmMain.ForwardMode.style.color = 'AEA0BF';
+      
+    document.frmMain.SimulateMode.disabled =true; 
+    document.frmMain.SimulateMode.style.color = 'AEA0BF'; 
+  
+  }
+  
+}
+
+function clickChkRow(checkEvent,id)
+{ 
+  //put the shiftLastCheckVaue as ckecked checkbox and in else condition  shiftLastCheckVaue is null
+  if(checkEvent.checked)
+  { 
+    if(getSelectedServices123() >= 2)
+    {  
+      disableButton(true,true,false,true,false,true,true,true);
+      
+      ActiveInactiveProperty();
+      
+      changeModeProperty();
+    
+    }
+    else
+    {
+      disableButton(false,false,false,false,false,false,false,false);
+      
+      ActiveInactiveProperty();
+      
+      changeModeProperty();
+    }
+  
+   }
+   else
+   { 
+     if(getSelectedServices123()=='1')
+     {      
+       disableButton(false,false,false,false,false,false,false,false);
+       
+       ActiveInactiveProperty();
+       
+       changeModeProperty();
+              
+     }
+     else if(getSelectedServices123()=='0')
+     {
+       disableButton(true,true,true,true,true,true,true,true);
+       
+       ActiveInactiveProperty();
+       
+       changeModeProperty();
+     }  
+     else
+      {
+       disableButton(true,true,false,true,false,true,true,true);
+       
+       ActiveInactiveProperty();
+       
+       changeModeProperty();
+      }
+   }
+ 
+   if(checkEvent.checked)
+     shiftLastCheckVaue=checkEvent;
+   else
+     shiftLastCheckVaue=null;
+  
+   lastId=id;
+  
+  serviceCount = ('3' - '0');
+  changeMainCheck(serviceCount, document.frmMain.chkMain, document.frmMain.chkRow, "");
+  
+  //Check for Observer Group Users.
+   
+}
+
+
+function valEnteredKeyPress(event)
+{
+  if((navigator.appName.indexOf("Microsoft")>-1) || (navigator.appName.indexOf("MSIE")>-1))
+  {    
+    var enteredKey = event.keyCode;
+   
+  }
+  else
+  {    
+    var enteredKey = event.which;  
+    
+  }
+  
+
+  if(enteredKey == 13)
+  {
+    if(clickApply() == false)
+      return false;
+  }
+  else
+   return true;
+
+}
+
+
+// provide the height of the table to tablekit.js for resizing
+function getHeightTable()
+{
+  return getHeight(.49);
+}
+
+//if data is null the resizable will not be done
+function getTableLengthtStatus()
+{
+ if(arrIndex.length <= 0)
+  return true;
+ else
+  return false;
+}
+
+
+
+function changeIgnoreCase()
+{ 
+ 
+ if(document.getElementById("chkRegx").checked)
+ {
+   document.getElementById("chkURLIgnoreCase").disabled = false ;
+   document.getElementById("chkURLIgnoreCase").checked = true ;
+   document.getElementById("chkCompleteMatch").disabled = false ;
+   document.getElementById("chkCompleteMatch").checked = true ;
+   
+ }
+ else
+ {
+   document.getElementById("chkURLIgnoreCase").checked = false ;
+   document.getElementById("chkURLIgnoreCase").disabled = true ;
+   document.getElementById("chkCompleteMatch").checked = false ;
+   document.getElementById("chkCompleteMatch").disabled = true ;
+ }
+}
+
+function openWin(option , height1)
+{
+  var width = 450;
+  var height = height1;
+  var left = parseInt((screen.availWidth/2) - (width/2));
+  var top = parseInt((screen.availHeight/2) - (height/2));
+  var detail = width + "_" + height + "_" + left + "_" + top;
+  var windowFeatures = "width=" + width + ",height=" + height + ",status,resizable,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + ",scrollbars=1"; 
+  myWindow = window.open("corrPageHelp.jsp?help="+ option + "&detail=" + detail,'searchParam',windowFeatures);
+  myWindow.focus();
+}
+
+
+
+
+
+function clickApply()
+{
+  document.frmMain.txtKeyword.value = trimString(document.frmMain.txtKeyword.value);
+  var varKeyword = document.frmMain.txtKeyword.value; 
+  var serviceTypeObj = document.getElementById("ServiceType");
+  var serviceStatObj  = document.getElementById("State");
+  var servcieModeObj = document.getElementById("Mode");
+  var serviceModifiedVal = document.getElementById("LastModified");
+  submitJSP("applyFilter", servcieModeObj.value + "%%"  + serviceTypeObj.value + "%%" + serviceStatObj.value+  "%%" + serviceModifiedVal.value  + "%%" + varKeyword);
+   
+}
+
+function validateSpecialChar(variableName)
+{
+  var pattern = /^[a-zA-Z0-9. _-]*$/;
+  if (!variableName.match(pattern))
+  {    
+    alert("Please enter valid keyword.\r\nAllowed characters are alpha, numeric, dot, dash, space and underscore");
+    document.frmMain.txtKeyword.focus();
+    return false;
+  }
+}
+
+
+function clickReset()
+{
+  submitJSP("resetFilter", "");
+}
+
+function showAllUser()
+{
+  document.frmMain.txtKeyword.value = "";    
+      
+  submitJSP("showAll", "");
+}
+
+function setupTableSort()
+{
+  var st = new SortableTable(document.getElementById("showServiceId"),
+    ["None", "String", "String","Number", "Number", "Date", "String"]);
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);   
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);
+  SortableTable.prototype.addSortType("Number", Number);
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);
+  SortableTable.prototype.addSortType("String", SortableTable.toUpperCase);
+  
+  restoreCheckBoxesForSorting(st);
+}
+
+function cancelSceForm()
+{
+  undoInit();
+
+}
+
+
+function cancelSceFormEdit()
+{
+  undoInitEdit();
+
+}
+
+function getCookie(c_name)
+{
+
+var i,x,y,ARRcookies=document.cookie.split(";");
+
+for (i=0;i<ARRcookies.length;i++)
+  {
+  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+  x=x.replace(/^\s+|\s+$/g,"");
+  if (x==c_name)
+    {
+      if(unescape(y) == "null" || unescape(y) == ""){
+   
+      return '2%%19%%20%%7%%8%%8%%9%%5%%4%%14';}
+    else
+    {  
+      return unescape(y);
+    }  
+    }
+  }
+   
+  return '2%%19%%20%%7%%8%%8%%9%%5%%4%%14';
+}
+
+function setCookie(c_name,exdays)
+{
+ 
+table = document.getElementById("showServiceId");
+
+if(getBrowserType() == "IE"){
+  value=getColumnWidthPixel(table.rows[0].cells[0].offsetWidth+7)+"%%"+getColumnWidthPixel(table.rows[0].cells[1].offsetWidth)+"%%"+getColumnWidthPixel(table.rows[0].cells[2].offsetWidth)+"%%"+getColumnWidthPixel(table.rows[0].cells[3].offsetWidth)+"%%"+getColumnWidthPixel(table.rows[0].cells[4].offsetWidth)+"%%"+getColumnWidthPixel(table.rows[0].cells[5].offsetWidth)+"%%"+getColumnWidthPixel(table.rows[0].cells[6].offsetWidth) +"%%" + getColumnWidthPixel(table.rows[0].cells[7].offsetWidth)
+  +"%%"+getColumnWidthPixel(table.rows[0].cells[8].offsetWidth) +"%%" + getColumnWidthPixel(table.rows[0].cells[9].offsetWidth);}
+else 
+  value=getColumnWidthPixel(table.rows[0].cells[0].offsetWidth+5)+"%%"+getColumnWidthPixel(table.rows[0].cells[1].offsetWidth-2)+"%%"+getColumnWidthPixel(table.rows[0].cells[2].offsetWidth-2)+"%%"+getColumnWidthPixel(table.rows[0].cells[3].offsetWidth-2)+"%%"+getColumnWidthPixel(table.rows[0].cells[4].offsetWidth-2)+"%%"+getColumnWidthPixel(table.rows[0].cells[5].offsetWidth-2)+"%%"+getColumnWidthPixel(table.rows[0].cells[6].offsetWidth-2) +"%%"+ getColumnWidthPixel(table.rows[0].cells[7].offsetWidth-2)
+  + "%%" + getColumnWidthPixel(table.rows[0].cells[8].offsetWidth-2) +"%%"+ getColumnWidthPixel(table.rows[0].cells[9].offsetWidth-2);
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+
+document.cookie=c_name + "=" + c_value;
+}
+
+//for removing the default sorting image on sorting the table
+function removeOnloadImage()
+{
+  document.getElementById("1").style.display='none';
+  document.getElementById("2").style.display='none';
+  document.getElementById("3").style.display='none';
+  
+  document.getElementById("12").style.display='none';
+  document.getElementById("13").style.display='none';
+  document.getElementById("14").style.display='none';
+  document.getElementById("16").style.display='none';
+  document.getElementById("17").style.display='none';
+  
+  //sortingImage
+  
+  document.getElementById(ImageVarCol).style.display='inline';
+  var varResponseAction =  document.getElementById(ImageVarCol);
+  if(ImageSortFlag == 1)
+    varResponseAction.innerHTML = "<img src='../images/downArrow.gif'/>";
+  else
+    varResponseAction.innerHTML = "<img src='../images/upArrow.gif'/>";
+}
+
+function getSortData(colIndex)
+{
+  
+  submitJSP("getSortData", colIndex);
+}
+
+function showServices()
+{ 
+  document.write("<table cellpadding=0 cellspacing=0  width=99% valign=top border=0 align=center>");
+  
+  document.write("<tr><td>");
+  document.write("<table  cellpadding='0' cellspacing='0' border=0 class='scrollbarColorChange' width=100%><tr><td class=''></td></tr><tr> <td align='center' valign='top'><table width='99%' cellpadding='0' cellspacing='0'>");
+  document.write("<table cellpadding=0 cellspacing='0' border=0 width=99% valign=top align=center style = 'font-size:10px;'>");
+  document.write("<tr><td><div id='ScrollablePane' STYLE='overflow:auto; width:100%; height:" + getHeight(.47) + "px; border:0px solid #DFE9F7;'>");
+  document.write("<table width=100%  border=0 id='showServiceId'  style='table-layout:fixed ;border:1px solid #DFE9F7;' class='resizable' cellpadding=0 cellspacing=0  align=center>");
+  document.write("<thead id='pfh'>");
+  document.write("<tr class = 'tableHeaderLockedEnhance\' id='TableHeader'>");
+  document.write("<th width=2% align=left class='tableCell'  ><input type = checkbox name = chkMain onclick = 'clickChkMain();' title = 'Select All' value=''></th>");
+  document.write("<th width=20% align=left class='tableCell' title='Click to sort on Service Name' onclick=getSortData('1'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Service&nbsp;Name&nbsp;<span id='1'></span></b></th>");
+  document.write("<th width=31% align=left class='tableCell' title='Click to sort on Endpoint URL' onclick=getSortData('2');  nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Endpoint&nbsp;URL&nbsp;<span id='2'></span></b></th>");
+  document.write("<th width=7% align=right class='tableCell'  title='Click to sort on Templates'  onclick=getSortData('3'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Templates&nbsp;&nbsp;<span id='3'></span></b></th>");
+ 
+  document.write("<th width=10% align=right class='tableCell' title='Click to sort on Last Modified'  onclick=getSortData('12'); nowrap title='Last Modified of the test in MM/DD/YY HH:MM:SS format' ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Last&nbsp;Modified&nbsp;&nbsp;<span id='12'></span></b></th>");
+  
+  document.write("<th width=9% align=left class='tableCell'  title='Click to sort on Last Updated By' onclick=getSortData('13'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Last&nbsp;Updated&nbsp;By<span id='13'></span></b></th>");
+ 
+  document.write("<th width=5% align=left class='tableCell'  title='Click to sort on State' onclick=getSortData('14'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;State<span id='14'></span></b></th>");
+  
+  document.write("<th width=5% align=left class='tableCell'  title='Click to sort on Mode' onclick=getSortData('16'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Mode<span id='16'></span></b></th>");
+  
+  document.write("<th  align=left class='tableCell' title='Click to sort on Service Type' onclick=getSortData('17'); nowrap ><b style='cursor:"+getStyleCursor()+"'>&nbsp;&nbsp;Service Type<span id='17'></span></b></th>");
+  
+  document.write("</tr>");
+  document.write("</thead>");
+  
+      document.write("<tr id=\"RowId" + 0 + "\" class = tableRowEvenNew onmouseout=outMouseForService(id) onmouseover=overMouseForService(id)>");
+      
+    
+    document.write("<td align = left class='tableCell'><input type='checkbox' name=chkRow  value = 0 onclick = \"changeColorOfSelectedRowsByCheckForPaging(" + 0 + ",this,arrSelectedRows,'0');statusSelectionRows(this," + 0 + ");if(event.shiftKey||event.ctrlKey){shiftCheckForPaging(lastId," +0+ ",this,event.shiftKey||event.ctrlKey,shiftLastCheckVaue,arrIndex);}clickChkRow(this,'0');if(event.shiftKey||event.ctrlKey)disableButton(true,true,false,true,false,true,true,true);\"></input></td>");
+
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;<a href=javascript:openTemplateWin('/cavisson.com','default','test','NA')>test</a></td>");
+   
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;/cavisson.com</a></td>");
+
+    document.write("<td  align=right class='tableCell' nowrap>&nbsp;&nbsp;2 &nbsp;&nbsp;</td>");
+    
+    //hide number of parameters
+    //document.write("<td  align=left class='tableCell' nowrap>&nbsp;&nbsp;0 </td>");
+    
+    document.write("<td  align=right class='tableCell'  nowrap>&nbsp;&nbsp;03/17/2015 12:26&nbsp;&nbsp;</td>");
+    
+    document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;netstorm</td>");
+    
+    
+      document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;enabled</td>");
+    
+
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;Simulate</td>");
+   
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;HTTP</td>");
+   
+   document.write("</tr>");
+   
+       document.write("<tr id=\"RowId" + 1 + "\" class = tableRowOddNew onmouseout=outMouseForService(id) onmouseover=overMouseForService(id)>");
+     
+    
+    document.write("<td align = left class='tableCell'><input type='checkbox' name=chkRow  value = 1 onclick = \"changeColorOfSelectedRowsByCheckForPaging(" + 1 + ",this,arrSelectedRows,'0');statusSelectionRows(this," + 1 + ");if(event.shiftKey||event.ctrlKey){shiftCheckForPaging(lastId," +1+ ",this,event.shiftKey||event.ctrlKey,shiftLastCheckVaue,arrIndex);}clickChkRow(this,'1');if(event.shiftKey||event.ctrlKey)disableButton(true,true,false,true,false,true,true,true);\"></input></td>");
+
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;<a href=javascript:openTemplateWin('/SIXBeanXapiJaxWS/KohlsGetViewPackSlipServiceService','default','KohlsSK','NA')>KohlsSK</a></td>");
+   
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;/SIXBeanXapiJaxWS/KohlsGetViewPackSlipServiceService</a></td>");
+
+    document.write("<td  align=right class='tableCell' nowrap>&nbsp;&nbsp;1 &nbsp;&nbsp;</td>");
+    
+    //hide number of parameters
+    //document.write("<td  align=left class='tableCell' nowrap>&nbsp;&nbsp;2 </td>");
+    
+    document.write("<td  align=right class='tableCell'  nowrap>&nbsp;&nbsp;03/03/2015 15:26&nbsp;&nbsp;</td>");
+    
+    document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;netstorm</td>");
+    
+    
+      document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;enabled</td>");
+    
+
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;Simulate</td>");
+   
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;HTTP</td>");
+   
+   document.write("</tr>");
+   
+      document.write("<tr id=\"RowId" + 2 + "\" class = tableRowEvenNew onmouseout=outMouseForService(id) onmouseover=overMouseForService(id)>");
+      
+    
+    document.write("<td align = left class='tableCell'><input type='checkbox' name=chkRow  value = 2 onclick = \"changeColorOfSelectedRowsByCheckForPaging(" + 2 + ",this,arrSelectedRows,'0');statusSelectionRows(this," + 2 + ");if(event.shiftKey||event.ctrlKey){shiftCheckForPaging(lastId," +2+ ",this,event.shiftKey||event.ctrlKey,shiftLastCheckVaue,arrIndex);}clickChkRow(this,'2');if(event.shiftKey||event.ctrlKey)disableButton(true,true,false,true,false,true,true,true);\"></input></td>");
+
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;<a href=javascript:openTemplateWin('/TestIndexParamWithRanNum','default','TestService','NA')>TestService</a></td>");
+   
+    document.write("<td align=left class='tableCell' nowrap>&nbsp;&nbsp;/TestIndexParamWithRanNum</a></td>");
+
+    document.write("<td  align=right class='tableCell' nowrap>&nbsp;&nbsp;1 &nbsp;&nbsp;</td>");
+    
+    //hide number of parameters
+    //document.write("<td  align=left class='tableCell' nowrap>&nbsp;&nbsp;2 </td>");
+    
+    document.write("<td  align=right class='tableCell'  nowrap>&nbsp;&nbsp;03/03/2015 14:30&nbsp;&nbsp;</td>");
+    
+    document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;netstorm</td>");
+    
+    
+      document.write("<td  align=left class='tableCell'nowrap>&nbsp;&nbsp;enabled</td>");
+    
+
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;Simulate</td>");
+   
+     document.write("<td  align=left class='tableCell'  nowrap>&nbsp;&nbsp;HTTP</td>");
+   
+   document.write("</tr>");
+   
+  
+   document.write("<tbody>");
+  
+   document.write("</tbody>");  
+
+   document.write("</table >&nbsp;</div>");                                                                                                                                                                                                                                                        
+   document.write("</td></tr>");
+ 
+   document.write("<tr><td valign=top align=center><table border = 0 width = 100% ><tr><td width = 9%>&nbsp;");
+   
+   if('0' == '0')
+   {
+     document.write("<img src='../images/Recycle-Bin_e.png' disabled=true title = 'No service in recycle bin' align=left style='cursor:"+getStyleCursor()+"' >&nbsp;</td><td width = 66% align = center>");
+   }  
+   else
+   { 
+   
+     if('0' == '1' )
+       document.write("<img src='../images/Recycle-Bin_e.png' title = '0 service in recycle bin' align=left onclick='recycleCallPageWindow()' style='cursor:"+getStyleCursor()+"'>&nbsp;</td><td width = 66% align = center>");
+     else
+       document.write("<img src='../images/Recycle-Bin_e.png' title = '0 services in recycle bin' align=left onclick='recycleCallPageWindow()' style='cursor:"+getStyleCursor()+"'>&nbsp;</td><td width = 66% align = center>");
+   }  
+    
+	document.write("<input type=Button class=button style='width:60;' value = 'Edit' name = 'Edit' title='To edit service' onclick = 'clickEdit();'>&nbsp;");
+	
+   document.write("<input type=Button class=button style='width:60;' value = 'Copy' name = 'Copy' title='To copy service' onclick = 'clickCopy();'>&nbsp;"); 
+   
+   document.write("<input type=Button class=button style='width:60;' value = 'Delete' name = 'Delete' title='To move selected service(s) in Recycle Bin' onclick = 'clickDelete();'>&nbsp;"); 
+   
+   document.write("<input type=Button class=button style='width:60;' value = 'Test' name = 'Test' title='To test service' onclick = 'clickTest();'>&nbsp;");  
+   
+   document.write("<input type=Button class=button style='width:60;' value = 'Activate' title='To activate services' name = 'Activate' onclick = 'clickActivate();'>&nbsp;"); 
+   
+   document.write("<input type=Button class=button style='width:100;' value='Export Service' title='To export service(s)' name='ExportService' onclick = 'clickExportService();'>&nbsp;");
+   
+   document.write("<input type=Button class=button style='width:100;' value='Import Service' title='To improt service' name='ImportService' onclick = 'clickImportService();'>&nbsp;");
+   
+   document.write("<input type=Button class=button style='width:60;' title='To enable service(s) and activate' value='Enable' name='ActiveService' onclick = 'ActiveInactiveService(\"active\");'>&nbsp;");
+   
+   document.write("<input type=Button class=button style='width:60;' value='Disable' title='To disable service(s) and activate' name='InActiveService' onclick = 'ActiveInactiveService(\"inactive\");'>&nbsp;");
+   document.write("<input type=Button class=button style='width:100;' value='Version Commit' title='To commit service' name='Commit' onclick = 'clickCommit();'>&nbsp;");
+   
+   document.write("<input type=Button class=button style='width:100;display:none' value='Update' name='Update' onclick = 'clickUpdate();'>&nbsp;");
+      
+   document.write("<input type=Button class=button style='width:75;' value='Version Log' name='Log' title='To check version log of service' onclick = 'clickLog();'>&nbsp;");  
+   
+   document.write("<input type=Button class=button style='width:90;' value='Forward Mode' title='To change forward mode and activate' name='ForwardMode' onclick = 'changeMode(\"Forward\");'>&nbsp;");  
+    
+   document.write("<input type=Button class=button style='width:90;' value='Simulate Mode' name='SimulateMode' To change simulate mode and activate onclick = 'changeMode(\"Simulate\");'>&nbsp;");
+   document.write("&nbsp;</td></tr></td></table>")
+   document.write("</td></tr></table>");
+   document.write("</td></tr>");
+   document.write("</table>");
+   
+   
+    document.write("<tr><td><table border=0 cellpadding=0 cellspacing=0 width=100%><tr>");
+    
+    if("Controller Controller_Proxy is running on IP ALL and port(s) 9020 activated on 03/25/2015 13:17:58" == "Controller is not running")
+      document.write("<td align=left style = 'font-size:9px; color: #FF0000; font-weight: bold; text-align:left'  width=50% >Controller Controller_Proxy is running on IP ALL and port(s) 9020 activated on 03/25/2015 13:17:58</td>");
+    else
+      document.write("<td align=left style = 'font-size:9px; color: #3B4990 ; font-weight: bold; text-align:left' width=50% >Controller Controller_Proxy is running on IP ALL and port(s) 9020 activated on 03/25/2015 13:17:58</td>");
+    
+    document.write("<td><table border =0 cellpadding=0 cellspacing= 0 width=100%%><tr><td align=right >");
+    
+       
+    if('3' !='0' && '3' != '3' )
+    {
+     document.write("Filter selected " + "3" + " out of " +  "3" + " Services&nbsp;&nbsp;&nbsp;&nbsp;Page");
+    }
+    else if('3' < 14)
+    {
+      document.write("&nbsp;");
+    }
+    else if('yes' == "yes")
+    {
+      document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Page");
+      
+          document.write("&nbsp;1"); 
+     
+         document.write("&nbsp;");
+      
+    }
+    else
+      document.write("&nbsp;");
+      
+   document.write("</td></tr></table></td>");
+    
+   document.write("<td width=16%><table border=0 cellpadding=0 cellspacing=0 width=100% align=right><td align=right style = 'font-size:9px; color: #3B4990; font-weight: bold; text-align:right width=50'>Show all services on same page <input type=checkbox name='chkShowPagination' value='1' onclick='showAllServiceInSamePage()'>&nbsp;&nbsp;</td></td></table></td></tr>");
+   
+   document.write("</table></td></tr></table>");
+}
+
+function showFilterTestRun()
+{
+  startTable=  "<table width = 100% border=0 align=center><tr><td  width=7% align=right width='20'><font size=1><b>Filter&nbsp;Services:</b></font></td>";
+  
+  var service = "Service&nbsp;Type&nbsp; </td><td width=10%> <select id='ServiceType' name='servicetype' ><option value='All' selected>All</option><option value='HTTP'>HTTP</option><option value='JDBC'>JDBC</option><option value='EJB Call'>EJB CALL</option><option value='SPRING REMOTING'>SPRING REMOTING</option><option value='Java Class'>Java Class</option>";
+     
+  var state = "State&nbsp;</td><td width=10%> <select id='State' name='state' ><option value='All'selected>All</option><option value='disabled'>Disabled</option><option value='enabled'>Enabled</option>";
+     
+  var mode = "<td width=5% align=left >Mode&nbsp;</td><td width=10% > <select id='Mode' name='mode' ><option value='All'selected>All</option><option value='Simulate'>Simulate</option><option value='Forward'>Forward</option><option value='Mixed'>Mixed</option>";
+      
+  var lastmodified = "<td width=3% align=left >&nbspLast&nbsp;Modified&nbsp;</td><td width=10%> <select id='LastModified' name='Last modified' ><option value='0'selected>All</option><option value='1'>Last 24hours</option><option value='7'>Last 7 days</option><option value='30'>Last 30 days</option><option value='180'>Last 6 months</option><option value='365'>Last 1 year</option>";
+       
+  var SearchBox="<td width=5% align=left nowrap>&nbsp;Keyword&nbsp;";
+   
+  var keyword = "<td align=left nowrap title='Find Services containing keyword.'><input class = fieldValueOfTextBox type='text'  name='txtKeyword'  style = 'width:100%;' onkeypress = 'return valEnteredKeyPress(event)'></td> ";
+    
+  var dataLine = "<td width = 80%  align=right ><table border=0 width = 100% align=left class=filterBorder><tr><td width=10% >" +  service + "</td><td width=7% align=right>" +  state + "</td>" +  mode + "</td>" +  lastmodified + "</td>" +  SearchBox + "</td>" + keyword + "</tr></td></table> </td> <td align=right  width=100%><table border = 0  width=100%><tr><td width = 25% valign='center' align=right ><input type=Button class=button style= 'width:auto;'value='Apply' name=Apply onclick = \"clickApply(); \"></td> <td width = 25% nowrap valign='center' align=left >&nbsp;&nbsp;<input type=Button class=button style= 'width:auto;' value='Show All' name='Show All' onclick = \"showAllUser(); \"></td></tr></table></td>";
+    
+  var endTable = "</tr><tr><td></td></tr></table>";
+    
+   document.write(startTable + dataLine + endTable);
+}
+
+</script>
+
+
+
+<!--  
+  Name   : correlationHeader.htmlf
+  Author : Jyoti
+  Purpose: This file is for correlation GUI.It it to be included in all JSP
+           on the top for for following :
+           - Import of packages 
+           - Initialization of beans and js
+           - JSP variables which are common to all JSPs
+
+  Modification History:
+    29/03/10  : jyoti :3.6.2 -Initial Version
+    15/02/12  : Manish:3.8.2 -Initial Version
+  Notes  :
+      None
+-->
+
+<html>
+<head>
+<link rel="stylesheet" href="../css/AdvancedNetstorm.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="../css/Netstorm.css" type="text/css" media="all"/>
+<title>NetFunction (Controller_Proxy) - Services</title>
+
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/menu.css"/>
+<link rel="stylesheet" type="text/css" href="../yui/css/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="../yui/css/container.css" />
+
+
+<style type="text/css">
+
+div.yui-b p {
+  margin: 0 0 .5em 0;
+  color: #999;
+}
+
+div.yui-b p strong {
+  font-weight: bold;
+  color: #000;
+}
+
+div.yui-b p em {
+  color: #000;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  padding: .25em .5em;
+  background-color: #ccc;
+}
+
+#productsandservices {
+  margin: 0 0 0px 0;
+}
+
+</style>
+
+
+<!-- This method creating a menu with option.--->
+<!-----------------------Start ----------------->
+
+
+<script type="text/javascript">
+
+/*
+     Initialize and render the MenuBar when its elements are ready
+     to be scripted.
+*/
+
+YAHOO.util.Event.onContentReady("productsandservices", function () {
+
+/*
+  Instantiate a MenuBar:  The first argument passed to the constructor
+  is the id for the Menu element to be created, the second is an
+   object literal of configuration properties.
+*/
+
+    var oMenuBar = new YAHOO.widget.MenuBar("productsandservices", {
+                                                autosubmenudisplay: true,
+                                                hidedelay: 750,
+                                                lazyload: true});
+
+/*
+     Call the "render" method with no arguments since the
+     markup for this MenuBar instance is already exists in
+     the page.
+*/
+
+    oMenuBar.render();
+
+});
+
+function openSetting()
+{
+  window.open("../admin/setting.jsp", 'settings');
+}
+
+function setCookieForlogOut(c_name,exdays)
+{
+value = null;
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+//alert(c_value);
+document.cookie=c_name + "=" + c_value;
+}
+
+function openLogout()
+{
+ setCookieForlogOut("width",1);
+ submitJSP("logout", "");
+}
+
+function openNFUserHelp()
+{	
+  var helpId = window.open("/NFGuide/WebHelp/NFUserGuide.htm", "NetstormOnLineHelp", "toolbars=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, left=50, top=50");
+  helpId.focus();
+}
+
+function openNFTutorialHelp()
+{	
+  var helpId = window.open("/NFTutorial/WebHelp/NetFunctionTutorial.htm", "NetstormOnLineHelp1", "toolbars=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, left=50, top=50");
+  helpId.focus();
+}
+ 
+function openNFCAPI()
+{	
+  var helpId = window.open("/NFCApi/WebHelp/HPDCApiReq.htm", "NetstormOnLineHelp1", "toolbars=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, left=50, top=50");
+  helpId.focus();
+}
+
+function openNFAgentAPI()
+{	
+  var helpId = window.open("/clientAPIdocs/index.html", "NetstormOnLineHelp", "toolbars=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, left=50, top=50");
+  helpId.focus();
+}
+
+function openNFAbout()
+{	
+  var helpId = window.open("../admin/about.jsp", "NetstormOnLineHelp", "toolbars=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=600,height=300 left=50, top=50");
+  helpId.focus();
+}
+
+function openwsdlWin()
+{
+  var width = 900;
+  var height = 300;
+  var left = parseInt((screen.availWidth/2) - (width/2));
+  var top = parseInt((screen.availHeight/2) - (height/2));
+  var windowFeatures = "width=" + width + ",height=" + height + ",status,resizable,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top  + ",scrollbars=1"; 
+  //myWindow = window.open("corrPageHelp.jsp?help=fileParam",'',windowFeatures);
+  var wsdlWin = window.open("../correlation/corrAddWSDLFile.jsp?destFile=&rowId=0&mode=service&redirectFile=corrServices.jsp", "WSDLService", windowFeatures);
+  wsdlWin.focus();
+}
+
+</script>
+</head>
+
+<body class="yui-skin-sam" onload="onLoadFunction()" >
+
+<form name="frmMain" method="post">
+<input type="hidden" name="strOperName" value="">
+<input type="hidden" name="strOperValue" value="">
+
+
+
+  
+<table class='yui-skin-sam' width = 100% border="0" cellpadding="0" cellspacing="0" align=center>
+
+<tr><td colspan=2 style='height:8px;'> </td></tr>
+
+<tr>
+<td width= 8%  style='background-color:#F2F2F2;padding-left: 2px;' align=center><img src="../images/logo.png" class = logoSize/> </td>
+
+<td>
+ <table cellpadding="0" cellspacing="0" width=100%><tr><td>
+  <div id="productsandservices" class="yuimenubar yuimenubarnav">
+    <div class="bd">
+      <ul class="first-of-type">
+ 
+         <li class="yuimenubaritem "></li>
+
+        <li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;'>Services</a>
+          <div id="corrDesign" class="yuimenu">
+          <div class="bd">
+           <ul>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../correlation/corrServices.jsp">Manage</a></li>
+	     <!-- Check for Observer Group Users. -->
+             
+               <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../correlation/corrEditURLResponse.jsp">Add</a></li>
+               <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../recorder/recProcedure.jsp?referer=correlation">Record</a></li>
+	     
+        
+
+          </ul>
+         </div>
+         </div>
+       </li>
+       <li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;'>Data Source</a>
+          <div id="corrDataSourceDesign" class="yuimenu">
+          <div class="bd">
+           <ul>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../correlation/corrIndexDataSource.jsp">Indexed Data Source</a></li>
+         
+          </ul>
+         </div>
+         </div>
+       </li>
+        <li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;' href="../correlation/corrDiagnosis.jsp">Request Trace</a>
+        
+        
+	
+        <li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;'>Configuration</a>
+          <div id="configurationDesign" class="yuimenu">
+          <div class="bd">
+           <ul>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../configuration/confGlobalHTTPSettings.jsp">Configuration</a></li>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href="../configuration/confGloablSSLMgmt.jsp">SSL Management</a></li>
+          </ul>
+         </div>
+         </div>
+        </li>
+        <li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;' href="../layouts/index.jsp">Layouts</a>
+	</li>
+        
+       
+
+        <!--Here we need to check again for null, if user attempt to open this file directly
+            then this session variable will be null, if not check then it will throw exception-->
+    
+
+      
+
+
+ 
+
+	<li class="yuimenubaritem"><a class="yuimenubaritemlabel" style='color:#000080;text-decoration:none;font-weight:bolder;' >Help</a>
+
+          <div id="help" class="yuimenu">
+          <div class="bd">
+           <ul>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href='javascript:openNFUserHelp()'>User Guide</a></li>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href='javascript:openNFTutorialHelp()'>Tutorial</a></li>
+             <li class="yuimenuitem"><a class="yuimenuitemlabel" href='javascript:openNFAgentAPI()'>NetFunction Client API</a></li>
+            <li class="yuimenuitem"><a class="yuimenuitemlabel" href='javascript:openNFCAPI()'>NetFunction C API's</a></li>
+	    <li class="yuimenuitem"><a class="yuimenuitemlabel" href='javascript:openNFAbout()'>About NetFunction</a></li>
+
+          </ul>
+         </div>
+         </div>
+       </li>
+
+
+    </ul>
+    </div>
+  </div>
+  </td>
+  
+  <td style="background-color: #f2f2f2;border-collapse:collapse">
+   <div style= 'width: 100%;border-bottom:1px solid #ECE9DA'><table width = 100%>
+  <tr align=right width=35%  id = MenuHeader style='color: gray;'><td>Username:&nbsp;netstorm&nbsp;|&nbsp;<a href="javascript:openLogout()"> Logout</a>&nbsp;|&nbsp;<a href="corrServices.jsp"> Home</a>&nbsp;
+  
+  |&nbsp;<a href="javascript:openSetting()"> Settings</a>&nbsp;
+
+  </td></tr>
+</table></div>
+    </td>
+  
+  </tr><tr><td colspan="2"><table align = center width = 100% class="screenTitle"><tr><td width=15%>&nbsp;</td><td align=center>
+  <b> <script> 	genTitle("NetFunction" + " - " +"Services","Services","null"); </script> </b>
+  </td></tr></table></td></tr></table>     
+  
+</td>
+</tr>
+<tr color =#F5FAFF> <td colspan=2 valign="top"><div style='background-color: #gray; border-top:1px solid #ECE9DA; width: 100%;'></div>
+</td></tr>
+</table>  
+  
+</td></tr></table>
+
+
+
+
+
+
+<tr><td> 
+<script>showFilterTestRun()</script>
+</td></tr>
+<tr><td>
+<script>showServices();</script>
+</td></tr>
+ <!--Restart hpd Progressbar Area-->
+ <div id ='ProgressBarArea'>&nbsp;</div>
+
+<!--  
+  Name   : correlationFooter.htmlf
+  Author : jyoti
+  Purpose: For closing tags
+           <Fill details here>
+  Notes  :
+    None
+  Modification History:
+    29/03/10  : jyoti :3.6.2 -Initial Version
+
+-->
+
+
+
+<table width="99%"  border="0" cellspacing="0" cellpadding="0">
+<HR>
+  <tr><td>Copyright &copy; 2014, Cavisson Systems Inc. All rights reserved.
+</td>
+    <!--<td  background="../images/bg_footer.png"><img src="../images/bg_footer.png" /></td>-->
+  </tr>
+  <tr><td>&nbsp;</td></tr>
+</table>
+
+
+
+<!-- Check for Observer Group Users. -->
+
+</form>
+</body>
+</html>
+
+
+<!-- This form is created to Create or Copy Scenarios which will be hidden on form load and will be visible when user will click on Create or Copy button.  -->
+<div id = "frmchild" style ='display:none'>
+  <div class="bd">
+ 
+    <table align=center cellspacing="0" cellpadding="0" border=0 width=100% >
+      <tr align=center><td id ='Label' nowrap>
+      </td></tr><tr>
+         <td align="center" valign="top" width=45%>
+           <table width="95%" border="0" cellpadding="0" cellspacing="5">
+             <tr><td>&nbsp;</td></tr>
+
+             <tr align="center"> <td class="fieldLableRight">
+                 New&nbsp;Service&nbsp;Name &nbsp; 
+                <input class = fieldValueOfTextBox type="text" maxlength="90" onkeypress = 'return valEnteredKeyNoSpace(event)'  id="txtService" name="txtService" size="90%" style = 'width:60%'>
+             </td> </tr>
+             <tr><td>&nbsp;</td></tr>
+
+             <tr align="center"><td class="fieldLableRight">
+                  &nbsp; &nbsp; &nbsp;New&nbsp;URL &nbsp;
+                 <input class = fieldValueOfTextBox type="text" onkeypress = 'return valEnteredKeyNoSpace(event)'  maxlength="90" id="txtUrl" name="txtUrl" size="90%" style = 'width:60%'>
+             </td></tr> 
+            <tr><td>&nbsp;</td></tr></table>
+         
+         <tr><td>
+           <table width = 65%><tr align="center"><td align="right">&nbsp;&nbsp;
+              <input type=Button tabindex="3" value="&nbsp; &nbsp; OK &nbsp; &nbsp;" onClick= clickOk();>&nbsp;&nbsp;&nbsp;
+              <input type=Button tabindex="4" value="Cancel" onClick= cancelSceForm();>
+             </td></tr></table>
+            </td></tr>
+            <tr><td ><b>Note: After copy service, service will not be activate, user need to Activate.</b></td></tr>
+           </table>
+         </td></tr></table>    
+       </div>
+   </div>
+      <!-- This form is created to Create or Copy Scenarios which will be hidden on form load and will be visible when user will click on Create or Copy button.  -->
+<div id = "frmchild1" style ='display:none'>
+  <div class="bd">
+ 
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+	<td align=center>
+		<table  cellpadding='0' cellspacing='0' class='table' width=98%>
+			<tr>
+				<td class='tableTitle'>Edit Service Info <a OnClick= openWin('ServiceInfo','390')><img  src='../images/question.png'></a>    
+				</td>
+			</tr>
+			<tr>
+				<td align='center' valign='top'>
+					<table width='95%' border =0 cellpadding='0' cellspacing='0'><br>  
+						<tr>
+							<td>
+								<table width='100%' border = 0 cellpadding='0' cellspacing='0'>
+									<tr>
+										<td width=20%  class = fieldLableOnColor>Service Name&nbsp;</td>
+										<td  valign = middle align = left>
+											<input type = text  title ='Service Name' class = valueOfTextBox id="txtServiceNameEdit" name = "txtServiceNameEdit" onkeypress = 'return valEnteredKeyNoSpace(event)' style = width:75%  value = '' title = 'Service name'>&nbsp;
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td>
+								<table width='100%' border = 0 cellpadding='0' cellspacing='0'>
+									<tr>
+										<td width=20%  class = fieldLableOnColor>URL&nbsp;</td>
+										<td  valign = middle align = left>
+											<input type = text   class = valueOfTextBox id="txtURLEdit" name = "txtURLEdit" onkeypress = 'return valEnteredKeyNoSpace(event)' style = width:75% title='URL' value = '' >&nbsp;  
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr><td>&nbsp;</td></tr>
+  
+  <tr>
+	<td>
+		<table width='100%' border = 0 cellpadding='0' cellspacing='0'>
+			<tr>
+				<td width=20%></td>
+				<td width = 2% valign = middle align = right>
+					<input type='checkbox' id='chkRegx' name='chkRegx' value = '1' onclick =changeIgnoreCase() title='Regular Expression'>
+				</td>     
+				<td width = 25%  align = left class = fieldLable>Regular Expression
+					<a OnClick=openWin('RegularINFO','700')><img  src='../images/question.png'></a>
+				</td>      
+				<td width=2% valign = middle align = right>
+					<input type='checkbox' id='chkURLIgnoreCase' name='chkURLIgnoreCase' value = '1'  title='URL Ignore Case'>
+				</td>      
+				<td width=20%  align = left class = fieldLable>Ignore Case
+				</td>          
+				<td width=2% valign = middle align = right>
+					<input type='checkbox' id='chkCompleteMatch' name='chkCompleteMatch' value = '1'  title='Complete Match'>
+				</td>      
+				<td align = left class = fieldLable>Complete Match
+				</td>
+			</tr>
+		</table>
+	</td>
+  </tr> 
+  
+  <tr><td>&nbsp;</td></tr>
+  <table>
+	<tr>
+		<td valign=top align=center>  
+			<input type=Button class=button style='width:60;' value = 'OK' name = 'OK' onclick = 'clickOKEdit()'>  
+			<input type=Button class=button style='width:60;' value = 'Cancel' name = 'Cancel' onclick =  'cancelSceFormEdit()'>   
+		</td>
+	</tr>
+  </table>
+  <table>
+  <tr><td ><b>Note: After edit service, service will not be activate, user need to Activate.</b></td></tr>
+  </table>
+  </table>
+  </td>
+  </tr>
+       </div>
+	</div>

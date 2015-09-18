@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="3" passed="15" total="18">
+        <testcase id="SMOKE-010-001">
+            <testrun>7363</testrun>
+            <status>pass</status>
+            <description>DNS A type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-002">
+            <testrun>7364</testrun>
+            <status>pass</status>
+            <description>DNS AAAA type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-003">
+            <testrun>7365</testrun>
+            <status>pass</status>
+            <description>DNS MX type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-004">
+            <testrun>7366</testrun>
+            <status>pass</status>
+            <description>DNS NS type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-005">
+            <testrun>7367</testrun>
+            <status>pass</status>
+            <description>DNS SOA type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-006">
+            <testrun>7368</testrun>
+            <status>pass</status>
+            <description>DNS PTR type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-007">
+            <testrun>7369</testrun>
+            <status>pass</status>
+            <description>DNS CNAME type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-008">
+            <testrun>7370</testrun>
+            <status>pass</status>
+            <description>POP3 testcase Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-009">
+            <testrun>7371</testrun>
+            <status>pass</status>
+            <description>Ftp test for text data and passive mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-010">
+            <testrun>7372</testrun>
+            <status>pass</status>
+            <description>Ftp test for binary data and passive mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-011">
+            <testrun>7373</testrun>
+            <status>pass</status>
+            <description>Ftp test for text data and active mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-012">
+            <testrun>7374</testrun>
+            <status>pass</status>
+            <description>Ftp test for binary data and active mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-013">
+            <testrun>7375</testrun>
+            <status>pass</status>
+            <description>SMTP test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-014">
+            <testrun>7376</testrun>
+            <status>fail</status>
+            <description>IMAP test for FETCH HEADER Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-015">
+            <testrun>7377</testrun>
+            <status>fail</status>
+            <description>IMAP test for FETCH TEXT Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-016">
+            <testrun>7378</testrun>
+            <status>fail</status>
+            <description>IMAP test for FETCH BODY Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-017">
+            <testrun>7379</testrun>
+            <status>pass</status>
+            <description>Hessian Protocol version 1.0 Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-018">
+            <testrun>7380</testrun>
+            <status>pass</status>
+            <description>Hessian Protocol version 2.0 Test Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>
