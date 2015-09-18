@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<project name="NetStorm Core Automation: Master Build File" basedir="." default="start">
+   
+    <!--Task: Declaration of build variables--> 
+    <property name="smoke.build.file" value="smoke/build.xml"/>
+    <property name="reg.build.file" value="regression/build.xml"/>
+    <property name="perf.build.file" value="performance/build.xml"/>
+    <property name="mail.config.shell" value="${basedir}/lib/update_mail_properties"/>
+    <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
+
+
+    <!--Task: Send smoke automation start mail-->
+    <target name="send-startup-mail"> 
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="mail.config.shell"/>
+            <arg value="purpose"/>
+            <arg value="category"/>
+        </exec>
+        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="${mail.subject}" messagefile="${startup.mail.file}">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    </target>
+
+    <!--Task: Send smoke automation results with attachments-->
+    <target name="send-email-results">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="mail.config.shell"/>
+            <arg value="purpose"/>
+            <arg value="category"/>
+        </exec>
+        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="${mail.subject}" messagefile="${mail.result.file}" files="${results.dir}/${attachment.file}">
+           <from address="automation@cavisson.com"/>   		   
+        </mail>	       
+   </target>	   
+    
+    <!--Task: Sleep interval after each suite completion--> 
+    <target name="take-knap">
+        <sleep seconds="10"/>
+    </target>
+    
+    <!--Task: Invoking smoke automation suite to run--> 
+    <target name="smoke">
+        <ant antfile="${smoke.build.file}" target="run" useNativeBasedir="true"/>
+    </target>   
+    
+    <!--Task: Invoking smoke debug automation suite to run--> 
+    <target name="smoke-debug">
+        <ant antfile="${smoke.build.file}" target="smoke-debug" useNativeBasedir="true"/>
+    </target>   
+    
+    <!--Task: Invoking regression debug suite to run--> 
+    <target name="reg-debug">
+        <ant antfile="${reg.build.file}" target="reg-debug" useNativeBasedir="true"/>
+    </target>   
+    
+    <!--Task: Invoking smoke automation suite to run--> 
+    <target name="regression">
+        <ant antfile="${reg.build.file}" target="run" useNativeBasedir="true"/>
+    </target>
+    
+    <!--Task: Invoking smoke performance suite to run--> 
+    <target name="performance">
+        <ant antfile="${perf.build.file}" target="perf" useNativeBasedir="true"/>
+    </target>
+
+    <!--Task: Declaring default target to schedule automation--> 
+    <target name="start" depends="smoke, take-knap, performance, take-knap, regression">
+    </target>
+
+</project>
