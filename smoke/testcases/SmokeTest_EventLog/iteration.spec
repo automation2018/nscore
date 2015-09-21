@@ -2,7 +2,7 @@ $TestDescription|$ScriptName|$Users|$Duration|$Event_Log|$Event_Def_File|$Idle_M
 
 ##EVENT_LOG DO NOT FILTER : MODE 0
 SMOKE-016-001|Smoke_Event_4XX|1|TIME 00:00:30|EVENT_LOG Information 0|#|#|#|#|#
-SMOKE-016-002|Smoke_Event_TO|1|TIME 00:00:30|EVENT_LOG Warning 0|#|G_IDLE_MSECS G1 100|#|#|#
+SMOKE-016-002|Smoke_Event_TO|1|TIME 00:00:30|EVENT_LOG Warning 0|#|G_IDLE_MSECS G1 0|#|#|#
 SMOKE-016-003|Smoke_Event_ConFail|1|TIME 00:00:30|EVENT_LOG Minor 0|#|#|#|#|#
 SMOKE-016-004|Smoke_Event_CvFail|1|TIME 00:00:30|EVENT_LOG Major 0|#|#|#|#|#
 

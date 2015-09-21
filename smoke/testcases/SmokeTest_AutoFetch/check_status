@@ -123,10 +123,10 @@ fi
 if [ "$T_NAME" == "SMOKE-003-011" ];then
     JS_URL=$(grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2 | grep "js$")
     JSP_URL=$(grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2 | grep "jsp$")
-    if [ -z "${JSP_URL}" ] && [ -z "${JS_URL}" ]; then
-        log_status_and_exit_ex "PASS" "jsp or js based url were not requested after excluding js+ based pattern"
+    if [ ! -z "${JSP_URL}" ] && [ -z "${JS_URL}" ]; then
+        log_status_and_exit_ex "PASS" "js based url were not requested after excluding js+ based pattern"
     else
-        log_status_and_exit_ex "FAIL" "jsp or js based url were requested after excluding js+ based pattern"
+        log_status_and_exit_ex "FAIL" "some js based url were found in request after excluding js+ based pattern"
     fi
 fi
 
@@ -145,10 +145,10 @@ fi
 if [ "$T_NAME" == "SMOKE-003-013" ];then
     JS_URL=$(grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2 | grep "js$")
     JSP_URL=$(grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2 | grep "jsp$")
-    if [ ! -z "${JSP_URL}" ] && [ -z "${JS_URL}" ]; then
-        log_status_and_exit_ex "PASS" "js inlines have been filtered out but jsp being included for jsp? pattern"
+    if [ ! -z "${JSP_URL}" ] && [ ! -z "${JS_URL}" ]; then
+        log_status_and_exit_ex "PASS" "only js and jsp based inlines have been requested for including jsp? pattern"
     else
-        log_status_and_exit_ex "FAIL" "jsp and js both inlines have been included for jsp? pattern"
+        log_status_and_exit_ex "FAIL" "either of the url type; js or jsp have been missing in request;for including jsp? pattern"
     fi
 fi
 
