@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="3" total="3">
+        <testcase id="SMOKE-003-011">
+            <testrun>10409</testrun>
+            <status>pass</status>
+            <description>js based url were not requested after excluding js+ based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-013">
+            <testrun>10410</testrun>
+            <status>pass</status>
+            <description>only js and jsp based inlines have been requested for including jsp? pattern</description>
+        </testcase>
+        <testcase id="SMOKE-016-002">
+            <testrun>10411</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+    </testsuite>
+</testsuites>
