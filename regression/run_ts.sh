@@ -59,6 +59,8 @@ run(){
      }
     
     set_test_summary_ex
+    
+    cd -
 }
 
 # Cleanup function. To remove temporary files if being used.
@@ -101,6 +103,15 @@ get_test_case_count() {
 }
 
 
+function update_test_status() {
+    cycle_num="$1"
+    NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
+    TotalExecuted=$(get_test_case_count)
+    echo "NSFailCount=$NSFailCount" >/tmp/last
+    echo "TotalExecuted=$TotalExecuted" >>/tmp/last
+}
+
+
 #Execution begins here
 main() {
     #Setup enviroment for netdiagnostics automation suite.
@@ -118,10 +129,14 @@ main() {
 
     #Cleans up tmp files
     clean_up
+    
+    #Check cycle summary report file and append total test run executed
+    #check for netstorm failed cases and update the count
+    update_test_status "${CYCLENO}"
 
     #Parse the txt file and create results in xml format- NEW
     echo "INFO: Writing testresults in XML format to ${XML_FILE} "
-    ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_total_test_count)
+    ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)
 
     #Uploads test results to sqlite database
     echo "INFO: Uploading results to $DATABASE"

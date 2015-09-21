@@ -154,5 +154,9 @@
    <!--Task: Declaring default target to initiate build--> 
    <target name="smoke-debug" depends="smoke">
    </target>
+   
+   <!--Task: test--> 
+   <target name="test" depends="send-email">
+   </target>
 
 </project>

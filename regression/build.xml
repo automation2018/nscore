@@ -122,4 +122,8 @@
    <target name="reg-debug" depends="debug">
    </target>
    
+   <!--Task: test--> 
+   <target name="test" depends="send-email">
+   </target>
+   
 </project>

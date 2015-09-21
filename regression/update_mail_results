@@ -20,20 +20,26 @@ function set_test_results(){
     total=0;passed=0;failed=0
     ATTACHMENTS=( "$first_attachment" )
 
-    #TODO
-    #Check xml file for netstorm fail cases
-    #This is to ensure all tests ran;status has been checked;if some tests has been
-    #due to NetStormFail;hence reports should be generated accordingly
-    for attachment in ${ATTACHMENTS[*]}; do
-        total=$(($total + $(get_metrics $REG_RESULT_FILES/$attachment "total")))
-        failed=$(($failed + $(get_metrics $REG_RESULT_FILES/$attachment "failures")))
-        passed=$(($passed + $(get_metrics $REG_RESULT_FILES/$attachment "passed")))
-    done 
+    if [ "$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)" == "0" ] && \
+       [ "$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)" != 0 ]; then
+	for attachment in ${ATTACHMENTS[*]}; do
+	    total=$(($total + $(get_metrics $REG_RESULT_FILES/$attachment "total")))
+	    failed=$(($failed + $(get_metrics $REG_RESULT_FILES/$attachment "failures")))
+	    passed=$(($passed + $(get_metrics $REG_RESULT_FILES/$attachment "passed")))
+            nsfail=0
+	done 
 
-    if [ $total -eq $passed ];then
-        STATUS=Successful
+	if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
+	    STATUS=Successful
+	else
+	    STATUS=Failed
+	fi
     else
-	STATUS=Failed
+        STATUS=Failed
+        total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+        nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+        failed=$(($failed + $(get_metrics $REG_RESULT_FILES/$first_attachment "failures")))
+        passed=$(($passed + $(get_metrics $REG_RESULT_FILES/$first_attachment "passed")))
     fi
 }
 
@@ -91,12 +97,14 @@ function set_up_email(){
             <th>Total</th>
             <th>Passed</th>
             <th>Failed</th>
+            <th>Netstorm Fail</th>
         </tr>
         <tr>
             <td>Regression</td>
             <td>$total</td>
             <td>$passed</td>
             <td>$failed</td>
+            <td>$nsfail</td>
         </tr>
     </table>
     <br>
