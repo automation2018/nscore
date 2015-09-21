@@ -3,7 +3,10 @@
 # include  libraries
 source $NS_WDIR/lib/automation_util
 source $NS_WDIR/lib/automation_config.dat #Required for config variables
+
 export TEMP_FILE=/tmp/ns_run.$$
+PERF_TEST_DATA_FILE=/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+
 
 init() {
   CUR_DIR=$(pwd)
@@ -29,6 +32,7 @@ init() {
   export XML_FILE
 
 }
+
 
 run(){
 # Call to this function starts the automation.
@@ -56,12 +60,16 @@ run(){
        echo "INFO: NSCore automation has ended"
     }
 
-     [ "X$debug_opt" == "X--debug" ] && {
+    [ "X$debug_opt" == "X--debug" ] && {
        copy_logs
-     }
+    }
 
-       set_test_summary_ex
+    set_test_summary_ex
+ 
+    #Returning back to automation workbench
+    cd -
 }
+
 
 # Cleanup function. To remove temporary files if being used.
 clean_up()
@@ -74,7 +82,7 @@ clean_up()
 # Only when --debug option is passed while running the shell;
 copy_logs()
 {
-    cur_dir=`pwd`
+    cur_dir=$(pwd)
     mkdir -p ${CUR_DIR}/logs
 
     sleep 1
@@ -90,6 +98,7 @@ copy_logs()
     done
 }
 
+
 #To get the test case count
 get_test_case_count() {
 
@@ -97,11 +106,21 @@ get_test_case_count() {
   count=0
   for testcase in ${testcases}
   do
-    i=$(grep -c "^Perf" testcases/${testcase}/iteration.spec)
+    i=$(grep -c "^Performance" testcases/${testcase}/iteration.spec)
     count=$(($count + $i))
   done
   echo ${count}
 }
+
+
+function update_test_status() {
+    cycle_num="$1"
+    NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
+    TotalExecuted=$(get_test_case_count)
+    echo "NSFailCount=$NSFailCount" >/tmp/last
+    echo "TotalExecuted=$TotalExecuted" >>/tmp/last
+}
+
 
 #Execution begins here
 main() {
@@ -121,20 +140,24 @@ main() {
     run "${testSuite}" "${debug_opt}"
 
     clean_up
+    
+    #Check cycle summary report file and append total test run executed
+    #check for netstorm failed cases and update the count
+    update_test_status "${CYCLENO}"
 
     #Parse the txt file and create results in xml format- NEW
-    ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_total_test_count)
+    ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)
 
-    TSR_DIR=`ls -1 $NS_WDIR/logs/tsr | tail -1`
+    TSR_DIR=$(ls -1 $NS_WDIR/logs/tsr | tail -1)
     PERF_R_FILE=$NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV
 
     if [ "$testSuite" == "Performance_Cps" ];then
-        cat $PERF_R_FILE |head -2 |tail -1 >/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+        cat $PERF_R_FILE |head -2 |tail -1 >${PERF_TEST_DATA_FILE}
     else
-	hps=`grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1`
-	echo $hps >>/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
-	throughput=`grep  "Performance_throughput_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1`   
-	echo $throughput >>/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+	hps=$(grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)
+	echo $hps >>${PERF_TEST_DATA_FILE}
+	throughput=$(grep  "Performance_throughput_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)   
+	echo $throughput >>${PERF_TEST_DATA_FILE}
     fi 
     exit 0
 }

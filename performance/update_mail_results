@@ -38,11 +38,10 @@ function set_test_results(){
         failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
         passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
     done 
-	
-    statusbody=`echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)"`
-    cps=`grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8`
-    hps=`grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9`
-    throughput=`grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10`
+    statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+    cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
+    hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
+    throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
 
     if [ $total -eq $passed ];then
         STATUS=Successful
