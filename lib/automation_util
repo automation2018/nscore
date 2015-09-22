@@ -13,6 +13,7 @@
 #2. Need to add module that can work for each test
 #3. To add new utility modules as per design changes
 #------------------------------------------------------------
+
 WORKBENCH="/home/automation/workbench/automation/nscore"
 D_LOG_FILE="${WORKBENCH}/logs/automation_debug.log"
 E_LOG_FILE="${WORKBENCH}/logs/automation_error.log"
@@ -32,27 +33,27 @@ T_RUN_ID=$2
 T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/ns_logs/req_rep"
 
 
-#
+#can be called to get testsuite name
 testsuite_name(){
     testsuitname=$1
     echo "$testsuitname"
 }
 
 
-#
+#can be called to get recently executed test name
 get_tname(){
     T_NAME=$(grep -e TNAME $NS_WDIR/logs/TR${T_RUN_ID}/scenario |awk '{print $2}')
     echo ${T_NAME}
 }
 
 
-#
+#can be called to get recently executed test run number
 get_testidx(){
     echo "${T_RUN_ID}"
 }
 
 
-#
+#can be called to get log info
 debug_log(){
     if [ "XX$DEBUG" == "XX0" ];then
       return
@@ -62,21 +63,21 @@ debug_log(){
 }
 
 
-#
+#can be called to get log info
 error_log(){
     debug_log $* >> ${D_LOG_FILE}
     echo "$(date +"%F %X") | $*" >> ${E_LOG_FILE}
 }
 
 
-#
+#can be called to get log info
 log_msg(){
     echo -e $*
     echo -e $* >> ${R_FILE}
 }
 
 
-#
+#can be called to get status log
 log_status_and_exit(){
     STATUS="$1"
     msg="$2"
@@ -92,7 +93,8 @@ log_status_and_exit(){
 }
 
 
-#
+#can be called to generate report
+log_status_and_exit(){
 gen_report(){
     log_msg "Test Case Name\t\t\t= `get_tname`"
     log_msg "Test Run Number\t\t\t= $T_RUN_ID"
@@ -112,7 +114,7 @@ gen_report(){
 }
 
 
-#
+#can be called to generate summary report of entire suite in txt file
 set_test_summary_ex(){
     PASS_COUNT=$(grep -cw "pass" $R_FILE)
     FAIL_COUNT=$(grep -cw "fail" $R_FILE)
@@ -121,28 +123,28 @@ set_test_summary_ex(){
 }
 
 
-#
+#can be called to get number of testcases failed
 get_failed_test_count(){
     FAIL_COUNT=$(grep -ci ",FAIL," $R_FILE)
     echo $FAIL_COUNT
 }
 
 
-#
+#can be called to get number of testcases passed
 get_passed_test_count(){
     PASS_COUNT=$(grep -ci ",PASS," $R_FILE)
     echo $PASS_COUNT
 }
 
 
-#
+#can be called to get number of total testcases
 get_total_test_count(){
     TOTAL_COUNT=$(($(get_passed_test_count) + $(get_failed_test_count)))
     echo $TOTAL_COUNT
 }
 
 
-#
+#can be called to set summary report
 set_test_summary(){
     COUNT=$(grep -cw "PASS" $R_FILE)
     TOTAL_CASES=$(grep -c "TESTRESULT" $R_FILE)
@@ -150,7 +152,7 @@ set_test_summary(){
 }
 
 
-#
+#can be called to set testsuite header
 set_results_header(){
     echo "*-----------------------------------------------------*" >>$R_FILE
     echo "     Test Executed By  : `whoami`" >> $R_FILE
@@ -159,13 +161,13 @@ set_results_header(){
 }
 
 
-#
+#can be called to set txt result file header
 set_results_header_ex(){
     echo "TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description" >> $R_FILE
 }
 
 
-#
+#can be called to get test category
 component_name(){
     T_Name=$(get_tname)
     TestSuite=$(echo $T_Name |cut -d '-' -f1)
@@ -173,7 +175,7 @@ component_name(){
 }
 
 
-#
+#can be called to log status of a perticular test
 log_status_and_exit_ex(){
     status="${1}"
     status_show=${status,,}
@@ -193,14 +195,14 @@ log_status_and_exit_ex(){
 }
 
 
-#
+#can be called to get tsr number
 get_cycle_num()
 {
     echo "$(date +%m%d%y_%H%M%S)"
 }
 
 
-#
+#can be called to get release;build informations
 get_major_minor_info()
 {
     MAJOR=$(cat $NS_WDIR/etc/version|head -1|cut -d " " -f2 )
@@ -209,7 +211,7 @@ get_major_minor_info()
 }
 
 
-#
+#can be called to get average transaction response time of a perticular transactions
 get_avg_trans_resp_time(){
     transName=$1
     [ -z $transName ] && transName="ALL"
@@ -219,7 +221,7 @@ get_avg_trans_resp_time(){
 }
 
 
-#
+#can be called to apply nsu_server_admin command;or remote command execution 
 remote_exec(){
     svr="${1}"
     cmd="${2}"
@@ -228,7 +230,7 @@ remote_exec(){
 }
 
 
-#
+#can be called to get category wise project or subproject name
 project_name(){
     testsuitname=$1
     if [ "X$testsuitname" == "XRegression" ]; then
@@ -243,7 +245,7 @@ project_name(){
 }
 
 
-#
+#this is a python utility;can be called to remote login
 remote_ssh(){
     host="$1"
     cmd="$2"

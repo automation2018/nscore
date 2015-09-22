@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-. $NS_WDIR/lib/automation_util
-#fill_report_summary
+source $NS_WDIR/lib/automation_util
 T_NAME=$(get_tname)
 
 if [ "XX$T_NAME" == "XXSMOKE-004-001" ]; then
@@ -76,9 +75,9 @@ if [ "XX$T_NAME" == "XXSMOKE-004-006" ]; then
        [ "XX$SD_URLFailures" == "XX0" ] && \
        [ $page1_loc_var_count -eq 0 ] && \
        [ $page2_loc_var_count -eq 1 ];then
-        log_status_and_exit_ex "PASS" "Manual redirection smoke test Passed"
+        log_status_and_exit_ex "PASS" "redirected location count for manual redirection matched with expected count;expected count=1;actual count=$page2_loc_var_count"
     else
-        log_status_and_exit_ex "FAIL" "Manual redirection smoke test Failed"
+        log_status_and_exit_ex "FAIL" "redirected location count for manual redirection didn't match with expected count;expected count=1;actual count=$page2_loc_var_count"
     fi
 fi
 
