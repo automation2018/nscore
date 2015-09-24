@@ -102,6 +102,7 @@
 
     <!-- TODO Need to add module to check netstorm fail cases-->
     <!--Task: Upload test results to analalytics.db-->
+    <!--<target name="perf" depends="Performance">-->
     <target name="perf" depends="Test-StartUp-Mail, Performance, Mail-With-TestResults">
         <exec executable="python">
             <arg value="${perf.db_upload}"/>

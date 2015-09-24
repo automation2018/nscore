@@ -17,7 +17,6 @@
 WORKBENCH="/home/automation/workbench/automation/nscore"
 D_LOG_FILE="${WORKBENCH}/logs/automation_debug.log"
 E_LOG_FILE="${WORKBENCH}/logs/automation_error.log"
-
 COMPONENT_ID=$(grep  "CONFIG" /etc/cav.conf  |awk '{print $2}' |cut -d '>' -f1)
 TEST_CYCLE_NUM=$(cat $TEMP_FILE|grep "Test Cycle Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
 TSR_NUM=$(cat $TEMP_FILE|grep "Test Suite Run Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
@@ -94,7 +93,7 @@ log_status_and_exit(){
 
 
 #can be called to generate report
-log_status_and_exit(){
+#log_status_and_exit(){
 gen_report(){
     log_msg "Test Case Name\t\t\t= `get_tname`"
     log_msg "Test Run Number\t\t\t= $T_RUN_ID"
