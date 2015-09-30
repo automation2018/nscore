@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="6" passed="0" total="6">
+        <testcase id="REG-001-001">
+            <testrun>11068</testrun>
+            <status>fail</status>
+            <description>Regression for FCU RampUp in Step mode test failed as diff from baseline for Thinking_User_Change_Pct is more than 5% of expected value</description>
+        </testcase>
+        <testcase id="REG-002-001">
+            <testrun>11069</testrun>
+            <status>fail</status>
+            <description>Regression for FCU RampUp in Rate Mode test failed as Diff from baseline for Thinking_User_Change_Pct is more than 5% of expected value</description>
+        </testcase>
+        <testcase id="REG-003-001">
+            <testrun>11070</testrun>
+            <status>fail</status>
+            <description>Regression for FSR Mode 1 test failed as diff from baseline for Thinking_User_Change_Pct is more than 5% of expected value</description>
+        </testcase>
+        <testcase id="REG-004-001">
+            <testrun>11071</testrun>
+            <status>fail</status>
+            <description>Regression for FSR Mode 2 test failed as diff from baseline for Thinking_User_Change_Pct is more than 5%:Regression004</description>
+        </testcase>
+        <testcase id="REG-005-001">
+            <testrun>11072</testrun>
+            <status>fail</status>
+            <description>Regression Test for RAL is Failed as Thinking_User_Change_Pct is more than 5% of expected results</description>
+        </testcase>
+        <testcase id="REG-006-001">
+            <testrun>11073</testrun>
+            <status>fail</status>
+            <description>Regression test for Netstorm supported protocols Failed as Eth_Send_throuput_Change is more than 5% of expected values</description>
+        </testcase>
+    </testsuite>
+</testsuites>
