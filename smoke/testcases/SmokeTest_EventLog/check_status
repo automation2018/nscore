@@ -104,47 +104,58 @@ function handle_smoke_004_case(){
 
 function handle_smoke_005_case(){
     LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
-    #TODO need to add additional codes to validate mode 1 events    
-    #events should be logged as per state change only
+    state_changed_events=$(cat ${EVENT_LOG} | cut -d '|' -f1,9 | sed '1d; $d' | grep -v "Test debug" | cut -d . -f1)
+    flag=0
 
-    if [ $LOG_LINE_COUNT -gt 1 ]; then
+    for line in "${state_changed_events}"; do
+        isPresent=$(grep "2xx" <<<$line)
+        if [ ! -z $isPresent ]; then
+            flag=1
+            debug_log "flag=$flag;isPresent=$isPresent"
+            log_status_and_exit_ex "FAIL" "it was expected 2xx events should not be logged as per state change; but some of 2xx evemts  are found in event file"
+        fi 
+    done
+
+    debug_log "flag=$flag"
+    if [ $flag -eq 0 ]; then
         log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per state change mode(1) tested"
-    else
-        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per state change mode(1)"
     fi
 }
 
 
 function handle_smoke_006_case(){
-    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
-    #TODO need to add additional codes to validate mode 1 events    
-    #events should be logged as per events count
+    events_asper_count=$(cut -d "|" -f9 ${EVENT_LOG} | egrep "T.O")
     
-    if [ $LOG_LINE_COUNT -gt 1 ]; then
-        log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per events count mode(2) tested"
+    debug_log "logged_events are=${events_asper_count}"
+    if [ ! -z "${events_asper_count}" ]; then
+        log_status_and_exit_ex "PASS" "Expected timeout events has been logged ;as per event definition file with log event as per events count"
     else
-        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per event counts mode(2)"
+        log_status_and_exit_ex "FAIL" "no expected timeout events has been logged as; per event definition file with log event as per event counts mode(2)"
     fi
 }
 
 
 function handle_smoke_007_case(){
-    LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
-    #TODO need to add additional codes to validate mode 1 events    
-    #events should be logged as per events occuring time
-    
-    if [ $LOG_LINE_COUNT -gt 1 ]; then
-        log_status_and_exit_ex "PASS" "log events as per event definition file with log event as per events time  mode(2) tested"
-    else
-        log_status_and_exit_ex "FAIL" "no events being logged in case of;log events as per event definition file with log event as per event time mode(2)"
+    events_asper_occurence=$(cut -d "|" -f9 ${EVENT_LOG} | sed '1d')
+    flag=0
+
+    for line in "${events_asper_occurence}"; do
+        isPresent=$(grep "CVFail" <<<$line)
+        if [ -z "${isPresent}" ]; then
+            debug_log "flag=$flag;isPresent=$isPresent"
+            flag=1
+            log_status_and_exit_ex "FAIL" "expected CvFail events is not logged; as per events definition file for events to be logged as per occurence time"
+        fi
+    done
+ 
+    if [ $flag -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "all CvFail events has been logged;for logging events as per event definition file and event to be logged as per event occurence time"
     fi
 }
 
 
 function handle_smoke_008_case(){
     LOG_LINE_COUNT=$(cat ${EVENT_LOG} | awk 'END {print NR}')
-    #TODO need to add additional codes to validate mode 1 events    
-    #there should not be any filtering of events occur;hence each event should be logged irrespective of severity
     
     if [ $LOG_LINE_COUNT -gt 1 ]; then
         log_status_and_exit_ex "PASS" "log events as per event definition file with no flter(0) mode tested"
