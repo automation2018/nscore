@@ -19,3 +19,9 @@ SMOKE-003-012|AutoFetchQuery|1|1|1|0|100|MAX_DYNAMIC_HOST 2|#|#|#|G_INLINE_INCLU
 SMOKE-003-013|AutoFetchQuery|1|1|1|0|100|MAX_DYNAMIC_HOST 2|#|#|#|G_INLINE_INCLUDE_URL_PATTERN ALL *.jsp?$|#
 SMOKE-003-014|AutoFetchQuery|1|1|1|0|100|MAX_DYNAMIC_HOST 2|#|#|#|G_INLINE_INCLUDE_URL_PATTERN ALL *.js*|#
 SMOKE-003-015|AutoFetchQuery|1|1|1|0|100|MAX_DYNAMIC_HOST 2|#|#|#|G_INLINE_INCLUDE_URL_PATTERN ALL *.j[sp]+|#
+#
+#Cases for PostCallBack Api usages;Issue was in Kohsl;When JS requests again requests for JSP requests NS engine unable to handale
+#the situation with autofetch feature; so PostURLCallback is intorduced to list additional requests
+SMOKE-003-016|PostURLCallbackWithOutInline|1|1|1|0|100|#|#|#|#|#|#
+SMOKE-003-017|PostURLCallbackWithInline|1|1|1|0|100|#|#|#|#|#|#
+SMOKE-003-018|PostURLCallbackWithRedirection|1|1|1|0|100|#|#|#|#|#|#

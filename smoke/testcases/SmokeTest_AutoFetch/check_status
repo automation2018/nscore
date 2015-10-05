@@ -175,4 +175,22 @@ if [ "$T_NAME" == "SMOKE-003-015" ];then
 fi
 
 
+if [ "$T_NAME" == "SMOKE-003-016" ];then
+    #TODO Need to add validation codes to check test results
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set back mode zero;not implemented"
+fi
+
+
+if [ "$T_NAME" == "SMOKE-003-017" ];then
+    #TODO Need to add validation codes to check test results
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set back mode one;not implemented"
+fi
+
+
+if [ "$T_NAME" == "SMOKE-003-018" ];then
+    #TODO Need to add validation codes to check test results
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set back url redirection;not implemented"
+fi
+
+
 exit 0
