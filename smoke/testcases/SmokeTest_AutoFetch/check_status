@@ -177,19 +177,19 @@ fi
 
 if [ "$T_NAME" == "SMOKE-003-016" ];then
     #TODO Need to add validation codes to check test results
-    log_status_and_exit_ex "PASS" "PostURLCallBack for set back mode zero;not implemented"
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set embed objects api;mode zero;not implemented"
 fi
 
 
 if [ "$T_NAME" == "SMOKE-003-017" ];then
     #TODO Need to add validation codes to check test results
-    log_status_and_exit_ex "PASS" "PostURLCallBack for set back mode one;not implemented"
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set embd objects api;mode one;not implemented"
 fi
 
 
 if [ "$T_NAME" == "SMOKE-003-018" ];then
     #TODO Need to add validation codes to check test results
-    log_status_and_exit_ex "PASS" "PostURLCallBack for set back url redirection;not implemented"
+    log_status_and_exit_ex "PASS" "PostURLCallBack for set embd objects api;url redirection;not implemented"
 fi
 
 
