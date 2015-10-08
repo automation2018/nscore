@@ -2,6 +2,15 @@
 
 source $NS_WDIR/lib/automation_util
 
+
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+SUMMARY_GDF_FILE="$NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data"
+MONITOR_LOG_FILE="$NS_WDIR/logs/TR$T_RUN_ID/monitor.log"
+GLOBAL_DAT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/global.dat"
+RTC_ALL_LOG_FILE="$NS_WDIR/logs/TR$T_RUN_ID/runtime_changes/runtime_changes_all.log"
+CONF_FILE="$NS_WDIR/logs/TR$T_RUN_ID/scenario"
+
+
 function main(){
     case $(get_tname) in
         "REG-007-001") handle_reg_001_case ;;
@@ -14,26 +23,95 @@ function main(){
     esac
 }
 
-function handle_reg_001_case(){
-    log_status_and_exit_ex "PASS" "RTC for FCU with increasing users at start phase;not implemented"
+
+function get_status_rtc_phasewise(){
+    phase=$1
+    RTC_FLAG=0
+    
+    start_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
+    end_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
+    vusers_count=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "V[a-zA-Z:.\s]+.*.[0-9]+.[0-9]+" | awk -F '  ' '{print $2}' | head -2 | tail -1 | cut -d. -f1)
+    rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "V[a-zA-Z:.\s]+.*.[0-9]+.[0-9]+" | awk -F '  ' '{print $2}' | cut -d. -f1 | sed -n '/^1/p' | sort | head -1)
+    conf_users=$(cat $CONF_FILE | grep "^SGRP" | cut -d " " -f7 | awk '{ sum+=$1} END {print sum}')
+    ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
+    rtc_string=$(grep "RTC_PHASE_0" $PROGRESS_REPORT_FILE)
+    
+    debug_log "VUSER_COUNT=$vusers_count;RTC_STRING=${rtc_string}"
+    debug_log "ramp_down_users=$ramp_down_users;(conf+rtc)users=$((conf_users + rtc_vusers))"
+    
+    if [ $vusers_count -ge 10 ] && \
+       [ $ramp_down_users -le $((conf_users + rtc_vusers)) ] && \
+       [ ! -z "${rtc_string}" ]; then
+        return $RTC_FLAG
+    else
+        RTC_FLAG=1
+        return $RTC_FLAG
+    fi
 }
+
+
+function handle_reg_001_case(){
+    get_status_rtc_phasewise Start0
+   
+    RTC_FLAG=$?
+    
+    if [ $RTC_FLAG -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+    else
+        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was 10;actual user count is $vusers_count"
+    fi
+}
+
 
 function handle_reg_002_case(){
-    log_status_and_exit_ex "PASS" "RTC for FCU with increasing users at rampup phase;not implemented"
+    get_status_rtc_phasewise RampUp0
+   
+    RTC_FLAG=$?
+    
+    if [ $RTC_FLAG -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+    else
+        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+    fi
 }
 
+
 function handle_reg_003_case(){
-    log_status_and_exit_ex "PASS" "RTC for FCU with increasing users at stabilize phase;not implemented"
+    get_status_rtc_phasewise Stabilize0
+   
+    RTC_FLAG=$?
+    
+    if [ $RTC_FLAG -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+    else
+        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+    fi
 }
 
 
 function handle_reg_004_case(){
-    log_status_and_exit_ex "PASS" "RTC for FCU with increasing users at duration  phase;not implemented"
+    get_status_rtc_phasewise Duration0
+   
+    RTC_FLAG=$?
+    
+    if [ $RTC_FLAG -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+    else
+        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+    fi
 }
 
 
 function handle_reg_005_case(){
-    log_status_and_exit_ex "PASS" "RTC for FCU with increasing users at rampdown phase;not implemented"
+    get_status_rtc_phasewise RampDown0
+   
+    RTC_FLAG=$?
+    
+    if [ $RTC_FLAG -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+    else
+        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+    fi
 }
 
 
