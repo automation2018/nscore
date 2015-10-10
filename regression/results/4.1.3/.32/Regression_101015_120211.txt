@@ -1,0 +1,14 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+REG-001-001,11789,4.1.3,32,NetStorm,pass,2,Regression for FCU RampUp in Step mode test Passed
+REG-002-001,11790,4.1.3,32,NetStorm,pass,2,Regression for FCU RampUp in Rate Mode test passed
+REG-003-001,11791,4.1.3,32,NetStorm,pass,2,Regression for FSR Mode 1 test Passed
+REG-004-001,11792,4.1.3,32,NetStorm,fail,2,Regression for FSR Mode 2 test failed as diff from baseline for Running_User_Change_Pct is more than 5%:Regression004
+REG-005-001,11793,4.1.3,32,NetStorm,pass,2,Regression Test for RAL is Passed
+REG-006-001,11794,4.1.3,32,NetStorm,fail,2,Regression test for Netstorm supported protocols Failed as Eth_Send_throuput_Change is more than 5% of expected values
+REG-007-001,11795,4.1.3,32,NetStorm,pass,2,RTC is being applied for Start0 phase;10 of vusers have been ramped up
+REG-007-002,11796,4.1.3,32,NetStorm,pass,2,RTC is being applied for RampUp0 phase;11 of vusers have been ramped up
+REG-007-003,11797,4.1.3,32,NetStorm,pass,2,RTC is being applied for Stabilize0 phase;20 of vusers have been ramped up
+REG-007-004,11798,4.1.3,32,NetStorm,pass,2,RTC is being applied for Duration0 phase;20 of vusers have been ramped up
+REG-007-005,11799,4.1.3,32,NetStorm,pass,2,RTC is being applied for RampDown0 phase;14 of vusers have been ramped up
+
+Failed: 2 test(s), Passed: 9 test(s), Total: 11 test(s)
