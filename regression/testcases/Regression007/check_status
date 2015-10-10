@@ -61,9 +61,9 @@ function handle_reg_001_case(){
     RTC_FLAG=$?
     
     if [ $RTC_FLAG -eq 0 ]; then 
-        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -76,9 +76,9 @@ function handle_reg_002_case(){
     RTC_FLAG=$?
     
     if [ $RTC_FLAG -eq 0 ]; then 
-        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -91,9 +91,9 @@ function handle_reg_003_case(){
     RTC_FLAG=$?
     
     if [ $RTC_FLAG -eq 0 ]; then 
-        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -106,9 +106,9 @@ function handle_reg_004_case(){
     RTC_FLAG=$?
     
     if [ $RTC_FLAG -eq 0 ]; then 
-        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -121,9 +121,9 @@ function handle_reg_005_case(){
     RTC_FLAG=$?
     
     if [ $RTC_FLAG -eq 0 ]; then 
-        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count of vusers have been ramped up"
+        log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count of increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
