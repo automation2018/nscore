@@ -1,0 +1,670 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="131" total="133">
+        <testcase id="SMOKE-001-001">
+            <testrun>12085</testrun>
+            <status>pass</status>
+            <description>ns_save_string() api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-002">
+            <testrun>12086</testrun>
+            <status>pass</status>
+            <description>ns_eval_string() Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-003">
+            <testrun>12087</testrun>
+            <status>pass</status>
+            <description>ns_adv_param() Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-004">
+            <testrun>12088</testrun>
+            <status>pass</status>
+            <description>ns_adv_param() negative condition Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-005">
+            <testrun>12089</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-006">
+            <testrun>12090</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-007">
+            <testrun>12091</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-008">
+            <testrun>12092</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-009">
+            <testrun>12093</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-010">
+            <testrun>12094</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-011">
+            <testrun>12095</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-012">
+            <testrun>12096</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-013">
+            <testrun>12097</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-014">
+            <testrun>12098</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-015">
+            <testrun>12099</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-016">
+            <testrun>12100</testrun>
+            <status>pass</status>
+            <description>save_data_var or save_data_eval or save_dat_ex api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-017">
+            <testrun>12101</testrun>
+            <status>pass</status>
+            <description>Smoke_SET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-018">
+            <testrun>12102</testrun>
+            <status>pass</status>
+            <description>Smoke_GET_INT_VAL_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-019">
+            <testrun>12103</testrun>
+            <status>pass</status>
+            <description>Smoke_GET_RANDOM_STR_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-020">
+            <testrun>12104</testrun>
+            <status>pass</status>
+            <description>Smoke_GETTERS_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-001-021">
+            <testrun>12105</testrun>
+            <status>pass</status>
+            <description>Smoke_CHK_STR_CPY_API_TEST Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-001">
+            <testrun>12106</testrun>
+            <status>pass</status>
+            <description>Autofetch one main url five autofetch url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-002">
+            <testrun>12107</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-003">
+            <testrun>12108</testrun>
+            <status>pass</status>
+            <description>Autofetch enabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-004">
+            <testrun>12109</testrun>
+            <status>pass</status>
+            <description>Autofetch disabled two embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-005">
+            <testrun>12110</testrun>
+            <status>pass</status>
+            <description>Autofetch Inline Include Domain Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-006">
+            <testrun>12111</testrun>
+            <status>pass</status>
+            <description>Autofetch Inline Exclude Domain Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-007">
+            <testrun>12112</testrun>
+            <status>pass</status>
+            <description>Autofetch Inline Include Url Pattern Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-008">
+            <testrun>12113</testrun>
+            <status>pass</status>
+            <description>Autofetch Inline Exclude Url Pattern Passed</description>
+        </testcase>
+        <testcase id="SMOKE-003-009">
+            <testrun>12114</testrun>
+            <status>pass</status>
+            <description>No jsp based url being requested after excluding jsp based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-010">
+            <testrun>12115</testrun>
+            <status>pass</status>
+            <description>jsp based url being requested after including jsp based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-011">
+            <testrun>12116</testrun>
+            <status>pass</status>
+            <description>js based url were not requested after excluding js+ based pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-012">
+            <testrun>12117</testrun>
+            <status>pass</status>
+            <description>jsp inlines have been filtered out but js being included for js? pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-013">
+            <testrun>12118</testrun>
+            <status>pass</status>
+            <description>only js and jsp based inlines have been requested for including jsp? pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-014">
+            <testrun>12119</testrun>
+            <status>pass</status>
+            <description>jsp and js both inlines have been included for js* pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-015">
+            <testrun>12120</testrun>
+            <status>pass</status>
+            <description>jsp and js both inlines have been included for j[sp]+ pattern</description>
+        </testcase>
+        <testcase id="SMOKE-003-016">
+            <testrun>12121</testrun>
+            <status>pass</status>
+            <description>PostURLCallBack for set embed objects api;mode zero;not implemented</description>
+        </testcase>
+        <testcase id="SMOKE-003-017">
+            <testrun>12122</testrun>
+            <status>pass</status>
+            <description>PostURLCallBack for set embd objects api;mode one;not implemented</description>
+        </testcase>
+        <testcase id="SMOKE-003-018">
+            <testrun>12123</testrun>
+            <status>pass</status>
+            <description>PostURLCallBack for set embd objects api;url redirection;not implemented</description>
+        </testcase>
+        <testcase id="SMOKE-004-001">
+            <testrun>12124</testrun>
+            <status>pass</status>
+            <description>Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-002">
+            <testrun>12125</testrun>
+            <status>pass</status>
+            <description>Auto Redirect One Depth Server URL with relative path Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-003">
+            <testrun>12126</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Different Host Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-004">
+            <testrun>12127</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Relative To Absolute redirection Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-005">
+            <testrun>12128</testrun>
+            <status>pass</status>
+            <description>Auto Redirect For Different Protocol Url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-004-006">
+            <testrun>12129</testrun>
+            <status>fail</status>
+            <description>redirected location count for manual redirection didn't match with expected count;expected count=1;actual count=0</description>
+        </testcase>
+        <testcase id="SMOKE-005-001">
+            <testrun>12130</testrun>
+            <status>pass</status>
+            <description>Four URL Test without expiry cookie and cookie mode 1 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-002">
+            <testrun>12131</testrun>
+            <status>pass</status>
+            <description>Four URL Test with expiry cookie and cookie mode 1 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-003">
+            <testrun>12132</testrun>
+            <status>pass</status>
+            <description>Four URL Test with expiry code and cookie mode 1  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-005-004">
+            <testrun>12133</testrun>
+            <status>pass</status>
+            <description>Two URL Test with command line cookie and cookie mode 1 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-006-001">
+            <testrun>12134</testrun>
+            <status>pass</status>
+            <description>KeepAlive with percentage 100 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-006-002">
+            <testrun>12135</testrun>
+            <status>pass</status>
+            <description>KeepAlive with percentage 0 Passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-001">
+            <testrun>12136</testrun>
+            <status>pass</status>
+            <description>One Url MultiPart With Boundary Passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-002">
+            <testrun>12137</testrun>
+            <status>pass</status>
+            <description>One Url MultiPart Without Boundary Passed</description>
+        </testcase>
+        <testcase id="SMOKE-007-003">
+            <testrun>12138</testrun>
+            <status>pass</status>
+            <description>One Url MultiPart Nested Boundries Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-001">
+            <testrun>12139</testrun>
+            <status>pass</status>
+            <description>Page think time with constant mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-002">
+            <testrun>12140</testrun>
+            <status>pass</status>
+            <description>Page think time with uniform distribution mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-003">
+            <testrun>12141</testrun>
+            <status>pass</status>
+            <description>Page think time with internet type distribution mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-004">
+            <testrun>12142</testrun>
+            <status>pass</status>
+            <description>Page think time keyword for specific page Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-005">
+            <testrun>12143</testrun>
+            <status>pass</status>
+            <description>Page think time keyword with overide and multiply values Passed</description>
+        </testcase>
+        <testcase id="SMOKE-008-006">
+            <testrun>12144</testrun>
+            <status>pass</status>
+            <description>Page think time keyword with overide random percentage values Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-001">
+            <testrun>12145</testrun>
+            <status>pass</status>
+            <description>Search in two main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-002">
+            <testrun>12146</testrun>
+            <status>pass</status>
+            <description>Search in two main url with savelength mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-003">
+            <testrun>12147</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-004">
+            <testrun>12148</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-005">
+            <testrun>12149</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode in 2 pages Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-006">
+            <testrun>12150</testrun>
+            <status>pass</status>
+            <description>Search for two main url with save length and save offset mode in 2 pages Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-007">
+            <testrun>12151</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-008">
+            <testrun>12152</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-009">
+            <testrun>12153</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-010">
+            <testrun>12154</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-011">
+            <testrun>12155</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found and ActionOnfailContinue Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-012">
+            <testrun>12156</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found ActionOnfailStop Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-013">
+            <testrun>12157</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix found comparing from a file Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-014">
+            <testrun>12158</testrun>
+            <status>pass</status>
+            <description>Checkpoint with two main url check value with prefix and suffix not found Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-015">
+            <testrun>12159</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 main url ChangeOnUse Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-016">
+            <testrun>12160</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 main url ChangeOnSession Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-017">
+            <testrun>12161</testrun>
+            <status>pass</status>
+            <description>File Parameter 5 url ModeWeighted Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-018">
+            <testrun>12162</testrun>
+            <status>pass</status>
+            <description>Serach Param for two main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-009-019">
+            <testrun>12163</testrun>
+            <status>pass</status>
+            <description>Search Param for 5 url with single page search savelenght and saveoffset and ORD all Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-001">
+            <testrun>12164</testrun>
+            <status>pass</status>
+            <description>DNS A type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-002">
+            <testrun>12165</testrun>
+            <status>pass</status>
+            <description>DNS AAAA type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-003">
+            <testrun>12166</testrun>
+            <status>pass</status>
+            <description>DNS MX type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-004">
+            <testrun>12167</testrun>
+            <status>pass</status>
+            <description>DNS NS type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-005">
+            <testrun>12168</testrun>
+            <status>pass</status>
+            <description>DNS SOA type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-006">
+            <testrun>12169</testrun>
+            <status>pass</status>
+            <description>DNS PTR type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-007">
+            <testrun>12170</testrun>
+            <status>pass</status>
+            <description>DNS CNAME type query Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-008">
+            <testrun>12171</testrun>
+            <status>pass</status>
+            <description>POP3 testcase Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-009">
+            <testrun>12172</testrun>
+            <status>pass</status>
+            <description>Ftp test for text data and passive mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-010">
+            <testrun>12173</testrun>
+            <status>pass</status>
+            <description>Ftp test for binary data and passive mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-011">
+            <testrun>12174</testrun>
+            <status>pass</status>
+            <description>Ftp test for text data and active mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-012">
+            <testrun>12175</testrun>
+            <status>pass</status>
+            <description>Ftp test for binary data and active mode Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-013">
+            <testrun>12176</testrun>
+            <status>pass</status>
+            <description>SMTP test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-014">
+            <testrun>12177</testrun>
+            <status>pass</status>
+            <description>IMAP test for FETCH HEADER Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-015">
+            <testrun>12178</testrun>
+            <status>pass</status>
+            <description>IMAP test for FETCH TEXT Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-016">
+            <testrun>12179</testrun>
+            <status>pass</status>
+            <description>IMAP test for FETCH BODY Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-017">
+            <testrun>12180</testrun>
+            <status>pass</status>
+            <description>Hessian Protocol version 1.0 Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-010-018">
+            <testrun>12181</testrun>
+            <status>pass</status>
+            <description>Hessian Protocol version 2.0 Test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-001">
+            <testrun>12182</testrun>
+            <status>pass</status>
+            <description>Runlogic for percentaged block flow test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-002">
+            <testrun>12183</testrun>
+            <status>pass</status>
+            <description>Runlogic for percentaged block flow test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-003">
+            <testrun>12184</testrun>
+            <status>pass</status>
+            <description>Runlogic for percentaged block flow test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-004">
+            <testrun>12185</testrun>
+            <status>pass</status>
+            <description>Runlogic for sequence flows test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-005">
+            <testrun>12186</testrun>
+            <status>pass</status>
+            <description>Runlogic for handle_switch_case block test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-006">
+            <testrun>12187</testrun>
+            <status>pass</status>
+            <description>Runlogic for handle_switch_case block test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-007">
+            <testrun>12188</testrun>
+            <status>pass</status>
+            <description>Runlogic for handle_switch_case block test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-008">
+            <testrun>12189</testrun>
+            <status>pass</status>
+            <description>Runlogic for handle_switch_case block test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-012-009">
+            <testrun>12190</testrun>
+            <status>pass</status>
+            <description>Runlogic for handle_switch_case block test Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-001">
+            <testrun>12191</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users all users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-002">
+            <testrun>12192</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users 5 users release  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-003">
+            <testrun>12193</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-004">
+            <testrun>12194</testrun>
+            <status>pass</status>
+            <description>SyncPoint In Between Transasctions 10 Users all users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-005">
+            <testrun>12195</testrun>
+            <status>pass</status>
+            <description>SyncPoint Before First Page 10 Users all users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-013-006">
+            <testrun>12196</testrun>
+            <status>pass</status>
+            <description>SyncPoint In Between Pages 10Users 5users release Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-001">
+            <testrun>12197</testrun>
+            <status>pass</status>
+            <description>NS add header with Main url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-002">
+            <testrun>12198</testrun>
+            <status>pass</status>
+            <description>NS add header with Embedded url Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-003">
+            <testrun>12199</testrun>
+            <status>pass</status>
+            <description>NS add header with both Main and Embedded urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-004">
+            <testrun>12200</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Main urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-005">
+            <testrun>12201</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Embedded urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-006">
+            <testrun>12202</testrun>
+            <status>pass</status>
+            <description>NS auto add header with Mix Mode urls Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-007">
+            <testrun>12203</testrun>
+            <status>pass</status>
+            <description>NS clean-up header Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-008">
+            <testrun>12204</testrun>
+            <status>pass</status>
+            <description>NS remove auto header Passed</description>
+        </testcase>
+        <testcase id="SMOKE-014-009">
+            <testrun>12205</testrun>
+            <status>pass</status>
+            <description>NS add and remove header combined Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-001">
+            <testrun>12206</testrun>
+            <status>pass</status>
+            <description>NetworkCache test for both cacheable and non-cacheable request Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-002">
+            <testrun>12207</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having default URL Passed</description>
+        </testcase>
+        <testcase id="SMOKE-015-003">
+            <testrun>12208</testrun>
+            <status>pass</status>
+            <description>NetworkCache test with NetOcean server having parameterized requests Passed</description>
+        </testcase>
+        <testcase id="SMOKE-016-001">
+            <testrun>12209</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-016-002">
+            <testrun>12210</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-016-003">
+            <testrun>12211</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-016-004">
+            <testrun>12212</testrun>
+            <status>pass</status>
+            <description>do not filter all events will be logged condition verified</description>
+        </testcase>
+        <testcase id="SMOKE-016-005">
+            <testrun>12213</testrun>
+            <status>pass</status>
+            <description>log events as per event definition file with log event as per state change mode(1) tested</description>
+        </testcase>
+        <testcase id="SMOKE-016-006">
+            <testrun>12214</testrun>
+            <status>fail</status>
+            <description>no expected timeout events has been logged as; per event definition file with log event as per event counts mode(2)</description>
+        </testcase>
+        <testcase id="SMOKE-016-007">
+            <testrun>12215</testrun>
+            <status>pass</status>
+            <description>all CvFail events has been logged;for logging events as per event definition file and event to be logged as per event occurence time</description>
+        </testcase>
+        <testcase id="SMOKE-016-008">
+            <testrun>12216</testrun>
+            <status>pass</status>
+            <description>log events as per event definition file with no flter(0) mode tested</description>
+        </testcase>
+        <testcase id="SMOKE-016-009">
+            <testrun>12217</testrun>
+            <status>pass</status>
+            <description>no events being logged for filter all events;no events will be logged configuration setting</description>
+        </testcase>
+    </testsuite>
+</testsuites>
