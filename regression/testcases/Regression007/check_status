@@ -18,6 +18,7 @@ function main(){
         "REG-007-003") handle_reg_003_case ;;
         "REG-007-004") handle_reg_004_case ;;
         "REG-007-005") handle_reg_005_case ;;
+        "REG-007-006") handle_reg_006_case ;;
         *) handle_unknown_case ;;
         ?) handle_unknown_case ;;
     esac
@@ -52,6 +53,39 @@ function get_status_rtc_phasewise(){
         RTC_FLAG=2
 	return $RTC_FLAG
     fi
+}
+
+
+function get_vuser(){
+    phase=$1
+    startl=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
+    endl=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
+    avg_vuser=$(cat $PROGRESS_REPORT_FILE | sed -n "${startl},${endl}p" | grep "Vusers:" | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | tail -1)
+            
+    echo $avg_vuser
+}
+
+
+function get_avg_vuser_string() {
+    avg_vuser=""
+    
+    debug_log "before loop iterates avg_vuser=$avg_vuser"
+
+    for i in "$@"; do
+        if [ "$i" == "RampUp0" ]; then
+            avg_vuser+=$(get_vuser $i),
+        elif [ "$i" == "Stabilize0" ]; then
+            avg_vuser+=$(get_vuser $i),
+        elif [ "$i" == "Duration0" ]; then
+            avg_vuser+=$(get_vuser $i),
+        else 
+            avg_vuser+=$(get_vuser $i)
+        fi
+        
+        debug_log "after loop iterates for $i avg_vuser=$avg_vuser;startl=$startl;endl=$endl"
+    done
+
+    echo $avg_vuser
 }
 
 
@@ -126,6 +160,36 @@ function handle_reg_005_case(){
         log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
+    fi
+}
+
+
+function handle_reg_006_case(){
+    get_avg_vuser_string RampUp0 Stabilize0 Duration0 RampDown0
+    debug_log "avg_vuser=${avg_vuser}"
+
+    rampup_vuser=$(echo ${avg_vuser} | cut -d, -f1)
+    stabilize_vuser=$(echo ${avg_vuser} | cut -d, -f2)
+    duration_vuser=$(echo ${avg_vuser} | cut -d, -f3)
+    rampdown_vuser=$(echo ${avg_vuser} | cut -d, -f4)
+    
+    #Validations of NVM distributions
+    
+    ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
+    debug_log "ramp_down_users=$ramp_down_users"
+    
+    rtc_phase_string_count=$(egrep "RTC_PHASE_[0-9]" $PROGRESS_REPORT_FILE | wc -l)
+    debug_log "rtc_phase_string_count=$rtc_phase_string_count"
+    
+    if [ $ramp_down_users -eq 300 ] && \
+       [ $rtc_phase_string_count -eq 4 ] && \
+       [ $rampup_vuser -ge 212 ] && \
+       [ $stabilize_vuser -ge 192 ] && \
+       [ $duration_vuser -ge 202 ] && \
+       [ $rampdown_vuser -ge 209 ];then
+        log_status_and_exit_ex "PASS" "rtc test where rtc being applied in rampup;stabilize;duration & rampdown phases"
+    else
+        log_status_and_exit_ex "FAIL" "rtc test where rtc being applied in rampup;stabilize;duration&rampdown phases failed"
     fi
 }
 
