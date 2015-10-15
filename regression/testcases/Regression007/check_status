@@ -33,16 +33,18 @@ function get_status_rtc_phasewise(){
 	start_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
 	end_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
 	vusers_count=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "V[a-zA-Z:.\s]+.*.[0-9]+.[0-9]+" | awk -F '  ' '{print $2}' | head -2 | tail -1 | cut -d. -f1)
-	rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "V[a-zA-Z:.\s]+.*.[0-9]+.[0-9]+" | awk -F '  ' '{print $2}' | cut -d. -f1 | sed -n '/^1/p' | sort | head -1)
+	rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "V[a-zA-Z:.\s]+.*.[0-9]+.[0-9]+" | awk -F '  ' '{print $2}' | cut -d. -f1 | sed -n '/^1/p' | sort -n | head -1)
 	conf_users=$(cat $CONF_FILE | grep "^SGRP" | cut -d " " -f7 | awk '{ sum+=$1} END {print sum}')
 	ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
 	rtc_string=$(grep "RTC_PHASE_0" $PROGRESS_REPORT_FILE)
-	
-	debug_log "VUSER_COUNT=$vusers_count;RTC_STRING=${rtc_string}"
-	debug_log "ramp_down_users=$ramp_down_users;(conf+rtc)users=$((conf_users + rtc_vusers))"
+
+        debug_log "start_line=$start_line;end_line=$end_line"	
+	debug_log "VUSER_COUNT=$vusers_count;RTC_STRING=${rtc_string};rtc_vusers=$rtc_vusers;conf_users=$conf_users"
+	debug_log "ramp_down_users=$ramp_down_users;(conf+rtc)users=$((conf_users + vusers_count))"
 	
 	if [ $vusers_count -ge 10 ] && \
-	   [ $ramp_down_users -le $((conf_users + rtc_vusers)) ] && \
+           [ $vusers_count -le 110 ] && \
+	   [ $ramp_down_users -le $((conf_users + vusers_count)) ] && \
 	   [ ! -z "${rtc_string}" ]; then
 	    return $RTC_FLAG
 	else
@@ -62,6 +64,7 @@ function get_vuser(){
     endl=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
     avg_vuser=$(cat $PROGRESS_REPORT_FILE | sed -n "${startl},${endl}p" | grep "Vusers:" | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | tail -1)
             
+    debug_log "avg_vuser=$avg_vuser;startl=$startl;endl=$endl"
     echo $avg_vuser
 }
 
@@ -82,7 +85,7 @@ function get_avg_vuser_string() {
             avg_vuser+=$(get_vuser $i)
         fi
         
-        debug_log "after loop iterates for $i avg_vuser=$avg_vuser;startl=$startl;endl=$endl"
+        debug_log "after loop iterates for $i avg_vuser=$avg_vuser"
     done
 
     echo $avg_vuser

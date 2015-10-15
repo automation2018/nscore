@@ -2242,3 +2242,25 @@
 2015-10-13 05:09:14 PM |TR12240|REG-007-004| ramp_down_users=20;(conf+rtc)users=27
 2015-10-13 05:13:29 PM |TR12241|REG-007-005| VUSER_COUNT=15;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:24
 2015-10-13 05:13:29 PM |TR12241|REG-007-005| ramp_down_users=20;(conf+rtc)users=20
+2015-10-15 12:18:07 PM |TR12267|REG-007-001| VUSER_COUNT=10;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:00
+2015-10-15 12:18:07 PM |TR12267|REG-007-001| ramp_down_users=110;(conf+rtc)users=110
+2015-10-15 12:24:13 PM |TR12268|REG-007-002| VUSER_COUNT=13;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:30
+2015-10-15 12:24:13 PM |TR12268|REG-007-002| ramp_down_users=110;(conf+rtc)users=113
+2015-10-15 12:30:20 PM |TR12269|REG-007-003| VUSER_COUNT=;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:28
+2015-10-15 12:30:20 PM |TR12269|REG-007-003| ramp_down_users=110;(conf+rtc)users=100
+2015-10-15 12:36:25 PM |TR12270|REG-007-004| VUSER_COUNT=;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:04:28
+2015-10-15 12:36:25 PM |TR12270|REG-007-004| ramp_down_users=110;(conf+rtc)users=100
+2015-10-15 12:42:31 PM |TR12271|REG-007-005| VUSER_COUNT=84;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:05:28
+2015-10-15 12:42:31 PM |TR12271|REG-007-005| ramp_down_users=110;(conf+rtc)users=100
+2015-10-15 12:53:41 PM |TR12272|REG-007-006| before loop iterates avg_vuser=
+2015-10-15 12:53:41 PM |TR12272|REG-007-006| avg_vuser=212;startl=29;endl=620
+2015-10-15 12:53:41 PM |TR12272|REG-007-006| after loop iterates for RampUp0 avg_vuser=212,;startl=;endl=
+2015-10-15 12:53:41 PM |TR12272|REG-007-006| avg_vuser=214;startl=621;endl=797
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| after loop iterates for Stabilize0 avg_vuser=212,214,;startl=;endl=
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| avg_vuser=210;startl=798;endl=1844
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| after loop iterates for Duration0 avg_vuser=212,214,210,;startl=;endl=
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| avg_vuser=209;startl=1845;endl=1950
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| after loop iterates for RampDown0 avg_vuser=212,214,210,209;startl=;endl=
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| avg_vuser=212,214,210,209
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| ramp_down_users=300
+2015-10-15 12:53:42 PM |TR12272|REG-007-006| rtc_phase_string_count=3
