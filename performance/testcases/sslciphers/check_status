@@ -63,21 +63,51 @@ function Compare_Results() {
 
 
 function handle_ssl_cps_case() {
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "Going to change testcase.conf"
+
     sed -i 's/Performance\/Performance\/ssl_cps/Performance\/Performance\/ssl_hps/g' $SSL_TC_CONF_FILE
+    
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "Changed testcase.conf file"
+    debug_log "Going to copy hps hpd.conf file"
+
     rmon -h 10.10.30.38 -u root -p abeona -F $HPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
+    
+    debug_log "Going to restart hpd server"
+
     rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd restart'
+    sleep 10
+    rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd show'
+    
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
 
 function handle_ssl_hps_case() {
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    
+    debug_log "Going to change testcase.conf"
+
     sed -i 's/Performance\/Performance\/ssl_hps/Performance\/Performance\/ssl_throughput/g' $SSL_TC_CONF_FILE
+    
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "Changed testcase.conf file"
+
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
 
 function handle_ssl_throughput_case() {
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    
+    debug_log "Going to change testcase.conf"
+
     sed -i 's/Performance\/Performance\/ssl_throughput/Performance\/Performance\/ssl_cps/g' $SSL_TC_CONF_FILE
+    
+    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "Changed testcase.conf file"
+
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
