@@ -2,7 +2,7 @@
 
 source $NS_WDIR/lib/automation_util
 
-BaseLineCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
+#BaseLineCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CurrentCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 Component=performance
 SSL_TC_CONF_FILE="$NS_WDIR/testcases/Performance/Performance/sslciphers/testcase.conf"
@@ -19,26 +19,8 @@ function main(){
 }
 
 
-function BaseLine(){
-    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/072015_135052/2170/cps_results.csv"
-    echo  "Test description name is=$T_NAME"
-    B_T_RUN_ID=`grep -w $T_NAME $BaseLine_Tsr_Directory_CPSFile |cut -d ',' -f2` 
-    CPS_MAX_VALUE=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
-    HPS_MAX_VALUE=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Rx=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
-    CPS_MAX_VALUE=`echo $CPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    HPS_MAX_VALUE=`echo $HPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Rx=`echo $Throughput_Rx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx=`echo $Throughput_Tx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx" >>$BaseLineCSV
-}
-
-
 function CurrentCPS(){
     echo "T_RUN_ID is =$T_RUN_ID"
-    #CurrentTsr_Directory_CPSFile="$TSR_Path/QAT_cps_results.csv"
-    #echo "CurrentTsr_Directory_CPSFile is =$CurrentTsr_Directory_CPSFile"
     CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
     HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
     Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
@@ -47,7 +29,37 @@ function CurrentCPS(){
     HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    
+    echo "SSL:CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+}
+
+
+function CurrentHPS() {
+    echo "T_RUN_ID is =$T_RUN_ID"
+    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    echo "SSL:HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+}
+
+
+function CurrentThroughPut() {
+    echo "T_RUN_ID is =$T_RUN_ID"
+    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    echo "SSL:THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+
 }
 
 
@@ -63,12 +75,12 @@ function Compare_Results() {
 
 
 function handle_ssl_cps_case() {
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Going to change testcase.conf"
 
     sed -i 's/Performance\/Performance\/ssl_cps/Performance\/Performance\/ssl_hps/g' $SSL_TC_CONF_FILE
     
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Changed testcase.conf file"
     debug_log "Going to copy hps hpd.conf file"
 
@@ -85,13 +97,13 @@ function handle_ssl_cps_case() {
 
 
 function handle_ssl_hps_case() {
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     
     debug_log "Going to change testcase.conf"
 
     sed -i 's/Performance\/Performance\/ssl_hps/Performance\/Performance\/ssl_throughput/g' $SSL_TC_CONF_FILE
     
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Changed testcase.conf file"
 
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
@@ -99,13 +111,13 @@ function handle_ssl_hps_case() {
 
 
 function handle_ssl_throughput_case() {
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     
     debug_log "Going to change testcase.conf"
 
     sed -i 's/Performance\/Performance\/ssl_throughput/Performance\/Performance\/ssl_cps/g' $SSL_TC_CONF_FILE
     
-    debug_log "SSL_TC_CONF_FILE=$SSL_TC_CONF_FILE"
+    debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Changed testcase.conf file"
 
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
