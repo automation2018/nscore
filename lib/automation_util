@@ -241,6 +241,9 @@ project_name(){
     if [ "X$testsuitname" == "XPerformance" ] || [ "X$testsuitname" == "XPerformance_Cps" ]; then
          echo "Performance/Performance"
     fi
+    if [ "X$testsuitname" == "XPerformance_SSL" ]; then
+         echo "Performance/Performance"
+    fi
 }
 
 
