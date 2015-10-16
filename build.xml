@@ -67,4 +67,9 @@
     <target name="start" depends="smoke, take-knap, performance, take-knap, regression">
     </target>
 
+    <!-- Task: Run SSL Perf Test--> 
+    <target name="runPerfSsl">
+        <ant antfile="${perf.build.file}" target="perfSsl" useNativeBasedir="true"/>
+    </target>
+
 </project>

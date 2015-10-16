@@ -145,5 +145,14 @@
            </attachments>	   
        </mail>	       
    </target>	   
+    
+   <!-- Task: This target runs the Performance test for ssl based NS requests handling-->
+   <target name="perfSsl" depends="hpd-process-restart">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance_SSL"/>
+            <arg value="0"/>
+        </exec>
+   </target>
 
 </project>
