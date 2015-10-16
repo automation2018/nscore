@@ -2,7 +2,6 @@
 
 source $NS_WDIR/lib/automation_util
 
-#BaseLineCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CurrentCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 Component=performance
 SSL_TC_CONF_FILE="$NS_WDIR/testcases/Performance/Performance/sslciphers/testcase.conf"
@@ -21,56 +20,50 @@ function main(){
 
 function CurrentCPS(){
     echo "T_RUN_ID is =$T_RUN_ID"
-    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     
-    echo "SSL:CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    
+    echo "SSL:CPS,$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >$CurrentCSV
 }
 
 
 function CurrentHPS() {
     echo "T_RUN_ID is =$T_RUN_ID"
-    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "SSL:HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    
+    CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    
+    echo "SSL:HPS,$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
 }
 
 
 function CurrentThroughPut() {
     echo "T_RUN_ID is =$T_RUN_ID"
-    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "SSL:THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    
+    CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    
+    echo "SSL:THROUGHPUT,$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
 
-}
-
-
-function Compare_Results() {
-    Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
-    echo "Conn_Perc_Change is =$Conn_Perc_Change"
-    if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then	
-	log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-	log_status_and_exit_ex "FAIL" "$T_NAME Failed"
-    fi
 }
 
 
@@ -91,7 +84,8 @@ function handle_ssl_cps_case() {
     rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd restart'
     sleep 10
     rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd show'
-    
+
+    CurrentCPS    
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
@@ -106,6 +100,7 @@ function handle_ssl_hps_case() {
     debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Changed testcase.conf file"
 
+    CurrentHPS
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
@@ -120,6 +115,7 @@ function handle_ssl_throughput_case() {
     debug_log "SSL_TC_CONF_FILE=$(cat $SSL_TC_CONF_FILE)"
     debug_log "Changed testcase.conf file"
 
+    CurrentThroughPut
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"
 }
 
