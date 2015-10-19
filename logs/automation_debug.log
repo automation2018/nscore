@@ -2682,3 +2682,205 @@ DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
 2015-10-16 07:32:26 PM |TR12602|Performance_Sslciphers_Throughput| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
 DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
 2015-10-16 07:32:26 PM |TR12602|Performance_Sslciphers_Throughput| Changed testcase.conf file
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| Method called - check_and_set_status()
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| Testcase Name=SMOKE-001-001
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| Method called - get_url_query_param_var()
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| End method - get_url_query_param_var()
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| SAVED STRING == RESPONSE |STATUS=PASS
+2015-10-19 11:58:11 AM |TR12922|SMOKE-001-001| End method - check_and_set_status()
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| Method called - check_and_set_status()
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| Testcase Name=SMOKE-001-002
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| Method called -- get_status_from_test_report()
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| String to search = NS_EVAL_STRING
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| Test case name = SmokeTest_API_1_2
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| NS_EVAL_STRING is found at line number = 45
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| RESPONSE obtained = PASS
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| End method - get_status_from_test_report()
+2015-10-19 11:58:18 AM |TR12923|SMOKE-001-002| End method - check_and_set_status()
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| Method called - check_and_set_status()
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| Testcase Name=SMOKE-001-003
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| Method called -- get_status_from_test_report()
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| String to search = NS_ADVANCE_PARAM
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| Test case name = SmokeTest_API_1_3
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| NS_ADVANCE_PARAM is found at line number = 48
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| RESPONSE obtained = PASS
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| End method - get_status_from_test_report()
+2015-10-19 11:58:25 AM |TR12924|SMOKE-001-003| End method - check_and_set_status()
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| Method called - check_and_set_status()
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| Testcase Name=SMOKE-001-004
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| Method called -- get_status_from_test_report()
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| String to search = NS_ADVANCE_PARAM
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| Test case name = SmokeTest_API_1_4
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| NS_ADVANCE_PARAM is found at line number = 52
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| RESPONSE obtained = Starting phase 'Stabilize0' (phase 2) at 00:00:02
+2015-10-19 11:58:32 AM |TR12925|SMOKE-001-004| End method - get_status_from_test_report()
+2015-10-19 11:58:33 AM |TR12925|SMOKE-001-004| End method - check_and_set_status()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| Method called - check_and_set_status()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| Testcase Name=SMOKE-001-005
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| Method called - get_status_for_save_data_api()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| File With Path=/home/netstorm/work/logs/TR12926/save.data
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| Method called - get_url_query_param_var()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| End method - get_url_query_param_var()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| End method - get_status_for_save_data_api()
+2015-10-19 11:58:40 AM |TR12926|SMOKE-001-005| End method - check_and_set_status()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| Method called - check_and_set_status()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| Testcase Name=SMOKE-001-006
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| Method called - get_status_for_save_data_api()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| File With Path=/home/netstorm/save.data
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| Method called - get_url_query_param_var()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| End method - get_url_query_param_var()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| End method - get_status_for_save_data_api()
+2015-10-19 11:58:48 AM |TR12927|SMOKE-001-006| End method - check_and_set_status()
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| Method called - check_and_set_status()
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| Testcase Name=SMOKE-001-007
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| Method called - get_status_for_save_data_api()
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| File With Path=/root/save.data
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| No Permission to create the file or File doesn't exists
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| Failed For SMOKE-001-007
+2015-10-19 11:58:55 AM |TR12928|SMOKE-001-007| End method - check_and_set_status()
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| Method called - check_and_set_status()
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| Testcase Name=SMOKE-001-008
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| File With Path=/ThisPathDoNotExists/save.data
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| No Permission to create the file or File doesn't exists
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| Failed For SMOKE-001-008
+2015-10-19 11:59:02 AM |TR12929|SMOKE-001-008| End method - check_and_set_status()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| Method called - check_and_set_status()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| Testcase Name=SMOKE-001-009
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| File With Path=/home/netstorm/work/logs/TR12930/save.data
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| Method called - get_url_query_param_var()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| End method - get_url_query_param_var()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| End method - get_status_for_save_data_api()
+2015-10-19 11:59:09 AM |TR12930|SMOKE-001-009| End method - check_and_set_status()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| Method called - check_and_set_status()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| Testcase Name=SMOKE-001-010
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| File With Path=/home/netstorm/save.data
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| Method called - get_url_query_param_var()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| End method - get_url_query_param_var()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| End method - get_status_for_save_data_api()
+2015-10-19 11:59:17 AM |TR12931|SMOKE-001-010| End method - check_and_set_status()
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| Method called - check_and_set_status()
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| Testcase Name=SMOKE-001-011
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| File With Path=/root/save.data
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| No Permission to create the file or File doesn't exists
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| Failed For SMOKE-001-011
+2015-10-19 11:59:24 AM |TR12932|SMOKE-001-011| End method - check_and_set_status()
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| Method called - check_and_set_status()
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| Testcase Name=SMOKE-001-012
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| File With Path=/ThisPathDoNotExists/save.data
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| No Permission to create the file or File doesn't exists
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| Failed For SMOKE-001-012
+2015-10-19 11:59:31 AM |TR12933|SMOKE-001-012| End method - check_and_set_status()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| Method called - check_and_set_status()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| Testcase Name=SMOKE-001-013
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| File With Path=/home/netstorm/work/logs/TR12934/save.data
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| Method called - get_url_query_param_var()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| End method - get_url_query_param_var()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| End method - get_status_for_save_data_api()
+2015-10-19 11:59:38 AM |TR12934|SMOKE-001-013| End method - check_and_set_status()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| Method called - check_and_set_status()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| Testcase Name=SMOKE-001-014
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| File With Path=/home/netstorm/work/save.data
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| Method called - get_url_query_param_var()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| End method - get_url_query_param_var()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| End method - get_status_for_save_data_api()
+2015-10-19 11:59:45 AM |TR12935|SMOKE-001-014| End method - check_and_set_status()
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| Method called - check_and_set_status()
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| Testcase Name=SMOKE-001-015
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| Method called - get_status_for_save_data_api()
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| File With Path=/root/save.data
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| No Permission to create the file or File doesn't exists
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| Failed For SMOKE-001-015
+2015-10-19 11:59:53 AM |TR12936|SMOKE-001-015| End method - check_and_set_status()
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| Method called - check_and_set_status()
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| Testcase Name=SMOKE-001-016
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| Method called - get_status_for_save_data_api()
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| File With Path=/ThisPathDoNotExists/save.data
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| No Permission to create the file or File doesn't exists
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| Failed For SMOKE-001-016
+2015-10-19 12:00:00 PM |TR12937|SMOKE-001-016| End method - check_and_set_status()
+2015-10-19 12:00:07 PM |TR12938|SMOKE-001-017| Method called - check_and_set_status()
+2015-10-19 12:00:07 PM |TR12938|SMOKE-001-017| Testcase Name=SMOKE-001-017
+2015-10-19 12:00:07 PM |TR12938|SMOKE-001-017| End method - check_and_set_status()
+2015-10-19 12:00:14 PM |TR12939|SMOKE-001-018| Method called - check_and_set_status()
+2015-10-19 12:00:14 PM |TR12939|SMOKE-001-018| Testcase Name=SMOKE-001-018
+2015-10-19 12:00:14 PM |TR12939|SMOKE-001-018| End method - check_and_set_status()
+2015-10-19 12:00:21 PM |TR12940|SMOKE-001-019| Method called - check_and_set_status()
+2015-10-19 12:00:21 PM |TR12940|SMOKE-001-019| Testcase Name=SMOKE-001-019
+2015-10-19 12:00:21 PM |TR12940|SMOKE-001-019| End method - check_and_set_status()
+2015-10-19 12:00:29 PM |TR12941|SMOKE-001-020| Method called - check_and_set_status()
+2015-10-19 12:00:29 PM |TR12941|SMOKE-001-020| Testcase Name=SMOKE-001-020
+2015-10-19 12:00:29 PM |TR12941|SMOKE-001-020| End method - check_and_set_status()
+2015-10-19 12:00:36 PM |TR12942|SMOKE-001-021| Method called - check_and_set_status()
+2015-10-19 12:00:36 PM |TR12942|SMOKE-001-021| Testcase Name=SMOKE-001-021
+2015-10-19 12:00:36 PM |TR12942|SMOKE-001-021| End method - check_and_set_status()
+2015-10-19 12:27:27 PM |TR13050|SMOKE-016-005| flag=0
+2015-10-19 12:28:07 PM |TR13051|SMOKE-016-006| logged_events are=Url failed with status T.O.%0AEvent Data:%0Asrcip = 10.10.30.37 HTTP_REQUEST = GET /jstojsp/time_out_event.html HTTP/1.1%0D%0A%2C location_url = (null)%2C redirect_count = 0%2C conn_fd = 16%2C conn_state = 8%2C header_state = 0%2C chunked_state = 0%2C cookie_hash_code = 0%2C cookie_idx = 0%2C gServerTable_idx = 0%2C started_at = 1817%2C connect_time = 1%2C ssl_handshake_time = 0%2C write_complete_time = 0%2C first_byte_rcv_time = -1%2C request_complete_time = 0%2C http_payload_sent = 0%2C tcp_bytes_sent = 405%2C req_ok = 8%2C completion_code = 1%2C num_retries = 0%2C req_code = 0%2C req_code_filled = -2%2C con_init_time = 1817%2C end_time = 0%2C content_length = -1%2C bytes = 0%2C tcp_bytes_recv = 0%2C total_bytes = 0%2C body_offset = 0%2C checksum = 0%2C uid = 0%2C connection_type = 1%2C compression_type = 0%2C num_ka = 999999999%2C ssl = (nil)%2C chunk_size = 1024%2C old_svr_entry = 0x7faefb750000%2C buf_head = (nil)%2C cur_buf = (nil)%2C free_array = (nil)%2C send_vector = (nil)%2C bytes_left_to_send = 0%2C num_send_vectors = 0%2C first_vector_offset = 0%2C last_iov_base = (nil) 
+2015-10-19 03:17:53 PM |TR13074|REG-007-001| start_line=13;end_line=73
+2015-10-19 03:17:53 PM |TR13074|REG-007-001| VUSER_COUNT=00:00;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:01;rtc_vusers=0;conf_users=100
+2015-10-19 03:24:01 PM |TR13075|REG-007-002| start_line=29;end_line=621
+2015-10-19 03:24:01 PM |TR13075|REG-007-002| VUSER_COUNT=00:00;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:30;rtc_vusers=0;conf_users=100
+2015-10-19 03:30:09 PM |TR13076|REG-007-003| start_line=621;end_line=797
+2015-10-19 03:30:09 PM |TR13076|REG-007-003| VUSER_COUNT=00:03;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:28;rtc_vusers=0;conf_users=100
+2015-10-19 03:36:17 PM |TR13077|REG-007-004| start_line=797;end_line=973
+2015-10-19 03:36:17 PM |TR13077|REG-007-004| VUSER_COUNT=00:04;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:04:28;rtc_vusers=0;conf_users=100
+2015-10-19 03:42:24 PM |TR13078|REG-007-005| start_line=973;end_line=1077
+2015-10-19 03:42:24 PM |TR13078|REG-007-005| VUSER_COUNT=00:05;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:05:29;rtc_vusers=0;conf_users=100
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| before loop iterates avg_vuser=
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| avg_vuser=212;startl=29;endl=620
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| after loop iterates for RampUp0 avg_vuser=212,
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| avg_vuser=213;startl=621;endl=797
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| after loop iterates for Stabilize0 avg_vuser=212,213,
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| avg_vuser=210;startl=798;endl=1844
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| after loop iterates for Duration0 avg_vuser=212,213,210,
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| avg_vuser=209;startl=1845;endl=1950
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| after loop iterates for RampDown0 avg_vuser=212,213,210,209
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| avg_vuser=212,213,210,209
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| ramp_down_users=300
+2015-10-19 03:53:34 PM |TR13079|REG-007-006| rtc_phase_string_count=3
+2015-10-19 04:29:03 PM |TR13080|REG-007-001| start_line=13;end_line=73
+2015-10-19 04:29:03 PM |TR13080|REG-007-001| VUSER_COUNT=10;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:00;rtc_vusers=9;conf_users=100
+2015-10-19 04:29:03 PM |TR13080|REG-007-001| ramp_down_users=110;(conf+rtc)users=110
+2015-10-19 04:35:11 PM |TR13081|REG-007-002| start_line=29;end_line=621
+2015-10-19 04:35:11 PM |TR13081|REG-007-002| VUSER_COUNT=13;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:30;rtc_vusers=0;conf_users=100
+2015-10-19 04:35:11 PM |TR13081|REG-007-002| ramp_down_users=110;(conf+rtc)users=113
+2015-10-19 04:41:20 PM |TR13082|REG-007-003| start_line=621;end_line=797
+2015-10-19 04:41:20 PM |TR13082|REG-007-003| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:29;rtc_vusers=98;conf_users=100
+2015-10-19 04:41:20 PM |TR13082|REG-007-003| ramp_down_users=110;(conf+rtc)users=210
+2015-10-19 04:47:28 PM |TR13083|REG-007-004| start_line=797;end_line=973
+2015-10-19 04:47:28 PM |TR13083|REG-007-004| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:04:28;rtc_vusers=101;conf_users=100
+2015-10-19 04:47:28 PM |TR13083|REG-007-004| ramp_down_users=110;(conf+rtc)users=210
+2015-10-19 04:53:33 PM |TR13084|REG-007-005| start_line=973;end_line=1077
+2015-10-19 04:53:33 PM |TR13084|REG-007-005| VUSER_COUNT=84;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:05:28;rtc_vusers=48;conf_users=100
+2015-10-19 04:53:33 PM |TR13084|REG-007-005| ramp_down_users=110;(conf+rtc)users=184
