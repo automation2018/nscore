@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+WORKBENCH="/home/automation/workbench/automation/nscore"
+VERSION=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
+BUILD=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
+ATMN_FAIL_TESTS="/tmp/automation_fail_tests"
+TR_PATH="$NS_WDIR/logs/"
+FAIL_SHELL="$WORKBENCH/lib/fail_demo.sh"
+
+
+function main(){
+    # Preparing FailTests WorkBench 
+    [ -d $WORKBENCH/failtestcases ] \
+    && rm -rf $WORKBENCH/failtestcases \
+    && mkdir -p $WORKBENCH/failtestcases \
+    || mkdir -p $WORKBENCH/failtestcases
+    
+    failtestpath="$WORKBENCH/failtestcases"
+    export ${failtestpath}
+
+    mkdir -p ${failtestpath}/scripts ${failtestpath}/scenarios ${failtestpath}/testcases ${failtestpath}/testsuites
+   
+    touch ${failtestpath}/testsuites/failtests.conf
+
+    # Find fail testcases and process them
+    find_and_process_fail_testcases
+}
+
+
+function prepare_test_scenario_structure() {
+    tid="${1}"
+    conf="${2}"
+    scripts="${3}"
+    
+    cp ${conf} ${failtestpath}/scenarios/
+    mv ${failtestpath}/scenarios/scenario ${failtestpath}/scenarios/${tid}.conf
+    
+    cp -r ${scripts} ${failtestpath}/scripts/
+
+    mkdir -p ${failtestpath}/${tid}
+    touch ${failtestpath}/${tid}/iteration.spec ${failtestpath}/${tid}/testcase.conf \
+          ${failtestpath}/${tid}/check_status ${failtestpath}/${tid}/pre_test_setup \
+          ${failtestpath}/${tid}/post_test_setup
+
+    cp ${FAIL_SHELL} ${failtestpath}/${tid}/check_status ${failtestpath}/${tid}/pre_test_setup ${failtestpath}/${tid}/post_test_setup
+    
+    echo "SCENARIO_NAME AutoFail/FailCases/${tid}" >${failtestpath}/${tid}/testcase.conf
+
+    if [ -s ${failtestpath}/testsuites/failtests.conf ] || \
+       [ $(cat ${failtestpath}/testsuites/failtests.conf | awk 'END {print FNR}') -eq 0 ]; then
+        echo "TEST_CASE_NAME ${tid} Continue 1 1" >${failtestpath}/testsuites/failtests.conf
+    else
+        echo "TEST_CASE_NAME ${tid} Continue 1 1" >>${failtestpath}/testsuites/failtests.conf
+    fi
+}
+
+
+function find_and_process_fail_testcases(){
+    for testtype in smoke regression; do
+	RESULTS_DIR="$WORKBENCH/${testtype}/results/${VERSION}/${BUILD}"
+	R_FILE=$(basename $(ls -tr $RESULT_DIR/*.txt | tail -1))
+
+	grep ',fail,' $RESULTS_DIR/$R_FILE >$ATMN_FAIL_TESTS
+	
+	while read line;
+	do
+	fail_tid=$(echo $line | cut -d, -f1)
+	fail_tr=$(echo $line | cut -d, -f2)
+	fail_conf_path="$TR_PATH/TR$fail_tr/scenario"
+	fail_scrpts_path="$TR_PATH/TR$fail_tr/scripts/*"
+
+	prepare_test_scenario_structure ${fail_tid} ${fail_conf_path} ${fail_scripts_path}
+	
+	done<$ATMN_FAIL_TESTS
+    done
+}
+
+
+main
