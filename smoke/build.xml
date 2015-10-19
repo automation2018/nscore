@@ -17,7 +17,7 @@
     <!--Task: Initiates vnc process instance-->
     <target name="vnc-process-restart" depends="vnc-status-check">
        <exec executable="vncserver" outputproperty="action.file">
-           <arg value=":2"/>
+           <arg value=":3"/>
        </exec>
        <fail message="Vnc process not started please check" unless="action.file"/>
     </target>
