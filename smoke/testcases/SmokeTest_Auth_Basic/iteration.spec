@@ -14,4 +14,10 @@ SMOKE-002-003|Main_apache_PageDump|1|1|http|arun_QA|arun|G_TRACING ALL 4 1 0 0|#
 SMOKE-002-004|MainUrlAuth_Cmode_Search_Check|1|1|http|arun_QA|arun|#|G_KA_PCT ALL 100
 SMOKE-002-005|MainUrlAuth_Cmode_Search_CVfail|1|1|http|arun_QA|arun|#|G_KA_PCT ALL 0
 
-#for time out 
+#For time out 
+
+# QOP with AuthHeader;Issue was in Macy's
+# Reason
+# Netstorm is expecting "qop " value with Auth Header, 
+# but server is not sending qop value with auth header. 
+# This is the reason Netstorm is not seding Auth header with next reques
