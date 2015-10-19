@@ -32,8 +32,8 @@ function get_status_rtc_phasewise(){
     if [ -f $PROGRESS_REPORT_FILE ]; then 
 	start_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
 	end_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
-	vusers_count=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "[0-9]+.[0-9]+" | head -2 | tail -1 | cut -d. -f1)
-	rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | head -1)
+	vusers_count=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | grep "Vusers" | cut -d, -f1 | egrep -o "[0-9]+.[0-9]+" | head -2 | tail -1 | cut -d. -f1)
+	rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | grep "Vusers" | cut -d, -f1 | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | head -1)
 	conf_users=$(cat $CONF_FILE | grep "^SGRP" | cut -d " " -f7 | awk '{ sum+=$1} END {print sum}')
 	ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
 	rtc_string=$(grep "RTC_PHASE_0" $PROGRESS_REPORT_FILE)
