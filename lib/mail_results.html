@@ -6,67 +6,73 @@
        .container{
           width: 600px;
           padding: 10px;
-          background-color: #FAFAFA;
-          border: 1px solid #e0e0e0;
+          background-color: #F5F5F5;
+          border: 1px solid #A3C3FF;
         }
         table {
             border-collapse: collapse;
             width: 80%;
         }
         table, th, td { 
-            border: 1px solid #e0e0e0;
+            border: 1px solid #A3C3FF;
             padding: 10px;
-            font-size: 1em;
         }
         th {
-           background-color: #2196f3;
-           color: #e3f2fd;
+           background-color: #A3C3FF;
+           color: #FAFAFA;
            text-align: left;
         }
-        tr td{
-           background-color: #F5F5F5;
-           color: #757575;
+        tr td:first-child{
+           background-color: #F1F1F1;
         }
-        .divider {
-          border-top: 1px solid #e0e0e0;
+        hr {
+          color: #A3C3FF;
         }
-        .signature{ color: #607d8b;}
-          
     </style>
 </head>
 <body>
     <div class='container'>
 	<h5>GENERAL INFO</h5>
-	Build Failed
+	Build Successful
 	<br>
-	<b>Project</b>: NSCore Regression
-	<br><b>End Time</b>: Wed Oct 21 09:59:19 IST 2015
+	<b>Project</b>: NSCore Performance
+	<br><b>End Time</b>: Mon Oct 26 15:19:14 IST 2015
     <br>
-    <div class='divider'></div>
+    <hr/>
     <h5>Test Results</h5>
     <table>
         <tr>
-            <th>Category</th>
-            <th>Total</th>
-            <th>Passed</th>
-            <th>Failed</th>
-            <th>Netstorm Fail</th>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Current</th>
+            <th>% Change</th>
         </tr>
         <tr>
-            <td>Regression</td>
-            <td>12</td>
-            <td>10</td>
-            <td>2</td>
-            <td>0</td>
+            <td>Cps</td>
+            <td>57115</td>
+            <td>54938</td>
+            <td>-3.963</td>
+        </tr>
+        <tr>
+            <td>Hps</td>
+            <td>314745</td>
+            <td>319072</td>
+            <td>1.356</td>
+        </tr>
+        <tr>
+            <td>Throughput</td>
+            <td>962017</td>
+            <td>962088</td>
+            <td>0.007</td>
         </tr>
     </table>
+    <h5>Failed: 0 test(s), Passed: 13 test(s), Total: 13 test(s)</h5>
     <br>
-    <a href='http://10.10.30.37:5000/' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
-    <div class='divider'></div>
-   <br><br>
-   <div class='signature'>
-      Automation Team,<br>Cavisson Systems Inc
+    <a href='http://10.10.30.37:5000/'>View Online Automation Reports</a>
+    <hr/>
+    <br><br>
+    Automation Team,
+   <br>Cavisson Systems Inc
    </div>
-</div>
 </body>
 </html>
