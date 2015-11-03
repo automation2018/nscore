@@ -6,7 +6,8 @@ RESULTS_DIR="$WORKBENCH/results"
 version=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
 build=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
 
-buildtimestamp=$(date)
+buildtimestamp=$(date +'%d/%m/%y %I:%M:%S %p')
+start_time=${1}
 
 PERF_RESULT_FILES="$RESULTS_DIR/${version}/.${build}"
 
@@ -90,6 +91,7 @@ function set_up_email(){
 	Build $STATUS
 	<br>
 	<b>Project</b>: NSCore Performance
+	<br><b>Start Time</b>: ${start_time}
 	<br><b>End Time</b>: $buildtimestamp
     <br>
     <hr/>

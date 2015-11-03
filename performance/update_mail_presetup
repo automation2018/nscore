@@ -2,7 +2,7 @@
 
 version=`nsu_get_version | head -1 | awk -F " " '{print $2}'`
 build=`nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g'`
-buildtimestamp=$(date)
+buildtimestamp=$(date +'%d/%m/%y %I:%M:%S %p')
 
 pre_test_mail() {
 	echo -e "
