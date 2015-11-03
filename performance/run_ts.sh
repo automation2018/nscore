@@ -6,6 +6,7 @@ source $NS_WDIR/lib/automation_config.dat #Required for config variables
 
 export TEMP_FILE=/tmp/ns_run.$$
 PERF_TEST_DATA_FILE=/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
+SSL_PERF_RESULT_FILE=/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html
 
 
 init() {
@@ -153,6 +154,8 @@ main() {
 
     if [ "$testSuite" == "Performance_Cps" ];then
         cat $PERF_R_FILE |head -2 |tail -1 >${PERF_TEST_DATA_FILE}
+    elif [ "$testSuite" == "Performance_SSL" ]; then
+        gen_ssl_perf_report.rb -i $PERF_R_FILE -o $SSL_PERF_RESULT_FILE 
     else
 	hps=$(grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)
 	echo $hps >>${PERF_TEST_DATA_FILE}

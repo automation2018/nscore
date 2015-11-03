@@ -93,6 +93,14 @@
 
     <!--Task: This target runs the automation suite for HPS, Throughput & Concurrency metric-->
     <target name="Performance" depends="Performance_Cps, hpd-process-restart-for-hps-and-throughput">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date"/>
+            <arg value="+'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="start time = ${start.time}"/>
+
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
             <arg value="Performance"/>
@@ -131,6 +139,7 @@
    <target name="get_test_results">
         <exec executable="/bin/bash" taskname="info">
             <arg value="update_mail_results"/>
+            <arg value="${start.time}"/>
         </exec>
     </target>
    
@@ -153,6 +162,29 @@
             <arg value="Performance_SSL"/>
             <arg value="0"/>
         </exec>
+        
+        <exec executable="bash" outputproperty="release.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+        </exec>
+        
+        <exec executable="bash" outputproperty="build.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+        </exec>
+        
+        <echo message="Current Build: R${release.info}.B${build.info}"/>
+       
+        <mail mailhost="websrv.cavisson.com" 
+              mailport="587" 
+              tolist="niraj.panda@cavisson.com" 
+              cclist="ankur.srivastava@cavisson.com" 
+              messageMimeType="text/html" 
+              subject="[NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
+              messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html">
+             <from address="automation@cavisson.com"/>   		   
+       </mail>	       
+   
    </target>
 
 </project>
