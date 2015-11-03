@@ -47,24 +47,28 @@ function set_test_results(){
 
 
 function get_fail_test_data() {
-    str=""
-    R_FILE=$(ls -tr $SMOKE_RESULT_FILES/*.txt | tail -1)
-   
-    grep ',fail,' $R_FILE >"$TMP_FAIL_CASE_FILE"
- 
-    while read line;
-    do
-        id=$(echo "$line" | cut -d, -f1) 
-        tr=$(echo "$line" | cut -d, -f2) 
-        desc=$(echo "$line" | cut -d, -f8) 
-        str+="<tr><td>$id</td><td>$tr</td><td>$desc</td></tr>"
-    done <"$TMP_FAIL_CASE_FILE"
-    
-    caption="<caption>Failed Testcases</caption>"
-    th="<tr><th>Testcase ID</th><th>Test run</th><th>Description</th></tr>" 
-    table="<br><br><table>$caption $th $str</table>"
-    
-    echo "$table"
+    if [ $failed -gt 0 ]; then
+	str=""
+	R_FILE=$(ls -tr $SMOKE_RESULT_FILES/*.txt | tail -1)
+       
+	grep ',fail,' $R_FILE >"$TMP_FAIL_CASE_FILE"
+     
+	while read line;
+	do
+	    id=$(echo "$line" | cut -d, -f1) 
+	    tr=$(echo "$line" | cut -d, -f2) 
+	    desc=$(echo "$line" | cut -d, -f8) 
+	    str+="<tr><td>$id</td><td>$tr</td><td>$desc</td></tr>"
+	done <"$TMP_FAIL_CASE_FILE"
+	
+	caption="<caption>Failed Testcases</caption>"
+	th="<tr><th>Testcase ID</th><th>Test run</th><th>Description</th></tr>" 
+	table="<br><br><table>$caption $th $str</table>"
+	
+	echo "$table"
+    else
+        echo ""
+    fi
 }
 
 
@@ -132,7 +136,7 @@ function set_up_email(){
             <td>$nsfail</td>
         </tr>
     </table>
-    $([ "$failed" != "0" ] && get_fail_test_data)
+    $(get_fail_test_data)
     <br>
     <a href='http://10.10.30.37:5000/' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
     <div class='divider'></div>

@@ -95,6 +95,13 @@
     
     <!--Task: Initiates excution of Smoke testsuite--> 
     <target name="Smoke" depends="send-startup-mail, hpd-process-restart, vnc-process-restart">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="start time = ${start.time}"/>
+
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
             <arg value="Smoke"/>
@@ -129,10 +136,18 @@
 
    <!--Task: Update mail.properties prior to automation result mail Send--> 
    <target name="get_test_results">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="${start.time}"/>
+        
         <exec executable="/bin/bash" taskname="info">
             <arg value="update_mail_results"/>
+            <arg value="${start.time}"/>
         </exec>
-    </target>
+   </target>
    
    <!--Task: Send smoke automation results with attachments-->
    <target name="send-email" depends="get_test_results"> 
