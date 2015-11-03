@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+
+MAIL_PROP_FILE="mail.properties"
+WORKBENCH="/home/automation/workbench/automation/nscore/regression"
+RESULTS_DIR="$WORKBENCH/results"
+version=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
+build=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
+#buildtimestamp=$(date)
+buildtimestamp=$(date +'%d/%m/%y %H:%M:%S %p')
+REG_RESULT_FILES="$RESULTS_DIR/${version}/.${build}"
+start_time=${1}
+
+function get_metrics(){
+    file="$1"
+    pattern="$2"
+    count=$(grep "<testsuite " ${file} | egrep -ow "${pattern}=\"[0-9]+\""|egrep -o  "[0-9]+")
+    echo $count
+}
+    
+function set_test_results(){ 
+    first_attachment=$(basename $(ls -tr $REG_RESULT_FILES/*.xml | tail -1))
+    total=0;passed=0;failed=0
+    ATTACHMENTS=( "$first_attachment" )
+
+    if [ "$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)" == "0" ] && \
+       [ "$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)" != 0 ]; then
+	for attachment in ${ATTACHMENTS[*]}; do
+	    total=$(($total + $(get_metrics $REG_RESULT_FILES/$attachment "total")))
+	    failed=$(($failed + $(get_metrics $REG_RESULT_FILES/$attachment "failures")))
+	    passed=$(($passed + $(get_metrics $REG_RESULT_FILES/$attachment "passed")))
+            nsfail=0
+	done 
+
+	if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
+	    STATUS=Successful
+	else
+	    STATUS=Failed
+	fi
+    else
+        STATUS=Failed
+        total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+        nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+        failed=$(($failed + $(get_metrics $REG_RESULT_FILES/$first_attachment "failures")))
+        passed=$(($passed + $(get_metrics $REG_RESULT_FILES/$first_attachment "passed")))
+    fi
+}
+
+function set_up_email(){
+    set_test_results
+    echo -e "
+<!DOCTYPE html>
+<html>
+<head>
+    <style type='text/css'>
+       .container{
+          width: 600px;
+          padding: 10px;
+          background-color: #FAFAFA;
+          border: 1px solid #e0e0e0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td { 
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            font-size: 1em;
+        }
+        th {
+           background-color: #2196f3;
+           color: #e3f2fd;
+           text-align: left;
+        }
+        tr td{
+           background-color: #F5F5F5;
+           color: #757575;
+        }
+        .divider {
+          border-top: 1px solid #e0e0e0;
+        }
+        .signature{ color: #607d8b;}
+          
+    </style>
+</head>
+<body>
+    <div class='container'>
+	<h5>GENERAL INFO</h5>
+	Build $STATUS
+	<br>
+	<b>Project</b>: NSCore Regression
+	<br><b>Start Time</b>: ${start_time}
+	<br><b>End Time</b>: ${buildtimestamp}
+    <br>
+    <div class='divider'></div>
+    <h5>Test Results</h5>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Total</th>
+            <th>Passed</th>
+            <th>Failed</th>
+            <th>Netstorm Fail</th>
+        </tr>
+        <tr>
+            <td>Regression</td>
+            <td>$total</td>
+            <td>$passed</td>
+            <td>$failed</td>
+            <td>$nsfail</td>
+        </tr>
+    </table>
+    <br>
+    <a href='http://10.10.30.37:5000/reports/graphs/NetStorm/regression/${version}/B${build}' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
+    <div class='divider'></div>
+   <br><br>
+   <div class='signature'>
+      Automation Team,<br>Cavisson Systems Inc
+   </div>
+</div>
+</body>
+</html>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
+    echo "curr.release = $version" >${MAIL_PROP_FILE}
+    echo "curr.build = $build" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,arun.yadav@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com" >>${MAIL_PROP_FILE}
+    echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
+    echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
+    echo -e "reg.results.dir = $REG_RESULT_FILES" >>${MAIL_PROP_FILE}
+    echo -e "first.attachment = $first_attachment" >>${MAIL_PROP_FILE}
+}
+
+set_up_email
