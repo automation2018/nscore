@@ -3,11 +3,11 @@
 MAIL_PROP_FILE="mail.properties"
 WORKBENCH="/home/automation/workbench/automation/nscore/smoke"
 RESULTS_DIR="$WORKBENCH/results"
+version=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
+build=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
 SMOKE_RESULT_FILES="$RESULTS_DIR/${version}/.${build}"
 TMP_FAIL_CASE_FILE="/tmp/automation.log.failed"
 
-version=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
-build=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
 buildtimestamp=$(date +'%d/%m/%y %I:%M:%S %p')
 start_time="${1}"
 
@@ -143,7 +143,7 @@ function set_up_email(){
     <div class='container'>
     <table style='width: 92%!important; border: 0px;'>
         <tr>
-          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>Report For: NSCore Smoke</h2></td>
+          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>Report For: NS Core Smoke</h2></td>
           <td width='70%' style='border: 0px! important; padding: 0px!important'>
             <table>
                <tr>
@@ -194,6 +194,8 @@ function set_up_email(){
     echo "curr.build = $build" >>${MAIL_PROP_FILE}
     echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,arun.yadav@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
     echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.to = niraj.panda@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.cc = ankur.srivastava@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "smoke.results.dir = $SMOKE_RESULT_FILES" >>${MAIL_PROP_FILE}

@@ -15,7 +15,7 @@ pre_test_mail() {
             color: #333;
         }
         .container{
-          width: 70%;
+          width: 50%;
           padding: 50px;
           border: 1px solid #e0e0e0;
         }
@@ -46,10 +46,10 @@ pre_test_mail() {
 </head>
 <body>
     <div class='container'>
-      <table style='width: 90%!important; border: 0px;'>
+      <table style='width: 100%!important; border: 0px;'>
         <tr>
-          <td width='40%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>NSCore Smoke</h2></td>
-          <td width='60%' style='border: 0px! important; padding: 0px!important'>
+          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>NS Core Smoke</h2></td>
+          <td width='70%' style='border: 0px! important; padding: 0px!important'>
             <table>
                <tr>
                <th>Status</th>
@@ -67,8 +67,7 @@ pre_test_mail() {
     <br><br>
  
     <p style='font-size: 110%'>
-    Hi All, <br><br>
-    Smoke automation suite has been started. <br><br>Results for the same will be updated to you after completion of test.
+    Smoke automation suite has been started for R$version B$build.<br>We shall notify you once the results are available
     </p>
     
     <br><br>
@@ -86,6 +85,8 @@ pre_test_mail() {
 	echo "startup.mail.file = /home/automation/workbench/automation/nscore/lib/start_mail.html" >>mail.properties
         echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,arun.yadav@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>mail.properties
         echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com" >>mail.properties
+        #echo "configured.mail.list.to = niraj.panda@cavisson.com" >>mail.properties
+        #echo "configured.mail.list.cc = ankur.srivastava@cavisson.com" >>mail.properties
 }
 
 pre_test_mail
