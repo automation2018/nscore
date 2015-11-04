@@ -11,9 +11,9 @@ HPS_HPD_FILE="/home/automation/workbench/automation/nscore/conf/hpd_hps.conf"
 
 function main(){ 
     case $(get_tname) in
-        "CIPHER_CPS") handle_ssl_cps_case ;;
-        "CIPHER_HPS") handle_ssl_hps_case ;;
-        "CIPHER_TPUT") handle_ssl_throughput_case ;;
+        "RC4-MD5_CPS") handle_ssl_cps_case ;;
+        "RC4-MD5_HPS") handle_ssl_hps_case ;;
+        "RC4-MD5_TPUT") handle_ssl_throughput_case ;;
     esac
 }
 
