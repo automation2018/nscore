@@ -95,8 +95,7 @@
     <target name="Performance" depends="Performance_Cps, hpd-process-restart-for-hps-and-throughput">
         <exec executable="/bin/bash" outputproperty="start.time">
             <arg value="-c"/>
-            <arg value="date"/>
-            <arg value="+'%d/%m/%y %I:%M:%S %p'"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
         </exec>
 
         <echo message="start time = ${start.time}"/>

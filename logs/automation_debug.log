@@ -854,3 +854,143 @@ DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
 2015-11-03 06:00:44 PM |TR13669|REG-007-006| avg_vuser=244,248,245,244
 2015-11-03 06:00:44 PM |TR13669|REG-007-006| ramp_down_users=335
 2015-11-03 06:00:44 PM |TR13669|REG-007-006| rtc_phase_string_count=4
+2015-11-03 08:35:08 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:35:08 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| Going to change testcase.conf
+2015-11-03 08:35:08 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:35:08 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| Changed testcase.conf file
+2015-11-03 08:35:08 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| Going to copy hps hpd.conf file
+2015-11-03 08:35:19 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| exist status of copy file=0
+2015-11-03 08:35:19 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| Going to restart hpd server
+2015-11-03 08:35:21 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:35:32 PM |TR13670|ECDHE-RSA-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:38:42 PM |TR13671|ECDHE-RSA-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:38:42 PM |TR13671|ECDHE-RSA-AES256-SHA_HPS| Going to change testcase.conf
+2015-11-03 08:38:42 PM |TR13671|ECDHE-RSA-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:38:42 PM |TR13671|ECDHE-RSA-AES256-SHA_HPS| Changed testcase.conf file
+2015-11-03 08:41:49 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:41:49 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| Going to change testcase.conf
+2015-11-03 08:41:49 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:41:49 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| Changed testcase.conf file
+2015-11-03 08:41:49 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| Going to copy cps hpd.conf file
+2015-11-03 08:41:50 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| exist status of copy file=0
+2015-11-03 08:41:50 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| Going to restart hpd server
+2015-11-03 08:41:53 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 08:42:03 PM |TR13672|ECDHE-RSA-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 08:45:15 PM |TR13673|DHE-RSA-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:45:15 PM |TR13673|DHE-RSA-AES256-SHA_CPS| Going to change testcase.conf
+2015-11-03 08:45:15 PM |TR13673|DHE-RSA-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:45:15 PM |TR13673|DHE-RSA-AES256-SHA_CPS| Changed testcase.conf file
+2015-11-03 08:45:15 PM |TR13673|DHE-RSA-AES256-SHA_CPS| Going to copy hps hpd.conf file
+2015-11-03 08:45:16 PM |TR13673|DHE-RSA-AES256-SHA_CPS| exist status of copy file=0
+2015-11-03 08:45:16 PM |TR13673|DHE-RSA-AES256-SHA_CPS| Going to restart hpd server
+2015-11-03 08:45:19 PM |TR13673|DHE-RSA-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:45:29 PM |TR13673|DHE-RSA-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:48:38 PM |TR13674|DHE-RSA-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:48:38 PM |TR13674|DHE-RSA-AES256-SHA_HPS| Going to change testcase.conf
+2015-11-03 08:48:38 PM |TR13674|DHE-RSA-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:48:38 PM |TR13674|DHE-RSA-AES256-SHA_HPS| Changed testcase.conf file
+2015-11-03 08:51:48 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:51:48 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| Going to change testcase.conf
+2015-11-03 08:51:48 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:51:48 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| Changed testcase.conf file
+2015-11-03 08:51:48 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| Going to copy cps hpd file
+2015-11-03 08:51:49 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| exist status of copy file=0
+2015-11-03 08:51:49 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| Going to restart hpd server
+2015-11-03 08:51:52 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 08:52:02 PM |TR13675|DHE-RSA-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 08:55:12 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:55:12 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| Going to change testcase.conf
+2015-11-03 08:55:12 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:55:12 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| Changed testcase.conf file
+2015-11-03 08:55:12 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| Going to copy hps hpd.conf file
+2015-11-03 08:55:13 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| exist status of copy file=0
+2015-11-03 08:55:13 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| Going to restart hpd server
+2015-11-03 08:55:16 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:55:27 PM |TR13676|DHE-RSA-CAMELLIA256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 08:58:40 PM |TR13677|DHE-RSA-CAMELLIA256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:58:40 PM |TR13677|DHE-RSA-CAMELLIA256-SHA_HPS| Going to change testcase.conf
+2015-11-03 08:58:40 PM |TR13677|DHE-RSA-CAMELLIA256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 08:58:40 PM |TR13677|DHE-RSA-CAMELLIA256-SHA_HPS| Changed testcase.conf file
+2015-11-03 09:01:53 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:01:53 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| Going to change testcase.conf
+2015-11-03 09:01:53 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:01:53 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| Changed testcase.conf file
+2015-11-03 09:01:53 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| Going to copy cps hpd file
+2015-11-03 09:01:54 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| exist status of copy file=0
+2015-11-03 09:01:54 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| Going to restart hpd server
+2015-11-03 09:01:56 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 09:02:07 PM |TR13678|DHE-RSA-CAMELLIA256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| Going to change testcase.conf
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| Changed testcase.conf file
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| Going to copy hps hpd.conf file
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| exist status of copy file=0
+2015-11-03 09:05:20 PM |TR13679|AECDH-AES256-SHA_CPS| Going to restart hpd server
+2015-11-03 09:05:23 PM |TR13679|AECDH-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 09:05:34 PM |TR13679|AECDH-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 09:08:46 PM |TR13680|AECDH-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:08:46 PM |TR13680|AECDH-AES256-SHA_HPS| Going to change testcase.conf
+2015-11-03 09:08:46 PM |TR13680|AECDH-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:08:46 PM |TR13680|AECDH-AES256-SHA_HPS| Changed testcase.conf file
+2015-11-03 09:11:55 PM |TR13681|AECDH-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:11:55 PM |TR13681|AECDH-AES256-SHA_TPUT| Going to change testcase.conf
+2015-11-03 09:11:55 PM |TR13681|AECDH-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:11:55 PM |TR13681|AECDH-AES256-SHA_TPUT| Changed testcase.conf file
+2015-11-03 09:11:55 PM |TR13681|AECDH-AES256-SHA_TPUT| Going to copy cps hpd file
+2015-11-03 09:11:56 PM |TR13681|AECDH-AES256-SHA_TPUT| exist status of copy file=0
+2015-11-03 09:11:56 PM |TR13681|AECDH-AES256-SHA_TPUT| Going to restart hpd server
+2015-11-03 09:11:58 PM |TR13681|AECDH-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 09:12:09 PM |TR13681|AECDH-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 09:15:21 PM |TR13682|ADH-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:15:21 PM |TR13682|ADH-AES256-SHA_CPS| Going to change testcase.conf
+2015-11-03 09:15:21 PM |TR13682|ADH-AES256-SHA_CPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:15:21 PM |TR13682|ADH-AES256-SHA_CPS| Changed testcase.conf file
+2015-11-03 09:15:21 PM |TR13682|ADH-AES256-SHA_CPS| Going to copy hps hpd.conf file
+2015-11-03 09:15:22 PM |TR13682|ADH-AES256-SHA_CPS| exist status of copy file=0
+2015-11-03 09:15:22 PM |TR13682|ADH-AES256-SHA_CPS| Going to restart hpd server
+2015-11-03 09:15:24 PM |TR13682|ADH-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 09:15:35 PM |TR13682|ADH-AES256-SHA_CPS| exist status of hpd restart=0
+2015-11-03 09:18:43 PM |TR13683|ADH-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_hps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:18:43 PM |TR13683|ADH-AES256-SHA_HPS| Going to change testcase.conf
+2015-11-03 09:18:43 PM |TR13683|ADH-AES256-SHA_HPS| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:18:43 PM |TR13683|ADH-AES256-SHA_HPS| Changed testcase.conf file
+2015-11-03 09:21:56 PM |TR13684|ADH-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_throughput
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:21:56 PM |TR13684|ADH-AES256-SHA_TPUT| Going to change testcase.conf
+2015-11-03 09:21:56 PM |TR13684|ADH-AES256-SHA_TPUT| SSL_TC_CONF_FILE=SCENARIO_NAME Performance/Performance/ssl_cps
+DESCRIPTION Testing XXXXX For QAT Performance Testing For sslciphers
+2015-11-03 09:21:56 PM |TR13684|ADH-AES256-SHA_TPUT| Changed testcase.conf file
+2015-11-03 09:21:56 PM |TR13684|ADH-AES256-SHA_TPUT| Going to copy cps hpd file
+2015-11-03 09:21:57 PM |TR13684|ADH-AES256-SHA_TPUT| exist status of copy file=0
+2015-11-03 09:21:57 PM |TR13684|ADH-AES256-SHA_TPUT| Going to restart hpd server
+2015-11-03 09:22:00 PM |TR13684|ADH-AES256-SHA_TPUT| exist status of hpd restart=0
+2015-11-03 09:22:10 PM |TR13684|ADH-AES256-SHA_TPUT| exist status of hpd restart=0
