@@ -62,14 +62,16 @@
     <target name="performance">
         <ant antfile="${perf.build.file}" target="perf" useNativeBasedir="true"/>
     </target>
-
-    <!--Task: Declaring default target to schedule automation--> 
-    <target name="start" depends="smoke, take-knap, performance, take-knap, regression">
-    </target>
-
+    
     <!-- Task: Run SSL Perf Test--> 
     <target name="runPerfSsl">
         <ant antfile="${perf.build.file}" target="perfSsl" useNativeBasedir="true"/>
+    </target>
+
+    <!-- Task: Declaring default target to schedule automation--> 
+    <!-- Task: Additional SSL Perf test will also be fired at the end of all tests-->
+    <!-- This test will be done to check performance of NS with all available ciphers-->
+    <target name="start" depends="smoke, take-knap, performance, take-knap, regression, take-knap, runPerfSsl">
     </target>
 
 </project>

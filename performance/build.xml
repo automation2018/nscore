@@ -176,8 +176,8 @@
        
         <mail mailhost="websrv.cavisson.com" 
               mailport="587" 
-              tolist="niraj.panda@cavisson.com" 
-              cclist="ankur.srivastava@cavisson.com" 
+              tolist="ankur.mishra@cavisson.com" 
+              cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com" 
               messageMimeType="text/html" 
               subject="[NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
               messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html">
