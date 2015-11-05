@@ -184,7 +184,7 @@ function handle_reg_006_case(){
     rtc_phase_string_count=$(egrep "RTC_PHASE_[0-9]" $PROGRESS_REPORT_FILE | wc -l)
     debug_log "rtc_phase_string_count=$rtc_phase_string_count"
     
-    if [ $ramp_down_users -eq 300 ] && \
+    if [ $ramp_down_users -le 335 ] && \
        [ $rtc_phase_string_count -eq 4 ] && \
        [ $rampup_vuser -ge 212 ] && \
        [ $stabilize_vuser -ge 192 ] && \
