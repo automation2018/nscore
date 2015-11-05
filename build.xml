@@ -16,8 +16,14 @@
             <arg value="purpose"/>
             <arg value="category"/>
         </exec>
-        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="${mail.subject}" messagefile="${startup.mail.file}">
-	    <from address="automation@cavisson.com"/>
+        <mail mailhost="websrv.cavisson.com" 
+              mailport="587" 
+              tolist="${configured.mail.list.to}" 
+              cclist="${configured.mail.list.cc}" 
+              messageMimeType="text/html" 
+              subject="${mail.subject}" 
+              messagefile="${startup.mail.file}">
+	  <from address="automation@cavisson.com"/>
         </mail>
     </target>
 
@@ -28,50 +34,61 @@
             <arg value="purpose"/>
             <arg value="category"/>
         </exec>
-        <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="${mail.subject}" messagefile="${mail.result.file}" files="${results.dir}/${attachment.file}">
-           <from address="automation@cavisson.com"/>   		   
+        <mail mailhost="websrv.cavisson.com" 
+              mailport="587" 
+              tolist="${configured.mail.list.to}" 
+              cclist="${configured.mail.list.cc}" 
+              messageMimeType="text/html" 
+              subject="${mail.subject}" 
+              messagefile="${mail.result.file}" 
+              files="${results.dir}/${attachment.file}">
+          <from address="automation@cavisson.com"/>   		   
         </mail>	       
    </target>	   
     
     <!--Task: Sleep interval after each suite completion--> 
-    <target name="take-knap">
+    <target name="take-knap" description="This target is called to make system idle for 10 seconds">
         <sleep seconds="10"/>
     </target>
     
     <!--Task: Invoking smoke automation suite to run--> 
-    <target name="smoke">
+    <target name="smoke" description="Triggers SMOKE automation suite">
         <ant antfile="${smoke.build.file}" target="run" useNativeBasedir="true"/>
     </target>   
     
     <!--Task: Invoking smoke debug automation suite to run--> 
-    <target name="smoke-debug">
-        <ant antfile="${smoke.build.file}" target="smoke-debug" useNativeBasedir="true"/>
+    <target name="smoke-debug" description="Triggers SMOKE DEBUG automation suite">
+        <ant antfile="${smoke.build.file}" target="debug" useNativeBasedir="true"/>
     </target>   
     
     <!--Task: Invoking regression debug suite to run--> 
-    <target name="reg-debug">
+    <target name="reg-debug" description="Triggers REGRESSION DEBUG automation suite">
         <ant antfile="${reg.build.file}" target="reg-debug" useNativeBasedir="true"/>
     </target>   
     
     <!--Task: Invoking smoke automation suite to run--> 
-    <target name="regression">
+    <target name="regression" description="Triggers REGRESSION automation suite">
         <ant antfile="${reg.build.file}" target="run" useNativeBasedir="true"/>
     </target>
     
     <!--Task: Invoking smoke performance suite to run--> 
-    <target name="performance">
+    <target name="performance" description="Triggers PERFORMANCE automation suite">
         <ant antfile="${perf.build.file}" target="perf" useNativeBasedir="true"/>
     </target>
     
     <!-- Task: Run SSL Perf Test--> 
-    <target name="runPerfSsl">
-        <ant antfile="${perf.build.file}" target="perfSsl" useNativeBasedir="true"/>
+    <target name="perf-ssl" description="Triggers SSL CIPHER PERF automation suite">
+        <ant antfile="${perf.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
     </target>
 
     <!-- Task: Declaring default target to schedule automation--> 
     <!-- Task: Additional SSL Perf test will also be fired at the end of all tests-->
     <!-- This test will be done to check performance of NS with all available ciphers-->
-    <target name="start" depends="smoke, take-knap, performance, take-knap, regression, take-knap, runPerfSsl">
+    <!--<target name="start" 
+            depends="smoke, take-knap, performance, take-knap, regression, take-knap, perf-ssl"
+            description="Default target which inititates entire automation process">-->
+    <target name="start" depends="perf-ssl"
+            description="To initiate ssl perf test for all available accepted ciphers">
     </target>
 
 </project>
