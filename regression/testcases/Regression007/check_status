@@ -178,8 +178,6 @@ function handle_reg_006_case(){
     
     #Validations of NVM distributions
     
-    # TODO 
-    # Add validations by taking RTC users from RTC_ALL.log file
     Addedvalue=$(grep "Added" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
     Removedvalue=$(grep "Removed" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
     Finalvalue=$((Addedvalue-Removedvalue))
@@ -187,23 +185,24 @@ function handle_reg_006_case(){
 
     debug_log "Finalvalue=$Finalvalue"
     debug_log "ramp_down_users=$ramp_down_users"
-    # Add the number with 200 and compare with ramp_down_users 
-    # Both should be same; else it would be a failure case
+    
     ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
     debug_log "ramp_down_users=$ramp_down_users"
     
     rtc_phase_string_count=$(egrep "RTC_PHASE_[0-9]" $PROGRESS_REPORT_FILE | wc -l)
     debug_log "rtc_phase_string_count=$rtc_phase_string_count"
     
-    if [ $ramp_down_users -eq $Finalvalue ] && \
-       [ $rtc_phase_string_count -eq 4 ] && \
-       [ $rampup_vuser -ge 212 ] && \
-       [ $stabilize_vuser -ge 192 ] && \
-       [ $duration_vuser -ge 202 ] && \
-       [ $rampdown_vuser -ge 209 ];then
-        log_status_and_exit_ex "PASS" "rtc test where rtc being applied in rampup;stabilize;duration & rampdown phases"
+    if [ $ramp_down_users -ne $Finalvalue ]; then
+        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as ramp_down_users=$ramp_down_users;not same as total users count=$Finalvalue after applying RTC"
+    elif [ $rtc_phase_string_count -ne 4 ]; then
+        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as RTC applied message is not obtained in one of the phases"
+    elif [ $rampup_vuser -lt 212 ] || \
+         [ $stabilize_vuser -lt 192 ] || \
+         [ $duration_vuser -lt 202 ] || \
+         [ $rampdown_vuser -lt 209 ];then
+        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as expected VUsers count is not as expected;VUsers value found after application of RTC in respective phases are ${avg_vuser}"
     else
-        log_status_and_exit_ex "FAIL" "rtc test where rtc being applied in rampup;stabilize;duration&rampdown phases failed"
+        log_status_and_exit_ex "PASS" "Simple scenario RTC testcase passed where RTC being applied in all phases"
     fi
 }
 
