@@ -84,11 +84,9 @@
     <!-- Task: Declaring default target to schedule automation--> 
     <!-- Task: Additional SSL Perf test will also be fired at the end of all tests-->
     <!-- This test will be done to check performance of NS with all available ciphers-->
-    <!--<target name="start" 
-            depends="smoke, take-knap, performance, take-knap, regression, take-knap, perf-ssl"
-            description="Default target which inititates entire automation process">-->
-    <target name="start" depends="perf-ssl"
-            description="To initiate ssl perf test for all available accepted ciphers">
+    <target name="start" 
+            depends="smoke, take-knap, performance, take-knap, regression, take-knap"
+            description="Default target which inititates entire automation process">
     </target>
 
 </project>
