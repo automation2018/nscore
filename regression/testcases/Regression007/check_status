@@ -178,13 +178,24 @@ function handle_reg_006_case(){
     
     #Validations of NVM distributions
     
+    # TODO 
+    # Add validations by taking RTC users from RTC_ALL.log file
+    Addedvalue=$(grep "Added" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
+    Removedvalue=$(grep "Removed" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
+    Finalvalue=$((Addedvalue-Removedvalue))
+    ((Finalvalue+=200))
+
+    debug_log "Finalvalue=$Finalvalue"
+    debug_log "ramp_down_users=$ramp_down_users"
+    # Add the number with 200 and compare with ramp_down_users 
+    # Both should be same; else it would be a failure case
     ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
     debug_log "ramp_down_users=$ramp_down_users"
     
     rtc_phase_string_count=$(egrep "RTC_PHASE_[0-9]" $PROGRESS_REPORT_FILE | wc -l)
     debug_log "rtc_phase_string_count=$rtc_phase_string_count"
     
-    if [ $ramp_down_users -le 335 ] && \
+    if [ $ramp_down_users -eq $Finalvalue ] && \
        [ $rtc_phase_string_count -eq 4 ] && \
        [ $rampup_vuser -ge 212 ] && \
        [ $stabilize_vuser -ge 192 ] && \
