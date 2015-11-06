@@ -1,0 +1,575 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="114" total="0">
+        <testcase id="ADH-AES128-SHA_CPS">
+            <testrun>14156</testrun>
+            <status>pass</status>
+            <description>ADH-AES128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-AES128-SHA_HPS">
+            <testrun>14157</testrun>
+            <status>pass</status>
+            <description>ADH-AES128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-AES128-SHA_TPUT">
+            <testrun>14158</testrun>
+            <status>pass</status>
+            <description>ADH-AES128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-AES256-SHA_CPS">
+            <testrun>14159</testrun>
+            <status>pass</status>
+            <description>ADH-AES256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-AES256-SHA_HPS">
+            <testrun>14160</testrun>
+            <status>pass</status>
+            <description>ADH-AES256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-AES256-SHA_TPUT">
+            <testrun>14161</testrun>
+            <status>pass</status>
+            <description>ADH-AES256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA128-SHA_CPS">
+            <testrun>14162</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA128-SHA_HPS">
+            <testrun>14163</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA128-SHA_TPUT">
+            <testrun>14164</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA256-SHA_CPS">
+            <testrun>14165</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA256-SHA_HPS">
+            <testrun>14166</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-CAMELLIA256-SHA_TPUT">
+            <testrun>14167</testrun>
+            <status>pass</status>
+            <description>ADH-CAMELLIA256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC3-SHA_CPS">
+            <testrun>14168</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC3-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC3-SHA_HPS">
+            <testrun>14169</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC3-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC3-SHA_TPUT">
+            <testrun>14170</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC3-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC-SHA_CPS">
+            <testrun>14171</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC-SHA_HPS">
+            <testrun>14172</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-DES-CBC-SHA_TPUT">
+            <testrun>14173</testrun>
+            <status>pass</status>
+            <description>ADH-DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-RC4-MD5_CPS">
+            <testrun>14174</testrun>
+            <status>pass</status>
+            <description>ADH-RC4-MD5_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-RC4-MD5_HPS">
+            <testrun>14175</testrun>
+            <status>pass</status>
+            <description>ADH-RC4-MD5_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-RC4-MD5_TPUT">
+            <testrun>14176</testrun>
+            <status>pass</status>
+            <description>ADH-RC4-MD5_TPUT Passed</description>
+        </testcase>
+        <testcase id="ADH-SEED-SHA_CPS">
+            <testrun>14177</testrun>
+            <status>pass</status>
+            <description>ADH-SEED-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ADH-SEED-SHA_HPS">
+            <testrun>14178</testrun>
+            <status>pass</status>
+            <description>ADH-SEED-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ADH-SEED-SHA_TPUT">
+            <testrun>14179</testrun>
+            <status>pass</status>
+            <description>ADH-SEED-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES128-SHA_CPS">
+            <testrun>14180</testrun>
+            <status>pass</status>
+            <description>AECDH-AES128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES128-SHA_HPS">
+            <testrun>14181</testrun>
+            <status>pass</status>
+            <description>AECDH-AES128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES128-SHA_TPUT">
+            <testrun>14182</testrun>
+            <status>pass</status>
+            <description>AECDH-AES128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES256-SHA_CPS">
+            <testrun>14183</testrun>
+            <status>pass</status>
+            <description>AECDH-AES256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES256-SHA_HPS">
+            <testrun>14184</testrun>
+            <status>pass</status>
+            <description>AECDH-AES256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-AES256-SHA_TPUT">
+            <testrun>14185</testrun>
+            <status>pass</status>
+            <description>AECDH-AES256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AECDH-DES-CBC3-SHA_CPS">
+            <testrun>14186</testrun>
+            <status>pass</status>
+            <description>AECDH-DES-CBC3-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-DES-CBC3-SHA_HPS">
+            <testrun>14187</testrun>
+            <status>pass</status>
+            <description>AECDH-DES-CBC3-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-DES-CBC3-SHA_TPUT">
+            <testrun>14188</testrun>
+            <status>pass</status>
+            <description>AECDH-DES-CBC3-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AECDH-RC4-SHA_CPS">
+            <testrun>14189</testrun>
+            <status>pass</status>
+            <description>AECDH-RC4-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-RC4-SHA_HPS">
+            <testrun>14190</testrun>
+            <status>pass</status>
+            <description>AECDH-RC4-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AECDH-RC4-SHA_TPUT">
+            <testrun>14191</testrun>
+            <status>pass</status>
+            <description>AECDH-RC4-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AES128-SHA_CPS">
+            <testrun>14192</testrun>
+            <status>pass</status>
+            <description>AES128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AES128-SHA_HPS">
+            <testrun>14193</testrun>
+            <status>pass</status>
+            <description>AES128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AES128-SHA_TPUT">
+            <testrun>14194</testrun>
+            <status>pass</status>
+            <description>AES128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="AES256-SHA_CPS">
+            <testrun>14195</testrun>
+            <status>pass</status>
+            <description>AES256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="AES256-SHA_HPS">
+            <testrun>14196</testrun>
+            <status>pass</status>
+            <description>AES256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="AES256-SHA_TPUT">
+            <testrun>14197</testrun>
+            <status>pass</status>
+            <description>AES256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA128-SHA_CPS">
+            <testrun>14198</testrun>
+            <status>pass</status>
+            <description>CAMELLIA128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA128-SHA_HPS">
+            <testrun>14199</testrun>
+            <status>pass</status>
+            <description>CAMELLIA128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA128-SHA_TPUT">
+            <testrun>14200</testrun>
+            <status>pass</status>
+            <description>CAMELLIA128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA256-SHA_CPS">
+            <testrun>14201</testrun>
+            <status>pass</status>
+            <description>CAMELLIA256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA256-SHA_HPS">
+            <testrun>14202</testrun>
+            <status>pass</status>
+            <description>CAMELLIA256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="CAMELLIA256-SHA_TPUT">
+            <testrun>14203</testrun>
+            <status>pass</status>
+            <description>CAMELLIA256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DES-CBC3-SHA_CPS">
+            <testrun>14204</testrun>
+            <status>pass</status>
+            <description>DES-CBC3-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DES-CBC3-SHA_HPS">
+            <testrun>14205</testrun>
+            <status>pass</status>
+            <description>DES-CBC3-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DES-CBC3-SHA_TPUT">
+            <testrun>14206</testrun>
+            <status>pass</status>
+            <description>DES-CBC3-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DES-CBC-SHA_CPS">
+            <testrun>14207</testrun>
+            <status>pass</status>
+            <description>DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DES-CBC-SHA_HPS">
+            <testrun>14208</testrun>
+            <status>pass</status>
+            <description>DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DES-CBC-SHA_TPUT">
+            <testrun>14209</testrun>
+            <status>pass</status>
+            <description>DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES128-SHA_CPS">
+            <testrun>14210</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES128-SHA_HPS">
+            <testrun>14211</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES128-SHA_TPUT">
+            <testrun>14212</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES256-SHA_CPS">
+            <testrun>14213</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES256-SHA_HPS">
+            <testrun>14214</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-AES256-SHA_TPUT">
+            <testrun>14215</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-AES256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA128-SHA_CPS">
+            <testrun>14216</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA128-SHA_HPS">
+            <testrun>14217</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA128-SHA_TPUT">
+            <testrun>14218</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA256-SHA_CPS">
+            <testrun>14219</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA256-SHA_HPS">
+            <testrun>14220</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-CAMELLIA256-SHA_TPUT">
+            <testrun>14221</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-CAMELLIA256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-SEED-SHA_CPS">
+            <testrun>14222</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-SEED-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-SEED-SHA_HPS">
+            <testrun>14223</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-SEED-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="DHE-RSA-SEED-SHA_TPUT">
+            <testrun>14224</testrun>
+            <status>pass</status>
+            <description>DHE-RSA-SEED-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES128-SHA_CPS">
+            <testrun>14225</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES128-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES128-SHA_HPS">
+            <testrun>14226</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES128-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES128-SHA_TPUT">
+            <testrun>14227</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES128-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES256-SHA_CPS">
+            <testrun>14228</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES256-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES256-SHA_HPS">
+            <testrun>14229</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES256-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-AES256-SHA_TPUT">
+            <testrun>14230</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-AES256-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-DES-CBC3-SHA_CPS">
+            <testrun>14231</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-DES-CBC3-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-DES-CBC3-SHA_HPS">
+            <testrun>14232</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-DES-CBC3-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-DES-CBC3-SHA_TPUT">
+            <testrun>14233</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-DES-CBC3-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-RC4-SHA_CPS">
+            <testrun>14234</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-RC4-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-RC4-SHA_HPS">
+            <testrun>14235</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-RC4-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="ECDHE-RSA-RC4-SHA_TPUT">
+            <testrun>14236</testrun>
+            <status>pass</status>
+            <description>ECDHE-RSA-RC4-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC3-SHA_CPS">
+            <testrun>14237</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC3-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC3-SHA_HPS">
+            <testrun>14238</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC3-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC3-SHA_TPUT">
+            <testrun>14239</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC3-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC-SHA_CPS">
+            <testrun>14240</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC-SHA_HPS">
+            <testrun>14241</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="EDH-RSA-DES-CBC-SHA_TPUT">
+            <testrun>14242</testrun>
+            <status>pass</status>
+            <description>EDH-RSA-DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-DES-CBC-SHA_CPS">
+            <testrun>14243</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-DES-CBC-SHA_HPS">
+            <testrun>14244</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-DES-CBC-SHA_TPUT">
+            <testrun>14245</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-RC4-MD5_CPS">
+            <testrun>14246</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-RC4-MD5_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-RC4-MD5_HPS">
+            <testrun>14247</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-RC4-MD5_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-ADH-RC4-MD5_TPUT">
+            <testrun>14248</testrun>
+            <status>pass</status>
+            <description>EXP-ADH-RC4-MD5_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-DES-CBC-SHA_CPS">
+            <testrun>14249</testrun>
+            <status>pass</status>
+            <description>EXP-DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-DES-CBC-SHA_HPS">
+            <testrun>14250</testrun>
+            <status>pass</status>
+            <description>EXP-DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-DES-CBC-SHA_TPUT">
+            <testrun>14251</testrun>
+            <status>pass</status>
+            <description>EXP-DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-EDH-RSA-DES-CBC-SHA_CPS">
+            <testrun>14252</testrun>
+            <status>pass</status>
+            <description>EXP-EDH-RSA-DES-CBC-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-EDH-RSA-DES-CBC-SHA_HPS">
+            <testrun>14253</testrun>
+            <status>pass</status>
+            <description>EXP-EDH-RSA-DES-CBC-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-EDH-RSA-DES-CBC-SHA_TPUT">
+            <testrun>14254</testrun>
+            <status>pass</status>
+            <description>EXP-EDH-RSA-DES-CBC-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-RC2-CBC-MD5_CPS">
+            <testrun>14255</testrun>
+            <status>pass</status>
+            <description>EXP-RC2-CBC-MD5_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-RC2-CBC-MD5_HPS">
+            <testrun>14256</testrun>
+            <status>pass</status>
+            <description>EXP-RC2-CBC-MD5_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-RC2-CBC-MD5_TPUT">
+            <testrun>14257</testrun>
+            <status>pass</status>
+            <description>EXP-RC2-CBC-MD5_TPUT Passed</description>
+        </testcase>
+        <testcase id="EXP-RC4-MD5_CPS">
+            <testrun>14258</testrun>
+            <status>pass</status>
+            <description>EXP-RC4-MD5_CPS Passed</description>
+        </testcase>
+        <testcase id="EXP-RC4-MD5_HPS">
+            <testrun>14259</testrun>
+            <status>pass</status>
+            <description>EXP-RC4-MD5_HPS Passed</description>
+        </testcase>
+        <testcase id="EXP-RC4-MD5_TPUT">
+            <testrun>14260</testrun>
+            <status>pass</status>
+            <description>EXP-RC4-MD5_TPUT Passed</description>
+        </testcase>
+        <testcase id="RC4-MD5_CPS">
+            <testrun>14261</testrun>
+            <status>pass</status>
+            <description>RC4-MD5_CPS Passed</description>
+        </testcase>
+        <testcase id="RC4-MD5_HPS">
+            <testrun>14262</testrun>
+            <status>pass</status>
+            <description>RC4-MD5_HPS Passed</description>
+        </testcase>
+        <testcase id="RC4-MD5_TPUT">
+            <testrun>14263</testrun>
+            <status>pass</status>
+            <description>RC4-MD5_TPUT Passed</description>
+        </testcase>
+        <testcase id="RC4-SHA_CPS">
+            <testrun>14264</testrun>
+            <status>pass</status>
+            <description>RC4-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="RC4-SHA_HPS">
+            <testrun>14265</testrun>
+            <status>pass</status>
+            <description>RC4-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="RC4-SHA_TPUT">
+            <testrun>14266</testrun>
+            <status>pass</status>
+            <description>RC4-SHA_TPUT Passed</description>
+        </testcase>
+        <testcase id="SEED-SHA_CPS">
+            <testrun>14267</testrun>
+            <status>pass</status>
+            <description>SEED-SHA_CPS Passed</description>
+        </testcase>
+        <testcase id="SEED-SHA_HPS">
+            <testrun>14268</testrun>
+            <status>pass</status>
+            <description>SEED-SHA_HPS Passed</description>
+        </testcase>
+        <testcase id="SEED-SHA_TPUT">
+            <testrun>14269</testrun>
+            <status>pass</status>
+            <description>SEED-SHA_TPUT Passed</description>
+        </testcase>
+    </testsuite>
+</testsuites>
