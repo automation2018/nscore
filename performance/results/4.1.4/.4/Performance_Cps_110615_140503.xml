@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="3" total="4">
+        <testcase id="Performance_cps_128User_OEF_010">
+            <testrun>14406</testrun>
+            <status>pass</status>
+            <description>Performance_cps_128User_OEF_010 Passed</description>
+        </testcase>
+        <testcase id="Performance_cps_128User_OEF_010_HPM">
+            <testrun>14407</testrun>
+            <status>pass</status>
+            <description>Performance_cps_128User_OEF_010_HPM Passed</description>
+        </testcase>
+        <testcase id="Performance_cps_128User_OEF_011_HPM">
+            <testrun>14408</testrun>
+            <status>pass</status>
+            <description>Performance_cps_128User_OEF_011_HPM Passed</description>
+        </testcase>
+        <testcase id="Performance_cps_128User_OEF_111_HPM">
+            <testrun>14409</testrun>
+            <status>fail</status>
+            <description>Performance_cps_128User_OEF_111_HPM Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>
