@@ -1,7 +1,9 @@
 $TestDescription|$ScriptName|$User|$Wan|%Url
 #
 #
+#Performance_concurrency_withoutwan|scriptTiny|100000|0|http
 Performance_concurrency_withoutwan|scriptTiny|200000|0|http
+#Performance_concurrency_withoutwan|scriptTiny|300000|0|http
 #Performance_concurrency_withwan|scriptTiny|19000|1|http
 #
 #
