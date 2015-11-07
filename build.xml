@@ -8,47 +8,11 @@
     <property name="mail.config.shell" value="${basedir}/lib/update_mail_properties"/>
     <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
 
-
-    <!--Task: Send smoke automation start mail-->
-    <target name="send-startup-mail"> 
-        <exec executable="/bin/bash" taskname="info">
-            <arg value="mail.config.shell"/>
-            <arg value="purpose"/>
-            <arg value="category"/>
-        </exec>
-        <mail mailhost="websrv.cavisson.com" 
-              mailport="587" 
-              tolist="${configured.mail.list.to}" 
-              cclist="${configured.mail.list.cc}" 
-              messageMimeType="text/html" 
-              subject="${mail.subject}" 
-              messagefile="${startup.mail.file}">
-	  <from address="automation@cavisson.com"/>
-        </mail>
-    </target>
-
-    <!--Task: Send smoke automation results with attachments-->
-    <target name="send-email-results">
-        <exec executable="/bin/bash" taskname="info">
-            <arg value="mail.config.shell"/>
-            <arg value="purpose"/>
-            <arg value="category"/>
-        </exec>
-        <mail mailhost="websrv.cavisson.com" 
-              mailport="587" 
-              tolist="${configured.mail.list.to}" 
-              cclist="${configured.mail.list.cc}" 
-              messageMimeType="text/html" 
-              subject="${mail.subject}" 
-              messagefile="${mail.result.file}" 
-              files="${results.dir}/${attachment.file}">
-          <from address="automation@cavisson.com"/>   		   
-        </mail>	       
-   </target>	   
-    
     <!--Task: Sleep interval after each suite completion--> 
     <target name="take-knap" description="This target is called to make system idle for 10 seconds">
+        <echo message="Idling server for 10 seconds"/>
         <sleep seconds="10"/>
+        <echo message="System is now idle; going to perform next test metric"/>
     </target>
     
     <!--Task: Invoking smoke automation suite to run--> 
@@ -85,7 +49,7 @@
     <!-- Task: Additional SSL Perf test will also be fired at the end of all tests-->
     <!-- This test will be done to check performance of NS with all available ciphers-->
     <target name="start" 
-            depends="smoke, take-knap, performance, take-knap, regression, take-knap"
+            depends="smoke, take-knap, performance, take-knap, regression"
             description="Default target which inititates entire automation process">
     </target>
 
