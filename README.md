@@ -8,11 +8,11 @@ Core automation includes Smoke(functional testing), Regression testing and
 Performance testing.
 
 Technologies Used:
-1. UNIX bash scripting
-2. Python programming
+1. UNIX BASH scripting
+2. Python Scripting
 3. Ruby Scripting
-4. ANT 
-5. FLASK framework for automation UI
+4. ANT : Another Neat Tool (Apache framework for workflow management) 
+5. FLASK framework for designing ANALYTICS UI 
 6. sqlite Database to store and manipulating test data
 
 Directory Structure :
@@ -25,8 +25,10 @@ Directory Structure :
 7. regression/ --> home directory for NS regression automation
 8. smoke/ --> home directory for NS smoke automation
 
-Additional drilled down directory structre of each categories of tests(performance, regression, smoke). Below is the
-representation of directory structure of smoke tests, all other test has same directory structure in them.
+Additional drilled down of directory structre of each categories of 
+tests(performance, regression, smoke) provided below is the representation 
+of directory structure of smoke tests, all other test metrices have same 
+directory structure in them.
 
 smoke/ 
      --> build.xml -------------- smoke automation build file 
@@ -38,5 +40,6 @@ smoke/
      --> results/ --------------- result directory stores test result as per release and build 
      --> scripts/ --------------- includes all test scripts used in test configuration
      --> scenarios/ ------------- includes all test configuration files
-     --> testcases/ ------------- includes all testcases as per features [ Note : person alligned to automation processes should be acquinted with this more] 
+     --> testcases/ ------------- includes all testcases as per features 
+                                  [ Note : person alligned to automation processes should be acquinted with this more] 
      --> testsuites/------------- includes test suite files in which testcases are mentioned to run test
