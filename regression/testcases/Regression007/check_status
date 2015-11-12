@@ -184,7 +184,6 @@ function handle_reg_006_case(){
     ((Finalvalue+=200))
 
     debug_log "Finalvalue=$Finalvalue"
-    debug_log "ramp_down_users=$ramp_down_users"
     
     ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)
     debug_log "ramp_down_users=$ramp_down_users"
