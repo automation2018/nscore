@@ -32,6 +32,13 @@ function get_status_rtc_phasewise(){
     if [ -f $PROGRESS_REPORT_FILE ]; then 
 	start_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
 	end_line=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
+	
+        # TODO
+	# Need to check the condition where startl == endl 
+	# In this case it might be a case of failure 
+	# as RTC would not be applied or ** might be coming in progress report
+        # check if start_line == end_line then return 2 it will handle the failure case
+    
 	vusers_count=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | grep "Vusers" | cut -d, -f1 | egrep -o "[0-9]+.[0-9]+" | head -2 | tail -1 | cut -d. -f1)
 	rtc_vusers=$(sed -n "${start_line},${end_line}p" $PROGRESS_REPORT_FILE | grep "Vusers" | cut -d, -f1 | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | head -1)
 	conf_users=$(cat $CONF_FILE | grep "^SGRP" | cut -d " " -f7 | awk '{ sum+=$1} END {print sum}')
@@ -62,6 +69,13 @@ function get_vuser(){
     phase=$1
     startl=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | head -1) 
     endl=$(grep -n "$phase" $PROGRESS_REPORT_FILE | cut -d : -f1 | tail -1)
+ 
+    # TODO
+    # Need to check the condition where startl == endl 
+    # In this case it might be a case of failure 
+    # as RTC would not be applied or ** might be coming in progress report
+    # check if start_line == end_line then return 2 it will handle the failure case
+    
     avg_vuser=$(cat $PROGRESS_REPORT_FILE | sed -n "${startl},${endl}p" | grep "Vusers:" | egrep -o "[0-9]+.[0-9]+" | cut -d. -f1 | sort -n | tail -1)
             
     debug_log "avg_vuser=$avg_vuser;startl=$startl;endl=$endl"
@@ -170,6 +184,11 @@ function handle_reg_005_case(){
 function handle_reg_006_case(){
     get_avg_vuser_string RampUp0 Stabilize0 Duration0 RampDown0
     debug_log "avg_vuser=${avg_vuser}"
+  
+    # TODO
+    # check if avg_user string contains **
+    # If so then it would be a failure case
+    # Fail check status with proper message
 
     rampup_vuser=$(echo ${avg_vuser} | cut -d, -f1)
     stabilize_vuser=$(echo ${avg_vuser} | cut -d, -f2)
