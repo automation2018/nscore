@@ -100,7 +100,7 @@ function handle_reg_001_case(){
     if [ $RTC_FLAG -eq 0 ]; then 
         log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "It was expected that at $phase phase available Vusers present in system should be equal to 10;but actual Vusers count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -115,7 +115,7 @@ function handle_reg_002_case(){
     if [ $RTC_FLAG -eq 0 ]; then 
         log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "It was expected that at $phase phase available Vusers present in system should be greater than 10;but actual Vuser count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -130,7 +130,7 @@ function handle_reg_003_case(){
     if [ $RTC_FLAG -eq 0 ]; then 
         log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "It was expected that at $phase phase available Vusers present in system should be greater than 10;but actual Vusers count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -145,7 +145,7 @@ function handle_reg_004_case(){
     if [ $RTC_FLAG -eq 0 ]; then 
         log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "It was expected that at $phase phase available Vusers present in system should be greater than 10;but actual Vusers count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -160,7 +160,7 @@ function handle_reg_005_case(){
     if [ $RTC_FLAG -eq 0 ]; then 
         log_status_and_exit_ex "PASS" "RTC is being applied for $phase phase;$vusers_count  have been found in current situation as RTC being applied"
     elif [ $RTC_FLAG -eq 1 ]; then
-        log_status_and_exit_ex "FAIL" "expected count  increased users at $phase phase was more than 10;actual user count is $vusers_count"
+        log_status_and_exit_ex "FAIL" "It was expected that at $phase phase available Vusers present in system should be greater than 10;but actual Vusers count is $vusers_count"
     else
         log_status_and_exit_ex "FAIL" "RTC testcase for increase user at $phase phase has been failed due to url or NS failure"
     fi
@@ -192,14 +192,14 @@ function handle_reg_006_case(){
     debug_log "rtc_phase_string_count=$rtc_phase_string_count"
     
     if [ $ramp_down_users -ne $Finalvalue ]; then
-        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as ramp_down_users=$ramp_down_users;not same as total users count=$Finalvalue after applying RTC"
+        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase where RTC being applied in all phases;failed as ramp_down_users=$ramp_down_users;not same as total users count=$Finalvalue after applying RTC"
     elif [ $rtc_phase_string_count -ne 4 ]; then
-        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as RTC applied message is not obtained in one of the phases"
+        log_status_and_exit_ex "FAIL" "RTC acknowledgement message is not found in one of the phases where RTC being applied"
     elif [ $rampup_vuser -lt 212 ] || \
          [ $stabilize_vuser -lt 192 ] || \
          [ $duration_vuser -lt 202 ] || \
          [ $rampdown_vuser -lt 209 ];then
-        log_status_and_exit_ex "FAIL" "Simple scenario RTC testcase failed as expected VUsers count is not as expected;VUsers value found after application of RTC in respective phases are ${avg_vuser}"
+        log_status_and_exit_ex "FAIL" "Mismatch in avalable VUsers present in system after RTC is applied;VUsers value found after application of RTC in ramp up, stabilzation, duration, rampdown phases are ${avg_vuser} respectively"
     else
         log_status_and_exit_ex "PASS" "Simple scenario RTC testcase passed where RTC being applied in all phases"
     fi
