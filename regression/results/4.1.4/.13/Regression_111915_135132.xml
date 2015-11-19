@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="11" total="12">
+        <testcase id="REG-001-001">
+            <testrun>16219</testrun>
+            <status>pass</status>
+            <description>Regression for FCU RampUp in Step mode test Passed</description>
+        </testcase>
+        <testcase id="REG-002-001">
+            <testrun>16220</testrun>
+            <status>pass</status>
+            <description>Regression for FCU RampUp in Rate Mode test passed</description>
+        </testcase>
+        <testcase id="REG-003-001">
+            <testrun>16221</testrun>
+            <status>pass</status>
+            <description>Regression for FSR Mode 1 test Passed</description>
+        </testcase>
+        <testcase id="REG-004-001">
+            <testrun>16222</testrun>
+            <status>pass</status>
+            <description>Regression for FSR Mode 2 test Passed</description>
+        </testcase>
+        <testcase id="REG-005-001">
+            <testrun>16223</testrun>
+            <status>pass</status>
+            <description>Regression Test for RAL is Passed</description>
+        </testcase>
+        <testcase id="REG-006-001">
+            <testrun>16224</testrun>
+            <status>fail</status>
+            <description>Regression test for Netstorm supported protocols Failed as Eth_Send_throuput_Change is more than 5% of expected values</description>
+        </testcase>
+        <testcase id="REG-007-001">
+            <testrun>16225</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-002">
+            <testrun>16226</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampUp0 phase;13  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-003">
+            <testrun>16227</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-004">
+            <testrun>16228</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-005">
+            <testrun>16229</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-006">
+            <testrun>16230</testrun>
+            <status>pass</status>
+            <description>RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC</description>
+        </testcase>
+    </testsuite>
+</testsuites>
