@@ -1,5 +1,5 @@
 # nscore
-NetStom : A real time load generator tool in the web application space.
+NetStorm : A real time load generator tool in the web application space.
 
 'nscore' stands NetStorm Core. Hence this repository is meant for the core 
 automation of NetStorm product. 
