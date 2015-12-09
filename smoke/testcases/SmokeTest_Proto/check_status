@@ -1,103 +1,141 @@
-#!/bin/bash -x
+#!/usr/bin/env bash
 
-#LIBRARY FILE IS MAKING AVAILBALE TO THE SHELL SO THAT ALL PREDEFINED VARIABLES 
-#CAN BE ACCESSED DIRECTLY
+source $NS_WDIR/lib/automation_util
 
-. $NS_WDIR/lib/automation_util
 T_NAME=$(get_tname)
 
-#FUNCTIONAL MODULES DEFINED FOR EACH PROTOCOL
-#EACH CHECK STATUS MODULE NEED TO CALL THEIR RESPECTIVE DEFINITION FOR GETTING DATA
 
-function smoke_pop3()
-{
-    FS_User=`grep "USER" $T_ID_REQ_PATH/pop3_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}'`
-    FS_Stat=`grep "STAT" $T_ID_REQ_PATH/pop3_session_0_0_0_0_0_0_0_0_0.dat`
-    FS_List=`grep "LIST" $T_ID_REQ_PATH/pop3_session_0_0_0_1_0_0_0_1_0.dat`
-    FS_Get_Count=`grep -c "RETR" $T_ID_REQ_PATH/pop3_session_0_0_0_2_0_0_0_2_0.dat`
-    FS_OK_Count=`grep "OK" $T_ID_REQ_PATH/pop3_session_0_0_0_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
-    SS_User=`grep "USER" $T_ID_REQ_PATH/pop3_session_0_0_1_0_0_0_0_0_0.dat | awk '{print $2}'`
-    SS_Stat=`grep "STAT" $T_ID_REQ_PATH/pop3_session_0_0_1_0_0_0_0_0_0.dat`
-    SS_List=`grep "LIST" $T_ID_REQ_PATH/pop3_session_0_0_1_1_0_0_0_1_0.dat`
-    SS_Get_Count=`grep -c "RETR" $T_ID_REQ_PATH/pop3_session_0_0_1_2_0_0_0_2_0.dat`
-    SS_OK_Count=`grep "OK" $T_ID_REQ_PATH/pop3_session_0_0_1_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
-    TS_User=`grep "USER" $T_ID_REQ_PATH/pop3_session_0_0_2_0_0_0_0_0_0.dat | awk '{print $2}'`
-    TS_Stat=`grep "STAT" $T_ID_REQ_PATH/pop3_session_0_0_2_0_0_0_0_0_0.dat`
-    TS_List=`grep "LIST" $T_ID_REQ_PATH/pop3_session_0_0_2_1_0_0_0_1_0.dat`
-    TS_Get_Count=`grep -c "RETR" $T_ID_REQ_PATH/pop3_session_0_0_2_2_0_0_0_2_0.dat`
-    TS_OK_Count=`grep "OK" $T_ID_REQ_PATH/pop3_session_0_0_2_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
+# GLOBAL VARIABLES
+#-----------------
+POP_FS="${T_ID_REQ_PATH}/pop3_session_0_0_0_0_0_0_0_0_0.dat"
+POP_FS_LIST="${T_ID_REQ_PATH}/pop3_session_0_0_0_1_0_0_0_1_0.dat"
+POP_FS_GET="${T_ID_REQ_PATH}/pop3_session_0_0_0_2_0_0_0_2_0.dat"
+POP_SS="${T_ID_REQ_PATH}/pop3_session_0_0_1_0_0_0_0_0_0.dat"
+POP_SS_LIST="${T_ID_REQ_PATH}/pop3_session_0_0_1_1_0_0_0_1_0.dat"
+POP_SS_GET="${T_ID_REQ_PATH}/pop3_session_0_0_1_2_0_0_0_2_0.dat"
+POP_TS="${T_ID_REQ_PATH}/pop3_session_0_0_2_0_0_0_0_0_0.dat"
+POP_TS_LIST="${T_ID_REQ_PATH}/pop3_session_0_0_2_1_0_0_0_1_0.dat"
+POP_TS_GET="${T_ID_REQ_PATH}/pop3_session_0_0_2_2_0_0_0_2_0.dat"
+# ----------------
+DEBUG_LOG="${NS_WDIR}/logs/TR${T_RUN_ID}/debug.log"
+# ----------------
+FTP_FS_GET="${T_ID_REQ_PATH}/ftp_session_0_0_0_0_0_0_0_0_0.dat"
+FTP_FS_PUT="${T_ID_REQ_PATH}/ftp_session_0_0_0_1_0_0_0_1_0.dat"
+# ----------------
+IMAP_FS_LIST="${T_ID_REQ_PATH}/imap_session_0_0_0_0_0_0_0_0_0.dat"
+IMAP_FS_FETCH="${T_ID_REQ_PATH}/imap_session_0_0_0_1_0_0_0_1_0.dat"
+IMAP_FS_SELECT="${T_ID_REQ_PATH}/imap_session_0_0_0_2_0_0_0_2_0.dat"
+# ----------------
+FS_REQ_FILE="$T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat"
+FS_REP_FILE="$T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat"
+HES_REQ_BODY_FILE="$T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.xml"
+HES_REQ_SCRIPT_FILE="/home/netstorm/work/scripts/Smoke/Smoke/Smoke_Hessian/HessianService1.xml"
+HES_REQ_DIFF_FILE="/tmp/dif_file"
+HES_BIN_DIFF_FILE="/tmp/hes_bin.diff"
+REQ_HES_BDY_FILE="$T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.hessian"
+HES_CHCK_BIN_FILE="/tmp/check.bin"
+# -----------------
+# END OF VARIABLES DECLARATION
+
+
+function get_pop3_test_values(){
+    FS_User=$(grep "USER" ${POP_FS} | awk '{print $2}')
+    FS_Stat=$(grep "STAT" ${POP_FS})
+    FS_List=$(grep "LIST" ${POP_FS_LIST})
+    FS_Get_Count=$(grep -c "RETR" ${POP_FS_GET})
+    FS_OK_Count=$(grep "OK" ${POP_FS_GET} | sed -n '4'p | awk '{print $2}')
+    
+    SS_User=$(grep "USER" ${POP_SS} | awk '{print $2}')
+    SS_Stat=$(grep "STAT" ${POP_SS})
+    SS_List=$(grep "LIST" ${POP_SS_LIST})
+    SS_Get_Count=$(grep -c "RETR" ${POP_SS_GET})
+    SS_OK_Count=$(grep "OK" ${POP_SS_GET} | sed -n '4'p | awk '{print $2}')
+    
+    TS_User=$(grep "USER" ${POP_TS} | awk '{print $2}')
+    TS_Stat=$(grep "STAT" ${POP_TS})
+    TS_List=$(grep "LIST" ${POP_TS_LIST})
+    TS_Get_Count=$(grep -c "RETR" ${POP_TS_GET})
+    TS_OK_Count=$(grep "OK" ${POP_TS_GET} | sed -n '4'p| awk '{print $2}')
 }
 
-function smoke_dns()
-{
-   Msg_Log_Debug=`grep "rdata type" $NS_WDIR/logs/TR$T_RUN_ID/debug.log|head -1`
-   Msg_Log_Debug_Count=`grep -c "rdata type" $NS_WDIR/logs/TR$T_RUN_ID/debug.log` 
+
+function get_dns_test_values(){
+   Msg_Log_Debug=$(grep "rdata type" ${DEBUG_LOG} | head -1)
+   Msg_Log_Debug_Count=$(grep -c "rdata type" ${DEBUG_LOG}) 
+
+   debug_log "Msg_Log_Debug=${Msg_Log_Debug}"
+   debug_log "Msg_Log_Debug_Count=${Msg_Log_Debug_Count}"
 }
 
-function smoke_ftp()
-{
-    Get_User=`grep "USER" $T_ID_REQ_PATH/ftp_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}'`
-    Get_Status_Msg=`grep "File send" $T_ID_REQ_PATH/ftp_session_0_0_0_0_0_0_0_0_0.dat`
-    Put_User=`grep "USER" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}'`
-    Put_Status_Msg=`grep "send data" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat`
-    Get_File_Size=`ls -l $T_ID_REQ_PATH/ftp_data_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $5}'`
-    Put_File_Name=`grep "STOR" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}'`
-    PASV_COUNT_PASS_MODE=`grep "227 Entering Passive Mode" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
-    PASV_COUNT_ACTIVE_MODE=`grep "PASV" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
-    BINARY_WORD_COUNT=`grep "Binary" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
+
+function get_ftp_test_values(){
+    Get_User=$(grep "USER" ${FTP_FS_GET} | awk '{print $2}')
+    Get_Status_Msg=$(grep "File send" ${FTP_FS_GET})
+    Put_User=$(grep "USER" ${FTP_FS_PUT} | awk '{print $2}')
+    Put_Status_Msg=$(grep "send data" ${FTP_FS_PUT})
+    Get_File_Size=$(ls -l ${FTP_FS_GET} | awk '{print $5}')
+    Put_File_Name=$(grep "STOR" ${FTP_FS_PUT} | awk '{print $2}')
+
+    PASV_COUNT_PASS_MODE=$(grep "227 Entering Passive Mode" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
+    PASV_COUNT_ACTIVE_MODE=$(grep "PASV" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
+    BINARY_WORD_COUNT=$(grep "Binary" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
 }
 
-function verify_smtp_session()
-{
+
+function get_smtp_test_values(){
     LogPath=$1
-    Welcome_Msg=`grep "EHLO" $LogPath`
-    Auth_Login=`grep "AUTH LOGIN" $LogPath`
-    Succ_Msg=`grep "succeeded" $LogPath`
-    Subject=`grep "Subject" $LogPath | cut -d " " -f2,3,4,5`
-    TestIDX=`grep "boundary=NetStormAttachmentTestidx" $LogPath | awk -F "-" '{print $2}'`
-    MsgBody=`grep "smoke testing" $LogPath`
-    ClosingMsg=`grep "QUIT" $LogPath`
-    if [ "$Welcome_Msg" == "EHLO cavisson.com" ] && \
-       [ "$Auth_Login" == "AUTH LOGIN" ] && \
-       [ "$Succ_Msg" == "235 Authentication succeeded" ] && \
-       [ "$Subject" == "SMTP smoke test Mail" ] && \
-       [ "$MsgBody" == "Hello this is test mail for SMTP smoke testing" ] && \
-       [ "$ClosingMsg" == "QUIT" ];then
+
+    Welcome_Msg=$(grep "EHLO" ${LogPath})
+    Auth_Login=$(grep "AUTH LOGIN" ${LogPath})
+    Succ_Msg=$(grep "succeeded" ${LogPath})
+    Subject=$(grep "Subject" ${LogPath} | cut -d " " -f2,3,4,5)
+    TestIDX=$(grep "boundary=NetStormAttachmentTestidx" ${LogPath} | awk -F "-" '{print $2}')
+    MsgBody=$(grep "smoke testing" ${LogPath})
+    ClosingMsg=$(grep "QUIT" $LogPath)
+   
+    if [ "${Welcome_Msg}" == "EHLO cavisson.com" ] && \
+       [ "${Auth_Login}" == "AUTH LOGIN" ] && \
+       [ "${Succ_Msg}" == "235 Authentication succeeded" ] && \
+       [ "${Subject}" == "SMTP smoke test Mail" ] && \
+       [ "${MsgBody}" == "Hello this is test mail for SMTP smoke testing" ] && \
+       [ "${ClosingMsg}" == "QUIT" ];then
         return 0 
     else
         return 1
     fi
 }
 
-function smoke_imap()
-{
-    List_Login=`grep "login" $T_ID_REQ_PATH/imap_session_0_0_0_0_0_0_0_0_0.dat | cut -d " " -f2,3,4`
-    List_Complete=`grep -o "OK List completed" $T_ID_REQ_PATH/imap_session_0_0_0_0_0_0_0_0_0.dat`
-    List_Logout=`grep -o "OK Logout completed." $T_ID_REQ_PATH/imap_session_0_0_0_0_0_0_0_0_0.dat`
-    Fetch_Login=`grep "login" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat | cut -d " " -f2,3,4`
-    Fetch_Content=`grep "FETCH" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat`
-    Fetch_Subject=`grep "Subject:" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat`
-    Fetch_Text=`grep "KKK" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat | head -1`
-    Body_Response=`grep "" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat`
-    Fetch_Body_Msg=`grep -o "fetch 2 body" $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat`
-    Fetch_Logout=`grep -o "OK Logout completed." $T_ID_REQ_PATH/imap_session_0_0_0_1_0_0_0_1_0.dat`
-    Select_Login=`grep "login" $T_ID_REQ_PATH/imap_session_0_0_0_2_0_0_0_2_0.dat | cut -d " " -f2,3,4`
-    Select_Msg=`grep -o "select inbox" $T_ID_REQ_PATH/imap_session_0_0_0_2_0_0_0_2_0.dat`
-    Select_Logout=`grep -o "OK Logout completed." $T_ID_REQ_PATH/imap_session_0_0_0_2_0_0_0_2_0.dat`
+
+function get_imap_test_values(){
+    List_Login=$(grep "login" ${IMAP_FS_LIST} | cut -d " " -f2,3,4)
+    List_Complete=$(grep -o "OK List completed" ${IMAP_FS_LIST})
+    List_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_LIST})
+    Fetch_Login=$(grep "login" ${IMAP_FS_FETCH} | cut -d " " -f2,3,4)
+    Fetch_Content=$(grep "FETCH" ${IMAP_FS_FETCH})
+    Fetch_Subject=$(grep "Subject:" ${IMAP_FS_FETCH})
+    Fetch_Text=$(grep "KKK" ${IMAP_FS_FETCH} | head -1)
+    Body_Response=$(grep "" ${IMAP_FS_FETCH})
+    Fetch_Body_Msg=$(grep -o "fetch 2 body" ${IMAP_FS_FETCH})
+    Fetch_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_FETCH})
+    Select_Login=$(grep "login" ${IMAP_FS_SELECT} | cut -d " " -f2,3,4)
+    Select_Msg=$(grep -o "select inbox" ${IMAP_FS_SELECT})
+    Select_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_SELECT})
 }
 
-function verify_hessian_session()
-{
-    echo "Coming into smoke_hessian module"
-    req1=`tail -12 $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -1 | cut -d "" -f1`
-    req2=`tail -13 $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -1 | cut -d "" -f1`
-    rep=`tail -6 $T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat | head -1 | cut -d "" -f1`
-    xml_file_diff=`diff $T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.xml /home/netstorm/work/scripts/Smoke/Smoke/Smoke_Hessian/HessianService1.xml >/tmp/dif_file ; head -1 /tmp/dif_file | cut -d "," -f1,2,3`
-    req_bin_diff=`tail -2 $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -1 >/tmp/hes_bin.diff ; diff /tmp/hes_bin.diff $T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.hessian | cut -d " " -f1,2,6`
-    nsi_hessian -d -i $T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.hessian -o /tmp/check.bin -D 4 -v 2 ; diff /tmp/check.bin $T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.xml
-    hes_to_xml_diff=`echo "$?"`
+
+function get_hessian_test_values(){
+    req1=$(tail -12 ${FS_REQ_FILE} | head -1 | cut -d "" -f1)
+    req2=$(tail -13 ${FS_REQ_FILE} | head -1 | cut -d "" -f1)
+    rep=$(tail -6 ${FS_REP_FILE} | head -1 | cut -d "" -f1)
+
+    xml_file_diff=$(diff ${HES_REQ_BODY_FILE} ${HES_REQ_SCRIPT_FILE} >${HES_REQ_DIFF_FILE} ; head -1 ${HES_REQ_DIFF_FILE=} | cut -d "," -f1,2,3)
+
+    req_bin_diff=$(tail -2 ${FS_REQ_FILE} | head -1 >${HES_BIN_DIFF_FILE};diff ${HES_BIN_DIFF_FILE} ${REQ_HES_BDY_FILE} | cut -d " " -f1,2,6)
     
-    #if [ "$req1" == "POST /hessian_service/hessian_test.xml HTTP/1.1" ] && \
+    nsi_hessian -d -i ${REQ_HES_BDY_FILE} -o ${HES_CHCK_BIN_FILE} -D 4 -v 2;diff ${HES_CHCK_BIN_FILE} ${HES_REQ_BODY_FILE} 
+    
+    hes_to_xml_diff=$?
+    
     if [ "$rep" == "HTTP/1.1 200 OK" ] && \
        [ "$hes_to_xml_diff" == "0" ] && \
        [ "$req_bin_diff" == "Binary files differ" ];then
@@ -107,10 +145,10 @@ function verify_hessian_session()
     fi
 }
 
-#DNS PROTOCOL CHECK STATUS
 
 if [ "$T_NAME" == "SMOKE-010-001" ];then
-    smoke_dns                                                      #IMPLICIT CALL TO FUNCTION DEFINITION
+    get_dns_test_values                                                     
+
     if [ "$Msg_Log_Debug" == " rdata type A addr 10.10.10.10" ] && \
        [ $Msg_Log_Debug_Count -eq 2 ];then
         log_status_and_exit_ex "PASS" "DNS A type query Passed"
@@ -119,8 +157,10 @@ if [ "$T_NAME" == "SMOKE-010-001" ];then
     fi	 
 fi
 
+
 if [ "$T_NAME" == "SMOKE-010-002" ];then
-    smoke_dns                                                      #IMPLICIT CALL TO FUNCTION DEFINITION
+    get_dns_test_values                                                   
+
     if [ "$Msg_Log_Debug" == " rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017" ] && \
        [ $Msg_Log_Debug_Count -eq 2 ]; then
         log_status_and_exit_ex "PASS" "DNS AAAA type query Passed"
@@ -130,7 +170,10 @@ if [ "$T_NAME" == "SMOKE-010-002" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-003" ];then
-    Msg_Log_Debug=`grep -o "type MX Preference 100 domain abc.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`  
+    Msg_Log_Debug=$(grep -o "type MX Preference 100 domain abc.yahoo.com" ${DEBUG_LOG} | head -1)  
+
+    debug_log "Msg_Log_Debug=${Msg_Log_Debug}"
+
     if [ "$Msg_Log_Debug" == "type MX Preference 100 domain abc.yahoo.com" ];then
         log_status_and_exit_ex "PASS" "DNS MX type query Passed"
     else
@@ -139,7 +182,8 @@ if [ "$T_NAME" == "SMOKE-010-003" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-004" ];then
-   smoke_dns							   #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_dns_test_values				
+	
    if [ "$Msg_Log_Debug" == " rdata type NS  domain name www.l.yahoo.com" ] && \
        [ $Msg_Log_Debug_Count -eq 2 ]; then
         log_status_and_exit_ex "PASS" "DNS NS type query Passed"
@@ -149,7 +193,8 @@ if [ "$T_NAME" == "SMOKE-010-004" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-005" ];then
-   smoke_dns							   #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_dns_test_values     
+							   
    if [ "$Msg_Log_Debug" == " rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1" ] && \
       [ $Msg_Log_Debug_Count -eq 2 ];then
         log_status_and_exit_ex "PASS" "DNS SOA type query Passed"
@@ -159,7 +204,8 @@ if [ "$T_NAME" == "SMOKE-010-005" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-006" ];then
-   smoke_dns                                                       #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_dns_test_values                                                      
+ 
    if [ "$Msg_Log_Debug" == " rdata type PTR  domain name 100 abc.yahoo.com" ] && \
       [ $Msg_Log_Debug_Count -eq 2 ];then
         log_status_and_exit_ex "PASS" "DNS PTR type query Passed"
@@ -169,7 +215,8 @@ if [ "$T_NAME" == "SMOKE-010-006" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-007" ];then
-   smoke_dns                                                       #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_dns_test_values                                                      
+ 
    if [ "$Msg_Log_Debug" == " rdata type CNAME  domain name abc.1.yahoo.com" ] && \
       [ $Msg_Log_Debug_Count -eq 2 ];then
         log_status_and_exit_ex "PASS" "DNS CNAME type query Passed"
@@ -178,10 +225,10 @@ if [ "$T_NAME" == "SMOKE-010-007" ];then
     fi
 fi
 
-#POP3 PROTOCOL CHECK STATUS
 
 if [ "$T_NAME" == "SMOKE-010-008" ];then
-   smoke_pop3 							   #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_pop3_test_values 
+							   
    if [ "$FS_User" == "user2@cavisson.com" ] && \
       [ "$FS_Stat" == "STAT" ] && \
       [ "$FS_List" == "LIST" ] && \
@@ -200,10 +247,10 @@ if [ "$T_NAME" == "SMOKE-010-008" ];then
    fi
 fi
 
-#FTP PROTOCOL CHECK STATUS
 
 if [ "$T_NAME" == "SMOKE-010-009" ];then
-    smoke_ftp  					                  #IMPLICIT CALL TO FUNCTION DEFINITION
+    get_ftp_test_values  					                  
+
     if [ "$Get_User" == "netstorm" ] && \
        [ "$Get_Status_Msg" == "226 File send OK." ] && \
        [ "$Put_User" == "automation" ] && \
@@ -218,7 +265,8 @@ if [ "$T_NAME" == "SMOKE-010-009" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-010" ];then
-   smoke_ftp                   					  #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_ftp_test_values
+                   					  
    if [ "$Get_User" == "netstorm" ] && \
       [ "$Get_Status_Msg" == "226 File send OK." ] && \
       [ "$Put_User" == "automation" ] && \
@@ -235,7 +283,8 @@ fi
 
 
 if [ "$T_NAME" == "SMOKE-010-011" ];then
-    smoke_ftp 							  #IMPLICIT CALL TO FUNCTION DEFINITION
+    get_ftp_test_values 						
+	  
     if [ "$Get_User" == "netstorm" ] && \
        [ "$Get_Status_Msg" == "226 File send OK." ] && \
        [ "$Put_User" == "automation" ] && \
@@ -250,7 +299,8 @@ if [ "$T_NAME" == "SMOKE-010-011" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-012" ];then
-   smoke_ftp 							   #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_ftp_test_values 
+							   
    if [ "$Get_User" == "netstorm" ] && \
       [ "$Get_Status_Msg" == "226 File send OK." ] && \
       [ "$Put_User" == "automation" ] && \
@@ -265,7 +315,6 @@ if [ "$T_NAME" == "SMOKE-010-012" ];then
    fi
 fi
 
-#SMTP PROTOCOL CHECK STATUS
 
 if [ "$T_NAME" == "SMOKE-010-013" ];then
    if [ -f $NS_WDIR/logs/TR$T_RUN_ID/smtp_session_0_0_0_0_0_0_0_0_0.dat ];then
@@ -275,8 +324,11 @@ if [ "$T_NAME" == "SMOKE-010-013" ];then
    else 
        log_status_and_exit_ex "FAIL" "SMTP test Failed as session is not completed"
    fi
-   verify_smtp_session $SMTP_SESSION_FILE
+   
+   get_smtp_test_values ${SMTP_SESSION_FILE}
+   
    RC=$?
+   
    if [ $RC -eq 0 ];then
       log_status_and_exit_ex "PASS" "SMTP test Passed" 
    else
@@ -284,10 +336,10 @@ if [ "$T_NAME" == "SMOKE-010-013" ];then
    fi        
 fi   
 
-#IMAP PROTOCOL CHECK STATUS
 
 if [ "$T_NAME" == "SMOKE-010-014" ];then
-   smoke_imap                                                       #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_imap_test_values                                                      
+ 
    echo "List_Login=$List_Login"
    echo "List_Complete=$List_Complete"
    echo "List_Logout=$List_Logout"
@@ -316,7 +368,8 @@ if [ "$T_NAME" == "SMOKE-010-014" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-015" ];then
-   smoke_imap							    #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_imap_test_values							   
+ 
    if [ "$List_Login" == "login user1@cavisson.com password" ] && \
       [ "$List_Complete" == "OK List completed" ] && \
       [ "$List_Logout" == "OK Logout completed." ] && \
@@ -334,8 +387,10 @@ if [ "$T_NAME" == "SMOKE-010-015" ];then
 
 fi
 
+
 if [ "$T_NAME" == "SMOKE-010-016" ];then
-   smoke_imap  							    #IMPLICIT CALL TO FUNCTION DEFINITION
+   get_imap_test_values  							   
+ 
    if [ "$List_Login" == "login user1@cavisson.com password" ] && \
       [ "$List_Complete" == "OK List completed" ] && \
       [ "$List_Logout" == "OK Logout completed." ] && \
@@ -352,9 +407,12 @@ if [ "$T_NAME" == "SMOKE-010-016" ];then
 
 fi
 
+
 if [ "$T_NAME" == "SMOKE-010-017" ];then
-    verify_hessian_session
+    get_hessian_test_values
+
     RC=$?
+
     if [ $RC -eq 0 ]
        [ "$req1" == "POST /hessian_service/hessian_test.xml HTTP/1.1" ];then
         log_status_and_exit_ex "PASS" "Hessian Protocol version 1.0 Test Passed"
@@ -363,14 +421,18 @@ if [ "$T_NAME" == "SMOKE-010-017" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-010-018" ];then
-    verify_hessian_session
+    get_hessian_test_values
+
     RC=$?
+
     if [ $RC -eq 0 ];then
         log_status_and_exit_ex "PASS" "Hessian Protocol version 2.0 Test Passed"
     else
         log_status_and_exit_ex "FAIL" "Hessian Protocol version 2.0 Test Failed"
     fi
 fi
+
 
 exit 0
