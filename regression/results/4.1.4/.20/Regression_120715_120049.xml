@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="6" passed="6" total="12">
+        <testcase id="REG-001-001">
+            <testrun>16671</testrun>
+            <status>fail</status>
+            <description>Regression test for FCU with RampUp in Step mode failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 100 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-002-001">
+            <testrun>16672</testrun>
+            <status>fail</status>
+            <description>Regression test for FCU with RampUp in Rate mode failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 89 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-003-001">
+            <testrun>16673</testrun>
+            <status>fail</status>
+            <description>Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 100 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-004-001">
+            <testrun>16674</testrun>
+            <status>fail</status>
+            <description>Regression test for FSR  Mode 2 failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 26 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-005-001">
+            <testrun>16675</testrun>
+            <status>fail</status>
+            <description>Regression test for Replay Access Logs Failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 100 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-006-001">
+            <testrun>16676</testrun>
+            <status>fail</status>
+            <description>Regression testcase for NS supported protocols such as POP3 SMTP &amp; FTP test Failed;because difference of  baseline and current test metric Eth_Send_throuput_Change = 51 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-007-001">
+            <testrun>16677</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-002">
+            <testrun>16678</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampUp0 phase;13  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-003">
+            <testrun>16679</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-004">
+            <testrun>16680</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-005">
+            <testrun>16681</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampDown0 phase;103  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-006">
+            <testrun>16682</testrun>
+            <status>pass</status>
+            <description>RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC</description>
+        </testcase>
+    </testsuite>
+</testsuites>
