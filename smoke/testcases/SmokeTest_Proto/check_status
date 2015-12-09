@@ -62,9 +62,6 @@ function get_pop3_test_values(){
 function get_dns_test_values(){
    Msg_Log_Debug=$(grep "rdata type" ${DEBUG_LOG} | head -1)
    Msg_Log_Debug_Count=$(grep -c "rdata type" ${DEBUG_LOG}) 
-
-   debug_log "Msg_Log_Debug=${Msg_Log_Debug}"
-   debug_log "Msg_Log_Debug_Count=${Msg_Log_Debug_Count}"
 }
 
 
@@ -79,6 +76,14 @@ function get_ftp_test_values(){
     PASV_COUNT_PASS_MODE=$(grep "227 Entering Passive Mode" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
     PASV_COUNT_ACTIVE_MODE=$(grep "PASV" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
     BINARY_WORD_COUNT=$(grep "Binary" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
+
+    debug_log "Get_User=${Get_User};Get_Status_Msg=${Get_Status_Msg}"
+    debug_log "Put_User=${Put_User};Put_Status_Msg=${Put_Status_Msg}"
+    debug_log "Get_File_Size=${Get_File_Size}"
+    debug_log "Put_File_Name=${Put_File_Name}"
+    debug_log "PASV_COUNT_PASS_MODE=${PASV_COUNT_PASS_MODE}"
+    debug_log "PASV_COUNT_ACTIVE_MODE=${PASV_COUNT_ACTIVE_MODE}"
+    debug_log "BINARY_WORD_COUNT=${BINARY_WORD_COUNT}"
 }
 
 
@@ -92,7 +97,7 @@ function get_smtp_test_values(){
     TestIDX=$(grep "boundary=NetStormAttachmentTestidx" ${LogPath} | awk -F "-" '{print $2}')
     MsgBody=$(grep "smoke testing" ${LogPath})
     ClosingMsg=$(grep "QUIT" $LogPath)
-   
+ 
     if [ "${Welcome_Msg}" == "EHLO cavisson.com" ] && \
        [ "${Auth_Login}" == "AUTH LOGIN" ] && \
        [ "${Succ_Msg}" == "235 Authentication succeeded" ] && \
@@ -110,6 +115,7 @@ function get_imap_test_values(){
     List_Login=$(grep "login" ${IMAP_FS_LIST} | cut -d " " -f2,3,4)
     List_Complete=$(grep -o "OK List completed" ${IMAP_FS_LIST})
     List_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_LIST})
+
     Fetch_Login=$(grep "login" ${IMAP_FS_FETCH} | cut -d " " -f2,3,4)
     Fetch_Content=$(grep "FETCH" ${IMAP_FS_FETCH})
     Fetch_Subject=$(grep "Subject:" ${IMAP_FS_FETCH})
@@ -117,6 +123,7 @@ function get_imap_test_values(){
     Body_Response=$(grep "" ${IMAP_FS_FETCH})
     Fetch_Body_Msg=$(grep -o "fetch 2 body" ${IMAP_FS_FETCH})
     Fetch_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_FETCH})
+
     Select_Login=$(grep "login" ${IMAP_FS_SELECT} | cut -d " " -f2,3,4)
     Select_Msg=$(grep -o "select inbox" ${IMAP_FS_SELECT})
     Select_Logout=$(grep -o "OK Logout completed." ${IMAP_FS_SELECT})
@@ -171,8 +178,6 @@ fi
 
 if [ "$T_NAME" == "SMOKE-010-003" ];then
     Msg_Log_Debug=$(grep -o "type MX Preference 100 domain abc.yahoo.com" ${DEBUG_LOG} | head -1)  
-
-    debug_log "Msg_Log_Debug=${Msg_Log_Debug}"
 
     if [ "$Msg_Log_Debug" == "type MX Preference 100 domain abc.yahoo.com" ];then
         log_status_and_exit_ex "PASS" "DNS MX type query Passed"
