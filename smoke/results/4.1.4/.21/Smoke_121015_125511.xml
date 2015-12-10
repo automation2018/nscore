@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="4" passed="0" total="4">
+        <testcase id="SMOKE-010-009">
+            <testrun>17154</testrun>
+            <status>fail</status>
+            <description>Ftp test for text data and passive mode Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-010">
+            <testrun>17155</testrun>
+            <status>fail</status>
+            <description>Ftp test for binary data and passive mode  Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-011">
+            <testrun>17156</testrun>
+            <status>fail</status>
+            <description>Ftp test for text data and active mode Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-012">
+            <testrun>17157</testrun>
+            <status>fail</status>
+            <description>Ftp test for binary data and active mode Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>
