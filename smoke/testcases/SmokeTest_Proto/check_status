@@ -21,6 +21,7 @@ DEBUG_LOG="${NS_WDIR}/logs/TR${T_RUN_ID}/debug.log"
 # ----------------
 FTP_FS_GET="${T_ID_REQ_PATH}/ftp_session_0_0_0_0_0_0_0_0_0.dat"
 FTP_FS_PUT="${T_ID_REQ_PATH}/ftp_session_0_0_0_1_0_0_0_1_0.dat"
+FTP_DATA_FILE="${T_ID_REQ_PATH}/ftp_data_session_0_0_0_0_0_0_0_0_0.dat"
 # ----------------
 IMAP_FS_LIST="${T_ID_REQ_PATH}/imap_session_0_0_0_0_0_0_0_0_0.dat"
 IMAP_FS_FETCH="${T_ID_REQ_PATH}/imap_session_0_0_0_1_0_0_0_1_0.dat"
@@ -70,7 +71,7 @@ function get_ftp_test_values(){
     Get_Status_Msg=$(grep "File send" ${FTP_FS_GET})
     Put_User=$(grep "USER" ${FTP_FS_PUT} | awk '{print $2}')
     Put_Status_Msg=$(grep "send data" ${FTP_FS_PUT})
-    Get_File_Size=$(ls -l ${FTP_FS_GET} | awk '{print $5}')
+    Get_File_Size=$(stat --print=%s ${FTP_DATA_FILE})
     Put_File_Name=$(grep "STOR" ${FTP_FS_PUT} | awk '{print $2}')
 
     PASV_COUNT_PASS_MODE=$(grep "227 Entering Passive Mode" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l)
