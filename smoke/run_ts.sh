@@ -1,104 +1,104 @@
 #!/usr/bin/env bash
 
-# include  libraries
+# Include  libraries
 source $NS_WDIR/lib/automation_util
-source $NS_WDIR/lib/automation_config.dat #Required for config variables
+source $NS_WDIR/lib/automation_config.dat 
 
-export TEMP_FILE=/tmp/ns_run.$$
-
-
+# Bootstraps the automation test specific variables
 function init() {
-  CUR_DIR=$(pwd)
-  #Get Release Specific Information
-  RELEASE=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
-  MAJOR=$(cat $NS_WDIR/etc/version | head -1 |cut -d "." -f4)
-  MINOR=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
+    CUR_DIR=$(pwd)
 
-  #Results directory to store the automation result.
-  R_DIR="${CUR_DIR}/results/$RELEASE/${MAJOR}.${MINOR}"
+    # Get Release Specific Information
+    RELEASE=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
+    MAJOR=$(cat $NS_WDIR/etc/version | head -1 |cut -d "." -f4)
+    MINOR=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
 
-  mkdir -p "${R_DIR}"
+    # Results directory to store the automation result.
+    R_DIR="${CUR_DIR}/results/$RELEASE/${MAJOR}.${MINOR}"
 
-  #Temporary File.
-  T_FILE=/tmp/ns_run.$$
+    # Create results workbench if not exists
+    [ ! -d "${R_DIR}" ] && mkdir -p "${R_DIR}"
 
-  #Result File.
-  CYCLENO=$(get_cycle_num)
-  R_FILE="${R_DIR}/${testSuite}_${CYCLENO}.txt"
-  XML_FILE="${R_DIR}/${testSuite}_${CYCLENO}.xml"
-  export R_FILE
-  export XML_FILE
+    # Temporary File
+    TEMP_FILE=/tmp/ns_run.$$
+
+    # Result File.
+    CYCLENO=$(get_cycle_num)
+    R_FILE="${R_DIR}/${testSuite}_${CYCLENO}.txt"
+    XML_FILE="${R_DIR}/${testSuite}_${CYCLENO}.xml"
+
+    export R_FILE
+    export XML_FILE
+    export TEMP_FILE
 }
 
 
+# Using bin/ts_run to start testsuite
 function run(){
-    # Call to this function starts the automation.
-    # Waits till successfull completion message is not recieved.
-    testSuite="$1"            #placeholder to store the current running test suite
-    debug_opt="$2"            #placeholder to store debug
+    testSuite="$1"            
+    debug_opt="$2"            
 
+    # Changing directory location to ns_wdir
     cd $NS_WDIR
 
-    echo "INFO: Starting automation using command bin/ts_run"
-    echo "INFO: Running TestSuite = '$testSuite'"
+    echo "Starting NSCore smoke automation suite using command bin/ts_run"
+    echo "Running TestSuite = '$testSuite'"
 
     # running test in backend
     Project=$(project_name $testSuite)
-    bin/ts_run -n ${Project}/${testSuite} |tee $TEMP_FILE    
-
+    bin/ts_run -n ${Project}/${testSuite} | tee $TEMP_FILE    
 
     #Check return code. If RC=2, automation timed out case. RC=0 Success
     RC=$?
 
     [ $RC -ne 0 ] && {
-       echo "ERROR: Possible test case failure. Check logs..."
-       # Don't cleanup here.. 
+       echo "Possible test case failure. Check logs..."
     } || {
-       echo "INFO: NSCore automation has ended"
+       echo "NSCore ${testSuite} automation suite has ended"
     }
 
     [ "X$debug_opt" == "X--debug" ] && {
        copy_logs
      }
 
+    # Set currently finshed testsuite summary 
     set_test_summary_ex
     
-    cd -
+    # Changing directory location back to automation_wdir
+    cd - >/dev/null
 }
 
 
-# Cleanup function. To remove temporary files if being used.
-function clean_up()
-{
-    echo "INFO: Cleaning up temporary files."
-    rm -f ${T_FILE}
+# Cleans up temporary files
+function clean_up(){
+    echo "Cleaning up temporary files"
+    rm -f ${TEMP_FILE}
 }
 
 
 # To copy TR's in current directory logs folder.
 # Only when --debug option is passed while running the shell;
-function copy_logs()
-{
-
-    cur_dir=$(pwd)
-    mkdir -p ${CUR_DIR}/logs
+function copy_logs(){
+    [ ! -d ${CUR_DIR} ] && mkdir -p ${CUR_DIR}/logs
 
     sleep 1
-    for trNum in $(grep TestRun ${T_FILE} |awk -F'=' '{print $2}')
+    
+    for trNum in $(grep TestRun ${TEMP_FILE} |awk -F'=' '{print $2}')
     do
-        if [ -d $NS_WDIR/logs/TR${trNum} ];then
-          echo "DEBUG: Copying test runs to ${CUR_DIR}/logs"
-          cp -r $NS_WDIR/logs/TR${trNum} ${CUR_DIR}/logs/
-          echo "DEBUG: Copied TR${trNum}"
+	if [ -d $NS_WDIR/logs/TR${trNum} ];then
+	  debug_log "Debug: Copying test runs to ${CUR_DIR}/logs"
+	  cp -r $NS_WDIR/logs/TR${trNum} ${CUR_DIR}/logs/
+	  
+          debug_log "Copied TR${trNum}"
+	
         else
-          echo "ERROR: TestRun not found"
-        fi
+	  debug_log "TestRun not found"
+	fi
     done
-
 }
 
 
-#To get the test case count
+#  Returns count of testcases to run in current testsuite
 function get_test_case_count() {
   testcases=$(cat testsuites/${testSuite}.conf |grep -v "#" | cut -d ' ' -f2)
   count=0
@@ -111,6 +111,8 @@ function get_test_case_count() {
 }
 
 
+# Provides info about total testcase executed &
+# numbers of NSFail testcases
 function update_test_status() {
     cycle_num="$1"
     NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
@@ -120,12 +122,13 @@ function update_test_status() {
 }
 
 
-#Execution begins here
+# Execution begins from here
 function main() {
-    echo "INFO: Initializing test environment "
+    # Bootstraps the automation test specific variables
+    echo "Initializing test environment "
     init
 
-    #display test case count
+    # Display testcase count
     echo "Total Cases to test in ${testSuite} suite = $(get_test_case_count)"
 
     #This function creates the header for result file.
@@ -134,30 +137,38 @@ function main() {
     #Call to run  to start automation
     run "${testSuite}" "${debug_opt}"
 
-    #Cleans tmp files
+    # TODO
+    # Variable to use update_test_status module 
+    # To get total and nsfail testcase count
+    TSR_DIR=$(grep "Test Cycle Number" ${TEMP_FILE} | egrep -o [0-9_]+)
+
+    # Cleans up tmporary files
     clean_up
 
-    #Check cycle summary report file and append total test run executed
-    #check for netstorm failed cases and update the count
-    update_test_status "${CYCLENO}"
+    # Check cycle summary report file and append total test run executed
+    # check for netstorm failed cases and update the count
+    update_test_status "${TSR_DIR}"
 
-    #Parse the txt file and create results in xml format- NEW
-    echo "INFO: Writing testresults in XML format to ${XML_FILE} "
+    # Parse the txt file and create results in xml format- NEW
+    echo "Writing testresults in XML format to ${XML_FILE} "
     ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)
 
-    #Module called to upload testresults to sqlite database
-    echo "INFO: Uploading results to $DATABASE"
+    # Module called to upload testresults to sqlite database
+    echo "Uploading results to $DATABASE"
     ${DB_UPLOAD} ${R_FILE} ${DATABASE}
 
     exit 0
 }
 
-#Permit only 'automation' user to run test
+
+# Permit only 'automation' user to run test
 [ "X${USER}" != "Xautomation" ] && echo "ERROR: You must log in with 'automation' user" && exit -1
 
-#Store all command line arguments to shell
+
+# Store all command line arguments to shell
 testSuite="${1}"
 debug_opt="${2}"
 
-#Calling main
+
+# Call to main function
 main
