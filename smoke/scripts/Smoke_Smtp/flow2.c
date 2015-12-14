@@ -11,10 +11,10 @@ void flow2()
 	"PASSWORD=%rr_type",
 	"FROM_EMAIL=%name",
 	"TO_EMAILS=niraj.panda@cavisson.com",
-	"CC_EMAILS=arun.yadav@cavisson.com",
+	"CC_EMAILS=vishal.singhal@cavisson.com",
 	"BCC_EMAILS=mani.krishna@cavisson.com",
 	"SUBJECT=SMTP smoke test Mail",
-	"BODY=Hello this is test mail for SMTP smoke testing",
+	"BODY=Hello, You got this mail from smoke SMTP testcase run",
 	"HEADER=X-Priority:3",
 	"MESSAGE_COUNT=1"
     );
