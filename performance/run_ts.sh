@@ -77,7 +77,7 @@ function run(){
 
 # Cleans temporary files
 function clean_up(){
-    debug_log "Cleaning up temporary files."
+    echo "Cleaning up temporary files."
     rm -f ${TEMP_FILE}
 }
 
