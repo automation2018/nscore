@@ -154,13 +154,18 @@ function main() {
     # Cleans up temp file/s
     clean_up
     
-    #Check cycle summary report file and append total test run executed
-    #check for netstorm failed cases and update the count
+    # Check cycle summary report file and append total test run executed
+    # Check for netstorm failed cases and update the count
     update_test_status "${TSR_DIR}"
 
-    #Parse the txt file and create results in xml format- NEW
+    # Parse the txt file and create results in xml format- NEW
     ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)
 
+    # Match the testsuite name and process the results operation
+    # If CPS : Overwrite PERF_TEST_DATA_FILE with second line of PERF_R_FILE
+    #    SSL : Run gen_ssl_perf_report.rb script with necessary arguments
+    #    HPS/TPut : Append test data of first testcase of each of these metric to PERF_TEST_DATA_FILE
+     
     if [ "$testSuite" == "Performance_Cps" ];then
         cat $PERF_R_FILE |head -2 |tail -1 >${PERF_TEST_DATA_FILE}
     elif [ "$testSuite" == "Performance_SSL" ]; then
