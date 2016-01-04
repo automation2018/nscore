@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <project name="NetStorm Core Automation: Master Build File" basedir="." default="start">
   
-    <!--#TODO--> 
     <!--Task: Declaration of build variables--> 
     <property name="smoke.build.file" value="smoke/build.xml"/>
     <property name="reg.build.file" value="regression/build.xml"/>
