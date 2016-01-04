@@ -85,7 +85,6 @@ fi
 if [ "$T_NAME" == "SMOKE-008-006" ];then
     if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 1 -a $MaxSesRepTime -le 3 ] && \
-       [ $OverideRandomPctValue -ge 0 -a $OverideRandomPctValue -le 2 ] && \
        [ $ThinkingVusers -eq 1 ];then
         log_status_and_exit_ex "PASS" "Page think time keyword with overide random percentage values Passed"
     else

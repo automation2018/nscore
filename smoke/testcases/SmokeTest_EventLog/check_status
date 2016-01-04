@@ -2,7 +2,7 @@
 
 source $NS_WDIR/lib/automation_util
 T_NAME=$(get_tname)
-EVENT_LOG="$NS_WDIR/logs/TR$T_RUN_ID/event.log"
+EVENT_LOG="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/event.log"
 
 function main(){
     case $(get_tname) in

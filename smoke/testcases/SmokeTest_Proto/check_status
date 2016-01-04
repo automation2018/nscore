@@ -96,14 +96,14 @@ function get_smtp_test_values(){
     Succ_Msg=$(grep "succeeded" ${LogPath})
     Subject=$(grep "Subject" ${LogPath} | cut -d " " -f2,3,4,5)
     TestIDX=$(grep "boundary=NetStormAttachmentTestidx" ${LogPath} | awk -F "-" '{print $2}')
-    MsgBody=$(grep "smoke testing" ${LogPath})
+    MsgBody=$(grep "^Hello" ${LogPath})
     ClosingMsg=$(grep "QUIT" $LogPath)
- 
+
     if [ "${Welcome_Msg}" == "EHLO cavisson.com" ] && \
        [ "${Auth_Login}" == "AUTH LOGIN" ] && \
        [ "${Succ_Msg}" == "235 Authentication succeeded" ] && \
        [ "${Subject}" == "SMTP smoke test Mail" ] && \
-       [ "${MsgBody}" == "Hello this is test mail for SMTP smoke testing" ] && \
+       [ "${MsgBody}" == "Hello, You got this mail from smoke SMTP testcase run" ] && \
        [ "${ClosingMsg}" == "QUIT" ];then
         return 0 
     else
@@ -323,16 +323,15 @@ fi
 
 
 if [ "$T_NAME" == "SMOKE-010-013" ];then
-   if [ -f $NS_WDIR/logs/TR$T_RUN_ID/smtp_session_0_0_0_0_0_0_0_0_0.dat ];then
-       SMTP_SESSION_FILE="$NS_WDIR/logs/TR$T_RUN_ID/smtp_session_0_0_0_0_0_0_0_0_0.dat"
+   if [ -f $NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/smtp_session_0_0_0_0_0_0_0_0_0.dat ];then
+       SMTP_SESSION_FILE="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/smtp_session_0_0_0_0_0_0_0_0_0.dat"
    elif [ -f $T_ID_REQ_PATH/smtp_session_0_0_0_0_0_0_0_0_0.dat ]; then
        SMTP_SESSION_FILE="${T_ID_REQ_PATH}/smtp_session_0_0_0_0_0_0_0_0_0.dat"
    else 
        log_status_and_exit_ex "FAIL" "SMTP test Failed as session is not completed"
    fi
-   
+
    get_smtp_test_values ${SMTP_SESSION_FILE}
-   
    RC=$?
    
    if [ $RC -eq 0 ];then
