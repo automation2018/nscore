@@ -21,15 +21,22 @@ COMPONENT_ID=$(grep  "CONFIG" /etc/cav.conf  |awk '{print $2}' |cut -d '>' -f1)
 TEST_CYCLE_NUM=$(cat $TEMP_FILE|grep "Test Cycle Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
 TSR_NUM=$(cat $TEMP_FILE|grep "Test Suite Run Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
 TS_LOG_DIR="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/$TSR_NUM/logs"
-
 SAVED_STRING=$(echo $VAR_VALUE_SUM_RESULT | cut -d "," -f5|sed 's/"//g')
-
 RELEASE_ID=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
 BUILD_ID=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
 
+
 #Testidx will be passed as second args by ts_run in check status itself
 T_RUN_ID=$2
-T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/ns_logs/req_rep"
+
+
+# Returns the current partition of the last ran test
+get_test_partition() {
+     partition=$(head -1 $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition | cut -d '=' -f2)
+     echo $partition
+}
+
+T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/ns_logs/req_rep"
 
 
 #can be called to get testsuite name
