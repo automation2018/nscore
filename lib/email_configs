@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# TODO
+# 1. To design a central ANT mail system
+# 2. All mail configs to be defined here which would be sourced
+
+# These variables to be used across all mail triggering modules
+EMAIL_TO_LIST="dl-qa-teamleads@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com,mayank.garg@cavisson.com"
+EMAIL_CC_LIST="dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com"
+#EMAIL_TO_LIST="niraj.panda@cavisson.com"
+#EMAIL_CC_LIST="ankur.srivastava@cavisson.com"
+AUTO_START_MAIL="/home/automation/workbench/automation/nscore/lib/start_mail.html"
+AUTO_RESULT_MAIL="/home/automation/workbench/automation/nscore/lib/mail_results.html"
+MAIL_PROP_FILE="mail.properties"
+
+
+RELEASE=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
+BUILD=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
+CUR_TS=$(date +'%d/%m/%y %H:%M:%S %p')
