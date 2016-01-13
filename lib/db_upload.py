@@ -19,7 +19,7 @@ class TestResultsModel(object):
         testresults = {
            'tid'         : self.tid,
            'release'     : self.release,
-           #'trun'        : self.trun,
+           'trun'        : self.trun,
            'version'     : self.version,
            'component'   : self.component,
            'status'      : self.status,
@@ -128,13 +128,14 @@ def upload_to_db(infile, testresults, database):
             comp_id[0],
             result['status'],
             category_id,
-            result['description']))
+            result['description'],
+            result['trun']))
         _id += 1
     
     #print data
     cursor.executemany('''INSERT INTO 
             testcase 
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?)''', data)
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)''', data)
     connection.commit()
     cursor.close()
 
