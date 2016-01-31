@@ -125,7 +125,7 @@
     </target>
 
    <!-- Task: Update mail.properties prior to automation result mail Send--> 
-   <target name="update-results-properties" 
+    <target name="update-results-properties" 
            description="Update mail.properties prior to automation result mail Send">
         <exec executable="/bin/bash" taskname="info">
             <arg value="update_mail_results"/>
@@ -134,7 +134,7 @@
     </target>
    
    <!-- Task: Send regression automation results with attachments-->
-   <target name="trigger-result-mail" 
+    <target name="trigger-result-mail" 
            depends="update-results-properties" 
            description="Send regression automation results with attachments"> 
        <property file="mail.properties"/>
@@ -152,7 +152,7 @@
                </fileset>
            </attachments>	   
        </mail>	       
-   </target>	   
+   </target>
   
    <!-- Task: Declaring default target to initiate build--> 
    <target name="run" depends="regression, trigger-result-mail" description="Declaring default target to initiate build">

@@ -30,10 +30,12 @@ function set_test_results(){
     total=0;passed=0;failed=0
     ATTACHMENTS=( "$first_attachment" "$second_attachment" )
 
-    #TODO
-    #Check xml file for netstorm fail cases
-    #This is to ensure all tests ran;status has been checked;if some tests has been
-    #due to NetStormFail;hence reports should be generated accordingly
+    # TODO
+    # Check xml file for netstorm fail cases
+    # This is to ensure all tests ran;status 
+    # has been checked;if some tests has been
+    # failed due to NetStormFail; reporting need 
+    # to be done accordingly
     for attachment in ${ATTACHMENTS[*]}; do
         total=$(($total + $(get_metrics $PERF_RESULT_FILES/$attachment "total")))
         failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
