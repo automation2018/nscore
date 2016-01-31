@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="5" passed="7" total="12">
+        <testcase id="REG-001-001">
+            <testrun>19194</testrun>
+            <status>fail</status>
+            <description>Regression test for FCU with RampUp in Step mode failed;because difference of  baseline and current test metric Thinking_User_Change_Pct = 34 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-002-001">
+            <testrun>19195</testrun>
+            <status>fail</status>
+            <description>Regression test for FCU with RampUp in Rate mode failed;because difference of  baseline and current test metric Tcp_Rcv_throuput_Change = 15 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-003-001">
+            <testrun>19196</testrun>
+            <status>fail</status>
+            <description>Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric Running_User_Change_Pct = 13 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-004-001">
+            <testrun>19197</testrun>
+            <status>fail</status>
+            <description>Regression test for FSR  Mode 2 failed;because difference of  baseline and current test metric Running_User_Change_Pct = 7 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-005-001">
+            <testrun>19198</testrun>
+            <status>pass</status>
+            <description>Regression testcase for Replay Access Log test Passed</description>
+        </testcase>
+        <testcase id="REG-006-001">
+            <testrun>19199</testrun>
+            <status>fail</status>
+            <description>Regression testcase for NS supported protocols such as POP3 SMTP &amp; FTP test Failed;because difference of  baseline and current test metric Eth_Send_throuput_Change = 44 is more than expected difference 5%</description>
+        </testcase>
+        <testcase id="REG-007-001">
+            <testrun>19200</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-002">
+            <testrun>19201</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-003">
+            <testrun>19202</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-004">
+            <testrun>19203</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-005">
+            <testrun>19204</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-006">
+            <testrun>19205</testrun>
+            <status>pass</status>
+            <description>RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC</description>
+        </testcase>
+    </testsuite>
+</testsuites>

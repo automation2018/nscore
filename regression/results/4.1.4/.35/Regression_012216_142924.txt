@@ -1,0 +1,15 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+REG-001-001,19801,4.1.4,35,NetStorm,pass,2,Regression testcase for FCU having RampUp in Step Mode test Passed
+REG-002-001,19802,4.1.4,35,NetStorm,fail,2,Regression test for FCU with RampUp in Rate mode failed;because difference of  baseline and current test metric Connection_Change_Pct = 52 is more than expected difference 5%
+REG-003-001,19803,4.1.4,35,NetStorm,fail,2,Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric Running_User_Change_Pct = 100 is more than expected difference 5%
+REG-004-001,19804,4.1.4,35,NetStorm,fail,2,Regression test for FSR  Mode 2 failed;because difference of  baseline and current test metric Connection_Change_Pct = 100 is more than expected difference 5%
+REG-005-001,19805,4.1.4,35,NetStorm,fail,2,Regression test for Replay Access Logs Failed;because difference of  baseline and current test metric Running_User_Change_Pct = 100 is more than expected difference 5%
+REG-006-001,19806,4.1.4,35,NetStorm,fail,2,Regression testcase for NS supported protocols such as POP3 SMTP & FTP test Failed;because difference of  baseline and current test metric Eth_Send_throuput_Change = 41 is more than expected difference 5%
+REG-007-001,19807,4.1.4,35,NetStorm,pass,2,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,19808,4.1.4,35,NetStorm,pass,2,RTC is being applied for RampUp0 phase;13  have been found in current situation as RTC being applied
+REG-007-003,19809,4.1.4,35,NetStorm,pass,2,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,19810,4.1.4,35,NetStorm,pass,2,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,19811,4.1.4,35,NetStorm,pass,2,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,19812,4.1.4,35,NetStorm,pass,2,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+
+Failed: 5 test(s), Passed: 7 test(s), Total: 12 test(s)
