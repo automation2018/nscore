@@ -1,0 +1,10 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+SMOKE-010-001,20706,4.1.5,6,NetStorm,fail,1,DNS A type query Failed
+SMOKE-010-002,20707,4.1.5,6,NetStorm,fail,1,DNS AAAA type query Failed
+SMOKE-010-003,20708,4.1.5,6,NetStorm,fail,1,DNS Mx type query Failed
+SMOKE-010-004,20709,4.1.5,6,NetStorm,fail,1,DNS NS type query Failed
+SMOKE-010-005,20710,4.1.5,6,NetStorm,fail,1,DNS SOA type query Failed
+SMOKE-010-006,20711,4.1.5,6,NetStorm,fail,1,DNS PTR type query Failed
+SMOKE-010-007,20712,4.1.5,6,NetStorm,fail,1,DNS CNAME type query Failed
+
+Failed: 7 test(s), Passed: 0 test(s), Total: 7 test(s)

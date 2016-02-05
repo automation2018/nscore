@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="7" passed="0" total="7">
+        <testcase id="SMOKE-010-001">
+            <testrun>20706</testrun>
+            <status>fail</status>
+            <description>DNS A type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-002">
+            <testrun>20707</testrun>
+            <status>fail</status>
+            <description>DNS AAAA type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-003">
+            <testrun>20708</testrun>
+            <status>fail</status>
+            <description>DNS Mx type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-004">
+            <testrun>20709</testrun>
+            <status>fail</status>
+            <description>DNS NS type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-005">
+            <testrun>20710</testrun>
+            <status>fail</status>
+            <description>DNS SOA type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-006">
+            <testrun>20711</testrun>
+            <status>fail</status>
+            <description>DNS PTR type query Failed</description>
+        </testcase>
+        <testcase id="SMOKE-010-007">
+            <testrun>20712</testrun>
+            <status>fail</status>
+            <description>DNS CNAME type query Failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

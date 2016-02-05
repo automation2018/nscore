@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-017-001") handale_inline_delay_case ;;
+        "SMOKE-017-002") handale_inline_delay_case ;;
+        "SMOKE-017-003") handale_inline_delay_case ;;
+        "SMOKE-017-004") handale_inline_delay_case ;;
+        "SMOKE-017-005") handale_inline_delay_case ;;
+        "SMOKE-017-006") handale_inline_delay_case ;;
+        "SMOKE-017-007") handale_inline_delay_case ;;
+        "SMOKE-017-008") handale_inline_delay_case ;;
+        "SMOKE-017-009") handale_inline_delay_case ;;
+        "SMOKE-017-010") handale_inline_delay_case ;;
+        "SMOKE-017-011") handale_inline_delay_case ;;
+        "SMOKE-017-012") handale_inline_delay_case ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+function handale_inline_delay_case(){
+    debug_log "T_NAME=${T_NAME};TR=${T_RUN_ID}"
+    progress_time=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | egrep -o '[0-9:]+' | tail -1)
+    debug_log "progress_time=${progress_time}"
+    
+    if [ "${progress_time}" == "00:00:12" ]; then
+        log_status_and_exit_ex "PASS" "inline delay case has been verified success"
+    else
+        log_status_and_exit_ex "FAIL" "inline delay case has been verified fail"
+    fi
+}
+
+main
+
+exit 0
