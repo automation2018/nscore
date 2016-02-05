@@ -120,11 +120,26 @@ function get_test_case_count() {
 # Provide info about total testcase executed &
 # numbers of NSFail testcases
 function update_test_status() {
-    cycle_num="$1"
-    NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
-    TotalExecuted=$(get_test_case_count)
-    echo "NSFailCount=$NSFailCount" >/tmp/last
-    echo "TotalExecuted=$TotalExecuted" >>/tmp/last
+    cycle_num="${1}"
+    suite="${2}"
+    TMP_COUNT_FILE="/tmp/last"
+    
+    if [ "${suite}" == "Performance_Cps" ]; then
+        NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
+	TotalExecuted=$(get_test_case_count)
+	echo "NSFailCount=$NSFailCount" >${TMP_COUNT_FILE}
+	echo "TotalExecuted=$TotalExecuted" >>${TMP_COUNT_FILE}
+	    
+	export NSFailCount
+	export TotalExecuted 
+    else
+        fail=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
+	total=$(get_test_case_count)
+        NSFailCount=$((fail + NSFailCount))
+	TotalExecuted=$((total + TotalExecuted))
+        sed -i "s/NSFailCount.*/NSFailCount=${NSFailCount}/g" ${TMP_COUNT_FILE}
+        sed -i "s/TotalExecuted.*/TotalExecuted=${TotalExecuted}/g" ${TMP_COUNT_FILE}
+    fi
 }
 
 
@@ -156,7 +171,7 @@ function main() {
     
     # Check cycle summary report file and append total test run executed
     # Check for netstorm failed cases and update the count
-    update_test_status "${TSR_DIR}"
+    update_test_status "${TSR_DIR}" "${testSuite}"
 
     # Parse the txt file and create results in xml format- NEW
     ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)

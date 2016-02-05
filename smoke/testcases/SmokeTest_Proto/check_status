@@ -63,6 +63,7 @@ function get_pop3_test_values(){
 function get_dns_test_values(){
    Msg_Log_Debug=$(grep "rdata type" ${DEBUG_LOG} | head -1)
    Msg_Log_Debug_Count=$(grep -c "rdata type" ${DEBUG_LOG}) 
+   debug_log "DNS Type Message=${Msg_Log_Debug};DNS Message Count=${Msg_Log_Debug_Count}"
 }
 
 

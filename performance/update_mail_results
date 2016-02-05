@@ -21,35 +21,55 @@ function get_metrics(){
 function get_pct_change() {
     baseline="$1"
     current="$2"
-    echo $(python -c "print '%3.3f' %((float($current - $baseline) / $current) * 100)")
+    
+    if [ "${current}" == "NA" ];then
+        echo "NA"
+    else    
+        echo $(python -c "print '%3.3f' %((float($current - $baseline) / $current) * 100)")
+    fi
 }
     
 function set_test_results(){ 
-    first_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -1))
-    second_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -2 |head -1))
-    total=0;passed=0;failed=0
-    ATTACHMENTS=( "$first_attachment" "$second_attachment" )
+    total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+    nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+    
+    if [ "${total}" != "${nsfail}" ];then
+	first_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -1))
+	second_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -2 |head -1))
+	total=0;passed=0;failed=0
+	ATTACHMENTS=( "$first_attachment" "$second_attachment" )
 
-    # TODO
-    # Check xml file for netstorm fail cases
-    # This is to ensure all tests ran;status 
-    # has been checked;if some tests has been
-    # failed due to NetStormFail; reporting need 
-    # to be done accordingly
-    for attachment in ${ATTACHMENTS[*]}; do
-        total=$(($total + $(get_metrics $PERF_RESULT_FILES/$attachment "total")))
-        failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
-        passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
-    done 
-    statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
-    cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
-    hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
-    throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
+	# TODO
+	# Check xml file for netstorm fail cases
+	# This is to ensure all tests ran;status 
+	# has been checked;if some tests has been
+	# failed due to NetStormFail; reporting need 
+	# to be done accordingly
+	for attachment in ${ATTACHMENTS[*]}; do
+	    total=$(($total + $(get_metrics $PERF_RESULT_FILES/$attachment "total")))
+	    failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
+	    passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
+	done 
+	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+	cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
+	hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
+	throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
 
-    if [ $total -eq $passed ];then
-        STATUS=Successful
+	if [ $total -eq $passed ];then
+	    STATUS=Successful
+	else
+	    STATUS=Failed
+	fi
     else
-	STATUS=Failed
+        STATUS="Failed"
+        total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+        nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+        failed=0
+        passed=0
+	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+	cps="NA"
+	hps="NA"
+	throughput="NA"
     fi
 }
 
@@ -172,10 +192,10 @@ function set_up_email(){
 </html>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
     echo "curr.release = $version" >${MAIL_PROP_FILE}
     echo "curr.build = $build" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
-    #echo "configured.mail.list.to = niraj.panda@cavisson.com" >>mail.properties
-    #echo "configured.mail.list.cc = ankur.srivastava@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.to = niraj.panda@cavisson.com" >>mail.properties
+    echo "configured.mail.list.cc = dl-qa-auto@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "perf.results.dir = $PERF_RESULT_FILES" >>${MAIL_PROP_FILE}
