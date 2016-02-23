@@ -175,7 +175,8 @@
               cclist="${configured.mail.list.cc}" 
               messageMimeType="text/html" 
               subject="Performance: NSCore ${curr.release} B${curr.build} - Started" 
-              messagefile="${startup.mail.file}">
+              messagefile="${startup.mail.file}"
+              failonerror="false">
 	    <from address="automation@cavisson.com"/>
         </mail>
     
@@ -195,7 +196,14 @@
            depends="update-results-properties"
            description="send automation results"> 
        <property file="mail.properties"/>
-       <mail mailhost="websrv.cavisson.com" mailport="587" tolist="${configured.mail.list.to}" cclist="${configured.mail.list.cc}" messageMimeType="text/html" subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" messagefile="${mail.result.file}">
+       <mail mailhost="websrv.cavisson.com" 
+             mailport="587" 
+             tolist="${configured.mail.list.to}" 
+             cclist="${configured.mail.list.cc}" 
+             messageMimeType="text/html" 
+             subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+             messagefile="${mail.result.file}"
+             failonerror="false">
            <from address="automation@cavisson.com"/>   		   
            <attachments> <fileset dir="${perf.results.dir}">
                <include name="${first.attachment}"/>
@@ -232,7 +240,8 @@
               cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com" 
               messageMimeType="text/html" 
               subject="[NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
-              messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html">
+              messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html"
+              failonerror="false">
              <from address="automation@cavisson.com"/>   		   
        </mail>	       
    

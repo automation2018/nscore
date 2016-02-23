@@ -119,7 +119,8 @@
               cclist="${configured.mail.list.cc}"
               messageMimeType="text/html"
               subject="Regression: NSCore ${curr.release} B${curr.build} - Started"
-              messagefile="${startup.mail.file}">
+              messagefile="${startup.mail.file}"
+              failonerror="false">
 	    <from address="automation@cavisson.com"/>
         </mail>
     </target>
@@ -144,7 +145,8 @@
              cclist="${configured.mail.list.cc}" 
              messageMimeType="text/html" 
              subject="Regression: NSCore ${curr.release} B${curr.build} - ${buil.status.header}"
-             messagefile="${mail.result.file}">
+             messagefile="${mail.result.file}"
+             failonerror="false">
            <from address="automation@cavisson.com"/>   		   
            <attachments> 
                <fileset dir="${reg.results.dir}">
