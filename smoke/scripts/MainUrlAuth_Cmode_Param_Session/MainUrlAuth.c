@@ -14,14 +14,14 @@
 void MainUrlAuth()
 {
     ns_web_url ("ntlm_html",
-        "URL=%Url://10.10.30.21:8802/BasicDigest/Basic.html",
+        "URL=%Url://10.10.30.38:8011/BasicDigest/Basic.html",
         "HTTPAuthUserName=%Username",
         "HTTPAuthPassword=%Password"
 
 );
  
    ns_web_url ("index_html",
-        "URL=http://10.10.30.21:8802/BasicDigest/flower.html", 
+        "URL=http://10.10.30.38:8011/BasicDigest/flower.html", 
         "HTTPAuthUserName={Username}",
         "HTTPAuthPassword={Password}",
 
@@ -29,7 +29,7 @@ void MainUrlAuth()
 
          ns_page_think_time(0);
    ns_web_url ("ntlm_html1",
-        "URL=http://10.10.30.21:8802/BasicDigest/Basic.html",
+        "URL=http://10.10.30.38:8011/BasicDigest/Basic.html",
         "HTTPAuthUserName={Username}",
         "HTTPAuthPassword={Password}",
     
