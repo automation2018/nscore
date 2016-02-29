@@ -2,21 +2,23 @@
 
 source $NS_WDIR/lib/automation_util
 T_NAME=$(get_tname)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/hpd_tours/flow.c"
+
 
 function main(){
     case $(get_tname) in
-        "SMOKE-017-001") handale_inline_delay_case ;;
-        "SMOKE-017-002") handale_inline_delay_case ;;
-        "SMOKE-017-003") handale_inline_delay_case ;;
-        "SMOKE-017-004") handale_inline_delay_case ;;
-        "SMOKE-017-005") handale_inline_delay_case ;;
-        "SMOKE-017-006") handale_inline_delay_case ;;
-        "SMOKE-017-007") handale_inline_delay_case ;;
-        "SMOKE-017-008") handale_inline_delay_case ;;
-        "SMOKE-017-009") handale_inline_delay_case ;;
-        "SMOKE-017-010") handale_inline_delay_case ;;
-        "SMOKE-017-011") handale_inline_delay_case ;;
-        "SMOKE-017-012") handale_inline_delay_case ;;
+        "SMOKE-017-001") handale_inline_delay_1_case ;;
+        "SMOKE-017-002") handale_inline_delay_2_case ;;
+        "SMOKE-017-003") handale_inline_delay_3_case ;;
+        "SMOKE-017-004") handale_inline_delay_4_case ;;
+        "SMOKE-017-005") handale_inline_delay_5_case ;;
+        "SMOKE-017-006") handale_inline_delay_6_case ;;
+        "SMOKE-017-007") handale_inline_delay_7_case ;;
+        "SMOKE-017-008") handale_inline_delay_8_case ;;
+        "SMOKE-017-009") handale_inline_delay_9_case ;;
+        "SMOKE-017-010") handale_inline_delay_10_case ;;
+        "SMOKE-017-011") handale_inline_delay_11_case ;;
+        "SMOKE-017-012") handale_inline_delay_12_case ;;
         *) handle_unknown_case ;;
         ?) handle_unknown_case ;;
     esac
@@ -27,18 +29,53 @@ function handle_unknown_case(){
     log_status_and_exit_ex "FAIL" "Testcase not found"
 }
 
-function handale_inline_delay_case(){
+
+function count_url(){
+    total_url=$(grep "URL=http" ${FLOW_FILE} | wc -l)
+    main_url=$(grep "ns_web_url" ${FLOW_FILE} | wc -l)
+    inline_url=$((total_url - 2 * main_url))    
+}
+
+
+function handale_inline_delay_1_case(){
     debug_log "T_NAME=${T_NAME};TR=${T_RUN_ID}"
-    progress_time=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | egrep -o '[0-9:]+' | tail -1)
-    debug_log "progress_time=${progress_time}"
+    actual_time_1=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | cut -d' ' -f6 | awk -F: '{print (($1 * 3600) + ($2 * 60) + $3) * 1000 }' )
     
-    if [ "${progress_time}" == "00:00:12" ]; then
+    count_url
+    debug_log "total url=${total_url};main url =${main_url}; inline=${inline_url}"
+    min_1=$((inline_url*3000))
+    max_1=$((min+7000))
+    debug_log "actual_time=${actual_time_1}"
+    
+    if [[ $actual_time_1 -ge $min_1 && $actual_time_1 -le $max_1 ]];then  
+        log_status_and_exit_ex "PASS" "inline delay case has been verified success"
+    else
+        log_status_and_exit_ex "FAIL" "inline delay case has been verified fail"
+    fi
+
+    
+}
+
+function handale_inline_delay_2_case(){
+    debug_log "T_NAME=${T_NAME};TR=${T_RUN_ID}"
+    actual_time_2=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | cut -d' ' -f6 | awk -F: '{print (($1 * 3600) + ($2 * 60) + $3) * 1000 }' )
+
+    count_url
+    debug_log "total url=${total_url};main url =${main_url}; inline=${inline_url}"
+    min_2=$((inline_url*1000))
+    max_2=$((inline_url*4000))
+    max_2_margin=$((max+7000))
+    debug_log "actual_time=${actual_time_2}"
+
+    if [[ $actual_time_2 -ge $min_2 && $actual_time_2 -le $max_2_margin ]];then
         log_status_and_exit_ex "PASS" "inline delay case has been verified success"
     else
         log_status_and_exit_ex "FAIL" "inline delay case has been verified fail"
     fi
 }
 
+
 main
+
 
 exit 0

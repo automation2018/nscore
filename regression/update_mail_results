@@ -51,7 +51,7 @@ function set_test_results(){
 
 function check_and_set_td(){
   if [ $failed -gt 0 ]; then
-    echo "<td style='color: red'><a href='http://10.10.30.37:5000/reports/graphs/NetStorm/regression/${version}/B${build}'>$failed</a></td>"
+    echo "<td style='color: red'><a href='http://10.10.30.37/reports/graphs/NetStorm/regression/${version}/B${build}'>$failed</a></td>"
   else
     echo "<td>$failed</td>"
   fi
@@ -183,7 +183,7 @@ function set_up_email(){
     <br>
     $(get_fail_test_data)
    <br><br>
-    <a href='http://10.10.30.37:5000/reports/graphs/NetStorm/regression/${version}/B${build}' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
+    <a href='http://10.10.30.37/reports/graphs/NetStorm/regression/${version}/B${build}' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
    <br><br>
    <div class='signature'>
       Automation Team,<br>Cavisson Systems Inc

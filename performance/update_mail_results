@@ -66,7 +66,7 @@ function set_test_results(){
         nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
         failed=0
         passed=0
-	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), NSFails: $nsfail test(s), Total: $total test(s)")
 	cps="NA"
 	hps="NA"
 	throughput="NA"
@@ -182,7 +182,7 @@ function set_up_email(){
     </table>
     <br>
     <h5 class='lead'>$statusbody</h5>
-    <a href='http://10.10.30.37:5000/'>View Online Automation Reports</a>
+    <a href='http://10.10.30.37'>View Online Automation Reports</a>
     <hr/>
     <br><br>
     Automation Team,
