@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="0" passed="5" total="5">
+        <testcase id="REG-007-002">
+            <testrun>22204</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampUp0 phase;13  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-003">
+            <testrun>22205</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-004">
+            <testrun>22206</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-005">
+            <testrun>22207</testrun>
+            <status>pass</status>
+            <description>RTC is being applied for RampDown0 phase;87  have been found in current situation as RTC being applied</description>
+        </testcase>
+        <testcase id="REG-007-006">
+            <testrun>22208</testrun>
+            <status>pass</status>
+            <description>RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC</description>
+        </testcase>
+    </testsuite>
+</testsuites>

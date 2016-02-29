@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<project name="Change httpd config for Ntlm Smoke case" basedir="." default="re-start">
+  
+    <!-- Declaring properties values-->
+    <property name="httpd.conf.ns" value="/home/automation/workbench/automation/nscore/conf/httpd_Ntlm_Smoke.conf"/>
+    <property name="httpd.conf.no" value="/etc/apache2/httpd.conf"/>
+    <property name="remote.user" value="root"/>
+    <property name="remote.password" value="abeona"/>
+    <property name="remote.host" value="10.10.30.38"/>
+    <property name="command.httpd.restart" value="service apache2 restart"/>
+    <property name="command.httpd.status" value="service apache2 status"/>
+   
+ 
+    <!-- Task: Copies httpd.conf file to set enviornment for auth_basic test execution-->
+    <target name="copy-httpd-file" 
+            description="Copies httpd.conf file to set enviornment for auth_basic test execution">
+        <scp file="${httpd.conf.ns}" 
+             todir="${remote.user}@${remote.host}:${httpd.conf.no}"
+             password="${remote.password}" 
+             trust="true"/>
+    </target>
+
+
+    <!-- Task: Restarts httpd server and checks status-->
+    <target name="re-start"
+            depends="copy-httpd-file"
+            description="Restarts httpd server and checks status">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}"
+                 password="${remote.password}"
+                 command="${command.httpd.restart}"
+                 trust="true"/>
+        <sleep seconds="10"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}"
+                 command="${command.httpd.status}" 
+                 trust="true" 
+                 outputproperty="httpd.process"
+                 failonerror="false"/>
+        <fail message="HTTPD is not running please see httpd_error.log first" unless="httpd.process"/>
+    </target>
+
+</project>

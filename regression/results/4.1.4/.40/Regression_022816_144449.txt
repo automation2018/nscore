@@ -1,0 +1,9 @@
+TestID, TestRun, Release_Id, Build_Id, Component_Id, Status, Catagory, Description
+REG-001-001,22191,4.1.4,40,NetStorm,pass,2,Regression testcase for FCU having RampUp in Step Mode test Passed
+REG-002-001,22192,4.1.4,40,NetStorm,pass,2,Regression testcase for FCU having RampUp in Rate Mode test Passed
+REG-003-001,22193,4.1.4,40,NetStorm,pass,2,Regression testcase for FSR Mode 1 test Passed
+REG-004-001,22194,4.1.4,40,NetStorm,fail,2,Regression test for FSR  Mode 2 failed;because difference of  baseline and current test metric Running_User_Change_Pct = 8 is more than expected difference 5%
+REG-005-001,22195,4.1.4,40,NetStorm,pass,2,Regression testcase for Replay Access Log test Passed
+REG-006-001,22196,4.1.4,40,NetStorm,fail,2,Regression testcase for NS supported protocols such as POP3 SMTP & FTP test Failed;because difference of  baseline and current test metric Eth_Send_throuput_Change = 7 is more than expected difference 5%
+
+Failed: 2 test(s), Passed: 4 test(s), Total: 6 test(s)
