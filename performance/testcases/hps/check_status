@@ -9,9 +9,12 @@ T_NAME=$(get_tname)
 Component=$(component_name)
 
 function BaseLine(){
-    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/072015_140422/2171/hps_results.csv"
+    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/030716_103416/3205/hps_results.csv"
     echo  "Test description name is=$T_NAME"
     B_T_RUN_ID=`grep -w $T_NAME $BaseLine_Tsr_Directory_CPSFile |cut -d ',' -f2` 
+    
+    debug_log "BaselineTR for HPS = ${B_T_RUN_ID}" 
+    
     CPS_MAX_VALUE=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     HPS_MAX_VALUE=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     Throughput_Rx=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
@@ -43,8 +46,10 @@ function Compare_Results(){
     Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
     echo "Conn_Perc_Change is =$Conn_Perc_Change"
     if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then	
+        debug_log "going to pass testcase"	
 	log_status_and_exit_ex "PASS" "$T_NAME Passed"
     else
+        debug_log "going to fail testcase"	
 	log_status_and_exit_ex "FAIL" "$T_NAME Failed"
     fi
 }
