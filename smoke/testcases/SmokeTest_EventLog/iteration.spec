@@ -22,5 +22,8 @@ SMOKE-016-008|Smoke_Event_CvFail|1|TIME 00:00:30|EVENT_LOG Major 1|EVENT_DEFINIT
 ##EVENT_LOG FILTER ALL EVENTS NO EVENTS WILL BE LOGGED : MODE 2
 SMOKE-016-009|Smoke_Event_4XX|1|TIME 00:00:30|EVENT_LOG Information 2|EVENT_DEFINITION_FILE 4xxError.dat|#|#|#|#
 
-#TODO
-##EVENT_LOG MISCELENIOUS TESTCASES
+# TODO
+# EVENT_LOG MISCELENIOUS TESTCASES
+# 5xx event url need to be updated
+# Add RESPONSE_LINE HTTP/1.1 500 Internal Server Error
+# In the URL directory structure $HPD_ROOT/control/default/<path-to-url>
