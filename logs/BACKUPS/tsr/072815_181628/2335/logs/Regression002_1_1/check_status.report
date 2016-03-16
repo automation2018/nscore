@@ -1,0 +1,130 @@
+Testname is =REGRESSION002
+test run number is=6513
+Avg_Vuser_Running User in BaseLine is as follows::1032.730
+Avg_Vuser_Active User in BaseLine is::1.790
+Avg_Vuser_Thinking User in BaseLine is::257.570
+Avg_Vuser_Waiting User in Baseline is::773.514
+Avg_Number_Of_Connection in baseline is::701.692
+Avg_Tcp_Send_throuput for Baseline is::7886.850
+Avg_Tcp_Rcv_throuput for Baseline is::54451.271
+Avg_Eth_Send_throuput for Baseline is::13136.573
+Avg_Eth_Rcv_throuput for Baseline is::60774.563
+Avg_Tcp_Open_Conn_Per_Secd for Baseline is::566.611
+ Avg_Tcp_Total_Open_Conn for Baseline is::522415.000
+Avg_Tcp_Close_Conn_Per_Secd for Baseline is::566.619
+Avg_Tcp_Total_Close_Conn for Baseline is::522423.000
+Avg_SSL_Total_New for Baseline is::37773.000
+Avg_SSL_Total_Reuse_Attempted for base line is::37773.000
+Avg_Res_Time for Baseline is::0.001
+Avg_Total_Request_Completed for Baseline is::1651533.000
+Avg_Total_Request_SucessFul for Baseline is::1556629.000
+Avg_Transaction_Response_Time for Baseline is::0.101
+Avg_Page_Response_Time for Baseline is::0.002
+********************** Data For Current TestRun*********************
+Avg Running User for current test run is =1033.869
+Avg Active User for current test run is =0.402
+Avg Thinking User for current test run is =260.771
+Avg Waiting User for current test run is =772.823
+Avg Number_Of_Connection_Current for current test run is =707.980
+Avg_Tcp_Send_throuput_Current for current test run is =10179.276
+Avg_Tcp_Rcv_throuput_Current for current test run is =54046.695
+Avg_Eth_Send_throuput_Current for current test run is =15366.949
+Avg_Eth_Rcv_throuput_Current for current test run is =59953.655
+Avg_Tcp_Open_Conn_Per_Secd_Current for current test run is =564.045
+Avg_Tcp_Total_Open_Conn_Current for current test run is =519485.000
+ Avg_Tcp_Close_Conn_Per_Secd_Current for current test run is =564.047
+Avg_Tcp_Total_Close_Conn_Current for current test run is =519487.000
+Avg_SSL_Total_New_Current for current test run is =19105.000
+Avg_SSL_Total_Reuse_Attempted_Current for current test run is =38207.000
+Avg_Res_Time_Current for current test run is =0.000
+Avg_Total_Request_Completed_Current for current test run is =1638835.000
+Avg_Total_Request_SucessFul_Current for current test run is =1543497.000
+Avg_Transaction_Response_Time_Current for current test run is =0.100
+Avg_Page_Response_Time_Current for current test run is =0.001
+*********************Select Compare Result********************
+Running user change before making it int=-0.11029
+Running user percentage change after making it as int=-0
+Active user change before making it int=77.5419
+Active user percentage change after making it as int=78
+Thinking user change before making it int=-1.24277
+Thinking user percentage change after making it as int=-1
+Waiting user change before making it int=0.0893326
+Waiting user percentage change after making it as int=0
+Connection change before making it int=-0.89612
+Connection_Change_Pct change after making it as int=-1
+Tcp_Send_throuput_Change before making it int=-29.0664
+Tcp_Send_throuput_Change change after making it as int=-29
+Tcp_Rcv_throuput_Change before making it int=0.743006
+Tcp_Rcv_throuput_Change after making it as int=1
+Eth_Send_throuput_Change before making it int=-16.9784
+Eth_Send_throuput_Change after making it as int=-17
+Eth_Rcv_throuput_Change before making it int=1.35074
+Eth_Rcv_throuput_Change change after making it as int=1
+Tcp_Open_Conn_Per_Secd_Change before making it int=0.452868
+Tcp_Open_Conn_Per_Secd_Change percentage change after making it as int=0
+Tcp_Total_Open_Conn_Change before making it int=0.560857
+Tcp_Total_Open_Conn_Change percentage change after making it as int=1
+Tcp_Close_Conn_Per_Secd_Change before making it int=0.453921
+Tcp_Close_Conn_Per_Secd_Change percentage change after making it as int=0
+Tcp_Total_Close_Conn_Change before making it int=0.561997
+Tcp_Total_Close_Conn_Change percentage change after making it as int=1
+SSL_Total_New_Change before making it int=49.4215
+SSL_Total_New_Change percentage change after making it as int=49
+SSL_Total_Reuse_Attempted_Change before making it int=-1.14897
+SSL_Total_Reuse_Attempted_Change percentage change after making it as int=-1
+Res_Time_Change before making it int=0.1
+Res_Time_Change percentage change after making it as int=0
+Total_Request_Completed_Change before making it int=0.768861
+Total_Request_Completed_Change percentage change after making it as int=1
+Total_Request_SucessFul_Change before making it int=0.843618
+Total_Request_SucessFul_Change percentage change after making it as int=1
+Transaction_Response_Time_Change before making it int=0.1
+Transaction_Response_Time_Change percentage change after making it as int=0
+Page_Response_Time_Change before making it int=0.1
+Response time change is=0
+Total Number of Arg are=20
+Executing count is=0
+
+value is as =Running_User_Change_Pct
+Executing count is=1
+
+value is as =Active_User_Change_Pct
+Value inside failure loop is=Active_User_Change_Pct
+Executing count is=2
+
+value is as =Thinking_User_Change_Pct
+Executing count is=3
+
+value is as =Waiting_User_Change_Pct
+Executing count is=4
+
+value is as =Connection_Change_Pct
+Executing count is=5
+
+value is as =Tcp_Send_throuput_Change
+Executing count is=6
+
+value is as =Tcp_Rcv_throuput_Change
+Executing count is=7
+
+value is as =Eth_Send_throuput_Change
+Executing count is=8
+
+value is as =Eth_Rcv_throuput_Change
+Executing count is=9
+
+value is as =Tcp_Open_Conn_Per_Secd_Change
+Executing count is=10
+
+value is as =Tcp_Total_Open_Conn_Change
+Executing count is=11
+
+value is as =Tcp_Close_Conn_Per_Secd_Change
+Executing count is=12
+
+value is as =Tcp_Total_Close_Conn_Change
+Executing count is=13
+
+value is as =SSL_Total_New_Change
+Value inside failure loop is=SSL_Total_New_Change
+check_status failed

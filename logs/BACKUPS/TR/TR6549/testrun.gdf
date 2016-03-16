@@ -1,0 +1,490 @@
+Info|3.1|24|112|6549|5112|10000|07/28/15  19:23:54
+Group|Vuser Info|1|scalar|7|0|Test Metrics|-|Virtual Users information. 
+
+Graph|Running Vusers|1|scalar|sample|112|-|0|AS|-1|-1|NA|NA|Number of virtual users that executed virtual user scripts, and their status, during each second of a load test. This graph is useful for determining the virtual user load on your server at any given moment.    
+Graph|Active Vusers|2|scalar|sample|120|-|0|AS|-1|-1|NA|NA|Number of virtual users which are currently active.     
+Graph|Thinking Vusers|3|scalar|sample|128|-|0|AS|-1|-1|NA|NA|Number of virtual users which are currently in thinking mode.  
+Graph|Waiting Vusers|4|scalar|sample|136|-|0|AS|-1|-1|NA|NA|Number of virtual users which are currently in waiting mode.
+Graph|Idling Vusers|5|scalar|sample|144|-|0|AS|-1|-1|NA|NA|Number of virtual users which are currently idle.     
+Graph|Number Of Connections|6|scalar|sample|152|-|0|AS|-1|-1|NA|NA|Total number of connections made by all virtual users.  
+Graph|SyncPoint Vusers|7|scalar|sample|160|-|0|AS|-1|-1|NA|NA|Total number of virtual users in syncpoint.  
+
+Group|Network Throughput|2|scalar|26|0|Test Metrics|-|Network, connections and SSL information  
+
+Graph|TCP Send Throughput (Kbps)|1|scalar|sample|168|KBPS|0|AS|-1|-1|NA|NA|TCP data send thoughput in kilo bits per second (kbps) in the sampling period.
+Graph|TCP Total Send Bytes|14|scalar|cumulative|176|-|0|A|-1|-1|NA|NA|Total number of TCP bytes send since start of the test.
+Graph|TCP Receive Throughput (Kbps)|2|scalar|sample|184|KBPS|0|AS|-1|-1|NA|NA|Tcp data received per second in kilo bits per second (kbps) in the sampling period.
+Graph|TCP Total Receive Bytes|15|scalar|cumulative|192|-|0|A|-1|-1|NA|NA|Total TCP bytes received since start of the test.
+Graph|Ethernet Send Throughput (Kbps)|3|scalar|sample|200|KBPS|0|AS|-1|-1|NA|NA|Ethernet data send thoughput in kilo bits per second (kbps) in the sampling period.
+Graph|Total Ethernet Send Bytes|16|scalar|cumulative|208|-|0|A|-1|-1|NA|NA|Total number of Ethernet bytes send since start of the test.
+Graph|Ethernet Receive Throughput (Kbps)|4|scalar|sample|216|KBPS|0|AS|-1|-1|NA|NA|Ethernet data received per second in kilo bits per second (kbps) in the sampling period. 
+Graph|Total Ethernet Receive Bytes|17|scalar|cumulative|224|-|0|AS|-1|-1|NA|NA|Total Ethernet bytes received since start of the test. 
+Graph|Ethernet Send Packets/Sec|5|scalar|rate|232|-|0|A|-1|-1|NA|NA|Ethernet packets send per second in the sampling period.
+Graph|Ethernet Total Send Packets|18|scalar|cumulative|240|-|0|A|-1|-1|NA|NA|Total number of Ethernet packets send since start of the test.
+Graph|Ethernet Receive Packets/Sec|6|scalar|rate|248|-|0|A|-1|-1|NA|NA|Ethernet packets received per second in the sampling period.
+Graph|Ethernet Total Receive Packets|19|scalar|cumulative|256|-|0|A|-1|-1|NA|NA|Total number of Ethernet packets received since start of the test.
+Graph|TCP Connections Open/Sec|7|scalar|rate|264|-|0|AS|-1|-1|NA|NA|Number of TCP  connections opened per second in the sampling period.
+Graph|TCP Total Connections Open|20|scalar|cumulative|272|-|0|AS|-1|-1|NA|NA|Total number of open TCP connections since start of the test.
+Graph|TCP Connections Close/Sec|8|scalar|rate|280|-|0|AS|-1|-1|NA|NA|Number of closed TCP connections per second in the sampling period.
+Graph|TCP Total Connections Close|21|scalar|cumulative|288|-|0|AS|-1|-1|NA|NA|Total number of closed TCP connections since start of the test.
+Graph|SSL New Sessions/Sec|9|scalar|rate|296|PS|0|AS|-1|-1|NA|NA|Number of new SSL sessions created per second in the sampling period.
+Graph|SSL Total New Sessions|22|scalar|cumulative|304|-|0|A|-1|-1|NA|NA|Total number of new SSL connections created since start of the test.
+Graph|SSL Reused Sessions/Sec|10|scalar|rate|312|PS|0|AS|-1|-1|NA|NA|Number of reused SSL connections per second in the sampling period.
+Graph|SSL Total Reused Sessions|23|scalar|cumulative|320|-|0|A|-1|-1|NA|NA|Total number of reused SSL connections since start of the test.
+Graph|SSL Reuse attempted/Sec|11|scalar|rate|328|PS|0|AS|-1|-1|NA|NA|Number of attempted reuse SSL connections in the sampling period.
+Graph|SSL Total Reuse attempted|24|scalar|cumulative|336|-|0|A|-1|-1|NA|NA|Total number of attempted reused SSL connection since start of the test.
+Graph|SSL Write Failures/Sec|12|scalar|rate|344|PS|0|AS|-1|-1|NA|NA|Number of SSL write (send) failures per second in the sampling period.
+Graph|SSL Handshake Failures/Sec|13|scalar|rate|352|PS|0|AS|-1|-1|NA|NA|Number of SSL connections which are failed to handshake per second in the sampling period.
+Graph|HTTP Body receive throughput (Kbps)|25|scalar|rate|360|KBPS|0|AS|-1|-1|NA|NA|HTTP Body data received per second in kilo bits per second (kbps) in the sampling period.
+Graph|HTTP Body Total receive bytes|26|scalar|cumulative|368|-|0|A|-1|-1|NA|NA|Total HTTP Body bytes received since start of the test.
+
+Group|HTTP Requests|3|scalar|6|0|Test Metrics|-|HTTP information.
+
+Graph|Requests Sent/Sec|6|scalar|rate|376|PS|0|A|-1|-1|NA|NA|Number of URL requests sent per second.
+Graph|Requests Completed/Sec|1|scalar|rate|384|PS|0|AS|-1|-1|NA|NA|Includes URL hits for which a response was received from server. Includes both sucess and error responses.
+Graph|Requests Successful/Sec|2|scalar|rate|392|PS|0|AS|-1|-1|NA|NA|Only includes URL hits for which a successful response was received.
+Graph|Average Response Time (Secs)|3|scalar|times|400|SEC|0|AS|1|32|NA|NA|URL information.
+Graph|Requests Completed|4|scalar|cumulative|432|-|0|A|-1|-1|NA|NA|Total number of URL hits made on the web server by virtual users since start of the test.
+Graph|Requests Successful|5|scalar|cumulative|440|-|0|A|-1|-1|NA|NA|Total number of successful URL hits made on the web server by virtual users since start of the test.
+
+Group|HTTP Response Codes|25|scalar|41|0|Test Metrics|-|HTTP response codes
+
+Graph|100 Continue/Sec|1|scalar|rate|448|PS|0|A|-1|-1|NA|NA|Continue
+Graph|101 Switching Protocols/Sec|2|scalar|rate|456|PS|0|A|-1|-1|NA|NA|Switching Protocols
+Graph|200 OK/Sec|3|scalar|rate|464|PS|0|AS|-1|-1|NA|NA|OK
+Graph|201 Created/Sec|4|scalar|rate|472|PS|0|A|-1|-1|NA|NA|Created
+Graph|202 Accepted/Sec|5|scalar|rate|480|PS|0|A|-1|-1|NA|NA|Accepted
+Graph|203 Non-Authoritative Information/Sec|6|scalar|rate|488|PS|0|A|-1|-1|NA|NA|Non-Authoritative Information
+Graph|204 No Content/Sec|7|scalar|rate|496|PS|0|A|-1|-1|NA|NA|No Content
+Graph|205 Reset Content/Sec|8|scalar|rate|504|PS|0|A|-1|-1|NA|NA|Reset Content
+Graph|206 Partial Content/Sec|9|scalar|rate|512|PS|0|A|-1|-1|NA|NA|Partial Content
+Graph|300 Multiple Choices/Sec|10|scalar|rate|520|PS|0|A|-1|-1|NA|NA|Multiple Choices
+Graph|301 Moved Permanently/Sec|11|scalar|rate|528|PS|0|AS|-1|-1|NA|NA|Moved Permanently
+Graph|302 Found/Sec|12|scalar|rate|536|PS|0|AS|-1|-1|NA|NA|Found
+Graph|303 See Other/Sec|13|scalar|rate|544|PS|0|A|-1|-1|NA|NA|See Other
+Graph|304 Not Modified/Sec|14|scalar|rate|552|PS|0|AS|-1|-1|NA|NA|Not Modified
+Graph|305 Use Proxy/Sec|15|scalar|rate|560|PS|0|AS|-1|-1|NA|NA|Use Proxy
+Graph|306 Switch Proxy/Sec|16|scalar|rate|568|PS|0|A|-1|-1|NA|NA|The 306 status code was used in a previous version of the specification, but is no longer used and currently the code is reserved
+Graph|307 Temporary Redirect/Sec|17|scalar|rate|576|PS|0|AS|-1|-1|NA|NA|Temporary Redirect
+Graph|400 Bad Request/Sec|18|scalar|rate|584|PS|0|AS|-1|-1|NA|NA|Bad Request
+Graph|401 Unauthorized/Sec|19|scalar|rate|592|PS|0|AS|-1|-1|NA|NA|Unauthorized
+Graph|402 Payment Required/Sec|20|scalar|rate|600|PS|0|A|-1|-1|NA|NA|Payment Required
+Graph|403 Forbidden/Sec|21|scalar|rate|608|PS|0|A|-1|-1|NA|NA|Forbidden
+Graph|404 Not Found/Sec|22|scalar|rate|616|PS|0|AS|-1|-1|NA|NA|Not Found
+Graph|405 Method Not Allowed/Sec|23|scalar|rate|624|PS|0|AS|-1|-1|NA|NA|Method Not Allowed
+Graph|406 Not Acceptable/Sec|24|scalar|rate|632|PS|0|AS|-1|-1|NA|NA|Not Acceptable
+Graph|407 Proxy Authentication Required/Sec|25|scalar|rate|640|PS|0|AS|-1|-1|NA|NA|Proxy Authentication Required
+Graph|408 Request Timeout/Sec|26|scalar|rate|648|PS|0|AS|-1|-1|NA|NA|Request Timeout
+Graph|409 Conflict/Sec|27|scalar|rate|656|PS|0|AS|-1|-1|NA|NA|Conflict
+Graph|410 Gone/Sec|28|scalar|rate|664|PS|0|A|-1|-1|NA|NA|Gone
+Graph|411 Length Required/Sec|29|scalar|rate|672|PS|0|A|-1|-1|NA|NA|Length Required
+Graph|412 Precondition Failed/Sec|30|scalar|rate|680|PS|0|A|-1|-1|NA|NA|Precondition Failed
+Graph|413 Request Entity Too Large/Sec|31|scalar|rate|688|PS|0|A|-1|-1|NA|NA|Request Entity Too Large
+Graph|414 Request-URI Too Long/Sec|32|scalar|rate|696|PS|0|A|-1|-1|NA|NA|Request-URI Too Long
+Graph|415 Unsupported Media Type/Sec|33|scalar|rate|704|PS|0|A|-1|-1|NA|NA|Unsupported Media Type
+Graph|416 Requested Range Not Satisfiable/Sec|34|scalar|rate|712|PS|0|A|-1|-1|NA|NA|Requested Range Not Satisfiable
+Graph|417 Expectation Failed/Sec|35|scalar|rate|720|PS|0|A|-1|-1|NA|NA|Expectation Failed
+Graph|500 Internal Server Error/Sec|36|scalar|rate|728|PS|0|AS|-1|-1|NA|NA|Internal Server Error
+Graph|501 Not Implemented/Sec|37|scalar|rate|736|PS|0|A|-1|-1|NA|NA|Not Implemented
+Graph|502 Bad Gateway/Sec|38|scalar|rate|744|PS|0|AS|-1|-1|NA|NA|Bad Gateway
+Graph|503 Service Unavailable/Sec|39|scalar|rate|752|PS|0|AS|-1|-1|NA|NA|Service Unavailable
+Graph|504 Gateway Timeout/Sec|40|scalar|rate|760|PS|0|AS|-1|-1|NA|NA|Gateway Timeout
+Graph|505 HTTP Version Not Supported/Sec|41|scalar|rate|768|PS|0|AS|-1|-1|NA|NA|HTTP Version Not Supported
+
+Group|Page Download|4|scalar|8|0|Test Metrics|-|Page download information
+
+Graph|Page Download Started/Second|9|scalar|rate|776|PS|0|AS|-1|-1|NA|NA|Number of pages started downloading from the server per second in the sampling period.
+Graph|Page Download Completed/Second|10|scalar|rate|784|PS|0|AS|-1|-1|NA|NA|Number of pages downloaded from the server per second in the sampling period.
+Graph|Success Page Responses/Second|11|scalar|rate|792|PS|0|AS|-1|-1|NA|NA|Number of success page responses from the server per second in the sampling period.
+Graph|Average Page Response Time (Secs)|3|scalar|times|800|SEC|0|AS|2|8040|NA|NA|Average page response time from the server in seconds in the sampling period. 
+Graph|Total Pages Completed|5|scalar|cumulative|832|-|0|A|-1|-1|NA|NA|Total number of Pages hits made on the web server by virtual users since start of the test.
+Graph|Total Pages Success|6|scalar|cumulative|840|-|0|A|-1|-1|NA|NA|Total number of success Pages hits made on the web server by virtual users since start of the test.
+Graph|Average Java Script processing Time (Secs)|7|scalar|times|848|-|0|AS|-1|-1|NA|NA|Average time taken by Java Script engine in seconds in the sampling period. 
+Graph|Average Page processing Time (Secs)|8|scalar|times|880|-|0|AS|-1|-1|NA|NA|Average time taken in page processing in seconds in the sampling period. 
+
+Group|Session|5|scalar|6|0|Test Metrics|-|Session information
+
+Graph|Sessions Started/Second|7|scalar|rate|912|PS|0|AS|-1|-1|NA|NA|Number of sessions started on server per second in the sampling period.
+Graph|Sessions Completed/Second|8|scalar|rate|920|PS|0|AS|-1|-1|NA|NA|Number of sessions on server per second in the sampling period.
+Graph|Successful Sessions/Second|9|scalar|rate|928|PS|0|AS|-1|-1|NA|NA|Number of successful sessions on server per second in the sampling period.
+Graph|Average Session Response Time (Secs)|3|scalar|times|936|SEC|0|AS|3|16048|NA|NA|Average session response time from the server in seconds in the sampling period.
+Graph|Total Session Completed|5|scalar|cumulative|968|-|0|A|-1|-1|NA|NA|Total number of Session Hits made on the web server.
+Graph|Total Session Success|6|scalar|cumulative|976|-|0|A|-1|-1|NA|NA|Total number of success Session hits made on the web server by virtual users since start of the test.
+
+Group|Transactions|6|scalar|6|0|Test Metrics|-|Transactions informations
+
+Graph|Transactions Started/Second|7|scalar|rate|984|PS|0|AS|-1|-1|NA|NA|Number of transactions started on server per second in the sampling period.
+Graph|Transactions Completed/Second|8|scalar|rate|992|PS|0|AS|-1|-1|NA|NA|Number of transactions on server per second in the sampling period.     
+Graph|Transactions Successful/Second|9|scalar|rate|1000|PS|0|AS|-1|-1|NA|NA|Number of successful transactions on server per second in the sampling period.    
+Graph|Average Transaction Response Time (Secs)|3|scalar|times|1008|SEC|0|AS|4|24056|NA|NA|Average transactions response time from the server in seconds in the sampling period.
+Graph|Transactions Completed|5|scalar|cumulative|1040|-|0|A|-1|-1|NA|NA|Total number of transaction hits made on the web server by virtual users since start of the test.
+Graph|Transactions Success|6|scalar|cumulative|1048|-|0|A|-1|-1|NA|NA|Total number of success transaction hits made on the web server by virtual users since start of the test.
+
+Group|HTTP Failures|7|scalar|2|0|Test Metrics|-|HTTP failure information
+
+Graph|HTTP Failures(All)/Sec|1|scalar|rate|1056|PS|0|AS|-1|-1|NA|NA|Number of failed HTTP responses for all type of errors during each second of scenario run. 
+Graph|HTTP Failures/Sec|2|vector|rate|1064|PS|26|AS|-1|-1|NA|NA|Number of failed HTTP responses for each and every individual error during each second of scenario run.
+MiscErr
+1xx
+2xx
+3xx
+4xx
+5xx
+PartialBody
+T.O
+ConFail
+ClickAway
+WriteFail
+SSLWriteFail
+SSLHshakeFail
+IncompleteExact
+NoRead
+PartialHdr
+BadBodyNoSize
+BadBodyChunked
+BadBodyConLen
+Reload
+Stopped
+BadResponse
+MailBoxErr
+MailBoxStorageErr
+AuthFail
+UseOnceDataOver
+
+Group|Page Failures|8|scalar|2|0|Test Metrics|-|Page failure information
+
+Graph|Page Failures(All)/Minute|1|scalar|rate|1272|PM|0|AS|-1|-1|NA|NA|Number of failed Page responses for all type of errors during each minute of scenario run. 
+Graph|Page Failures/Minute|2|vector|rate|1280|PM|31|A|-1|-1|NA|NA|Number of failed Page responses for each and every individual error during each minute of scenario run.
+MiscErr
+1xx
+2xx
+3xx
+4xx
+5xx
+PartialBody
+T.O
+ConFail
+ClickAway
+WriteFail
+SSLWriteFail
+SSLHshakeFail
+IncompleteExact
+NoRead
+PartialHdr
+BadBodyNoSize
+BadBodyChunked
+BadBodyConLen
+Reload
+Stopped
+BadResponse
+MailBoxErr
+MailBoxStorageErr
+AuthFail
+UseOnceDataOver
+UrlErr
+CVFail
+UnCompFail
+SizeTooSmall
+SizeTooBig
+
+Group|Session Failures|9|scalar|2|0|Test Metrics|-|Session failure information
+
+Graph|Sessions Failures(All)/Minute|1|scalar|rate|1528|PM|0|AS|-1|-1|NA|NA|Number of failed Sessions for all type of errors during each minute of scenario run. 
+Graph|Sessions Failures/Minute|2|vector|rate|1536|PM|15|A|-1|-1|NA|NA|Number of failed Sessions for each and every individual error during each minute of scenario run.
+MiscErr
+Stopped
+SsErr3
+SsErr4
+SsErr5
+SsErr6
+SsErr7
+SsErr8
+SsErr9
+SsErr10
+SsErr11
+SsErr12
+SsErr13
+SsErr14
+SsErr15
+
+Group|Transactions Failures|10|scalar|2|0|Test Metrics|-|Transactions failure information
+
+Graph|Transactions Failures(All)/Minute|1|scalar|rate|1656|PM|0|AS|-1|-1|NA|NA|Number of failed transactions for all type of errors during each minutes of scenario run. 
+Graph|Transactions Failures/Minute|2|vector|rate|1664|PM|63|AS|-1|-1|NA|NA|Number of failed transactions for each and every individual error during each second of scenario run.
+MiscErr
+1xx
+2xx
+3xx
+4xx
+5xx
+PartialBody
+T.O
+ConFail
+ClickAway
+WriteFail
+SSLWriteFail
+SSLHshakeFail
+IncompleteExact
+NoRead
+PartialHdr
+BadBodyNoSize
+BadBodyChunked
+BadBodyConLen
+Reload
+Stopped
+BadResponse
+MailBoxErr
+MailBoxStorageErr
+AuthFail
+UseOnceDataOver
+UrlErr
+CVFail
+UnCompFail
+SizeTooSmall
+SizeTooBig
+TxErr64
+TxErr65
+TxErr66
+TxErr67
+TxErr68
+TxErr69
+TxErr70
+TxErr71
+TxErr72
+TxErr73
+TxErr74
+TxErr75
+TxErr76
+TxErr77
+TxErr78
+TxErr79
+TxErr80
+TxErr81
+TxErr82
+TxErr83
+TxErr84
+TxErr85
+TxErr86
+TxErr87
+TxErr88
+TxErr89
+TxErr90
+TxErr91
+TxErr92
+TxErr93
+TxErr94
+TxErr95
+
+Group|Transaction Stats|102|vector|5|13|Test Metrics|NA|Transaction Stats
+
+static1K_page1_trans1
+hpd_page1_trans1
+hpd_page2_trans2
+hpd_page3_trans3
+hpd_page4_trans4
+hpd_page5_trans5
+hpd_page6_trans6
+hpd_page7_trans7
+hpd_ex_login
+hpd_ex_findflight
+hpd_ex_reservation
+hpd_ex_logout
+transfail_4xx
+Graph|Transaction Time (Sec)|1|scalar|timesStd|2168|SEC|0|AS|5|32064|NA|NA|Time taken for a transaction to complete
+Graph|Transaction Completed/Sec|2|scalar|rate|2208|-|0|AS|-1|-1|NA|NA|Number of transactions completed per second
+Graph|Transaction Successful/Sec|3|scalar|rate|2216|-|0|AS|-1|-1|NA|NA|Number of successful transactions per second
+Graph|Transaction Failures/Sec|4|scalar|rate|2224|-|0|AS|-1|-1|NA|NA|Number of failure transactions per second
+Graph|Transaction NetCache Hits (Pct)|5|scalar|sample|2232|-|0|AS|-1|-1|NA|NA|Percentage of transactions served from network cache based on main URL
+
+Group|lsof Stats|10181|vector|14|1|System Metrics|Tier>Server|lsof stats. When shell is executed with root privilege, open files by all processes are counted. But if shell is executed with non root privilege, then open file count may vary as user doesn't have privilege to access to specific user process.
+
+NSAppliance
+Graph|Total open files|1|scalar|sample|3104|-|0|NA|-1|-1|NA|NA|Total number of  open files.
+Graph|IPV4 type files|2|scalar|sample|3112|-|0|NA|-1|-1|NA|NA|Number of open IPv4 type files.
+Graph|IPV6 type files|3|scalar|sample|3120|-|0|NA|-1|-1|NA|NA|Number of open IPv6 type files.
+Graph|PIPE type files|4|scalar|sample|3128|-|0|NA|-1|-1|NA|NA|Number of open PIPE type files.
+Graph|FIFO type files|5|scalar|sample|3136|-|0|NA|-1|-1|NA|NA|Number of open FIFO type files.
+Graph|DIR type files|6|scalar|sample|3144|-|0|NA|-1|-1|NA|NA|Number of open DIR type files.
+Graph|LINK type files|7|scalar|sample|3152|-|0|NA|-1|-1|NA|NA|Number of open LINK type files.
+Graph|BLK type files|8|scalar|sample|3160|-|0|NA|-1|-1|NA|NA|Number of open BLK type files.
+Graph|CHR type files|9|scalar|sample|3168|-|0|NA|-1|-1|NA|NA|Number of open CHR type files.
+Graph|REG type files|10|scalar|sample|3176|-|0|NA|-1|-1|NA|NA|Number of open REG type files.
+Graph|UNKNOWN type files|11|scalar|sample|3184|-|0|NA|-1|-1|NA|NA|Number of open UNKNOWN type files.
+Graph|SOCK type files|12|scalar|sample|3192|-|0|NA|-1|-1|NA|NA|Number of open SOCK type files.
+Graph|UNIX type files|13|scalar|sample|3200|-|0|NA|-1|-1|NA|NA|Number of open UNIX type files.
+Graph|OTHERS|14|scalar|sample|3208|-|0|NA|-1|-1|NA|NA|Number of Open Files of type that doesn't belong to any of listed types.
+
+Group|Process States Count|10161|vector|8|1|System Metrics|Tier>Server|No of processes in each state
+
+NSAppliance
+Graph|Total processes|1|scalar|cumulative|3216|-|0|NA|-1|-1|NA|NA|Total processes
+Graph|Interruptable|2|scalar|sample|3224|-|0|NA|-1|-1|NA|NA|Number of processes in Interruptable state
+Graph|Stopped|3|scalar|sample|3232|-|0|NA|-1|-1|NA|NA|Number of processes in Stopped state
+Graph|Defunct/Zombie|4|scalar|sample|3240|-|0|NA|-1|-1|NA|NA|Number of processes in Defunct/Zombie state
+Graph|Runnable|5|scalar|sample|3248|-|0|NA|-1|-1|NA|NA|Number of processes in Runnable state
+Graph|IO|6|scalar|sample|3256|-|0|NA|-1|-1|NA|NA|Number of processes in IO state
+Graph|Paging|7|scalar|sample|3264|-|0|NA|-1|-1|NA|NA|Number of processes in Paging state
+Graph|Dead|8|scalar|sample|3272|-|0|NA|-1|-1|NA|NA|Number of processes in Dead state
+
+Group|Process Stats Ex|10117|vector|7|4|Application Metrics|Tier>Server>Instance|Process Monitoring
+
+NSAppliance_CMON
+NSAppliance_LPS
+NSAppliance_NLW
+NSAppliance_NLM
+Graph|Elapsed Time(Sec)|1|scalar|cumulative|3280|None|0|NA|-1|-1|NA|NA|Cumulative time since process start
+Graph|CPU Time(Sec)|2|scalar|cumulative|3288|None|0|NA|-1|-1|NA|NA|Cumulative CPU time consumed by this process.
+Graph|Size(KB)|3|scalar|sample|3296|None|0|NA|-1|-1|NA|NA|Virtual memory taken by process
+Graph|Resident Set Size(KB)|4|scalar|sample|3304|None|0|NA|-1|-1|NA|NA|the non-swapped physical memory that a task has used
+Graph|Cpu Time(Pct)|5|scalar|sample|3312|None|0|NA|-1|-1|NA|NA|Total CPU time percentage the task has used since it started.
+Graph|Memory Used(Pct)|6|scalar|sample|3320|None|0|NA|-1|-1|NA|NA|Percentage of available physical memory that a task has used. (A task's currently used share of available physical memory).
+Graph|Number of threads|7|scalar|sample|3328|None|0|NA|-1|-1|NA|NA|Total number of kernel threads owned by the process.
+
+Group|Socket Statistics|10107|vector|12|1|System Metrics|Tier>Server|Socket Statistics
+
+NSAppliance
+Graph|Used Sockets|1|scalar|sample|3504|-|0|NA|-1|-1|NA|NA|Total Number of used sockets or active sockets
+Graph|Tcp InUse|2|scalar|sample|3512|-|0|NA|-1|-1|NA|NA|Total number of tcp sockets in use.
+Graph|Tcp Orphan Count|3|scalar|sample|3520|-|0|NA|-1|-1|NA|NA|Number of orphan TCP sockets (not attached to any file descriptor).
+Graph|Tcp Timewait|4|scalar|sample|3528|-|0|NA|-1|-1|NA|NA|TIME-WAIT - waiting for enough time to pass to be sure the remote TCP received the acknowledgment of its connection termination request. Number of TCP sockets currently in TIME_WAIT state.
+Graph|Tcp Alloc|5|scalar|sample|3536|-|0|NA|-1|-1|NA|NA|All TCP socket number ( for example, ESTABLISH, CLOSE_WAIT, TIME_WAIT, etc)(only TCP).
+Graph|Tcp Memory|6|scalar|sample|3544|-|0|NA|-1|-1|NA|NA|Number of pages allocated to TCP.(1page = 4096 bytes)
+Graph|Udp InUse|7|scalar|sample|3552|-|0|NA|-1|-1|NA|NA|Number of UDP sockets in use.
+Graph|Udp Memory|8|scalar|sample|3560|-|0|NA|-1|-1|NA|NA|Memory allocated for this socket type (1page = 4096 bytes)
+Graph|Udp-Lite InUse|9|scalar|sample|3568|-|0|NA|-1|-1|NA|NA|Memory allocated for this socket type (1page = 4096 bytes).
+Graph|Raw InUse|10|scalar|sample|3576|-|0|NA|-1|-1|NA|NA|Number of raw sockets in use.
+Graph|Frag InUse|11|scalar|sample|3584|-|0|NA|-1|-1|NA|NA|Number of structures associated with IP fragmentation currently in  use.(Only available by kernels > 2.2).
+Graph|Frag Memory|12|scalar|sample|3592|-|0|NA|-1|-1|NA|NA|Memory used to reassemble IP fragments.
+
+Group|TCP states counts|10013|vector|11|1|System Metrics|Tier>Server|Number of connections in different stats
+
+NSAppliance
+Graph|Established|1|scalar|sample|3600|None|0|NA|-1|-1|NA|NA|Number of connections has established.
+Graph|SynSent|2|scalar|sample|3608|None|0|NA|-1|-1|NA|NA|Number of connections actively attempting to establish a connection.
+Graph|SynRcvd|3|scalar|sample|3616|None|0|NA|-1|-1|NA|NA|Number of connection requests which have been received from the network.
+Graph|FinWait1|4|scalar|sample|3624|None|0|NA|-1|-1|NA|NA|Number of connections, for which sockets are closed, and the connections are shutting down.
+Graph|FinWait2|5|scalar|sample|3632|None|0|NA|-1|-1|NA|NA|Number of connections which have been closed, and the sockets are waiting for  a  shutdown  from the remote end.   
+Graph|TimeWait|6|scalar|sample|3640|None|0|NA|-1|-1|NA|NA|Number of connections for which  sockets are waiting after close to handle packets still in the network.
+Graph|Closed|7|scalar|sample|3648|None|0|NA|-1|-1|NA|NA|Number of connections for which  sockets are not being used.
+Graph|CloseWait|8|scalar|sample|3656|None|0|NA|-1|-1|NA|NA|Number of connections, for which remote end has shutdown, waiting for the socket to close.
+Graph|LastAck|9|scalar|sample|3664|None|0|NA|-1|-1|NA|NA|Number of connections, of which remote end has shut down, and the socket is closed.  Waiting for acknowledgement.
+Graph|Listen|10|scalar|sample|3672|None|0|NA|-1|-1|NA|NA|Number of connections, for which socket is listening for incoming connections.
+Graph|Closing|11|scalar|sample|3680|None|0|NA|-1|-1|NA|NA|Number of connections, of which both  sockets are shut down but we still do not have all our data sent.
+
+Group|TCP Stats (Linux)|10052|vector|10|1|System Metrics|Tier>Server|TCP Stats for Linux
+
+NSAppliance
+Graph|Cumulative Active opens|1|scalar|cumulative|3688|-|0|NA|-1|-1|NA|NA|Active connections openings
+Graph|Cumulative Passive opens|2|scalar|cumulative|3696|-|0|NA|-1|-1|NA|NA|Passive connection openings
+Graph|Cumulative Failed attempt|3|scalar|cumulative|3704|-|0|NA|-1|-1|NA|NA|Failed connection attempts
+Graph|Cumulative Reset recieved|4|scalar|cumulative|3712|-|0|NA|-1|-1|NA|NA|Connection resets received
+Graph|Current Established|5|scalar|sample|3720|-|0|NA|-1|-1|NA|NA|Connection Established 
+Graph|Cumulative Segments received|6|scalar|cumulative|3728|-|0|NA|-1|-1|NA|NA|Segments received
+Graph|Cumulative Segments send out|7|scalar|cumulative|3736|-|0|NA|-1|-1|NA|NA|Segments send out
+Graph|Cumulative Segments retransmitted|8|scalar|cumulative|3744|-|0|NA|-1|-1|NA|NA|Segments retransmitted
+Graph|Cumulative Bad segments received|9|scalar|cumulative|3752|-|0|NA|-1|-1|NA|NA|bad segments received
+Graph|Cumulative Resets sent|10|scalar|cumulative|3760|-|0|NA|-1|-1|NA|NA|Resets sent
+
+Group|UpTime|10004|vector|5|1|System Metrics|Tier>Server|Load Monitoring on system
+
+NSAppliance
+Graph|Load Average Over 1 Minute|1|scalar|sample|3768|None|0|NA|-1|-1|NA|NA|System load average for the past 1 minute.
+Graph|Load Average Over 5 Minute|2|scalar|sample|3776|None|0|NA|-1|-1|NA|NA|System load average for the past 5 minutes.
+Graph|Load Average Over 15 Minute|3|scalar|sample|3784|None|0|NA|-1|-1|NA|NA|System load average for the past 15 minutes.
+Graph|Uptime (Days)|4|scalar|sample|3792|None|0|NA|-1|-1|NA|NA|Total time the system has been running in days
+Graph|Number of Users|5|scalar|sample|3800|None|0|NA|-1|-1|NA|NA|Number of users currentlly logged on.
+
+Group|SysStats Linux Extended|10108|vector|20|1|System Metrics|Tier>Server|System status
+
+NSAppliance
+Graph|Processes Waiting For Run Time|1|scalar|sample|3808|-|0|NA|-1|-1|NA|NA|Number of Processes Waiting For Run Time at Report Generation Instant
+Graph|Processes Waiting For UnInterruptible Sleep|2|scalar|sample|3816|-|0|NA|-1|-1|NA|NA|Number of Processes Waiting For UnInterruptible Sleep at Report Generation Instant
+Graph|Used Virtual Memory (MB)|3|scalar|sample|3824|-|0|NA|-1|-1|NA|NA|Used Virtual Memory (MB)
+Graph|Available Memory (MB)|4|scalar|sample|3832|-|0|NA|-1|-1|NA|NA|Available system memory (MB) for application use including memory being used by kernel as cache.
+Graph|Free Memory (MB)|5|scalar|sample|3840|-|0|NA|-1|-1|NA|NA|Free Memory (MB) 
+Graph|Used Buffer Memory (MB)|6|scalar|sample|3848|-|0|NA|-1|-1|NA|NA|Used Buffer Memory (MB)
+Graph|Used Cache Memory (MB)|7|scalar|sample|3856|-|0|NA|-1|-1|NA|NA|Used Cache Memory (MB)
+Graph|Memory Swapped In From Disk/Sec (MB)|8|scalar|sample|3864|-|0|NA|-1|-1|NA|NA|Memory Swapped In From Disk/Sec (MB)
+Graph|Memory Swapped To Disk/Sec (MB)|9|scalar|sample|3872|-|0|NA|-1|-1|NA|NA|Memory Swapped To Disk/Sec (MB)
+Graph|Disk Blocks Read/Sec|10|scalar|rate|3880|-|0|NA|-1|-1|NA|NA|Disk Blocks Read/Sec
+Graph|Disk Blocks Written/Sec|11|scalar|rate|3888|-|0|NA|-1|-1|NA|NA|Disk Blocks Written/Sec
+Graph|Interrupts/Sec|12|scalar|rate|3896|-|0|NA|-1|-1|NA|NA|Interrupts/Sec
+Graph|Context Switches/Sec|13|scalar|rate|3904|-|0|NA|-1|-1|NA|NA|Context Switches/Sec
+Graph|User CPU Busy (Pct)|14|scalar|sample|3912|-|0|NA|-1|-1|NA|NA|User CPU Busy (Pct)
+Graph|System CPU Busy (Pct)|15|scalar|sample|3920|-|0|NA|-1|-1|NA|NA|System CPU Busy (Pct)
+Graph|Idle CPU (Pct)|16|scalar|sample|3928|-|0|NA|-1|-1|NA|NA|Idle CPU (Pct)
+Graph|IOWait CPU (Pct)|17|scalar|sample|3936|-|0|NA|-1|-1|NA|NA|IOWait CPU (Pct)
+Graph|CPU Utilization (Pct)|18|scalar|sample|3944|-|0|NA|-1|-1|NA|NA|CPU utilization (Pct) (100 - Idle CPU (Pct))
+Graph|CPU Queue (%)|19|scalar|sample|3952|-|0|NA|-1|-1|NA|NA|CPU Queue(%) (Processes waiting for runtime / (no. of cores on machine * 100))
+Graph|Time stolen from a virtual machine|20|scalar|sample|3960|-|0|NA|-1|-1|NA|NA|Time stolen from a virtual machine
+
+Group|File System stats|10028|vector|8|6|System Metrics|Tier>Server>DiskPartition|Amount of disk space available on the filesystem of free and used memory in the system.
+
+NSAppliance_DiskStats_/
+NSAppliance_DiskStats_/dev
+NSAppliance_DiskStats_/run
+NSAppliance_DiskStats_/run/lock
+NSAppliance_DiskStats_/run/shm
+NSAppliance_DiskStats_/mnt/regression/webapp
+Graph|Total Disk Space (GB)|1|scalar|sample|3968|-|0|NA|-1|-1|NA|NA|Total amount of disk space
+Graph|Used Disk Space (GB)|2|scalar|sample|3976|-|0|NA|-1|-1|NA|NA|Total amount of used disk space
+Graph|Available Disk Space (GB)|3|scalar|sample|3984|-|0|NA|-1|-1|NA|NA|Total amount of free disk space
+Graph|Available Disk Space Pct|4|scalar|sample|3992|-|0|NA|-1|-1|NA|NA|Total amount of available disk space in percentage
+Graph|Total INodes|5|scalar|sample|4000|-|0|NA|-1|-1|NA|NA|Total number of INodes
+Graph|Used INodes|6|scalar|sample|4008|-|0|NA|-1|-1|NA|NA|Total number of used INodes
+Graph|Available INodes|7|scalar|sample|4016|-|0|NA|-1|-1|NA|NA|Total number of free INodes
+Graph|Available INodes Pct|8|scalar|sample|4024|-|0|NA|-1|-1|NA|NA|Total number of free INodes in percentage
+
+Group|Network traffic|10029|vector|16|3|System Metrics|Tier>Server>Interface|Netstat prints information about the Linux networking subsystem.
+
+NSAppliance_EthStat_eth0
+NSAppliance_EthStat_eth1
+NSAppliance_EthStat_lo
+Graph|Received Throughput (Kbps)|1|scalar|rate|4352|-|0|NA|-1|-1|NA|NA|Received throughput
+Graph|Received Pkts OK/Sec|2|scalar|rate|4360|-|0|NA|-1|-1|NA|NA|Received Error Free Packets/Sec in the sampling period
+Graph|Received Pkts Error/Sec|3|scalar|rate|4368|-|0|NA|-1|-1|NA|NA|shows Received Damaged Packets
+Graph|Received Pkts Dropped/Sec|4|scalar|rate|4376|-|0|NA|-1|-1|NA|NA|shows Received Dropped Packets
+Graph|Received Pkts fifo/Sec|5|scalar|rate|4384|-|0|NA|-1|-1|NA|NA|shows Received fifo Packets
+Graph|Received Pkts frame/Sec|6|scalar|rate|4392|-|0|NA|-1|-1|NA|NA|shows Received frame Packets
+Graph|Received Pkts compressed/Sec|7|scalar|rate|4400|-|0|NA|-1|-1|NA|NA|shows Received compressed Packets
+Graph|Received Pkts multicast/Sec|8|scalar|rate|4408|-|0|NA|-1|-1|NA|NA|shows Received multicast Packets
+Graph|Transmitted Throughput (Kbps)|9|scalar|rate|4416|-|0|NA|-1|-1|NA|NA|Transmitted throughput
+Graph|Transmitted Pkts OK/Sec|10|scalar|rate|4424|-|0|NA|-1|-1|NA|NA|Transmitted Error Free Packets
+Graph|Transmitted Pkts Errror/Sec|11|scalar|rate|4432|-|0|NA|-1|-1|NA|NA|Transmitted Damaged Packets
+Graph|Transmitted Pkts Dropped/Sec|12|scalar|rate|4440|-|0|NA|-1|-1|NA|NA|Transmitted Dropped Packets
+Graph|Transmitted Pkts fifo/Sec|13|scalar|rate|4448|-|0|NA|-1|-1|NA|NA|Transmitted fifo Packets
+Graph|Transmitted Pkts colls/Sec|14|scalar|rate|4456|-|0|NA|-1|-1|NA|NA|Transmitted colls Packets
+Graph|Transmitted Pkts carrier/Sec|15|scalar|rate|4464|-|0|NA|-1|-1|NA|NA|Transmitted carrier Packets
+Graph|Transmitted Pkts compressed/Sec|16|scalar|rate|4472|-|0|NA|-1|-1|NA|NA|Transmitted compressed Packets
+
+Group|Device Stats|10148|vector|11|1|System Metrics|Tier>Server>Device|Device utilization stats on a per physical device or partition basis. 
+
+NSAppliance_DeviceStats_sda
+Graph|Read Requests Merged/Sec|1|scalar|rate|4736|-|0|NA|-1|-1|NA|NA|The number of read requests merged per second that were queued to the device.
+Graph|Write Requests Merged/Sec|2|scalar|rate|4744|-|0|NA|-1|-1|NA|NA|The number of write requests merged per second that were queued to the device.
+Graph|Read Requests/Sec|3|scalar|rate|4752|-|0|NA|-1|-1|NA|NA|The number of read requests that were issued to the device per second.
+Graph|Write Requests/Sec|4|scalar|rate|4760|-|0|NA|-1|-1|NA|NA|The number of write requests that were issued to the device per second.
+Graph|Read KBytes/Sec|5|scalar|rate|4768|-|0|NA|-1|-1|NA|NA|The number of kilobytes read from the device per second.
+Graph|Wite KBytes/Sec|6|scalar|rate|4776|-|0|NA|-1|-1|NA|NA|The number of kilobytes written to the device per second.
+Graph|Average Size Of Request (Sectors)|7|scalar|sample|4784|-|0|NA|-1|-1|NA|NA|The average size (in sectors) of the requests that were issued to the device.
+Graph|Average Queue length|8|scalar|sample|4792|-|0|NA|-1|-1|NA|NA|The average queue length of the requests that were issued to the device.
+Graph|Average Request Time (ms)|9|scalar|rate|4800|-|0|NA|-1|-1|NA|NA|The average time (in milliseconds) for I/O requests issued to the device to be served. This includes the time spent by the requests in queue and the time spent servicing them.
+Graph|Average Service Time (ms)|10|scalar|rate|4808|-|0|NA|-1|-1|NA|NA|The average service time (in milliseconds) for I/O requests that were issued to the device.
+Graph|CPU Utilization (Pct)|11|scalar|rate|4816|-|0|NA|-1|-1|NA|NA|Percentage of CPU time during which I/O requests were issued to the device (bandwidth utilization for the device).
+
+Group|MPStat Linux|10010|vector|9|4|System Metrics|Tier>Server>Processor|Dynamic mpstat monitor
+
+NSAppliance_MPStats_CPU0
+NSAppliance_MPStats_CPU1
+NSAppliance_MPStats_CPU2
+NSAppliance_MPStats_CPU3
+Graph|User CPU Busy (Pct)|1|scalar|sample|4824|-|0|NA|-1|-1|NA|NA|Show the percentage of CPU utilization that occurred while executing at the user level (application).
+Graph|Nice CPU Busy (Pct)|2|scalar|sample|4832|-|0|NA|-1|-1|NA|NA| Show the percentage of CPU utilization that occurred while executing at the user level with nice priority.
+Graph|System CPU Busy (Pct)|3|scalar|sample|4840|-|0|NA|-1|-1|NA|NA|Show  the percentage of CPU utilization that occurred while executing at the system level (kernel). Note that this does not include time spent servicing hardware and software interrupts.
+Graph|IOWait CPU (Pct)|4|scalar|sample|4848|-|0|NA|-1|-1|NA|NA|Show the percentage of time that the CPU or CPUs were idle during which the system had an outstanding disk I/O request.
+Graph|IRQ CPU (Pct)|5|scalar|sample|4856|-|0|NA|-1|-1|NA|NA|Show the percentage of time spent by the CPU or CPUs to service hardware interrupts.
+Graph|Soft IRQ CPU (Pct)|6|scalar|sample|4864|-|0|NA|-1|-1|NA|NA|Show the percentage of time spent by the CPU or CPUs to service software interrupts.
+Graph|Steal CPU (Pct)|7|scalar|sample|4872|-|0|NA|-1|-1|NA|NA|Show the percentage of time spent in involuntary wait by the virtual CPU or CPUs while the hypervisor was servicing another virtual processor.
+Graph|Guest CPU (Pct)|8|scalar|sample|4880|-|0|NA|-1|-1|NA|NA|Show the percentage of time spent by the CPU or CPUs to run a virtual processor.
+Graph|Idle CPU (Pct)|9|scalar|sample|4888|-|0|NA|-1|-1|NA|NA|Show the percentage of time that the CPU or CPUs were idle and the system did not have an outstanding disk I/O request.
+

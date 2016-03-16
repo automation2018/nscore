@@ -1,0 +1,20 @@
+NetStorm:Version 4.1.3 (build# 10)
+Test Case Name: .Regression6
+Test Run Number: 6551
+Test Started At: 07/28/15  19:59:31
+Test Configuration
+
+Test Mode: Fix Concurrent Users
+Client TimeOut (Seconds): 60000
+Target Completion: 00:10:15
+Using 5 URL's
+
+    Smtp  Report:  min  0.001 sec, avg  0.003 sec, max  0.019 sec    TOT: completed 814/succ 814
+    POP3  Report:  min  0.000 sec, avg  0.027 sec, max  0.329 sec    TOT: completed 2,421/succ 2,421
+   Page  Report:  min  0.000 sec, avg  0.025 sec, max  0.329 sec    TOT: completed 4,045/succ 4,045
+   Session  Report:  min  0.001 sec, avg  0.042 sec, max  0.331 sec    TOT: completed 2,431/succ 2,431
+    Vusers: Avg.  29.61, Avg. Session Rate (Per Minute) 233.75, Current: Active 0, Thinking 0, Waiting(Between Sessions) 0, Idling 0, SyncPoint 0 
+    Throughput (Kbits/s): Eth(Rx=32,059.156 Tx=332.046)
+    Throughput (Total Bytes): Eth(Rx=2,560,628,999 Tx=26,521,195)
+    Eth Pkts: Rate/s(Rx=0 Tx=0) Total(Rx=1,735,593 Tx=232,679)
+

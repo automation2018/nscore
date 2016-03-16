@@ -1,0 +1,19 @@
+#This is Netstorm generated mprof to automate following monitors...
+
+##### Monitors for server '127.0.0.1' #####
+STANDARD_MONITOR 127.0.0.1 NSAppliance SystemStatsExtended 
+STANDARD_MONITOR 127.0.0.1 NSAppliance TcpStats 
+STANDARD_MONITOR 127.0.0.1 NSAppliance TcpStatesCount 
+STANDARD_MONITOR 127.0.0.1 NSAppliance UpTime 
+STANDARD_MONITOR 127.0.0.1 NSAppliance SockStats 
+STANDARD_MONITOR 127.0.0.1 NSAppliance_MPStats MPStat 
+STANDARD_MONITOR 127.0.0.1 NSAppliance_DiskStats FileSystemStats 
+STANDARD_MONITOR 127.0.0.1 NSAppliance_CMON ProcessDataEx -f "/opt/cavisson/monitors/sys/cmon.pid"
+STANDARD_MONITOR 127.0.0.1 NSAppliance_LPS ProcessDataEx -s "/home/netstorm/work/lps/bin/nsu_lps"
+STANDARD_MONITOR 127.0.0.1 NSAppliance_NLW ProcessDataEx -f "/home/netstorm/work/logs/TR6546/.nlw.pid"
+STANDARD_MONITOR 127.0.0.1 NSAppliance_NLM ProcessDataEx -f "/home/netstorm/work/logs/TR6546/.nlm.pid"
+STANDARD_MONITOR 127.0.0.1 NSAppliance_DeviceStats DeviceStats 
+STANDARD_MONITOR 127.0.0.1 NSAppliance_EthStat EthStat 
+STANDARD_MONITOR 127.0.0.1 NSAppliance LsofStats 
+STANDARD_MONITOR 127.0.0.1 NSAppliance ProcessCountByState 
+

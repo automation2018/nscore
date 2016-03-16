@@ -1,0 +1,77 @@
+#TimeStamp|Thread Name|Src file name|Line number|Function|Severity|Message
+03/14/16 12:20:39|Main thread|ns_log_mgr.c|975|main|Info|Prev Logging Writer was not running, pid saved
+03/14/16 12:20:39|Main thread|ns_log_mgr.c|987|main|Info|Starting NetStorm log manager (nsa_log_mgr): Port = 45933, Num proc to handle = 9, Listen fd = 11, Filterm mode = 1, Shm id = 17989637, Event Hashes = 302, Big Buf Shm id = 17924099, Debug = 0, TestRunInfoShmKey = 17858561, trace_level = 1
+03/14/16 12:20:39|Main thread|ns_log_mgr.c|886|get_hash_code_func|Info|Method Called, hash_fun_name = event_id_hash_fun, so_file_name = /home/netstorm/work/.tmp/automation/ns-inst0/event_id_hash_fun_write.so
+03/14/16 12:20:39|Main thread|ns_log_mgr.c|723|receive_forever|Info|Method Called, num_processes = 9
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|616|create_el_proc_table_entry|Info|Reallocating, total_el_proc_entries = 0, max_el_proc_entries = 0
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52464, current number of connection = 1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|634|rearrange_el_msg_com_con|Info|Method Called, total_el_proc_entries = 1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52466, current number of connection = 2
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52470, current number of connection = 3
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52472, current number of connection = 4
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52473, current number of connection = 5
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52474, current number of connection = 6
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52476, current number of connection = 7
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52478, current number of connection = 8
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|655|accept_and_timeout_for_el|Info|Method Called, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|611|create_el_proc_table_entry|Info|Method Called, row_num = 1684548304, delta = 109
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|220|init_el_msg_con_struct|Info|Method Called, ip = 127.0.0.1
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|200|add_select_el_msg_com_con|Info|Method called
+03/14/16 12:20:42|Main thread|ns_log_mgr.c|690|accept_and_timeout_for_el|Info|Got connection from  IPV4:127.0.0.1.52479, current number of connection = 9
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52464, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 9, closing fd = 6, For Server = IPV4:127.0.0.1.52464
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 8, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52466, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 8, closing fd = 7, For Server = IPV4:127.0.0.1.52466
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 7, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52476, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 7, closing fd = 13, For Server = IPV4:127.0.0.1.52476
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 6, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52472, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 6, closing fd = 9, For Server = IPV4:127.0.0.1.52472
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 5, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52470, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 5, closing fd = 8, For Server = IPV4:127.0.0.1.52470
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 4, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52474, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 4, closing fd = 12, For Server = IPV4:127.0.0.1.52474
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 3, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52473, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 3, closing fd = 10, For Server = IPV4:127.0.0.1.52473
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 2, fd -1 closed
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|263|read_msg_ex|Info|Bytes read 0 from server = IPV4:127.0.0.1.52479, closing connection ...
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|161|close_el_msg_com_con|Info|Method called, cur_conn_cnt = 2, closing fd = 15, For Server = IPV4:127.0.0.1.52479
+03/14/16 12:29:51|Main thread|ns_log_mgr.c|178|close_el_msg_com_con|Info|cur_conn_cnt = 1, fd -1 closed

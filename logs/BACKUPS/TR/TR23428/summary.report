@@ -1,0 +1,81 @@
+NetStorm:Version 3.9.7 (build# 24)
+Test Case Name: .cps
+Test Run Number: 23428
+Test Started At: 03/14/16  11:51:39
+Test Configuration
+
+Test Mode: Fix Concurrent Users
+Client TimeOut (Seconds): 60000
+Target Completion: 00:03:00
+Using 1 URL's
+
+    Url  Report:  min  0.000 sec, avg  0.002 sec, max  0.028 sec    TOT: completed 14,274,411/succ 14,274,411
+   Page  Report:  min  0.000 sec, avg  0.002 sec, max  0.028 sec    TOT: completed 14,274,411/succ 14,274,411
+   Session  Report:  min  0.000 sec, avg  0.002 sec, max  0.028 sec    TOT: completed 14,274,411/succ 14,274,411
+    Throughput (Kbits/s): Eth(Rx=207,301.125 Tx=154,342.927)
+    Throughput (Total Bytes): Eth(Rx=5,015,028,838 Tx=3,733,864,093)
+    Eth Pkts: Rate/s(Rx=0 Tx=0) Total(Rx=56,923,270 Tx=43,802,340)
+
+
+URL Hits Percentile Report
+
+  Response Time       Number of Responses       Pct of Responses   Pct of Responses upto
+  Window (RTW)        in  RTW                   in RTW             upper bound of RTW
+  ----------------    -------------------       ---------------    ---------------------
+  0.00-  1.00 secs:		14,274,411		100.00%		100.00%
+  1.00-  2.00 secs:		        0		  0.00%		100.00%
+  2.00-  3.00 secs:		        0		  0.00%		100.00%
+  3.00-  4.00 secs:		        0		  0.00%		100.00%
+  4.00-  5.00 secs:		        0		  0.00%		100.00%
+  5.00-  6.00 secs:		        0		  0.00%		100.00%
+  6.00-  7.00 secs:		        0		  0.00%		100.00%
+  7.00-  8.00 secs:		        0		  0.00%		100.00%
+  8.00-  9.00 secs:		        0		  0.00%		100.00%
+  9.00- 10.00 secs:		        0		  0.00%		100.00%
+ 10.00-higher:		                0		  0.00%		100.00%
+
+
+median-time:  0.010 sec, 80%:  0.010 sec, 90%:  0.010 sec, 95%:  0.010 sec, 99%:  0.010 sec
+
+
+Page Hits Percentile Report
+
+  Response Time       Number of Responses       Pct of Responses   Pct of Responses upto
+  Window (RTW)        in  RTW                   in RTW             upper bound of RTW
+  ----------------    -------------------       ---------------    ---------------------
+  0.00-  1.00 secs:		14,274,411		100.00%		100.00%
+  1.00-  2.00 secs:		        0		  0.00%		100.00%
+  2.00-  3.00 secs:		        0		  0.00%		100.00%
+  3.00-  4.00 secs:		        0		  0.00%		100.00%
+  4.00-  5.00 secs:		        0		  0.00%		100.00%
+  5.00-  6.00 secs:		        0		  0.00%		100.00%
+  6.00-  7.00 secs:		        0		  0.00%		100.00%
+  7.00-  8.00 secs:		        0		  0.00%		100.00%
+  8.00-  9.00 secs:		        0		  0.00%		100.00%
+  9.00- 10.00 secs:		        0		  0.00%		100.00%
+ 10.00-higher:		                0		  0.00%		100.00%
+
+
+median-time:  0.010 sec, 80%:  0.010 sec, 90%:  0.010 sec, 95%:  0.010 sec, 99%:  0.010 sec
+
+
+Sess Hits Percentile Report
+
+  Response Time       Number of Responses       Pct of Responses   Pct of Responses upto
+  Window (RTW)        in  RTW                   in RTW             upper bound of RTW
+  ----------------    -------------------       ---------------    ---------------------
+  0.00-  1.00 secs:		14,274,411		100.00%		100.00%
+  1.00-  2.00 secs:		        0		  0.00%		100.00%
+  2.00-  3.00 secs:		        0		  0.00%		100.00%
+  3.00-  4.00 secs:		        0		  0.00%		100.00%
+  4.00-  5.00 secs:		        0		  0.00%		100.00%
+  5.00-  6.00 secs:		        0		  0.00%		100.00%
+  6.00-  7.00 secs:		        0		  0.00%		100.00%
+  7.00-  8.00 secs:		        0		  0.00%		100.00%
+  8.00-  9.00 secs:		        0		  0.00%		100.00%
+  9.00- 10.00 secs:		        0		  0.00%		100.00%
+ 10.00-higher:		                0		  0.00%		100.00%
+
+
+median-time:  0.010 sec, 80%:  0.010 sec, 90%:  0.010 sec, 95%:  0.010 sec, 99%:  0.010 sec
+

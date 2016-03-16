@@ -1,0 +1,335 @@
+Group Name,Graph Name,Vector Name,Graph Type,Avg/Diff,Min,Max,Samples
+Vuser Info,Running Vusers,NA,sample,128.616,126.875,128.000,19
+Vuser Info,Active Vusers,NA,sample,121.905,0.000,128.000,19
+Vuser Info,Thinking Vusers,NA,sample,0.000,0.000,0.000,19
+Vuser Info,Waiting Vusers,NA,sample,0.000,0.000,0.000,19
+Vuser Info,Idling Vusers,NA,sample,0.000,0.000,0.000,19
+Vuser Info,Number Of Connections,NA,sample,109.101,0.000,121.000,19
+Vuser Info,SyncPoint Vusers,NA,sample,0.000,0.000,0.000,19
+Network Throughput,TCP Send Throughput (Kbps),NA,sample,17364.281,86.562,18253.066,19
+Network Throughput,TCP Total Send Bytes,NA,cumulative,396860685.000,23215998.000,420076683.000,19
+Network Throughput,TCP Receive Throughput (Kbps),NA,sample,28495.230,147.650,29953.750,19
+Network Throughput,TCP Total Receive Bytes,NA,cumulative,651265600.000,38091008.000,689356608.000,19
+Network Throughput,Ethernet Send Throughput (Kbps),NA,sample,148424.795,866.631,156069.707,19
+Network Throughput,Total Ethernet Send Bytes,NA,cumulative,3392206727.000,198485915.000,3590692642.000,19
+Network Throughput,Ethernet Receive Throughput (Kbps),NA,sample,187550.568,1075.077,197234.361,19
+Network Throughput,Total Ethernet Receive Bytes,NA,cumulative,4286478083.000,250745265.000,4537223348.000,19
+Network Throughput,Ethernet Send Packets/Sec,NA,rate,232950.265,1164.000,244958.000,19
+Network Throughput,Ethernet Total Send Packets,NA,cumulative,41593966.000,2433696.000,44027662.000,19
+Network Throughput,Ethernet Receive Packets/Sec,NA,rate,284140.053,1436.000,298825.000,19
+Network Throughput,Ethernet Total Receive Packets,NA,cumulative,50734772.000,2967772.000,53702544.000,19
+Network Throughput,TCP Connections Open/Sec,NA,rate,56990.460,284.100,59907.500,19
+Network Throughput,TCP Total Connections Open,NA,cumulative,10175915.000,595282.000,10771197.000,19
+Network Throughput,TCP Connections Close/Sec,NA,rate,56990.460,295.300,59907.500,19
+Network Throughput,TCP Total Connections Close,NA,cumulative,10176025.000,595172.000,10771197.000,19
+Network Throughput,SSL New Sessions/Sec,NA,rate,0.000,0.000,0.000,19
+Network Throughput,SSL Total New Sessions,NA,cumulative,0.000,0.000,0.000,19
+Network Throughput,SSL Reused Sessions/Sec,NA,rate,0.000,0.000,0.000,19
+Network Throughput,SSL Total Reused Sessions,NA,cumulative,0.000,0.000,0.000,19
+Network Throughput,SSL Reuse attempted/Sec,NA,rate,0.000,0.000,0.000,19
+Network Throughput,SSL Total Reuse attempted,NA,cumulative,0.000,0.000,0.000,19
+Network Throughput,SSL Write Failures/Sec,NA,rate,0.000,0.000,0.000,19
+Network Throughput,SSL Handshake Failures/Sec,NA,rate,0.000,0.000,0.000,19
+Network Throughput,HTTP Body receive throughput (Kbps),NA,rate,890.476,4.614,936.055,19
+Network Throughput,HTTP Body Total receive bytes,NA,cumulative,20352050.000,1190344.000,21542394.000,19
+HTTP Requests,Requests Sent/Sec,NA,rate,56990.460,283.700,59907.500,19
+HTTP Requests,Requests Completed/Sec,NA,rate,56990.460,295.300,59907.500,19
+HTTP Requests,Requests Successful/Sec,NA,rate,56990.460,295.300,59907.500,19
+HTTP Requests,Average Response Time (Secs),NA,times,0.002,0.000,0.025,10771197
+HTTP Requests,Requests Completed,NA,cumulative,10176025.000,595172.000,10771197.000,19
+HTTP Requests,Requests Successful,NA,cumulative,10176025.000,595172.000,10771197.000,19
+HTTP Response Codes,100 Continue/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,101 Switching Protocols/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,200 OK/Sec,NA,rate,56990.460,0.000,59907.500,20
+HTTP Response Codes,201 Created/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,202 Accepted/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,203 Non-Authoritative Information/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,204 No Content/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,205 Reset Content/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,206 Partial Content/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,300 Multiple Choices/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,301 Moved Permanently/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,302 Found/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,303 See Other/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,304 Not Modified/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,305 Use Proxy/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,306 Switch Proxy/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,307 Temporary Redirect/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,400 Bad Request/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,401 Unauthorized/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,402 Payment Required/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,403 Forbidden/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,404 Not Found/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,405 Method Not Allowed/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,406 Not Acceptable/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,407 Proxy Authentication Required/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,408 Request Timeout/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,409 Conflict/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,410 Gone/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,411 Length Required/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,412 Precondition Failed/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,413 Request Entity Too Large/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,414 Request-URI Too Long/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,415 Unsupported Media Type/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,416 Requested Range Not Satisfiable/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,417 Expectation Failed/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,500 Internal Server Error/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,501 Not Implemented/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,502 Bad Gateway/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,503 Service Unavailable/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,504 Gateway Timeout/Sec,NA,rate,0.000,0.000,0.000,20
+HTTP Response Codes,505 HTTP Version Not Supported/Sec,NA,rate,0.000,0.000,0.000,20
+Page Download,Page Download Started/Minute,NA,rate,3419427.619,17022.000,3594450.000,19
+Page Download,Page Download Completed/Minute,NA,rate,3419427.619,17718.000,3594450.000,19
+Page Download,Success Page Responses/Minute,NA,rate,3419427.619,17718.000,3594450.000,19
+Page Download,Average Page Response Time (Secs),NA,times,0.002,0.000,0.025,10771197
+Page Download,Total Pages Completed,NA,cumulative,10176025.000,595172.000,10771197.000,19
+Page Download,Total Pages Success,NA,cumulative,10176025.000,595172.000,10771197.000,19
+Page Download,Average Java Script processing Time (Secs),NA,times,0.000,4294967.295,0.000,10771197
+Page Download,Average Page processing Time (Secs),NA,times,0.000,4294967.295,0.000,10771197
+Session,Sessions Started/Minute,NA,rate,3419427.619,16974.000,3594456.000,19
+Session,Sessions Completed/Minute,NA,rate,3419427.619,17742.000,3594456.000,19
+Session,Successful Sessions/Minute,NA,rate,3419427.619,17742.000,3594456.000,19
+Session,Average Session Response Time (Secs),NA,times,0.002,0.000,0.028,10771197
+Session,Total Session Completed,NA,cumulative,10176031.000,595166.000,10771197.000,19
+Session,Total Session Success,NA,cumulative,10176031.000,595166.000,10771197.000,19
+HTTP Failures,HTTP Failures(All)/Sec,NA,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,MiscErr,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,1xx,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,2xx,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,3xx,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,4xx,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,5xx,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,PartialBody,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,T.O,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,ConFail,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,ClickAway,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,WriteFail,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,SSLWriteFail,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,SSLHshakeFail,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,IncompleteExact,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,NoRead,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,PartialHdr,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,BadBodyNoSize,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,BadBodyChunked,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,BadBodyConLen,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,Reload,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,Stopped,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,BadResponse,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,MailBoxErr,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,MailBoxStorageErr,rate,0.000,0.000,0.000,19
+HTTP Failures,HTTP Failures/Sec,AuthFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures(All)/Minute,NA,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,MiscErr,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,1xx,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,2xx,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,3xx,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,4xx,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,5xx,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,PartialBody,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,T.O,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,ConFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,ClickAway,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,WriteFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,SSLWriteFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,SSLHshakeFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,IncompleteExact,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,NoRead,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,PartialHdr,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,BadBodyNoSize,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,BadBodyChunked,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,BadBodyConLen,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,Reload,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,Stopped,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,BadResponse,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,MailBoxErr,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,MailBoxStorageErr,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,AuthFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,UrlErr,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,CVFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,UnCompFail,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,SizeTooSmall,rate,0.000,0.000,0.000,19
+Page Failures,Page Failures/Minute,SizeTooBig,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures(All)/Minute,NA,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,MiscErr,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,Stopped,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr3,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr4,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr5,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr6,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr7,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr8,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr9,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr10,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr11,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr12,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr13,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr14,rate,0.000,0.000,0.000,19
+Session Failures,Sessions Failures/Minute,SsErr15,rate,0.000,0.000,0.000,19
+Process Stats Ex,Elapsed Time(Sec),Cavisson>NSAppliance>CMON,cumulative,177.000,1773.000,1950.000,19
+Process Stats Ex,Elapsed Time(Sec),Cavisson>NSAppliance>LPS,cumulative,177.000,1771.000,1948.000,19
+Process Stats Ex,CPU Time(Sec),Cavisson>NSAppliance>CMON,cumulative,0.000,2.000,2.000,19
+Process Stats Ex,CPU Time(Sec),Cavisson>NSAppliance>LPS,cumulative,0.000,0.000,0.000,19
+Process Stats Ex,Size(KB),Cavisson>NSAppliance>CMON,sample,4344300.741,4321436.000,4321436.000,19
+Process Stats Ex,Size(KB),Cavisson>NSAppliance>LPS,sample,94211.852,93716.000,93716.000,19
+Process Stats Ex,Resident Set Size(KB),Cavisson>NSAppliance>CMON,sample,54946.455,54412.000,54816.000,19
+Process Stats Ex,Resident Set Size(KB),Cavisson>NSAppliance>LPS,sample,3068.148,3052.000,3052.000,19
+Process Stats Ex,Cpu Time(Pct),Cavisson>NSAppliance>CMON,sample,0.000,0.000,0.000,19
+Process Stats Ex,Cpu Time(Pct),Cavisson>NSAppliance>LPS,sample,0.000,0.000,0.000,19
+Process Stats Ex,Memory Used(Pct),Cavisson>NSAppliance>CMON,sample,0.000,0.000,0.000,19
+Process Stats Ex,Memory Used(Pct),Cavisson>NSAppliance>LPS,sample,0.000,0.000,0.000,19
+Process Stats Ex,Number of threads,Cavisson>NSAppliance>CMON,sample,35.185,35.000,35.000,19
+Process Stats Ex,Number of threads,Cavisson>NSAppliance>LPS,sample,1.005,1.000,1.000,19
+Socket Statistics,Used Sockets,Cavisson>NSAppliance,sample,682.222,658.000,684.000,19
+Socket Statistics,Tcp InUse,Cavisson>NSAppliance,sample,184.339,161.000,190.000,19
+Socket Statistics,Tcp Orphan Count,Cavisson>NSAppliance,sample,3.862,0.000,8.000,19
+Socket Statistics,Tcp Timewait,Cavisson>NSAppliance,sample,4229.153,3188.000,4695.000,19
+Socket Statistics,Tcp Alloc,Cavisson>NSAppliance,sample,216.561,198.000,221.000,19
+Socket Statistics,Tcp Memory,Cavisson>NSAppliance,sample,166.349,130.000,179.000,19
+Socket Statistics,Udp InUse,Cavisson>NSAppliance,sample,32.169,32.000,32.000,19
+Socket Statistics,Udp Memory,Cavisson>NSAppliance,sample,6.032,6.000,6.000,19
+Socket Statistics,Udp-Lite InUse,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+Socket Statistics,Raw InUse,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+Socket Statistics,Frag InUse,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+Socket Statistics,Frag Memory,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+TCP states counts,Established,Cavisson>NSAppliance,sample,111.429,26.000,151.000,19
+TCP states counts,SynSent,Cavisson>NSAppliance,sample,3.704,0.000,8.000,19
+TCP states counts,SynRcvd,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+TCP states counts,FinWait1,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+TCP states counts,FinWait2,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+TCP states counts,TimeWait,Cavisson>NSAppliance,sample,3001.905,0.000,4452.000,19
+TCP states counts,Closed,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+TCP states counts,CloseWait,Cavisson>NSAppliance,sample,16.561,1.000,25.000,19
+TCP states counts,LastAck,Cavisson>NSAppliance,sample,4.021,0.000,7.000,19
+TCP states counts,Listen,Cavisson>NSAppliance,sample,42.222,42.000,42.000,19
+TCP states counts,Closing,Cavisson>NSAppliance,sample,0.317,0.000,1.000,19
+TCP Stats (Linux),Cumulative Active opens,Cavisson>NSAppliance,cumulative,10211793.000,478166.000,10689959.000,19
+TCP Stats (Linux),Cumulative Passive opens,Cavisson>NSAppliance,cumulative,2.000,9.000,11.000,19
+TCP Stats (Linux),Cumulative Failed attempt,Cavisson>NSAppliance,cumulative,0.000,0.000,0.000,19
+TCP Stats (Linux),Cumulative Reset recieved,Cavisson>NSAppliance,cumulative,0.000,0.000,0.000,19
+TCP Stats (Linux),Current Established,Cavisson>NSAppliance,sample,147.407,118.000,164.000,19
+TCP Stats (Linux),Cumulative Segments received,Cavisson>NSAppliance,cumulative,50912918.000,2383622.000,53296540.000,19
+TCP Stats (Linux),Cumulative Segments send out,Cavisson>NSAppliance,cumulative,41740527.000,1954927.000,43695454.000,19
+TCP Stats (Linux),Cumulative Segments retransmitted,Cavisson>NSAppliance,cumulative,0.000,0.000,0.000,19
+TCP Stats (Linux),Cumulative Bad segments received,Cavisson>NSAppliance,cumulative,0.000,0.000,0.000,19
+TCP Stats (Linux),Cumulative Resets sent,Cavisson>NSAppliance,cumulative,0.000,0.000,0.000,19
+UpTime,Load Average Over 1 Minute,Cavisson>NSAppliance,sample,1.930,1.090,2.360,19
+UpTime,Load Average Over 5 Minute,Cavisson>NSAppliance,sample,2.990,2.810,3.210,19
+UpTime,Load Average Over 15 Minute,Cavisson>NSAppliance,sample,2.380,2.350,2.390,19
+UpTime,Uptime (Days),Cavisson>NSAppliance,sample,32.595,31.002,34.002,19
+UpTime,Number of Users,Cavisson>NSAppliance,sample,3.016,3.000,3.000,19
+SysStats Linux Extended,Processes Waiting For Run Time,Cavisson>NSAppliance,sample,3.704,2.000,7.000,19
+SysStats Linux Extended,Processes Waiting For UnInterruptible Sleep,Cavisson>NSAppliance,sample,0.053,0.000,1.000,19
+SysStats Linux Extended,Used Virtual Memory (MB),Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+SysStats Linux Extended,Available Memory (MB),Cavisson>NSAppliance,sample,6583.968,6524.000,6574.000,19
+SysStats Linux Extended,Free Memory (MB),Cavisson>NSAppliance,sample,6250.529,6192.000,6243.000,19
+SysStats Linux Extended,Used Buffer Memory (MB),Cavisson>NSAppliance,sample,561.905,558.000,559.000,19
+SysStats Linux Extended,Used Cache Memory (MB),Cavisson>NSAppliance,sample,333.439,331.000,332.000,19
+SysStats Linux Extended,Memory Swapped In From Disk/Sec (MB),Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+SysStats Linux Extended,Memory Swapped To Disk/Sec (MB),Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+SysStats Linux Extended,Disk Blocks Read/Sec,Cavisson>NSAppliance,rate,0.159,0.000,2.000,19
+SysStats Linux Extended,Disk Blocks Written/Sec,Cavisson>NSAppliance,rate,46.085,4.000,476.000,19
+SysStats Linux Extended,Interrupts/Sec,Cavisson>NSAppliance,rate,44064.974,35689.000,44308.000,19
+SysStats Linux Extended,Context Switches/Sec,Cavisson>NSAppliance,rate,125359.630,101592.000,126651.000,19
+SysStats Linux Extended,User CPU Busy (Pct),Cavisson>NSAppliance,sample,15.873,13.000,16.000,19
+SysStats Linux Extended,System CPU Busy (Pct),Cavisson>NSAppliance,sample,42.169,34.000,43.000,19
+SysStats Linux Extended,Idle CPU (Pct),Cavisson>NSAppliance,sample,42.540,40.000,53.000,19
+SysStats Linux Extended,IOWait CPU (Pct),Cavisson>NSAppliance,sample,0.053,0.000,1.000,19
+SysStats Linux Extended,CPU Utilization (Pct),Cavisson>NSAppliance,sample,57.989,47.000,60.000,19
+SysStats Linux Extended,CPU Queue (%),Cavisson>NSAppliance,sample,92.593,50.000,175.000,19
+SysStats Linux Extended,Time stolen from a virtual machine,Cavisson>NSAppliance,sample,0.000,0.000,0.000,19
+File System stats,Total Disk Space (GB),/,sample,913.743,908.934,908.934,19
+File System stats,Total Disk Space (GB),/dev,sample,3.883,3.863,3.863,19
+File System stats,Total Disk Space (GB),/run,sample,0.779,0.775,0.775,19
+File System stats,Total Disk Space (GB),/run/lock,sample,0.005,0.005,0.005,19
+File System stats,Total Disk Space (GB),/run/shm,sample,3.897,3.876,3.876,19
+File System stats,Total Disk Space (GB),/mnt/regression/webapp,sample,889.967,885.283,885.283,19
+File System stats,Used Disk Space (GB),/,sample,241.437,240.166,240.167,19
+File System stats,Used Disk Space (GB),/dev,sample,0.000,0.000,0.000,19
+File System stats,Used Disk Space (GB),/run,sample,0.001,0.001,0.001,19
+File System stats,Used Disk Space (GB),/run/lock,sample,0.000,0.000,0.000,19
+File System stats,Used Disk Space (GB),/run/shm,sample,0.000,0.000,0.000,19
+File System stats,Used Disk Space (GB),/mnt/regression/webapp,sample,687.157,683.540,683.540,19
+File System stats,Available Disk Space (GB),/,sample,625.884,622.590,622.591,19
+File System stats,Available Disk Space (GB),/dev,sample,3.883,3.863,3.863,19
+File System stats,Available Disk Space (GB),/run,sample,0.778,0.774,0.774,19
+File System stats,Available Disk Space (GB),/run/lock,sample,0.005,0.005,0.005,19
+File System stats,Available Disk Space (GB),/run/shm,sample,3.896,3.875,3.875,19
+File System stats,Available Disk Space (GB),/mnt/regression/webapp,sample,157.580,156.751,156.751,19
+File System stats,Available Disk Space Pct,/,sample,72.381,72.000,72.000,19
+File System stats,Available Disk Space Pct,/dev,sample,99.524,99.000,99.000,19
+File System stats,Available Disk Space Pct,/run,sample,99.524,99.000,99.000,19
+File System stats,Available Disk Space Pct,/run/lock,sample,100.529,100.000,100.000,19
+File System stats,Available Disk Space Pct,/run/shm,sample,99.524,99.000,99.000,19
+File System stats,Available Disk Space Pct,/mnt/regression/webapp,sample,18.095,18.000,18.000,19
+File System stats,Total INodes,/,sample,60850956.190,60530688.000,60530688.000,19
+File System stats,Total INodes,/dev,sample,1017993.862,1012636.000,1012636.000,19
+File System stats,Total INodes,/run,sample,1021323.386,1015948.000,1015948.000,19
+File System stats,Total INodes,/run/lock,sample,1021323.386,1015948.000,1015948.000,19
+File System stats,Total INodes,/run/shm,sample,1021323.386,1015948.000,1015948.000,19
+File System stats,Total INodes,/mnt/regression/webapp,sample,59269770.159,58957824.000,58957824.000,19
+File System stats,Used INodes,/,sample,2658071.852,2644082.000,2644082.000,19
+File System stats,Used INodes,/dev,sample,480.529,478.000,478.000,19
+File System stats,Used INodes,/run,sample,421.217,419.000,419.000,19
+File System stats,Used INodes,/run/lock,sample,4.021,4.000,4.000,19
+File System stats,Used INodes,/run/shm,sample,4.021,4.000,4.000,19
+File System stats,Used INodes,/mnt/regression/webapp,sample,5022898.307,4996462.000,4996462.000,19
+File System stats,Available INodes,/,sample,58192884.339,57886606.000,57886606.000,19
+File System stats,Available INodes,/dev,sample,1017513.333,1012158.000,1012158.000,19
+File System stats,Available INodes,/run,sample,1020902.169,1015529.000,1015529.000,19
+File System stats,Available INodes,/run/lock,sample,1021319.365,1015944.000,1015944.000,19
+File System stats,Available INodes,/run/shm,sample,1021319.365,1015944.000,1015944.000,19
+File System stats,Available INodes,/mnt/regression/webapp,sample,54246871.852,53961362.000,53961362.000,19
+File System stats,Available INodes Pct,/,sample,95.503,95.000,95.000,19
+File System stats,Available INodes Pct,/dev,sample,99.524,99.000,99.000,19
+File System stats,Available INodes Pct,/run,sample,99.524,99.000,99.000,19
+File System stats,Available INodes Pct,/run/lock,sample,99.524,99.000,99.000,19
+File System stats,Available INodes Pct,/run/shm,sample,99.524,99.000,99.000,19
+File System stats,Available INodes Pct,/mnt/regression/webapp,sample,91.481,91.000,91.000,19
+Device Stats,Read Requests Merged/Sec,sda,rate,0.000,0.000,0.000,19
+Device Stats,Write Requests Merged/Sec,sda,rate,3.577,0.600,22.700,19
+Device Stats,Read Requests/Sec,sda,rate,0.026,0.000,0.200,19
+Device Stats,Write Requests/Sec,sda,rate,2.979,0.400,20.700,19
+Device Stats,Read KBytes/Sec,sda,rate,0.169,0.000,2.000,19
+Device Stats,Wite KBytes/Sec,sda,rate,46.180,4.400,470.400,19
+Device Stats,Average Size Of Request (Sectors),sda,sample,30.307,12.310,137.330,19
+Device Stats,Average Queue length,sda,sample,0.515,0.000,5.470,19
+Device Stats,Average Request Time (ms),sda,rate,59.334,11.750,261.550,19
+Device Stats,Average Service Time (ms),sda,rate,9.990,3.820,13.000,19
+Device Stats,CPU Utilization (Pct),sda,rate,2.053,0.330,11.110,19
+MPStat Linux,User CPU Busy (Pct),CPU0,sample,12.539,10.110,13.250,19
+MPStat Linux,User CPU Busy (Pct),CPU1,sample,16.839,12.990,17.370,19
+MPStat Linux,User CPU Busy (Pct),CPU2,sample,16.607,13.160,17.400,19
+MPStat Linux,User CPU Busy (Pct),CPU3,sample,16.988,13.730,18.060,19
+MPStat Linux,Nice CPU Busy (Pct),CPU0,sample,0.000,0.000,0.000,19
+MPStat Linux,Nice CPU Busy (Pct),CPU1,sample,0.000,0.000,0.000,19
+MPStat Linux,Nice CPU Busy (Pct),CPU2,sample,0.000,0.000,0.000,19
+MPStat Linux,Nice CPU Busy (Pct),CPU3,sample,0.000,0.000,0.000,19
+MPStat Linux,System CPU Busy (Pct),CPU0,sample,19.489,15.570,20.180,19
+MPStat Linux,System CPU Busy (Pct),CPU1,sample,27.560,22.580,28.280,19
+MPStat Linux,System CPU Busy (Pct),CPU2,sample,27.572,22.960,28.340,19
+MPStat Linux,System CPU Busy (Pct),CPU3,sample,27.554,22.540,28.440,19
+MPStat Linux,IOWait CPU (Pct),CPU0,sample,0.000,0.000,0.000,19
+MPStat Linux,IOWait CPU (Pct),CPU1,sample,0.207,0.000,0.930,19
+MPStat Linux,IOWait CPU (Pct),CPU2,sample,0.179,0.000,0.620,19
+MPStat Linux,IOWait CPU (Pct),CPU3,sample,0.402,0.000,4.810,19
+MPStat Linux,IRQ CPU (Pct),CPU0,sample,0.000,0.000,0.000,19
+MPStat Linux,IRQ CPU (Pct),CPU1,sample,0.000,0.000,0.000,19
+MPStat Linux,IRQ CPU (Pct),CPU2,sample,0.000,0.000,0.000,19
+MPStat Linux,IRQ CPU (Pct),CPU3,sample,0.000,0.000,0.000,19
+MPStat Linux,Soft IRQ CPU (Pct),CPU0,sample,65.985,53.790,67.240,19
+MPStat Linux,Soft IRQ CPU (Pct),CPU1,sample,0.000,0.000,0.000,19
+MPStat Linux,Soft IRQ CPU (Pct),CPU2,sample,0.016,0.000,0.100,19
+MPStat Linux,Soft IRQ CPU (Pct),CPU3,sample,0.000,0.000,0.000,19
+MPStat Linux,Steal CPU (Pct),CPU0,sample,0.000,0.000,0.000,19
+MPStat Linux,Steal CPU (Pct),CPU1,sample,0.000,0.000,0.000,19
+MPStat Linux,Steal CPU (Pct),CPU2,sample,0.000,0.000,0.000,19
+MPStat Linux,Steal CPU (Pct),CPU3,sample,0.000,0.000,0.000,19
+MPStat Linux,Guest CPU (Pct),CPU0,sample,0.000,0.000,0.000,19
+MPStat Linux,Guest CPU (Pct),CPU1,sample,0.000,0.000,0.000,19
+MPStat Linux,Guest CPU (Pct),CPU2,sample,0.000,0.000,0.000,19
+MPStat Linux,Guest CPU (Pct),CPU3,sample,0.000,0.000,0.000,19
+MPStat Linux,Idle CPU (Pct),CPU0,sample,2.514,1.420,20.530,19
+MPStat Linux,Idle CPU (Pct),CPU1,sample,55.924,54.400,64.430,19
+MPStat Linux,Idle CPU (Pct),CPU2,sample,56.155,54.450,63.270,19
+MPStat Linux,Idle CPU (Pct),CPU3,sample,55.584,49.850,63.730,19

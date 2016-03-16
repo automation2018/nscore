@@ -1,0 +1,511 @@
+Group Display Order|Group Name(Vector Name)|Group ID|Data Display Order|Graph Name(Vector Name)|Avg|Min|Max
+10|Vuser Info(NA)|1|10|Running Vusers(NA)|204.465|0.000|654.706
+10|Vuser Info(NA)|1|20|Active Vusers(NA)|0.722|0.000|16.000
+10|Vuser Info(NA)|1|30|Thinking Vusers(NA)|204.480|0.000|669.000
+10|Vuser Info(NA)|1|40|Waiting Vusers(NA)|0.000|0.000|0.000
+10|Vuser Info(NA)|1|50|Idling Vusers(NA)|0.000|0.000|0.000
+10|Vuser Info(NA)|1|60|Number Of Connections(NA)|205.032|0.000|669.000
+10|Vuser Info(NA)|1|70|SyncPoint Vusers(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|10|TCP Send Throughput (Kbps)(NA)|2499.046|0.000|6689.348
+20|Network Throughput(NA)|2|20|TCP Total Send Bytes(NA)|301324938.000|2974205.000|301324938.000
+20|Network Throughput(NA)|2|30|TCP Receive Throughput (Kbps)(NA)|2043.384|0.000|5675.039
+20|Network Throughput(NA)|2|40|TCP Total Receive Bytes(NA)|246383090.000|2157760.000|246383090.000
+20|Network Throughput(NA)|2|50|Ethernet Send Throughput (Kbps)(NA)|2836.811|28.761|7559.961
+20|Network Throughput(NA)|2|60|Total Ethernet Send Bytes(NA)|342051398.000|3416432.000|342051398.000
+20|Network Throughput(NA)|2|70|Ethernet Receive Throughput (Kbps)(NA)|2327.173|30.079|6401.855
+20|Network Throughput(NA)|2|80|Total Ethernet Receive Bytes(NA)|280601286.000|2518044.000|280601286.000
+20|Network Throughput(NA)|2|90|Ethernet Send Packets/Sec(NA)|561.380|4.000|1527.000
+20|Network Throughput(NA)|2|100|Ethernet Total Send Packets(NA)|529217.000|5429.000|529217.000
+20|Network Throughput(NA)|2|110|Ethernet Receive Packets/Sec(NA)|461.051|6.000|1263.000
+20|Network Throughput(NA)|2|120|Ethernet Total Receive Packets(NA)|434741.000|4241.000|434741.000
+20|Network Throughput(NA)|2|130|TCP Connections Open/Sec(NA)|49.709|0.000|140.600
+20|Network Throughput(NA)|2|140|TCP Total Connections Open(NA)|46826.000|568.000|46826.000
+20|Network Throughput(NA)|2|150|TCP Connections Close/Sec(NA)|49.709|0.000|135.100
+20|Network Throughput(NA)|2|160|TCP Total Connections Close(NA)|46826.000|463.000|46826.000
+20|Network Throughput(NA)|2|170|SSL New Sessions/Sec(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|180|SSL Total New Sessions(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|190|SSL Reused Sessions/Sec(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|200|SSL Total Reused Sessions(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|210|SSL Reuse attempted/Sec(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|220|SSL Total Reuse attempted(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|230|SSL Write Failures/Sec(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|240|SSL Handshake Failures/Sec(NA)|0.000|0.000|0.000
+20|Network Throughput(NA)|2|250|HTTP Body receive throughput (Kbps)(NA)|1983.383|0.000|5508.398
+20|Network Throughput(NA)|2|260|HTTP Body Total receive bytes(NA)|239148350.000|2094400.000|239148350.000
+30|HTTP Requests(NA)|3|10|Requests Sent/Sec(NA)|85.335|0.000|237.000
+30|HTTP Requests(NA)|3|20|Requests Completed/Sec(NA)|85.335|0.000|237.000
+30|HTTP Requests(NA)|3|30|Requests Successful/Sec(NA)|85.335|0.000|237.000
+30|HTTP Requests(NA)|3|40|Average Response Time (Secs)(NA)|0.002|0.000|0.977
+30|HTTP Requests(NA)|3|50|Requests Completed(NA)|80386.000|704.000|80386.000
+30|HTTP Requests(NA)|3|60|Requests Successful(NA)|80386.000|704.000|80386.000
+40|HTTP Response Codes(NA)|25|10|100 Continue/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|20|101 Switching Protocols/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|30|200 OK/Sec(NA)|85.335|0.000|237.000
+40|HTTP Response Codes(NA)|25|40|201 Created/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|50|202 Accepted/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|60|203 Non-Authoritative Information/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|70|204 No Content/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|80|205 Reset Content/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|90|206 Partial Content/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|100|300 Multiple Choices/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|110|301 Moved Permanently/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|120|302 Found/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|130|303 See Other/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|140|304 Not Modified/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|150|305 Use Proxy/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|160|306 Switch Proxy/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|170|307 Temporary Redirect/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|180|400 Bad Request/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|190|401 Unauthorized/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|200|402 Payment Required/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|210|403 Forbidden/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|220|404 Not Found/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|230|405 Method Not Allowed/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|240|406 Not Acceptable/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|250|407 Proxy Authentication Required/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|260|408 Request Timeout/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|270|409 Conflict/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|280|410 Gone/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|290|411 Length Required/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|300|412 Precondition Failed/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|310|413 Request Entity Too Large/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|320|414 Request-URI Too Long/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|330|415 Unsupported Media Type/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|340|416 Requested Range Not Satisfiable/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|350|417 Expectation Failed/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|360|500 Internal Server Error/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|370|501 Not Implemented/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|380|502 Bad Gateway/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|390|503 Service Unavailable/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|400|504 Gateway Timeout/Sec(NA)|0.000|0.000|0.000
+40|HTTP Response Codes(NA)|25|410|505 HTTP Version Not Supported/Sec(NA)|0.000|0.000|0.000
+50|Page Download(NA)|4|10|Page Download Started/Second(NA)|85.335|0.000|237.000
+50|Page Download(NA)|4|20|Page Download Completed/Second(NA)|85.335|0.000|237.000
+50|Page Download(NA)|4|30|Success Page Responses/Second(NA)|85.335|0.000|237.000
+50|Page Download(NA)|4|40|Average Page Response Time (Secs)(NA)|0.002|0.000|0.977
+50|Page Download(NA)|4|50|Total Pages Completed(NA)|80386.000|704.000|80386.000
+50|Page Download(NA)|4|60|Total Pages Success(NA)|80386.000|704.000|80386.000
+50|Page Download(NA)|4|70|Average Java Script processing Time (Secs)(NA)|-nan|0.000|0.001
+50|Page Download(NA)|4|80|Average Page processing Time (Secs)(NA)|-nan|0.000|0.001
+60|Session(NA)|5|10|Sessions Started/Second(NA)|49.709|0.000|140.600
+60|Session(NA)|5|20|Sessions Completed/Second(NA)|49.709|0.000|135.100
+60|Session(NA)|5|30|Successful Sessions/Second(NA)|49.709|0.000|135.100
+60|Session(NA)|5|40|Average Session Response Time (Secs)(NA)|4.113|0.000|180.160
+60|Session(NA)|5|50|Total Session Completed(NA)|46826.000|463.000|46826.000
+60|Session(NA)|5|60|Total Session Success(NA)|46826.000|463.000|46826.000
+70|Transactions(NA)|6|10|Transactions Started/Second(NA)|85.335|0.000|237.000
+70|Transactions(NA)|6|20|Transactions Completed/Second(NA)|85.335|0.000|237.000
+70|Transactions(NA)|6|30|Transactions Successful/Second(NA)|85.335|0.000|237.000
+70|Transactions(NA)|6|40|Average Transaction Response Time (Secs)(NA)|0.002|0.000|0.977
+70|Transactions(NA)|6|50|Transactions Completed(NA)|80386.000|704.000|80386.000
+70|Transactions(NA)|6|60|Transactions Success(NA)|80386.000|704.000|80386.000
+80|HTTP Failures(NA)|7|10|HTTP Failures(All)/Sec(NA)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(MiscErr)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(1xx)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(2xx)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(3xx)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(4xx)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(5xx)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(PartialBody)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(T.O)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(ConFail)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(ClickAway)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(WriteFail)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(SSLWriteFail)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(SSLHshakeFail)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(IncompleteExact)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(NoRead)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(PartialHdr)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(BadBodyNoSize)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(BadBodyChunked)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(BadBodyConLen)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(Reload)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(Stopped)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(BadResponse)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(MailBoxErr)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(MailBoxStorageErr)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(AuthFail)|0.000|0.000|0.000
+80|HTTP Failures(NA)|7|20|HTTP Failures/Sec(UseOnceDataOver)|0.000|0.000|0.000
+90|Page Failures(NA)|8|10|Page Failures(All)/Minute(NA)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(MiscErr)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(1xx)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(2xx)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(3xx)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(4xx)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(5xx)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(PartialBody)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(T.O)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(ConFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(ClickAway)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(WriteFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(SSLWriteFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(SSLHshakeFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(IncompleteExact)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(NoRead)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(PartialHdr)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(BadBodyNoSize)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(BadBodyChunked)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(BadBodyConLen)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(Reload)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(Stopped)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(BadResponse)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(MailBoxErr)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(MailBoxStorageErr)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(AuthFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(UseOnceDataOver)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(UrlErr)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(CVFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(UnCompFail)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(SizeTooSmall)|0.000|0.000|0.000
+90|Page Failures(NA)|8|20|Page Failures/Minute(SizeTooBig)|0.000|0.000|0.000
+100|Session Failures(NA)|9|10|Sessions Failures(All)/Minute(NA)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(MiscErr)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(Stopped)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr3)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr4)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr5)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr6)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr7)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr8)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr9)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr10)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr11)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr12)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr13)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr14)|0.000|0.000|0.000
+100|Session Failures(NA)|9|20|Sessions Failures/Minute(SsErr15)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|10|Transactions Failures(All)/Minute(NA)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(MiscErr)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(1xx)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(2xx)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(3xx)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(4xx)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(5xx)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(PartialBody)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(T.O)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(ConFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(ClickAway)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(WriteFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(SSLWriteFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(SSLHshakeFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(IncompleteExact)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(NoRead)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(PartialHdr)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(BadBodyNoSize)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(BadBodyChunked)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(BadBodyConLen)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(Reload)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(Stopped)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(BadResponse)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(MailBoxErr)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(MailBoxStorageErr)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(AuthFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(UseOnceDataOver)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(UrlErr)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(CVFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(UnCompFail)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(SizeTooSmall)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(SizeTooBig)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr64)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr65)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr66)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr67)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr68)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr69)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr70)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr71)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr72)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr73)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr74)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr75)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr76)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr77)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr78)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr79)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr80)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr81)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr82)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr83)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr84)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr85)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr86)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr87)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr88)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr89)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr90)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr91)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr92)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr93)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr94)|0.000|0.000|0.000
+110|Transactions Failures(NA)|10|20|Transactions Failures/Minute(TxErr95)|0.000|0.000|0.000
+120|Transaction Stats(authc)|102|10|Transaction Time (Sec)(NA)|0.002|-0.001|0.881
+120|Transaction Stats(authorizeBillPay)|102|10|Transaction Time (Sec)(NA)|0.003|-0.001|0.977
+120|Transaction Stats(authorizeICT)|102|10|Transaction Time (Sec)(NA)|0.002|-0.001|0.522
+120|Transaction Stats(authorizePhoneEnrollment)|102|10|Transaction Time (Sec)(NA)|0.001|-0.001|0.021
+120|Transaction Stats(authc)|102|20|Transaction Completed/Sec(NA)|17.404|0.000|41.500
+120|Transaction Stats(authorizeBillPay)|102|20|Transaction Completed/Sec(NA)|45.389|0.000|139.900
+120|Transaction Stats(authorizeICT)|102|20|Transaction Completed/Sec(NA)|22.400|0.000|85.400
+120|Transaction Stats(authorizePhoneEnrollment)|102|20|Transaction Completed/Sec(NA)|0.142|0.000|0.800
+120|Transaction Stats(authc)|102|30|Transaction Successful/Sec(NA)|17.404|0.000|41.500
+120|Transaction Stats(authorizeBillPay)|102|30|Transaction Successful/Sec(NA)|45.389|0.000|139.900
+120|Transaction Stats(authorizeICT)|102|30|Transaction Successful/Sec(NA)|22.400|0.000|85.400
+120|Transaction Stats(authorizePhoneEnrollment)|102|30|Transaction Successful/Sec(NA)|0.142|0.000|0.800
+120|Transaction Stats(authc)|102|40|Transaction Failures/Sec(NA)|0.000|0.000|0.000
+120|Transaction Stats(authorizeBillPay)|102|40|Transaction Failures/Sec(NA)|0.000|0.000|0.000
+120|Transaction Stats(authorizeICT)|102|40|Transaction Failures/Sec(NA)|0.000|0.000|0.000
+120|Transaction Stats(authorizePhoneEnrollment)|102|40|Transaction Failures/Sec(NA)|0.000|0.000|0.000
+120|Transaction Stats(authc)|102|50|Transaction NetCache Hits (Pct)(NA)|0.000|18446744073709551616.000|0.000
+120|Transaction Stats(authorizeBillPay)|102|50|Transaction NetCache Hits (Pct)(NA)|0.000|18446744073709551616.000|0.000
+120|Transaction Stats(authorizeICT)|102|50|Transaction NetCache Hits (Pct)(NA)|0.000|18446744073709551616.000|0.000
+120|Transaction Stats(authorizePhoneEnrollment)|102|50|Transaction NetCache Hits (Pct)(NA)|0.000|18446744073709551616.000|0.000
+130|lsof Stats(NSAppliance)|10181|10|Total open files(NA)|6986.189|6608.000|7450.000
+130|lsof Stats(NSAppliance)|10181|20|IPV4 type files(NA)|291.338|81.000|739.000
+130|lsof Stats(NSAppliance)|10181|30|IPV6 type files(NA)|37.919|38.000|38.000
+130|lsof Stats(NSAppliance)|10181|40|PIPE type files(NA)|0.000|0.000|0.000
+130|lsof Stats(NSAppliance)|10181|50|FIFO type files(NA)|515.966|511.000|521.000
+130|lsof Stats(NSAppliance)|10181|60|DIR type files(NA)|745.350|743.000|751.000
+130|lsof Stats(NSAppliance)|10181|70|LINK type files(NA)|0.000|0.000|0.000
+130|lsof Stats(NSAppliance)|10181|80|BLK type files(NA)|0.000|0.000|0.000
+130|lsof Stats(NSAppliance)|10181|90|CHR type files(NA)|471.656|462.000|476.000
+130|lsof Stats(NSAppliance)|10181|100|REG type files(NA)|4354.299|4199.000|4393.000
+130|lsof Stats(NSAppliance)|10181|110|UNKNOWN type files(NA)|82.909|83.000|85.000
+130|lsof Stats(NSAppliance)|10181|120|SOCK type files(NA)|46.730|46.000|51.000
+130|lsof Stats(NSAppliance)|10181|130|UNIX type files(NA)|225.510|225.000|226.000
+130|lsof Stats(NSAppliance)|10181|140|OTHERS(NA)|214.512|212.000|215.000
+140|Process States Count(NSAppliance)|10161|10|Total processes(NA)|365.000|364.000|378.000
+140|Process States Count(NSAppliance)|10161|20|Interruptable(NA)|365.202|363.000|376.000
+140|Process States Count(NSAppliance)|10161|30|Stopped(NA)|0.000|0.000|0.000
+140|Process States Count(NSAppliance)|10161|40|Defunct/Zombie(NA)|0.000|0.000|0.000
+140|Process States Count(NSAppliance)|10161|50|Runnable(NA)|1.274|1.000|3.000
+140|Process States Count(NSAppliance)|10161|60|IO(NA)|0.042|0.000|1.000
+140|Process States Count(NSAppliance)|10161|70|Paging(NA)|0.000|0.000|0.000
+140|Process States Count(NSAppliance)|10161|80|Dead(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|10|Elapsed Time(Sec)(NA)|19175.000|18244.000|19175.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|10|Elapsed Time(Sec)(NA)|19167.000|18236.000|19167.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|10|Elapsed Time(Sec)(NA)|932.000|2.000|932.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|10|Elapsed Time(Sec)(NA)|933.000|3.000|933.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|20|CPU Time(Sec)(NA)|19.000|18.000|19.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|20|CPU Time(Sec)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|20|CPU Time(Sec)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|20|CPU Time(Sec)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|30|Size(KB)(NA)|4401562.972|4410928.000|4410928.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|30|Size(KB)(NA)|93548.960|93748.000|93748.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|30|Size(KB)(NA)|18169.342|18208.000|18208.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|30|Size(KB)(NA)|20296.815|20340.000|20340.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|40|Resident Set Size(KB)(NA)|121787.431|121836.000|124064.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|40|Resident Set Size(KB)(NA)|3101.401|3108.000|3108.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|40|Resident Set Size(KB)(NA)|1081.699|1084.000|1084.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|40|Resident Set Size(KB)(NA)|981.911|984.000|984.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|50|Cpu Time(Pct)(NA)|0.106|0.000|10.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|50|Cpu Time(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|50|Cpu Time(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|50|Cpu Time(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|60|Memory Used(Pct)(NA)|0.998|1.000|1.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|60|Memory Used(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|60|Memory Used(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|60|Memory Used(Pct)(NA)|0.000|0.000|0.000
+150|Process Stats Ex(NSAppliance_CMON)|10117|70|Number of threads(NA)|46.794|46.000|68.000
+150|Process Stats Ex(NSAppliance_LPS)|10117|70|Number of threads(NA)|0.998|1.000|1.000
+150|Process Stats Ex(NSAppliance_NLW)|10117|70|Number of threads(NA)|0.998|1.000|1.000
+150|Process Stats Ex(NSAppliance_NLM)|10117|70|Number of threads(NA)|0.998|1.000|1.000
+160|Socket Statistics(NSAppliance)|10107|10|Used Sockets(NA)|736.263|534.000|1179.000
+160|Socket Statistics(NSAppliance)|10107|20|Tcp InUse(NA)|247.314|44.000|689.000
+160|Socket Statistics(NSAppliance)|10107|30|Tcp Orphan Count(NA)|0.011|0.000|1.000
+160|Socket Statistics(NSAppliance)|10107|40|Tcp Timewait(NA)|34.416|0.000|129.000
+160|Socket Statistics(NSAppliance)|10107|50|Tcp Alloc(NA)|275.255|72.000|717.000
+160|Socket Statistics(NSAppliance)|10107|60|Tcp Memory(NA)|34.013|25.000|62.000
+160|Socket Statistics(NSAppliance)|10107|70|Udp InUse(NA)|25.945|26.000|26.000
+160|Socket Statistics(NSAppliance)|10107|80|Udp Memory(NA)|6.985|7.000|7.000
+160|Socket Statistics(NSAppliance)|10107|90|Udp-Lite InUse(NA)|0.000|0.000|0.000
+160|Socket Statistics(NSAppliance)|10107|100|Raw InUse(NA)|0.000|0.000|0.000
+160|Socket Statistics(NSAppliance)|10107|110|Frag InUse(NA)|0.000|0.000|0.000
+160|Socket Statistics(NSAppliance)|10107|120|Frag Memory(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|10|Established(NA)|241.507|35.000|656.000
+170|TCP states counts(NSAppliance)|10013|20|SynSent(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|30|SynRcvd(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|40|FinWait1(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|50|FinWait2(NA)|0.318|0.000|6.000
+170|TCP states counts(NSAppliance)|10013|60|TimeWait(NA)|33.482|0.000|114.000
+170|TCP states counts(NSAppliance)|10013|70|Closed(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|80|CloseWait(NA)|1.316|1.000|7.000
+170|TCP states counts(NSAppliance)|10013|90|LastAck(NA)|0.000|0.000|0.000
+170|TCP states counts(NSAppliance)|10013|100|Listen(NA)|29.936|30.000|30.000
+170|TCP states counts(NSAppliance)|10013|110|Closing(NA)|0.000|0.000|0.000
+180|TCP Stats (Linux)(NSAppliance)|10052|10|Cumulative Active opens(NA)|46798.000|436.000|46798.000
+180|TCP Stats (Linux)(NSAppliance)|10052|20|Cumulative Passive opens(NA)|5.000|3.000|5.000
+180|TCP Stats (Linux)(NSAppliance)|10052|30|Cumulative Failed attempt(NA)|0.000|0.000|0.000
+180|TCP Stats (Linux)(NSAppliance)|10052|40|Cumulative Reset recieved(NA)|6.000|6.000|6.000
+180|TCP Stats (Linux)(NSAppliance)|10052|50|Current Established(NA)|248.811|41.000|705.000
+180|TCP Stats (Linux)(NSAppliance)|10052|60|Cumulative Segments received(NA)|297438.000|2169.000|297438.000
+180|TCP Stats (Linux)(NSAppliance)|10052|70|Cumulative Segments send out(NA)|528385.000|3957.000|528385.000
+180|TCP Stats (Linux)(NSAppliance)|10052|80|Cumulative Segments retransmitted(NA)|11.000|0.000|11.000
+180|TCP Stats (Linux)(NSAppliance)|10052|90|Cumulative Bad segments received(NA)|0.000|0.000|0.000
+180|TCP Stats (Linux)(NSAppliance)|10052|100|Cumulative Resets sent(NA)|6.000|6.000|6.000
+190|UpTime(NSAppliance)|10004|10|Load Average Over 1 Minute(NA)|1.018|0.060|4.480
+190|UpTime(NSAppliance)|10004|20|Load Average Over 5 Minute(NA)|0.966|0.530|1.870
+190|UpTime(NSAppliance)|10004|30|Load Average Over 15 Minute(NA)|0.791|0.600|1.060
+190|UpTime(NSAppliance)|10004|40|Uptime (Days)(NA)|69.946|70.090|70.100
+190|UpTime(NSAppliance)|10004|50|Number of Users(NA)|0.998|1.000|1.000
+200|SysStats Linux Extended(NSAppliance)|10108|10|Processes Waiting For Run Time(NA)|0.340|0.000|3.000
+200|SysStats Linux Extended(NSAppliance)|10108|20|Processes Waiting For UnInterruptible Sleep(NA)|0.722|0.000|22.000
+200|SysStats Linux Extended(NSAppliance)|10108|30|Used Virtual Memory (MB)(NA)|297.367|298.000|298.000
+200|SysStats Linux Extended(NSAppliance)|10108|40|Available Memory (MB)(NA)|6465.340|6476.000|6481.000
+200|SysStats Linux Extended(NSAppliance)|10108|50|Free Memory (MB)(NA)|282.166|250.000|333.000
+200|SysStats Linux Extended(NSAppliance)|10108|60|Used Buffer Memory (MB)(NA)|324.851|325.000|326.000
+200|SysStats Linux Extended(NSAppliance)|10108|70|Used Cache Memory (MB)(NA)|6183.174|6144.000|6228.000
+200|SysStats Linux Extended(NSAppliance)|10108|80|Memory Swapped In From Disk/Sec (MB)(NA)|0.000|0.000|0.000
+200|SysStats Linux Extended(NSAppliance)|10108|90|Memory Swapped To Disk/Sec (MB)(NA)|0.032|0.000|3.000
+200|SysStats Linux Extended(NSAppliance)|10108|100|Disk Blocks Read/Sec(NA)|306.168|0.000|924.000
+200|SysStats Linux Extended(NSAppliance)|10108|110|Disk Blocks Written/Sec(NA)|188.089|40.000|833.000
+200|SysStats Linux Extended(NSAppliance)|10108|120|Interrupts/Sec(NA)|2239.936|1334.000|3400.000
+200|SysStats Linux Extended(NSAppliance)|10108|130|Context Switches/Sec(NA)|7742.771|5617.000|9846.000
+200|SysStats Linux Extended(NSAppliance)|10108|140|User CPU Busy (Pct)(NA)|1.815|1.000|2.000
+200|SysStats Linux Extended(NSAppliance)|10108|150|System CPU Busy (Pct)(NA)|4.193|3.000|5.000
+200|SysStats Linux Extended(NSAppliance)|10108|160|Idle CPU (Pct)(NA)|92.091|83.000|95.000
+200|SysStats Linux Extended(NSAppliance)|10108|170|IOWait CPU (Pct)(NA)|1.879|0.000|11.000
+200|SysStats Linux Extended(NSAppliance)|10108|180|CPU Utilization (Pct)(NA)|7.696|5.000|17.000
+200|SysStats Linux Extended(NSAppliance)|10108|190|CPU Queue (%)(NA)|8.493|0.000|75.000
+200|SysStats Linux Extended(NSAppliance)|10108|200|Time stolen from a virtual machine(NA)|0.000|0.000|0.000
+210|File System stats(NSAppliance_DiskStats_/)|10028|10|Total Disk Space (GB)(NA)|907.004|908.934|908.934
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|10|Total Disk Space (GB)(NA)|3.855|3.863|3.863
+210|File System stats(NSAppliance_DiskStats_/run)|10028|10|Total Disk Space (GB)(NA)|0.773|0.775|0.775
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|10|Total Disk Space (GB)(NA)|0.005|0.005|0.005
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|10|Total Disk Space (GB)(NA)|3.868|3.876|3.876
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|10|Total Disk Space (GB)(NA)|883.403|885.283|885.283
+210|File System stats(NSAppliance_DiskStats_/)|10028|20|Used Disk Space (GB)(NA)|126.264|126.508|126.557
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|20|Used Disk Space (GB)(NA)|0.000|0.000|0.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|20|Used Disk Space (GB)(NA)|0.001|0.001|0.001
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|20|Used Disk Space (GB)(NA)|0.000|0.000|0.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|20|Used Disk Space (GB)(NA)|0.000|0.000|0.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|20|Used Disk Space (GB)(NA)|744.714|746.298|746.298
+210|File System stats(NSAppliance_DiskStats_/)|10028|30|Available Disk Space (GB)(NA)|734.661|736.200|736.248
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|30|Available Disk Space (GB)(NA)|3.855|3.863|3.863
+210|File System stats(NSAppliance_DiskStats_/run)|10028|30|Available Disk Space (GB)(NA)|0.772|0.774|0.774
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|30|Available Disk Space (GB)(NA)|0.005|0.005|0.005
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|30|Available Disk Space (GB)(NA)|3.867|3.875|3.875
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|30|Available Disk Space (GB)(NA)|93.809|94.009|94.009
+210|File System stats(NSAppliance_DiskStats_/)|10028|40|Available Disk Space Pct(NA)|84.820|85.000|85.000
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|40|Available Disk Space Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|40|Available Disk Space Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|40|Available Disk Space Pct(NA)|99.788|100.000|100.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|40|Available Disk Space Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|40|Available Disk Space Pct(NA)|10.977|11.000|11.000
+210|File System stats(NSAppliance_DiskStats_/)|10028|50|Total INodes(NA)|60402172.739|60530688.000|60530688.000
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|50|Total INodes(NA)|1010486.030|1012636.000|1012636.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|50|Total INodes(NA)|1013790.998|1015948.000|1015948.000
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|50|Total INodes(NA)|1013790.998|1015948.000|1015948.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|50|Total INodes(NA)|1013790.998|1015948.000|1015948.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|50|Total INodes(NA)|58832648.153|58957824.000|58957824.000
+210|File System stats(NSAppliance_DiskStats_/)|10028|60|Used INodes(NA)|722366.210|723897.000|723908.000
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|60|Used INodes(NA)|476.985|478.000|478.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|60|Used INodes(NA)|413.100|412.000|414.000
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|60|Used INodes(NA)|5.987|6.000|6.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|60|Used INodes(NA)|3.992|4.000|4.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|60|Used INodes(NA)|3785763.185|3793818.000|3793818.000
+210|File System stats(NSAppliance_DiskStats_/)|10028|70|Available INodes(NA)|59679806.529|59806780.000|59806791.000
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|70|Available INodes(NA)|1010009.045|1012158.000|1012158.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|70|Available INodes(NA)|1013377.898|1015534.000|1015536.000
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|70|Available INodes(NA)|1013785.011|1015942.000|1015942.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|70|Available INodes(NA)|1013787.006|1015944.000|1015944.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|70|Available INodes(NA)|55046884.968|55164006.000|55164006.000
+210|File System stats(NSAppliance_DiskStats_/)|10028|80|Available INodes Pct(NA)|97.792|98.000|98.000
+210|File System stats(NSAppliance_DiskStats_/dev)|10028|80|Available INodes Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/run)|10028|80|Available INodes Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/run/lock)|10028|80|Available INodes Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/run/shm)|10028|80|Available INodes Pct(NA)|98.790|99.000|99.000
+210|File System stats(NSAppliance_DiskStats_/mnt/regression/webapp)|10028|80|Available INodes Pct(NA)|92.803|93.000|93.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|10|Received Throughput (Kbps)(NA)|2.592|1.002|4.788
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|10|Received Throughput (Kbps)(NA)|2341.126|0.000|6629.922
+220|Network traffic(NSAppliance_EthStat_lo)|10029|10|Received Throughput (Kbps)(NA)|30.214|15.686|55.998
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|20|Received Pkts OK/Sec(NA)|2.246|1.000|3.800
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|20|Received Pkts OK/Sec(NA)|462.827|0.000|1300.400
+220|Network traffic(NSAppliance_EthStat_lo)|10029|20|Received Pkts OK/Sec(NA)|5.500|4.200|8.300
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|30|Received Pkts Error/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|30|Received Pkts Error/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|30|Received Pkts Error/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|40|Received Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|40|Received Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|40|Received Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|50|Received Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|50|Received Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|50|Received Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|60|Received Pkts frame/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|60|Received Pkts frame/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|60|Received Pkts frame/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|70|Received Pkts compressed/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|70|Received Pkts compressed/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|70|Received Pkts compressed/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|80|Received Pkts multicast/Sec(NA)|0.247|0.000|1.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|80|Received Pkts multicast/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|80|Received Pkts multicast/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|90|Transmitted Throughput (Kbps)(NA)|0.645|0.463|1.066
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|90|Transmitted Throughput (Kbps)(NA)|2868.933|0.000|7703.301
+220|Network traffic(NSAppliance_EthStat_lo)|10029|90|Transmitted Throughput (Kbps)(NA)|30.214|15.686|55.998
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|100|Transmitted Pkts OK/Sec(NA)|0.587|0.400|1.100
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|100|Transmitted Pkts OK/Sec(NA)|566.849|0.000|1557.300
+220|Network traffic(NSAppliance_EthStat_lo)|10029|100|Transmitted Pkts OK/Sec(NA)|5.500|4.200|8.300
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|110|Transmitted Pkts Errror/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|110|Transmitted Pkts Errror/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|110|Transmitted Pkts Errror/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|120|Transmitted Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|120|Transmitted Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|120|Transmitted Pkts Dropped/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|130|Transmitted Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|130|Transmitted Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|130|Transmitted Pkts fifo/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|140|Transmitted Pkts colls/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|140|Transmitted Pkts colls/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|140|Transmitted Pkts colls/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|150|Transmitted Pkts carrier/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|150|Transmitted Pkts carrier/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|150|Transmitted Pkts carrier/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth0)|10029|160|Transmitted Pkts compressed/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_eth1)|10029|160|Transmitted Pkts compressed/Sec(NA)|0.000|0.000|0.000
+220|Network traffic(NSAppliance_EthStat_lo)|10029|160|Transmitted Pkts compressed/Sec(NA)|0.000|0.000|0.000
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|10|Read Requests Merged/Sec(NA)|0.000|0.000|0.000
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|20|Write Requests Merged/Sec(NA)|18.424|9.400|50.100
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|30|Read Requests/Sec(NA)|16.580|0.000|56.300
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|40|Write Requests/Sec(NA)|8.812|0.600|28.300
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|50|Read KBytes/Sec(NA)|306.297|0.000|924.400
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|60|Wite KBytes/Sec(NA)|192.072|40.000|822.800
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|70|Average Size Of Request (Sectors)(NA)|67.967|18.830|247.330
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|80|Average Queue length(NA)|2.472|0.010|11.840
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|90|Average Request Time (ms)(NA)|99.170|0.890|425.710
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|100|Average Service Time (ms)(NA)|4.742|0.640|14.740
+230|Device Stats(NSAppliance_DeviceStats_sda)|10148|110|CPU Utilization (Pct)(NA)|6.071|0.610|16.750
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|10|User CPU Busy (Pct)(NA)|1.632|1.100|2.600
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|10|User CPU Busy (Pct)(NA)|1.938|1.200|3.040
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|10|User CPU Busy (Pct)(NA)|1.622|1.100|3.020
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|10|User CPU Busy (Pct)(NA)|1.547|1.010|2.610
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|20|Nice CPU Busy (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|20|Nice CPU Busy (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|20|Nice CPU Busy (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|20|Nice CPU Busy (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|30|System CPU Busy (Pct)(NA)|4.094|3.220|5.050
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|30|System CPU Busy (Pct)(NA)|4.274|2.920|6.040
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|30|System CPU Busy (Pct)(NA)|4.035|2.920|5.340
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|30|System CPU Busy (Pct)(NA)|4.021|3.130|5.420
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|40|IOWait CPU (Pct)(NA)|2.089|0.100|11.760
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|40|IOWait CPU (Pct)(NA)|2.447|0.000|11.340
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|40|IOWait CPU (Pct)(NA)|1.643|0.000|10.500
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|40|IOWait CPU (Pct)(NA)|1.665|0.000|11.140
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|50|IRQ CPU (Pct)(NA)|0.001|0.000|0.100
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|50|IRQ CPU (Pct)(NA)|0.001|0.000|0.100
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|50|IRQ CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|50|IRQ CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|60|Soft IRQ CPU (Pct)(NA)|0.036|0.000|0.200
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|60|Soft IRQ CPU (Pct)(NA)|0.166|0.000|0.510
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|60|Soft IRQ CPU (Pct)(NA)|0.013|0.000|0.100
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|60|Soft IRQ CPU (Pct)(NA)|0.011|0.000|0.100
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|70|Steal CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|70|Steal CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|70|Steal CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|70|Steal CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|80|Guest CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|80|Guest CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|80|Guest CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|80|Guest CPU (Pct)(NA)|0.000|0.000|0.000
+240|MPStat Linux(NSAppliance_MPStats_CPU0)|10010|90|Idle CPU (Pct)(NA)|91.935|82.610|95.160
+240|MPStat Linux(NSAppliance_MPStats_CPU1)|10010|90|Idle CPU (Pct)(NA)|90.961|82.560|95.670
+240|MPStat Linux(NSAppliance_MPStats_CPU2)|10010|90|Idle CPU (Pct)(NA)|92.474|83.500|95.670
+240|MPStat Linux(NSAppliance_MPStats_CPU3)|10010|90|Idle CPU (Pct)(NA)|92.544|82.530|95.670

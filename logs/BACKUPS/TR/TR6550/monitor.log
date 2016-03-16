@@ -1,0 +1,31 @@
+
+00:00:00|NA|Custom Monitor|NA:NA|-|Making control connection to CavMonAgent. ip = 127.0.0.1, port = 7891, msg = test_run_starts:MON_TEST_RUN=6550;ProgressMsec=10000;MON_NS_VER=4.1.3.10;HB_MISS_COUNT=30;MON_PARTITION_IDX=0
+, server_idx = 3
+00:00:00|NA|Custom Monitor|NA:NA|-|Control connection made. fd = 7, source address = IPV4:127.0.0.1.64434, destination address = IPV4:127.0.0.1.7891
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_mpstat.gdf:NSAppliance_MPStats|-|Starting Dynamic Vector Monitor - NSAppliance_MPStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_df.gdf:NSAppliance_DiskStats|-|Starting Dynamic Vector Monitor - NSAppliance_DiskStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_iostat_ex.gdf:NSAppliance_DeviceStats|-|Starting Dynamic Vector Monitor - NSAppliance_DeviceStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_eth_stats.gdf:NSAppliance_EthStat|-|Starting Dynamic Vector Monitor - NSAppliance_EthStat
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_df.gdf:NSAppliance_DiskStats|-|Dynamic Vector Monitor passed - NSAppliance_DiskStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_df.gdf:NSAppliance_DiskStats|-|Got vector list (NSAppliance_DiskStats_/ NSAppliance_DiskStats_/dev NSAppliance_DiskStats_/run NSAppliance_DiskStats_/run/lock NSAppliance_DiskStats_/run/shm NSAppliance_DiskStats_/mnt/regression/webapp) from CS (127.0.0.1) for DynamicVectorMonitor 'NSAppliance_DiskStats'
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_mpstat.gdf:NSAppliance_MPStats|-|Dynamic Vector Monitor passed - NSAppliance_MPStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_mpstat.gdf:NSAppliance_MPStats|-|Got vector list (NSAppliance_MPStats_CPU0 NSAppliance_MPStats_CPU1 NSAppliance_MPStats_CPU2 NSAppliance_MPStats_CPU3) from CS (127.0.0.1) for DynamicVectorMonitor 'NSAppliance_MPStats'
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_iostat_ex.gdf:NSAppliance_DeviceStats|-|Dynamic Vector Monitor passed - NSAppliance_DeviceStats
+00:00:00|NSAppliance|Dynamic Vector Monitor|cm_iostat_ex.gdf:NSAppliance_DeviceStats|-|Got vector list (NSAppliance_DeviceStats_sda) from CS (127.0.0.1) for DynamicVectorMonitor 'NSAppliance_DeviceStats'
+00:00:01|NSAppliance|Dynamic Vector Monitor|cm_eth_stats.gdf:NSAppliance_EthStat|-|Dynamic Vector Monitor passed - NSAppliance_EthStat
+00:00:01|NSAppliance|Dynamic Vector Monitor|cm_eth_stats.gdf:NSAppliance_EthStat|-|Got vector list (NSAppliance_EthStat_eth0 NSAppliance_EthStat_eth1 NSAppliance_EthStat_lo ) from CS (127.0.0.1) for DynamicVectorMonitor 'NSAppliance_EthStat'
+00:00:02|NSAppliance|Custom Monitor|cm_lsof_stats.gdf:NSAppliance|-|Connection established for monitor lsof Stats(NSAppliance), source address 'IPV4:127.0.0.1.64439',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_ps_count_by_state.gdf:NSAppliance|-|Connection established for monitor Process States Count(NSAppliance), source address 'IPV4:127.0.0.1.64440',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_ps_data_ex_linux.gdf:NSAppliance_CMON|-|Connection established for monitor Process Stats Ex(NSAppliance_CMON), source address 'IPV4:127.0.0.1.64441',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_ps_data_ex_linux.gdf:NSAppliance_LPS|-|Connection established for monitor Process Stats Ex(NSAppliance_LPS), source address 'IPV4:127.0.0.1.64442',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_ps_data_ex_linux.gdf:NSAppliance_NLW|-|Connection established for monitor Process Stats Ex(NSAppliance_NLW), source address 'IPV4:127.0.0.1.64443',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_ps_data_ex_linux.gdf:NSAppliance_NLM|-|Connection established for monitor Process Stats Ex(NSAppliance_NLM), source address 'IPV4:127.0.0.1.64444',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_sock_stats.gdf:NSAppliance|-|Connection established for monitor Socket Statistics(NSAppliance), source address 'IPV4:127.0.0.1.64445',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_tcp_states_count.gdf:NSAppliance|-|Connection established for monitor TCP states counts(NSAppliance), source address 'IPV4:127.0.0.1.64446',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_tcp_stats_linux.gdf:NSAppliance|-|Connection established for monitor TCP Stats (Linux)(NSAppliance), source address 'IPV4:127.0.0.1.64447',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_uptime.gdf:NSAppliance|-|Connection established for monitor UpTime(NSAppliance), source address 'IPV4:127.0.0.1.64448',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_vmstat_ex_linux_ex.gdf:NSAppliance|-|Connection established for monitor SysStats Linux Extended(NSAppliance), source address 'IPV4:127.0.0.1.64449',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_df.gdf:NSAppliance_DiskStats_/|-|Connection established for monitor File System stats(NSAppliance_DiskStats_/), source address 'IPV4:127.0.0.1.64450',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_eth_stats.gdf:NSAppliance_EthStat_eth0|-|Connection established for monitor Network traffic(NSAppliance_EthStat_eth0), source address 'IPV4:127.0.0.1.64451',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_iostat_ex.gdf:NSAppliance_DeviceStats_sda|-|Connection established for monitor Device Stats(NSAppliance_DeviceStats_sda), source address 'IPV4:127.0.0.1.64452',  destination address '127.0.0.1:7891'.
+00:00:02|NSAppliance|Custom Monitor|cm_mpstat.gdf:NSAppliance_MPStats_CPU0|-|Connection established for monitor MPStat Linux(NSAppliance_MPStats_CPU0), source address 'IPV4:127.0.0.1.64453',  destination address '127.0.0.1:7891'.
