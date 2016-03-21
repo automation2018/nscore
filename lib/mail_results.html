@@ -4,7 +4,7 @@
 <head>
     <style type='text/css'>
         body{
-            font-size: 1.0rem;
+            font-size: .9rem;
             color: #333;
         }
        .container{
@@ -27,79 +27,69 @@
            color: #333;
         }
         tr td{
-            text-align: left;
         }
         .divider {
           border-top: 1px solid #e0e0e0;
         }
+        
         .signature{ color: #607d8b;}
+        
         .lead { 
-        font-size: 1.3rem; 
+        font-size: 1.68rem; 
         color: #616161; 
         font-weight: 300;
         }
-
+        
     </style>
 </head>
 <body>
     <div class='container'>
-    <table style='width: 91%!important; border: 0px;'>
+    <table style='width: 92%!important; border: 0px;'>
         <tr>
-          <td width='35%' style='border: 0px!important; padding: 0px !important'><h2 style='font-size: 1.68rem; color: #616161; font-weight: 300;'>Report For: NS Core Performance</h3></td>
-          <td width='65%' style='border: 0px! important; padding: 0px!important'>
+          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>Report For: NS Core Regression</h2></td>
+          <td width='70%' style='border: 0px! important; padding: 0px!important'>
             <table>
                <tr>
                <th>Status</th>
-               <th>Tolerance(Pct)</th>
                <th>Start Time</th>
                <th>End Time</th>
                </tr>
                <tr>
                <td style='background-color: #E8F5E9'>Passed</td>
-               <td>&plusmn; 5%</td>
-               <td>14/03/16 04:39:00 PM</td>
-               <td>14/03/16 04:50:31 PM</td>
+               <td>20/03/16 12:43:45 AM</td>
+               <td>20/03/16 03:19:41 AM</td>
                </tr>
             </table>
           </td>
         </tr>
     </table>
-    <hr/>
+    <br>
+    <div class='divider'>
     <br>
     <table>
     <caption class='lead'>Test Results</caption>
         <tr>
-            <th>Metric</th>
-            <th>Baseline</th>
-            <th>Current</th>
-            <th>% Change</th>
+            <th>Category</th>
+            <th>Total</th>
+            <th>Passed</th>
+            <th>Failed</th>
+            <th>NS Fail</th>
         </tr>
         <tr>
-            <td>CPS</td>
-            <td>57115</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>HPS</td>
-            <td>314745</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>THROUGHPUT</td>
-            <td>962017</td>
-            <td></td>
-            <td></td>
+            <td>Regression</td>
+            <td>12</td>
+            <td>12</td>
+	    <td>0</td>
+            <td>0</td>
         </tr>
     </table>
     <br>
-    <h5 class='lead'>Failed: 0 test(s), Passed: 1 test(s), Total: 1 test(s)</h5>
-    <a href='http://10.10.30.37'>View Online Automation Reports</a>
-    <hr/>
-    <br><br>
-    Automation Team,
-   <br>Cavisson Systems Inc
+    
+   <br><br>
+    <a href='http://10.10.30.37/reports/graphs/NetStorm/regression/4.1.5/B13' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
+   <br><br>
+   <div class='signature'>
+      Automation Team,<br>Cavisson Systems Inc
    </div>
+</div>
 </body>
-</html>
