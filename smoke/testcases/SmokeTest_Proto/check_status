@@ -86,6 +86,12 @@ function get_ftp_test_values(){
     debug_log "PASV_COUNT_PASS_MODE=${PASV_COUNT_PASS_MODE}"
     debug_log "PASV_COUNT_ACTIVE_MODE=${PASV_COUNT_ACTIVE_MODE}"
     debug_log "BINARY_WORD_COUNT=${BINARY_WORD_COUNT}"
+
+	succ_page_count=$(grep 'Page  Report:' ${NS_WDIR}/logs/TR${T_RUN_ID}/progress.report | egrep -o 'succ [0-9]+' | cut -d' ' -f2)
+	
+	if [ "$succ_page_count" != "2" ];then 
+        log_status_and_exit_ex "FAIL" "Ftp testcase failed due to url failure;vsftpd service may be stopped"
+	fi
 }
 
 
@@ -138,15 +144,14 @@ function get_hessian_test_values(){
     rep=$(tail -6 ${FS_REP_FILE} | head -1 | cut -d "" -f1)
 
     xml_file_diff=$(diff ${HES_REQ_BODY_FILE} ${HES_REQ_SCRIPT_FILE} >${HES_REQ_DIFF_FILE} ; head -1 ${HES_REQ_DIFF_FILE=} | cut -d "," -f1,2,3)
-
     req_bin_diff=$(tail -2 ${FS_REQ_FILE} | head -1 >${HES_BIN_DIFF_FILE};diff ${HES_BIN_DIFF_FILE} ${REQ_HES_BDY_FILE} | cut -d " " -f1,2,6)
-    
     nsi_hessian -d -i ${REQ_HES_BDY_FILE} -o ${HES_CHCK_BIN_FILE} -D 4 -v 2;diff ${HES_CHCK_BIN_FILE} ${HES_REQ_BODY_FILE} 
-    
     hes_to_xml_diff=$?
-    
-    if [ "$rep" == "HTTP/1.1 200 OK" ] && \
-       [ "$hes_to_xml_diff" == "0" ] && \
+   
+	debug_log "rep=${rep};hes_to_xml_diff=$hes_to_xml_diff;req_bin_diff=${req_bin_diff}"
+
+    #if [ "$rep" == "HTTP/1.1 200 OK" ] && \
+    if [ "$hes_to_xml_diff" == "0" ] && \
        [ "$req_bin_diff" == "Binary files differ" ];then
         return 0
     else
@@ -418,6 +423,8 @@ if [ "$T_NAME" == "SMOKE-010-017" ];then
     get_hessian_test_values
 
     RC=$?
+	
+	debug_log "RC=$RC"
 
     if [ $RC -eq 0 ]
        [ "$req1" == "POST /hessian_service/hessian_test.xml HTTP/1.1" ];then
@@ -432,6 +439,8 @@ if [ "$T_NAME" == "SMOKE-010-018" ];then
     get_hessian_test_values
 
     RC=$?
+
+	debug_log "RC=$RC"
 
     if [ $RC -eq 0 ];then
         log_status_and_exit_ex "PASS" "Hessian Protocol version 2.0 Test Passed"
