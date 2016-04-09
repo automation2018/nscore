@@ -4,6 +4,7 @@ source $NS_WDIR/lib/automation_util
 T_NAME=$(get_tname)
 EVENT_LOG="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/event.log"
 
+
 function main(){
     case $(get_tname) in
         "SMOKE-016-001") handle_smoke_001_case ;;
@@ -109,6 +110,7 @@ function handle_smoke_005_case(){
 
     for line in "${state_changed_events}"; do
         isPresent=$(grep "2xx" <<<$line)
+        debug_log "flag=$flag;isPresent=$isPresent"
         if [ ! -z $isPresent ]; then
             flag=1
             debug_log "flag=$flag;isPresent=$isPresent"
@@ -123,6 +125,9 @@ function handle_smoke_005_case(){
 }
 
 
+# Previously we were controlling timeout events with G_IDLE_MSECS keyword
+# Some times NS receives early response from NO overtaking the keyword controls
+# To handle this issue We have created a service and provided SVC_TIME 2 0
 function handle_smoke_006_case(){
     events_asper_count=$(cut -d "|" -f9 ${EVENT_LOG} | egrep "T.O")
     

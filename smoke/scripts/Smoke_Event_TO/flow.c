@@ -14,7 +14,7 @@
 void flow()
 {
     ns_web_url ("login",
-        "URL=http://10.10.30.38/jstojsp/time_out_event.html",
+        "URL=http://127.0.0.1/jstojsp/time_out_event.html",
     );
 
     ns_page_think_time(5.0);
