@@ -4898,3 +4898,916 @@
 2016-04-19 04:26:41 AM |TR26716|REG-007-006| Finalvalue=334
 2016-04-19 04:26:41 AM |TR26716|REG-007-006| ramp_down_users=334
 2016-04-19 04:26:41 AM |TR26716|REG-007-006| rtc_phase_string_count=4
+2016-04-21 10:26:44 AM |TR26719|SMOKE-017-001| expected_delay_time_min=1;expected_delay_time_max=6
+2016-04-21 10:26:44 AM |TR26719|SMOKE-017-001| actual_delay_time=
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| Method called - check_and_set_status()
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| Testcase Name=SMOKE-001-001
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| Method called - get_url_query_param_var()
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| End method - get_url_query_param_var()
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| SAVED STRING == RESPONSE |STATUS=PASS
+2016-04-21 01:36:13 PM |TR26730|SMOKE-001-001| End method - check_and_set_status()
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| Method called - check_and_set_status()
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| Testcase Name=SMOKE-001-002
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| Method called -- get_status_from_test_report()
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| String to search = NS_EVAL_STRING
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| Test case name = SmokeTest_API_1_2
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| NS_EVAL_STRING is found at line number = 53
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| RESPONSE obtained = PASS
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| End method - get_status_from_test_report()
+2016-04-21 01:36:20 PM |TR26731|SMOKE-001-002| End method - check_and_set_status()
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| Method called - check_and_set_status()
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| Testcase Name=SMOKE-001-003
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| Method called -- get_status_from_test_report()
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| String to search = NS_ADVANCE_PARAM
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| Test case name = SmokeTest_API_1_3
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| NS_ADVANCE_PARAM is found at line number = 56
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| RESPONSE obtained = PASS
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| End method - get_status_from_test_report()
+2016-04-21 01:36:28 PM |TR26732|SMOKE-001-003| End method - check_and_set_status()
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| Method called - check_and_set_status()
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| Testcase Name=SMOKE-001-004
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| Method called -- get_status_from_test_report()
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| String to search = NS_ADVANCE_PARAM
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| Test case name = SmokeTest_API_1_4
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| NS_ADVANCE_PARAM is found at line number = 60
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| RESPONSE obtained = Starting phase 'Stabilize0' (phase 2) at 00:00:02
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| End method - get_status_from_test_report()
+2016-04-21 01:36:36 PM |TR26733|SMOKE-001-004| End method - check_and_set_status()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| Method called - check_and_set_status()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| Testcase Name=SMOKE-001-005
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| Method called - get_status_for_save_data_api()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| File With Path=/home/netstorm/work/logs/TR26734/save.data
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| Method called - get_url_query_param_var()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| End method - get_url_query_param_var()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| End method - get_status_for_save_data_api()
+2016-04-21 01:36:43 PM |TR26734|SMOKE-001-005| End method - check_and_set_status()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| Method called - check_and_set_status()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| Testcase Name=SMOKE-001-006
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| Method called - get_status_for_save_data_api()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| File With Path=/home/netstorm/save.data
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| Method called - get_url_query_param_var()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| End method - get_url_query_param_var()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| End method - get_status_for_save_data_api()
+2016-04-21 01:36:51 PM |TR26735|SMOKE-001-006| End method - check_and_set_status()
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| Method called - check_and_set_status()
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| Testcase Name=SMOKE-001-007
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| Method called - get_status_for_save_data_api()
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| File With Path=/root/save.data
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| No Permission to create the file or File doesn't exists
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| Failed For SMOKE-001-007
+2016-04-21 01:36:59 PM |TR26736|SMOKE-001-007| End method - check_and_set_status()
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| Method called - check_and_set_status()
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| Testcase Name=SMOKE-001-008
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| File With Path=/ThisPathDoNotExists/save.data
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| No Permission to create the file or File doesn't exists
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| Failed For SMOKE-001-008
+2016-04-21 01:37:06 PM |TR26737|SMOKE-001-008| End method - check_and_set_status()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| Method called - check_and_set_status()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| Testcase Name=SMOKE-001-009
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| File With Path=/home/netstorm/work/logs/TR26738/save.data
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| Method called - get_url_query_param_var()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| End method - get_url_query_param_var()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| End method - get_status_for_save_data_api()
+2016-04-21 01:37:14 PM |TR26738|SMOKE-001-009| End method - check_and_set_status()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| Method called - check_and_set_status()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| Testcase Name=SMOKE-001-010
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| File With Path=/home/netstorm/save.data
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| Method called - get_url_query_param_var()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| End method - get_url_query_param_var()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| End method - get_status_for_save_data_api()
+2016-04-21 01:37:21 PM |TR26739|SMOKE-001-010| End method - check_and_set_status()
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| Method called - check_and_set_status()
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| Testcase Name=SMOKE-001-011
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| File With Path=/root/save.data
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| No Permission to create the file or File doesn't exists
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| Failed For SMOKE-001-011
+2016-04-21 01:37:29 PM |TR26740|SMOKE-001-011| End method - check_and_set_status()
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| Method called - check_and_set_status()
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| Testcase Name=SMOKE-001-012
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| File With Path=/ThisPathDoNotExists/save.data
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| No Permission to create the file or File doesn't exists
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| Failed For SMOKE-001-012
+2016-04-21 01:37:37 PM |TR26741|SMOKE-001-012| End method - check_and_set_status()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| Method called - check_and_set_status()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| Testcase Name=SMOKE-001-013
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| File With Path=/home/netstorm/work/logs/TR26742/save.data
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| Method called - get_url_query_param_var()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| End method - get_url_query_param_var()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| End method - get_status_for_save_data_api()
+2016-04-21 01:37:44 PM |TR26742|SMOKE-001-013| End method - check_and_set_status()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| Method called - check_and_set_status()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| Testcase Name=SMOKE-001-014
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| File With Path=/home/netstorm/work/save.data
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| Method called - get_url_query_param_var()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| End method - get_url_query_param_var()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| End method - get_status_for_save_data_api()
+2016-04-21 01:37:52 PM |TR26743|SMOKE-001-014| End method - check_and_set_status()
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| Method called - check_and_set_status()
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| Testcase Name=SMOKE-001-015
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| Method called - get_status_for_save_data_api()
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| File With Path=/root/save.data
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| No Permission to create the file or File doesn't exists
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| Failed For SMOKE-001-015
+2016-04-21 01:37:59 PM |TR26744|SMOKE-001-015| End method - check_and_set_status()
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| Method called - check_and_set_status()
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| Testcase Name=SMOKE-001-016
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| Method called - get_status_for_save_data_api()
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| File With Path=/ThisPathDoNotExists/save.data
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| No Permission to create the file or File doesn't exists
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| Failed For SMOKE-001-016
+2016-04-21 01:38:08 PM |TR26745|SMOKE-001-016| End method - check_and_set_status()
+2016-04-21 01:38:15 PM |TR26746|SMOKE-001-017| Method called - check_and_set_status()
+2016-04-21 01:38:15 PM |TR26746|SMOKE-001-017| Testcase Name=SMOKE-001-017
+2016-04-21 01:38:15 PM |TR26746|SMOKE-001-017| End method - check_and_set_status()
+2016-04-21 01:38:23 PM |TR26747|SMOKE-001-018| Method called - check_and_set_status()
+2016-04-21 01:38:23 PM |TR26747|SMOKE-001-018| Testcase Name=SMOKE-001-018
+2016-04-21 01:38:23 PM |TR26747|SMOKE-001-018| End method - check_and_set_status()
+2016-04-21 01:38:30 PM |TR26748|SMOKE-001-019| Method called - check_and_set_status()
+2016-04-21 01:38:30 PM |TR26748|SMOKE-001-019| Testcase Name=SMOKE-001-019
+2016-04-21 01:38:30 PM |TR26748|SMOKE-001-019| End method - check_and_set_status()
+2016-04-21 01:38:39 PM |TR26749|SMOKE-001-020| Method called - check_and_set_status()
+2016-04-21 01:38:39 PM |TR26749|SMOKE-001-020| Testcase Name=SMOKE-001-020
+2016-04-21 01:38:39 PM |TR26749|SMOKE-001-020| End method - check_and_set_status()
+2016-04-21 01:38:46 PM |TR26750|SMOKE-001-021| Method called - check_and_set_status()
+2016-04-21 01:38:46 PM |TR26750|SMOKE-001-021| Testcase Name=SMOKE-001-021
+2016-04-21 01:38:46 PM |TR26750|SMOKE-001-021| End method - check_and_set_status()
+2016-04-21 01:38:54 PM |TR26751|SMOKE-002-001| fail url count=0;success url count=6;header value= Basic realm="Basic Authentication"
+2016-04-21 01:39:02 PM |TR26752|SMOKE-002-002| fail url count=0;success url count=4;header value= Basic realm="Basic Authentication"
+2016-04-21 01:39:29 PM |TR26753|SMOKE-002-003| fail url count=0;success url count=2;header value= Basic realm="Basic Authentication" ; PAGE_DUMP=Flowers are modified leaves possessed only by the group known
+2016-04-21 01:39:37 PM |TR26754|SMOKE-002-004| fail url count=1;success url count=4;header value= Basic realm="Basic Authentication" ; SEARCH_VAR=0
+2016-04-21 01:39:45 PM |TR26755|SMOKE-002-005| PAGE_FAIL=2;success url count=4;header value= Basic realm="Basic Authentication"; SEARCH_VAR=0
+2016-04-21 01:42:47 PM |TR26779|SMOKE-004-006| page1_loc_var_count=0;page2_loc_var_count=1
+2016-04-21 01:42:47 PM |TR26779|SMOKE-004-006| page1_ref_var_count=1;page2_ref_var_count=2
+2016-04-21 01:42:47 PM |TR26779|SMOKE-004-006| no_manual_request_line=HTTP/1.1 200 OK
+2016-04-21 01:42:47 PM |TR26779|SMOKE-004-006| manual_url_request_line=HTTP/1.1 302 Moved Temporarily
+2016-04-21 01:42:54 PM |TR26780|SMOKE-005-003| Cookie_Name=;Cookie_Name2=;Cookie_Name3=;
+2016-04-21 01:42:54 PM |TR26780|SMOKE-005-003| Cookie_Name4=;Cookie_Name5=;Cookie_Name6=;
+2016-04-21 01:42:54 PM |TR26780|SMOKE-005-003| Cookie_Name7=
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004|  Cookie_Name=arun; stop_mobi=yes; shippingCountry=IN; SignedIn=0; PPP=24; BypassAkamai=false; GCs=CartItem1_92_03_87_UserName1_92_4_02_; PlatformName=WI; BrowserName=IE; BrowserVersion=6X; akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq; rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+ Cookie_Name=arun
+ stop_mobi=yes
+ shippingCountry=IN
+ SignedIn=0
+ PPP=24
+ BypassAkamai=false
+ GCs=CartItem1_92_03_87_UserName1_92_4_02_
+ PlatformName=WI
+ BrowserName=IE
+ BrowserVersion=6X
+ akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+ rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004| Line=13
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004|  Cookie_Name=arun
+ stop_mobi=yes
+ shippingCountry=IN
+ SignedIn=0
+ PPP=24
+ BypassAkamai=false
+ GCs=CartItem1_92_03_87_UserName1_92_4_02_
+ PlatformName=WI
+ BrowserName=IE
+ BrowserVersion=6X
+ akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+ rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004| Cookie_Name=Cookie_Name=arun;Cookie_Name2=stop_mobi=yes;Cookie_Name3=shippingCountry=IN;
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004| Cookie_Name4=SignedIn=0;Cookie_Name5=PPP=24;Cookie_Name6=BypassAkamai=false;
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004| Cookie_Name7=GCs=CartItem1_92_03_87_UserName1_92_4_02_;Cookie_Name8=PlatformName=WI;Cookie_Name9=BrowserName=IE;
+2016-04-21 01:43:02 PM |TR26781|SMOKE-005-004| Cookie_Name10=BrowserVersion=6X;Cookie_Name11=akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq;Cookie_Name12=rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g;
+2016-04-21 01:45:09 PM |TR26782|SMOKE-006-001| conn_value=8
+2016-04-21 01:47:17 PM |TR26783|SMOKE-006-002| conn_value=570
+2016-04-21 01:48:55 PM |TR26787|SMOKE-008-001| MaxSesRepTime=35;ThinkingVusers=1;
+2016-04-21 01:48:55 PM |TR26787|SMOKE-008-001| FirstPageMaxTransTime=5;SecondPageMaxTransTime=5;
+2016-04-21 01:48:55 PM |TR26787|SMOKE-008-001| SpecificPageMaxTransTime=5;OverrideWithMultiplyValue=5;
+2016-04-21 01:48:55 PM |TR26787|SMOKE-008-001| OverideRandomPctValue=5;
+2016-04-21 01:49:49 PM |TR26788|SMOKE-008-002| MaxSesRepTime=48;ThinkingVusers=1;
+2016-04-21 01:49:49 PM |TR26788|SMOKE-008-002| FirstPageMaxTransTime=6;SecondPageMaxTransTime=6;
+2016-04-21 01:49:49 PM |TR26788|SMOKE-008-002| SpecificPageMaxTransTime=5;OverrideWithMultiplyValue=8;
+2016-04-21 01:49:49 PM |TR26788|SMOKE-008-002| OverideRandomPctValue=8;
+2016-04-21 01:49:54 PM |TR26789|SMOKE-008-003| MaxSesRepTime=0;ThinkingVusers=0;
+2016-04-21 01:49:54 PM |TR26789|SMOKE-008-003| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-21 01:49:54 PM |TR26789|SMOKE-008-003| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=0;
+2016-04-21 01:49:54 PM |TR26789|SMOKE-008-003| OverideRandomPctValue=0;
+2016-04-21 01:50:05 PM |TR26790|SMOKE-008-004| MaxSesRepTime=5;ThinkingVusers=1;
+2016-04-21 01:50:05 PM |TR26790|SMOKE-008-004| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-21 01:50:05 PM |TR26790|SMOKE-008-004| SpecificPageMaxTransTime=5;OverrideWithMultiplyValue=0;
+2016-04-21 01:50:05 PM |TR26790|SMOKE-008-004| OverideRandomPctValue=0;
+2016-04-21 01:50:37 PM |TR26791|SMOKE-008-005| MaxSesRepTime=27;ThinkingVusers=1;
+2016-04-21 01:50:37 PM |TR26791|SMOKE-008-005| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-21 01:50:37 PM |TR26791|SMOKE-008-005| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=2;
+2016-04-21 01:50:37 PM |TR26791|SMOKE-008-005| OverideRandomPctValue=25;
+2016-04-21 01:50:43 PM |TR26792|SMOKE-008-006| MaxSesRepTime=1;ThinkingVusers=1;
+2016-04-21 01:50:43 PM |TR26792|SMOKE-008-006| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-21 01:50:43 PM |TR26792|SMOKE-008-006| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=0;
+2016-04-21 01:50:43 PM |TR26792|SMOKE-008-006| OverideRandomPctValue=1;
+2016-04-21 01:53:11 PM |TR26812|SMOKE-010-001| DNS Type Message= rdata type A addr 10.10.10.10;DNS Message Count=2
+2016-04-21 01:53:18 PM |TR26813|SMOKE-010-002| DNS Type Message= rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017;DNS Message Count=2
+2016-04-21 01:53:34 PM |TR26815|SMOKE-010-004| DNS Type Message= rdata type NS  domain name www.l.yahoo.com;DNS Message Count=2
+2016-04-21 01:53:42 PM |TR26816|SMOKE-010-005| DNS Type Message= rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1;DNS Message Count=2
+2016-04-21 01:53:50 PM |TR26817|SMOKE-010-006| DNS Type Message= rdata type PTR  domain name 100 abc.yahoo.com;DNS Message Count=2
+2016-04-21 01:53:57 PM |TR26818|SMOKE-010-007| DNS Type Message= rdata type CNAME  domain name abc.1.yahoo.com;DNS Message Count=2
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| Get_File_Size=114426
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| Put_File_Name=xyz.txt
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| PASV_COUNT_PASS_MODE=2
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| PASV_COUNT_ACTIVE_MODE=2
+2016-04-21 01:54:14 PM |TR26820|SMOKE-010-009| BINARY_WORD_COUNT=0
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| Get_File_Size=4269
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| Put_File_Name=xyz.bin
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| PASV_COUNT_PASS_MODE=2
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| PASV_COUNT_ACTIVE_MODE=2
+2016-04-21 01:54:21 PM |TR26821|SMOKE-010-010| BINARY_WORD_COUNT=2
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| Get_File_Size=114426
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| Put_File_Name=xyz.txt
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| PASV_COUNT_PASS_MODE=0
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| PASV_COUNT_ACTIVE_MODE=2
+2016-04-21 01:54:29 PM |TR26822|SMOKE-010-011| BINARY_WORD_COUNT=0
+2016-04-21 01:54:37 PM |TR26823|SMOKE-010-012| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| Get_File_Size=4269
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| Put_File_Name=xyz.bin
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| PASV_COUNT_PASS_MODE=0
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| PASV_COUNT_ACTIVE_MODE=2
+2016-04-21 01:54:38 PM |TR26823|SMOKE-010-012| BINARY_WORD_COUNT=2
+2016-04-21 01:55:30 PM |TR26828|SMOKE-010-017| rep=<int>1002-2015</int>;hes_to_xml_diff=0;req_bin_diff=Binary files differ
+2016-04-21 01:55:30 PM |TR26828|SMOKE-010-017| RC=0
+2016-04-21 01:55:38 PM |TR26829|SMOKE-010-018| rep=<int>1002-2015</int>;hes_to_xml_diff=0;req_bin_diff=Binary files differ
+2016-04-21 01:55:38 PM |TR26829|SMOKE-010-018| RC=0
+2016-04-21 01:56:59 PM |TR26839|SMOKE-013-001| Total success URL count for TC : SMOKE-013-001 with TR26839 is 230
+2016-04-21 01:56:59 PM |TR26839|SMOKE-013-001| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-21 01:56:59 PM |TR26839|SMOKE-013-001| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-21 01:56:59 PM |TR26839|SMOKE-013-001| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-21 01:56:59 PM |TR26839|SMOKE-013-001| InbtweenPage_Time= 0
+2016-04-21 01:57:26 PM |TR26840|SMOKE-013-002| Total success URL count for TC : SMOKE-013-002 with TR26840 is 230
+2016-04-21 01:57:26 PM |TR26840|SMOKE-013-002| Sync_Users=4;Succ_Msg=Release target reached.
+2016-04-21 01:57:26 PM |TR26840|SMOKE-013-002| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-21 01:57:26 PM |TR26840|SMOKE-013-002| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-21 01:57:26 PM |TR26840|SMOKE-013-002| InbtweenPage_Time= 0
+2016-04-21 01:58:52 PM |TR26841|SMOKE-013-003| Total success URL count for TC : SMOKE-013-003 with TR26841 is 230
+2016-04-21 01:58:52 PM |TR26841|SMOKE-013-003| Sync_Users=10;Succ_Msg=
+2016-04-21 01:58:52 PM |TR26841|SMOKE-013-003| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-21 01:58:52 PM |TR26841|SMOKE-013-003| InBtween_Trans_Time= 0;TimeOut_Info=Vuser inter arrival timeout
+2016-04-21 01:58:52 PM |TR26841|SMOKE-013-003| InbtweenPage_Time= 0
+2016-04-21 01:59:19 PM |TR26842|SMOKE-013-004| Total success URL count for TC : SMOKE-013-004 with TR26842 is 230
+2016-04-21 01:59:19 PM |TR26842|SMOKE-013-004| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-21 01:59:19 PM |TR26842|SMOKE-013-004| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-21 01:59:19 PM |TR26842|SMOKE-013-004| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-21 01:59:19 PM |TR26842|SMOKE-013-004| InbtweenPage_Time= 0
+2016-04-21 01:59:46 PM |TR26843|SMOKE-013-005| Total success URL count for TC : SMOKE-013-005 with TR26843 is 230
+2016-04-21 01:59:46 PM |TR26843|SMOKE-013-005| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-21 01:59:46 PM |TR26843|SMOKE-013-005| FirstTrans_Time= 4;FirstPage_Time= 4
+2016-04-21 01:59:46 PM |TR26843|SMOKE-013-005| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-21 01:59:46 PM |TR26843|SMOKE-013-005| InbtweenPage_Time= 0
+2016-04-21 02:00:13 PM |TR26844|SMOKE-013-006| Total success URL count for TC : SMOKE-013-006 with TR26844 is 230
+2016-04-21 02:00:13 PM |TR26844|SMOKE-013-006| Sync_Users=4;Succ_Msg=Release target reached.
+2016-04-21 02:00:13 PM |TR26844|SMOKE-013-006| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-21 02:00:13 PM |TR26844|SMOKE-013-006| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-21 02:00:13 PM |TR26844|SMOKE-013-006| InbtweenPage_Time= 2
+2016-04-21 02:06:34 PM |TR26861|SMOKE-016-005| flag=0;isPresent=
+2016-04-21 02:06:34 PM |TR26861|SMOKE-016-005| flag=0
+2016-04-21 02:07:09 PM |TR26862|SMOKE-016-006| logged_events are=Url failed with status T.O.%0AEvent Data:%0Asrcip = 192.168.255.1 HTTP_REQUEST = GET /jstojsp/time_out_event.html HTTP/1.1%0D%0A%2C location_url = (null)%2C redirect_count = 0%2C conn_fd = 18%2C conn_state = 8%2C header_state = 0%2C chunked_state = 0%2C cookie_hash_code = 0%2C cookie_idx = 0%2C gServerTable_idx = 0%2C started_at = 2098%2C connect_time = 0%2C ssl_handshake_time = 0%2C write_complete_time = 0%2C first_byte_rcv_time = -1%2C request_complete_time = 0%2C http_payload_sent = 0%2C tcp_bytes_sent = 505%2C req_ok = 8%2C completion_code = 1%2C num_retries = 0%2C req_code = 0%2C req_code_filled = -2%2C con_init_time = 2098%2C end_time = 0%2C content_length = -1%2C bytes = 0%2C tcp_bytes_recv = 0%2C total_bytes = 0%2C body_offset = 0%2C checksum = 0%2C uid = 0%2C connection_type = 1%2C compression_type = 0%2C num_ka = 999999999%2C ssl = (nil)%2C chunk_size = 1024%2C old_svr_entry = 0x7f3cf20e4000%2C buf_head = (nil)%2C cur_buf = (nil)%2C free_array = (nil)%2C send_vector = (nil)%2C bytes_left_to_send = 0%2C num_send_vectors = 0%2C first_vector_offset = 0%2C last_iov_base = (nil) 
+2016-04-21 02:12:55 PM |TR26866|Performance_cps_128User_OEF_010| BaselineTR for CPS = 23425
+2016-04-21 02:12:55 PM |TR26866|Performance_cps_128User_OEF_010| going to fail testcase
+2016-04-21 02:16:05 PM |TR26867|Performance_cps_128User_OEF_010_HPM| BaselineTR for CPS = 23426
+2016-04-21 02:16:05 PM |TR26867|Performance_cps_128User_OEF_010_HPM| going to fail testcase
+2016-04-21 02:19:18 PM |TR26868|Performance_cps_128User_OEF_011_HPM| BaselineTR for CPS = 23427
+2016-04-21 02:19:18 PM |TR26868|Performance_cps_128User_OEF_011_HPM| going to fail testcase
+2016-04-21 02:22:30 PM |TR26869|Performance_cps_128User_OEF_111_HPM| BaselineTR for CPS = 23428
+2016-04-21 02:22:30 PM |TR26869|Performance_cps_128User_OEF_111_HPM| going to fail testcase
+2016-04-21 02:26:07 PM |TR26870|Performance_hps_128User_OEF_010| BaselineTR for HPS = 23429
+2016-04-21 02:26:07 PM |TR26870|Performance_hps_128User_OEF_010| going to pass testcase
+2016-04-21 02:29:19 PM |TR26871|Performance_hps_128User_OEF_010_HPM| BaselineTR for HPS = 23430
+2016-04-21 02:29:19 PM |TR26871|Performance_hps_128User_OEF_010_HPM| going to pass testcase
+2016-04-21 02:32:31 PM |TR26872|Performance_hps_128User_OEF_011_HPM| BaselineTR for HPS = 23431
+2016-04-21 02:32:31 PM |TR26872|Performance_hps_128User_OEF_011_HPM| going to pass testcase
+2016-04-21 02:35:43 PM |TR26873|Performance_hps_128User_OEF_111_HPM| BaselineTR for HPS = 23432
+2016-04-21 02:35:43 PM |TR26873|Performance_hps_128User_OEF_111_HPM| going to pass testcase
+2016-04-21 02:38:52 PM |TR26874|Performance_throughput_128User_OEF_010| BaselineTR for TPUT = 23433
+2016-04-21 02:38:52 PM |TR26874|Performance_throughput_128User_OEF_010| going to pass testcase
+2016-04-21 02:42:04 PM |TR26875|Performance_throughput_128User_OEF_010_HPM| BaselineTR for TPUT = 23434
+2016-04-21 02:42:04 PM |TR26875|Performance_throughput_128User_OEF_010_HPM| going to pass testcase
+2016-04-21 02:45:17 PM |TR26876|Performance_throughput_128User_OEF_011_HPM| BaselineTR for TPUT = 23435
+2016-04-21 02:45:17 PM |TR26876|Performance_throughput_128User_OEF_011_HPM| going to pass testcase
+2016-04-21 02:48:27 PM |TR26877|Performance_throughput_128User_OEF_111_HPM| BaselineTR for TPUT = 23436
+2016-04-21 02:48:27 PM |TR26877|Performance_throughput_128User_OEF_111_HPM| going to pass testcase
+2016-04-21 02:59:46 PM |TR26878|Performance_concurrency_withoutwan| BaselineTR for CONCURRENCY = 23437
+2016-04-21 02:59:46 PM |TR26878|Performance_concurrency_withoutwan| going to pass testcase
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Inside status evaluator module
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| values inside array are : ALL abbvbvbb
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| value at 0th index is ALL
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| opt_array_all array values are : Running_User_Change_Pct Active_User_Change_Pct Thinking_User_Change_Pct Waiting_User_Change_Pct Connection_Change_Pct Tcp_Send_throuput_Change Tcp_Rcv_throuput_Change Eth_Send_throuput_Change Eth_Rcv_throuput_Change Tcp_Open_Conn_Per_Secd_Change Tcp_Total_Open_Conn_Change Tcp_Close_Conn_Per_Secd_Change Tcp_Total_Close_Conn_Change SSL_Total_New_Change SSL_Total_Reuse_Attempted_Change Res_Time_Change Total_Request_Completed_Change Total_Request_SucessFul_Change Transaction_Response_Time_Change Page_Response_Time_Change
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Inside comparing all data module
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| values inside array are : Running_User_Change_Pct Active_User_Change_Pct Thinking_User_Change_Pct Waiting_User_Change_Pct Connection_Change_Pct Tcp_Send_throuput_Change Tcp_Rcv_throuput_Change Eth_Send_throuput_Change Eth_Rcv_throuput_Change Tcp_Open_Conn_Per_Secd_Change Tcp_Total_Open_Conn_Change Tcp_Close_Conn_Per_Secd_Change Tcp_Total_Close_Conn_Change SSL_Total_New_Change SSL_Total_Reuse_Attempted_Change Res_Time_Change Total_Request_Completed_Change Total_Request_SucessFul_Change Transaction_Response_Time_Change Page_Response_Time_Change
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Number of time loop to be iterated = 20
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Running_User_Change_Pct is = -0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Active_User_Change_Pct is = 20
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Active_User_Change_Pct inside failure loop is = 20
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Thinking_User_Change_Pct is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Waiting_User_Change_Pct is = -0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Connection_Change_Pct is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Send_throuput_Change is = -0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Rcv_throuput_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Eth_Send_throuput_Change is = -1
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Eth_Rcv_throuput_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = -0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Total_Open_Conn_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Close_Conn_Per_Secd_Change is = -0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Tcp_Total_Close_Conn_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of SSL_Total_New_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of SSL_Total_Reuse_Attempted_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Res_Time_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Total_Request_Completed_Change is = 1
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Total_Request_SucessFul_Change is = 1
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Transaction_Response_Time_Change is = 0
+2016-04-21 03:26:14 PM |TR26879|REG-001-001| Difference of Page_Response_Time_Change is = 0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Running_User_Change_Pct is = -0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Active_User_Change_Pct is = -3
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Thinking_User_Change_Pct is = -1
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Waiting_User_Change_Pct is = -0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Connection_Change_Pct is = -0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Tcp_Send_throuput_Change is = -0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Tcp_Rcv_throuput_Change is = -1
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Eth_Send_throuput_Change is = 5
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Eth_Rcv_throuput_Change is = -0
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = 6
+2016-04-21 03:41:37 PM |TR26880|REG-002-001| Difference of Tcp_Open_Conn_Per_Secd_Change inside failure loop is = 6
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Running_User_Change_Pct = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Active_User_Change_Pct = -5
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Thinking_User_Change_Pct = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Connection_Change_Pct = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Send_throuput_Change = -1
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Rcv_throuput_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Eth_Send_throuput_Change = -1
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Eth_Rcv_throuput_Change = -1
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Open_Conn_Per_Secd_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Total_Open_Conn_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Close_Conn_Per_Secd_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Tcp_Total_Close_Conn_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of SSL_Total_New_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of SSL_Total_Reuse_Attempted_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Res_Time_Change = 0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Total_Request_Completed_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Total_Request_SucessFul_Change = -0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Transaction_Response_Time_Change = 0
+2016-04-21 04:07:37 PM |TR26885|REG-003-001| Difference of Page_Response_Time_Change = 0
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Running_User_Change_Pct = -4
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Active_User_Change_Pct = 23
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Active_User_Change_Pct inside failure loop is = 23
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Thinking_User_Change_Pct = -4
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Connection_Change_Pct = -4
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Send_throuput_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Rcv_throuput_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Eth_Send_throuput_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Eth_Rcv_throuput_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Open_Conn_Per_Secd_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Total_Open_Conn_Change = 1
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Close_Conn_Per_Secd_Change = -3
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Tcp_Total_Close_Conn_Change = 1
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Res_Time_Change = 0
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Total_Request_Completed_Change = 1
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Total_Request_SucessFul_Change = 1
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Transaction_Response_Time_Change = -0
+2016-04-21 04:26:46 PM |TR26893|REG-004-001| Difference of metric Page_Response_Time_Change = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Running_User_Change_Pct is = -0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Active_User_Change_Pct is = 42
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Active_User_Change_Pct inside failure loop is = 42
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Thinking_User_Change_Pct is = -0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Connection_Change_Pct is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Send_throuput_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Rcv_throuput_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Eth_Send_throuput_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Eth_Rcv_throuput_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Total_Open_Conn_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Close_Conn_Per_Secd_Change is = -1
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Tcp_Total_Close_Conn_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Res_Time_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Total_Request_Completed_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Total_Request_SucessFul_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Transaction_Response_Time_Change is = 0
+2016-04-21 04:42:26 PM |TR26894|REG-005-001| Difference of Page_Response_Time_Change is = 0
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Running_User_Change_Pct is = -0
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Tcp_Send_throuput_Change is = 0
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Tcp_Rcv_throuput_Change is = 0
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Eth_Send_throuput_Change is = 5
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Eth_Rcv_throuput_Change is = 1
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Res_Time_Change is = 0
+2016-04-21 04:52:51 PM |TR26895|REG-006-001| Difference of Page_Response_Time_Change is = 0
+2016-04-21 04:59:00 PM |TR26896|REG-007-001| start_line=13;end_line=73
+2016-04-21 04:59:00 PM |TR26896|REG-007-001| VUSER_COUNT=10;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:01;rtc_vusers=9;conf_users=100
+2016-04-21 04:59:00 PM |TR26896|REG-007-001| ramp_down_users=110;(conf+rtc)users=110
+2016-04-21 05:05:08 PM |TR26897|REG-007-002| start_line=29;end_line=621
+2016-04-21 05:05:08 PM |TR26897|REG-007-002| VUSER_COUNT=12;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:31;rtc_vusers=0;conf_users=100
+2016-04-21 05:05:08 PM |TR26897|REG-007-002| ramp_down_users=110;(conf+rtc)users=112
+2016-04-21 05:11:16 PM |TR26898|REG-007-003| start_line=621;end_line=797
+2016-04-21 05:11:16 PM |TR26898|REG-007-003| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:29;rtc_vusers=99;conf_users=100
+2016-04-21 05:11:16 PM |TR26898|REG-007-003| ramp_down_users=110;(conf+rtc)users=210
+2016-04-21 05:17:25 PM |TR26899|REG-007-004| start_line=797;end_line=973
+2016-04-21 05:17:25 PM |TR26899|REG-007-004| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:04:29;rtc_vusers=101;conf_users=100
+2016-04-21 05:17:25 PM |TR26899|REG-007-004| ramp_down_users=110;(conf+rtc)users=210
+2016-04-21 05:23:32 PM |TR26900|REG-007-005| start_line=973;end_line=1077
+2016-04-21 05:23:32 PM |TR26900|REG-007-005| VUSER_COUNT=85;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:05:29;rtc_vusers=48;conf_users=100
+2016-04-21 05:23:32 PM |TR26900|REG-007-005| ramp_down_users=110;(conf+rtc)users=185
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| before loop iterates avg_vuser=
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| avg_vuser=243;startl=29;endl=621
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| after loop iterates for RampUp0 avg_vuser=243,
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| avg_vuser=248;startl=622;endl=798
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| after loop iterates for Stabilize0 avg_vuser=243,248,
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| avg_vuser=244;startl=799;endl=1845
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| after loop iterates for Duration0 avg_vuser=243,248,244,
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| avg_vuser=243;startl=1846;endl=1951
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| after loop iterates for RampDown0 avg_vuser=243,248,244,243
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| avg_vuser=243,248,244,243
+2016-04-21 05:34:44 PM |TR26901|REG-007-006|  !=  as 
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| Finalvalue=334
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| ramp_down_users=334
+2016-04-21 05:34:44 PM |TR26901|REG-007-006| rtc_phase_string_count=4
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| Method called - check_and_set_status()
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| Testcase Name=SMOKE-001-001
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| Method called - get_url_query_param_var()
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| End method - get_url_query_param_var()
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| SAVED STRING == RESPONSE |STATUS=PASS
+2016-04-23 10:15:29 PM |TR26921|SMOKE-001-001| End method - check_and_set_status()
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| Method called - check_and_set_status()
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| Testcase Name=SMOKE-001-002
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| Method called -- get_status_from_test_report()
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| String to search = NS_EVAL_STRING
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| Test case name = SmokeTest_API_1_2
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| NS_EVAL_STRING is found at line number = 72
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| RESPONSE obtained = PASS
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| End method - get_status_from_test_report()
+2016-04-23 10:15:38 PM |TR26922|SMOKE-001-002| End method - check_and_set_status()
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| Method called - check_and_set_status()
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| Testcase Name=SMOKE-001-003
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| Method called -- get_status_from_test_report()
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| String to search = NS_ADVANCE_PARAM
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| Test case name = SmokeTest_API_1_3
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| NS_ADVANCE_PARAM is found at line number = 75
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| RESPONSE obtained = PASS
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| End method - get_status_from_test_report()
+2016-04-23 10:15:48 PM |TR26923|SMOKE-001-003| End method - check_and_set_status()
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| Method called - check_and_set_status()
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| Testcase Name=SMOKE-001-004
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| Method called -- get_status_from_test_report()
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| String to search = NS_ADVANCE_PARAM
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| Test case name = SmokeTest_API_1_4
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| NS_ADVANCE_PARAM is found at line number = 79
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| RESPONSE obtained = Starting phase 'Stabilize0' (phase 2) at 00:00:02
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| End method - get_status_from_test_report()
+2016-04-23 10:15:58 PM |TR26924|SMOKE-001-004| End method - check_and_set_status()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| Method called - check_and_set_status()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| Testcase Name=SMOKE-001-005
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| File With Path=/home/netstorm/work/logs/TR26925/save.data
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| Method called - get_url_query_param_var()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| End method - get_url_query_param_var()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| End method - get_status_for_save_data_api()
+2016-04-23 10:16:09 PM |TR26925|SMOKE-001-005| End method - check_and_set_status()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| Method called - check_and_set_status()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| Testcase Name=SMOKE-001-006
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| File With Path=/home/netstorm/save.data
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| RESPONSE obtained=Testing NS_SAVE_DATA_VAR api
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| Method called - get_url_query_param_var()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| End method - get_url_query_param_var()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_VAR api
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| SAVED_STRING=Testing NS_SAVE_DATA_VAR api , RESPONSE=Testing NS_SAVE_DATA_VAR api , RESPONSE_QUERY=Testing NS_SAVE_DATA_VAR api|STATUS=PASS
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| End method - get_status_for_save_data_api()
+2016-04-23 10:16:19 PM |TR26926|SMOKE-001-006| End method - check_and_set_status()
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| Method called - check_and_set_status()
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| Testcase Name=SMOKE-001-007
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| File With Path=/root/save.data
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| No Permission to create the file or File doesn't exists
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| Failed For SMOKE-001-007
+2016-04-23 10:16:29 PM |TR26927|SMOKE-001-007| End method - check_and_set_status()
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| Method called - check_and_set_status()
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| Testcase Name=SMOKE-001-008
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| File With Path=/ThisPathDoNotExists/save.data
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| No Permission to create the file or File doesn't exists
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| Failed For SMOKE-001-008
+2016-04-23 10:16:39 PM |TR26928|SMOKE-001-008| End method - check_and_set_status()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| Method called - check_and_set_status()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| Testcase Name=SMOKE-001-009
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| File With Path=/home/netstorm/work/logs/TR26929/save.data
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| Method called - get_url_query_param_var()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| End method - get_url_query_param_var()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| End method - get_status_for_save_data_api()
+2016-04-23 10:16:49 PM |TR26929|SMOKE-001-009| End method - check_and_set_status()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| Method called - check_and_set_status()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| Testcase Name=SMOKE-001-010
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| Method called - get_status_for_save_data_api()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| File With Path=/home/netstorm/save.data
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| RESPONSE obtained=Testing NS_SAVE_DATA_EVAL api
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| Method called - get_url_query_param_var()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| End method - get_url_query_param_var()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EVAL api
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| SAVED_STRING=Testing NS_SAVE_DATA_EVAL api , RESPONSE=Testing NS_SAVE_DATA_EVAL api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EVAL api|STATUS=PASS
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| End method - get_status_for_save_data_api()
+2016-04-23 10:16:59 PM |TR26930|SMOKE-001-010| End method - check_and_set_status()
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| Method called - check_and_set_status()
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| Testcase Name=SMOKE-001-011
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| File With Path=/root/save.data
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| No Permission to create the file or File doesn't exists
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| Failed For SMOKE-001-011
+2016-04-23 10:17:09 PM |TR26931|SMOKE-001-011| End method - check_and_set_status()
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| Method called - check_and_set_status()
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| Testcase Name=SMOKE-001-012
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| File With Path=/ThisPathDoNotExists/save.data
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| No Permission to create the file or File doesn't exists
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| Failed For SMOKE-001-012
+2016-04-23 10:17:19 PM |TR26932|SMOKE-001-012| End method - check_and_set_status()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| Method called - check_and_set_status()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| Testcase Name=SMOKE-001-013
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| File With Path=/home/netstorm/work/logs/TR26933/save.data
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| Method called - get_url_query_param_var()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| End method - get_url_query_param_var()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| End method - get_status_for_save_data_api()
+2016-04-23 10:17:29 PM |TR26933|SMOKE-001-013| End method - check_and_set_status()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| Method called - check_and_set_status()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| Testcase Name=SMOKE-001-014
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| File With Path=/home/netstorm/work/save.data
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| RESPONSE obtained=Testing NS_SAVE_DATA_EX api
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| Method called - get_url_query_param_var()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| url_req_id = url_req_0_0_0_0_0_0_0_1_0
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| End method - get_url_query_param_var()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| RESPONSE obtained from QUERY VAR=Testing NS_SAVE_DATA_EX api
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| SAVED_STRING=Testing NS_SAVE_DATA_EX api , RESPONSE=Testing NS_SAVE_DATA_EX api , RESPONSE_QUERY=Testing NS_SAVE_DATA_EX api|STATUS=PASS
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| End method - get_status_for_save_data_api()
+2016-04-23 10:17:39 PM |TR26934|SMOKE-001-014| End method - check_and_set_status()
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| Method called - check_and_set_status()
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| Testcase Name=SMOKE-001-015
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| File With Path=/root/save.data
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| No Permission to create the file or File doesn't exists
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| Failed For SMOKE-001-015
+2016-04-23 10:17:49 PM |TR26935|SMOKE-001-015| End method - check_and_set_status()
+2016-04-23 10:17:59 PM |TR26936|SMOKE-001-016| Method called - check_and_set_status()
+2016-04-23 10:17:59 PM |TR26936|SMOKE-001-016| Testcase Name=SMOKE-001-016
+2016-04-23 10:17:59 PM |TR26936|SMOKE-001-016| Method called - get_status_for_save_data_api()
+2016-04-23 10:17:59 PM |TR26936|SMOKE-001-016| File With Path=/ThisPathDoNotExists/save.data
+2016-04-23 10:17:59 PM |TR26936|SMOKE-001-016| No Permission to create the file or File doesn't exists
+2016-04-23 10:18:00 PM |TR26936|SMOKE-001-016| Failed For SMOKE-001-016
+2016-04-23 10:18:00 PM |TR26936|SMOKE-001-016| End method - check_and_set_status()
+2016-04-23 10:18:09 PM |TR26937|SMOKE-001-017| Method called - check_and_set_status()
+2016-04-23 10:18:09 PM |TR26937|SMOKE-001-017| Testcase Name=SMOKE-001-017
+2016-04-23 10:18:09 PM |TR26937|SMOKE-001-017| End method - check_and_set_status()
+2016-04-23 10:18:19 PM |TR26938|SMOKE-001-018| Method called - check_and_set_status()
+2016-04-23 10:18:19 PM |TR26938|SMOKE-001-018| Testcase Name=SMOKE-001-018
+2016-04-23 10:18:19 PM |TR26938|SMOKE-001-018| End method - check_and_set_status()
+2016-04-23 10:18:29 PM |TR26939|SMOKE-001-019| Method called - check_and_set_status()
+2016-04-23 10:18:29 PM |TR26939|SMOKE-001-019| Testcase Name=SMOKE-001-019
+2016-04-23 10:18:29 PM |TR26939|SMOKE-001-019| End method - check_and_set_status()
+2016-04-23 10:18:39 PM |TR26940|SMOKE-001-020| Method called - check_and_set_status()
+2016-04-23 10:18:39 PM |TR26940|SMOKE-001-020| Testcase Name=SMOKE-001-020
+2016-04-23 10:18:39 PM |TR26940|SMOKE-001-020| End method - check_and_set_status()
+2016-04-23 10:18:49 PM |TR26941|SMOKE-001-021| Method called - check_and_set_status()
+2016-04-23 10:18:49 PM |TR26941|SMOKE-001-021| Testcase Name=SMOKE-001-021
+2016-04-23 10:18:49 PM |TR26941|SMOKE-001-021| End method - check_and_set_status()
+2016-04-23 10:19:00 PM |TR26942|SMOKE-002-001| fail url count=0;success url count=6;header value= Basic realm="Basic Authentication"
+2016-04-23 10:19:10 PM |TR26943|SMOKE-002-002| fail url count=0;success url count=4;header value= Basic realm="Basic Authentication"
+2016-04-23 10:19:41 PM |TR26944|SMOKE-002-003| fail url count=0;success url count=2;header value= Basic realm="Basic Authentication" ; PAGE_DUMP=Flowers are modified leaves possessed only by the group known
+2016-04-23 10:19:51 PM |TR26945|SMOKE-002-004| fail url count=1;success url count=4;header value= Basic realm="Basic Authentication" ; SEARCH_VAR=0
+2016-04-23 10:20:02 PM |TR26946|SMOKE-002-005| PAGE_FAIL=2;success url count=4;header value= Basic realm="Basic Authentication"; SEARCH_VAR=0
+2016-04-23 10:24:02 PM |TR26970|SMOKE-004-006| page1_loc_var_count=0;page2_loc_var_count=1
+2016-04-23 10:24:02 PM |TR26970|SMOKE-004-006| page1_ref_var_count=1;page2_ref_var_count=2
+2016-04-23 10:24:02 PM |TR26970|SMOKE-004-006| no_manual_request_line=HTTP/1.1 200 OK
+2016-04-23 10:24:02 PM |TR26970|SMOKE-004-006| manual_url_request_line=HTTP/1.1 302 Moved Temporarily
+2016-04-23 10:24:12 PM |TR26971|SMOKE-005-003| Cookie_Name=;Cookie_Name2=;Cookie_Name3=;
+2016-04-23 10:24:12 PM |TR26971|SMOKE-005-003| Cookie_Name4=;Cookie_Name5=;Cookie_Name6=;
+2016-04-23 10:24:12 PM |TR26971|SMOKE-005-003| Cookie_Name7=
+2016-04-23 10:24:21 PM |TR26972|SMOKE-005-004|  Cookie_Name=arun; stop_mobi=yes; shippingCountry=IN; SignedIn=0; PPP=24; BypassAkamai=false; GCs=CartItem1_92_03_87_UserName1_92_4_02_; PlatformName=WI; BrowserName=IE; BrowserVersion=6X; akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq; rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+ Cookie_Name=arun
+ stop_mobi=yes
+ shippingCountry=IN
+ SignedIn=0
+ PPP=24
+ BypassAkamai=false
+ GCs=CartItem1_92_03_87_UserName1_92_4_02_
+ PlatformName=WI
+ BrowserName=IE
+ BrowserVersion=6X
+ akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+ rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+2016-04-23 10:24:21 PM |TR26972|SMOKE-005-004| Line=13
+2016-04-23 10:24:21 PM |TR26972|SMOKE-005-004|  Cookie_Name=arun
+ stop_mobi=yes
+ shippingCountry=IN
+ SignedIn=0
+ PPP=24
+ BypassAkamai=false
+ GCs=CartItem1_92_03_87_UserName1_92_4_02_
+ PlatformName=WI
+ BrowserName=IE
+ BrowserVersion=6X
+ akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+ rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g=
+2016-04-23 10:24:21 PM |TR26972|SMOKE-005-004| Cookie_Name=Cookie_Name=arun;Cookie_Name2=stop_mobi=yes;Cookie_Name3=shippingCountry=IN;
+2016-04-23 10:24:22 PM |TR26972|SMOKE-005-004| Cookie_Name4=SignedIn=0;Cookie_Name5=PPP=24;Cookie_Name6=BypassAkamai=false;
+2016-04-23 10:24:22 PM |TR26972|SMOKE-005-004| Cookie_Name7=GCs=CartItem1_92_03_87_UserName1_92_4_02_;Cookie_Name8=PlatformName=WI;Cookie_Name9=BrowserName=IE;
+2016-04-23 10:24:22 PM |TR26972|SMOKE-005-004| Cookie_Name10=BrowserVersion=6X;Cookie_Name11=akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq;Cookie_Name12=rbuser=Validation=G6TP8V0uAf8pRYiiNhg2Lx6wrPE/ywKKuZKZFPzPF3g;
+2016-04-23 10:26:35 PM |TR26973|SMOKE-006-001| conn_value=8
+2016-04-23 10:28:47 PM |TR26974|SMOKE-006-002| conn_value=570
+2016-04-23 10:30:38 PM |TR26978|SMOKE-008-001| MaxSesRepTime=35;ThinkingVusers=1;
+2016-04-23 10:30:38 PM |TR26978|SMOKE-008-001| FirstPageMaxTransTime=5;SecondPageMaxTransTime=5;
+2016-04-23 10:30:38 PM |TR26978|SMOKE-008-001| SpecificPageMaxTransTime=5;OverrideWithMultiplyValue=5;
+2016-04-23 10:30:38 PM |TR26978|SMOKE-008-001| OverideRandomPctValue=5;
+2016-04-23 10:31:43 PM |TR26979|SMOKE-008-002| MaxSesRepTime=55;ThinkingVusers=1;
+2016-04-23 10:31:43 PM |TR26979|SMOKE-008-002| FirstPageMaxTransTime=8;SecondPageMaxTransTime=6;
+2016-04-23 10:31:43 PM |TR26979|SMOKE-008-002| SpecificPageMaxTransTime=10;OverrideWithMultiplyValue=8;
+2016-04-23 10:31:43 PM |TR26979|SMOKE-008-002| OverideRandomPctValue=6;
+2016-04-23 10:31:53 PM |TR26980|SMOKE-008-003| MaxSesRepTime=1;ThinkingVusers=0;
+2016-04-23 10:31:53 PM |TR26980|SMOKE-008-003| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-23 10:31:53 PM |TR26980|SMOKE-008-003| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=0;
+2016-04-23 10:31:53 PM |TR26980|SMOKE-008-003| OverideRandomPctValue=0;
+2016-04-23 10:32:08 PM |TR26981|SMOKE-008-004| MaxSesRepTime=5;ThinkingVusers=1;
+2016-04-23 10:32:08 PM |TR26981|SMOKE-008-004| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-23 10:32:08 PM |TR26981|SMOKE-008-004| SpecificPageMaxTransTime=5;OverrideWithMultiplyValue=0;
+2016-04-23 10:32:08 PM |TR26981|SMOKE-008-004| OverideRandomPctValue=0;
+2016-04-23 10:32:44 PM |TR26982|SMOKE-008-005| MaxSesRepTime=27;ThinkingVusers=1;
+2016-04-23 10:32:44 PM |TR26982|SMOKE-008-005| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-23 10:32:44 PM |TR26982|SMOKE-008-005| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=2;
+2016-04-23 10:32:44 PM |TR26982|SMOKE-008-005| OverideRandomPctValue=25;
+2016-04-23 10:32:55 PM |TR26983|SMOKE-008-006| MaxSesRepTime=1;ThinkingVusers=0;
+2016-04-23 10:32:55 PM |TR26983|SMOKE-008-006| FirstPageMaxTransTime=0;SecondPageMaxTransTime=0;
+2016-04-23 10:32:55 PM |TR26983|SMOKE-008-006| SpecificPageMaxTransTime=0;OverrideWithMultiplyValue=0;
+2016-04-23 10:32:55 PM |TR26983|SMOKE-008-006| OverideRandomPctValue=1;
+2016-04-23 10:36:13 PM |TR27003|SMOKE-010-001| DNS Type Message= rdata type A addr 10.10.10.10;DNS Message Count=2
+2016-04-23 10:36:24 PM |TR27004|SMOKE-010-002| DNS Type Message= rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017;DNS Message Count=2
+2016-04-23 10:36:45 PM |TR27006|SMOKE-010-004| DNS Type Message= rdata type NS  domain name www.l.yahoo.com;DNS Message Count=2
+2016-04-23 10:36:55 PM |TR27007|SMOKE-010-005| DNS Type Message= rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1;DNS Message Count=2
+2016-04-23 10:37:05 PM |TR27008|SMOKE-010-006| DNS Type Message= rdata type PTR  domain name 100 abc.yahoo.com;DNS Message Count=2
+2016-04-23 10:37:15 PM |TR27009|SMOKE-010-007| DNS Type Message= rdata type CNAME  domain name abc.1.yahoo.com;DNS Message Count=2
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| Get_File_Size=114426
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| Put_File_Name=xyz.txt
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| PASV_COUNT_PASS_MODE=2
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| PASV_COUNT_ACTIVE_MODE=2
+2016-04-23 10:37:37 PM |TR27011|SMOKE-010-009| BINARY_WORD_COUNT=0
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| Get_File_Size=4269
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| Put_File_Name=xyz.bin
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| PASV_COUNT_PASS_MODE=2
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| PASV_COUNT_ACTIVE_MODE=2
+2016-04-23 10:37:47 PM |TR27012|SMOKE-010-010| BINARY_WORD_COUNT=2
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| Get_File_Size=114426
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| Put_File_Name=xyz.txt
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| PASV_COUNT_PASS_MODE=0
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| PASV_COUNT_ACTIVE_MODE=2
+2016-04-23 10:37:58 PM |TR27013|SMOKE-010-011| BINARY_WORD_COUNT=0
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| Get_User=netstorm;Get_Status_Msg=226 File send OK.
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| Put_User=automation;Put_Status_Msg=150 Ok to send data.
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| Get_File_Size=4269
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| Put_File_Name=xyz.bin
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| PASV_COUNT_PASS_MODE=0
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| PASV_COUNT_ACTIVE_MODE=2
+2016-04-23 10:38:08 PM |TR27014|SMOKE-010-012| BINARY_WORD_COUNT=2
+2016-04-23 10:39:05 PM |TR27019|SMOKE-010-017| rep=<int>1002-2015</int>;hes_to_xml_diff=0;req_bin_diff=Binary files differ
+2016-04-23 10:39:05 PM |TR27019|SMOKE-010-017| RC=0
+2016-04-23 10:39:16 PM |TR27020|SMOKE-010-018| rep=<int>1002-2015</int>;hes_to_xml_diff=0;req_bin_diff=Binary files differ
+2016-04-23 10:39:16 PM |TR27020|SMOKE-010-018| RC=0
+2016-04-23 10:41:21 PM |TR27030|SMOKE-013-001| Total success URL count for TC : SMOKE-013-001 with TR27030 is 230
+2016-04-23 10:41:21 PM |TR27030|SMOKE-013-001| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-23 10:41:21 PM |TR27030|SMOKE-013-001| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-23 10:41:21 PM |TR27030|SMOKE-013-001| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-23 10:41:21 PM |TR27030|SMOKE-013-001| InbtweenPage_Time= 0
+2016-04-23 10:41:50 PM |TR27031|SMOKE-013-002| Total success URL count for TC : SMOKE-013-002 with TR27031 is 230
+2016-04-23 10:41:50 PM |TR27031|SMOKE-013-002| Sync_Users=4;Succ_Msg=Release target reached.
+2016-04-23 10:41:50 PM |TR27031|SMOKE-013-002| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-23 10:41:50 PM |TR27031|SMOKE-013-002| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-23 10:41:50 PM |TR27031|SMOKE-013-002| InbtweenPage_Time= 0
+2016-04-23 10:43:19 PM |TR27032|SMOKE-013-003| Total success URL count for TC : SMOKE-013-003 with TR27032 is 230
+2016-04-23 10:43:19 PM |TR27032|SMOKE-013-003| Sync_Users=10;Succ_Msg=
+2016-04-23 10:43:19 PM |TR27032|SMOKE-013-003| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-23 10:43:19 PM |TR27032|SMOKE-013-003| InBtween_Trans_Time= 0;TimeOut_Info=Vuser inter arrival timeout
+2016-04-23 10:43:19 PM |TR27032|SMOKE-013-003| InbtweenPage_Time= 0
+2016-04-23 10:43:49 PM |TR27033|SMOKE-013-004| Total success URL count for TC : SMOKE-013-004 with TR27033 is 230
+2016-04-23 10:43:49 PM |TR27033|SMOKE-013-004| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-23 10:43:49 PM |TR27033|SMOKE-013-004| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-23 10:43:49 PM |TR27033|SMOKE-013-004| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-23 10:43:49 PM |TR27033|SMOKE-013-004| InbtweenPage_Time= 0
+2016-04-23 10:44:19 PM |TR27034|SMOKE-013-005| Total success URL count for TC : SMOKE-013-005 with TR27034 is 230
+2016-04-23 10:44:19 PM |TR27034|SMOKE-013-005| Sync_Users=9;Succ_Msg=Release target reached.
+2016-04-23 10:44:19 PM |TR27034|SMOKE-013-005| FirstTrans_Time= 4;FirstPage_Time= 4
+2016-04-23 10:44:19 PM |TR27034|SMOKE-013-005| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-23 10:44:19 PM |TR27034|SMOKE-013-005| InbtweenPage_Time= 0
+2016-04-23 10:44:46 PM |TR27035|SMOKE-013-006| Total success URL count for TC : SMOKE-013-006 with TR27035 is 230
+2016-04-23 10:44:46 PM |TR27035|SMOKE-013-006| Sync_Users=4;Succ_Msg=Release target reached.
+2016-04-23 10:44:46 PM |TR27035|SMOKE-013-006| FirstTrans_Time= 0;FirstPage_Time= 0
+2016-04-23 10:44:46 PM |TR27035|SMOKE-013-006| InBtween_Trans_Time= 0;TimeOut_Info=
+2016-04-23 10:44:46 PM |TR27035|SMOKE-013-006| InbtweenPage_Time= 2
+2016-04-23 10:52:24 PM |TR27052|SMOKE-016-005| flag=0;isPresent=
+2016-04-23 10:52:24 PM |TR27052|SMOKE-016-005| flag=0
+2016-04-23 10:53:06 PM |TR27053|SMOKE-016-006| logged_events are=Url failed with status T.O.%0AEvent Data:%0Asrcip = 192.168.255.1 HTTP_REQUEST = GET /jstojsp/time_out_event.html HTTP/1.1%0D%0A%2C location_url = (null)%2C redirect_count = 0%2C conn_fd = 22%2C conn_state = 9%2C header_state = -1%2C chunked_state = 0%2C cookie_hash_code = 0%2C cookie_idx = 0%2C gServerTable_idx = 0%2C started_at = 21555%2C connect_time = -1%2C ssl_handshake_time = -1%2C write_complete_time = 0%2C first_byte_rcv_time = 1%2C request_complete_time = 0%2C http_payload_sent = 0%2C tcp_bytes_sent = 487%2C req_ok = 8%2C completion_code = 1%2C num_retries = 0%2C req_code = 200%2C req_code_filled = 0%2C con_init_time = 6552%2C end_time = 0%2C content_length = 6046%2C bytes = 2849%2C tcp_bytes_recv = 2896%2C total_bytes = 0%2C body_offset = 0%2C checksum = 0%2C uid = 0%2C connection_type = 1%2C compression_type = 0%2C num_ka = 999999996%2C ssl = (nil)%2C chunk_size = 1024%2C old_svr_entry = 0x7f4612261000%2C buf_head = 0x6154ba0%2C cur_buf = 0x615cff0%2C free_array = (nil)%2C send_vector = (nil)%2C bytes_left_to_send = 0%2C num_send_vectors = 0%2C first_vector_offset = 0%2C last_iov_base = (nil) 
+2016-04-23 10:59:16 PM |TR27057|Performance_cps_128User_OEF_010| BaselineTR for CPS = 23425
+2016-04-23 10:59:17 PM |TR27057|Performance_cps_128User_OEF_010| going to fail testcase
+2016-04-23 11:02:32 PM |TR27058|Performance_cps_128User_OEF_010_HPM| BaselineTR for CPS = 23426
+2016-04-23 11:02:32 PM |TR27058|Performance_cps_128User_OEF_010_HPM| going to fail testcase
+2016-04-23 11:05:47 PM |TR27059|Performance_cps_128User_OEF_011_HPM| BaselineTR for CPS = 23427
+2016-04-23 11:05:47 PM |TR27059|Performance_cps_128User_OEF_011_HPM| going to fail testcase
+2016-04-23 11:09:01 PM |TR27060|Performance_cps_128User_OEF_111_HPM| BaselineTR for CPS = 23428
+2016-04-23 11:09:01 PM |TR27060|Performance_cps_128User_OEF_111_HPM| going to fail testcase
+2016-04-23 11:12:38 PM |TR27061|Performance_hps_128User_OEF_010| BaselineTR for HPS = 23429
+2016-04-23 11:12:38 PM |TR27061|Performance_hps_128User_OEF_010| going to pass testcase
+2016-04-23 11:15:53 PM |TR27062|Performance_hps_128User_OEF_010_HPM| BaselineTR for HPS = 23430
+2016-04-23 11:15:53 PM |TR27062|Performance_hps_128User_OEF_010_HPM| going to pass testcase
+2016-04-23 11:19:09 PM |TR27063|Performance_hps_128User_OEF_011_HPM| BaselineTR for HPS = 23431
+2016-04-23 11:19:09 PM |TR27063|Performance_hps_128User_OEF_011_HPM| going to pass testcase
+2016-04-23 11:22:22 PM |TR27064|Performance_hps_128User_OEF_111_HPM| BaselineTR for HPS = 23432
+2016-04-23 11:22:22 PM |TR27064|Performance_hps_128User_OEF_111_HPM| going to pass testcase
+2016-04-23 11:25:34 PM |TR27065|Performance_throughput_128User_OEF_010| BaselineTR for TPUT = 23433
+2016-04-23 11:25:34 PM |TR27065|Performance_throughput_128User_OEF_010| going to pass testcase
+2016-04-23 11:28:44 PM |TR27066|Performance_throughput_128User_OEF_010_HPM| BaselineTR for TPUT = 23434
+2016-04-23 11:28:44 PM |TR27066|Performance_throughput_128User_OEF_010_HPM| going to pass testcase
+2016-04-23 11:31:59 PM |TR27067|Performance_throughput_128User_OEF_011_HPM| BaselineTR for TPUT = 23435
+2016-04-23 11:32:00 PM |TR27067|Performance_throughput_128User_OEF_011_HPM| going to pass testcase
+2016-04-23 11:35:15 PM |TR27068|Performance_throughput_128User_OEF_111_HPM| BaselineTR for TPUT = 23436
+2016-04-23 11:35:15 PM |TR27068|Performance_throughput_128User_OEF_111_HPM| going to pass testcase
+2016-04-23 11:46:55 PM |TR27069|Performance_concurrency_withoutwan| BaselineTR for CONCURRENCY = 23437
+2016-04-23 11:46:55 PM |TR27069|Performance_concurrency_withoutwan| going to pass testcase
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Inside status evaluator module
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| values inside array are : ALL abbvbvbb
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| value at 0th index is ALL
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| opt_array_all array values are : Running_User_Change_Pct Active_User_Change_Pct Thinking_User_Change_Pct Waiting_User_Change_Pct Connection_Change_Pct Tcp_Send_throuput_Change Tcp_Rcv_throuput_Change Eth_Send_throuput_Change Eth_Rcv_throuput_Change Tcp_Open_Conn_Per_Secd_Change Tcp_Total_Open_Conn_Change Tcp_Close_Conn_Per_Secd_Change Tcp_Total_Close_Conn_Change SSL_Total_New_Change SSL_Total_Reuse_Attempted_Change Res_Time_Change Total_Request_Completed_Change Total_Request_SucessFul_Change Transaction_Response_Time_Change Page_Response_Time_Change
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Inside comparing all data module
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| values inside array are : Running_User_Change_Pct Active_User_Change_Pct Thinking_User_Change_Pct Waiting_User_Change_Pct Connection_Change_Pct Tcp_Send_throuput_Change Tcp_Rcv_throuput_Change Eth_Send_throuput_Change Eth_Rcv_throuput_Change Tcp_Open_Conn_Per_Secd_Change Tcp_Total_Open_Conn_Change Tcp_Close_Conn_Per_Secd_Change Tcp_Total_Close_Conn_Change SSL_Total_New_Change SSL_Total_Reuse_Attempted_Change Res_Time_Change Total_Request_Completed_Change Total_Request_SucessFul_Change Transaction_Response_Time_Change Page_Response_Time_Change
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Number of time loop to be iterated = 20
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Running_User_Change_Pct is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Active_User_Change_Pct is = 20
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Active_User_Change_Pct inside failure loop is = 20
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Thinking_User_Change_Pct is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Waiting_User_Change_Pct is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Connection_Change_Pct is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Send_throuput_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Rcv_throuput_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Eth_Send_throuput_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Eth_Rcv_throuput_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Total_Open_Conn_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Close_Conn_Per_Secd_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Tcp_Total_Close_Conn_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of SSL_Total_New_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of SSL_Total_Reuse_Attempted_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Res_Time_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Total_Request_Completed_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Total_Request_SucessFul_Change is = 1
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Transaction_Response_Time_Change is = 0
+2016-04-24 12:13:37 AM |TR27070|REG-001-001| Difference of Page_Response_Time_Change is = 0
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Running_User_Change_Pct is = 0
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Active_User_Change_Pct is = 22
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Active_User_Change_Pct inside failure loop is = 22
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Thinking_User_Change_Pct is = 2
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Waiting_User_Change_Pct is = -1
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Connection_Change_Pct is = 2
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Tcp_Send_throuput_Change is = -1
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Tcp_Rcv_throuput_Change is = -1
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Eth_Send_throuput_Change is = -1
+2016-04-24 12:29:02 AM |TR27071|REG-002-001| Difference of Eth_Rcv_throuput_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Tcp_Total_Open_Conn_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Tcp_Close_Conn_Per_Secd_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Tcp_Total_Close_Conn_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of SSL_Total_New_Change is = 1
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of SSL_Total_Reuse_Attempted_Change is = 1
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Res_Time_Change is = 0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Total_Request_Completed_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Total_Request_SucessFul_Change is = -0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Transaction_Response_Time_Change is = 0
+2016-04-24 12:29:03 AM |TR27071|REG-002-001| Difference of Page_Response_Time_Change is = 0
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Running_User_Change_Pct = -0
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Active_User_Change_Pct = 7
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Active_User_Change_Pct inside failure loop is = 7
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Thinking_User_Change_Pct = 0
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Connection_Change_Pct = -0
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Tcp_Send_throuput_Change = -1
+2016-04-24 12:55:02 AM |TR27072|REG-003-001| Difference of Tcp_Rcv_throuput_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Eth_Send_throuput_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Eth_Rcv_throuput_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Tcp_Open_Conn_Per_Secd_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Tcp_Total_Open_Conn_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Tcp_Close_Conn_Per_Secd_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Tcp_Total_Close_Conn_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of SSL_Total_New_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of SSL_Total_Reuse_Attempted_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Res_Time_Change = 0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Total_Request_Completed_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Total_Request_SucessFul_Change = -0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Transaction_Response_Time_Change = 0
+2016-04-24 12:55:03 AM |TR27072|REG-003-001| Difference of Page_Response_Time_Change = 0
+2016-04-24 01:25:13 AM |TR27073|REG-004-001| Difference of metric Running_User_Change_Pct = 33
+2016-04-24 01:25:13 AM |TR27073|REG-004-001| Difference of metric Running_User_Change_Pct inside failure loop is = 33
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Running_User_Change_Pct is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Active_User_Change_Pct is = 32
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Active_User_Change_Pct inside failure loop is = 32
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Thinking_User_Change_Pct is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Connection_Change_Pct is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Send_throuput_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Rcv_throuput_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Eth_Send_throuput_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Eth_Rcv_throuput_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Open_Conn_Per_Secd_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Total_Open_Conn_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Close_Conn_Per_Secd_Change is = -1
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Tcp_Total_Close_Conn_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Res_Time_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Total_Request_Completed_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Total_Request_SucessFul_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Transaction_Response_Time_Change is = 0
+2016-04-24 01:40:51 AM |TR27074|REG-005-001| Difference of Page_Response_Time_Change is = 0
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Running_User_Change_Pct is = 0
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Tcp_Send_throuput_Change is = 0
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Tcp_Rcv_throuput_Change is = 0
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Eth_Send_throuput_Change is = 5
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Eth_Rcv_throuput_Change is = -4
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Res_Time_Change is = 0
+2016-04-24 01:51:20 AM |TR27075|REG-006-001| Difference of Page_Response_Time_Change is = 0
+2016-04-24 01:57:32 AM |TR27076|REG-007-001| start_line=13;end_line=73
+2016-04-24 01:57:32 AM |TR27076|REG-007-001| VUSER_COUNT=10;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:03;rtc_vusers=8;conf_users=100
+2016-04-24 01:57:32 AM |TR27076|REG-007-001| ramp_down_users=110;(conf+rtc)users=110
+2016-04-24 02:03:45 AM |TR27077|REG-007-002| start_line=29;end_line=621
+2016-04-24 02:03:45 AM |TR27077|REG-007-002| VUSER_COUNT=12;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:00:33;rtc_vusers=0;conf_users=100
+2016-04-24 02:03:45 AM |TR27077|REG-007-002| ramp_down_users=110;(conf+rtc)users=112
+2016-04-24 02:09:58 AM |TR27078|REG-007-003| start_line=621;end_line=797
+2016-04-24 02:09:58 AM |TR27078|REG-007-003| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:03:31;rtc_vusers=99;conf_users=100
+2016-04-24 02:09:58 AM |TR27078|REG-007-003| ramp_down_users=110;(conf+rtc)users=210
+2016-04-24 02:16:11 AM |TR27079|REG-007-004| start_line=797;end_line=973
+2016-04-24 02:16:11 AM |TR27079|REG-007-004| VUSER_COUNT=110;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:04:31;rtc_vusers=101;conf_users=100
+2016-04-24 02:16:11 AM |TR27079|REG-007-004| ramp_down_users=110;(conf+rtc)users=210
+2016-04-24 02:22:23 AM |TR27080|REG-007-005| start_line=973;end_line=1077
+2016-04-24 02:22:23 AM |TR27080|REG-007-005| VUSER_COUNT=85;RTC_STRING=Phase 'RTC_PHASE_0' (phase 0) was complete at 00:05:31;rtc_vusers=48;conf_users=100
+2016-04-24 02:22:23 AM |TR27080|REG-007-005| ramp_down_users=110;(conf+rtc)users=185
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| before loop iterates avg_vuser=
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| avg_vuser=244;startl=29;endl=621
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| after loop iterates for RampUp0 avg_vuser=244,
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| avg_vuser=249;startl=622;endl=798
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| after loop iterates for Stabilize0 avg_vuser=244,249,
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| avg_vuser=245;startl=799;endl=1845
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| after loop iterates for Duration0 avg_vuser=244,249,245,
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| avg_vuser=244;startl=1846;endl=1951
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| after loop iterates for RampDown0 avg_vuser=244,249,245,244
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| avg_vuser=244,249,245,244
+2016-04-24 02:33:35 AM |TR27081|REG-007-006|  !=  as 
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| Finalvalue=335
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| ramp_down_users=335
+2016-04-24 02:33:35 AM |TR27081|REG-007-006| rtc_phase_string_count=4
