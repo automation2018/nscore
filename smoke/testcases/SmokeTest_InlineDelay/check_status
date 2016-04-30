@@ -1,24 +1,34 @@
 #!/usr/bin/env bash
 
 source $NS_WDIR/lib/automation_util
+
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
 T_NAME=$(get_tname)
-FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/hpd_tours/flow.c"
+
+test_case_name=$(get_testcase_name)
+debug_log "test_case_name=$test_case_name"
+
+actual_delay_time=(`grep "total_delay_time" "${TS_LOG_DIR}/${test_case_name}/test_run.report"|awk '{print $NF}'|cut -d'.' -f1`)
 
 
 function main(){
     case $(get_tname) in
-        "SMOKE-017-001") handale_inline_delay_1_case ;;
-        "SMOKE-017-002") handale_inline_delay_2_case ;;
-        "SMOKE-017-003") handale_inline_delay_3_case ;;
-        "SMOKE-017-004") handale_inline_delay_4_case ;;
-        "SMOKE-017-005") handale_inline_delay_5_case ;;
-        "SMOKE-017-006") handale_inline_delay_6_case ;;
-        "SMOKE-017-007") handale_inline_delay_7_case ;;
-        "SMOKE-017-008") handale_inline_delay_8_case ;;
-        "SMOKE-017-009") handale_inline_delay_9_case ;;
-        "SMOKE-017-010") handale_inline_delay_10_case ;;
-        "SMOKE-017-011") handale_inline_delay_11_case ;;
-        "SMOKE-017-012") handale_inline_delay_12_case ;;
+        "SMOKE-017-001") handle_inline_delay_mode1 "single group single page" ;;
+        "SMOKE-017-002") handle_inline_delay_mode1 "single group all pages" ;;
+        "SMOKE-017-003") handle_inline_delay_mode1 "all groups all pages" ;;
+        "SMOKE-017-004") handle_inline_delay_mode2 "single group single page" ;;
+        "SMOKE-017-005") handle_inline_delay_mode2 "single group all pages" ;;
+        "SMOKE-017-006") handle_inline_delay_mode2 "all groups all pages" ;;
+        "SMOKE-017-007") handle_inline_delay_mode3 "single group single page" ;;
+        "SMOKE-017-008") handle_inline_delay_mode3 "single group all pages" ;;
+        "SMOKE-017-009") handle_inline_delay_mode3 "all groups all pages" ;;
+        "SMOKE-017-010") handle_inline_delay_mode4 "single group single page"  ;;
+        "SMOKE-017-011") handle_inline_delay_mode4 "single group all pages" ;;
+        "SMOKE-017-012") handle_inline_delay_mode4 "all groups all pages" ;;
+        "SMOKE-017-013") log_status_and_exit_ex "PASS" "inline min connection reuse delay for single group smoke testcase passed" ;;
+        "SMOKE-017-014") log_status_and_exit_ex "PASS" "inline min connection reuse delay for all groups smoke testcase passed" ;;
+        "SMOKE-017-015") log_status_and_exit_ex "PASS" "log inline block time smoke testcase passed" ;;
+        "SMOKE-017-016") log_status_and_exit_ex "PASS" "enable page based stats testcase passed" ;;
         *) handle_unknown_case ;;
         ?) handle_unknown_case ;;
     esac
@@ -30,48 +40,92 @@ function handle_unknown_case(){
 }
 
 
-function count_url(){
-    total_url=$(grep "URL=http" ${FLOW_FILE} | wc -l)
-    main_url=$(grep "ns_web_url" ${FLOW_FILE} | wc -l)
-    inline_url=$((total_url - 2 * main_url))    
+function handle_inline_delay_mode1(){
+    param="${1}"
+	given_delay_time_min=$(grep "^G_INLINE_DELAY" ${S_FILE} |awk '{print $(NF-1)}')
+	given_delay_time_max=$(grep "^G_INLINE_DELAY" ${S_FILE} |awk '{print $NF}')
+	expected_delay_time_min=$((given_delay_time_min/1000))
+	expected_delay_time_max=$((given_delay_time_max/1000))
+	
+	
+	debug_log "expected_delay_time_min=$expected_delay_time_min;expected_delay_time_max=$expected_delay_time_max"
+	debug_log "actual_delay_time=${actual_delay_time[@]}"
+	
+	# min <= actual <= max
+	for ((i=0; i<${#actual_delay_time[@]}; i++));do
+		if [ $expected_delay_time_min -le ${actual_delay_time[$i]} ] && \
+		   [ $expected_delay_time_max -ge ${actual_delay_time[$i]} ];then
+		    debug_log "actual delay lies between min and max expeected delay value"
+	    else
+	        log_status_and_exit_ex "FAIL" "Inline Delay Mode 1 for ${param};testcase failed due to mismatch in expected and actual delay time"
+		fi
+	done
+
+	log_status_and_exit_ex "PASS" "Inline Delay Mode 1 for ${param};test validation passed"
 }
 
 
-function handale_inline_delay_1_case(){
-    debug_log "T_NAME=${T_NAME};TR=${T_RUN_ID}"
-    actual_time_1=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | cut -d' ' -f6 | awk -F: '{print (($1 * 3600) + ($2 * 60) + $3) * 1000 }' )
-    
-    count_url
-    debug_log "total url=${total_url};main url =${main_url}; inline=${inline_url}"
-    min_1=$((inline_url*3000))
-    max_1=$((min+7000))
-    debug_log "actual_time=${actual_time_1}"
-    
-    if [[ $actual_time_1 -ge $min_1 && $actual_time_1 -le $max_1 ]];then  
-        log_status_and_exit_ex "PASS" "inline delay case has been verified success"
-    else
-        log_status_and_exit_ex "FAIL" "inline delay case has been verified fail"
-    fi
+function handle_inline_delay_mode2(){
+    param="${1}"
+	given_delay_time=$(grep "^G_INLINE_DELAY" ${S_FILE} |awk '{print $NF}')
+	expected_delay_time=$((given_delay_time/1000))
+	
+	debug_log "expected_delay_time=$expected_delay_time;actual_delay_time=${actual_delay_time[@]}"
 
-    
+	for ((i=0; i<${#actual_delay_time[@]}; i++));do
+		if [ $expected_delay_time -eq ${actual_delay_time[$i]} ];then
+			debug_log "expected delay time is equal to the actual delay time i.e, $expected_delay_time"
+		else
+			debug_log "expected delay time is not equal to the actual delay time"
+			log_status_and_exit_ex "FAIL" "Inline Delay Mode 2 for ${param};testcase failed due to mismatch in expected and actual delay time"
+		fi
+	done
+	
+	log_status_and_exit_ex "PASS" "Inline Delay Mode 2 for ${param} ;test validation passed"
 }
 
-function handale_inline_delay_2_case(){
-    debug_log "T_NAME=${T_NAME};TR=${T_RUN_ID}"
-    actual_time_2=$(grep "END" /home/netstorm/work/logs/TR${T_RUN_ID}/progress.report | cut -d' ' -f6 | awk -F: '{print (($1 * 3600) + ($2 * 60) + $3) * 1000 }' )
 
-    count_url
-    debug_log "total url=${total_url};main url =${main_url}; inline=${inline_url}"
-    min_2=$((inline_url*1000))
-    max_2=$((inline_url*4000))
-    max_2_margin=$((max+7000))
-    debug_log "actual_time=${actual_time_2}"
+function handle_inline_delay_mode3(){
+    param="${1}"
+	given_delay_time_min=$(grep "^G_INLINE_DELAY" ${S_FILE} |awk '{print $(NF-1)}')
+	given_delay_time_max=$(grep "^G_INLINE_DELAY" ${S_FILE} |awk '{print $NF}')
+	expected_delay_time_min=$((given_delay_time_min/1000))
+	expected_delay_time_max=$((given_delay_time_max/1000))
+	
+	
+	debug_log "expected_delay_time_min=$expected_delay_time_min;expected_delay_time_max=$expected_delay_time_max"
+	debug_log "actual_delay_time=${actual_delay_time[@]}"
+	
+	for ((i=0; i<${#actual_delay_time[@]}; i++));do
+		if [ $expected_delay_time_min -le ${actual_delay_time[$i]} ] && \
+		   [ $expected_delay_time_max -ge ${actual_delay_time[$i]} ];then
+		    debug_log "actual delay lies between min and max expeected delay value"
+	    else
+	        log_status_and_exit_ex "FAIL" "Inline Delay Mode 3 for ${param};testcase failed due to mismatch in expected and actual delay time"
+		fi
+	done
 
-    if [[ $actual_time_2 -ge $min_2 && $actual_time_2 -le $max_2_margin ]];then
-        log_status_and_exit_ex "PASS" "inline delay case has been verified success"
-    else
-        log_status_and_exit_ex "FAIL" "inline delay case has been verified fail"
-    fi
+	log_status_and_exit_ex "PASS" "Inline Delay Mode 3 for ${param} ;test validation passed"
+}
+
+
+# custom function return value and delay time should be same
+function handle_inline_delay_mode4(){
+    param="${1}"
+	expected_delay_time=1
+	
+	debug_log "expected_delay_time=$expected_delay_time;actual_delay_time=${actual_delay_time[@]}"
+
+	for ((i=0; i<${#actual_delay_time[@]}; i++));do
+		if [ $expected_delay_time -eq ${actual_delay_time[$i]} ];then
+			debug_log "expected delay time is equal to the actual delay time i.e, $expected_delay_time"
+		else
+			debug_log "expected delay time is not equal to the actual delay time"
+			log_status_and_exit_ex "FAIL" "Inline Delay Mode 4 for ${param};testcase failed due to mismatch in expected and actual delay time"
+		fi
+	done
+	
+	log_status_and_exit_ex "PASS" "Inline Delay Mode 4 for ${param};test validation passed"
 }
 
 

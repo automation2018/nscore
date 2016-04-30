@@ -1,0 +1,180 @@
+#!/usr/bin/env python
+
+from pyDes import *
+import argparse 
+import sys 
+
+triplet = [
+        "ZZE",
+        "i2x", "aEG", "qbJ", "qIz", "ao2", "82y", "EoV", "qXg", "FWD", "swG",
+        "IGU", "K7N", "lDK", "MpG", "Q2T", "qYr", "OCB", "GUs", "I2i", "dvO",
+        "4dw", "ls5", "BMY", "Z4F", "Vxt", "jjB", "L9N", "NCV", "7Ul", "iwv",
+        "pdl", "JwL", "ugs", "vDJ", "Ujz", "Leh", "zrt", "Hul", "HAq", "Roz",
+        "DMM", "s3h", "Eg9", "56K", "NAO", "B88", "JAJ", "LD5", "AQR", "eiZ",
+        "TiW", "Qwe", "N9E", "LLu", "EM8", "vTW", "14E", "4S8", "mBj", "HMX",
+        "Nbp", "btT", "Wcy", "py6", "iZj", "SuR", "E2Q", "Eep", "fAf", "dPL",
+        "lSc", "nQX", "Cbl", "KjA", "gi2", "xfY", "lJb", "Vdg", "BB3", "ZwE",
+        "8yf", "Auh", "gje", "Tq3", "qCX", "jt0", "cX9", "ucV", "CMi", "DWV",
+        "yPX", "7ZF", "IEj", "DbJ", "kTN", "LBO", "PPj", "J0S", "0uD", "Ubz",
+        "aBx", "atR", "o7Q", "RFi", "417", "yuC", "yNg", "bpl", "Hea", "huL",
+        "v6A", "OTX", "EmM", "Rfd", "pCN", "PS6", "TfO", "6Wf", "j3U", "WIw",
+        "GMP", "kRP", "Nb5", "2E5", "iVS", "bAc", "Zus", "z1k", "XM1", "isb",
+        "bu0", "fJ0", "GXR", "hVj", "xB0", "35M", "pdQ", "gNW", "cf2", "OQd",
+        "fR9", "fbt", "wvt", "lU4", "Y9u", "1K6", "XHF", "ooE", "g2i", "YNk",
+        "5Kw", "LYR", "LZ6", "3XE", "JD6", "Vit", "OM2", "bro", "OeD", "kgx",
+        "0HF", "1Ki", "Cpl", "b81", "Ph2", "E1I", "Dpf", "v6C", "9MK", "pvA",
+        "szv", "HoN", "c0c", "djR", "8IG", "9DW", "wV3", "Hzb", "fQV", "Lf9",
+        "3SQ", "kWy", "YEg", "YAI", "PNY", "4km", "NcB", "s7X", "WQe", "CCs",
+        "k2Y", "h70", "9Mp", "Ah2", "fRS", "Rs5", "8jW", "oBF", "ERX", "8Iv",
+        "4jw", "qoc", "vt0", "FId", "7Jm", "YEM", "54c", "yke", "KeT", "Xbu",
+        "PTS", "Y5U", "V5n", "C9l", "uBl", "Rmz", "xHa", "OPh", "z40", "jTT",
+        "t51", "36d", "9Mz", "MY3", "6cu", "Zfv", "wK3", "gWm", "GNt", "ls3",
+        "r8b", "dA2", "xL0", "orB", "d61", "IHS", "Jr7", "UtW", "SSR", "oqx",
+        "b0E", "umK", "0wI", "4eZ", "75o", "9yp", "Ck2", "qBi", "v3r", "ie0",
+        "vaV", "9RS", "DMc", "AS8", "kw0" ]
+
+def encodeBytes(pBytes):
+    '''
+    Encodes bytes in form of triplets and returns a list containing the triplets
+    ''' 
+    buffer = [] 
+    for byte in pBytes:
+        index = int(byte.encode('hex'), 16) 
+        if ( byte < 0 ):
+            index = byte + 256 
+        buffer.append(triplet[index])
+        buffer.append("-")
+
+    if len(buffer) > 0:
+        buffer.pop() 
+
+    return ''.join(buffer) 
+
+def decodeBytes(pString):
+    '''
+    Decode bytes from specified triple string
+    Returns a list of bytes
+    ''' 
+    split = pString.split("-")
+    if not split or len(split) < 1 :
+        print "Nothing to split. Invalid triplet sequence"
+        sys.exit(1) 
+
+    blist = []
+     
+    for quantam in split:
+        try:
+            index = triplet.index(quantam)
+        except ValueError as e:
+            print e
+            print "Not a valid triplet"
+            sys.exit(1) 
+
+        blist.append(int(index))
+
+    return blist 
+
+
+def bytesToHex(pBytes):
+    hex = ''.join(["%02X" %ord(c) for c in pBytes])
+    return hex 
+    
+def intToHex(pIntList):
+    hex = "".join(["%02X" %i for i in pIntList]) 
+    return hex 
+
+
+class DES3(object):
+    def __init__(self, key):
+        self.initCipher(key)
+ 
+    def initCipher(self, key):
+        '''
+        Init the DES3 with specified key and returns the cipher
+        ''' 
+        self.cipher = triple_des(key, ECB, pad = None, padmode = PAD_PKCS5)
+   
+              
+    def encrypt(self, data, hexflag = False):
+        '''
+        Encrypts the plain text with DES3 ECB algorithm and returns inform of triplets
+        Eg: Input  = "HLJ7Q" 
+            Output = "Eg9-xHa-gi2-gi2-kTN-iVS-JAJ-0uD" 
+        ''' 
+        encryptedBytes = self.cipher.encrypt(data)
+        if hexflag == True:  
+            return bytesToHex(encryptedBytes) 
+        else:
+            return encodeBytes(encryptedBytes)
+
+    def decrypt(self, data, hexflag = False):
+        '''
+        Decodes the triplest to bytes and then perform DES3 decryption upon the bytes
+        to return the original data
+        ''' 
+        decodedBytes = decodeBytes(data)
+        inHex = intToHex(decodedBytes)
+       
+        if hexflag == True:
+            return inHex 
+        else: 
+            try: 
+                decryptedBytes =  self.cipher.decrypt(inHex.decode('hex'))
+            except Exception as e:
+                print e.message 
+                sys.exit(1) 
+     
+            return decryptedBytes
+
+def parseCommandLine():
+     parser = argparse.ArgumentParser()
+
+     parser.add_argument("-e", "--encode",
+                         help="The String to encode",
+                         required=False)
+
+     parser.add_argument("-d", "--decode",
+                         help="The string to decode",
+                         required=False) 
+
+     parser.add_argument("-k", "--key",
+                         help="The secret key, 24 bytes in length(192 bit)",
+                         required=False) 
+     
+     parser.add_argument("-x", "--hex",
+                         help="Output in hex format",
+                         required=False,
+                         action = 'store_true') 
+     return parser
+
+
+def main():
+    parser = parseCommandLine() 
+    opts = parser.parse_args()  
+
+    toEncode = opts.encode 
+    toDecode = opts.decode 
+    key = opts.key 
+    hexflag = opts.hex 
+
+    if not key:
+        secretKey = ("it is Vijay's secret key")
+    else:
+        secretKey = key 
+
+    des = DES3(secretKey) 
+
+    if (toEncode and toDecode) or (not toEncode and not toDecode):
+        parser.print_help()
+        return
+         
+    if toEncode:
+        print des.encrypt(toEncode, hexflag)
+
+    if toDecode:
+        print des.decrypt(toDecode, hexflag)
+
+
+if __name__ == "__main__":
+    main() 
+

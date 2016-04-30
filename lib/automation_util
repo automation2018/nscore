@@ -32,8 +32,12 @@ T_RUN_ID=$2
 
 # Returns the current partition of the last ran test
 get_test_partition() {
-     partition=$(head -1 $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition | cut -d '=' -f2)
-     echo $partition
+	 if [ -f $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition ]; then
+         partition=$(head -1 $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition | cut -d '=' -f2)
+         echo $partition
+     else
+         echo ""
+	 fi
 }
 
 T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/ns_logs/req_rep"
@@ -56,6 +60,14 @@ get_tname(){
 #can be called to get recently executed test run number
 get_testidx(){
     echo "${T_RUN_ID}"
+}
+
+
+# To read testconsole data we need testcase id 
+# Usage : get_testcase_name SmokeTest_API_1_1
+get_testcase_name(){
+    cases=(`ls -tr ${TS_LOG_DIR}/`)
+	echo "${cases[-1]}"
 }
 
 

@@ -1,0 +1,161 @@
+$TestDescription|$DefServerLocation|$WanStatus|$User|$Sessions|$Access|$AccTxBw|$AccRxBw|$Location|$FwBw|$BkBw|$PktLossFw|$PktLossBw
+
+#Test with multiple User and Location USChicago and HighSpeed Acess Type  
+Functinal TestCase with multiple user and HighSpeed|USChicago|0|10|100|HighSpeed|10000000|10000000|USChicago|0|0|0|0
+
+#Test case for NoPktLoss and NoDelay
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USChicago|0|0|0|0
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USChicago|0|0|0|0
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USChicago|0|0|0|0
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USChicago|0|0|0|0
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USChicago|0|0|0|0
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USChicago|0|0|0|0
+
+#Test case for acess Cable_4mbps with Delay
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USSanFrancisco|60|60|0|0
+
+#Test case for acess E1_1.4mbps with Delay
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USSanFrancisco|60|60|0|0
+
+
+#Test case for acess T1_732kbps with Delay
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USSanFrancisco|60|60|0|0
+
+
+#Test case for acess VDSL_439kbps with Delay
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USSanFrancisco|60|60|0|0
+
+#Test case for acess DSL_256kbps with Delay
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USSanFrancisco|60|60|0|0
+
+#Test case for acess E2_100kbps with Delay
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USNewYork|15|15|0|0
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USHouston|30|30|0|0
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USSanFrancisco|60|60|0|0
+
+#Test case for NoPktLoss and Loss(1%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USChicago|0|0|1|1
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USChicago|0|0|1|1
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USChicago|0|0|1|1
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USChicago|0|0|1|1
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USChicago|0|0|1|1
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USChicago|0|0|1|1
+
+#Test case for NoPktLoss and Loss(2%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USChicago|0|0|2|2
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USChicago|0|0|2|2
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USChicago|0|0|2|2
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USChicago|0|0|2|2
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USChicago|0|0|2|2
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USChicago|0|0|2|2
+
+#Test case for NoPktLoss and Loss(10%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USChicago|0|0|10|10
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USChicago|0|0|10|10
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USChicago|0|0|10|10
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USChicago|0|0|10|10
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USChicago|0|0|10|10
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USChicago|0|0|10|10
+
+
+#Test case for acess Cable_4mbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USSanFrancisco|60|60|1|1
+
+#Test case for acess E1_1.4mbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USSanFrancisco|60|60|1|1
+
+#Test case for acess T1_732kbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USSanFrancisco|60|60|1|1
+
+#Test case for acess VDSL_439kbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USSanFrancisco|60|60|1|1
+
+#Test case for acess DSL_256kbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USSanFrancisco|60|60|1|1
+
+#Test case for acess  E2_100kbps with Delay and Loss(1%)
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USNewYork|15|15|1|1
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USHouston|30|30|1|1
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USSanFrancisco|60|60|1|1
+
+
+#Test case for acess Cable_4mbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USSanFrancisco|60|60|2|2
+
+#Test case for acess E1_1.4mbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USSanFrancisco|60|60|2|2
+
+#Test case for acess T1_732kbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USSanFrancisco|60|60|2|2
+
+#Test case for acess VDSL_439kbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USSanFrancisco|60|60|2|2
+
+#Test case for acess DSL_256kbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USSanFrancisco|60|60|2|2
+
+#Test case for acess  E2_100kbps with Delay and Loss(2%)
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USNewYork|15|15|2|2
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USHouston|30|30|2|2
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USSanFrancisco|60|60|2|2
+
+#Test case for acess Cable_4mbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and Cable_4mbps|USChicago|1|1|100|Cable_4mbps|4000000|4000000|USSanFrancisco|60|60|10|10
+
+#Test case for acess E1_1.4mbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and E1_1.4mbps|USChicago|1|1|100|E1_1.4mbps|1500000|1500000|USSanFrancisco|60|60|10|10
+
+#Test case for acess T1_732kbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and T1_732kbps|USChicago|1|1|100|T1_732kbps|750000|750000|USSanFrancisco|60|60|10|10
+
+#Test case for acess VDSL_439kbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and VDSL_439kbps|USChicago|1|1|100|VDSL_439kbps|450000|450000|USSanFrancisco|60|60|10|10
+
+#Test case for acess DSL_256kbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and DSL_256kbps|USChicago|1|1|100|DSL_256kbps|64000|256000|USSanFrancisco|60|60|10|10
+
+#Test case for acess  E2_100kbps with Delay and Loss(10%)
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USNewYork|15|15|10|10
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USHouston|30|30|10|10
+Functinal TestCase with multiple user and E2_100kbps|USChicago|1|1|100|E2_100kbps|100000|100000|USSanFrancisco|60|60|10|10
+

@@ -1,10 +1,66 @@
 #!/bin/bash
 
-. $NS_WDIR/lib/automation_util
+source $NS_WDIR/lib/automation_util
+
+
 T_NAME=$(get_tname)
 SUMMARY_FILE="$NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data"
 TRANS_DETAIL_FILE="$NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat"
+CONF_FILE="$NS_WDIR/logs/TR$T_RUN_ID/scenario"
+KEY_WORD=$(grep "^G_PAGE_THINK_TIME" $CONF_FILE)
+GROUP=$(awk '{print $2}' <<< $KEY_WORD)
+PAGE_NAME=$(awk '{print $3}' <<< $KEY_WORD)
+FUNC_NAME=$(awk '{print $5}' <<< $KEY_WORD)
+SCRIPT_NAME=$(grep "^SGRP $GROUP" "$CONF_FILE" | awk '{print $6}')
+FLOW_FILE="$NS_WDIR/logs/TR$T_RUN_ID/scripts/$SCRIPT_NAME/flow.c"
+FUNC_CHECK=$(grep "$FUNC_NAME" "$FLOW_FILE")
 
+
+function validate_page_think_time_custom_mode(){
+    if [ ! -z "$FUNC_CHECK" ];then
+        custom_time=$(grep "double custom_time" $FLOW_FILE |awk '{print $NF}' | cut -d';' -f1)
+    else
+        log_status_and_exit_ex "FAIL" "No custom time found for $FUNC_NAME function"
+    fi
+    
+    
+	if [ "$PAGE_NAME" != "ALL" ];then
+	    tr_name=$(grep -B3 "\"$PAGE_NAME\"" "$FLOW_FILE" | grep "ns_start_transaction" | awk -F'"' '{print $2}')
+	    tr_time=$(grep "$tr_name" "$TRANS_DETAIL_FILE" | awk -F'|' '{print $2}' | awk '{print $1}')
+	    
+		debug_log "Transaction time for $tr_name transaction is $tr_time ; custom_time = $custom_time"
+	
+		if [ $(echo "$tr_time >= $custom_time" | bc) -eq 1 ];then
+	        log_status_and_exit_ex "PASS" "Page think time custom mode 4 vaidation passed"
+	    else
+	   		log_status_and_exit_ex "FAIL" "Page think time custom mode 4 vaidation Failed"
+	    fi
+    else
+		all_tr_name=$(grep "ns_start_transaction" $FLOW_FILE | awk -F'"' '{print $2}')
+		no_tr_name=$(grep "ns_start_transaction" $FLOW_FILE | awk -F'"' '{print $2}'|wc -l)
+		actual_time=0
+		eval_time=$(echo "$custom_time" \* "$no_tr_name" | bc )
+		
+		for (( i=1;i<=$no_tr_name;i++ ))
+		do
+			tx_name=$(echo "$all_tr_name"| sed -n "$i"p)
+			search=$(grep "$tx_name" "$TRANS_DETAIL_FILE")
+			
+			if [ ! -z "$search" ];then
+			    t_time=$(grep "$tx_name" "$TRANS_DETAIL_FILE" | awk -F'|' '{print $2}' | awk '{print $1}')
+			    actual_time=$(echo $actual_time + $t_time |bc)
+	        fi
+	    done
+
+	    debug_log "evaluation time = "$eval_time" ;  actual time taken by all transactions = $actual_time"
+	
+		if [ $(echo "$actual_time >= $eval_time" | bc) -eq 1 ];then
+			log_status_and_exit_ex "PASS" "Page think time custom mode 4 vaidation passed"
+		else
+			log_status_and_exit_ex "FAIL" "Page think time custom mode 4 vaidation Failed"
+		fi
+    fi
+}
 
 function set_think_time_params(){
     MaxSesRepTime_Float=$(grep  "Average Session Response Time (Secs)" ${SUMMARY_FILE} |cut -d '|' -f8)
@@ -35,10 +91,10 @@ function set_think_time_params(){
 }
 
 
-set_think_time_params
-
 if [ "$T_NAME" == "SMOKE-008-001" ];then 
-    if [ $SD_TotalSuccURL -eq 46 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 46 ] && \
        [ $MaxSesRepTime -ge 35 -a $MaxSesRepTime -le 36 ] && \
        [ $ThinkingVusers -eq 1 ] && \
        [ $FirstPageMaxTransTime -ge 5 -a $FirstPageMaxTransTime -le 6 ] && \
@@ -49,8 +105,11 @@ if [ "$T_NAME" == "SMOKE-008-001" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-008-002" ];then
-    if [ $SD_TotalSuccURL -eq 23 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 40 -a $MaxSesRepTime -le 70 ] && \
        [ $ThinkingVusers -eq 1 ] && \
        [ $FirstPageMaxTransTime -ge 5 -a $FirstPageMaxTransTime -le 10 ] && \
@@ -61,8 +120,11 @@ if [ "$T_NAME" == "SMOKE-008-002" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-008-003" ];then
-    if [ $SD_TotalSuccURL -eq 23 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 0 -a $MaxSesRepTime -le 2 ] && \
        [ $ThinkingVusers -ge 0 -a $ThinkingVusers -le 1 ] && \
        [ $FirstPageMaxTransTime -ge 0 -a $FirstPageMaxTransTime -le 2 ] && \
@@ -73,8 +135,11 @@ if [ "$T_NAME" == "SMOKE-008-003" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-008-004" ];then
-    if [ $SD_TotalSuccURL -eq 23 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 5 -a $MaxSesRepTime -le 6 ] && \
        [ $SpecificPageMaxTransTime -ge 5 -a $SpecificPageMaxTransTime -le 6 ] && \
        [ $ThinkingVusers -eq 1 ];then
@@ -84,8 +149,11 @@ if [ "$T_NAME" == "SMOKE-008-004" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-008-005" ];then
-    if [ $SD_TotalSuccURL -eq 23 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 26 -a $MaxSesRepTime -le 27 ] && \
        [ $OverrideWithMultiplyValue -ge 1 -a $OverrideWithMultiplyValue -le 2 ] && \
        [ $ThinkingVusers -eq 1 ];then
@@ -95,8 +163,11 @@ if [ "$T_NAME" == "SMOKE-008-005" ];then
     fi
 fi
 
+
 if [ "$T_NAME" == "SMOKE-008-006" ];then
-    if [ $SD_TotalSuccURL -eq 23 ] && \
+    set_think_time_params
+    
+	if [ $SD_TotalSuccURL -eq 23 ] && \
        [ $MaxSesRepTime -ge 1 -a $MaxSesRepTime -le 3 ] && \
        [ $ThinkingVusers -eq 1 ];then
         log_status_and_exit_ex "PASS" "Page think time keyword with overide random percentage values Passed"
@@ -104,5 +175,63 @@ if [ "$T_NAME" == "SMOKE-008-006" ];then
         log_status_and_exit_ex "FAIL" "Page think time keyword with overide random percentage values Failed"
     fi
 fi
+
+
+if [ "$T_NAME" == "SMOKE-008-007" ]; then
+    validate_page_think_time_custom_mode
+fi
+
+
+if [ "$T_NAME" == "SMOKE-008-008" ]; then
+    validate_page_think_time_custom_mode
+fi
+
+
+if [ "$T_NAME" == "SMOKE-008-009" ]; then
+    validate_page_think_time_custom_mode
+fi
+
+
+if [ "$T_NAME" == "SMOKE-008-010" ]; then
+    validate_page_think_time_custom_mode
+fi
+
+
+# G_PAGE_THINK_TIME ALL ALL 4 <function-name>
+if [ "$T_NAME" == "SMOKE-008-011" ]; then
+	avg_tx_time_all=$(grep 'ALL' ${TRANS_DETAIL_FILE} | cut -d'|' -f3 | sed 's/^ //')
+   
+	debug_log "avg_tx_time_all=$avg_tx_time_all; expected=5.0"
+
+	if [ $(echo "$avg_tx_time_all >= 5.0" | bc -l) -eq 1 ]; then 
+	    log_status_and_exit_ex "PASS" "page think time mode 4 testcase passed for all groups and all pages"
+	else
+		log_status_and_exit_ex "FAIL" "page think time mode 4 testcase failed as average tx time(ALL)($avg_tx_time_all) is less than custom function return value(5.0)"
+	fi
+fi
+
+
+if [ "$T_NAME" == "SMOKE-008-012" ]; then
+	actual_tx_time=$(grep 'IndexPage_1' ${TRANS_DETAIL_FILE} | cut -d'|' -f3 | sed 's/^ //')
+
+	###Make test case name hard code
+    test_case_name=$(get_testcase_name)
+
+	expected_tx_time=$(grep 'Random Delay Time' "${TS_LOG_DIR}/${test_case_name}/test_run.report"| tail -1 | egrep -o '[0-9.]+')
+
+	debug_log "actual_tx_time=$actual_tx_time;expected_tx_time=$expected_tx_time, testcase name=$test_case_name"
+
+	if [ $(echo "$actual_tx_time >= $expected_tx_time" | bc -l) -eq 1 ]; then 
+		log_status_and_exit_ex "PASS" "page think time mode 4 testcase passed where function returns a random value from an initalized array"
+	else
+        log_status_and_exit_ex "FAIL" "page think time mode 4 testcase failed as expected tx time is greater than actual tx time for index page after custom mode think value applied"
+	fi
+fi
+
+
+if [ "$T_NAME" == "SMOKE-008-013" ]; then
+    log_status_and_exit_ex "PASS" "page think time mode 4 testcase passed with override recorded think time keyword"
+fi
+
 
 exit 0

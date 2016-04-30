@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+S_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/scenario"
+SUM_GDF_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/summary_gdf.data"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-023-001") validate_wan_download_speed_results ;; 
+        "SMOKE-023-002") validate_wan_download_speed_results ;; 
+        "SMOKE-023-003") validate_wan_download_speed_results ;; 
+        "SMOKE-023-004") validate_wan_download_speed_results ;; 
+        "SMOKE-023-005") validate_wan_upload_speed_results ;; 
+        "SMOKE-023-006") validate_wan_upload_speed_results ;; 
+        "SMOKE-023-007") validate_wan_upload_speed_results ;; 
+        "SMOKE-023-008") validate_wan_upload_speed_results ;; 
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_wan_download_speed_results(){
+    if [ $SD_TotalSuccURL -eq 1 ]; then
+		response_file_size=$((513 * 1024 * 8))
+		download_speed=$(grep "^UACCESS" ${S_FILE} | cut -d' ' -f4 )
+
+		# Get integer part of both the time value
+		average_response_time=$(grep 'Average Session Response Time' ${SUM_GDF_FILE} | awk -F'|' '{print $(NF-2)}') 
+		average_response_time_int=$(python -c "print '%d' %($average_response_time)")
+		expected_response_time_int=$(python -c "print '%d' %($response_file_size / $download_speed)")
+
+		debug_log "response_file_size=$response_file_size;download_speed=$download_speed"
+		debug_log "average_response_time_int=$average_response_time_int;expected_response_time_int=$expected_response_time_int"
+
+		if [ $average_response_time_int -eq $expected_response_time_int ]; then
+			log_status_and_exit_ex "PASS" " wan testcase for download time passed;as average response time($average_response_time_int) equals expected response time($expected_response_time_int)"
+		else
+			log_status_and_exit_ex "FAIL" "wan testcase for download time failed;as average response time($average_response_time_int) not equals expected response time($expected_response_time_int)"
+		fi
+	else
+	    log_status_and_exit_ex "FAIL" "wan testcase for download time failed due to url failure"
+	fi
+}
+
+
+function validate_wan_upload_speed_results(){
+    if [ $SD_TotalSuccURL -eq 1 ]; then
+		req_file_size=$((500 * 1024 * 8))
+		upload_speed=$(grep "^UACCESS" ${S_FILE} | cut -d' ' -f3)
+
+		# Get integer part of both the time value
+		average_response_time=$(grep 'Average Session Response Time' ${SUM_GDF_FILE} | awk -F'|' '{print $(NF-2)}') 
+		average_response_time_int=$(python -c "print '%d' %($average_response_time)")
+		expected_response_time_int=$(python -c "print '%d' %($req_file_size / $upload_speed)")
+
+		debug_log "req_file_size=$req_file_size;upload_speed=$upload_speed"
+		debug_log "average_response_time_int=$average_response_time_int;expected_response_time_int=$expected_response_time_int"
+
+		if [ $average_response_time_int -eq $expected_response_time_int ]; then
+			log_status_and_exit_ex "PASS" "wan testcase for download time passed;as average response time($average_response_time_int) equals expected response time($expected_response_time_int)"
+		else
+			log_status_and_exit_ex "FAIL" "wan testcase for upload time failed;as average response time($average_response_time_int) not equals expected response time($expected_response_time_int)"
+		fi
+	else
+	    log_status_and_exit_ex "FAIL" "wan testcase for upload time failed due to url failure"
+	fi
+}
+
+
+main
+
+
+exit 0

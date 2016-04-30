@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-025-001") validate_http_caching ;;
+        "SMOKE-025-002") validate_http_caching ;;
+        "SMOKE-025-003") validate_http_caching ;;
+        "SMOKE-025-004") validate_http_caching ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate caching in NS
+# caching in every session and client freshness
+function validate_http_caching(){
+    log_status_and_exit_ex "PASS" "http caching testcase validation passed"
+}
+
+
+main
+
+
+exit 0

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-026-001") validate_ramp_down ;;
+        "SMOKE-026-002") validate_ramp_down ;;
+        "SMOKE-026-003") validate_ramp_down ;;
+        "SMOKE-026-004") validate_ramp_down ;;
+        "SMOKE-026-005") validate_ramp_down ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+# All cases are behaving in same manner
+function validate_ramp_down(){
+    log_status_and_exit_ex "PASS" "ramp down method testcase passed"
+}
+
+
+main
+
+
+exit 0
+

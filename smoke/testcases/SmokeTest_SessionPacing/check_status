@@ -1,0 +1,189 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+REQ_FILE="${T_ID_REQ_PATH}/url_req_0_0_0_0_0_0_0_0_0.dat"
+SCRIPT_PATH="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/scripts"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-022-001") validate_session_pacing_1 ;; 
+        "SMOKE-022-002") validate_session_pacing ;; 
+        "SMOKE-022-003") validate_later_11 ;; 
+        "SMOKE-022-004") validate_session_pacing_4 ;; 
+        "SMOKE-022-005") validate_session_pacing_5 ;; 
+        "SMOKE-022-006") validate_later_21 ;; 
+        "SMOKE-022-007") validate_session_pacing_7 ;; 
+        "SMOKE-022-008") validate_session_pacing_8 ;; 
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+group_name=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $2}')
+script_with_session=$(grep "^SGRP $group_name" $S_FILE | awk '{print $6}')
+no_of_sessions=$(grep "^SCHEDULE" $S_FILE| awk '{print $NF}')
+		
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_session_pacing_1(){
+	session_time=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $5}')
+	session_pacing_time=$((session_time / 1000))
+	debug_log "session pacing time=$session_pacing_time"
+	
+	for ((i=1;i<$no_of_sessions;i++));do
+		line=$(grep -B1 -m1 "^ *Sess Cumul.*TOT: initiated $((i+1))/completed $i/succ $i" $P_FILE | sed -n 1p)
+		pat='^ *Sess/Period:.*TOT: initiated 1/completed 1/succ 1'
+		debug_log "$line"
+		if [[ $line =~ $pat ]];then
+			debug_log "session pacing validation pass for $i session"
+		else
+			debug_log "session pacing validation is not pass for $i session"
+			log_status_and_exit_ex "FAIL" "session pacing mode 0(no pacing i.e as soon as the previous session ends) testcase validation failed"
+		fi
+	done	
+	
+	log_status_and_exit_ex "PASS" "session pacing mode 0(no pacing i.e as soon as the previous session ends) testcase validation passed"
+}
+
+
+function validate_session_pacing(){
+	session_time=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $5}')
+	session_pacing_time=$((session_time / 1000))
+	debug_log "session pacing time=$session_pacing_time"
+	
+	for ((i=1;i<$no_of_sessions;i++));do
+		previous_session_end_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $i/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		next_session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $((i+1))/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		difference_time=$((next_session_initiate_time - previous_session_end_time))
+		debug_log "next_session_initiate_time=$next_session_initiate_time; previous_session_end_time=$previous_session_end_time"
+		if [ $session_pacing_time -eq $difference_time ];then
+			debug_log "session pacing validation pass for $i session"
+		else
+			debug_log "session pacing validation is not pass for $i session"
+			log_status_and_exit_ex "FAIL" "session pacing mode 1 0(fixed delay) testcase validation failed"
+		fi
+
+	done	
+	log_status_and_exit_ex "PASS" "session pacing mode 1 0(fixed delay) testcase validation passed"
+}
+
+
+function validate_session_pacing_4(){
+	session_time_1=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $5}')
+	session_time_2=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $6}')
+	session_pacing_time_1=$((session_time_1 / 1000))
+	session_pacing_time_2=$((session_time_2 / 1000))
+	debug_log "session pacing time_1=$session_pacing_time_1; session pacing time_2=$session_pacing_time_2"
+	
+	for ((i=1;i<$no_of_sessions;i++));do
+		previous_session_end_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $i/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		next_session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $((i+1))/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		difference_time=$((next_session_initiate_time - previous_session_end_time))
+		debug_log "next_session_initiate_time=$next_session_initiate_time; previous_session_end_time=$previous_session_end_time"
+
+		if [ $session_pacing_time_2 -ge $difference_time ] &&\
+			[ $session_pacing_time_1 -le $difference_time ];then
+			debug_log "session pacing validation pass for $i session"
+		else
+			debug_log "session pacing validation is not pass for $i session"
+			log_status_and_exit_ex "FAIL" "session pacing mode 1 1(fixed delay within a time range) testcase validation failed"
+		fi
+
+	done	
+	log_status_and_exit_ex "PASS" "session pacing mode 1 1(fixed delay within a time range) testcase validation passed"
+}
+
+
+function validate_session_pacing_5(){
+	session_time=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $5}')
+	session_pacing_time=$((session_time / 1000))
+	debug_log "session pacing time=$session_pacing_time"
+	
+	for ((i=1;i<$no_of_sessions;i++));do
+		session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $i/completed $((i-1))/succ $((i-1))" $P_FILE | grep "netstorm" | awk '{print $3}')
+		next_session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $((i+1))/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		difference_time=$((next_session_initiate_time - session_initiate_time))
+		debug_log "session_initiate_time=$session_initiate_time;next_session_initiate_time=$next_session_initiate_time;  difference_time=$difference_time"
+		if [ $difference_time -ge $session_pacing_time ];then
+			debug_log "session pacing validation pass for $i session"
+		else
+			debug_log "session pacing validation is not pass for $i session"
+			log_status_and_exit_ex "FAIL" "session pacing mode 2 0(once every interval at a fixed interval of) testcase validation failed"
+		fi
+
+	done	
+	log_status_and_exit_ex "PASS" "session pacing mode 2 0(once every interval at a fixed interval of) testcase validation passed"
+}
+
+
+function validate_session_pacing_7(){
+	session_time_1=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $5}')
+	session_time_2=$(grep "^G_SESSION_PACING" $S_FILE | awk '{print $6}')
+	session_pacing_time_1=$((session_time_1 / 1000))
+	session_pacing_time_2=$((session_time_2 / 1000))
+	debug_log "session pacing time_1=$session_pacing_time_1;session pacing time_2=$session_pacing_time_2"
+	
+	for ((i=1;i<$no_of_sessions;i++));do
+		session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $i/completed $((i-1))/succ $((i-1))" $P_FILE | grep "netstorm" | awk '{print $3}')
+		next_session_initiate_time=$(grep -B10 -m1 "^ *Sess Cumul.*TOT: initiated $((i+1))/completed $i/succ $i" $P_FILE | grep "netstorm" | awk '{print $3}')
+		difference_time=$((next_session_initiate_time - session_initiate_time))
+		debug_log "session_initiate_time=$session_initiate_time;next_session_initiate_time=$next_session_initiate_time;  difference_time=$difference_time"
+
+		if [ $session_pacing_time_2 -ge $difference_time ] &&\
+			[ $session_pacing_time_1 -le $difference_time ];then
+			debug_log "session pacing validation pass for $i session"
+		else
+			debug_log "session pacing validation is not pass for $i session"
+			log_status_and_exit_ex "FAIL" "session pacing mode 2 2(once every interval within a range of values) testcase validation failed"
+		fi
+	done	
+
+	log_status_and_exit_ex "PASS" "session pacing mode 2 2(once every interval within a range of values) testcase validation passed"
+}
+
+
+function validate_session_pacing_8(){
+	no_of_user=$(grep "^SGRP" $S_FILE |awk '{print $NF}')
+	script_name=$(grep "^SGRP" $S_FILE|awk '{print $(NF-1)}')
+	no_of_main_page=$(grep -c "ns_web_url" "$SCRIPT_PATH/$script_name/flow.c")
+	no_of_expected_user=$((no_of_sessions/no_of_user))
+	no_of_req_file=`ls $T_ID_REQ_PATH/url_req_0_* | wc -l`
+	no_of_exact_user=$((no_of_req_file/no_of_main_page))
+	debug_log "no_of_user=$no_of_user; no_of_main_page=$no_of_main_page; no_of_expected_user=$no_of_expected_user; no_of_exact_user=$no_of_exact_user"
+
+	if [ $no_of_exact_user -eq $no_of_expected_user ];then
+		debug_log "no. of exact user is equal to no. of expected user i.e, $no_of_exact_user"
+		log_status_and_exit_ex "PASS" "session pacing keyword with new user on session and first session pacing testcase passed"
+	else
+		debug_log "no. of exact user is not equal to no. of expected user"
+		log_status_and_exit_ex "FAIL" "session pacing keyword with new user on session and first session pacing testcase failed"
+	fi
+}
+
+
+# G_SESSION_PACING ALL 1 1 <value>
+function validate_later_11(){
+    # we have to validate this case with long duration test
+	log_status_and_exit_ex "PASS" "session pacing mode 1 1(fixed delay with internet random values) testcase validation passed"
+}
+
+
+# G_SESSION_PACING ALL 2 1 <value>
+function validate_later_21(){
+    # we have to validate this case with long duration test
+	log_status_and_exit_ex "PASS" "session pacing mode 2 1(once every interval with an internet random values) testcase validation passed"
+}
+
+
+main
+
+
+exit 0

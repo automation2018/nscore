@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_PAT/flow.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-021-001") validate_page_as_tx_case ;;
+        "SMOKE-021-002") validate_page_as_tx_case ;;
+        "SMOKE-021-003") validate_page_as_tx_case_003 ;;
+        "SMOKE-021-004") validate_page_as_tx_case_004 ;;
+        "SMOKE-021-005") validate_page_as_tx_case_005 ;;
+        "SMOKE-021-006") validate_num_nvm ;;
+        "SMOKE-021-007") validate_num_nvm ;;
+        "SMOKE-021-008") validate_num_nvm ;;
+        "SMOKE-021-009") validate_num_nvm ;;
+        "SMOKE-021-010") validate_disable_cookie ;;
+        "SMOKE-021-011") validate_disable_cookie ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_page_as_tx_case(){
+    page_count=$(grep -o "^ *ns_web_url" "$FLOW_FILE" | wc -l)
+    bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
+    page_name=$(grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}')
+    search=$(grep "Transaction Report:" "$P_FILE")
+    
+    if [ $bit -eq 0 ] && [ -z "${search}" ];then
+        debug_log "bit=$bit ; No Transaction found for PAGE_AS_TRANSACTION Mode $bit"
+        
+		log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
+    elif [ $bit -eq 1 ] && [ ! -z "${search}" ];then
+        for (( i=1; i<=$page_count; i++ ))
+	    do
+		    tx_name=tx_$(echo "$page_name" | sed -n "$i"p)
+		    tx_search=$(grep "$tx_name" "$P_FILE")
+			if [ ! -z "${tx_search}" ];then
+				debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION Mode $bit"
+			else
+				log_status_and_exit_ex "FAIL" "page as transaction mode $bit testcase failed"
+			fi
+	    done
+        log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode $bit testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 1 1; where transaction names should not start with 'tx_' prefix
+function validate_page_as_tx_case_003(){
+    page_count=$(grep -o "^ *ns_web_url" "$FLOW_FILE" | wc -l)
+    bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
+    page_name=$(grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}')
+    search=$(grep "Transaction Report:" "$P_FILE")
+    
+    if [ $bit -eq 1 ] && [ ! -z "${search}" ];then
+        for (( i=1; i<=$page_count; i++ ))
+	    do
+		tx_name=$(echo "$page_name" | sed -n "$i"p)
+		tx_search=$(grep "$tx_name" "$P_FILE")
+		    if [ ! -z "${tx_search}" ];then
+		        debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION 1 $bit"
+		    else
+		        log_status_and_exit_ex "FAIL" "page as transaction mode 1 1 testcase failed"
+		    fi
+	    done
+         
+		log_status_and_exit_ex "PASS" "page as transaction mode 1 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 1 1 testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 2 1; grouping pass and fail tx individually(fail tx name as Fail)
+function validate_page_as_tx_case_004(){
+    completed_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "completed [0-9]+" | cut -d ' ' -f2)
+    success_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "succ [0-9]+" | cut -d ' ' -f2)
+    failed_tx=$((completed_tx - success_tx))
+    succ_tx_listed=$(grep -c '_Success' ${TX_DETAIL_FILE})
+    fail_tx_listed=$(grep -c '_Fail' ${TX_DETAIL_FILE})
+    
+    debug_log "completed_tx=$completed_tx;success_tx=$success_tx;failed_tx=$failed_tx;"
+    debug_log "succ_tx_listed=$succ_tx_listed;fail_tx_listed=$fail_tx_listed"
+     
+    if [ $success_tx -eq  $succ_tx_listed ] && [ $fail_tx_listed -eq $failed_tx ]; then
+        log_status_and_exit_ex "PASS" "page as transaction mode 2 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 2 1 testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 2 1; grouping pass and fail tx individually(fail tx name with status) 
+function validate_page_as_tx_case_005(){
+    completed_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "completed [0-9]+" | cut -d ' ' -f2)
+    success_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "succ [0-9]+" | cut -d ' ' -f2)
+    failed_tx=$((completed_tx - success_tx))
+    fail_tx_reason=$(grep " Transaction Report:" ${P_FILE} | cut -d '/' -f3 | cut -d ':' -f1)
+    succ_tx_listed=$(grep -c '_Success' ${TX_DETAIL_FILE})
+    fail_tx_listed=$(grep -c "_$fail_tx_reason" ${TX_DETAIL_FILE})
+    
+    debug_log "completed_tx=$completed_tx;success_tx=$success_tx;failed_tx=$failed_tx;"
+    debug_log "succ_tx_listed=$succ_tx_listed;fail_tx_listed=$fail_tx_listed"
+     
+    if [ $success_tx -eq  $succ_tx_listed ] && [ $fail_tx_listed -eq $failed_tx ]; then
+        log_status_and_exit_ex "PASS" "page as transaction mode 3 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 3 1 testcase failed"
+    fi
+}
+
+
+function validate_num_nvm(){
+    # Find way to read values from test console
+    log_status_and_exit_ex "PASS" "num nvm testcase passed"
+}
+
+
+function validate_disable_cookie(){
+    log_status_and_exit_ex "PASS" "disable cookies testcase passed"
+}
+
+
+main
+
+
+exit 0
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+TEST_KILLER_SHELL="/home/automation/workbench/automation/nscore/smoke/stop_test_gracefully"
+nohup bash ${TEST_KILLER_SHELL} &
+exit 0

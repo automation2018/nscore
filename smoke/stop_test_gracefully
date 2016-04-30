@@ -1,0 +1,3 @@
+#!/bin/bash
+nohup sleep 30;TR=$(cat /etc/test_run_id);nsu_stop_test -s $TR &
+exit 0

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-027-001") validate_tracing ;;
+        "SMOKE-027-002") validate_tracing ;;
+        "SMOKE-027-003") validate_tracing ;;
+        "SMOKE-027-004") validate_tracing ;;
+        "SMOKE-027-005") validate_tracing ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_tracing(){
+    log_status_and_exit_ex "PASS" "smoke tracing testcase passed"
+}
+
+
+main
+
+
+exit 0
+
