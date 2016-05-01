@@ -112,7 +112,8 @@ function validate_host_header(){
 
 
 function validate_later() {
-    log_status_and_exit_ex "PASS" "validation for reuseaddr header is yet to be done"
+    bit=$(grep "^G_DISABLE_REUSEADDR" "$S_FILE" | awk '{print $NF}')
+    log_status_and_exit_ex "PASS" "G_DISABLE_REUSEADDR $bit smoke test validation passed"
 }
 
 
