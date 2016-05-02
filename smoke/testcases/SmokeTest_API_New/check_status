@@ -2,11 +2,13 @@
 
 source $NS_WDIR/lib/automation_util
 
+
 TRANS_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
 S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
 SCRIPT_NAME=$(grep SGRP ${S_FILE} | cut -d' ' -f6)
 FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/${SCRIPT_NAME}/flow.c"
-TSR_FILE="$TS_LOG_DIR/SmokeTest_API_New_1_1/test_run.report"
+TSR_FILE="$TS_LOG_DIR/$(get_testcase_name)/test_run.report"
+
 
 function main(){
     case $(get_tname) in
@@ -133,7 +135,7 @@ function inline_repeat_tx_validation(){
 }
 
 function inline_api_timer_validation(){
-	api_time=$(grep "Elapsed time of index page" $TSR_FILE|awk -F'=' '{print $NF}')
+	api_time=$(grep "Elapsed time of index page" $TSR_FILE |awk -F'=' '{print $NF}')
 	tx_time=$(grep "IndexPage" $TRANS_FILE | cut -d'|' -f2 |cut -d' ' -f2)
 	api_time_sec=$((api_time/1000))
 	tx_time_int=$( printf "%.0f" $tx_time )

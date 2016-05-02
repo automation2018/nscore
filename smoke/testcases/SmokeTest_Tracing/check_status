@@ -8,8 +8,6 @@ function main(){
         "SMOKE-027-001") validate_tracing ;;
         "SMOKE-027-002") validate_tracing ;;
         "SMOKE-027-003") validate_tracing ;;
-        "SMOKE-027-004") validate_tracing ;;
-        "SMOKE-027-005") validate_tracing ;;
          *) handle_unknown_case ;;
          ?) handle_unknown_case ;;
     esac

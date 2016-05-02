@@ -46,7 +46,7 @@ SMOKE-020-029|G_IDLE_MSECS G2 50000|SGRP G2 NA Internet 0 hpd_tours_idle_msec 1|
 # G_MAX_CON_PER_VUSER <group> 0 V1 V2 V3 V4 V5
 SMOKE-020-030|G_MAX_CON_PER_VUSER G2 0 1 1 1 1 1|SGRP G2 NA Internet 0 hpd_tours_max_conn 1|http://127.0.0.1/tours/index.html|SESSIONS 2
 SMOKE-020-031|G_MAX_CON_PER_VUSER G2 0 3 3 3 3 3|SGRP G2 NA Internet 0 hpd_tours_max_conn 1|http://127.0.0.1/tours/index.html|SESSIONS 2
-SMOKE-020-032|G_MAX_CON_PER_VUSER ALL 0 5 5 5 5 5|SGRP G2 NA Internet 0 hpd_tours_max_conn 2|http://127.0.0.1/tours/index.html|SESSIONS 2
+SMOKE-020-032|G_MAX_CON_PER_VUSER ALL 0 5 5 5 5 5|SGRP G2 NA Internet 0 hpd_tours_max_conn 2|http://127.0.0.1/tours/index.html|SESSIONS 3
 
 
 # DNS TIMEOUT:
