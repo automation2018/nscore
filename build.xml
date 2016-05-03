@@ -9,7 +9,7 @@
     <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
 
     <!--Task: Sleep interval after each suite completion--> 
-    <target name="take-knap" description="This target is called to make system idle for 10 seconds">
+    <target name="take-a-nap" description="This target is called to make system idle for 10 seconds">
         <echo message="Idling server for 10 seconds"/>
         <sleep seconds="10"/>
         <echo message="System is now idle; going to perform next test metric"/>
@@ -56,7 +56,7 @@
               issue was in FTP put API testcase while this service was not running -->    
 
     <target name="start" 
-            depends="smoke, take-knap, performance, take-knap, regression"
+            depends="smoke, take-a-nap, performance, take-a-nap, regression"
             description="Default target which inititates entire automation process">
     </target>
 
