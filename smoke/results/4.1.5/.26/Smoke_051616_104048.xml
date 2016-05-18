@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="1" total="2">
+        <testcase id="SMOKE-010-013">
+            <testrun>29829</testrun>
+            <status>fail</status>
+            <description>SMTP test Failed as session is not completed</description>
+        </testcase>
+        <testcase id="SMOKE-023-002">
+            <testrun>29830</testrun>
+            <status>pass</status>
+            <description> wan testcase for download time passed;as average response time(4) equals expected response time(4)</description>
+        </testcase>
+    </testsuite>
+</testsuites>

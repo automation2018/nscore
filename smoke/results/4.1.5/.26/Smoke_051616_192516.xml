@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="2" total="2">
+        <testcase id="SMOKE-001-001">
+            <testrun>29881</testrun>
+            <status>pass</status>
+            <description>ns_save_string() api Passed</description>
+        </testcase>
+        <testcase id="SMOKE-031-001">
+            <testrun>29882</testrun>
+            <status>pass</status>
+            <description>testcase passed</description>
+        </testcase>
+        <testcase id="SMOKE-031-001">
+            <testrun>29882</testrun>
+            <status>fail</status>
+            <description>testcase failed</description>
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="1" passed="1" total="2">
+        <testcase id="REG-002-001">
+            <testrun>29263</testrun>
+            <status>pass</status>
+            <description>Regression testcase for FCU having RampUp in Rate Mode test Passed</description>
+        </testcase>
+        <testcase id="REG-003-001">
+            <testrun>29267</testrun>
+            <status>fail</status>
+            <description>Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric Max_Sessions_Started_Per_Minute_Change_Pct = 100 is more than expected difference 5%</description>
+        </testcase>
+    </testsuite>
+</testsuites>

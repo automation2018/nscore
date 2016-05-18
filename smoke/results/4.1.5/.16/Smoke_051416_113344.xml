@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<testsuites>
+    <testsuite failures="2" passed="4" total="6">
+        <testcase id="SMOKE-023-001">
+            <testrun>29500</testrun>
+            <status>pass</status>
+            <description> wan testcase for download time passed;as average response time(8) equals expected response time(8)</description>
+        </testcase>
+        <testcase id="SMOKE-023-002">
+            <testrun>29501</testrun>
+            <status>pass</status>
+            <description> wan testcase for download time passed;as average response time(4) equals expected response time(4)</description>
+        </testcase>
+        <testcase id="SMOKE-023-003">
+            <testrun>29502</testrun>
+            <status>pass</status>
+            <description> wan testcase for download time passed;as average response time(2) equals expected response time(2)</description>
+        </testcase>
+        <testcase id="SMOKE-023-004">
+            <testrun>29503</testrun>
+            <status>pass</status>
+            <description> wan testcase for download time passed;as average response time(1) equals expected response time(1)</description>
+        </testcase>
+        <testcase id="SMOKE-023-007">
+            <testrun>29504</testrun>
+            <status>fail</status>
+            <description>wan testcase for upload time failed due to url failure</description>
+        </testcase>
+        <testcase id="SMOKE-023-008">
+            <testrun>29505</testrun>
+            <status>fail</status>
+            <description>wan testcase for upload time failed due to url failure</description>
+        </testcase>
+    </testsuite>
+</testsuites>
