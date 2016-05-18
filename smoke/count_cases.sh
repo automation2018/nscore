@@ -5,7 +5,7 @@ function get_test_case_count() {
   for testcase in ${testcases}
   do
     i=$(grep -ci "^SMOKE-" testcases/${testcase}/iteration.spec)
-    count=$(($count + $i))
+    count=$((count + i))
   done
   echo ${count}
 }

@@ -75,6 +75,10 @@ function get_baseline_values(){
 
     Avg_Page_Response_Time=`grep -w "Average Page Response Time (Secs)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
     echo  "Avg_Page_Response_Time for Baseline is::$Avg_Page_Response_Time"
+
+    Max_Sessions_Started_Per_Minute=`grep -w "Sessions Started/Minute(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f8`
+	echo "Max_Sessions_Started_Per_Minute for Baseline is =$Max_Sessions_Started_Per_Minute"
+
 }
 
 
@@ -139,6 +143,10 @@ function get_current_tr_values(){
 
     Avg_Page_Response_Time_Current=`grep -w "Average Page Response Time (Secs)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
     echo "Avg_Page_Response_Time_Current for current test run is =$Avg_Page_Response_Time_Current"
+
+    Max_Sessions_Started_Per_Minute_Current=`grep -w "Sessions Started/Minute(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f8`
+	echo "Max_Sessions_Started_Per_Minute_Current for current test run is =$Max_Sessions_Started_Per_Minute_Current"
+
 }
 
 
@@ -263,6 +271,13 @@ function get_compared_values(){
 
     Page_Response_Time_Change=`echo $Page_Response_Time_Change | awk '{printf "%.0f\n", $1}'`
     echo "Response time change is=$Page_Response_Time_Change"
+
+    Max_Sessions_Started_Per_Minute_Change_Pct=`echo "$Max_Sessions_Started_Per_Minute" "$Max_Sessions_Started_Per_Minute_Current" | awk '{print ($1-$2)/$1*100}'`
+	echo "Max_Sessions_Started_Per_Minute_Change_Pct before making it int=$Max_Sessions_Started_Per_Minute_Change_Pct"
+
+	Max_Sessions_Started_Per_Minute_Change_Pct=`echo $Max_Sessions_Started_Per_Minute_Change_Pct | awk '{printf "%.0f\n", $1}'`
+	echo "Max_Sessions_Started_Per_Minute_Change_Pct after making it as int=$Max_Sessions_Started_Per_Minute_Change_Pct"
+
 }
 
 

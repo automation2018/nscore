@@ -2,10 +2,18 @@ $TestDescription|$KeyValue1|$KeyValue2|%URL|$SESSIONS
 
 # G_MAX_URL_RETRIES
 # NS retries in case of SSL_HANDSHAKE, PARTIAL HEADER, CONFAIL
-SMOKE-020-001|G_MAX_URL_RETRIES G1  0|SHOW_INITIATED 1|https://127.0.0.1/url_retry_ssl_fail.html|SESSIONS 1
-SMOKE-020-002|G_MAX_URL_RETRIES G1  3|SHOW_INITIATED 1|https://127.0.0.1/url_retry_request_write_fail.html|SESSIONS 1
-SMOKE-020-003|G_MAX_URL_RETRIES G1 5|SHOW_INITIATED 1|http://127.0.0.2/url_retry_confail.html|SESSIONS 1
-SMOKE-020-004|G_MAX_URL_RETRIES ALL 5|SHOW_INITIATED 1|https://127.0.0.1/url_retry_ssl_fail.html|SESSIONS 1
+
+# configure hpd for ssl handshake fail
+# add SSL_CLIENT_AUTHENTICATION 1 in hpd.conf and restart
+#SMOKE-020-001|G_MAX_URL_RETRIES G1  0|SHOW_INITIATED 1|https://127.0.0.1/url_retry_ssl_fail.html|SESSIONS 1
+
+# configure url such that response will be partial header
+# send HEADER=Range: bytes=0-0 along with request
+#SMOKE-020-002|G_MAX_URL_RETRIES G1  3|SHOW_INITIATED 1|https://127.0.0.1/url_retry_request_write_fail.html","HEADER=Range: bytes=0-0|SESSIONS 1
+
+# connection fail url 
+#SMOKE-020-003|G_MAX_URL_RETRIES G1 5|SHOW_INITIATED 1|http://10.10.30.38:8134/url_retry_confail.html|SESSIONS 1
+#SMOKE-020-004|G_MAX_URL_RETRIES ALL 5|SHOW_INITIATED 1|https://127.0.0.1/url_retry_ssl_fail.html|SESSIONS 1
 
 
 # G_DISABLE_*_HEADER : accept, host, reuseaddr, ua, connection, use recorded host in host header, accept-encoding, all

@@ -64,7 +64,7 @@ function validate_url_retry(){
     if [ $max_url_retries -eq $initiated_count ]; then
 		log_status_and_exit_ex "PASS" "max url retries for ${param} case passed;as urls retried for $(max_url_retries) times;intiated count is ${initiated_count}"
     else
-		log_status_and_exit_ex "FAIL" "max url retries for ${param} case passed;as urls did not retry for $(max_url_retries) times;intiated count is ${initiated_count}"
+		log_status_and_exit_ex "FAIL" "max url retries for ${param} case failed;as urls did not retry for $(max_url_retries) times;intiated count is ${initiated_count}"
     fi
 }
 

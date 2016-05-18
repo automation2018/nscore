@@ -150,11 +150,13 @@
     <target name="smoke-debug"
             depends="hpd-process-restart, restart-vnc" 
             description="Initiates excution of Smoke debug testsuite without sending acknowledgement mails">
+
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
-            <arg value="Smoke"/>
+            <arg value="Smoke_Debug"/>
             <arg value="0"/>
-        </exec>
+		</exec>
+
     </target>
 
     <!-- Task: Update mail.properties prior to Test Start Mail Send--> 
