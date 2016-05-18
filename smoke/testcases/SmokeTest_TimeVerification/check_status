@@ -12,7 +12,8 @@ if [ "$T_NAME" == "SMOKE-031-001" ];then
 	after_test_execution_time_sec=$(sed -n 3p $USER_TEST_TIME_FILE | awk -F'|' {'print $2'} | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }')
 	actual_time_diff=$((after_test_execution_time_sec - before_test_execution_time_sec))
 	debug_log "actual_time_diff = $actual_time_diff"
-    
+	
+	#declaring array of all the TRs that run	
 	tr_array=($(grep "SmokeTest_" $CYCLE_SUM_REPORT| awk '{print $3}'))
 
 	##current TR is not present in tr_array so adding current TR to array by increament 1 to the last element of array
