@@ -115,7 +115,7 @@
             description="Send regression automation start mail">
         <property file="mail.properties"/>
         <mail mailhost="websrv.cavisson.com" 
-              mailport="587" tolist="${configured.mail.list.to}" 
+              mailport="25" tolist="${configured.mail.list.to}" 
               cclist="${configured.mail.list.cc}"
               messageMimeType="text/html"
               subject="Regression: NSCore ${curr.release} B${curr.build} - Started"
@@ -140,7 +140,7 @@
            description="Send regression automation results with attachments"> 
        <property file="mail.properties"/>
        <mail mailhost="websrv.cavisson.com"
-             mailport="587" 
+             mailport="25" 
              tolist="${configured.mail.list.to}"
              cclist="${configured.mail.list.cc}" 
              messageMimeType="text/html" 

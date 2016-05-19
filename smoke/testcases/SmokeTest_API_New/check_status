@@ -138,7 +138,7 @@ function inline_api_timer_validation(){
 	api_time=$(grep "Elapsed time of index page" $TSR_FILE |awk -F'=' '{print $NF}')
 	tx_time=$(grep "IndexPage" $TRANS_FILE | cut -d'|' -f2 |cut -d' ' -f2)
 	api_time_sec=$((api_time/1000))
-	tx_time_int=$( printf "%.0f" $tx_time )
+	tx_time_int=`echo "$tx_time/1" |bc`
 	
 	debug_log "api_time=$api_time;tx_time=$tx_time;api_time_sec=$api_time_sec;tx_time_int=$tx_time_int"
 	

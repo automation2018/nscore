@@ -153,7 +153,7 @@
 
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
-            <arg value="Smoke_Debug"/>
+            <arg value="Smoke"/>
             <arg value="0"/>
 		</exec>
 
@@ -170,7 +170,7 @@
     <target name="trigger-welcome-mail" depends="trigger-welcome-shell" description="Send smoke automation start mail">
         <property file="mail.properties"/>
         <mail mailhost="websrv.cavisson.com" 
-              mailport="587" 
+              mailport="25" 
               tolist="${configured.mail.list.to}" 
               cclist="${configured.mail.list.cc}"
               messageMimeType="text/html"
@@ -200,13 +200,13 @@
    <target name="trigger-result-mail" depends="process-test-results" description="Send smoke automation results with attachments"> 
        <property file="mail.properties"/>
        <mail mailhost="websrv.cavisson.com" 
-             mailport="587" 
+             mailport="25" 
              tolist="${configured.mail.list.to}" 
              cclist="${configured.mail.list.cc}" 
              messageMimeType="text/html"
              subject="Smoke: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
              messagefile="${mail.result.file}"
-             failonerror="false">
+			 failonerror="false">
            <from address="automation@cavisson.com"/>   		   
            <attachments> 
                <fileset dir="${smoke.results.dir}">
