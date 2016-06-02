@@ -148,11 +148,6 @@
              messagefile="${mail.result.file}"
              failonerror="false">
            <from address="automation@cavisson.com"/>   		   
-           <attachments> 
-               <fileset dir="${reg.results.dir}">
-                   <include name="${first.attachment}"/>
-               </fileset>
-           </attachments>	   
        </mail>	       
    </target>
   

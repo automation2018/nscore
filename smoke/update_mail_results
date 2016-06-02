@@ -15,36 +15,30 @@ start_time="${1}"
 function get_metrics(){
     file="$1"
     pattern="$2"
-    count=$(grep "<testsuite " ${file} | egrep -ow "${pattern}=\"[0-9]+\""|egrep -o  "[0-9]+")
+    count=$(grep "$pattern" ${file} | wc -l)
     echo $count
 }
 
     
 function set_test_results(){ 
-    first_attachment=$(basename $(ls -tr $SMOKE_RESULT_FILES/*.xml | tail -1))
-    total=0;passed=0;failed=0
-    ATTACHMENTS=( "$first_attachment" )
+    first_attachment=$(ls -tr $SMOKE_RESULT_FILES/*.txt | tail -1)
+    passed=0;failed=0
+    total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+    nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
 
-    if [ "$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)" == "0" ] && \
-       [ "$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)" != 0 ]; then
-	for attachment in ${ATTACHMENTS[*]}; do
-	    total=$(($total + $(get_metrics $SMOKE_RESULT_FILES/$attachment "total")))
-	    failed=$(($failed + $(get_metrics $SMOKE_RESULT_FILES/$attachment "failures")))
-	    passed=$(($passed + $(get_metrics $SMOKE_RESULT_FILES/$attachment "passed")))
-            nsfail=0
-	done 
-
-	if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
-	    STATUS=Successful
-	else
-	    STATUS=Failed
-	fi
+    if [ $nsfail -eq 0 ] && [ $total -ne 0 ]; then
+	    failed=$(($failed + $(get_metrics $first_attachment ",fail,")))
+	    passed=$(($passed + $(get_metrics $first_attachment ",pass,")))
+        nsfail=0
+		if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
+			STATUS=Successful
+		else
+			STATUS=Failed
+		fi
     else
         STATUS=Failed
-        total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
-        nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
-        failed=$(($failed + $(get_metrics $SMOKE_RESULT_FILES/$first_attachment "failures")))
-        passed=$(($passed + $(get_metrics $SMOKE_RESULT_FILES/$first_attachment "passed")))
+        failed=$(($failed + $(get_metrics $first_attachment ",fail,")))
+        passed=$(($passed + $(get_metrics $first_attachment ",pass,")))
     fi
 }
 
@@ -195,7 +189,7 @@ function set_up_email(){
     echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
     echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
     #echo "configured.mail.list.to = niraj.panda@cavisson.com" >>mail.properties
-    #echo "configured.mail.list.cc = dl-qa-auto@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.cc = vishal.singhal@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "smoke.results.dir = $SMOKE_RESULT_FILES" >>${MAIL_PROP_FILE}

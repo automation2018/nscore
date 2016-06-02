@@ -5,6 +5,7 @@
     <property name="smoke.build.file" value="smoke/build.xml"/>
     <property name="reg.build.file" value="regression/build.xml"/>
     <property name="perf.build.file" value="performance/build.xml"/>
+    <property name="func.build.file" value="functional/build.xml"/>
     <property name="mail.config.shell" value="${basedir}/lib/update_mail_properties"/>
     <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
 
@@ -43,6 +44,11 @@
     <!-- Task: Run SSL Perf Test--> 
     <target name="perf-ssl" description="Triggers SSL CIPHER PERF automation suite">
         <ant antfile="${perf.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
+    </target>
+    
+    <!-- Task: Run functional --> 
+    <target name="functional" description="Triggers functional automation suite">
+        <ant antfile="${func.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
     </target>
 
     <!-- Task: Declaring default target to schedule automation--> 

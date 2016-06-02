@@ -33,9 +33,8 @@ function handle_unknown_case(){
 
 
 function validate_page_as_tx_case(){
-    page_count=$(grep -o "^ *ns_web_url" "$FLOW_FILE" | wc -l)
     bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
-    page_name=$(grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}')
+    page_name=(`grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}'`)
     search=$(grep "Transaction Report:" "$P_FILE")
     
     if [ $bit -eq 0 ] && [ -z "${search}" ];then
@@ -43,9 +42,9 @@ function validate_page_as_tx_case(){
         
 		log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
     elif [ $bit -eq 1 ] && [ ! -z "${search}" ];then
-        for (( i=1; i<=$page_count; i++ ))
+        for (( i=0; i<=$((${#page_name[@]}-1)) ; i++ ))
 	    do
-		    tx_name=tx_$(echo "$page_name" | sed -n "$i"p)
+		    tx_name=tx_`echo ${page_name[i]}`
 		    tx_search=$(grep "$tx_name" "$P_FILE")
 			if [ ! -z "${tx_search}" ];then
 				debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION Mode $bit"
@@ -62,15 +61,14 @@ function validate_page_as_tx_case(){
 
 # Validation for PAGE_AS_TRANSACTION 1 1; where transaction names should not start with 'tx_' prefix
 function validate_page_as_tx_case_003(){
-    page_count=$(grep -o "^ *ns_web_url" "$FLOW_FILE" | wc -l)
     bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
-    page_name=$(grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}')
+    page_name=(`grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}'`)
     search=$(grep "Transaction Report:" "$P_FILE")
     
     if [ $bit -eq 1 ] && [ ! -z "${search}" ];then
-        for (( i=1; i<=$page_count; i++ ))
+        for (( i=0; i<=$((${#page_name[@]}-1)); i++ ))
 	    do
-		tx_name=$(echo "$page_name" | sed -n "$i"p)
+		tx_name=`echo ${page_name[i]}`
 		tx_search=$(grep "$tx_name" "$P_FILE")
 		    if [ ! -z "${tx_search}" ];then
 		        debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION 1 $bit"

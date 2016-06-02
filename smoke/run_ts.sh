@@ -149,14 +149,9 @@ function main() {
     # check for netstorm failed cases and update the count
     update_test_status "${TSR_DIR}"
 
-    # Parse the txt file and create results in xml format- NEW
-    echo "Writing testresults in XML format to ${XML_FILE} "
-    ${PYTHON_TOOL} -i "${R_FILE}" -o "${XML_FILE}" -f $(get_failed_test_count) -p $(get_passed_test_count) -t $(get_test_case_count)
-
     # Module called to upload testresults to sqlite database
-    echo "Uploading results to $DATABASE"
-    ${DB_UPLOAD} ${R_FILE} ${DATABASE}
-
+    echo "Uploading results to remote database"
+    ${DB_UPLOAD} -r ${RELEASE} -v ${MINOR} -f ${R_FILE}
     exit 0
 }
 

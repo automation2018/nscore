@@ -6,10 +6,10 @@ T_NAME=$(get_tname)
 
 function main(){
     case $(get_tname) in
-        "SMOKE-025-001") validate_http_caching ;;
-        "SMOKE-025-002") validate_http_caching ;;
-        "SMOKE-025-003") validate_http_caching ;;
-        "SMOKE-025-004") validate_http_caching ;;
+        "SMOKE-025-001") validate_http_caching_001_case ;;
+        "SMOKE-025-002") validate_http_caching_002_case ;;
+        "SMOKE-025-003") validate_http_caching_003_case ;;
+        "SMOKE-025-004") validate_http_caching_004_case ;;
         *) handle_unknown_case ;;
         ?) handle_unknown_case ;;
     esac
@@ -23,8 +23,23 @@ function handle_unknown_case(){
 
 # Need to find proper way to validate caching in NS
 # caching in every session and client freshness
-function validate_http_caching(){
-    log_status_and_exit_ex "PASS" "http caching testcase validation passed"
+function validate_http_caching_001_case(){
+    log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase passed"
+}
+
+
+function validate_http_caching_002_case(){
+    log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase passed"
+}
+
+
+function validate_http_caching_003_case(){
+    log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase passed"
+}
+
+
+function validate_http_caching_004_case(){
+    log_status_and_exit_ex "PASS" "caching across session for same user without client freshness;cache hit rate will be 50% of G1 total users testcase passed"
 }
 
 

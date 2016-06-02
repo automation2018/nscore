@@ -5,9 +5,9 @@ source $NS_WDIR/lib/automation_util
 
 function main(){
     case $(get_tname) in
-        "SMOKE-027-001") validate_tracing ;;
-        "SMOKE-027-002") validate_tracing ;;
-        "SMOKE-027-003") validate_tracing ;;
+        "SMOKE-027-001") validate_tracing_001_case ;;
+        "SMOKE-027-002") validate_tracing_002_case ;;
+        "SMOKE-027-003") validate_tracing_003_case ;;
          *) handle_unknown_case ;;
          ?) handle_unknown_case ;;
     esac
@@ -19,8 +19,18 @@ function handle_unknown_case(){
 }
 
 
-function validate_tracing(){
-    log_status_and_exit_ex "PASS" "smoke tracing testcase passed"
+function validate_tracing_001_case(){
+    log_status_and_exit_ex "PASS" "tracing keyword with mode;G_TRACING ALL 2 0 0 0 0 0 testcase passed"
+}
+
+
+function validate_tracing_002_case(){
+    log_status_and_exit_ex "PASS" "tracing keyword with mode;G_TRACING ALL 4 2 1 0 1 0 testcase passed"
+}
+
+
+function validate_tracing_003_case(){
+    log_status_and_exit_ex "PASS" "tracing for page dump report;same parameter is used multiple times in URL and body and header of page testcase passed"
 }
 
 

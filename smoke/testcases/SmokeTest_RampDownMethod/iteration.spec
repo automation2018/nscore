@@ -6,7 +6,7 @@ SMOKE-026-001|RAMP_DOWN_METHOD 0 1
 # Allow current session to complete , Hasten completion by disregarding all Think Times
 SMOKE-026-002|RAMP_DOWN_METHOD 0 2
 
-#Allow current session to complete , Hasten completion by disregarding all Think Times, and use idle time of 10 seconds
+#Allow current session to complete ,Hasten completion by disregarding all Think Times, and use idle time of 10 seconds
 SMOKE-026-003|RAMP_DOWN_METHOD 0 3 10
 
 # Allow cuurent page to complete,  Hasten completion by using idle time  of 10 seconds

@@ -28,10 +28,11 @@
     <!-- Task: Cleans test directory structure-->
     <target name="clean" 
             description="cleans workbench files such as script, scenarios, testsuites, testcases and libraries">
-        <delete dir="${scripts.dirs.abs.path}" failonerror="false"/>
-        <delete dir="${scenarios.files.abs.path}" failonerror="false"/>
-        <delete dir="${testcases.dirs.abs.path}" failonerror="false"/>
-        <delete dir="${testsuites.files.abs.path}" failonerror="false"/>
+        <delete dir="${scripts.dir}" failonerror="false"/>
+        <delete dir="${scenarios.dir}" failonerror="false"/>
+        <delete dir="${testcases.dir}" failonerror="false"/>
+        <delete dir="${testsuites.dir}" failonerror="false"/>
+        <delete dir="${lib.dir}" failonerror="false"/>
     </target>
     
     <!-- Task: Copies test scenario structure to desired locations and modifies modes-->
@@ -69,9 +70,26 @@
              password="${remote.password}" trust="true"/>
     </target>
    
+    <!-- Task: Restarts and check status of vsftpd service --> 
+    <target name="check-vsftpd-process" description="Restart vsftpd service">
+        <sshexec host="${remote.host}"
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="service vsftpd restart" 
+                 trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}"  
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="service vsftpd status"
+                 trust="true"
+                 outputproperty="vsftpd.process"/>
+        <fail message="vsftpd process is not running please look into it" unless="vsftpd.process"/>
+    </target>
+    
     <!-- Task: Restarts and check status of NO server--> 
     <target name="hpd-process-restart" 
-            depends="copy-hpd-file, copy" 
+            depends="check-vsftpd-process,copy-hpd-file, copy" 
             description="Restarts and check status of NO server">
         <sshexec host="${remote.host}"
                  username="${remote.user}" 
@@ -208,11 +226,6 @@
              messagefile="${mail.result.file}"
 			 failonerror="false">
            <from address="automation@cavisson.com"/>   		   
-           <attachments> 
-               <fileset dir="${smoke.results.dir}">
-                   <include name="${first.attachment}"/>
-               </fileset>
-           </attachments>	   
        </mail>	       
    </target>	   
   

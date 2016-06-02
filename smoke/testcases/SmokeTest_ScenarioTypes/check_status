@@ -8,9 +8,9 @@ FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_P
 
 function main(){
     case $(get_tname) in
-        "SMOKE-030-001") validate_fcu_smoke_case ;;
-        "SMOKE-030-002") validate_fcu_smoke_case ;;
-        "SMOKE-030-003") validate_fcu_smoke_case ;;
+        "SMOKE-030-001") validate_fcu_smoke_001_case ;;
+        "SMOKE-030-002") validate_fcu_smoke_002_case ;;
+        "SMOKE-030-003") validate_fcu_smoke_003_case ;;
          *) handle_unknown_case ;;
          ?) handle_unknown_case ;;
     esac
@@ -22,8 +22,18 @@ function handle_unknown_case(){
 }
 
 
-function validate_fcu_smoke_case(){
-    log_status_and_exit_ex "PASS" "fcu smoke testcase passed"
+function validate_fcu_smoke_001_case(){
+    log_status_and_exit_ex "PASS" "fcu simple group based scenario smoke testcase passed"
+}
+
+
+function validate_fcu_smoke_002_case(){
+    log_status_and_exit_ex "PASS" "fcu advanced scenario smoke testcase passed"
+}
+
+
+function validate_fcu_smoke_003_case(){
+    log_status_and_exit_ex "PASS" "fcu advanced group based scenario smoke testcase passed"
 }
 
 
