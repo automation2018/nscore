@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+
+<!-- Task: Declaring project name -->
+<project name="core-functional" basedir="." default="functional">
+
+    <!-- Task: Check vnc process running status-->
+    <target name="check-vnc-status" description="Check vnc process running status">
+       <exec executable="ps" outputproperty="vnc.file">
+           <arg value="-ef"/>
+           <arg value="|"/>
+           <arg value="grep"/>
+           <arg value="vnc"/>
+        </exec>
+        <fail message="VNC is not running, start the vnc port" unless="vnc.file"/>
+    </target>
+  
+    <!-- Task: Initiates vnc process instance-->
+    <target name="restart-vnc" depends="check-vnc-status" description="Initiates vnc process instance">
+       <exec executable="vncserver" outputproperty="action.file">
+           <arg value=":3"/>
+       </exec>
+       <fail message="Vnc process not started please check" unless="action.file"/>
+    </target>
+   
+    <!-- Task: File to declare all build variable values-->
+    <property file="build.properties"/>
+    
+    <!-- Task: Cleans test directory structure-->
+    <target name="clean" 
+            description="cleans workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <delete dir="${scripts.dir}" failonerror="false"/>
+        <delete dir="${scenarios.dir}" failonerror="false"/>
+        <delete dir="${testcases.dir}" failonerror="false"/>
+        <delete dir="${testsuites.dir}" failonerror="false"/>
+        <delete dir="${lib.dir}" failonerror="false"/>
+    </target>
+    
+    <!-- Task: Copies test scenario structure to desired locations and modifies modes-->
+    <target name="copy" depends="clean" 
+            description="copies and prepares workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+    
+    <!-- Task: Copies hpd.conf file to Hpd/NO server to initiate server for functional suite--> 
+    <target name="copy-hpd-file" 
+             description="Copies hpd.conf file to Hpd/NO server to initiate server for functional suite">
+        <scp file="${hpd.conf.ns}" 
+             todir="${remote.user}@${remote.host}:${hpd.conf.no}" 
+             password="${remote.password}" trust="true"/>
+    </target>
+   
+    <!-- Task: Restarts and check status of NO server--> 
+    <target name="hpd-process-restart" 
+            depends="copy-hpd-file, copy" 
+            description="Restarts and check status of NO server">
+        <sshexec host="${remote.host}"
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.restart}" 
+                 trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}"  
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.show}"
+                 trust="true"
+                 outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+    <!-- Task: Initiates excution of Functional testsuite--> 
+    <target name="functional" 
+            depends="hpd-process-restart, restart-vnc"
+            description="Initiates excution of Functional testsuite">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="start time = ${start.time}"/>
+
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Functional/Functional/functional"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+    
+
+    <!-- Task: Initiates excution of debug functional testsuite--> 
+    <target name="debug" 
+            depends="copy, restart-vnc"
+            description="Initiates excution of Functional testsuite">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="start time = ${start.time}"/>
+
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Functional/Functional/debug"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+    <!-- Task: Update mail.properties prior to Test Start Mail Send--> 
+    <target name="trigger-welcome-shell" description="Update mail.properties prior to Test Start Mail Send">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <!-- Task: Send functional automation start mail-->
+    <target name="trigger-welcome-mail" depends="trigger-welcome-shell" description="Send Functional automation start mail">
+        <property file="mail.properties"/>
+        <mail mailhost="websrv.cavisson.com" 
+              mailport="25" 
+              tolist="${configured.mail.list.to}" 
+              cclist="${configured.mail.list.cc}"
+              messageMimeType="text/html"
+              subject="Smoke: NSCore ${curr.release} B${curr.build} - Started" 
+              messagefile="${startup.mail.file}"
+              failonerror="false">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    </target>
+
+	<!-- Task: Update mail.properties prior to automation result mail Send--> 
+	<target name="process-test-results" description="Update mail.properties prior to automation result mail Send">
+		 <exec executable="/bin/bash" outputproperty="start.time">
+			 <arg value="-c"/>
+			 <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+		 </exec>
+
+		 <echo message="${start.time}"/>
+		 
+		 <exec executable="/bin/bash" taskname="info">
+			 <arg value="update_mail_results"/>
+			 <arg value="${start.time}"/>
+		 </exec>
+	</target>
+   
+	<!-- Task: Send functional automation results with attachments-->
+	<target name="trigger-result-mail" depends="process-test-results" description="Send functional automation results with attachments"> 
+		<property file="mail.properties"/>
+		<mail mailhost="websrv.cavisson.com" 
+			  mailport="25" 
+			  tolist="${configured.mail.list.to}" 
+			  cclist="${configured.mail.list.cc}" 
+			  messageMimeType="text/html"
+			  subject="Smoke: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+			  messagefile="${mail.result.file}"
+			  failonerror="false">
+			<from address="automation@cavisson.com"/>   		   
+		</mail>	       
+	</target>	   
+
+
+</project>

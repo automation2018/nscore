@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+TRANS_DEATIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+SCENARIO_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+SCRIPT_NAME=$(grep SGRP ${SCENARIO_FILE} | cut -d' ' -f6)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/${SCRIPT_NAME}/flow.c"
+TSR_FILE="$TS_LOG_DIR/$(get_testcase_name)/test_run.report"
+
+
+function main(){
+    case $(get_tname) in
+        "FUNC-001-001") handle_ns_timer_api_case;;
+         ?) handle_unknown_case ;;
+         *) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function handle_ns_timer_api_case(){
+	api_time=$(grep "Elapsed time of index page" $TSR_FILE |awk -F'=' '{print $NF}')
+	tx_time=$(grep "IndexPage" $TRANS_DEATIL_FILE | cut -d'|' -f2 |cut -d' ' -f2)
+	api_time_sec=$((api_time/1000))
+	tx_time_int=`echo "$tx_time/1" |bc`
+	
+	debug_log "api_time=$api_time;tx_time=$tx_time;api_time_sec=$api_time_sec;tx_time_int=$tx_time_int"
+	
+	if [ $api_time_sec -eq $tx_time_int ];then
+		debug_log "API TIMER validation pass"
+		log_status_and_exit_ex "PASS" "ns timer api testcase passed"
+	else
+		debug_log "API TIMER validation failed"
+        log_status_and_exit_ex "FAIL" "ns timer api testcase failed"
+	fi
+}
+
+
+main
+
+
+exit 0
