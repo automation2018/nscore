@@ -170,7 +170,9 @@
         <property file="mail.properties"/>
         
         <mail mailhost="websrv.cavisson.com" 
-              mailport="25" 
+              user="${mail.user}"
+              password="${mail.password}" 
+              mailport="587" 
               tolist="${configured.mail.list.to}" 
               cclist="${configured.mail.list.cc}" 
               messageMimeType="text/html" 
@@ -196,8 +198,10 @@
            depends="update-results-properties"
            description="send automation results"> 
        <property file="mail.properties"/>
-       <mail mailhost="websrv.cavisson.com" 
-             mailport="25" 
+       <mail mailhost="websrv.cavisson.com"
+             user="${mail.user}"
+             password="${mail.password}"  
+             mailport="587" 
              tolist="${configured.mail.list.to}" 
              cclist="${configured.mail.list.cc}" 
              messageMimeType="text/html" 
@@ -235,7 +239,9 @@
         <echo message="Current Build: R${release.info}.B${build.info}"/>
        
         <mail mailhost="websrv.cavisson.com" 
-              mailport="25" 
+              user="automation@cavisson.com"
+              password="Cavisson!"
+              mailport="587" 
               tolist="ankur.mishra@cavisson.com" 
               cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com" 
               messageMimeType="text/html" 

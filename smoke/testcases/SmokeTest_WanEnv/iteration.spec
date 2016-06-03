@@ -24,7 +24,7 @@ SMOKE-023-004|script512K|USChicago|1|1|1|HighSpeed|10000000|3500000|USChicago|0|
 #SMOKE-023-006|script512K_upload|USChicago|1|1|1|HighSpeed|1000000|10000000|USChicago|0|0|0|0
 #
 ## Upload speed 2.0 MBPS
-SMOKE-023-007|script512K_upload|USChicago|1|1|1|HighSpeed|2000000|10000000|USChicago|0|0|0|0
+#SMOKE-023-007|script512K_upload|USChicago|1|1|1|HighSpeed|2000000|10000000|USChicago|0|0|0|0
 #
 # Upload speed 3.5 MBPS
-SMOKE-023-008|script512K_upload|USChicago|1|1|1|HighSpeed|3500000|10000000|USChicago|0|0|0|0
+#SMOKE-023-008|script512K_upload|USChicago|1|1|1|HighSpeed|3500000|10000000|USChicago|0|0|0|0
