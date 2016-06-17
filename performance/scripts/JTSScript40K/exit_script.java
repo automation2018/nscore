@@ -1,0 +1,17 @@
+/*-----------------------------------------------------------------------------
+    Name: exit_script
+    Recorded By: netstorm
+    Date of recording: 01/14/2014 09:51:57
+    Flow details:
+    Modification History:
+-----------------------------------------------------------------------------*/
+
+package com.cavisson.scripts.JTSScript40K;
+import pacJnvmApi.NSApi;
+public class exit_script
+{
+    public static int execute(NSApi nsApi)
+    {
+        return 0;
+    }
+}

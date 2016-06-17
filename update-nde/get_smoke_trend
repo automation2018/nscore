@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+
+import sqlite3
+import argparse
+import os
+import sys
+import requests
+
+
+def get_release_id(release):
+    """Gets the release id corresponding to the 
+    release name from the api endpoint
+    if the corresponding release is not available 
+    it makes a post request to the endpoint
+    and inserts into the database.
+    Returns the newly created id"""
+    api_endpoint = API_ENDPOINT + 'release' 
+    r = session.get(api_endpoint)
+    json_resp = r.json() 
+    if not 'objects' in json_resp:
+        pass
+
+    releases = [o.get('name') for o in json_resp['objects']]
+    if release not in releases:
+        # Need to update in database
+        r = session.post(api_endpoint, json=dict(name=release))
+        resp = r.json() 
+        releaseid = resp['id']
+        try:
+            r.raise_for_status() 
+        except requests.HTTPError as e:
+            #print 'Unable to POST to endpoint'
+            #print e.message
+            exit() 
+    else:
+        for o in json_resp['objects']:
+            if o.get('name') == release:
+                releaseid = o.get('id')
+    return releaseid
+
+
+def db_checker(cat_id, rel_id, build_id, db, connection, cursor):
+    data = cursor.execute("select count(*) from testcase where categoryid = {} and releaseid = {} \
+                          and buildid = {} and status = 'pass'".format(cat_id,rel_id,build_id) )
+    passed =  data.fetchone()[0]
+    
+    dat = cursor.execute("select count(*) from testcase where categoryid = {} and releaseid = {} and buildid = {}".format(cat_id,rel_id,build_id) );
+    total =  dat.fetchone()[0]
+    connection.commit()
+    cursor.close()
+    return passed,total
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--categoryid' , help="categoryid is must for database" , required=True)
+    parser.add_argument('-r', '--release' , help="releaseid is must to search in database" ,required=True)
+    parser.add_argument('-d', '--database' , help="analytics database path" , 
+			            default="/home/automation/webapp/analytics2.0/analytics.db",
+			            required=False)
+    parser.add_argument('-b', '--buildid' , help="buildid is needed" , required=True)
+    parser.add_argument('-e', '--endpoint', help='API Endpoint(default=10.10.30.37/api)', 
+        default='http://10.10.30.37/api/',
+		required=False)
+   
+    opts = parser.parse_args()
+    API_ENDPOINT = opts.endpoint 
+    session = requests.session() 
+
+    if not os.path.exists(opts.database):
+        exit('Database doesn\'t exists')
+
+    def connect_database(DATABASE):
+        connection = sqlite3.connect(DATABASE)
+        cursor = connection.cursor()
+        return connection,cursor
+
+    connection,cursor = connect_database(opts.database)
+    passed,total = db_checker(opts.categoryid, get_release_id(opts.release), \
+			opts.buildid, opts.database, connection , cursor)
+    pct_diff = (passed/float(total))*100
+
+    if pct_diff >= 90:
+        sys.exit(0)    
+    else:
+        sys.exit(1)

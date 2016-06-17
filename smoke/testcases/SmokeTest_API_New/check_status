@@ -137,17 +137,18 @@ function inline_repeat_tx_validation(){
 function inline_api_timer_validation(){
 	api_time=$(grep "Elapsed time of index page" $TSR_FILE |awk -F'=' '{print $NF}')
 	tx_time=$(grep "IndexPage" $TRANS_FILE | cut -d'|' -f2 |cut -d' ' -f2)
-	api_time_sec=$((api_time/1000))
-	tx_time_int=`echo "$tx_time/1" |bc`
-	
-	debug_log "api_time=$api_time;tx_time=$tx_time;api_time_sec=$api_time_sec;tx_time_int=$tx_time_int"
-	
-	if [ $api_time_sec -eq $tx_time_int ];then
+	tx_time_sec=`echo "$tx_time *1000" |bc|cut -d'.' -f1`
+    time_diff=$((api_time - tx_time_sec))
+    time_diff=${time_diff/#-/}
+
+	debug_log "api_time=$api_time; transaction time=$tx_time; transaction time in seconds = $tx_time_sec; time difference in between API time and transaction time=$time_diff"
+
+	if [ $time_diff -lt 10  ];then
 		debug_log "API TIMER validation pass"
-		log_status_and_exit_ex "PASS" "ns timer api testcase passed"
+		log_status_and_exit_ex "PASS" "ns timer api testcase passed as transaction time is equal to api timer"
 	else
 		debug_log "API TIMER validation failed"
-        log_status_and_exit_ex "FAIL" "ns timer api testcase failed"
+        log_status_and_exit_ex "FAIL" "ns timer api testcase failed as transaction time ($tx_time_sec) is not equal to api timer ($api_time)"
 	fi
 }
 

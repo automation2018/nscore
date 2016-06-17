@@ -42,7 +42,7 @@ function validate_page_as_tx_case(){
         
 		log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
     elif [ $bit -eq 1 ] && [ ! -z "${search}" ];then
-        for (( i=0; i<=$((${#page_name[@]}-1)) ; i++ ))
+        for (( i=0; i<${#page_name[@]} ; i++ ))
 	    do
 		    tx_name=tx_`echo ${page_name[i]}`
 		    tx_search=$(grep "$tx_name" "$P_FILE")
@@ -66,7 +66,7 @@ function validate_page_as_tx_case_003(){
     search=$(grep "Transaction Report:" "$P_FILE")
     
     if [ $bit -eq 1 ] && [ ! -z "${search}" ];then
-        for (( i=0; i<=$((${#page_name[@]}-1)); i++ ))
+        for (( i=0; i<${#page_name[@]}; i++ ))
 	    do
 		tx_name=`echo ${page_name[i]}`
 		tx_search=$(grep "$tx_name" "$P_FILE")

@@ -6,8 +6,9 @@ source $NS_WDIR/lib/automation_config.dat
 
 
 # Perf test specific global variables
-PERF_TEST_DATA_FILE=/home/automation/workbench/automation/nscore/performance/.perf/PerfResult
-SSL_PERF_RESULT_FILE=/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html
+PERF_TEST_DATA_FILE="/home/automation/workbench/automation/nscore/performance/.perf/PerfResult"
+JAVA_PERF_TEST_DATA_FILE="/home/automation/workbench/automation/nscore/performance/.perf/javabasedperfresult"
+SSL_PERF_RESULT_FILE="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html"
 
 
 # Initiates current testsuite specific environment variables
@@ -126,19 +127,20 @@ function update_test_status() {
     
     if [ "${suite}" == "Performance_Cps" ]; then
         NSFailCount=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
-	TotalExecuted=$(get_test_case_count)
-	echo "NSFailCount=$NSFailCount" >${TMP_COUNT_FILE}
-	echo "TotalExecuted=$TotalExecuted" >>${TMP_COUNT_FILE}
-	    
-	export NSFailCount
-	export TotalExecuted 
+	    TotalExecuted=$(get_test_case_count)
+	    echo "NSFailCount=$NSFailCount" >${TMP_COUNT_FILE}
+	    echo "TotalExecuted=$TotalExecuted" >>${TMP_COUNT_FILE}
+	    export NSFailCount
+	    export TotalExecuted 
     else
         fail=$(grep -c "NetstormFail" $NS_WDIR/logs/tsr/${cycle_num}/cycle_summary.report)
-	total=$(get_test_case_count)
+	    total=$(get_test_case_count)
         NSFailCount=$((fail + NSFailCount))
-	TotalExecuted=$((total + TotalExecuted))
+	    TotalExecuted=$((total + TotalExecuted))
         sed -i "s/NSFailCount.*/NSFailCount=${NSFailCount}/g" ${TMP_COUNT_FILE}
         sed -i "s/TotalExecuted.*/TotalExecuted=${TotalExecuted}/g" ${TMP_COUNT_FILE}
+	    export NSFailCount
+	    export TotalExecuted 
     fi
 }
 
@@ -182,14 +184,26 @@ function main() {
     #    HPS/TPut : Append test data of first testcase of each of these metric to PERF_TEST_DATA_FILE
      
     if [ "$testSuite" == "Performance_Cps" ];then
+		# C script based perf stat
         cat $PERF_R_FILE |head -2 |tail -1 >${PERF_TEST_DATA_FILE}
+		
+		# Java type script based perf stat
+		cps_java=$(grep "Performance_cps_java_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV)
+		echo ${cps_java} >${JAVA_PERF_TEST_DATA_FILE}
     elif [ "$testSuite" == "Performance_SSL" ]; then
         gen_ssl_perf_report.rb -i $PERF_R_FILE -o $SSL_PERF_RESULT_FILE 
     else
-	hps=$(grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)
-	echo $hps >>${PERF_TEST_DATA_FILE}
-	throughput=$(grep  "Performance_throughput_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)   
-	echo $throughput >>${PERF_TEST_DATA_FILE}
+		# C script based perf stat
+	    hps=$(grep  "Performance_hps_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)
+	    echo $hps >>${PERF_TEST_DATA_FILE}
+	    throughput=$(grep  "Performance_throughput_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV | head -1)   
+	    echo $throughput >>${PERF_TEST_DATA_FILE}
+
+		# Java type script based perf stat
+		hps_java=$(grep "Performance_hps_java_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV)
+		echo ${hps_java} >>${JAVA_PERF_TEST_DATA_FILE}
+		throughput_java=$(grep "Performance_throughput_java_128User_OEF_010" $NS_WDIR/logs/tsr/$TSR_DIR/CurrentDataCSVData.CSV)
+		echo ${throughput_java} >>${JAVA_PERF_TEST_DATA_FILE}
     fi 
     
     exit 0

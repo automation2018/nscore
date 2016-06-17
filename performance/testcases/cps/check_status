@@ -29,30 +29,32 @@ function BaseLine(){
 
 
 function CurrentCPS(){
-    echo "T_RUN_ID is =$T_RUN_ID"
-    #CurrentTsr_Directory_CPSFile="$TSR_Path/QAT_cps_results.csv"
-    #echo "CurrentTsr_Directory_CPSFile is =$CurrentTsr_Directory_CPSFile"
-    CPS_MAX_VALUE_CR=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    HPS_MAX_VALUE_CR=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Rx_CR=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx_CR=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
-    CPS_MAX_VALUE_CR=`echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    HPS_MAX_VALUE_CR=`echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Rx_CR=`echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx_CR=`echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    debug_log "test run number is = $T_RUN_ID"
+	
+	CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+	HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+	Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+	Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+	
+	CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+	HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+	Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+	Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    
+	echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
 }
 
 
 function Compare_Results() {
     Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
     echo "Conn_Perc_Change is =$Conn_Perc_Change"
-    if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then
+    
+	if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then
         debug_log "going to pass testcase"	
-	log_status_and_exit_ex "PASS" "$T_NAME Passed"
+	    log_status_and_exit_ex "PASS" "$T_NAME Passed"
     else
         debug_log "going to fail testcase"	
-	log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+	    log_status_and_exit_ex "FAIL" "$T_NAME Failed"
     fi
 }
 
@@ -64,6 +66,23 @@ function main(){
 }
 
 
-main
+if [[ "$T_NAME" == "Performance_cps_java_128User_OEF"* ]]; then
+	debug_log "evaluating perf java results .... t_name is $T_NAME"
+	CurrentCPS
+	
+	JAVA_BASED_CPS_MAX=12254
+	Conn_Perc_Change=$(echo "$JAVA_BASED_CPS_MAX" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}')
+    
+	debug_log "connection pct change is = $Conn_Perc_Change"
+    
+	if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0));then
+	    log_status_and_exit_ex "PASS" "testcase $T_NAME passed"
+    else
+	    log_status_and_exit_ex "FAIL" "testcase $T_NAME failed"
+    fi
+else
+    main
+fi
+
 
 exit 0

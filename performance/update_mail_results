@@ -34,42 +34,49 @@ function set_test_results(){
     nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
     
     if [ "${total}" != "${nsfail}" ];then
-	first_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -1))
-	second_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -2 |head -1))
-	total=0;passed=0;failed=0
-	ATTACHMENTS=( "$first_attachment" "$second_attachment" )
+		first_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -1))
+		second_attachment=$(basename $(ls -tr $PERF_RESULT_FILES/*.xml | tail -2 |head -1))
+		total=0;passed=0;failed=0
+		ATTACHMENTS=( "$first_attachment" "$second_attachment" )
 
-	# TODO
-	# Check xml file for netstorm fail cases
-	# This is to ensure all tests ran;status 
-	# has been checked;if some tests has been
-	# failed due to NetStormFail; reporting need 
-	# to be done accordingly
-	for attachment in ${ATTACHMENTS[*]}; do
-	    total=$(($total + $(get_metrics $PERF_RESULT_FILES/$attachment "total")))
-	    failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
-	    passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
-	done 
-	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
-	cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
-	hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
-	throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
-
-	if [ $total -eq $passed ];then
-	    STATUS=Successful
-	else
-	    STATUS=Failed
-	fi
+		# TODO
+		# Check xml file for netstorm fail cases
+		# This is to ensure all tests ran;status 
+		# has been checked;if some tests has been
+		# failed due to NetStormFail; reporting need 
+		# to be done accordingly
+		for attachment in ${ATTACHMENTS[*]}; do
+			total=$(($total + $(get_metrics $PERF_RESULT_FILES/$attachment "total")))
+			failed=$(($failed + $(get_metrics $PERF_RESULT_FILES/$attachment "failures")))
+			passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
+		done 
+		
+		cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
+		hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
+		throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
+		cps_java=$(grep "CPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f8)
+		hps_java=$(grep "HPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f9)
+		throughput_java=$(grep "THROUGHPUT" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f10)
+		statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+		
+		if [ $total -eq $passed ];then
+			STATUS=Successful
+		else
+			STATUS=Failed
+		fi
     else
         STATUS="Failed"
         total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
         nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
         failed=0
         passed=0
-	statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), NSFails: $nsfail test(s), Total: $total test(s)")
-	cps="NA"
-	hps="NA"
-	throughput="NA"
+	    statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), NSFails: $nsfail test(s), Total: $total test(s)")
+	    cps="NA"
+	    hps="NA"
+	    throughput="NA"
+	    cps_java="NA"
+	    hps_java="NA"
+	    throughput_java="NA"
     fi
 }
 
@@ -154,7 +161,7 @@ function set_up_email(){
     <hr/>
     <br>
     <table>
-    <caption class='lead'>Basic Performance Stats</caption>
+    <caption class='lead'>Basic Performance Stats For C Type Script</caption>
         <tr>
             <th>Metric</th>
             <th>Baseline</th>
@@ -181,6 +188,35 @@ function set_up_email(){
         </tr>
     </table>
     <br>
+    <br>
+    <table>
+    <caption class='lead'>Basic Performance Stats For Java Type Script</caption>
+        <tr>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Current</th>
+            <th>% Change</th>
+        </tr>
+        <tr>
+            <td>CPS</td>
+            <td>12254</td>
+            <td>$cps_java</td>
+            <td>$(get_pct_change 12254 $cps_java)</td>
+        </tr>
+        <tr>
+            <td>HPS</td>
+            <td>13779</td>
+            <td>$hps_java</td>
+            <td>$(get_pct_change 13779 $hps_java)</td>
+        </tr>
+        <tr>
+            <td>THROUGHPUT</td>
+            <td>1001226</td>
+            <td>$throughput_java</td>
+            <td>$(get_pct_change 1001226 $throughput)</td>
+        </tr>
+    </table>
+	<br>
     <h5 class='lead'>$statusbody</h5>
     <a href='http://10.10.30.37'>View Online Automation Reports</a>
     <hr/>
@@ -192,10 +228,10 @@ function set_up_email(){
 </html>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
     echo "curr.release = $version" >${MAIL_PROP_FILE}
     echo "curr.build = $build" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
-    #echo "configured.mail.list.to = ankur.srivastava@cavisson.com" >>mail.properties
-    #echo "configured.mail.list.cc = vishal.singhal@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.to = arun.yadav@cavisson.com" >>mail.properties
+    echo "configured.mail.list.cc = niraj.panda@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "perf.results.dir = $PERF_RESULT_FILES" >>${MAIL_PROP_FILE}

@@ -29,21 +29,24 @@ function handle_unknown_case(){
 
 function validate_wan_download_speed_results(){
     if [ $SD_TotalSuccURL -eq 1 ]; then
-		response_file_size=$((513 * 1024 * 8))
+		response_file_size=$(stat --format %s ${T_ID_REQ_PATH}/url_rep_body_0_0_0_0_0_0_0_0_0.dat)
+		response_file_size=$((response_file_size * 8))
 		download_speed=$(grep "^UACCESS" ${S_FILE} | cut -d' ' -f4 )
 
-		# Get integer part of both the time value
+		# Get integer part of both the time values
 		average_response_time=$(grep 'Average Session Response Time' ${SUM_GDF_FILE} | awk -F'|' '{print $(NF-2)}') 
-		average_response_time_int=$(python -c "print '%d' %($average_response_time)")
-		expected_response_time_int=$(python -c "print '%d' %($response_file_size / $download_speed)")
+		expected_response_time=$(python -c "print '%.3f' %(1.0 * $response_file_size / $download_speed)")
 
 		debug_log "response_file_size=$response_file_size;download_speed=$download_speed"
-		debug_log "average_response_time_int=$average_response_time_int;expected_response_time_int=$expected_response_time_int"
+		debug_log "average_response_time=$average_response_time;expected_response_time=$expected_response_time"
 
-		if [ $average_response_time_int -eq $expected_response_time_int ]; then
-			log_status_and_exit_ex "PASS" " wan testcase for download time passed;as average response time($average_response_time_int) equals expected response time($expected_response_time_int)"
+		diff=$(bc -l <<< "$expected_response_time - $average_response_time")
+		diff=${diff/#-/}
+
+		if [ $(bc -l <<< "$diff <= 1.2") -eq 1 ]; then
+			log_status_and_exit_ex "PASS" "wan download speed($download_speed bps) testcase passed as difference of expected response time($expected_response_time) and actual response time($average_response_time) is less than or equals to 1.2"
 		else
-			log_status_and_exit_ex "FAIL" "wan testcase for download time failed;as average response time($average_response_time_int) not equals expected response time($expected_response_time_int)"
+			log_status_and_exit_ex "FAIL" "wan download speed($download_speed bps) testcase passed as difference of expected response time($expected_response_time) and actual response time($average_response_time) is greater than or equals to 1.2"
 		fi
 	else
 	    log_status_and_exit_ex "FAIL" "wan testcase for download time failed due to url failure"
@@ -53,24 +56,27 @@ function validate_wan_download_speed_results(){
 
 function validate_wan_upload_speed_results(){
     if [ $SD_TotalSuccURL -eq 1 ]; then
-		req_file_size=$((500 * 1024 * 8))
+		response_file_size=$(stat --format %s ${T_ID_REQ_PATH}/url_req_0_0_0_0_0_0_0_0_0.dat)
+		response_file_size=$((response_file_size * 8))
 		upload_speed=$(grep "^UACCESS" ${S_FILE} | cut -d' ' -f3)
 
-		# Get integer part of both the time value
+		# Get integer part of both the time values
 		average_response_time=$(grep 'Average Session Response Time' ${SUM_GDF_FILE} | awk -F'|' '{print $(NF-2)}') 
-		average_response_time_int=$(python -c "print '%d' %($average_response_time)")
-		expected_response_time_int=$(python -c "print '%d' %($req_file_size / $upload_speed)")
+		expected_response_time=$(python -c "print '%.3f' %(1.0 * $response_file_size / $upload_speed)")
 
-		debug_log "req_file_size=$req_file_size;upload_speed=$upload_speed"
-		debug_log "average_response_time_int=$average_response_time_int;expected_response_time_int=$expected_response_time_int"
+		debug_log "response_file_size=$response_file_size;upload_speed=$upload_speed"
+		debug_log "average_response_time=$average_response_time;expected_response_time=$expected_response_time"
 
-		if [ $average_response_time_int -eq $expected_response_time_int ]; then
-			log_status_and_exit_ex "PASS" "wan testcase for download time passed;as average response time($average_response_time_int) equals expected response time($expected_response_time_int)"
+		diff=$(bc -l <<< "$expected_response_time - $average_response_time")
+		diff=${diff/#-/}
+
+		if [ $(bc -l <<< "$diff <= 1.2") -eq 1 ]; then
+			log_status_and_exit_ex "PASS" "wan upload speed($upload_speed bps) testcase passed as difference of expected response time($expected_response_time) and actual response time($average_response_time) is less than or equals to 1.2"
 		else
-			log_status_and_exit_ex "FAIL" "wan testcase for upload time failed;as average response time($average_response_time_int) not equals expected response time($expected_response_time_int)"
+			log_status_and_exit_ex "FAIL" "wan upload speed($upload_speed bps) testcase passed as difference of expected response time($expected_response_time) and actual response time($average_response_time) is greater than or equals to 1.2"
 		fi
 	else
-	    log_status_and_exit_ex "FAIL" "wan testcase for upload time failed due to url failure"
+	    log_status_and_exit_ex "FAIL" "wan testcase for upload speed failed due to url failure"
 	fi
 }
 

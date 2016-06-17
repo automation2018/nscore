@@ -106,8 +106,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '-e', 
         '--endpoint', 
-        help='API Endpoint(default=10.10.30.37/api)', 
-        default='http://10.10.30.37/api/'
+		help='API Endpoint(default=10.10.30.37/api)', 
+		default='http://10.10.30.37/api/'
     )
     opts = parser.parse_args()
     

@@ -1,0 +1,36 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-020-005,34699,1,1,pass,G_DISABLE_ACCEPT 0 testcase passed
+SMOKE-020-006,34700,1,1,pass,G_DISABLE_ACCEPT 1 testcase passed
+SMOKE-020-007,34701,1,1,pass,G_DISABLE_HOST 0 testcase passed
+SMOKE-020-008,34702,1,1,pass,G_DISABLE_HOST 1 testcase passed
+SMOKE-020-009,34703,1,1,pass,G_DISABLE_REUSEADDR 0 smoke test validation passed
+SMOKE-020-010,34704,1,1,pass,G_DISABLE_REUSEADDR 1 smoke test validation passed
+SMOKE-020-011,34705,1,1,pass,G_DISABLE_USER-AGENT 0 testcase passed
+SMOKE-020-012,34706,1,1,pass,G_DISABLE_USER-AGENT 1 testcase passed
+SMOKE-020-013,34707,1,1,pass,G_DISABLE_CONNECTION 0 testcase passed
+SMOKE-020-014,34708,1,1,pass,G_DISABLE_CONNECTION 1 testcase passed
+SMOKE-020-015,34709,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 0 testcase passed
+SMOKE-020-016,34710,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 1 testcase passed
+SMOKE-020-017,34711,1,1,pass,G_DISABLE_ACCEPT-ENCODING 0 testcase passed
+SMOKE-020-018,34712,1,1,pass,G_DISABLE_ACCEPT-ENCODING 1 testcase passed
+SMOKE-020-019,34713,1,1,pass,G_DISABLE_ALL_HEADER 0 testcase passed
+SMOKE-020-020,34714,1,1,pass,G_DISABLE_ALL_HEADER 1 testcase passed
+SMOKE-020-021,34715,1,1,pass,G_DISABLE_KEEP-ALIVE 0 testcase passed
+SMOKE-020-022,34716,1,1,pass,G_DISABLE_KEEP-ALIVE 1 testcase passed
+SMOKE-020-023,34717,1,1,pass,continue on page error mode 0 validation passed
+SMOKE-020-024,34718,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-025,34719,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-026,34720,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-027,34721,1,1,pass,idle msec testcase validation passed
+SMOKE-020-028,34722,1,1,pass,idle msec testcase validation passed
+SMOKE-020-029,34723,1,1,pass,idle msec testcase validation passed
+SMOKE-020-030,34724,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-031,34725,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-032,34726,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-023-001,34727,1,1,pass,wan download speed(512000 bps) testcase passed as difference of expected response time(8.000) and actual response time(8.391) is less than or equals to 1.2
+SMOKE-023-002,34728,1,1,pass,wan download speed(1000000 bps) testcase passed as difference of expected response time(4.000) and actual response time(4.513) is less than or equals to 1.2
+SMOKE-023-003,34729,1,1,pass,wan download speed(2000000 bps) testcase passed as difference of expected response time(2.000) and actual response time(2.156) is less than or equals to 1.2
+SMOKE-023-004,34730,1,1,pass,wan download speed(3500000 bps) testcase passed as difference of expected response time(1.000) and actual response time(1.238) is less than or equals to 1.2
+SMOKE-030-001,34731,1,1,pass,fcu simple group based scenario smoke testcase passed
+SMOKE-030-002,34732,1,1,pass,fcu advanced scenario smoke testcase passed
+SMOKE-030-003,34733,1,1,pass,fcu advanced group based scenario smoke testcase passed

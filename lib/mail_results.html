@@ -4,7 +4,7 @@
 <head>
     <style type='text/css'>
         body{
-            font-size: .9rem;
+            font-size: 1.0rem;
             color: #333;
         }
        .container{
@@ -27,69 +27,108 @@
            color: #333;
         }
         tr td{
+            text-align: left;
         }
         .divider {
           border-top: 1px solid #e0e0e0;
         }
-        
         .signature{ color: #607d8b;}
-        
         .lead { 
-        font-size: 1.68rem; 
+        font-size: 1.3rem; 
         color: #616161; 
         font-weight: 300;
         }
-        
+
     </style>
 </head>
 <body>
     <div class='container'>
-    <table style='width: 92%!important; border: 0px;'>
+    <table style='width: 91%!important; border: 0px;'>
         <tr>
-          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>Report For: NS Core Regression</h2></td>
-          <td width='70%' style='border: 0px! important; padding: 0px!important'>
+          <td width='35%' style='border: 0px!important; padding: 0px !important'><h2 style='font-size: 1.68rem; color: #616161; font-weight: 300;'>Report For: NS Core Performance</h3></td>
+          <td width='65%' style='border: 0px! important; padding: 0px!important'>
             <table>
                <tr>
                <th>Status</th>
+               <th>Tolerance(Pct)</th>
                <th>Start Time</th>
                <th>End Time</th>
                </tr>
                <tr>
-               <td style='background-color: #E8F5E9'>Passed</td>
-               <td>03/06/16 05:08:31 PM</td>
-               <td>03/06/16 05:14:43 PM</td>
+               <td style='background-color: #FBE9E7'>Failed</td>
+               <td>&plusmn; 5%</td>
+               <td>16/06/16 11:01:19 AM</td>
+               <td>16/06/16 12:15:49 PM</td>
                </tr>
             </table>
           </td>
         </tr>
     </table>
-    <br>
-    <div class='divider'>
+    <hr/>
     <br>
     <table>
-    <caption class='lead'>Test Results</caption>
+    <caption class='lead'>Basic Performance Stats For C Type Script</caption>
         <tr>
-            <th>Category</th>
-            <th>Total</th>
-            <th>Passed</th>
-            <th>Failed</th>
-            <th>NS Fail</th>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Current</th>
+            <th>% Change</th>
         </tr>
         <tr>
-            <td>Regression</td>
-            <td>1</td>
-            <td>1</td>
-	    <td>0</td>
-            <td>0</td>
+            <td>CPS</td>
+            <td>57115</td>
+            <td>64100</td>
+            <td>10.897</td>
+        </tr>
+        <tr>
+            <td>HPS</td>
+            <td>314745</td>
+            <td>315265</td>
+            <td>0.165</td>
+        </tr>
+        <tr>
+            <td>THROUGHPUT</td>
+            <td>962017</td>
+            <td>963785</td>
+            <td>0.183</td>
         </tr>
     </table>
     <br>
-    
-   <br><br>
-    <a href='http://10.10.30.37/reports/graphs/NetStorm/regression/4.1.5/B34' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
-   <br><br>
-   <div class='signature'>
-      Automation Team,<br>Cavisson Systems Inc
+    <br>
+    <table>
+    <caption class='lead'>Basic Performance Stats For Java Type Script</caption>
+        <tr>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Current</th>
+            <th>% Change</th>
+        </tr>
+        <tr>
+            <td>CPS</td>
+            <td>12254</td>
+            <td>12242</td>
+            <td>-0.098</td>
+        </tr>
+        <tr>
+            <td>HPS</td>
+            <td>13779</td>
+            <td>13443</td>
+            <td>-2.499</td>
+        </tr>
+        <tr>
+            <td>THROUGHPUT</td>
+            <td>1001226</td>
+            <td>979452</td>
+            <td>-3.885</td>
+        </tr>
+    </table>
+	<br>
+    <h5 class='lead'>Failed: 14 test(s), Passed: 21 test(s), Total: 26 test(s)</h5>
+    <a href='http://10.10.30.37'>View Online Automation Reports</a>
+    <hr/>
+    <br><br>
+    Automation Team,
+   <br>Cavisson Systems Inc
    </div>
-</div>
 </body>
+</html>

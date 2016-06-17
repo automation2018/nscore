@@ -2,12 +2,13 @@
 <project name="NetStorm Core Automation: Master Build File" basedir="." default="start">
   
     <!--Task: Declaration of build variables--> 
+	<property name="ns.wdir" value="/home/netstorm/work"/>
     <property name="smoke.build.file" value="smoke/build.xml"/>
     <property name="reg.build.file" value="regression/build.xml"/>
     <property name="perf.build.file" value="performance/build.xml"/>
     <property name="func.build.file" value="functional/build.xml"/>
     <property name="mail.config.shell" value="${basedir}/lib/update_mail_properties"/>
-    <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
+	<property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
 
     <!--Task: Sleep interval after each suite completion--> 
     <target name="take-a-nap" description="This target is called to make system idle for 10 seconds">
@@ -45,25 +46,122 @@
     <target name="perf-ssl" description="Triggers SSL CIPHER PERF automation suite">
         <ant antfile="${perf.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
     </target>
-    
+
+
     <!-- Task: Run functional --> 
     <target name="functional" description="Triggers functional automation suite">
         <ant antfile="${func.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
     </target>
 
-    <!-- Task: Declaring default target to schedule automation--> 
-    <!-- Task: Additional SSL Perf test will also be fired at the end of all tests-->
-    <!-- This test will be done to check performance of NS with all available ciphers-->
-    
-    <!-- TODO Add a target to run a trial smoke test 
-              if this test is running fine then run entire automation process 
-              else exit with proper message -->
-    <!-- TODO Add target for checking vsFTP server status
-              issue was in FTP put API testcase while this service was not running -->    
 
-    <target name="start" 
-            depends="smoke, take-a-nap, performance, take-a-nap, regression"
-            description="Default target which inititates entire automation process">
-    </target>
+    <!-- Evaluate smoke test trend and change nde test on remote server-->
+	<target name="eval-smoke-trend">
+	    <exec executable="bash" outputproperty="release.info">
+	       <arg value="-c"/>
+		   <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+		</exec>
+		
+		<exec executable="bash" outputproperty="build.info">
+	        <arg value="-c"/>
+			<arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+	    </exec>
+		
+		<echo message="Going to evaluate smoke test trend for ${release.info}.B${build.info}"/>
+		
+		<exec executable="python" failonerror="false" resultproperty="smoke.trend">
+			<arg value="update-nde/get_smoke_trend"/>
+			<arg value="-c"/>
+			<arg value="1"/>
+			<arg value="-r"/>
+			<arg value="${release.info}"/>
+			<arg value="-b"/>
+			<arg value="${build.info}"/>
+		</exec>
+		
+		<echo message="smoke trend status is ${smoke.trend}"/>
+		
+		<condition property="smoke-validated">
+			<equals arg1="${smoke.trend}" arg2="0"/>
+	    </condition>
+     </target>
+
+	<!-- Task : add server to analytics, stop nde test, upgrade server and start test again -->	 
+	<target name="update-nde-test-config" 
+			depends="eval-smoke-trend" 
+			if="smoke-validated">
+		<exec executable="bash" outputproperty="release.info">
+		   <arg value="-c"/>
+		   <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+		</exec>
+		
+		<exec executable="bash" outputproperty="build.info">
+			<arg value="-c"/>
+			<arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+		</exec>
+
+		<property name="upgrade.url" value="http://10.10.30.37/builds/upgrade"/>
+		<property name="upgrade.url.query" value="servers=216.66.23.194&amp;buildname=${release.info}.${build.info}&amp;controller=work"/>
+		
+		<echo message="smoke trend validation passed"/>
+		<echo message="going to copy manage test operations shell to remote server"/>
+		<exec executable="nsu_server_admin" 
+			  resultproperty="shell.ftp.data"
+			  failonerror="true">
+			<arg value="-g"/>
+			<arg value="-i"/>
+			<arg value="-s"/>
+			<arg value="216.66.23.194"/>
+			<arg value="-F"/>
+			<arg value="update-nde/get_running_test_run.sh"/>
+			<arg value="-D"/>
+			<arg value="/tmp"/>
+		</exec>
+		
+		<echo message="agent is ftped successfully as status = ${shell.ftp.data}"/>
+		<echo message="running command to stop test if running...."/>
+
+		<exec executable="nsu_server_admin" 
+			  resultproperty="test.stop.data"
+			  failonerror="true">
+			<arg value="-g"/>
+			<arg value="-i"/>
+			<arg value="-s"/>
+			<arg value="216.66.23.194"/>
+			<arg value="-c"/>
+			<arg value="/tmp/get_running_test_run.sh stop"/>
+		</exec>
+		
+		<echo message="nde test stopped successfully as status= ${test.stop.data}"/>
+		<echo message="adding 216.66.23.194 server to the database....."/>
+
+		<get src="http://10.10.30.37/builds/addsrv?ip=216.66.23.194" 
+			 dest="/tmp/nde_operations.txt"
+			 verbose="true"/>
+		
+		<echo message="216.66.23.194 host is added into analytics system"/>
+		<echo message="driving analytics api to upgrade current build...."/>
+		
+		<get src="${upgrade.url}?${upgrade.url.query}" 
+			dest="/tmp/nde_operations.txt"
+			verbose="true"/>
+		
+		<echo message="upgrade api is requested OK.going to sleep for a while to complete it"/>
+		<sleep seconds="900"/>
+	
+		<echo message="going to re-start the test after all config changes"/>
+		<exec executable="nsu_server_admin" resultproperty="run.nde.test">
+			<arg value="-g"/>
+			<arg value="-i"/>
+			<arg value="-s"/>
+			<arg value="216.66.23.194"/>
+			<arg value="-c"/>
+			<arg value="/tmp/get_running_test_run.sh start"/>
+		</exec>
+	</target>
+
+    <!-- Declaring default target operation-->
+	<target name="start" 
+            depends="smoke, update-nde-test-config, take-a-nap, performance, take-a-nap, regression"
+			description="Default target which inititates entire automation process"></target>
 
 </project>

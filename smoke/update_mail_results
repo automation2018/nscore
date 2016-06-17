@@ -72,7 +72,7 @@ function get_fail_test_data() {
 	do
 	    id=$(echo "$line" | cut -d, -f1) 
 	    tr=$(echo "$line" | cut -d, -f2) 
-	    desc=$(echo "$line" | cut -d, -f8) 
+	    desc=$(echo "$line" | cut -d, -f6) 
 	    str+="<tr><td>$id</td><td>$tr</td><td>$desc</td></tr>"
 	done <"$TMP_FAIL_CASE_FILE"
 	
