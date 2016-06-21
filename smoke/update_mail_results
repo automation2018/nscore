@@ -53,7 +53,7 @@ function check_and_set_td(){
 
 
 function check_and_set_project_status(){
-  if [ $failed -gt 0 ]; then
+  if [ $failed -gt 0 ] || [ $nsfail -gt 0 ]  ; then
     echo "<td style='background-color: #FBE9E7'>Failed</td>"
   else
     echo "<td style='background-color: #E8F5E9'>Passed</td>"

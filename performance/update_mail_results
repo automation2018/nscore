@@ -82,7 +82,7 @@ function set_test_results(){
 
 
 function check_and_set_project_status(){
-  if [ $failed -gt 0 ]; then
+  if [ $failed -gt 0 ] || [ $nsfail -gt 0 ]; then
     echo "<td style='background-color: #FBE9E7'>Failed</td>"
   else
     echo "<td style='background-color: #E8F5E9'>Passed</td>"
@@ -228,10 +228,10 @@ function set_up_email(){
 </html>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
     echo "curr.release = $version" >${MAIL_PROP_FILE}
     echo "curr.build = $build" >>${MAIL_PROP_FILE}
-    #echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
-    #echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.to = arun.yadav@cavisson.com" >>mail.properties
-    echo "configured.mail.list.cc = niraj.panda@cavisson.com" >>mail.properties
+    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.to = arun.yadav@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.cc = niraj.panda@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "perf.results.dir = $PERF_RESULT_FILES" >>${MAIL_PROP_FILE}
