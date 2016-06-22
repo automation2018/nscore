@@ -140,8 +140,7 @@ def upload_to_db(infile, testresults, database):
     cursor.close()
 
 #This module responsible for upload the processed results of performance suite and upload to sqlite database 
-def upload_perf_data(infile, testresults, database):
-
+def upload_perf_data(infile, testresults, database, scripttype):
     DATABASE =  database
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
@@ -161,21 +160,8 @@ def upload_perf_data(infile, testresults, database):
             release_id = cursor.fetchone()
 
     #Reads input file and gets the component id  from analytics.db for the same component
-    with open('%s' %infile) as f1:
-        line2 = f1.readlines()[0].strip().split(',')
-        comp = line2[5]
-        if comp == "NS":
-            cursor.execute('select id from component where name = "NetStorm"')
-            comp_id = cursor.fetchone()
-        elif comp == "ND":
-            cursor.execute('select id from component where name = "NetDiagnostics"')
-            comp_id = cursor.fetchone()
-        elif comp == "NO":
-            cursor.execute('select id from component where name = "NetOcean"')
-            comp_id = cursor.fetchone()
-        elif comp == "NC":
-            cursor.execute('select id from component where name = "NetCloud"')
-            comp_id = cursor.fetchone()
+	cursor.execute("SELECT id FROM component WHERE name = '{}'".format(scripttype))
+	comp_id = cursor.fetchone()
     
     #Reads the input file and collects the values of cps, hps, throughput from the respective testcases
     with open('%s' %infile) as f2:
@@ -207,15 +193,16 @@ def upload_perf_data(infile, testresults, database):
 def main():
     infile = sys.argv[1]
     database = sys.argv[2]
+    
     try:
-        perf_flag = sys.argv[3]
+        perf_flag, component_name = sys.argv[3], sys.argv[4]
     except IndexError as e:
-        perf_flag = False
+        perf_flag, component_name = False, 'NetStorm'
 
     if perf_flag is False:
         upload_to_db(infile, process(infile), database)
     else:
-        upload_perf_data(infile, process_perf(infile), database)
+        upload_perf_data(infile, process_perf(infile), database, component_name)
 
 if __name__ == "__main__":
     main()

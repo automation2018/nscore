@@ -5,7 +5,7 @@ source $NS_WDIR/lib/automation_util
 BaseLineCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CurrentCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 T_NAME=$(get_tname)
-Component=$(component_name)
+Component=performance
 PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/progress.report"
 
 

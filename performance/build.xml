@@ -143,14 +143,26 @@
     <!-- TODO Need to add module to check netstorm fail cases-->
     <!--Task: Upload test results to analalytics.db-->
     <!--<target name="perf" depends="Performance">-->
-    <target name="perf" 
-            depends="trigger-welcome-mail, trigger-hps-test, trigger-results-mail"
-            description="default target which runs command to store perf results to database after automation completes">
+	<target 
+		name="perf"
+	    depends="trigger-welcome-mail, trigger-hps-test, trigger-results-mail"	
+		description="default target which runs command to store perf results to database after automation completes">
+		<echo message="uploading ctype performance stats"/>
         <exec executable="python">
             <arg value="${perf.db_upload}"/>
             <arg value="${perf.input.file}"/>
             <arg value="${perf.database}"/>
             <arg value="True"/>
+            <arg value="NetStorm"/>
+        </exec>
+		
+		<echo message="uploading jts performance stats"/>
+        <exec executable="python">
+            <arg value="${perf.db_upload}"/>
+            <arg value="${jperf.input.file}"/>
+            <arg value="${perf.database}"/>
+            <arg value="True"/>
+            <arg value="JTS"/>
         </exec>
     </target>
    

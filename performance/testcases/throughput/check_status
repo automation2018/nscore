@@ -6,7 +6,7 @@
 BaseLineCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CurrentCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 T_NAME=$(get_tname)
-Component=$(component_name)
+Component=performance
 
 
 function BaseLine(){
