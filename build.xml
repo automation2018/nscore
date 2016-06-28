@@ -149,7 +149,9 @@
 		<sleep seconds="900"/>
 	
 		<echo message="going to re-start the test after all config changes"/>
-		<exec executable="nsu_server_admin" resultproperty="run.nde.test">
+		<exec executable="nsu_server_admin" 
+			  resultproperty="run.nde.test"
+			  output="/tmp/.ndetestupdates">
 			<arg value="-g"/>
 			<arg value="-i"/>
 			<arg value="-s"/>
@@ -157,6 +159,17 @@
 			<arg value="-c"/>
 			<arg value="/tmp/get_running_test_run.sh start"/>
 		</exec>
+		<mail mailhost="websrv.cavisson.com" 
+              user="automation@cavisson.com"
+              password="Cavisson!" 
+              mailport="587" 
+              subject="[UPDATES] : NDE continuous monitoring test on 216.66.23.194 machine"
+              tolist='dl-qa-nd@cavisson.com'
+              cclist='dl-qa-auto@cavisson.com'
+			  messagefile="/tmp/.ndetestupdates"
+			  messagemimetype="text/plain">
+			<from address="automation@cavisson.com"/>   		   
+		</mail>	       
 	</target>
 
     <!-- Declaring default target operation-->
