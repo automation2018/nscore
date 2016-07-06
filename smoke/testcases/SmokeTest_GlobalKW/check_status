@@ -6,6 +6,8 @@ S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
 P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
 FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_PAT/flow.c"
 TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+test_case_name=$(get_testcase_name)
+test_console_file="${TS_LOG_DIR}/${test_case_name}/test_run.report"
 
 
 function main(){
@@ -15,10 +17,10 @@ function main(){
         "SMOKE-021-003") validate_page_as_tx_case_003 ;;
         "SMOKE-021-004") validate_page_as_tx_case_004 ;;
         "SMOKE-021-005") validate_page_as_tx_case_005 ;;
-        "SMOKE-021-006") validate_num_nvm ;;
-        "SMOKE-021-007") validate_num_nvm ;;
-        "SMOKE-021-008") validate_num_nvm ;;
-        "SMOKE-021-009") validate_num_nvm ;;
+        "SMOKE-021-006") validate_num_nvm_001_case ;;
+        "SMOKE-021-007") validate_num_nvm_002_case ;;
+        "SMOKE-021-008") validate_num_nvm_003_case ;;
+        "SMOKE-021-009") validate_num_nvm_004_case ;;
         "SMOKE-021-010") validate_disable_cookie ;;
         "SMOKE-021-011") validate_disable_cookie ;;
          *) handle_unknown_case ;;
@@ -123,7 +125,101 @@ function validate_page_as_tx_case_005(){
 }
 
 
-function validate_num_nvm(){
+function validate_num_nvm_001_case(){
+    # Find way to read values from test console
+    total_usr=$(grep "TotalUsers" ${test_console_file} | head -1 |cut -d '=' -f2)
+    groups=($(grep "Group" ${test_console_file} | cut -d '=' -f2 | cut -d ',' -f1))
+    G1=${groups[0]}
+    G2=${groups[1]}
+    G3=${groups[2]}
+    G4=${groups[3]}
+    G5=${groups[4]}
+    group_lenth=${#groups[@]}
+    G_pct_vlus=($(grep "NVM0" ${test_console_file} | cut -d '=' -f3))
+    G1_pct=${G_pct_vlus[0]}
+    G2_pct=${G_pct_vlus[1]}
+    G3_pct=${G_pct_vlus[2]}
+    G4_pct=${G_pct_vlus[3]}
+    G5_pct=${G_pct_vlus[4]}
+    G_pct_vlus_lnth=${#G_pct_vlus[@]}
+    debug_log "G1=${G1}"
+    debug_log "G1_pct=${G_pct_vlus[0]}"
+    debug_log "group_lenth=${group_lenth}"
+    debug_log "groups=`echo ${groups[@]}`"
+    debug_log "Group_pct_values_lenth=${G_pct_vlus_lnth}"
+    debug_log "Group_pct_values=`echo ${G_pct_vlus[@]}`"
+  #  G1_Pct_value=$(grep "NVM0" ${test_console_file} | head -1 | cut -d '=' -f3) #100 output for G1
+    if [ "${G1}" == "G1" ] && [ "${G1_pct}" == "100.00%" ]; then
+        debug_log "Inside first condition"
+        if [ "${G2}" == "G2" ] && [ "${G2_pct}" == "100.00%" ]; then
+            debug_log "Inside second condition"
+            if [ "${G3}" == "G3" ] && [ "${G3_pct}" == "100.00%" ]; then
+                debug_log "Inside third condition"
+                if [ "${G4}" == "G4" ] && [ "${G4_pct}" == "100.00%" ]; then
+                    debug_log "Inside four condition"
+                    if [ "${G5}" == "G5" ] && [ "${G5_pct}" == "100.00%" ]; then
+                        debug_log "Inside five condition"
+                        debug_log "PASSED"
+                        log_status_and_exit_ex "PASS" "nvm testcase passed";
+                    else
+                        debug_log "Failed for G1"
+                        log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G1 ";
+                    fi
+                else
+                    debug_log "Failed for G2"
+                    log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G2 ";
+                fi
+            else
+                debug_log "Failed for G3"
+                log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G3 ";
+            fi
+        else
+            debug_log "Failed for G4"
+            log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G4 ";
+        fi
+    else
+        debug_log "Failed for G5"
+        log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G5 ";
+    fi
+    }
+
+function validate_num_nvm_002_case(){
+    # Find way to read values from test console
+    log_status_and_exit_ex "PASS" "num nvm testcase passed"
+}
+
+function validate_num_nvm_003_case(){
+    # Find way to read values from test console
+    total_usr=$(grep "TotalUsers" ${test_console_file} | head -1 |cut -d '=' -f2)
+    G1_type=$(grep "Group" ${test_console_file} | head -1 | cut -d '=' -f2 | cut -d ',' -f1) #G1 print 
+    G2_type=$(grep "Group" ${test_console_file} | tail -1 | cut -d '=' -f2 | cut -d ',' -f1) #G2 print
+    G1_Pct_value=$(grep "NVM0" ${test_console_file} | head -1 | cut -d '=' -f3) #100 output for G1
+    G2_pct_value=$(grep "NVM1" ${test_console_file}| tail -1 | cut -d '=' -f3)  #100 output for G2
+    debug_log "test console file =${test_console_file}" 
+    debug_log "total user=${total_usr}"
+    debug_log "G1_type=${G1_type}"
+    debug_log "G2_type=${G2_type}"
+    debug_log "G1_Pct_value=${G1_Pct_value}"
+    debug_log "G2_pct_value=${G2_pct_value}"
+    if [ "${total_usr}" == "2" ]; then
+        if [ "${G1_type}" == "G1" ] && [ "${G2_type}" == "G2" ]; then
+            if [ "${G1_Pct_value}" == "100.00%" ] && [ "${G2_pct_value}" == "100.00%" ]; then
+                log_status_and_exit_ex "PASS" "nvm testcase passed";
+            else
+                debug_log "Failed due to pct value"
+                log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G1 and NVM1 not provide pct=100% for G2";
+            fi
+        else
+            debug_log "Fail due to group type"
+            log_status_and_exit_ex "FAIL" "nvm testcase failed due to Group G1 and Group G2 not found ";
+        fi
+    else
+        debug_log "Fail due to total user"
+        log_status_and_exit_ex "FAIL" "nvm testcase failed due to not getting total user according to define in test case"
+    fi
+}
+
+function validate_num_nvm_004_case(){
     # Find way to read values from test console
     log_status_and_exit_ex "PASS" "num nvm testcase passed"
 }
