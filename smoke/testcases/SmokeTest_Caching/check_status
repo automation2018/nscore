@@ -85,21 +85,23 @@ function validate_http_caching_003_case(){
 	total_url=$(grep "Url" ${NS_WDIR}/logs/TR${T_RUN_ID}/progress.report | tail -1|cut -d ' ' -f28|cut -d '/' -f1)
 	succ_url=$(grep "Url" ${NS_WDIR}/logs/TR${T_RUN_ID}/progress.report | tail -1|cut -d ' ' -f28)
     expire_in_first_response_G1=$(egrep '^Expires' ${T_ID_REQ_PATH}/url_rep_0_0_0_0_0_0_0_0_0.dat)
-    First_req_server_from_G1=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_0_0_0_1_0_0_0_1_0.dat)
+    Second_req_server_from_G1=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_0_0_0_1_0_0_0_1_0.dat)
 	expire_in_Second_response_G1=$(egrep '^Expires' ${T_ID_REQ_PATH}/url_rep_0_0_0_1_0_0_0_1_0.dat)
-	Second_req_server_from_G1=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_1_0_0_0_0_0_0_0_0.dat)
+    first_req_server_from_G2=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_1_0_0_0_0_0_0_0_0.dat)
+    second_req_server_from_G2=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_1_0_0_1_0_0_0_1_0.dat)
 
 	debug_log "gtotal_url=$total_url; succ_url=$succ_url;"
 	debug_log "expire_in_first_response_G1=$expire_in_first_response_G1;"
-	debug_log "First_req_served_from_G1=$First_req_served_from_G1;"
-	debug_log "expire_in_Second_response_G1=$expire_in_Second_response_G1;"
 	debug_log "Second_req_served_from_G1=$Second_req_server_from_G1;"
-
+	debug_log "expire_in_Second_response_G1=$expire_in_Second_response_G1;"
+	debug_log "First_req_served_from_G1=$first_req_server_from_G2;"
+    debug_log "Second_req_served_from_G2=$second_req_server_from_G2;"
 
    	if [ "${total_url}" == "${succ_url}" ]; then
-		if [ ! -z "${expire_in_first_response_G1}" -a "${expire_in_Second_response_G1}" ]; then
-        	if [ ! -z "${First_req_server_from_G1}" ] &&
-			   [  -z "${Second_req_server_from_G1}"]; then
+		if [ ! -z "${expire_in_first_response_G1}" ] &&
+            [ "${expire_in_Second_response_G1}" ]; then
+        	if [  ! -z "${Second_req_server_from_G1}" ] &&
+			   [  -z "${first_req_server_from_G2}" ] && [ -z  ${second_req_server_from_G2} ] ; then
 		        debug_log "Passed"	
         		log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase passed"
 			else
@@ -124,23 +126,31 @@ function validate_http_caching_004_case(){
 	second_req_server_from_G1=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_0_0_0_1_0_0_0_1_0.dat)
     expire_in_second_response_G1=$(egrep '^Expires' ${T_ID_REQ_PATH}/url_rep_0_0_0_1_0_0_0_1_0.dat)
 	second_req_server_from_G2=$( grep "This Request is served from Cache." ${T_ID_REQ_PATH}/url_req_1_0_0_0_0_1_0_0_0.dat)
-
+     debug_log "total_url=${total_url} ; succ_url=${succ_url}"
      debug_log "expire_in_first_response_G1=${expire_in_first_response_G1};"
 	 debug_log "second_req_server_from_G1=${second_req_server_from_G1};"
 	 debug_log "expire_in_second_response_G1=${expire_in_second_response_G1};"
 	 debug_log "second_req_server_from_G2=${second_req_server_from_G2};"
 	if [ "${total_url}" -eq "${succ_url}" ]; then
-    	if [ ! -z "${expire_in_first_response_G1}" -a "${expire_in_second_response_G1}" ]; then
-	    	if [  -z "${second_req_server_from_G1}" ] &&
+        debug_log "Inside first loop"
+    	if [ ! -z "${expire_in_first_response_G1}" ] &&
+            [ "${expire_in_second_response_G1}" ]; then
+            debug_log "Inside second loop"
+	    	if [ ! -z "${second_req_server_from_G1}" ] &&
 				[ -z "${second_req_server_from_G2}" ]; then
+                debug_log "Inside Third loop"
+                debug_log "PASS"
 				log_status_and_exit_ex "PASS" "caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase passed"
 			else
+                debug_log "Fail request not serve from cache"
 			    log_status_and_exit_ex "FAIL" "caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase failed due to Request is not served from cache"
 			fi
 		else 
+            debug_log "Fail cache header not found in previos url"
 			log_status_and_exit_ex "FAIL" "caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase failed due to Cache Header is not found in Previos URL"
 		fi
 	else
+        debug_log "Fail due to url failure"
 		log_status_and_exit_ex "FAIL" "caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase failed due to URL failure"
 	fi
 
