@@ -28,6 +28,14 @@ function get_pct_change() {
         echo $(python -c "print '%3.3f' %((float($current - $baseline) / $current) * 100)")
     fi
 }
+
+function get_perf_metrices(){
+    param=$1
+    filename=$2
+    field=$3
+    metric=$(grep "$param" $WORKBENCH/.perf/${filename} | cut -d ',' -f${field})
+    [ -z $metric ] && echo "NA" || echo $metric
+}
     
 function set_test_results(){ 
     total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
@@ -51,13 +59,18 @@ function set_test_results(){
 			passed=$(($passed + $(get_metrics $PERF_RESULT_FILES/$attachment "passed")))
 		done 
 		
-		cps=$(grep "CPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f8)
-		hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
-		throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
-		cps_java=$(grep "CPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f8)
-		hps_java=$(grep "HPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f9)
-		throughput_java=$(grep "THROUGHPUT" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f10)
-		statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), Total: $total test(s)")
+		cps=$(get_perf_metrices "CPS" "PerfResult" 8)
+        hps=$(get_perf_metrices "HPS" "PerfResult" 9)
+        throughput=$(get_perf_metrices "THROUGHPUT" "PerfResult" 10)
+		cps_java=$(get_perf_metrices "CPS" "javabasedperfresult" 8)
+        hps_java=$(get_perf_metrices "HPS" "javabasedperfresult" 9)
+        throughput_java=$(get_perf_metrices "THROUGHPUT" "javabasedperfresult" 10)
+		#hps=$(grep "HPS" $WORKBENCH/.perf/PerfResult | cut -d ',' -f9)
+		#throughput=$(grep "THROUGHPUT" $WORKBENCH/.perf/PerfResult | cut -d ',' -f10)
+		#cps_java=$(grep "CPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f8)
+		#hps_java=$(grep "HPS" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f9)
+		#throughput_java=$(grep "THROUGHPUT" $WORKBENCH/.perf/javabasedperfresult | cut -d ',' -f10)
+        statusbody=$(echo "Failed: $failed test(s), Passed: $passed test(s), NSFails: $nsfail test(s), Total: $total test(s)")
 		
 		if [ $total -eq $passed ];then
 			STATUS=Successful
@@ -213,7 +226,7 @@ function set_up_email(){
             <td>THROUGHPUT</td>
             <td>1001226</td>
             <td>$throughput_java</td>
-            <td>$(get_pct_change 1001226 $throughput)</td>
+            <td>$(get_pct_change 1001226 $throughput_java)</td>
         </tr>
     </table>
 	<br>

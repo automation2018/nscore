@@ -40,7 +40,8 @@ function stop_running_test(){
 function start_nde_test(){
     echo "Working controller:"$NS_WDIR
 	su ndeadmin -c "nsu_start_test -n monitoring.conf -S gui "| tee ${TMP_LOG_FILE}
-	#su ndeadmin -c "java -version"| tee ${TMP_LOG_FILE}
+    sleep 60
+    get_running_trun
 }
 
 

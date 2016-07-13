@@ -40,7 +40,7 @@ function validate_http_caching_001_case(){
 	if [ "${total_url}" ==  "${succ_url}" ]; then
         if [ ! -z "${expire_in_first_response_G1}" -a "${expire_in_first_response_G2}" ]; then
 			if [ ! -z "${second_req_served_from_G1}" -a "${second_req_served_from_G2}" ]; then
-             	log_status_and_exit_ex "Passed" "no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase is Sucessfully Passed"
+             	log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase is Sucessfully Passed"
 			else
                 log_status_and_exit_ex "FAIL" "no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase due to Request is not serverd from cache"
 			fi
@@ -68,13 +68,13 @@ function validate_http_caching_002_case(){
 				[ -z "${second_req_server_from_G2}" ]; then
 				log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase passed"
 			else
-				log_status_and_exit_ex "Fail" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase Failed due to Request is not served from cache"
+				log_status_and_exit_ex "FAIL" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase Failed due to Request is not served from cache"
 			fi
 		else
-			log_status_and_exit_ex "Fail" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase Failed due to no cache header is found in previos url"
+			log_status_and_exit_ex "FAIL" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase Failed due to no cache header is found in previos url"
 		fi
 	else
-    log_status_and_exit_ex "Fail" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase failed due to url failure"
+    log_status_and_exit_ex "FAIL" "no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase failed due to url failure"
 	fi 
 }
 
@@ -96,12 +96,12 @@ function validate_http_caching_003_case(){
 	debug_log "expire_in_Second_response_G1=$expire_in_Second_response_G1;"
 	debug_log "First_req_served_from_G1=$first_req_server_from_G2;"
     debug_log "Second_req_served_from_G2=$second_req_server_from_G2;"
+    
 
    	if [ "${total_url}" == "${succ_url}" ]; then
 		if [ ! -z "${expire_in_first_response_G1}" ] &&
             [ "${expire_in_Second_response_G1}" ]; then
-        	if [  ! -z "${Second_req_server_from_G1}" ] &&
-			   [  -z "${first_req_server_from_G2}" ] && [ -z  ${second_req_server_from_G2} ] ; then
+        	if [  -z "${first_req_server_from_G2}" ] ; then
 		        debug_log "Passed"	
         		log_status_and_exit_ex "PASS" "no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase passed"
 			else

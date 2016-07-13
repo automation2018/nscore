@@ -79,9 +79,15 @@ if __name__ == "__main__":
     connection,cursor = connect_database(opts.database)
     passed,total = db_checker(opts.categoryid, get_release_id(opts.release), \
 			opts.buildid, opts.database, connection , cursor)
-    pct_diff = (passed/float(total))*100
+    
+    if passed != 0 and total != 0 :
+        pct_diff = (passed/float(total))*100
+        print '%.2f' % pct_diff
 
-    if pct_diff >= 90:
-        sys.exit(0)    
-    else:
+        if pct_diff >= 90:
+            sys.exit(0)    
+        else:
+            sys.exit(1)
+    else :
+        pct_diff = 0
         sys.exit(1)

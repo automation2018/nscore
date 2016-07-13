@@ -139,6 +139,27 @@ function get_current_tr_values(){
 
     Avg_Page_Response_Time_Current=`grep -w "Average Page Response Time (Secs)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
     echo "Avg_Page_Response_Time_Current for current test run is =$Avg_Page_Response_Time_Current"
+
+    Avg_Send_Req_Count=`grep -w "Requests Sent/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Send_Req_Count for current test run is::$Avg_Send_Req_Count"
+     
+    Avg_Received_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Recieved/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Received_Req_Count for current test run is::$Avg_Received_Req_Count"
+     
+    Avg_Completed_Req_Count=`grep -w "Requests Completed/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Completed_Req_Count for current test run is::$Avg_Completed_Req_Count"
+     
+    Avg_Processed_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Processed/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Processed_Req_Count for current test run is::$Avg_Processed_Req_Count"
+     
+    Avg_Successful_Req_Count=`grep -w "Requests Successful/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Successful_Req_Count for current test run is::$Avg_Successful_Req_Count"
+
+    Avg_Successful_Simu_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Successful/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Successful_Simu_Req_Count for current test run is::$Avg_Successful_Simu_Req_Count"
+
+    Avg_Service_Time=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Service Time (Secs)(NA)"| cut -d '|' -f6`
+    echo "Avg_Service_Time for current test run is::$Avg_Service_Time"
 }
 
 
@@ -264,6 +285,18 @@ function get_compared_values(){
 
     Page_Response_Time_Change=`echo $Page_Response_Time_Change | awk '{printf "%.0f\n", $1}'`
     echo "Response time change is=$Page_Response_Time_Change"
+
+	Avg_Request_Count_Change=`echo "$Avg_Send_Req_Count" "$Avg_Received_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Request_Count_Change is=$Avg_Request_Count_Change"
+
+	Avg_Completed_Request_Count_Change=`echo "$Avg_Completed_Req_Count" "$Avg_Processed_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Completed_Request_Count_Change is=$Avg_Completed_Request_Count_Change"
+
+	Avg_Successful_Request_Count_Change=`echo "$Avg_Successful_Req_Count" "$Avg_Successful_Simu_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Successful_Request_Count_Change is=$Avg_Successful_Request_Count_Change"
+
+    Avg_Service_Time_Diff=`echo "$Avg_Res_Time" "$Avg_Service_Time" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+    echo "Avg_Service_Time_Diff is=$Avg_Service_Time_Diff"
 }
 
 

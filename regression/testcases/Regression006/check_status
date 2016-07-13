@@ -268,6 +268,7 @@ function get_compared_values(){
 
     Page_Response_Time_Change=`echo $Page_Response_Time_Change | awk '{printf "%.0f\n", $1}'`
     echo "Response time change is=$Page_Response_Time_Change"
+
 }
 
 
