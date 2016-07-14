@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-025-001,36870,1,1,fail,no caching across session for same user with client freshness and cache hit rate 100% testcase failed due to url failure
+SMOKE-025-002,36871,1,1,fail,no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase Failed due to no cache header is found in previos url
+SMOKE-025-003,36872,1,1,fail,no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase Failed due to no cache Header is found in previos Url
+SMOKE-025-004,36873,1,1,fail,caching across session for same user without client freshness;cache hit rate will be 50% of G1 total users testcase failed due to Cache Header is not found in Previos URL

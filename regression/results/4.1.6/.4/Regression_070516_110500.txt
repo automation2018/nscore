@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,37533,1,2,fail,Regression test for FCU with RampUp in Step mode failed;because difference of  baseline and current test metric Running_User_Change_Pct = 11 is more than expected difference 5%
+REG-002-001,37534,1,2,fail,Regression test for FCU with RampUp in Rate mode failed;because difference of  baseline and current test metric Avg_Request_Count_Change = 100 is more than expected difference 5%
+REG-003-001,37535,1,2,fail,Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric Avg_Request_Count_Change = 100 is more than expected difference 5%
+REG-004-001,37536,1,2,fail,Regression test for FSR  Mode 2 failed;because difference of  baseline and current test metric Avg_Request_Count_Change = 100 is more than expected difference 5%

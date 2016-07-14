@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-025-001,38239,1,1,pass,no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase is Sucessfully Passed
+SMOKE-025-002,38240,1,1,pass,no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase passed
+SMOKE-025-003,38241,1,1,fail,no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase Failed due to Request is not server from cache
+SMOKE-025-004,38242,1,1,pass,caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase passed

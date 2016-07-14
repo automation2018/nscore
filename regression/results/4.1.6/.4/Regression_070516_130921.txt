@@ -1,0 +1,7 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,37538,1,2,fail,Regression test for FCU with RampUp in Step mode failed;because difference of  baseline and current test metric Running_User_Change_Pct = 20 is more than expected difference 5%
+REG-002-001,37539,1,2,pass,Regression testcase for FCU having RampUp in Rate Mode test Passed
+REG-003-001,37540,1,2,pass,Regression testcase for FSR Mode 1 test Passed
+REG-004-001,37541,1,2,pass,Regression testcase for FSR Mode 2 test Passed
+REG-005-001,37542,1,2,pass,Regression testcase for Replay Access Log test Passed
+REG-006-001,37543,1,2,fail,Regression testcase for NS supported protocols such as POP3 SMTP & FTP test Failed;because difference of  baseline and current test metric Running_User_Change_Pct = 19 is more than expected difference 5%

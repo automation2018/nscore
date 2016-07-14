@@ -1,0 +1,2 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-025-001,36902,1,1,fail,no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase due to Request is not serverd from cache
