@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+baseline_testrun=$(baselineTR 072815_181628 2335 Regression001)

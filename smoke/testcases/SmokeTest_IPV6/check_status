@@ -1,0 +1,76 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+REP_FILE="${T_ID_REQ_PATH}/url_rep_0_0_0_0_0_0_0_0_0.dat"
+SUMMARY_GDF="$NS_WDIR/logs/TR${T_RUN_ID}/summary_gdf.data"
+
+url_completed=$(grep -w "Requests Completed(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+url_completed=`echo $url_completed | awk '{printf "%.0f\n", $1}'`
+debug_log "tname is =$(get_tname)" 
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-032-001") validate_ipv6_support ;;
+        "SMOKE-032-002") validate_ipv6_redirection ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_ipv6_support(){
+    debug_log "Inside validation module"
+    echo "Inside validation module"
+
+    url_success=$(grep -w "Requests Successful(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+    url_success=`echo $url_success | awk '{printf "%.0f\n", $1}'`
+    page_completed=$(grep -w "Total Pages Completed(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+    page_completed=`echo $page_completed | awk '{printf "%.0f\n", $1}'`
+    page_success=$(grep -w "Total Pages Success(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+    page_success=`echo $page_success | awk '{printf "%.0f\n", $1}'`
+
+    debug_log "url_completed=${url_completed};url_success=${url_success}"
+    echo "url_completed=${url_completed};url_success=${url_success}"
+    debug_log "page_completed=${page_completed};page_success=${page_success}"
+    echo "page_completed=${page_completed};page_success=${page_success}"
+
+    diff=$(expr ${url_completed} - ${url_success})
+    debug_log "difference between url_completed and url_success:${diff}"
+    echo "difference between url_completed and url_success:${diff}"
+
+    if [ $diff -eq 0 ];then
+        echo "passing test"
+        log_status_and_exit_ex "PASS" "IPV6 support test Passed"
+    else
+        echo "failing test"
+        log_status_and_exit_ex "PASS" "IPV6 support test Passed"
+        log_status_and_exit_ex "FAIL" "IPV6 support test Failed"
+    fi
+}
+
+function validate_ipv6_redirection() {
+    status200count=$(grep -w "200 OK/Sec(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)    
+    status200count=`echo $status200count | awk '{printf "%.0f\n", $1}'`
+
+    status302count=$(grep -w "302 Found/Sec(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+    status302count=`echo $status302count | awk '{printf "%.0f\n", $1}'`
+
+    location_in_rep=$(grep -w "Location:" ${REP_FILE} | cut -d '' -f 2)
+
+    debug_log "url_completed=$url_completed; status200count=$status200count;"
+    debug_log "status302count=$status302count; location_in_rep=$location_in_rep"
+    echo "$(expr ${status200count} + ${status302count})"
+    if [ ${url_completed} -eq $(expr ${status200count} + ${status302count}) ] && [ "${location_in_rep}" == "Location: /Smoke_Redirect/urlIPV6redirectionSec.html" ];then
+        log_status_and_exit_ex "PASS" "IPV6 redirection test passed"
+    else
+        log_status_and_exit_ex "FAIL" "IPV6 redirection test failed"
+    fi
+}
+
+main
+exit 0
