@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# Author  : Vishal Singhal
+# Purpose : Python utility to check current build smoke test health 
+
+
 import sqlite3
 import argparse
 import os
@@ -52,7 +56,6 @@ def db_checker(cat_id, rel_id, build_id, db, connection, cursor):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--categoryid' , help="categoryid is must for database" , required=True)
     parser.add_argument('-r', '--release' , help="releaseid is must to search in database" ,required=True)
