@@ -30,7 +30,7 @@ class TestResultsModel(object):
 
 #This class models the list input to a formated Dictionary
 class TestResultsModelPerf(object):
-    def __init__(self, case, tid, category, release, version, component, trun, cps, hps, tprx):
+    def __init__(self, case, tid, category, release, version, component, trun, cps, hps, tprx, cps_avg, hps_avg, tprx_avg):
         self.case      = case
         self.tid       = tid
         self.category  = category
@@ -40,7 +40,10 @@ class TestResultsModelPerf(object):
         self.trun      = trun
         self.cps       = cps
         self.hps       = hps
-        self.tprx       = tprx
+        self.tprx      = tprx
+        self.cps_avg   = cps_avg
+        self.hps_avg   = hps_avg
+        self.tprx_avg  = tprx_avg
 
     def asDict(self):
         perftestresults = {
@@ -49,7 +52,10 @@ class TestResultsModelPerf(object):
            'component'  : self.component,
            'cps'        : self.cps,
            'hps'        : self.hps,
-           'tprx'       : self.tprx
+           'tprx'       : self.tprx,
+           'cps_avg'    : self.cps_avg,
+           'hps_avg'    : self.hps_avg,
+           'tprx_avg'   : self.tprx_avg
         }
         return perftestresults
 
@@ -73,8 +79,8 @@ def process_perf(perftestresultsfile):
     p = []
     try:
         with open(perftestresultsfile, 'r') as f:
-            case, tid, category, release, version, component, tr, cps, hps, tprx, tptx = f.readlines()[1].strip().split(",")
-            p.append(TestResultsModelPerf(case, tid, category, release, version, component, tr, cps, hps, tprx).asDict())
+            case, tid, category, release, version, component, tr, cps, hps, tprx, tptx, cps_avg, hps_avg, tprx_avg = f.readlines()[1].strip().split(",")
+            p.append(TestResultsModelPerf(case, tid, category, release, version, component, tr, cps, hps, tprx, cps_avg, hps_avg, tprx_avg).asDict())
     except IndexError:
         print "Splitting error. Returning"
     except IOError:
@@ -166,9 +172,9 @@ def upload_perf_data(infile, testresults, database, scripttype):
     #Reads the input file and collects the values of cps, hps, throughput from the respective testcases
     with open('%s' %infile) as f2:
         lines = f2.readlines()
-        cps = lines[0].split(',')[7]
-        hps = lines[1].split(',')[8]
-        throughput = lines[2].split(',')[9] 
+        cps = lines[0].split(',')[11]
+        hps = lines[1].split(',')[12]
+        throughput = lines[2].split(',')[13] 
     cursor.execute('SELECT id FROM performance WHERE id=(SELECT MAX(id) FROM performance)')
     max_id = cursor.fetchone()
     data = []
@@ -190,6 +196,96 @@ def upload_perf_data(infile, testresults, database, scripttype):
     connection.commit()
     cursor.close()
 
+def upload_performance_stats(infile, testresults, database, scripttype):
+    DATABASE =  database
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    
+    #Reads input file and gets the release id  from analytics.db for the same release
+    with open('%s' %infile) as f:
+        line1 = f.readlines()[0].strip().split(',')
+        rel = line1[3]
+        cursor.execute('SELECT COUNT(*) FROM release WHERE name = "%s"' %rel)
+        count = cursor.fetchone()
+        if count[0] == 1:
+            cursor.execute('SELECT id FROM release where name = "%s"' %rel)
+            release_id = cursor.fetchone()
+        else:
+            cursor.execute('INSERT INTO release VALUES((select max(id) from release)+1, "%s")' %rel)
+            cursor.execute('SELECT id FROM release where name = "%s"' %rel)
+            release_id = cursor.fetchone()
+
+    #Reads input file and gets the component id  from analytics.db for the same component
+	cursor.execute("SELECT id FROM component WHERE name = '{}'".format(scripttype))
+	comp_id = cursor.fetchone()
+    
+    #Reads the input file and collects the values of cps, hps, throughput from the respective testcases
+    with open('%s' %infile) as f2:
+        lines = f2.readlines()
+        cps = lines[0].split(',')[11]
+        cps_tr = lines[0].split(',')[6].split('R')[1]
+        hps = lines[1].split(',')[12]
+        hps_tr = lines[1].split(',')[6].split('R')[1]
+        throughput = lines[2].split(',')[13] 
+        throughput_tr = lines[2].split(',')[6].split('R')[1]
+    cursor.execute('SELECT id FROM performance_stats WHERE id=(SELECT MAX(id) FROM performance_stats)')
+    max_id = cursor.fetchone()
+    print max_id
+    data = []
+    
+    try:
+        _id = int(max_id[0]) + 1
+    except TypeError:
+        _id = 1
+    
+    data = []
+    for result in testresults:
+        data.append((_id,
+            result['version'],
+            release_id[0],
+            comp_id[0],
+            1,
+            cps,
+            cps_tr))
+        _id += 1
+
+    cursor.executemany('''INSERT INTO 
+            performance_stats 
+            VALUES(?, ?, ?, ?, ?, ?, ?)''', data)
+
+    data = []
+    for result in testresults:
+        data.append((_id,
+            result['version'],
+            release_id[0],
+            comp_id[0],
+            2,
+            hps,
+            hps_tr))
+        _id += 1
+
+    cursor.executemany('''INSERT INTO 
+            performance_stats
+            VALUES(?, ?, ?, ?, ?, ?, ?)''', data)
+
+    data = []
+    for result in testresults:
+        data.append((_id,
+            result['version'],
+            release_id[0],
+            comp_id[0],
+            3,
+            throughput,
+            throughput_tr))
+        _id += 1
+
+    cursor.executemany('''INSERT INTO
+            performance_stats
+            VALUES(?, ?, ?, ?, ?, ?, ?)''', data)
+    connection.commit()
+    cursor.close()
+
+
 def main():
     infile = sys.argv[1]
     database = sys.argv[2]
@@ -203,6 +299,7 @@ def main():
         upload_to_db(infile, process(infile), database)
     else:
         upload_perf_data(infile, process_perf(infile), database, component_name)
+        upload_performance_stats(infile, process_perf(infile), database, component_name)
 
 if __name__ == "__main__":
     main()

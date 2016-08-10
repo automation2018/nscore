@@ -25,20 +25,13 @@ function set_test_results(){
     passed=0;failed=0
     total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
     nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+    failed=$(($failed + $(get_metrics $first_attachment ",fail,")))
+    passed=$(($passed + $(get_metrics $first_attachment ",pass,")))
 
-    if [ $nsfail -eq 0 ] && [ $total -ne 0 ]; then
-	    failed=$(($failed + $(get_metrics $first_attachment ",fail,")))
-	    passed=$(($passed + $(get_metrics $first_attachment ",pass,")))
-        nsfail=0
-		if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
-			STATUS=Successful
-		else
-			STATUS=Failed
-		fi
+    if [ $total -eq $passed ] && [ $total -ne 0 ] && [ $nsfail -eq 0 ];then
+        STATUS=Successful
     else
         STATUS=Failed
-        failed=$(($failed + $(get_metrics $first_attachment "failures")))
-        passed=$(($passed + $(get_metrics $first_attachment "passed")))
     fi
 }
 

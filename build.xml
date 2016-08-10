@@ -50,12 +50,16 @@
 	   <var name="smoke.trend.start" value="${smoke.trend.start.t}"/>
 
 	   <ant antfile="${smoke.build.file}" target="run" useNativeBasedir="true"/>
+       <var name="core-subject" value="smoke"/>
+       <antcall target="check-cores"/>
    </target>   
 
 
    <!--Task: Invoking smoke debug automation suite to run--> 
    <target name="smoke-debug" description="Triggers SMOKE DEBUG automation suite">
 	   <ant antfile="${smoke.build.file}" target="debug" useNativeBasedir="true"/>
+       <var name="core-subject" value="smoke"/>
+       <antcall target="check-cores"/>
    </target>   
    
    <!--Task: Invoking regression debug suite to run--> 
@@ -67,11 +71,15 @@
    <!--Task: Invoking smoke automation suite to run--> 
    <target name="regression" description="Triggers REGRESSION automation suite">
 	   <ant antfile="${reg.build.file}" target="run" useNativeBasedir="true"/>
+       <var name="core-subject" value="regression"/>
+       <antcall target="check-cores"/>
    </target>
    
    <!--Task: Invoking smoke performance suite to run--> 
    <target name="performance" description="Triggers PERFORMANCE automation suite">
 	   <ant antfile="${perf.build.file}" target="perf" useNativeBasedir="true"/>
+       <var name="core-subject" value="performance"/>
+       <antcall target="check-cores"/>
    </target>
 
 
@@ -129,7 +137,7 @@
         3. upgrade server 
         4. start test again 
     -->	 
-	<target name="update-nde-test-config" depends="eval-smoke-trend,take-knap">
+	<target name="update-nde-test-config" depends="eval-smoke-trend, take-knap">
 		<if>
 			<equals arg1="${smoke.trend}" arg2="0"/>
 			<then>
@@ -222,7 +230,7 @@
 						<exec executable="cat" outputproperty="local.version">
 							<arg value="/home/netstorm/work/etc/version"/>
 						</exec>
-						<echo> vesrion on 216.66.23.194 machine=${local.version}</echo>
+						<echo> vesrion on 10.10.30.37 machine=${local.version}</echo>
 						<if>
 							<equals arg1="${server.version}" arg2="${local.version}"/>
 							<then>
@@ -304,15 +312,51 @@
               password="Cavisson!" 
               mailport="587" 
 			  subject="[NDE Continuous Monitioring] ${mail.subject}"
-              tolist="dl-qa-auto@cavisson.com,dl-qa-nd@cavisson.com"
+              tolist="dl-qa-auto@cavisson.com, dl-qa-nd@cavisson.com"
+              cclist="functionalheads@cavisson.com, neeraj@cavisson.com"
               messagefile="${nde.mail.out.html}"
 			  messagemimetype="text/html">
 			<from address="automation@cavisson.com"/>   		   
 		</mail>	       
 	</target>
+    <target name="send-core-mail">
+        
+        <mail mailhost="websrv.cavisson.com" 
+            user="automation@cavisson.com"
+            password="Cavisson!" 
+            mailport="587" 
+            subject="[ALERT] Core dump found after ${core-subject} in ${release.info} B${build.info}"
+            tolist="vishal.singhal@cavisson.com"
+            message="${core.mail.html}"
+            messagemimetype="text/html">
+            <from address="automation@cavisson.com"/>   		   
+        </mail>	       
+    </target>
 
-
-	<!-- Workflow
+    <target name="check-cores">
+        <exec executable="python" outputproperty="core.mail.html">
+            <arg value="nsi_find_core.py" />
+        </exec>
+        <if>
+            <not>
+                <equals arg1="${core.mail.html}" arg2="No core found"/>
+            </not>
+            <then>
+                <exec executable="bash" outputproperty="release.info">
+                    <arg value="-c"/>
+                    <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+                </exec>
+                
+                <exec executable="bash" outputproperty="build.info">
+                    <arg value="-c"/>
+                    <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+                </exec>
+                <antcall target="send-core-mail"/>
+            </then>
+        </if>
+    </target>
+        
+        <!-- Workflow
          1. Gets idle for 10 second 
 		 2. Runs NS performance automation suite
          3. Gets idle for 10 second 
@@ -326,10 +370,12 @@
                  <echo message="all test ran successfully"/>
              </target>
 
-    <target name="start" depends="smoke" description="Default target which inititates entire automation process">
-        <parallel>
-            <antcall target="update-nde-test-config"/>
+    <target name="start" depends="smoke" 
+        description="Default target which inititates entire automation process">
+                 <!--parallel-->
+                     <echo message="smoke ran successfully"/>
+            <!--antcall target="update-nde-test-config"/-->
             <antcall target="run-reg-and-perf"/>
-        </parallel>
+        <!--/parallel-->
     </target>
 </project>

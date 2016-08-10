@@ -2,7 +2,7 @@
 . $NS_WDIR/lib/automation_util
 
 
-HEADER="Case, TestID, Category, ReleaseID, BuildID, ComponentID, TestRun, CPS, HPS, ThroughputRX, ThroughputTX"
+HEADER="Case, TestID, Category, ReleaseID, BuildID, ComponentID, TestRun, CPS, HPS, ThroughputRX, ThroughputTX, CPS_AVG, HPS_AVG, ThroughputRX_AVG"
 BASELINE_FILE="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CURRENT_FILE="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 

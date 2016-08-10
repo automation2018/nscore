@@ -269,6 +269,9 @@ function validate_max_con_per_vuser(){
 			if [ $no_of_expect_conn -eq $no_of_connection ];then
 				debug_log "no. of expect connection is equal to the exact no. of connection"
 				log_status_and_exit_ex "PASS" "max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection"
+            else
+				log_status_and_exit_ex "FAIL" "max con per vuser testcase failed;as no of expect connection is not equal to the exact no of connection"
+
 			fi
 		elif [ $no_of_vuser -gt $total_url_of_conn ];then
 			no_of_expect_conn=$((total_url_of_conn * no_of_user + total_script_without_keyword))

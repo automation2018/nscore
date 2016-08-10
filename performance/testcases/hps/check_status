@@ -16,37 +16,45 @@ function BaseLine(){
     debug_log "BaselineTR for HPS = ${B_T_RUN_ID}" 
     
     CPS_MAX_VALUE=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    CPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 1)
     HPS_MAX_VALUE=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    HPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 2)
+    echo "hps average value for baseline test run:$HPS_AVG_VALUE"
     Throughput_Rx=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     Throughput_Tx=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Rx_Avg=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 3)
     CPS_MAX_VALUE=`echo $CPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     HPS_MAX_VALUE=`echo $HPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Rx=`echo $Throughput_Rx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Tx=`echo $Throughput_Tx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx" >>$BaseLineCSV
+    echo "HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx",${CPS_AVG_VALUE},${HPS_AVG_VALUE},${Throughput_Rx_Avg} >>$BaseLineCSV
 }
 
 function CurrentHPS() {
     debug_log "current test run number is =$T_RUN_ID"
 	
 	CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 1)
 	HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 2)
+    echo "hps average value for current test run:$HPS_AVG_VALUE_CR"
 	Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
 	Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-    
+    Throughput_Rx_Avg_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 3)
+
 	CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
     
-	echo "HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+	echo "HPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR,${CPS_AVG_VALUE_CR},${HPS_AVG_VALUE_CR},${Throughput_Rx_Avg_CR}"  >>$CurrentCSV
 }
 
 
 function Compare_Results(){
-    Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
-    echo "Conn_Perc_Change is =$Conn_Perc_Change"
-    if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then	
+    Hits_Perc_Change=`echo "$HPS_AVG_VALUE" "$HPS_AVG_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
+    echo "Hits_Perc_Change is =$Hits_Perc_Change"
+    if (($(echo "scale=9; $Hits_Perc_Change < 5" |bc)!=0)) ;then	
         debug_log "going to pass testcase"	
 	log_status_and_exit_ex "PASS" "$T_NAME Passed"
     else
@@ -68,11 +76,11 @@ if [[ "$T_NAME" == "Performance_hps_java_128User_OEF"* ]]; then
 	CurrentHPS
 	
 	JAVA_BASED_HPS_MAX=13779
-	Conn_Perc_Change=$(echo "$JAVA_BASED_HPS_MAX" "$HPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}')
+	Hits_Perc_Change=$(echo "$JAVA_BASED_HPS_MAX" "$HPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}')
     
-	debug_log "connection pct change is = $Conn_Perc_Change"
+	debug_log "hits pct change is = $Hits_Perc_Change"
     
-	if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0));then
+	if (($(echo "scale=9; $Hits_Perc_Change < 5" |bc)!=0));then
 	    log_status_and_exit_ex "PASS" "testcase $T_NAME passed"
     else
 	    log_status_and_exit_ex "FAIL" "testcase $T_NAME failed"

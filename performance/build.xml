@@ -115,6 +115,12 @@
     <target name="trigger-cps-test" 
             depends="restart-hpd" 
             description="initiates cps perf test">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+        <echo message="performance automation suite started at: ${start.time}"/>
+        
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
             <arg value="Performance_Cps"/>
@@ -126,12 +132,6 @@
     <target name="trigger-hps-test" 
             depends="trigger-cps-test, restart-hpd-for-hpstest"
             description="triggers hps, tput and concurrency perf tests">
-        <exec executable="/bin/bash" outputproperty="start.time">
-            <arg value="-c"/>
-            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
-        </exec>
-
-        <echo message="start time = ${start.time}"/>
 
         <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
@@ -144,14 +144,15 @@
     <!--Task: Upload test results to analalytics.db-->
     <!--<target name="perf" depends="Performance">-->
 	<target 
-		name="perf"
-	    depends="trigger-welcome-mail, trigger-hps-test, trigger-results-mail"	
+        name="perf"
+        depends="trigger-hps-test, trigger-results-mail"
 		description="default target which runs command to store perf results to database after automation completes">
 		<echo message="uploading ctype performance stats"/>
         <exec executable="python">
             <arg value="${perf.db_upload}"/>
             <arg value="${perf.input.file}"/>
             <arg value="${perf.database}"/>
+            <!--<arg value="/home/automation/workbench/automation/nscore/lib/test/analyticskill.db"/>-->
             <arg value="True"/>
             <arg value="NetStorm"/>
         </exec>
@@ -161,6 +162,7 @@
             <arg value="${perf.db_upload}"/>
             <arg value="${jperf.input.file}"/>
             <arg value="${perf.database}"/>
+            <!--  <arg value="/home/automation/workbench/automation/nscore/lib/test/analyticskill.db"/>-->
             <arg value="True"/>
             <arg value="JTS"/>
         </exec>
@@ -210,6 +212,13 @@
            depends="update-results-properties"
            description="send automation results"> 
        <property file="mail.properties"/>
+        
+       <exec executable="/bin/bash" outputproperty="end.time">
+          <arg value="-c"/>
+          <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+       </exec>
+       <echo message="performance suite executions finished at: ${end.time}"/>
+        
        <mail mailhost="websrv.cavisson.com"
              user="${mail.user}"
              password="${mail.password}"  

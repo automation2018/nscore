@@ -6,6 +6,7 @@ HEADER="Case, TestID, Category, ReleaseID, BuildID, ComponentID, TestRun, CPS, H
 BASELINE_FILE="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/BaseLineCSVData.CSV"
 CURRENT_FILE="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
 
+sed -i '/::/s/^/#/' $NS_WDIR/sys/ip_entries
 
 if [ ! -f ${BASELINE_FILE} ] && [ ! -f ${CURRENT_FILE} ]; then
     touch $BASELINE_FILE 

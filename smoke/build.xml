@@ -146,7 +146,7 @@
     
     <!-- Task: Initiates excution of Smoke testsuite--> 
     <target name="smoke" 
-            depends="trigger-welcome-mail, hpd-process-restart, restart-vnc"
+            depends="hpd-process-restart, restart-vnc"
             description="Initiates excution of Smoke testsuite">
         <exec executable="/bin/bash" outputproperty="start.time">
             <arg value="-c"/>

@@ -16,6 +16,8 @@
 char *file_name=%FILE_NAME ; //File name with or without path.
 int mode=%FILE_MODE ; //NS_APPEND_FILE && NS_TRUNC_FILE
 
+
+
 #ifdef SET_INT_VAL
 void call_to_set_int_val_api()
 {
@@ -350,7 +352,6 @@ void flow()
     "BODY={NS_DP}"
   ); 
   ns_end_transaction("API_COOKIE_T02",NS_AUTO_STATUS);  
-
-#endif 
+#endif
 }
 

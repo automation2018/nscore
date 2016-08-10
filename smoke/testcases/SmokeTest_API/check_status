@@ -9,6 +9,17 @@ TESTRUN_ID=$(get_testidx)
 #This variable holds the path where the save_data() api writes in case of absolue path is used.
 SAVED_FILE_WITH_PATH=$(echo $VAR_VALUE_SUM_RESULT |cut -d "," -f8|sed 's/"//g')  
 
+################################################
+get_status_from_hpd_url_resp_msg_report() 
+{
+  wget "http://10.10.30.38/hpd_url.html" -O "$NS_WDIR/logs/TR${TESTRUN_ID}/hpd_resp.html"
+  TEST_RUN_PATH=$NS_WDIR/logs/TR${TESTRUN_ID} 
+  echo >> $TEST_RUN_PATH/hpd_resp.html
+  diff $TEST_RUN_PATH/hpd_resp.html $TEST_RUN_PATH/api_resp.html
+  rc=$?
+  return $rc
+}
+
 #################################################
 get_status_from_test_report() 
 {
@@ -231,6 +242,19 @@ function check_and_set_status()
   if [ "XX$T_NAME" == "XXXXSMOKE-001-023" ];then 
      get_status_for_cookie_api url_req_0_0_0_2_0_0_0_3_0
   fi  
+
+#Cases for hpd_url_resp_msg
+  if [ "XX$T_NAME" == "XXSMOKE-001-024" ];then
+     get_status_from_hpd_url_resp_msg_report
+     rc=$?
+     if [ $rc -gt 0 ]; then
+         log_status_and_exit_ex "FAIL" "Failed for ns_get_url_resp_msg; Diff returned $rc"
+     else
+         log_status_and_exit_ex "PASS" "Passed for ns_get_url_resp_msg"
+     fi 
+     #passing static name. Unable to get it on run time
+  fi
+ 
   debug_log "End method - check_and_set_status()"  
 }
 

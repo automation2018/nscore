@@ -7,12 +7,26 @@ SUMMARY_GDF="$NS_WDIR/logs/TR${T_RUN_ID}/summary_gdf.data"
 
 url_completed=$(grep -w "Requests Completed(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
 url_completed=`echo $url_completed | awk '{printf "%.0f\n", $1}'`
+
+url_success=$(grep -w "Requests Successful(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+url_success=`echo $url_success | awk '{printf "%.0f\n", $1}'`
+
+tcp_conn_open=$(grep -w "TCP Total Connections Open(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+tcp_conn_open=`echo $tcp_conn_open | awk '{printf "%.0f\n", $1}'`
+
+vuser_count=$(grep -w "Running Vusers(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+vuser_count=`echo $vuser_count | awk '{printf "%.0f\n", $1}'`
+
 debug_log "tname is =$(get_tname)" 
 
 function main(){
     case $(get_tname) in
         "SMOKE-032-001") validate_ipv6_support ;;
         "SMOKE-032-002") validate_ipv6_redirection ;;
+        "SMOKE-032-003") validate_ipv6_keep_alive ;;
+        "SMOKE-032-004") validate_ipv6_max_conn_per_vuser ;;
+        "SMOKE-032-005") validate_ipv6_keep_alive_and_max_conn ;;
+        "SMOKE-032-006") validate_ipv6_keep_alive_100_and_max_2_conn ;;
          *) handle_unknown_case ;;
          ?) handle_unknown_case ;;
     esac
@@ -27,8 +41,6 @@ function validate_ipv6_support(){
     debug_log "Inside validation module"
     echo "Inside validation module"
 
-    url_success=$(grep -w "Requests Successful(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
-    url_success=`echo $url_success | awk '{printf "%.0f\n", $1}'`
     page_completed=$(grep -w "Total Pages Completed(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
     page_completed=`echo $page_completed | awk '{printf "%.0f\n", $1}'`
     page_success=$(grep -w "Total Pages Success(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
@@ -69,6 +81,37 @@ function validate_ipv6_redirection() {
         log_status_and_exit_ex "PASS" "IPV6 redirection test passed"
     else
         log_status_and_exit_ex "FAIL" "IPV6 redirection test failed"
+    fi
+}
+
+function validate_ipv6_keep_alive()  {
+    debug_log "url_success=$url_success; tcp_conn_open=$tcp_conn_open"
+    if [ $tcp_conn_open -eq $url_success ];then
+        log_status_and_exit_ex "PASS" "IPV6 Keep Alive test passed"
+    else
+        log_status_and_exit_ex "FAIL" "IPV6 Keep Alive test failed"
+    fi
+}
+
+function validate_ipv6_max_conn_per_vuser()  {
+    debug_log "tcp_conn_open=$tcp_conn_open; vuser_count=$vuser_count"
+    if [ $tcp_conn_open -eq $vuser_count ];then
+        log_status_and_exit_ex "PASS" "IPV6 Max Connection per Vuser test passed"
+    else
+        log_status_and_exit_ex "FAIL" "IPV6 Max Connection per Vuser test failed"
+    fi
+}
+
+function validate_ipv6_keep_alive_and_max_conn(){
+    validate_ipv6_keep_alive
+}
+
+function validate_ipv6_keep_alive_100_and_max_2_conn() {
+    debug_log "tcp_conn_open=$tcp_conn_open; vuser_count=$vuser_count"
+    if [ $tcp_conn_open -eq $(expr ${vuser_count} \* 2) ];then
+        log_status_and_exit_ex "PASS" "IPV6 Max 2 Connection per Vuser test passed"
+    else
+        log_status_and_exit_ex "FAIL" "IPV6 Max 2 Connection per Vuser test failed"
     fi
 }
 

@@ -24,7 +24,7 @@ TS_LOG_DIR="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/$TSR_NUM/logs"
 SAVED_STRING=$(echo $VAR_VALUE_SUM_RESULT | cut -d "," -f5|sed 's/"//g')
 RELEASE_ID=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
 BUILD_ID=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
-
+#ParamListFile="/home/ashmita/workspace/Shell/ParamList"
 
 #Testidx will be passed as second args by ts_run in check status itself
 T_RUN_ID=$2
@@ -217,7 +217,7 @@ log_status_and_exit_ex(){
     #echo "$(get_tname),$(get_testidx),${RELEASE_ID},${BUILD_ID},${COMP},${status_show},${categoryid},${remarks}" >>$R_FILE
     echo "$(get_tname),$(get_testidx),${COMP},${categoryid},${status_show},${remarks}" >>${R_FILE}
     
-    [ "X$status" = "XFAIL" ] && exit -1
+    [ "X$status" = "XFAIL" ] && exit 3
 }
 
 
@@ -281,13 +281,11 @@ project_name(){
 remote_ssh(){
     host="$1"
     cmd="$2"
-
     default_user="root"
     default_passwd="abeona" 
 
     user=${default_user}
     passwd=${default_passwd}
-
     #Safety Checks, If user and password is provided override them
     [ ! -z $3 ] && user="$3"
     [ ! -z $4 ] && passwd="$4"
@@ -295,5 +293,40 @@ remote_ssh(){
     PYTHON_SSH="python /home/regression/bin/ssh.py"
 
     ${PYTHON_SSH} ${host} ${user} ${passwd} "${cmd}"
+}
+
+function baslineTR()
+{
+    tsrId=$1
+    tsrNo=$2
+    testcaseName=$3
+    tName=$(get_tname)
+    baselineTr=$(grep -w "$tName" $NS_WDIR/logs/tsr/$tsrId/$tsrNo/${testcaseName}_results.csv|cut -d ',' -f2)
+    echo $baselineTr
+}
+
+#fetches data from summary_gdf.data file for baseline/current test run
+
+function testStats()
+{    test_run=$1
+    test_log=$2 #either it is baseline(0) or current(1)
+    param_string=$3
+    param_name=$4
+    
+    #fetches data for baseline test run (test_log = 0 represents baseline test run)
+    if [ $test_log -eq 0 ]; then
+        param_value="${param_name}_baseline"
+        param_value=`grep -w "${param_string}" $NS_WDIR/logs/TR$test_run/summary_gdf.data |cut -d '|' -f6`
+        echo ${param_value}
+
+        #fetches data for current test run (test_log = 1 represents current test run)
+    elif [ $test_log -eq 1 ]; then
+        param_value="${param_name}_current"
+        param_value=$(grep -w "$param_string" $NS_WDIR/logs/TR$test_run/summary_gdf.data |cut -d '|' -f6)
+        echo $param_value
+
+    else
+        echo "invalid testLog argument"
+    fi
 }
 

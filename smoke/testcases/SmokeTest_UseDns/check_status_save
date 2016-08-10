@@ -1,220 +1,0 @@
-#!/bin/bash
-
-. $NS_WDIR/lib/automation_util
-T_NAME=$(get_tname)
-
-function Smoke_Dns()
-{
-    
-
-}
-
-
-
-
-
-if [ "$T_NAME" == "SMOKE_TypeA_DNS" ];then
-    Msg_Log_Debug=`grep -o "rdata type A addr 10.10.10.10" $NS_WDIR/logs/TR$T_RUN_ID/debug.log|head -1` 
-    Msg_Log_Debug_Count=`grep -c "rdata type A addr 10.10.10.10" $NS_WDIR/logs/TR$T_RUN_ID/debug.log` 
-    if [ "$Msg_Log_Debug" == "rdata type A addr 10.10.10.10" ] && \
-       [ $Msg_Log_Debug_Count -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi	 
-fi
-
-if [ "$T_NAME" == "SMOKE_TypeAAAA_DNS" ];then
-    Msg_Log_Debug=`grep -o "rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-    if [ "$Msg_Log_Debug" == "rdata type AAAA addr 2010:2011:2012:2013:2014:2015:2016:2017" ] && \
-       [ $Msg_Log_Debug_Count -eq 2 ]; then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi   
-fi
-
-if [ "$T_NAME" == "SMOKE_TypeMX_DNS" ];then
-    Msg_Log_Debug=`grep -o "type MX Preference 100 domain abc.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "type MX Preference 100 domain abc.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-    if [ "$Msg_Log_Debug" == "type MX Preference 100 domain abc.yahoo.com" ] && \
-       [ $Msg_Log_Debug_Count -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi   
-fi
-
-if [ "$T_NAME" == "SMOKE_TypeNS_DNS" ];then
-    Msg_Log_Debug=`grep -w www.l.yahoo.com $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "www.l.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-    if [ "$Msg_Log_Debug" == " rdata type NS  domain name www.l.yahoo.com" ] && \
-       [ $Msg_Log_Debug_Count -eq 2 ]; then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi   
-fi
-
-if [ "$T_NAME" == "SMOKE_TypeSOA_DNS" ];then
-    Msg_Log_Debug=`grep -o "rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-   if [ "$Msg_Log_Debug" == "rdata type SOA MNAME www.yahoo.com RNAME automation.cavisson.com 34753 1 1 1 1" ] && \
-      [ $Msg_Log_Debug_Count -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-   else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-   fi
-fi
-
-if [ "$T_NAME" == "SMOKE_TypePTR_DNS" ];then
-    Msg_Log_Debug=`grep -o "rdata type PTR  domain name 100 abc.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "rdata type PTR  domain name 100 abc.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-    if [ "$Msg_Log_Debug" == "rdata type PTR  domain name 100 abc.yahoo.com" ] && \
-      [ $Msg_Log_Debug_Count -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-if [ "$T_NAME" == "SMOKE_TypeCNAME_DNS" ];then
-    Msg_Log_Debug=`grep -o "rdata type CNAME  domain name abc.1.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log | head -1`
-    Msg_Log_Debug_Count=`grep -c "rdata type CNAME  domain name abc.1.yahoo.com" $NS_WDIR/logs/TR$T_RUN_ID/debug.log`
-    if [ "$Msg_Log_Debug" == "rdata type CNAME  domain name abc.1.yahoo.com" ] && \
-      [ $Msg_Log_Debug_Count -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-if [ "$T_NAME" == "SMOKE_POP3" ];then
-    FS_User=`grep "USER" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}'`
-    echo "FS_User=$FS_User"
-    FS_Stat=`grep "STAT" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_0_0_0_0_0_0_0.dat`
-    echo "FS_Stat=$FS_Stat"
-    FS_List=`grep "LIST" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_0_1_0_0_0_1_0.dat`
-    echo "FS_List=$FS_List"
-    FS_Get_Count=`grep -c "RETR" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_0_2_0_0_0_2_0.dat`
-    echo "FS_Get_Count=$FS_Get_Count"
-    FS_OK_Count=`grep "OK" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_0_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
-    echo "FS_OK_Count=$FS_OK_Count"
-    SS_User=`grep "USER" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_1_0_0_0_0_0_0.dat | awk '{print $2}'`
-    echo "SS_User=$SS_User"
-    SS_Stat=`grep "STAT" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_1_0_0_0_0_0_0.dat`
-    echo "SS_Stat=$SS_Stat"
-    SS_List=`grep "LIST" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_1_1_0_0_0_1_0.dat`
-    echo "SS_List=$SS_List"
-    SS_Get_Count=`grep -c "RETR" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_1_2_0_0_0_2_0.dat`
-    echo "SS_Get_Count=$SS_Get_Count"
-    SS_OK_Count=`grep "OK" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_1_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
-    echo "SS_OK_Count=$SS_OK_Count"
-    TS_User=`grep "USER" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_2_0_0_0_0_0_0.dat | awk '{print $2}'`
-    echo "TS_User=$TS_User"
-    TS_Stat=`grep "STAT" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_2_0_0_0_0_0_0.dat`
-    echo "TS_Stat=$TS_Stat"
-    TS_List=`grep "LIST" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_2_1_0_0_0_1_0.dat`
-    echo "TS_List=$TS_List"
-    TS_Get_Count=`grep -c "RETR" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_2_2_0_0_0_2_0.dat`
-    echo "TS_Get_Count=$TS_Get_Count"
-    TS_OK_Count=`grep "OK" $NS_WDIR/logs/TR$T_RUN_ID/pop3_session_0_0_2_2_0_0_0_2_0.dat | sed -n '4'p| awk '{print $2}'`
-    echo "TS_OK_Count=$TS_OK_Count"
-    if [ "$FS_User" == "user1@cavisson.com" ] && \
-       [ "$FS_Stat" == "STAT" ] && \
-       [ "$FS_List" == "LIST" ] && \
-       [ $FS_Get_Count -eq $FS_OK_Count ] && \
-       [ "$SS_User" == "user2@mydom.com" ] && \
-       [ "$SS_Stat" == "STAT" ] && \
-       [ "$SS_List" == "LIST" ] && \
-       [ $SS_Get_Count -eq $SS_OK_Count ] && \
-       [ "$TS_User" == "user3@jss.com" ] && \
-       [ "$TS_Stat" == "STAT" ] && \
-       [ "$TS_List" == "LIST" ] && \
-       [ $TS_Get_Count -eq $TS_OK_Count ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-function ftp_proto()
-{
-    T_ID_REQ_PATH=$1
-    echo "tets run id is=$T_ID_REQ_PATH"
-    Get_User=`grep "USER" $T_ID_REQ_PATH/ftp_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $2}'`
-    Get_Status_Msg=`grep "File send" $T_ID_REQ_PATH/ftp_session_0_0_0_0_0_0_0_0_0.dat`
-    Put_User=`grep "USER" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}'`
-    Put_Status_Msg=`grep "send data" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat`
-    Get_File_Size=`ls -l $T_ID_REQ_PATH/ftp_data_session_0_0_0_0_0_0_0_0_0.dat | awk '{print $5}'`
-    Put_File_Name=`grep "STOR" $T_ID_REQ_PATH/ftp_session_0_0_0_1_0_0_0_1_0.dat | awk '{print $2}'`
-    PASV_COUNT_PASS_MODE=`grep "227 Entering Passive Mode" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
-    PASV_COUNT_ACTIVE_MODE=`grep "PASV" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
-    BINARY_WORD_COUNT=`grep "Binary" $T_ID_REQ_PATH/ftp_session_0_0_0_* | wc -l`
-}
-
-if [ "$T_NAME" == "SMOKE_FTP_TXT_TYPE_PASSIVE" ];then
-    ftp_proto $T_ID_REQ_PATH
-    if [ "$Get_User" == "netstorm" ] && \
-       [ "$Get_Status_Msg" == "226 File send OK." ] && \
-       [ "$Put_User" == "automation" ] && \
-       [ "$Put_Status_Msg" == "150 Ok to send data." ] && \
-       [ "$Get_File_Size" == "114426" ] && \
-       [ "$Put_File_Name" == "xyz.txt" ] && \
-       [ $PASV_COUNT_PASS_MODE -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-if [ "$T_NAME" == "SMOKE_FTP_BIN_TYPE_PASSIVE" ];then
-   ftp_proto $T_ID_REQ_PATH
-   if [ "$Get_User" == "netstorm" ] && \
-       [ "$Get_Status_Msg" == "226 File send OK." ] && \
-       [ "$Put_User" == "automation" ] && \
-       [ "$Put_Status_Msg" == "150 Ok to send data." ] && \
-       [ "$Get_File_Size" == "4269" ] && \
-       [ "$Put_File_Name" == "xyz.bin" ] && \
-       [ $BINARY_WORD_COUNT -eq 2 ] && \
-       [  $PASV_COUNT_PASS_MODE -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-
-if [ "$T_NAME" == "SMOKE_FTP_TXT_TYPE_ACTIVE" ];then
-    ftp_proto $T_ID_REQ_PATH
-    if [ "$Get_User" == "netstorm" ] && \
-       [ "$Get_Status_Msg" == "226 File send OK." ] && \
-       [ "$Put_User" == "automation" ] && \
-       [ "$Put_Status_Msg" == "150 Ok to send data." ] && \
-       [ "$Get_File_Size" == "114426" ] && \
-       [ "$Put_File_Name" == "xyz.txt" ] && \
-       [ $PASV_COUNT_ACTIVE_MODE -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-    fi
-fi
-
-if [ "$T_NAME" == "SMOKE_FTP_BIN_TYPE_ACTIVE" ];then
-   ftp_proto $T_ID_REQ_PATH
-   if [ "$Get_User" == "netstorm" ] && \
-       [ "$Get_Status_Msg" == "226 File send OK." ] && \
-       [ "$Put_User" == "automation" ] && \
-       [ "$Put_Status_Msg" == "150 Ok to send data." ] && \
-       [ "$Get_File_Size" == "4269" ] && \
-       [ "$Put_File_Name" == "xyz.bin" ] && \
-       [ $BINARY_WORD_COUNT -eq 2 ] && \
-       [  $PASV_COUNT_ACTIVE_MODE -eq 2 ];then
-        log_status_and_exit_ex "PASS" "$T_NAME Passed"
-    else
-        log_status_and_exit_ex "FAIL" "$T_NAME failed"
-   fi
-fi
-
-exit 0

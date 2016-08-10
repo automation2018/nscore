@@ -77,7 +77,7 @@
     </target>
 
     <!-- Task: Starts execution of regression testsuite.-->
-    <target name="regression" depends="trigger-welcome-mail, hpd-process-restart" description="Starts execution of regression testsuite">
+    <target name="regression" depends="hpd-process-restart" description="Starts execution of regression testsuite">
         <exec executable="/bin/bash" outputproperty="start.time">
             <arg value="-c"/>
             <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>

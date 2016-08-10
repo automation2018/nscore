@@ -47,3 +47,5 @@ SMOKE-001-019|API|1|"a-z0-9A-Z._"|GET_RANDOM_STR|0|"NA"|-1
 SMOKE-001-020|API|1|"NA"|GETTERS|0|"NA"|-1  
 
 SMOKE-001-021|API|1|"Ever wondered why Jack and Jill went up the hill?"|CHK_STR_CPY|0|"NA"|-1
+
+SMOKE-001-024|hpd_msg_resp_api|1|"Hello everyone"|API_GET_RESPONSE_MESSAGE|0|"api_resp.html"|NS_TRUNC_FILE

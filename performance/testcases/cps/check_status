@@ -17,14 +17,20 @@ function BaseLine(){
     debug_log "BaselineTR for CPS = ${B_T_RUN_ID}" 
     
     CPS_MAX_VALUE=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    CPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 1)
+    echo "(Baseline)cps max value:$CPS_MAX_VALUE , cps avg value:$CPS_AVG_VALUE"
     HPS_MAX_VALUE=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    HPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 2)
+    echo "(Baseline)hps max value:$HPS_MAX_VALUE , hps avg value:$HPS_AVG_VALUE"
     Throughput_Rx=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     Throughput_Tx=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Rx_Avg=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 3)
+    echo "(Baseline)throughput max value:$Throughput_Rx , throughput avg value:$Throughput_Rx_Avg"
     CPS_MAX_VALUE=`echo $CPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     HPS_MAX_VALUE=`echo $HPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Rx=`echo $Throughput_Rx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Tx=`echo $Throughput_Tx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx" >>$BaseLineCSV
+    echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx",${CPS_AVG_VALUE},${HPS_AVG_VALUE},${Throughput_Rx_Avg} >>$BaseLineCSV
 }
 
 
@@ -32,21 +38,26 @@ function CurrentCPS(){
     debug_log "test run number is = $T_RUN_ID"
 	
 	CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-	HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 1)
+    echo "(Current)cps max value:$CPS_MAX_VALUE_CR , cps avg value:$CPS_AVG_VALUE_CR"
+    HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 2)
+    echo "(Current)hps max value:$HPS_MAX_VALUE_CR , hps avg value:$HPS_AVG_VALUE_CR"
 	Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
 	Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-	
-	CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Rx_Avg_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 3)
+    echo "(current)throughput max value:$Throughput_Rx_CR , throughput avg value:$Throughput_Rx_Avg_CR"
+    CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
     
-	echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+	echo "CPS,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR,${CPS_AVG_VALUE_CR},${HPS_AVG_VALUE_CR},${Throughput_Rx_Avg_CR}"  >>$CurrentCSV
 }
 
 
 function Compare_Results() {
-    Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
+    Conn_Perc_Change=`echo "$CPS_AVG_VALUE" "$CPS_AVG_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
     echo "Conn_Perc_Change is =$Conn_Perc_Change"
     
 	if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then
