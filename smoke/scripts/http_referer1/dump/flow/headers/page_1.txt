@@ -1,0 +1,81 @@
+--Request 
+GET http://10.10.30.25:9001/tours/index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 2975
+Content-Type: text/html
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 16522
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 4125
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/login.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1323
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/images/banner_merctur.jpg HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 22548
+Content-Type: image/jpeg
+---
+
+

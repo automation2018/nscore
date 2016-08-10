@@ -1,0 +1,28 @@
+{% macro report_table(headers, data) -%}
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers -%}
+                    <th>{{ header }}</th>
+                {%- endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data -%}
+            <tr>
+                {% set time = row.split('|') %}
+                    <td>{{ time[0] }}</td>
+                {% set core = time[1].split(':') %}
+                    <td>{{ core[0] }}</td>
+                    <td>{{ core[1] }}</td>
+            </tr>
+            {%- endfor %}
+        </tbody>
+    </table>
+{%- endmacro %}
+
+{% macro inline_css() -%}
+  <style>
+    .container,table,td,th{border:1px solid #e0e0e0}body,th{color:#333}body{font-size:.9rem}.container{width:90%;padding:50px}table{border-collapse:collapse;width:80%}table,td,th{padding:10px;font-size:1em}th{background-color:#f5f5f5;text-align:left}.divider{border-top:1px solid #e0e0e0}.signature{color:#607d8b}.lead{font-size:1.68rem;color:#616161;font-weight:300}
+  </style>
+{%- endmacro %}

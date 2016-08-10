@@ -1,0 +1,5 @@
+nsl_search_var(search1, PAGE=index, LB="</soap:Envelope>" , ORD=1, SaveOffset=0);
+//nsl_static_var(num_record:1,session_id:2,time_stamp:3, File=filedata_20160621.txt, Refresh=SESSION, Mode=USE_ONCE, EncodeMode=NONE);
+nsl_static_var(num_record:1,session_id:2,time_stamp:3, File=filedata_20160623.txt, Refresh=SESSION, Mode=USE_ONCE, EncodeMode=NONE);
+nsl_decl_var(sid);
+nsl_decl_var(url);

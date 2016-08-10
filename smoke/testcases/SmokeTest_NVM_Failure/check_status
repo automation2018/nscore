@@ -1,0 +1,36 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+SUMMARY_GDF="$NS_WDIR/logs/TR${T_RUN_ID}/summary_gdf.data"
+
+vuser_count=$(grep -w "Running Vusers(NA)" ${SUMMARY_GDF} | cut -d '|' -f 6)
+vuser_count=`echo $vuser_count | awk '{printf "%.0f\n", $1}'`
+
+nvm_count=$(cat /home/netstorm/work/logs/TR${T_RUN_ID}/remaining_var )
+
+debug_log "tname is =$(get_tname)" 
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-035-001") validate_nvmFail_001 ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_nvmFail_001() {
+    debug_log "No. of users found: $user_count"
+    if [ ${nvm_count} -eq 9 ] && [ ${vuser_count} -lt 10 ]; then
+        log_status_and_exit_ex "PASS" "validate_nvmFail_001 test passed"
+    else
+        log_status_and_exit_ex "FAIL" "validate_nvmFail_001 test failed"
+    fi
+}
+main
+exit 0

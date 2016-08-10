@@ -1,0 +1,39 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-034-001") validate_Referer ;;
+        "SMOKE-034-002") validate_Referer ;;
+        "SMOKE-034-003") validate_Referer ;;
+        "SMOKE-034-004") validate_Referer ;;
+        "SMOKE-034-005") validate_Referer ;;
+        "SMOKE-034-006") validate_Referer ;;
+        "SMOKE-034-007") validate_Referer ;;
+        "SMOKE-034-008") validate_Referer ;;
+        "SMOKE-034-009") validate_Referer ;;
+        "SMOKE-034-010") validate_Referer ;;
+        "SMOKE-034-011") validate_Referer ;;
+        "SMOKE-034-012") validate_Referer ;;
+        "SMOKE-034-013") validate_Referer ;;
+        "SMOKE-034-014") validate_Referer ;;
+        "SMOKE-034-015") validate_Referer ;;
+        "SMOKE-034-016") validate_Referer ;;
+        *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_Referer(){
+    debug_log "Referer case"
+    log_status_and_exit "PASS" "Referer"
+}
+
+main
+exit 0

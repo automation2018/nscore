@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+    {% block maintable %}
+        <table>
+            <tr>
+            <th>Total Cores</th>
+            <th>Reporting Time</th>
+            </tr>
+            <tr>
+            <td>{{ tot }}</td>
+            <td>{{ cur_time }}</td>
+            </tr>
+        </table>
+    {% endblock %}
+
+    {% block reporttable %}
+        {{ report_table(headers, data) }}
+    {% endblock %}
+
+    {% block report %}
+       Alert: Core dump found
+    {% endblock %}

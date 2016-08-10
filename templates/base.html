@@ -1,0 +1,30 @@
+{% from 'macros/macros.jinja.html' import report_table,inline_css %}
+<!DOCTYPE html>
+<html>
+<head>
+        {% block css %} {{ inline_css() }} {% endblock css %}
+</head>
+<body>
+    <div class='container'>
+    <table style='width: 92%!important; border: 0px;'>
+        <tr>
+            <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>{% block report %}{% endblock %}</h2></td>
+            <td width='70%' style='border: 0px! important; padding: 0px!important'>
+    {% block maintable %}
+    {% endblock %}
+        </td>
+        </tr>
+    </table>
+    <br>
+
+    {% block reporttable %}
+    {% endblock %}
+    
+    <br><br>
+    <p class='signature'>
+        Automation Team,
+        <br>Cavisson Systems Inc
+    </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/*-----------------------------------------------------------------------------
+    Name: flow
+    Recorded By: netstorm
+    Date of recording: 05/19/2014 03:45:25
+    Flow details:
+    Modification History:
+-----------------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ns_string.h"
+
+
+
+
+void flow()
+{
+
+   int num_record;
+   int search_parm;
+   int ts;
+   int i;
+   char url[32];
+   char *sid;
+
+   ns_advance_param("num_record");
+   num_record = ns_get_int_val("num_record");
+   ts = ns_get_int_val("time_stamp");
+   sid = ns_eval_string("{session_id}");
+   ns_save_string(sid,"sid");
+printf("****The value of num_record is %d/n", num_record);
+
+   if(num_record)
+   {
+     for(i = 1; i <= num_record; i++){
+      ns_start_transaction("ReplayPage");
+      sprintf(url, "url%d", i);
+      ns_save_string(url, "url") ;
+      ns_web_url ("index",
+        "METHOD=POST",
+        "URL=http://127.0.0.1/{url}",
+        "HEADER=Accept-Language:en-us,en;q=0.5",
+        "BODY=<sessionId>{sid}</sessionId>",
+     );
+     search_parm = ns_get_int_val("search1");
+     if (ts == search_parm)
+      {
+         ns_end_transaction("ReplayPage", NS_AUTO_STATUS);
+      }
+      else
+      {
+        ns_end_transaction("ReplayPage", 64);
+      }
+      ts++;
+     }
+    }
+    else
+    {
+     //End test case
+    }
+
+}

@@ -1,0 +1,8 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,39685,1,2,fail,Regression test for FCU with RampUp in Step mode failed;because difference of  baseline and current test metric Running_User_Change_Pct = 13 is more than expected difference 5%
+REG-007-001,39691,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,39692,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,39693,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,39694,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,39695,1,2,pass,RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied
+REG-007-006,39696,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
