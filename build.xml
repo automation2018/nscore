@@ -326,7 +326,7 @@
             password="Cavisson!" 
             mailport="587" 
             subject="[ALERT] Core dump found after ${core-subject} in ${release.info} B${build.info}"
-            tolist="vishal.singhal@cavisson.com"
+            tolist="dl-qa-auto@cavisson.com"
             message="${core.mail.html}"
             messagemimetype="text/html">
             <from address="automation@cavisson.com"/>   		   

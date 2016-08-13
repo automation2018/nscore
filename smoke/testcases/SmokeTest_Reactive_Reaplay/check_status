@@ -19,10 +19,10 @@ function validate_RR(){
     search=$(grep -o "Payload:" "$REP_FILE")
     if [ ! -z "${search}" ];then
         debug_log "$search Header found in response for Reactive Replay"
-        log_status_and_exit_ex "PASS" "$search Header found in response for Reactive Replay,so  testcase passed"
+        log_status_and_exit_ex "PASS" "$search Header found in response for Reactive Replay"
     else
         debug_log "$search Header not found in response for Reactive Replay"
-        log_status_and_exit_ex "PASS" "Payload Header not found in response for Reactive Replay,so  testcase passed"
+        log_status_and_exit_ex "PASS" "Payload Header not found in response for Reactive Replay"
     fi
 }
 

@@ -217,7 +217,7 @@ log_status_and_exit_ex(){
     #echo "$(get_tname),$(get_testidx),${RELEASE_ID},${BUILD_ID},${COMP},${status_show},${categoryid},${remarks}" >>$R_FILE
     echo "$(get_tname),$(get_testidx),${COMP},${categoryid},${status_show},${remarks}" >>${R_FILE}
     
-    [ "X$status" = "XFAIL" ] && exit 3
+    [ "X$status" = "XFAIL" ] && exit -1
 }
 
 
