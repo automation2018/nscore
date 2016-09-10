@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+TESTRESULT			= PASS ,Referer set on each page according to given condition when mode is enable and change referer on redirect for browser behaviour
++-----------------------------------------------------+
+TESTRESULT			= FAIL , Referer is not set on 1st Session and 2nd Session in All InlineUrl page on 3rd Page
++-----------------------------------------------------+

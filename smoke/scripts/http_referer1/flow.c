@@ -15,7 +15,7 @@
 void flow()
 {
        ns_web_url ("index_html",
-        "URL=https://127.0.0.1/http_referer/Redirection1.html",
+        "URL=http://127.0.0.1/http_referer/Redirection1.html",
         "HEADER=Accept-Language:en-us,en;q=0.5",
         "PreSnapshot=webpage_1440668801861.png",
         "Snapshot=webpage_1440668802047.png",

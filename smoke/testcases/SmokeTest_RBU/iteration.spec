@@ -1,16 +1,9 @@
-$TestDescription|$ScriptName|$User|$Sessions|%PageLoadWaitTime|$RBU_KEYWORD|$clip_mode|$frequency|$quality|$cache_mode|$clear_cache|$user_agent|$BROWSER_TYPE|$header_mode|%method|%header
+$TestDescription|$Script_Name|$Users|$Sessions|$RBU_Group_Keyword|$RBU_Auto_Param_Keyword|$RBU_tti_Keyword
 
 #Testcases for Firefox/Chromium browser
 #Firefox 24 is used as NS Firefox(default case)
 #Chromium 34 is used as NS Chrome
-SMOKE-011-001|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 0|0|100|100|0|0|RBU_FIREFOX_USER_AGENT|ENABLE_NS_FIREFOX 1|0|GET|automation:header
-SMOKE-011-002|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 1|0|100|100|1|0|RBU_CHROME_USER_AGENT|ENABLE_NS_CHROME 0|0|GET|automation:header
-
-SMOKE-011-003|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 0|0|100|100|0|0|RBU_FIREFOX_USER_AGENT|ENABLE_NS_FIREFOX 1|1|GET|automation:header
-SMOKE-011-004|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 0|0|100|100|0|0|RBU_FIREFOX_USER_AGENT|ENABLE_NS_FIREFOX 1|1|POST|automation:header
-
-SMOKE-011-005|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 1|0|100|100|1|0|RBU_CHROME_USER_AGENT|ENABLE_NS_CHROME 0|1|GET|automation:header
-SMOKE-011-006|Smoke_RBU|1|1|60|G_RBU ALL ALL 1 1 0 1 1|0|100|100|1|0|RBU_CHROME_USER_AGENT|ENABLE_NS_CHROME 0|1|POST|automation:header
+SMOKE-036-001|Hpd_Tours_RBU|1|1|G_RBU G1 ALL 1 0 0 1 1|RBU_ENABLE_AUTO_PARAM 1|RBU_ENABLE_TTI_MATRIX 1
 
 # TODO
 

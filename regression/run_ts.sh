@@ -49,6 +49,7 @@ function run(){
     # Running test in backend
     Project=$(project_name $testSuite)
     bin/ts_run -n ${Project}/${testSuite} | tee $TEMP_FILE 
+    #bash -x bin/ts_run -n ${Project}/${testSuite} >& /tmp/reg.out 
 
 
     # Check return code. If RC=2, automation timed out case. RC=0 Success

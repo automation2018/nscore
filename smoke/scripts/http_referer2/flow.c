@@ -15,8 +15,8 @@
 void flow()
 {
        ns_web_url ("index_html",
-//        "URL=http://127.0.0.1/tours/index.html",
-        "URL=https://127.0.0.1/red1.html",
+        "URL=http://127.0.0.1/tours/index.html",
+//        "URL=http://127.0.0.1/red1.html",
         "HEADER=Accept-Language:en-us,en;q=0.5",
         "PreSnapshot=webpage_1440668801861.png",
         "Snapshot=webpage_1440668802047.png",
@@ -50,19 +50,20 @@ void flow()
 
     //Page Auto splitted for Image Link 'Search Flights Button' Clicked by User
     ns_web_url ("reservation",
-        "URL=http://127.0.0.1/cgi-bin/reservation",
+          "URL=http://www.google.com",   
+       // "URL=http://127.0.0.1/cgi-bin/reservation",
         "HEADER=Accept-Language:en-us,en;q=0.5",
         "PreSnapshot=webpage_1440668807799.png",
         "Snapshot=webpage_1440668808482.png",
         INLINE_URLS,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/flights.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/home.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/signoff.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/Merc10-dev/images/splash_Findflight.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/images/continue.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
-            "URL=http://127.0.0.1/tours/vep/images/velocigen.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/flights.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/home.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/signoff.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/Merc10-dev/images/splash_Findflight.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/images/continue.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=https://127.0.0.1/tours/vep/images/velocigen.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE
    
     );
 

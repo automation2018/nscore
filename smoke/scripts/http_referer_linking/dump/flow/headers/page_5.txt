@@ -1,0 +1,161 @@
+--Request 
+GET http://10.10.30.25:9001/cgi-bin/findflight?hidden_outboundFlight_button0=000%7C0%7C09-01-2015&outboundFlight=button1&hidden_outboundFlight_button1=001%7C0%7C09-01-2015&hidden_outboundFlight_button2=002%7C0%7C09-01-2015&hidden_outboundFlight_button3=003%7C0%7C09-01-2015&numPassengers=1&advanceDiscount=&seatType=First&seatPref=None&reserveFlights.x=62&reserveFlights.y=9 HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 0000004304
+Content-Type: text/html
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 16522
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 4125
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/flights.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1519
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/home.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1268
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/Merc10-dev/images/signoff.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1260
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/images/splash_creditcard.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 2707
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/images/purchaseflight.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1541
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/images/startover.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 1455
+Content-Type: image/gif
+---
+
+--Request 
+GET http://10.10.30.25:9001/tours/vep/images/velocigen.gif HTTP/1.1
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Accept-Encoding: gzip,deflate
+Accept-Language: en-us,en;q=0.5
+Connection: keep-alive
+Host: 10.10.30.25:9001
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+----
+--Response  
+HTTP/1.1 200 OK
+Content-Length: 2018
+Content-Type: image/gif
+---
+
+

@@ -1,0 +1,9 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+TESTRESULT			= PASS ,Referer not set on request page becasuse referer mode is disable
++-----------------------------------------------------+
+TESTRESULT			= PASS ,Referer set on each page according to given condition when mode is enable and change referer on redirect for browser behaviour
++-----------------------------------------------------+
+TESTRESULT			= PASS ,Referer set on each page according to given condition when mode is enable and change referer on redirect for NS behaviour
++-----------------------------------------------------+
+TESTRESULT			= PASS ,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser behaviour
++-----------------------------------------------------+

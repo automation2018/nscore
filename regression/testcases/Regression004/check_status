@@ -24,6 +24,7 @@ function calculate_metric_deviation(){
 
     #parameter values for baseline and current test run when all parameters are to be matched(param_string =ALL)
     if [ "XX$3" == "XXALL" ]; then
+        IFS=$'\n'
         for line in $(cat $ParamListFile); do
             baseline_param=$(testStats $baseline_test_run 0 "${line}" "$param_name")
             current_param=$(testStats $current_test_run 1 "${line}" "$param_name")

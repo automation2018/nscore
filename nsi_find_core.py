@@ -88,12 +88,12 @@ def main():
     
     cores = find(args.directory, args.pattern, args.timedelta)
     for core in cores:
-        out = commands.getoutput('file {}'.format(core))
+        out = commands.getoutput('sudo file {}'.format(core))
         tot_core.append("{} | {}".format(cores[core],out))
 
     cores = find("/home/netstorm/work/lps", args.pattern, args.timedelta)
     for core in cores:
-        out = commands.getoutput('file {}'.format(core))
+        out = commands.getoutput('sudo file {}'.format(core))
         tot_core.append("{} | {}".format(cores[core],out))
     
     find_core_on_remote_machine(tot_core)

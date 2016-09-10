@@ -194,9 +194,9 @@ fi
 
 if [ "XX$T_NAME" == "XXSMOKE-009-019" ];then
     REQ_QUERY=`grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | cut -d '?' -f2 | cut -d 'H' -f1`
-    REP_MSG=`grep "404 Not Found" $T_ID_REQ_PATH/url_rep_0_0_0_1_0_0_0_1_0.dat | awk "NR==1" | cut -d " " -f2,3,4 | cut -d '' -f1`
+    REP_MSG=`grep -o -m1 "400 Bad Request" $T_ID_REQ_PATH/url_rep_0_0_0_1_0_0_0_1_0.dat`
     if [ "$REQ_QUERY" ==  " is  " ] && \
-       [ "$REP_MSG" == "404 Not Found" ] && \
+       [ "$REP_MSG" == "400 Bad Request" ] && \
        [ $SD_TotalSuccURL -eq 1 ];then
         echo "Values matched"
         log_status_and_exit_ex "PASS" "Search Param for 5 url with single page search savelenght and saveoffset and ORD all Passed"

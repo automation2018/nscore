@@ -3,6 +3,16 @@
 <!--Task: Declaring project name-->
 <project name="core-smoke" basedir="." default="run">
 
+    <!-- Task: check cav.conf file  -->
+    <target name="check-conf" description="It check cav.conf">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.check.conf}"
+                 trust="true"/>
+    </target>
+
+
     <!-- Task: Check vnc process running status-->
     <target name="check-vnc-status" description="Check vnc process running status">
        <exec executable="ps" outputproperty="vnc.file">
@@ -89,7 +99,7 @@
     
     <!-- Task: Restarts and check status of NO server--> 
     <target name="hpd-process-restart" 
-            depends="check-vsftpd-process,copy-hpd-file, copy" 
+            depends="check-conf,check-vsftpd-process,copy-hpd-file, copy" 
             description="Restarts and check status of NO server">
         <sshexec host="${remote.host}"
                  username="${remote.user}" 
@@ -104,6 +114,13 @@
                  trust="true"
                  outputproperty="hpd.process"/>
         <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+        <!-- Check hpd is working on 80 port or not -->
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.port.check}" 
+                 trust="true"
+                 outputproperty="hpd.port"/> 
     </target>
 
    <!-- Task: Copies httpd.conf file to set enviornment for auth_basic test execution-->

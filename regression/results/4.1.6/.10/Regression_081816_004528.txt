@@ -1,0 +1,13 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,44657,1,2,pass,Reression test for FCU with RampUp in Step mode passed
+REG-002-001,44658,1,2,pass,Reression test for FCU with RampUp in Rate mode passed
+REG-003-001,44659,1,2,pass,Regression testcase for FSR  Mode 1 test Passed
+REG-004-001,44660,1,2,pass,Regression testcase for FSR Mode 2 test Passed
+REG-005-001,44661,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-006-001,44662,1,2,fail,Reression test for NS supported protocols such as POP3 SMTP & FTP failed;because difference of  baseline and current test metric Running Vusers(NA) = 15 is more than expected difference 5%
+REG-007-001,44663,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,44664,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,44665,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,44666,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,44667,1,2,pass,RTC is being applied for RampDown0 phase;86  have been found in current situation as RTC being applied
+REG-007-006,44668,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC

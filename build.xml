@@ -58,8 +58,8 @@
    <!--Task: Invoking smoke debug automation suite to run--> 
    <target name="smoke-debug" description="Triggers SMOKE DEBUG automation suite">
 	   <ant antfile="${smoke.build.file}" target="debug" useNativeBasedir="true"/>
-       <var name="core-subject" value="smoke"/>
-       <antcall target="check-cores"/>
+       <!--var name="core-subject" value="smoke"/>
+       <antcall target="check-cores"/-->
    </target>   
    
    <!--Task: Invoking regression debug suite to run--> 
