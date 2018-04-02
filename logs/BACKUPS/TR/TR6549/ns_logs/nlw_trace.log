@@ -1,7 +1,0 @@
-#TimeStamp|Thread Name|Src file name|Line number|Function|Severity|Message
-07/28/15 19:23:57|Main thread|logging_writer.c|402|main|Info|Stared logging writer. TR num 6549, NLW trace level 1, NLR trace level 1
-07/28/15 19:23:57|Main thread|logging_writer.c|404|main|Info|argv[0] = nsa_logger argv[1](total netstorm child) = 4 argv[2](file to write) = logs/TR6549/reports/raw_data/dlog argv[3] = 128516145 argv[4] = 0 argv[5] = 6549 argv[6] = 10 argv[7] = 8192 debuglogvalue = 1 logging_shr_blk_count = 16, generator_id = -1, log_shared_buffer_size = 8192, total_generator_entries = 0, loader_opcode = 0
-07/28/15 19:23:57|Main thread|logging_writer.c|414|main|Info|Prev Logging Writer was not running, pid saved
-07/28/15 19:23:57|Main thread|logging_writer.c|434|main|Info|Setting signal handlers.
-07/28/15 19:23:57|Main thread|logging_writer.c|494|main|Info|Recovery data initialized withMAX_RECOVERY_COUNT = 5, RECOVERY_TIME_THRESHOLD_IN_SEC = 10, RESTART_TIME_THRESHOLD_IN_SEC = 900
-07/28/15 19:43:45|Main thread|logging_writer.c|770|do_test_post_proc|Info|Logging Writer: Recieved signal TEST_POST_PROC_SIG.

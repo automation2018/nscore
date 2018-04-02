@@ -1,0 +1,112 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=">
+
+<title>Search Results</title>
+<!-- choose_flight_top!!! -->
+</head><body topmargin="0" leftmargin="0" bgcolor="#ffffff" marginheight="0" marginwidth="0">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr align="center" bgcolor="#0000cc"> 
+    <td>
+      <table border="0" cellpadding="0" cellspacing="8" width="100%">
+        <tbody><tr align="center"> 
+          <td><img src="/tours/Merc10-dev/images/banner_animated.gif" height="100" width="576"></td>
+        </tr>
+      </tbody></table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border="0" cellpadding="0" cellspacing="0" width="632">
+        <tbody><tr>
+	<td bgcolor="#66ccff" valign="top" width="125"><img src="/tours/Merc10-dev/images/sun_swede.gif" alt="Sun" height="120" width="125"> 
+            <br clear="all">
+	
+              <center>	
+                <table border="0" height="140">
+
+	<tbody><tr><td align="center">
+	<a href="/cgi-bin/reservation">
+	<img src="/tours/Merc10-dev/images/flights.gif" alt="Search Flights Button" border="0" height="25" width="95"></a>
+	</td></tr>
+
+	<tr><td align="center">
+ 	<a href="/cgi-bin/home">
+	<img src="/tours/Merc10-dev/images/home.gif" alt="Home Button" border="0" height="25" width="95"></a>
+	</td></tr>
+	
+	<tr><td align="center">
+	<a href="/cgi-bin/welcome">
+	<img src="/tours/Merc10-dev/images/signoff.gif" alt="SignOff Button" border="0" height="25" width="95"></a>
+	</td></tr>
+
+                </tbody></table>
+              </center>
+              <p>
+              </p>
+              <p>  </p>
+          </td>
+          <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="507">
+<!--
+              <tr>
+                <td><img src="/tours/Merc10-dev/images/banner_merctur.jpg" width="507" height="94"></td>
+              </tr>
+-->
+              <tbody><tr>
+                <td>
+                  <table width="507"><tbody><tr><td>
+
+<img src="/tours/images/splash_Searchresults.gif" height="90" width="395">
+
+<form method="GET" action="/cgi-bin/findflight" enctype="application/x-www-form-urlencoded">
+
+<center>
+<!-- From Acapulco (0) To Acapulco (0) -->
+<table border="1" cellspacing="5" width="75%">
+<caption><strong>Flight departing from Acapulco to Acapulco on 12-11-2014</strong></caption>
+<tbody><tr bgcolor="#66cccc"><th>Flight</th><th>Departure time</th><th>Cost</th>
+</tr>
+<tr bgcolor="#66ccff">
+	<td align="center"><input name="outboundFlight" value="button0" checked="checked" type="radio">Blue Sky Air 000</td>
+	<td align="center">$ 0</td>
+	<input name="hidden_outboundFlight_button0" value="000|0|12-11-2014" type="hidden">
+</tr>
+<tr bgcolor="#eeeeee">
+	<td align="center"><input name="outboundFlight" value="button1" type="radio">Blue Sky Air 001</td>
+	<td align="center">1pm</td>
+	<td align="center">$ 0</td>
+	<input name="hidden_outboundFlight_button1" value="001|0|12-11-2014" type="hidden">
+</tr>
+<tr bgcolor="#66ccff">
+	<td align="center"><input name="outboundFlight" value="button2" type="radio">Blue Sky Air 002</td>
+	<td align="center">5pm</td>
+<td align="center">$ 0</td>
+	<input name="hidden_outboundFlight_button2" value="002|0|12-11-2014" type="hidden">
+</tr>
+<tr bgcolor="#eeeeee">
+	<td align="center"><input name="outboundFlight" value="button3" type="radio">Blue Sky Air 003</td>
+	<td align="center">11pm</td>
+<td align="center">$ 0</td>
+	<input name="hidden_outboundFlight_button3" value="003|0|12-11-2014" type="hidden">
+</tr></tbody></table>
+
+<input name="numPassengers" value="1" type="hidden"><input name="advanceDiscount" value="" type="hidden"><input name="seatType" value="Coach" type="hidden"><input name="seatPref" value="None" type="hidden">
+<p></p><center><table cellspacing="10" width="80%"><tbody><tr><td align="center">
+<input name="reserveFlights" src="/tours/images/continue.gif" type="image" border="0">
+</td><td> </td><td align="center"><input name="BookAnother" src="/tours/images/startover.gif" type="image" border="0"></td></tr></tbody></table></center></center>
+
+                  </form></td></tr></tbody></table>
+                </td>
+              </tr>
+            </tbody></table>
+          </td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+<p>
+
+</p><p></p><hr width="70%"><center><table><tbody><tr><td><a href="http://www.binevolve.com"><img src="/tours/vep/images/velocigen.gif" border="0"></a></td><td><a href="http://www.binevolve.com">Binary Evolution's VelociGen for Perl/TCL<br>Free 60 Day Evaluation</a></td></tr></tbody></table></center>
+</body></html>

@@ -29,6 +29,8 @@ function main(){
         "SMOKE-024-015") validate_decode_captcha_case;;
         "SMOKE-024-016") validate_decode_captcha_case;;
         "SMOKE-024-017") validate_decode_captcha_case;;
+        "SMOKE-024-018") validate_split_api_case;;
+        "SMOKE-024-019") validate_split_api_case_with_Searchparam;;
          ?) handle_unknown_case ;;
          *) handle_unknown_case ;;
     esac
@@ -39,6 +41,30 @@ function handle_unknown_case(){
     log_status_and_exit_ex "FAIL" "testcase not found"
 }
 
+function validate_split_api_case()
+{
+#    log_status_and_exit_ex "PASS" "not checking check_status for now"
+    numer_of_splits=$(grep -c "splitted field" ${TSR_FILE})
+    if [ $numer_of_splits == 10 ];then
+    debug_log "number of splits is as per expectations"
+    log_status_and_exit_ex "PASS" "buffer is spiltted into the defined times"
+    else
+    debug_log "number of split is $numer_of_splits while expected was 10"
+    log_status_and_exit_ex "FAIL" "buffer is not spiltted into the defined times"
+    fi
+}
+
+function validate_split_api_case_with_Searchparam()
+{
+    numer_of_splits=$(grep -c "splitted field is :" ${TSR_FILE})
+    if [ $numer_of_splits == 4 ];then
+    debug_log "number of splits is as per expectations"
+    log_status_and_exit_ex "PASS" "buffer is spiltted into the defined times"
+    else
+    debug_log "number of split is $numer_of_splits while expected was 4"
+    log_status_and_exit_ex "FAIL" "buffer is not spiltted into the defined times"
+    fi
+}
 function inline_transaction_validation(){
 	min_tx=$(grep -c "ns_start_transaction" ${FLOW_FILE})
 	lines_in_trans_file=$(cat $TRANS_FILE | wc -l)

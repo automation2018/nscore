@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# hpd.conf file change in default mode and it restarted again
+shellPath="/home/automation/workbench/automation/nscore/smoke/testcases/SmokeTest_Pipelining"
+python ${shellPath}/Change_NO_Fc14.py 10.10.30.96 hpd_new
+
+#nsu_server_admin -i -s 10.10.30.96 -c "cp /var/www/hpd/conf/hpd_new.conf /var/www/hpd/conf/hpd.conf"
+#nsu_server_admin -i -s 10.10.30.96 -c "/etc/init.d/hpd restart"
+#sleep 1m
+
+exit 0

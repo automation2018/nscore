@@ -1,0 +1,49 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+SUMMARY_GDF="$NS_WDIR/logs/TR${T_RUN_ID}/summary_gdf.data"
+
+max_vuser_count=$(grep -w "Running Vusers(NA)" ${SUMMARY_GDF} | cut -d '|' -f 8)
+max_vuser_count=`echo $max_vuser_count | awk '{printf "%.0f\n", $1}'`
+
+avg_vuser_count=$(grep -w "Running Vusers(NA)" ${SUMMARY_GDF} | cut -d '|' -f 6)
+avg_vuser_count=`echo $avg_vuser_count | awk '{printf "%.0f\n", $1}'`
+
+nvm_count=$(cat /home/netstorm/work/logs/TR${T_RUN_ID}/remaining_var )
+
+debug_log "tname is =$(get_tname)" 
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-035-001") validate_nvmFail_001 ;;
+        "SMOKE-035-002") validate_nvm_rtc_002 ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_nvmFail_001() {
+    debug_log "Average no. of users found: $avg_vuser_count"
+    if [ ${nvm_count} -eq 9 ] && [ ${avg_vuser_count} -lt 10 ]; then
+        log_status_and_exit_ex "PASS" "validate_nvmFail_001 test passed"
+    else
+        log_status_and_exit_ex "FAIL" "validate_nvmFail_001 test failed"
+    fi
+}
+
+function validate_nvm_rtc_002() {
+    debug_log "Max no. of users found: $max_vuser_count"
+    if [ ${max_vuser_count} -eq 19 ] && [ ${nvm_count} -eq 9 ]; then
+        log_status_and_exit_ex "PASS" "validate_nvm_rtc_002 test passed"
+    else
+        log_status_and_exit_ex "FAIL" "validate_nvm_rtc_002 test failed"
+    fi
+}
+main
+exit 0

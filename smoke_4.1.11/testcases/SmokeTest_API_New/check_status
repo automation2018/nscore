@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+TRANS_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+SCRIPT_NAME=$(grep SGRP ${S_FILE} | cut -d' ' -f6)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Smoke/Smoke/${SCRIPT_NAME}/flow.c"
+TSR_FILE="$TS_LOG_DIR/$(get_testcase_name)/test_run.report"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-024-001") inline_transaction_validation;;
+        "SMOKE-024-002") inline_transaction_validation;;
+        "SMOKE-024-003") inline_transaction_validation;;
+        "SMOKE-024-004") inline_repeat_validation;;
+        "SMOKE-024-005") inline_repeat_validation;;
+        "SMOKE-024-006") inline_repeat_validation;;
+        "SMOKE-024-007") inline_repeat_tx_validation;;
+        "SMOKE-024-008") inline_api_timer_validation;;
+        "SMOKE-024-009") validate_decode_captcha_case;;
+        "SMOKE-024-010") validate_decode_captcha_case;;
+        "SMOKE-024-011") validate_decode_captcha_case;;
+        "SMOKE-024-012") validate_decode_captcha_case;;
+        "SMOKE-024-013") validate_decode_captcha_case;;
+        "SMOKE-024-014") validate_decode_captcha_case;;
+        "SMOKE-024-015") validate_decode_captcha_case;;
+        "SMOKE-024-016") validate_decode_captcha_case;;
+        "SMOKE-024-017") validate_decode_captcha_case;;
+        "SMOKE-024-018") validate_split_api_case;;
+        "SMOKE-024-019") validate_split_api_case_with_Searchparam;;
+         ?) handle_unknown_case ;;
+         *) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_split_api_case()
+{
+#    log_status_and_exit_ex "PASS" "not checking check_status for now"
+    numer_of_splits=$(grep -c "splitted field" ${TSR_FILE})
+    if [ $numer_of_splits == 10 ];then
+    debug_log "number of splits is as per expectations"
+    log_status_and_exit_ex "PASS" "buffer is spiltted into the defined times"
+    else
+    debug_log "number of split is $numer_of_splits while expected was 10"
+    log_status_and_exit_ex "FAIL" "buffer is not spiltted into the defined times"
+    fi
+}
+
+function validate_split_api_case_with_Searchparam()
+{
+    numer_of_splits=$(grep -c "splitted field is :" ${TSR_FILE})
+    if [ $numer_of_splits == 4 ];then
+    debug_log "number of splits is as per expectations"
+    log_status_and_exit_ex "PASS" "buffer is spiltted into the defined times"
+    else
+    debug_log "number of split is $numer_of_splits while expected was 4"
+    log_status_and_exit_ex "FAIL" "buffer is not spiltted into the defined times"
+    fi
+}
+function inline_transaction_validation(){
+	min_tx=$(grep -c "ns_start_transaction" ${FLOW_FILE})
+	lines_in_trans_file=$(cat $TRANS_FILE | wc -l)
+	total_tx=$((lines_in_trans_file - 2 ))
+	tx_name=$(egrep -o "TxName=[A-Za-z0-9]*" $FLOW_FILE |cut -d'=' -f2)
+	total_inline_tx=$(egrep -co "TxName=[A-Za-z0-9]+" $FLOW_FILE )
+	if [ $total_tx -eq $((min_tx + total_inline_tx)) ];then
+		i=1
+		while [ $i -le $total_inline_tx ];do
+			tx=$(echo $tx_name | cut -d' ' -f$i)
+			search=$(grep "$tx" ${TRANS_FILE})
+			if [ -z $search ];then
+				debug_log "transaction name $tx not found"
+			    log_status_and_exit_ex "FAIL" "inline transaction testcase failed"
+			fi
+			debug_log "transactions $tx found"
+			i=$((i+1))
+		done
+	    
+		debug_log "all transactions found"
+		log_status_and_exit_ex "PASS" "inline transaction testcase passed"
+	fi
+}
+
+
+function inline_repeat_validation(){
+	total_url=$(grep -i "^ *\"URL=http" ${FLOW_FILE} | wc -l)
+    repeat=$(egrep -oi "REPEAT=[0-9]*" $FLOW_FILE | cut -d'=' -f2)
+	no_of_repeat=$(egrep -co "REPEAT=[0-9]+" $FLOW_FILE |cut -d'=' -f2)
+	i=1
+	total_repeat_value=0
+	
+	while [ $i -le $no_of_repeat ];do
+	    repeat_value=$(echo $repeat | cut -d' ' -f$i)
+		total_repeat_value=$((total_repeat_value + repeat_value ))
+		i=$((i+1))
+	done
+
+	debug_log "total_repeat_value=$total_repeat_value"
+	debug_log "SD_TotalURLHits=$SD_TotalURLHits"
+	expected_url_hits=$(( total_url + total_repeat_value ))
+	
+	if [ $SD_TotalURLHits -eq $expected_url_hits ];then
+		debug_log "Total Url hit is equal to expected url hit"
+	    log_status_and_exit_ex "PASS" "inline repeat for transaction passed"
+	else
+        debug_log "Total Url hit is not equal to expected url hit"
+        log_status_and_exit_ex "FAIL" "inline repeat for transaction failed"
+	fi
+}
+
+
+function inline_repeat_tx_validation(){
+    check_repeat=$(grep -i "REPEAT=[0-9]*" $FLOW_FILE)
+	tx_name=$(grep -o "txname=.*" <<<$check_repeat| cut -d'"' -f1 |cut -d'=' -f2)
+	debug_log "check_repeat=$check_repeat; tx_name=$tx_name"
+	
+	if [ ! -z $tx_name ];then
+		inline_tx_name=$(cut -d'[' -f1<<<$tx_name)
+		min_range=$(cut -d'[' -f2<<<$tx_name | cut -d'-' -f1)
+		max_range=$(cut -d'-' -f2<<<$tx_name | cut -d']' -f1)
+		repeat=$(egrep -o "REPEAT=[0-9]*" <<<$check_repeat | cut -d'=' -f2)
+		range=$((max_range - min_range +1))
+		debug_log "inline_tx_name=$inline_tx_name; min_range=$min_range; max_range=$max_range; repeat=$repeat; range=$range"
+		
+			a=$((repeat+1))
+		if [ $range -le $a ];then
+			debug_log "1"
+			for ((k=$min_range;k<=$max_range;k++));do
+				tx_find=$(grep -o "$inline_tx_name\_$k" $TRANS_FILE)
+				debug_log "tx_find=$tx_find; k=$k"
+				if [ -z $tx_find ];then
+					log_status_and_exit_ex "FAIL" "inline repeat and transaction testcase failed"
+				fi
+				debug_log "transaction $tx_find found"
+			done
+			log_status_and_exit_ex "PASS" "inline repeat and transaction testcase passed"
+		else
+			debug_log "2"
+				for ((k=$min_range;k<=$a;k++));do
+					tx_find=$(grep -o "$inline_tx_name\_$k" $TRANS_FILE)
+	                debug_log "tx_find=$tx_find; k=$k"
+					if [ -z $tx_find ];then
+					    log_status_and_exit_ex "FAIL" "inline repeat and transaction testcase failed"
+				    fi
+				    debug_log "transaction $tx_find found"
+			    done
+		    log_status_and_exit_ex "PASS" "inline repeat and transaction testcase passed"
+
+		fi
+	else
+		inline_repeat_validation
+	fi
+}
+
+function inline_api_timer_validation(){
+	api_time=$(grep "Elapsed time of index page" $TSR_FILE |awk -F'=' '{print $NF}')
+	tx_time=$(grep "IndexPage" $TRANS_FILE | cut -d'|' -f2 |cut -d' ' -f2)
+	tx_time_sec=`echo "$tx_time *1000" |bc|cut -d'.' -f1`
+    time_diff=$((api_time - tx_time_sec))
+    time_diff=${time_diff/#-/}
+
+	debug_log "api_time=$api_time; transaction time=$tx_time; transaction time in seconds = $tx_time_sec; time difference in between API time and transaction time=$time_diff"
+
+	if [ $time_diff -lt 10  ];then
+		debug_log "API TIMER validation pass"
+		log_status_and_exit_ex "PASS" "ns timer api testcase passed as transaction time is equal to api timer"
+	else
+		debug_log "API TIMER validation failed"
+        log_status_and_exit_ex "FAIL" "ns timer api testcase failed as transaction time ($tx_time_sec) is not equal to api timer ($api_time)"
+	fi
+}
+
+
+function validate_decode_captcha_case(){
+	search_value=$(grep "CaptchaSearched:" ${T_ID_REQ_PATH}/url_req_0_0_0_1_0_0_0_1_0.dat | cut -d' ' -f2 | cut -d'' -f1)
+	expected_decoded_value=$(python /home/automation/workbench/automation/nscore/smoke/nsi_captcha_tool -d "${search_value}" -k "111111111111111111111111")
+	actual_decoded_value=$(grep "CaptchaDecoded:" ${T_ID_REQ_PATH}/url_req_0_0_0_1_0_0_0_1_0.dat | cut -d' ' -f2 | cut -d'' -f1)
+
+	debug_log "search_value=${search_value};expected_decoded_value=${expected_decoded_value}"
+	debug_log "actual_decoded_value=${actual_decoded_value};SD_TotalSuccURL=${SD_TotalSuccURL}"
+
+	if [ -z ${search_value} ] || [ -z ${actual_decoded_value} ] || [ $SD_TotalSuccURL -ne 2 ]; then
+        log_status_and_exit_ex "FAIL" "ns decode 3des api testcase failed as search or decoded values are blank or possible url failures"
+	elif [ ${expected_decoded_value} == ${actual_decoded_value} ]; then 
+        log_status_and_exit_ex "PASS" "ns decode 3des api testcase passed"
+	else
+        log_status_and_exit_ex "FAIL" "ns decode 3des api testcase failed;as decoded values are mismatched with the expected value"
+    fi
+}
+
+
+main
+
+
+exit 0

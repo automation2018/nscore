@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,87769,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,87770,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,87771,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,87772,1,2,pass,FSR  Mode 2 testcase passed
+REG-005-001,87773,1,2,pass,Replay Access Logs testcase passed
+REG-006-001,87774,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average SMTP Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(smtp);Service Time (Secs)(NA) in current testrun is 0.001 are having difference of 50.0% which exceeed the tolerance of 5%
+REG-007-001,87775,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,87776,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,87777,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,87778,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,87779,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,87780,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,87781,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.001 and Average Response Time (Secs)(NA) in current testrun is 0.016 are having difference of -1500.0% which exceeed the tolerance of 5%
+REG-010-001,87782,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+DEBUG_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+TEST_RUN_FILE=$TS_LOG_DIR/$(get_testcase_name)/test_run.report
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-059-001") validate_new_user_on_session-001 ;;
+        "SMOKE-059-002") validate_new_user_on_session-002 ;;
+        "SMOKE-059-003") validate_new_user_on_session-003 ;;
+        "SMOKE-059-004") validate_new_user_on_session-004 ;;
+        "SMOKE-059-005") validate_new_user_on_session-005 ;;
+        "SMOKE-059-006") validate_new_user_on_session-006 ;;
+        "SMOKE-059-007") validate_new_user_on_session-007 ;;
+        "SMOKE-059-008") validate_new_user_on_session-008 ;;
+        "SMOKE-059-009") validate_new_user_on_session-009 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+function persistance_count(){
+    n_p_count=$1
+    p_count=$2
+    non_persistance_count=$(grep -wc "Parametrer value is not persisting" ${TEST_RUN_FILE})
+    persistance_count=$(grep -woc  "para \[Welcome to Mercury Tours\]" ${TEST_RUN_FILE})
+    debug_log "non_persistance_count=$non_persistance_count"
+    debug_log "persistance_count=$persistance_count"
+    if [ ${persistance_count} -eq  $2 ]; then 
+        if [ ${non_persistance_count} -eq $1 ]; then 
+            return 0;
+        else
+            log_status_and_exit_ex "FAIL" "Persisance Connection is making while we ecpecting it shoud be not  Where referesh user per session $3 and retains value of parameter $4 "
+        fi
+    else
+        log_status_and_exit_ex "FAIL" "Persistence Connection is not making while we expecting it should be perSistance Where referesh user per session $3 and retains value of parameter $4 "
+    fi 
+}
+
+function validate_new_user_on_session-001(){
+    persistance_count 2 0 0 0
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 0 and retains value of parameter 0 "
+    fi 
+}
+
+function validate_new_user_on_session-002(){
+    persistance_count 1 2 0 1
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ];then 
+        log_status_and_exit_ex "PASS" "Value should persist when referesh user per session 0 and retains value of parameter 1"
+    fi
+}
+
+function validate_new_user_on_session-003(){
+    persistance_count 2 0 1 0
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 1 and retains value of parameter 0 "
+    fi
+}
+
+function validate_new_user_on_session-004(){
+    persistance_count 2 0 1 1
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 1 and retains value of parameter 1"
+    fi
+}
+
+function validate_new_user_on_session-005(){
+    persistance_count 4 0 0 0
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 0 and retains value of parameter 0 for group 1"
+    fi
+}
+
+function validate_new_user_on_session-006(){
+    persistance_count 3 2 0 1
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should be persist when referesh user per session 0 and retains value of parameter 1 for group 1"
+    fi
+}
+
+function validate_new_user_on_session-007(){
+    persistance_count 4 0 1 0
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 1 and retains value of parameter 0 for group 1"
+    fi
+}
+
+function validate_new_user_on_session-008(){
+    persistance_count 4 0 1 1
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 1 and retains value of parameter 1 for group 1"
+    fi
+}
+
+function validate_new_user_on_session-009(){
+    persistance_count 4 0 0 1
+    result=$?
+    debug_log "result=$result"
+    if [ ${result} -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "Value should not persist when referesh user per session 1 and retains value of parameter 0 for group 1 while 4xx error come"
+    fi
+}
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+
+main
+
+
+exit  0

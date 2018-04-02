@@ -1,0 +1,47 @@
+#!/bin/bash -x
+
+#For using common functions need to call this library
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+if [ "XX$T_NAME" == "XXSMOKE-015-001" ];then
+   caheable_value=`grep "Network Cache rate" /home/netstorm/work/logs/TR$T_RUN_ID/progress.report | head -1 | cut -d ',' -f2 | cut -d "=" -f2`
+   noncacheble_value=`grep "Network Cache rate" /home/netstorm/work/logs/TR$T_RUN_ID/progress.report | head -1 | cut -d ',' -f3 | cut -d "=" -f2`
+   tcphitvalue=`cat /home/netstorm/work/logs/TR$T_RUN_ID/progress.report | grep "Network Cache rate" | head -2 | tail -1 | awk '{print $6}' | cut -d "=" -f2`
+   tcpmissvalue=`cat /home/netstorm/work/logs/TR$T_RUN_ID/progress.report | grep "Network Cache rate" | head -2 | tail -1 | awk '{print $7}' | cut -d "=" -f2`
+   firstTx=`cat /home/netstorm/work/logs/TR$T_RUN_ID/trans_detail.dat | cut -d "|" -f1 | head -2 | tail -1`
+   secondTx=`cat /home/netstorm/work/logs/TR$T_RUN_ID/trans_detail.dat | cut -d "|" -f1 | tail -2 | head -1`
+   FirstCavTxHeader=`grep "CavTxName" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | cut -f2 | cut -d '' -f1`
+   SecondCavTxHeader=`grep "CavTxName" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | cut -f2 | cut -d '' -f1`
+   if [ $SD_TotalSuccURL -eq 2 ] && \
+      [ "$caheable_value" == "0.100" ] && \
+      [ "$noncacheble_value" == "0.100" ] && \
+      [ "$tcphitvalue" == "0.100" ] && \
+      [ "$tcpmissvalue" == "0.000" ] && \
+      [ "$FirstCavTxHeader" == "CavTxName: FirstPage" ] && \
+      [ "$SecondCavTxHeader" == "CavTxName: SecondPage" ] && \
+      [ "$firstTx" == "FirstPage" ] && \
+      [ "$secondTx" == "SecondPage" ];then 
+       log_status_and_exit_ex "PASS" "NetworkCache test for both cacheable and non-cacheable request Passed"
+   else
+       log_status_and_exit_ex "FAIL" "NetworkCache test for both cacheable and non-cacheable request Failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-015-002" ];then
+   if [ $SD_TotalSuccURL -eq 1 ];then
+       log_status_and_exit_ex "PASS" "NetworkCache test with NetOcean server having default URL Passed"
+   else
+       log_status_and_exit_ex "FAIL" "NetworkCache test with NetOcean server having default URL Failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-015-003" ];then
+   if [ $SD_TotalSuccURL -eq 19 ];then
+       log_status_and_exit_ex "PASS" "NetworkCache test with NetOcean server having parameterized requests Passed"
+   else
+       log_status_and_exit_ex "FAIL" "NetworkCache test with NetOcean server having parameterized requests Failed"
+   fi
+fi
+
+exit 0

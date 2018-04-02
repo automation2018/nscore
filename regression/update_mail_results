@@ -179,10 +179,10 @@ function set_up_email(){
 </body>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
     echo "curr.release = $version" >${MAIL_PROP_FILE}
     echo "curr.build = $build" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,mayank.garg@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
-    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com" >>${MAIL_PROP_FILE}
-    #echo "configured.mail.list.to = ankur.srivastava@cavisson.com" >>mail.properties
-    #echo "configured.mail.list.cc = vishal.singhal@cavisson.com" >>mail.properties
+    echo "configured.mail.list.to = dl-qa-teamleads@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com,dl-sup-projmgt@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.cc = ranjeet.kumar@cavisson.com, arun.yadav@cavisson.com" >>mail.properties
+    #echo "configured.mail.list.to = vishal.singhal@cavisson.com" >>mail.properties
     echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
     echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
     echo -e "reg.results.dir = $REG_RESULT_FILES" >>${MAIL_PROP_FILE}

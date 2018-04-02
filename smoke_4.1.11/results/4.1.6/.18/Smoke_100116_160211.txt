@@ -1,0 +1,16 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-034-001,50073,1,1,pass,Referer not set on request page becasuse referer mode is disable
+SMOKE-034-002,50074,1,1,fail,Referer is not set on  All InlineUrl page on 1st page
+SMOKE-034-003,50075,1,1,fail,Referer is not set on All  mainUrl and All InlineUrl page on 1st Page
+SMOKE-034-004,50076,1,1,fail,Referer is not set on 1st Session and 2nd Session in All InlineUrl on 1st page
+SMOKE-034-005,50077,1,1,pass,Referer not set on request page becasuse referer mode is disable 
+SMOKE-034-006,50078,1,1,fail,Referer is not set on All InlineUrl page on 1st Page
+SMOKE-034-007,50079,1,1,fail,Referer is not set in All InlineUrl page on 1st Page
+SMOKE-034-008,50080,1,1,fail,Referer is not set in All InlineUrl page on 1st Page
+SMOKE-034-009,50081,1,1,fail,Referer is not set in both session in  1st Page
+SMOKE-034-010,50082,1,1,pass,Referer is  not set on request page 1st Group because referer mode is disable and Referer is set on 2nd Group because referer mode is enable
+SMOKE-034-011,50083,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser behaviour
+SMOKE-034-012,50084,1,1,fail,Referer is not set on 1st Session All MainUrl page on 1st Page
+SMOKE-034-013,50085,1,1,fail,Referer is not set on 1st page ALL InlineUrl and main 
+SMOKE-034-014,50086,1,1,fail,Referer is not set on 1st MainUrl and All InlineUrl in 4th Page
+SMOKE-034-015,50087,1,1,fail,Referer is not set on 1st MainUrl and All InlineUrl in 2nd page

@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Source out required files
+source $NS_WDIR/lib/automation_util
+
+# Default Constants
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_PAT/flow.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+test_case_name=$(get_testcase_name)
+test_console_file="${TS_LOG_DIR}/${test_case_name}/test_run.report"
+
+# Entry point to check status
+# Add cases to handle your validation
+function main() {
+	case $(get_tname) in
+    "SMOKE-047-001") validate_RampDown_Keyword_001 ;;
+# End case def
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function handle_unknown_case() {
+        log_status_and_exit_ex "FAIL" "testcase not found"	
+}
+
+# TODO: 
+# 2. Depending upon evaluation update the status with your own description
+function validate_RampDown_Keyword_001() {
+
+	#Finding the attempted value
+	attempted_value_index_page_1=$(grep "IndexPage" $TX_DETAIL_FILE | cut -d'|' -f6 | head -1)
+	attempted_value_index_page_2=$(grep "IndexPage" $TX_DETAIL_FILE | cut -d'|' -f6 | tail -1)
+	debug_log "attempted value of index page 1: $attempted_value_index_page_1"
+	debug_log "attempted value of index_page 2: $attempted_value_index_page_2"
+
+	#Finding the success value
+	success_value_index_page_1=$(grep "IndexPage" $TX_DETAIL_FILE | cut -d'|' -f7 | head -1)
+	success_value_index_page_2=$(grep "IndexPage" $TX_DETAIL_FILE | cut -d'|' -f7 | tail -1)
+	debug_log "success value of index page 1: $success_value_index_page_1"
+	debug_log "success value of index page 2: $success_value_index_page_2"
+
+	#Finding the total time out time
+	url_report=$(grep "Url  Report" $P_FILE)
+	time_out_time=$(grep "Url  Report" $P_FILE | awk -F' ' '{print $NF}')
+	debug_log "URL Report: $url_report"
+	debug_log "Time out time: $time_out_time"
+
+	if [ $time_out_time -eq 2 ]
+	then
+		if [ $attempted_value_index_page_1 -eq 2 ] && [ $attempted_value_index_page_2 -eq 2 ]
+		then
+			if [ $success_value_index_page_1 -eq 1 ] && [ $success_value_index_page_2 -eq 1 ]
+			then
+				log_status_and_exit_ex "PASS" "All user ramp down successfully"
+			else
+				log_status_and_exit_ex "FAIL" "Success value error"
+			fi
+		else
+			log_status_and_exit_ex "FAIL" "Attempted value failure"
+		fi
+	else
+		log_status_and_exit_ex "FAIL" "Time out time failed"
+	fi
+
+}
+
+# Call to main function
+# Do not override it
+main
+
+exit 0

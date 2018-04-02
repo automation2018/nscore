@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<project name="RBU" basedir="." default="gen-reports">
+<target name="gen-reports">
+<echo message="Loading properties from mail file"/>
+<mail mailhost="websrv.cavisson.com"
+    mailport="587"
+    user="ranjeet.kumar@cavisson.com"
+    password="Cavisson!"
+    tolist="ranjeet.kumar@cavisson.com"
+    cclist="ranjeet.kumar@cavisson.com"
+    messageMimeType="text/html"
+    subject="[dl-qa-rbu] RBU Smoke results"
+    messagefile="./index.html">
+    <from address="automation@cavisson.com"/>
+</mail>
+</target>
+</project>

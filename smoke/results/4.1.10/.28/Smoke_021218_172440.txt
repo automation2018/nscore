@@ -1,0 +1,55 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-004-001,31976,1,1,pass,Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-002,31977,1,1,pass,Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-003,31978,1,1,pass,Redirection from http to https upto depth 1 without using parent url method for redirected url
+SMOKE-004-004,31979,1,1,pass,Redirection from http to https upto depth 1 using parent url method for redirected url
+SMOKE-004-005,31980,1,1,pass,Redirection from one host to another host
+SMOKE-004-006,31981,1,1,pass,Redirection restriction after depth 3
+SMOKE-004-007,31982,1,1,pass,HTTP2 Upgrade Mode- Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-008,31983,1,1,pass,HTTP2 Upgrade Mode- Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-009,31984,1,1,pass,HTTP2 Upgrade Mode- Redirection from one host to another host
+SMOKE-004-010,31985,1,1,pass,HTTP2 Upgrade Mode- Redirection restriction after depth 3
+SMOKE-004-011,31986,1,1,pass,HTTP2 Prior knowledge Mode- Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-012,31987,1,1,pass,HTTP2 Prior knowledge Mode- Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-013,31988,1,1,pass,HTTP2 Prior knowledge Mode- Redirection from one host to another host
+SMOKE-004-014,31989,1,1,pass,HTTP2 Prior knowledge Mode- Redirection restriction after depth 3
+SMOKE-040-01,31990,1,1,pass,auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-02,31991,1,1,pass,auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-03,31992,1,1,pass,auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-04,31993,1,1,pass,auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same 
+SMOKE-040-05,31994,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-06,31995,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-07,31996,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-08,31997,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same 
+SMOKE-040-09,31998,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-10,31999,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-11,32000,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-12,32001,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same 
+SMOKE-057-001,32002,1,1,pass,HTTP2 Upgrade Mode for one group
+SMOKE-057-002,32003,1,1,pass,HTTP2 Prior Knowledge Mode for one group
+SMOKE-057-004,32004,1,1,pass,HTTP2 Prior Knowledge Mode for one group and default mode for another group
+SMOKE-057-006,32006,1,1,pass,HTTP2 Prior Knowledge Mode for multiple host
+SMOKE-061-001,32007,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch without applying any pattern based filter on embedded URLs
+SMOKE-061-002,32008,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on domain pattern i.e include only same domain of embedded URLs as main URL
+SMOKE-061-003,32009,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on domain pattern i.e exclude specified domain of embedded URLs
+SMOKE-061-004,32010,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.gif type embedded URLs
+SMOKE-061-005,32011,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.js *.jsp and *.css type embedded URLs
+SMOKE-061-006,32012,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif type embedded URLs
+SMOKE-061-007,32013,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif *.js and *.css type embedded URLs
+SMOKE-061-008,32014,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch without applying any pattern based filter on embedded URLs
+SMOKE-061-009,32015,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on domain pattern i.e include only same domain of embedded URLs as main URL
+SMOKE-061-010,32016,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on domain pattern i.e exclude specified domain of embedded URLs
+SMOKE-061-011,32017,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.gif type embedded URLs
+SMOKE-061-012,32018,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.js *.jsp and *.css type embedded URLs
+SMOKE-061-013,32019,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif type embedded URLs
+SMOKE-061-014,32020,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif *.js and *.css type embedded URLs
+SMOKE-069-001,32021,1,1,pass,HTTP2 Server Push(Autofetch) with Upgrade mode for all group passed successfully
+SMOKE-069-002,32022,1,1,pass,HTTP2 Server Push(Autofetch) with Upgrade mode for one group passed successfully
+SMOKE-069-003,32023,1,1,pass,HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for all group passed successfully
+SMOKE-069-004,32024,1,1,pass,HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for one group passed successfully
+SMOKE-069-005,32025,1,1,fail,HTTP2 Server Push with Upgrade mode for all group by enabling 100% HTTP Caching failed because expected pushed and cached requests were 20 and 44 respectively but actual is 40 and 24
+SMOKE-069-006,32026,1,1,pass,HTTP2 Server Push(Autofetch) with Prior Knowledge mode for all group passed successfully
+SMOKE-069-007,32027,1,1,pass,HTTP2 Server Push(Autofetch) with Prior Knowledge mode for one group passed successfully
+SMOKE-069-008,32028,1,1,pass,HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for all group passed successfully
+SMOKE-069-009,32029,1,1,pass,HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for one group passed successfully
+SMOKE-069-010,32030,1,1,fail,HTTP2 Server Push with Prior Knowledge mode for all group by enabling 100% HTTP Caching failed because expected pushed and cached requests were 20 and 44 respectively but actual is 40 and 24

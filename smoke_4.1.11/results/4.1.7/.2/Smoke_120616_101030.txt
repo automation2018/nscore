@@ -1,0 +1,7 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-041-01,65749,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-001 . tx prefix is added with each pages
+SMOKE-041-02,65750,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-002 . tx prefix shoudn't be added when mode 1
+SMOKE-041-03,65751,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-003 .tx prefix is added in each page with status
+SMOKE-041-04,65752,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-004 .tx prefix is not added with status
+SMOKE-041-05,65753,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-005 . tx prefix is added with http status code or status
+SMOKE-041-06,65754,1,1,pass,Testcase SMOKE_PAGE_TRANSACTION-001-005 . tx prefix is not added with http status code or status

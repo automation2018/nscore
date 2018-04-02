@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+Debug_log_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$T_RUN_ID"
+PAGE_THINK_TIME_FILE="${PATH_TO_TEST_RUN}/page_think_time.dat"
+PROGRESS_REPORT_FILE="${PATH_TO_TEST_RUN}/progress.report"
+PATH_TO_TEST_RUN_SCENARIO="${PATH_TO_TEST_RUN}/scenario"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-049-001") validate_Scenario_Profile-001 ;;
+        "SMOKE-049-002") validate_Scenarion_Profile-002 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+# Need to find proper way to validate Scenario Profile in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function calculate_timeInSec(){
+  timeInSec=$(awk -F: '{print $1*1000}' <<< "$1")
+  debug_log "Time:$timeInSec"
+  echo $timeInSec
+}
+
+
+function validate_Scenario_Profile-001(){
+    index_page_min_think_time=$(grep index $PAGE_THINK_TIME_FILE | awk '{print $12}')
+    minTimeInsec=$(calculate_timeInSec $index_page_min_think_time)
+    debug_log "Index_page_min_think_time:$index_page_min_think_time"
+    debug_log "Sampling page min think time:$minTimeInsec"
+    index_page_max_think_time=$(grep index $PAGE_THINK_TIME_FILE | awk '{print $16}')
+    maxTimeInsec=$(calculate_timeInSec $index_page_max_think_time)
+    debug_log "Index_page_max_think_time:$index_page_max_think_time"
+    debug_log "Sampling page max think time:$maxTimeInsec"
+    scenario_min_time=$(grep PAGE_THINK $PATH_TO_TEST_RUN_SCENARIO | awk '{print $5}')
+    debug_log "Secnario_min_time :$scenario_min_time"
+    scenario_max_time=$(grep PAGE_THINK $PATH_TO_TEST_RUN_SCENARIO | awk '{print $6}')
+    if [ -f $PAGE_THINK_TIME_FILE ];then
+        debug_log "File exits"
+        if [ "${scenario_min_time}" == "${minTimeInsec}" ] && [ "${scenario_max_time}" == "${maxTimeInsec}" ];then
+            debug_log "Inside if condition"
+            log_status_and_exit_ex "PASS" "File exits in TR Max and Min Page think time is matched with both scenario file and page_think_time.dat file"
+        else
+            log_status_and_exit_ex "FAIL" "Max and Min Page think time is not matched with both scenario file and page_think_time.dat file"
+        fi
+    else
+        log_status_and_exit_ex "FAIL" "File is not exits in TR"
+    fi
+}
+
+function validate_Scenarion_Profile-002(){
+    index_page_min_think_time=$(grep index $PAGE_THINK_TIME_FILE | awk '{print $12}')
+    minTimeInsec=$(calculate_timeInSec $index_page_min_think_time)
+    debug_log "Index_page_min_think_time:$index_page_min_think_time"
+    debug_log "Sampling page min think time:$minTimeInsec"
+    index_page_max_think_time=$(grep index $PAGE_THINK_TIME_FILE | awk '{print $16}')
+    maxTimeInsec=$(calculate_timeInSec $index_page_max_think_time)
+    debug_log "Index_page_max_think_time:$index_page_max_think_time"
+    debug_log "Sampling page max think time:$maxTimeInsec"
+    scenario_min_time=$(grep PAGE_THINK $PATH_TO_TEST_RUN_SCENARIO | awk '{print $5}')
+    debug_log "Secnario_min_time :$scenario_min_time"
+    scenario_max_time=$(grep PAGE_THINK $PATH_TO_TEST_RUN_SCENARIO | awk '{print $6}')
+    if [ -f $PAGE_THINK_TIME_FILE ];then
+        debug_log "File exits"
+        if [ "${scenario_min_time}" == "${minTimeInsec}" ] && [ "${scenario_max_time}" == "${maxTimeInsec}" ];then
+            log_status_and_exit_ex "PASS" "File exits in TR Max and Min Page think time is matched with both scenario file and page_think_time.dat file"
+        else
+            log_status_and_exit_ex "FAIL" "Max and Min Page think time is not matched with both scenario file and page_think_time.dat file"
+        fi
+    else
+        log_status_and_exit_ex "FAIL" "File is not exits in TR"
+    fi
+}
+
+main
+
+exit  0

@@ -1,0 +1,54 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-001-001,3038,1,1,pass,ns_save_string() api Passed
+SMOKE-001-002,3039,1,1,pass,ns_eval_string() Passed
+SMOKE-001-003,3040,1,1,pass,ns_adv_param() Passed
+SMOKE-001-004,3041,1,1,pass,ns_adv_param() negative condition Passed
+SMOKE-001-005,3042,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-006,3043,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-007,3044,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-008,3045,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-009,3046,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-010,3047,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-011,3048,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-012,3049,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-013,3050,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-014,3051,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-015,3052,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-016,3053,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-017,3054,1,1,pass,Smoke_SET_INT_VAL_API_TEST Passed
+SMOKE-001-018,3055,1,1,pass,Smoke_GET_INT_VAL_API_TEST Passed
+SMOKE-001-019,3056,1,1,pass,Smoke_GET_RANDOM_STR_API_TEST Passed
+SMOKE-001-020,3057,1,1,pass,Smoke_GETTERS_API_TEST Passed
+SMOKE-001-021,3058,1,1,pass,Smoke_CHK_STR_CPY_API_TEST Passed
+SMOKE-001-024,3059,1,1,pass,Passed for ns_get_url_resp_msg
+SMOKE-002-001,3060,1,1,fail,Http authentication basic for apache main param session Failed
+SMOKE-002-002,3061,1,1,fail,Http authentication basic for apache main param use Failed
+SMOKE-002-003,3062,1,1,fail,Http authentication basic for apache for PageDump Failed
+SMOKE-002-004,3063,1,1,fail,Http authentication basic main with keep alive Failed
+SMOKE-002-005,3064,1,1,fail,Http authentication basic main cvfail without keepalive Failed
+SMOKE-003-001,3065,1,1,pass,Autofetch one main url five autofetch url Passed
+SMOKE-003-002,3066,1,1,pass,Autofetch disabled Passed
+SMOKE-003-003,3067,1,1,pass,Autofetch enabled two embedded url Passed
+SMOKE-003-004,3068,1,1,pass,Autofetch disabled two embedded url Passed
+SMOKE-003-005,3069,1,1,fail,Autofetch Inline Include Domain Failed
+SMOKE-003-006,3070,1,1,pass,Autofetch Inline Exclude Domain Passed
+SMOKE-003-007,3071,1,1,pass,Autofetch Inline Include Url Pattern Passed
+SMOKE-003-008,3072,1,1,pass,Autofetch Inline Exclude Url Pattern Passed
+SMOKE-003-009,3073,1,1,pass,No jsp based url being requested after excluding jsp based pattern
+SMOKE-003-010,3074,1,1,pass,jsp based url being requested after including jsp based pattern
+SMOKE-003-011,3075,1,1,pass,js based url were not requested after excluding js+ based pattern
+SMOKE-003-012,3076,1,1,pass,jsp inlines have been filtered out but js being included for js? pattern
+SMOKE-003-013,3077,1,1,pass,only js and jsp based inlines have been requested for including jsp? pattern
+SMOKE-003-014,3078,1,1,pass,jsp and js both inlines have been included for js* pattern
+SMOKE-003-015,3079,1,1,pass,jsp and js both inlines have been included for j[sp]+ pattern
+SMOKE-003-016,3080,1,1,pass,PostURLCallBack for set embed objects api;mode zero;not implemented
+SMOKE-003-017,3081,1,1,pass,PostURLCallBack for set embd objects api;mode one;not implemented
+SMOKE-003-018,3082,1,1,pass,PostURLCallBack for set embd objects api;url redirection;not implemented
+SMOKE-004-001,3083,1,1,pass,Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed
+SMOKE-004-002,3084,1,1,pass,Auto Redirect One Depth Server URL with relative path Passed
+SMOKE-004-003,3085,1,1,pass,Auto Redirect For Different Host Test Passed
+SMOKE-004-004,3086,1,1,fail,Auto Redirect For Relative To Absolute redirection Failed
+SMOKE-004-005,3087,1,1,fail,Auto Redirect For Different Protocol Url Failed
+SMOKE-004-006,3088,1,1,pass,Validation passed for Manual redirection testcase
+SMOKE-005-003,3089,1,1,pass,Four URL Test with expiry code and cookie mode 1  Passed
+SMOKE-005-004,3090,1,1,fail,Two URL Test with command line cookie and cookie mode 1 Failed

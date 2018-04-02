@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,6442,1,2,fail,FCU with RampUp in Step mode testcase failed because Thinking Vusers(NA) in baseline testrun found is 225.466 and Thinking Vusers(NA) in current testrun is 212.024 are having difference of 5.96187451767% which exceeed the tolerance of 5%
+REG-003-001,6444,1,2,fail,FSR  Mode 1 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 883.205 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 225.513 are having difference of 74.4665168336% which exceeed the tolerance of 5%
+REG-006-001,6447,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Running Vusers(NA) in baseline testrun found is 29.376 and Running Vusers(NA) in current testrun is 26.693 are having difference of 9.13330610022% which exceeed the tolerance of 5%
+REG-008-001,6454,1,2,fail,Replay Access Logs testcase failed because Running Vusers(NA) in baseline testrun found is 0.997 and Running Vusers(NA) in current testrun is 0.927 are having difference of 7.02106318957% which exceeed the tolerance of 5%

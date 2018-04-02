@@ -29,8 +29,14 @@ parser.add_argument(
 parser.add_argument(
     '-t', 
     '--timedelta',
-    default=3,
+    default=12,
     help='time delta in hours. Default is 4 hours'
+)
+parser.add_argument(
+    '-f', 
+    '--netstorm',
+    default='netstorm',
+    help='Netstorm file to check core. Default is bin/netstorm'
 )
 args = parser.parse_args()
 
@@ -40,7 +46,7 @@ def find_core_on_remote_machine(tot_core):
         # Connect to remote host
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect('10.10.30.38', username='root', password='abeona')
+        client.connect('10.10.30.96', username='root', password='C@VAdmin')
 
         # Run the transmitted script remotely without args and show its output.
         # SSHClient.exec_command() returns the tuple (stdin,stdout,stderr)
@@ -87,14 +93,15 @@ def main():
     tot_core = []
     
     cores = find(args.directory, args.pattern, args.timedelta)
+    file_net=os.path.join(os.getenv('NS_WDIR','.'),'bin',args.netstorm)
     for core in cores:
-        out = commands.getoutput('sudo file {}'.format(core))
-        tot_core.append("{} | {}".format(cores[core],out))
+        out = commands.getoutput('sudo gdb -q -n -ex bt -batch {} {}'.format(file_net, core))
+        tot_core.append("{} | {} $$$$ {}".format(cores[core],core ,out.replace('\n', '<br>')))
 
     cores = find("/home/netstorm/work/lps", args.pattern, args.timedelta)
     for core in cores:
-        out = commands.getoutput('sudo file {}'.format(core))
-        tot_core.append("{} | {}".format(cores[core],out))
+        out = commands.getoutput('sudo gdb -q -n -ex bt -batch {} {}'.format(file_net, core))
+        tot_core.append("{} | {} $$$$ {}".format(cores[core],core ,out.replace('\n', '<br>')))
     
     find_core_on_remote_machine(tot_core)
     #print tot_core 
@@ -102,7 +109,7 @@ def main():
         current_time = strftime("%d/%m/%Y %H:%M:%S")
         env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')))
         p = env.get_template(core_out_file)
-        print p.render(data=tot_core, tot = len(tot_core), cur_time=current_time, headers=['Created at', 'Core', 'File Command Output'], )
+        print p.render(data=tot_core, tot = len(tot_core), cur_time=current_time, headers=['Created at', 'Core', 'Stack Trace'], )
     else:
         print "No core found"
 if __name__ == '__main__':

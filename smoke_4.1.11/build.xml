@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+
+<!--Task: Declaring project name-->
+<project name="core-smoke" basedir="." default="run">
+
+    <!-- Task: check cav.conf file  -->
+    <target name="check-conf" description="It check cav.conf">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.check.conf}"
+                 trust="true"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.correlation.check.conf}"
+                 trust="true"/>
+    </target>
+
+
+    <!-- Task: Check vnc process running status-->
+    <target name="check-vnc-status" description="Check vnc process running status">
+       <exec executable="ps" outputproperty="vnc.file">
+           <arg value="-ef"/>
+           <arg value="|"/>
+           <arg value="grep"/>
+           <arg value="vnc"/>
+        </exec>
+        <fail message="VNC is not running, start the vnc port" unless="vnc.file"/>
+    </target>
+  
+    <!-- Task: Initiates vnc process instance-->
+    <target name="restart-vnc" depends="check-vnc-status" description="Initiates vnc process instance">
+       <exec executable="vncserver" outputproperty="action.file">
+           <arg value=":3"/>
+       </exec>
+       <fail message="Vnc process not started please check" unless="action.file"/>
+    </target>
+   
+    <!-- Task: File to declare all build variable values-->
+    <property file="build.properties"/>
+    
+    <!-- Task: Cleans test directory structure-->
+    <target name="clean" 
+            description="cleans workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <delete dir="${scripts.dir}" failonerror="false"/>
+        <delete dir="${scenarios.dir}" failonerror="false"/>
+        <delete dir="${testcases.dir}" failonerror="false"/>
+        <delete dir="${testsuites.dir}" failonerror="false"/>
+        <delete dir="${lib.dir}" failonerror="false"/>
+    </target>
+    
+    <!-- Task: Copies test scenario structure to desired locations and modifies modes-->
+    <target name="copy" depends="clean" 
+            description="copies and prepares workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+    
+    <!-- Task: Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite--> 
+    <!--<target name="copy-hpd-file" depends="restart-httpd" description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">-->
+     <target name="copy-hpd-file"  description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">
+    <!--<target name="copy-hpd-file" description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">-->
+
+        <scp file="${hpd.conf.ns}" 
+             todir="${remote.user}@${remote.host}:${hpd.conf.no}" 
+             password="${remote.password}" trust="true"/>
+    </target>
+   
+    <!-- Task: Restarts and check status of vsftpd service --> 
+    <target name="check-vsftpd-process" description="Restart vsftpd service">
+        <sshexec host="${remote.host}"
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="service vsftpd restart" 
+                 trust="true"/>
+        <sleep seconds="20"/>
+        <sshexec host="${remote.host}"  
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="service vsftpd status"
+                 trust="true"
+                 outputproperty="vsftpd.process"/>
+        <fail message="vsftpd process is not running please look into it" unless="vsftpd.process"/>
+    </target>
+    
+    <!-- Task: Restarts and check status of NO server--> 
+    <target name="hpd-process-restart" 
+            depends="check-conf,copy-hpd-file, copy, start-apache2" 
+            description="Restarts and check status of NO server">
+        <exec command="nsu_server_admin -g -i -s '10.10.30.96' -c '/etc/init.d/hpd restart'"/>
+        <sshexec host="${remote.host}"
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.restart}" 
+                 trust="true"/>
+        <sleep seconds="50"/>
+        <sshexec host="${remote.host}"  
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.show}"
+                 trust="true"
+                 outputproperty="hpd.process"/>
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+        <!-- Check hpd is working on 80 port or not -->
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.port.check}" 
+                 trust="true"
+                 outputproperty="hpd.port"/> 
+    </target>
+
+   <!-- Task: Copies httpd.conf file to set enviornment for auth_basic test execution-->
+    <target name="copy-httpd-file" 
+            description="Copies httpd.conf file to set enviornment for auth_basic test execution">
+        <scp file="${httpd.conf.ns}" 
+             todir="${remote.user}@${remote.host}:${httpd.conf.no}"
+             password="${remote.password}" 
+             trust="true"/>
+    </target>
+
+    <!-- Task: Restarts httpd server and checks status-->
+    <target name="restart-httpd"
+            depends="copy-httpd-file"
+            description="Restarts httpd server and checks status">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}"
+                 password="${remote.password}"
+                 command="${command.httpd.stop}"
+                 trust="true"
+                 failonerror="false"/>
+        <sleep seconds="10"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}"
+                 password="${remote.password}"
+                 command="${command.httpd.start}"
+                 trust="true"
+                 failonerror="false"/>
+        <sleep seconds="10"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}"
+                 command="${command.httpd.status}" 
+                 trust="true" 
+                 outputproperty="httpd.process"
+                 failonerror="false"/>
+        <fail message="HTTPD is not running please see httpd_error.log first" unless="httpd.process"/>
+    </target>
+
+    <!-- Task: To debug perticular test execution and changes-->
+    <!--<target name="debug" depends="copy">-->
+    <target name="debug-test" depends="hpd-process-restart" description="To debug perticular test execution and changes">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Smoke"/>
+        </exec>
+    </target>
+    
+    <!-- Task: Initiates excution of Smoke testsuite--> 
+    <target name="smoke" 
+            depends="hpd-process-restart, restart-vnc, trigger-welcome-mail"
+            description="Initiates excution of Smoke testsuite">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="start time = ${start.time}"/>
+
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Smoke"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+    
+    <!--<target name="smoke" depends="copy">-->
+    <!-- Task: Initiates excution of Smoke debug testsuite without sending acknowledgement mails--> 
+    <!--<target name="smoke-debug" depends="copy">-->
+    <target name="smoke-debug"
+            description="Initiates excution of Smoke debug testsuite without sending acknowledgement mails">
+
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Smoke"/>
+            <arg value="0"/>
+		</exec>
+
+    </target>
+
+    <!-- Task: Update mail.properties prior to Test Start Mail Send--> 
+    <target name="trigger-welcome-shell" description="Update mail.properties prior to Test Start Mail Send">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <!-- Task: Send smoke automation start mail-->
+    <target name="trigger-welcome-mail" depends="trigger-welcome-shell" description="Send smoke automation start mail">
+        <property file="mail.properties"/>
+        <mail mailhost="websrv.cavisson.com"
+              user="${mail.user}"
+              password="${mail.password}" 
+              mailport="587" 
+              enableStartTLS="true"
+              tolist="${configured.mail.list.to}" 
+              messageMimeType="text/html"
+              subject="[UBUNTU16]Smoke: NSCore ${curr.release} B${curr.build} - Started" 
+              messagefile="${startup.mail.file}"
+              failonerror="false">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    </target>
+
+   <!-- Task: Update mail.properties prior to automation result mail Send--> 
+   <target name="process-test-results" description="Update mail.properties prior to automation result mail Send">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+
+        <echo message="${start.time}"/>
+        
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_results"/>
+            <arg value="${start.time}"/>
+        </exec>
+   </target>
+   
+   <!-- Task: Send smoke automation results with attachments-->
+   <target name="trigger-result-mail" depends="process-test-results" description="Send smoke automation results with attachments"> 
+       <property file="mail.properties"/>
+       <mail mailhost="websrv.cavisson.com" 
+             user="${mail.user}"
+             password="${mail.password}" 
+             mailport="587" 
+             enableStartTLS="true"
+             cclist="${configured.mail.list.cc}" 
+             tolist="${configured.mail.list.too}" 
+             messageMimeType="text/html"
+             subject="[UBUNTU16]Smoke: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+             messagefile="${mail.result.file}"
+			 failonerror="false">
+           <from address="automation@cavisson.com"/>   		   
+       </mail>	       
+   </target>
+	   
+    <!-- Restarting apache2 of 10.10.30.37 for HTTP2 Test cases --> 
+    <target name="start-apache2">
+     <exec command="nsu_server_admin -g -i -s '10.10.30.37' -c '/etc/init.d/apache2 restart'"/>
+   </target> 
+  
+   <!-- Task: Declaring default target to initiate build--> 
+   <target name="run" depends="smoke, trigger-result-mail" description="Declaring default target to initiate build">
+   </target>
+   
+   <!-- Task: Declaring default target to initiate build--> 
+   <target name="debug" depends="hpd-process-restart, restart-vnc, smoke-debug" description="Declaring default target to initiate build">
+   </target>
+   
+   <!-- Task: Declaring default target to initiate build without resatrting HTTP,VNC,HTTPD etc--> 
+   <target name="debug-without-restart" depends="copy,smoke-debug" description="Declaring default target to initiate build without resatrting HTTP,VNC,HTTPD etc"/>
+
+   <!-- Task: To test standalone mailing processes--> 
+   <target name="test" depends="trigger-result-mail" description="To test standalone mailing processes">
+   </target>
+
+</project>

@@ -10,7 +10,7 @@ package com.cavisson.scripts.JTSScript40K;
 import pacJnvmApi.NSApi;
 public class init_script
 {
-    static int execute(NSApi nsApi)
+    static int execute(NSApi nsApi) throws Exception
     {
         return 0;
     }

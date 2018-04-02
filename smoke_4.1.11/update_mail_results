@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+
+MAIL_PROP_FILE="mail.properties"
+WORKBENCH="/home/automation/workbench/automation/nscore/smoke_4.1.11"
+RESULTS_DIR="$WORKBENCH/results"
+version=$(nsu_get_version | head -1 | awk -F " " '{print $2}')
+build=$(nsu_get_version | head -1 | cut -d '#' -f2 | cut -d ')' -f1 | sed -e 's/\ //g')
+SMOKE_RESULT_FILES="$RESULTS_DIR/${version}/.${build}"
+TMP_FAIL_CASE_FILE="/tmp/automation.log.failed"
+
+buildtimestamp=$(date +'%d/%m/%y %I:%M:%S %p')
+start_time="${1}"
+
+
+function get_metrics(){
+    file="$1"
+    pattern="$2"
+    count=$(grep "$pattern" ${file} | wc -l)
+    echo $count
+}
+
+    
+function set_test_results(){ 
+    first_attachment=$(ls -tr $SMOKE_RESULT_FILES/*.txt | tail -1)
+    passed=0;failed=0
+    total=$(grep "TotalExecuted" /tmp/last | cut -d '=' -f2)
+    nsfail=$(grep "NSFailCount" /tmp/last | cut -d '=' -f2)
+    failed=$(($failed + $(get_metrics $first_attachment ",fail,")))
+    passed=$(($passed + $(get_metrics $first_attachment ",pass,")))
+
+    if [ $total -eq $passed ] && [ $total -gt 0 ] && [ $nsfail -eq 0 ];then
+        STATUS=Successful
+    else
+        STATUS=Failed
+    fi
+}
+
+
+function check_and_set_td(){
+  if [ $failed -gt 0 ]; then
+    echo "<td style='color: red'><a href='http://10.10.30.37/reports/graphs/NetStorm/smoke/${version}/B${build}'>$failed</a></td>"
+  else
+    echo "<td>$failed</td>"
+  fi
+}
+
+
+function check_and_set_project_status(){
+  if [ $failed -gt 0 ] || [ $nsfail -gt 0 ]  ; then
+    echo "<td style='background-color: #FBE9E7'>Failed</td>"
+  else
+    echo "<td style='background-color: #E8F5E9'>Passed</td>"
+  fi
+}
+
+
+function get_fail_test_data() {
+    if [ $failed -gt 0 ]; then
+	str=""
+	R_FILE=$(ls -tr $SMOKE_RESULT_FILES/*.txt | tail -1)
+       
+	grep ',fail,' $R_FILE >"$TMP_FAIL_CASE_FILE"
+     
+	while read line;
+	do
+	    id=$(echo "$line" | cut -d, -f1) 
+	    tr=$(echo "$line" | cut -d, -f2) 
+	    desc=$(echo "$line" | cut -d, -f6) 
+	    str+="<tr><td>$id</td><td>$tr</td><td>$desc</td></tr>"
+	done <"$TMP_FAIL_CASE_FILE"
+	
+	caption="<caption class='lead'>Failed Testcases</caption>"
+	th="<tr><th>Testcase ID</th><th width='10%'>Test Run</th><th>Description</th></tr>" 
+	table="<br><br><table>$caption $th $str</table>"
+	
+	echo "$table"
+    else
+        echo ""
+    fi
+}
+
+
+function set_up_email(){
+    set_test_results
+    echo -e "
+<!DOCTYPE html>
+<html>
+<head>
+    <style type='text/css'>
+        body{
+            font-size: .9rem;
+            color: #333;
+        }
+       .container{
+          width: 90%;
+          padding: 50px;
+          border: 1px solid #e0e0e0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td { 
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            font-size: 1em;
+        }
+        th {
+           background-color: #f5f5f5;
+           text-align: left;
+           color: #333;
+        }
+        tr td{
+        }
+        .divider {
+          border-top: 1px solid #e0e0e0;
+        }
+        
+        .signature{ color: #607d8b;}
+        
+        .lead { 
+        font-size: 1.68rem; 
+        color: #616161; 
+        font-weight: 300;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class='container'>
+    <table style='width: 92%!important; border: 0px;'>
+        <tr>
+          <td width='30%' style='border: 0px!important; padding: 0px !important'><h2 class='lead'>Report For: NS Core Smoke</h2></td>
+          <td width='70%' style='border: 0px! important; padding: 0px!important'>
+            <table>
+               <tr>
+               <th>Status</th>
+               <th>Start Time</th>
+               <th>End Time</th>
+               </tr>
+               <tr>
+               $(check_and_set_project_status)
+               <td>${start_time}</td>
+               <td>${buildtimestamp}</td>
+               </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+    <br>
+    <div class='divider'>
+    <br>
+    <table>
+    <caption class='lead'>Test Results</caption>
+        <tr>
+            <th>Category</th>
+            <th>Total</th>
+            <th>Passed</th>
+            <th>Failed</th>
+            <th>NS Fail</th>
+        </tr>
+        <tr>
+            <td>Smoke</td>
+            <td>$total</td>
+            <td>$passed</td>
+	    $(check_and_set_td)
+            <td>$nsfail</td>
+        </tr>
+    </table>
+    <br>
+    $(get_fail_test_data)
+   <br><br>
+    <a href='http://10.10.30.37/reports/graphs/NetStorm/smoke/${version}/B${build}' style='text-decoration: none; color: #263238;'>Click to see online reports</a>
+   <br><br>
+   <div class='signature'>
+      Automation Team,<br>Cavisson Systems Inc
+   </div>
+</div>
+</body>" >/home/automation/workbench/automation/nscore/lib/mail_results.html
+    echo "curr.release = $version" >${MAIL_PROP_FILE}
+    echo "curr.build = $build" >>${MAIL_PROP_FILE}
+    echo "configured.mail.list.too = dl-qa-teamleads@cavisson.com,neeraj@cavisson.com,functionalheads@cavisson.com">>${MAIL_PROP_FILE}
+    echo "configured.mail.list.cc = dl-qa-nsc@cavisson.com,dl-qa-auto@cavisson.com,dl-sup-projmgt@cavisson.com" >>${MAIL_PROP_FILE}
+    #echo "configured.mail.list.too = ranjeet.kumar@cavisson.com, arun.yadav@gmail.com" >>mail.properties
+    #echo "configured.mail.list.cc = vishal.singhal@cavisson.com" >>mail.properties
+    echo -e "buil.status.header = $STATUS" >>${MAIL_PROP_FILE}
+    echo -e "mail.result.file = /home/automation/workbench/automation/nscore/lib/mail_results.html" >>${MAIL_PROP_FILE}
+    echo -e "smoke.results.dir = $SMOKE_RESULT_FILES" >>${MAIL_PROP_FILE}
+    echo -e "first.attachment = $first_attachment" >>${MAIL_PROP_FILE}
+    echo "mail.user = automation@cavisson.com" >> ${MAIL_PROP_FILE}
+    echo "mail.password = Cavisson!" >> ${MAIL_PROP_FILE}
+}
+
+
+set_up_email

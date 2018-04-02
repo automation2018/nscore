@@ -1,0 +1,9 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,74287,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,74288,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,74289,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,74290,1,2,pass,FSR  Mode 2 testcase passed
+REG-005-001,74291,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.002 and Average Response Time (Secs)(NA) in current testrun is 0.001 are having difference of 50.0% which exceeed the tolerance of 5%
+REG-006-001,74292,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average SMTP Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(smtp);Service Time (Secs)(NA) in current testrun is 17.802 are having difference of -890000.0% which exceeed the tolerance of 5%
+REG-008-001,74299,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,74300,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

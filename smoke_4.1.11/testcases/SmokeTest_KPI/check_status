@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+TRANSACTION_DETAIL="${NS_WDIR}/logs/TR${T_RUN_ID}/trans_detail.dat"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-062-001") validate_KPI ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+function validate_KPI(){
+    transaction_to_hit=(Transaction Name CONNECT SESSION_START SECURITY_TEST_MAC DEVICE_VERSION LINE_ITEM_ADD LINE_ITEM_OVERRIDE LINE_ITEM_REMOVE PAYMENT_CAPTURE PAYMENT_CREDIT SESSION_FINISH ALL)
+    hit_transaction=(`awk -F'|' '{print $1}' ${TRANSACTION_DETAIL}`)
+
+    debug_log "Hitted transaction: ${hit_transaction[@]}"
+
+    different_transactions=`echo ${transaction_to_hit[@]} ${hit_transaction[@]}| tr ' ' '\n'|sort |uniq -u`
+    debug_log "Transactions difference: $different_transactions"
+
+    if [ -z ${different_transactions} ];then
+        log_status_and_exit_ex "PASS" "KPI test passed as all transactions hit successfully"
+    else
+        log_status_and_exit_ex "FAIL" "KPI pinpad test failed as ${different_transactions} transactions failed"
+    fi
+}
+
+main
+
+exit  0

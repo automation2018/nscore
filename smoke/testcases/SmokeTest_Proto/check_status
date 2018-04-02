@@ -30,7 +30,7 @@ IMAP_FS_SELECT="${T_ID_REQ_PATH}/imap_session_0_0_0_2_0_0_0_2_0.dat"
 FS_REQ_FILE="$T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat"
 FS_REP_FILE="$T_ID_REQ_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat"
 HES_REQ_BODY_FILE="$T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.xml"
-HES_REQ_SCRIPT_FILE="/home/netstorm/work/scripts/Smoke/Smoke/Smoke_Hessian/HessianService1.xml"
+HES_REQ_SCRIPT_FILE="/home/netstorm/work/scripts/Smoke_Hessian/HessianService1.xml"
 HES_REQ_DIFF_FILE="/tmp/dif_file"
 HES_BIN_DIFF_FILE="/tmp/hes_bin.diff"
 REQ_HES_BDY_FILE="$T_ID_REQ_PATH/url_req_hessian_body_0_0_0_0_0_0_0_0_0.hessian"
@@ -61,7 +61,7 @@ function get_pop3_test_values(){
 
 
 function get_dns_test_values(){
-   Msg_Log_Debug=$(grep "rdata type" ${DEBUG_LOG} | head -1)
+   Msg_Log_Debug=$(grep -a "rdata type" ${DEBUG_LOG} | head -1)
    Msg_Log_Debug_Count=$(grep -c "rdata type" ${DEBUG_LOG}) 
    debug_log "DNS Type Message=${Msg_Log_Debug};DNS Message Count=${Msg_Log_Debug_Count}"
 }
@@ -100,7 +100,7 @@ function get_smtp_test_values(){
 
     Welcome_Msg=$(grep "EHLO" ${LogPath})
     Auth_Login=$(grep "AUTH LOGIN" ${LogPath})
-    Succ_Msg=$(grep "succeeded" ${LogPath})
+    Succ_Msg=$(grep "advertised" ${LogPath})
     Subject=$(grep "Subject" ${LogPath} | cut -d " " -f2,3,4,5)
     TestIDX=$(grep "boundary=NetStormAttachmentTestidx" ${LogPath} | awk -F "-" '{print $2}')
     MsgBody=$(grep "^Hello" ${LogPath})
@@ -108,7 +108,7 @@ function get_smtp_test_values(){
 
     if [ "${Welcome_Msg}" == "EHLO cavisson.com" ] && \
        [ "${Auth_Login}" == "AUTH LOGIN" ] && \
-       [ "${Succ_Msg}" == "235 Authentication succeeded" ] && \
+       [ "${Succ_Msg}" == "503 AUTH command used when not advertised" ] && \
        [ "${Subject}" == "SMTP smoke test Mail" ] && \
        [ "${MsgBody}" == "Hello, You got this mail from smoke SMTP testcase run" ] && \
        [ "${ClosingMsg}" == "QUIT" ];then
@@ -184,7 +184,7 @@ if [ "$T_NAME" == "SMOKE-010-002" ];then
 fi
 
 if [ "$T_NAME" == "SMOKE-010-003" ];then
-    Msg_Log_Debug=$(grep -o "type MX Preference 100 domain abc.yahoo.com" ${DEBUG_LOG} | head -1)  
+    Msg_Log_Debug=$(grep -ao "type MX Preference 100 domain abc.yahoo.com" ${DEBUG_LOG} | head -1)  
 
     if [ "$Msg_Log_Debug" == "type MX Preference 100 domain abc.yahoo.com" ];then
         log_status_and_exit_ex "PASS" "DNS MX type query Passed"

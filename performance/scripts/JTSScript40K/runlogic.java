@@ -23,7 +23,7 @@ import pacJnvmApi.NSApi;
 public class runlogic
 {
  
-  public int runFlow(NSApi nsApi)
+  public int runFlow(NSApi nsApi)  throws Exception
   {
     try
     { 
@@ -38,7 +38,7 @@ public class runlogic
     return 0;
   }
 
-  public void execute(NSApi nsApi)
+  public void execute(NSApi nsApi) throws Exception
   {
     //init script
     int initStatus = init_script.execute(nsApi);

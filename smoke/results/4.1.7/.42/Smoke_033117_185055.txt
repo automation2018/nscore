@@ -1,0 +1,7 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-041-01,88396,1,1,pass,Page as transaction mode 1 0 passed as all transactions name same as page name with 'tr_' prefix
+SMOKE-041-02,88397,1,1,pass,Page as transaction mode 1 1 passed as all transactions name same as page name
+SMOKE-041-03,88398,1,1,pass,Page as transaction mode 2 0 passed as all transaction start with 'tx_' prefix and exit status added with all transaction
+SMOKE-041-04,88399,1,1,pass,Page as transaction mode 2 1 passed as all transactions not start with 'tx_' prefix and exit status added with all transaction
+SMOKE-041-05,88400,1,1,fail,Page as transaction mode 3 0 failed as may be all transaction not start with 'tr_' prefix or error status not added with transaction at end
+SMOKE-041-06,88401,1,1,fail,Page as transaction mode 3 1 failed as may be all transaction start with 'tr_' prefix or error status not added with transaction at end

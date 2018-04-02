@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+TRANS_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+SCRIPT_NAME=$(grep SGRP ${S_FILE} | cut -d' ' -f6)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Smoke/Smoke/${SCRIPT_NAME}/flow.c"
+TSR_FILE="$TS_LOG_DIR/$(get_testcase_name)/test_run.report"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-058-001") StatusCode_validation;;
+        "SMOKE-058-002") StatusCode_validation;;
+         ?) handle_unknown_case ;;
+         *) handle_unknown_case ;;
+    esac
+}
+
+
+function StatusCode_validation(){
+   
+    for i in status101 status200 status204 status206 status301 status302 status400 status401 status403 status404 status500 status504 status505
+    do
+    status_code_txn_attempted=$(grep $i ${TRANS_FILE} | cut -d'|' -f6 )
+    status_code_txn_success=$(grep $i ${TRANS_FILE} | cut -d'|' -f7 )
+    if [[ "${i}" == +(status101|status200|status204|status206|status301|status302|status401) ]];then
+        if [ "$status_code_txn_attempted" == "$status_code_txn_success" ];then
+            debug_log "PASS" "$i transaction status code passed"
+                else
+            log_status_and_exit_ex "FAIL" "$i transaction status code failed"
+        fi
+        else
+        if [ "$status_code_txn_attempted" -ne "$status_code_txn_success" ];then
+            debug_log "PASS" "$i transaction status code passed"
+        else
+            log_status_and_exit_ex "FAIL" "$i transaction status code failed"
+            fi
+        fi
+            done
+
+}
+
+main
+
+exit 0

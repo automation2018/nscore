@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+DEBUG_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+SCENARIO_NAME="$NS_WDIR/logs/TR$T_RUN_ID/scenario"
+S_KEY_WORD=$(cat ${SCENARIO_NAME} | grep G_ENABLE_DT | awk '{print $4}')
+REQ_PATH="${T_ID_REQ_PATH}/url_req*"
+VALIDATE_COUNT=0
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-063-001") validate_DT-001 ;;
+        "SMOKE-063-002") validate_DT-002 ;;
+        "SMOKE-063-003") validate_DT-003 ;;
+        "SMOKE-063-004") validate_DT-004 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+    }
+
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+function validate_DT-001(){
+
+    log_status_and_exit_ex "PASS" "Testcase not implemented"
+}
+
+function validate_DT-002(){
+
+    log_status_and_exit_ex "PASS" "Testcase not implemented"
+}
+
+function validate_DT-003(){
+
+    log_status_and_exit_ex "PASS" "Testcase not implemented"
+}
+
+function validate_DT-004(){
+
+    log_status_and_exit_ex "PASS" "Testcase not implemented"
+}
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function check_request(){
+#TR_NUM=15133
+#TR_HOME=/home/netstorm/work_2/logs/TR$TR_NUM
+#REQ_REP=$TR_HOME/20170809141342/ns_logs/req_rep
+#Obtain G_ENABLE_DT keywords Keyfiled
+#SCENARIO=$(cat $TR_HOME/scenario | grep G_ENABLE_DT | awk '{print $4}')
+#SCRIPT_NAME="new_DT_script" ##To be replaced with $K_SCRIPT
+
+##Obtain the count of url request files .
+count=$(ls -l $REQ_PATH | wc -l )
+#echo "count=$count"
+#echo $SCENARIO
+KeyCount=$(echo $S_KEY_WORD | grep -o ';' | wc -l) 
+#echo $KeyCount
+for (( i=1 ; i<=$KeyCount+1 ; i++ ))
+do
+KeyField=$(echo "$S_KEY_WORD" | cut -d ';' -f$i)
+#SI_IN=$(echo $KeyField | grep -c '=' )
+#if [ $SI_IN -eq 1 ] ; then
+#KeyField=$(echo $KeyField | cut -d '=' -f1)
+#fi
+
+case $KeyField in
+"ID")
+echo "ID"
+ID_COUNT=$(grep  "x-dynaTrace" $REQ_PATH | grep -o "ID=[0-9]*" | wc -l)
+if [ $count -eq $ID_COUNT ];then
+debug_log "ID field is validated"
+else
+debug_log "Not getting proper id value"
+let VALIDATE_COUNT++;
+fi
+;;
+
+
+
+"VU")
+echo "VU"
+VU_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "VU=[0-9]*" | wc -l)
+if [ $count -eq $VU_COUNT ];then
+debug_log "VU field is validated"
+else
+debug_log "Not getting proper VU value"
+let VALIDATE_COUNT++;
+fi
+;;
+
+"PC")
+echo "PC"
+PC_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "PC=index" | wc -l)
+if [ $count -eq $PC_COUNT ];then
+debug_log "PC field is validated"
+else
+debug_log "Not getting proper PC value"
+let VALIDATE_COUNT++;
+fi
+;; 
+
+"GR")
+echo "GR"
+GR_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "GR=NewYork\|GR=SanFrancisco\|GR=Canaberra-AUS\|GR=London\|GR=Shanghai\|GR=Chicago\|GR=BuenosAires\|GR=Tokyo\|GR=Houston\|GR=Houston" | wc -l)
+if [ $count -eq $PC_COUNT ];then
+debug_log "GR field is validated"
+else
+debug_log "Not getting proper GR value"
+fi
+let VALIDATE_COUNT++;
+;; 
+"AN")
+echo "AN"
+AN_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "AN=10.10.30.52" | wc -l)
+if [ $count -eq $AN_COUNT ];then
+debug_log "AN field is validated"
+else
+debug_log "Not getting proper AN: value"
+let VALIDATE_COUNT++;
+fi
+;; 
+"SN")
+echo "SN"
+SN_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "SN=$SCRIPT_NAME" | wc -l)    
+if [ $count -eq $SN_COUNT ];then
+debug_log "AN field is validated"
+else
+debug_log "Not getting proper AN value"
+let VALIDATE_COUNT++;
+fi
+;; 
+
+"SI=NS")
+echo "SI"
+SI_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "SI=NS" | wc -l)
+if [ $count -eq $SN_COUNT ];then
+debug_log "SI field is validated"
+else
+debug_log "Not getting proper SI value"
+let VALIDATE_COUNT++;
+fi
+;; 
+
+"NA")
+echo "NA"
+NA_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "NA=index" | wc -l)
+if [ $count -eq $NA_COUNT ];then
+debug_log "AN field is validated"
+else
+debug_log "Not getting proper AN value"
+let VALIDATE_COUNT++;
+fi
+;; 
+
+"TE")
+echo "TE"
+TE_COUNT=$(grep "x-dynaTrace" $REQ_PATH | grep -o "TE=$TR_NUM;" | wc -l)
+if [ $count -eq $TE_COUNT ];then
+debug_log "TE field is validated"
+else
+debug_log "Not getting proper TE value"
+let VALIDATE_COUNT++;
+fi
+;; 
+
+esac
+done
+
+}
+
+
+main
+
+
+exit  0

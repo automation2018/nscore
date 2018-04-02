@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Source out required files
+source $NS_WDIR/lib/automation_util
+
+# Default Constants
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_PAT/flow.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+test_case_name=$(get_testcase_name)
+test_console_file="${TS_LOG_DIR}/${test_case_name}/test_run.report"
+
+# Entry point to check status
+# Add cases to handle your validation
+function main() {
+	case $(get_tname) in
+    "SMOKE-054-001") validate_G_MAX_CON_PER_VUSER ;;
+# End case def
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function handle_unknown_case() {
+        log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+# TODO: 
+# 1. Add logic to validate case SMOKE-007-001
+# 2. Depending upon evaluation update the status with your own description
+function validate_G_MAX_CON_PER_VUSER() {
+    con_open=$(grep "HTTP TCP Conns" $P_FILE | awk -F"[()]" '{print $4}' | cut -d' ' -f1)
+	con_close=$(grep "HTTP TCP Conns" $P_FILE | awk -F"[()]" '{print $4}' | cut -d' ' -f2)
+
+	debug_log "open connections: '$con_open'"
+	debug_log "close connections: '$con_close'"
+	
+	if [ "$con_open" == "Open=2" ];
+	then
+		if [ "$con_close" == "Close=2" ];
+		then
+			log_status_and_exit_ex "PASS" "G_MAX_CON_PER_VUSER is successfully validated for browser mode"
+		else
+			log_status_and_exit_ex "FAIL" "G_MAX_CON_PER_VUSER validation failed due to wrong number of closed connection"
+		fi
+	else
+		log_status_and_exit_ex "FAIL" "G_MAX_CON_PER_VUSER validation failed due to wrong number of open connection"
+	fi
+
+}
+
+# Call to main function
+# Do not override it
+main

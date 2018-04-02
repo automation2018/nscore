@@ -1,0 +1,99 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+function smoke_pagethink()
+{
+    MaxSesRepTime_Float=`grep  "Average Session Response Time (Secs)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8`
+    MaxSesRepTime=`printf '%.0f\n' $MaxSesRepTime_Float`
+    ThinkingVusers_Float=`grep  "Thinking Vusers" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data|cut  -d '|' -f8`
+    ThinkingVusers=`printf '%.0f\n' $ThinkingVusers_Float`
+    FirstPageMaxTransTime_Float=`grep  "hpd_page1_trans1" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |cut -d '|' -f4`
+    FirstPageMaxTransTime=`printf '%.0f\n' $FirstPageMaxTransTime_Float`
+    SecondPageMaxTransTime_Float=`grep  "hpd_page2_trans2" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |cut -d '|' -f4`
+    SecondPageMaxTransTime=`printf '%.0f\n' $SecondPageMaxTransTime_Float`
+    SpecificPageMaxTransTime_Float=`grep  "hpd_page3_trans3" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |cut -d '|' -f4`
+    SpecificPageMaxTransTime=`printf '%.0f\n' $SpecificPageMaxTransTime_Float`
+    OverrideWithMultiplyValue_Float=`grep  "hpd_page7_trans7" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |cut -d '|' -f4`
+    OverrideWithMultiplyValue=`printf '%.0f\n' $OverrideWithMultiplyValue_Float`
+    OverideRandomPctValue_Float=`grep  "hpd_page6_trans6" $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat  |cut -d '|' -f4`
+    OverideRandomPctValue=`printf '%.0f\n' $OverideRandomPctValue_Float`
+}
+
+if [ "$T_NAME" == "Smoke_PageThink_Constant" ];then 
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 46 ] && \
+       [ $MaxSesRepTime -ge 35 -a $MaxSesRepTime -le 36 ] && \
+       [ $ThinkingVusers -eq 1 ] && \
+       [ $FirstPageMaxTransTime -ge 5 -a $FirstPageMaxTransTime -le 6 ] && \
+       [ $SecondPageMaxTransTime -ge 5 -a $SecondPageMaxTransTime -le 6 ];then
+        log_status_and_exit_ex "PASS" "Smoke_PageThink_Constant Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Smoke_PageThink_Constant Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_PageThink_Uni_Dist" ];then
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 23 ] && \
+       [ $MaxSesRepTime -ge 40 -a $MaxSesRepTime -le 70 ] && \
+       [ $ThinkingVusers -eq 1 ] && \
+       [ $FirstPageMaxTransTime -ge 5 -a $FirstPageMaxTransTime -le 10 ] && \
+       [ $SecondPageMaxTransTime -ge 5 -a $SecondPageMaxTransTime -le 10 ];then
+        log_status_and_exit_ex "PASS" "Smoke_PageThink_Uni_Dist Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Smoke_PageThink_Uni_Dist Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_PageThink_Int_Dist" ];then
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 23 ] && \
+       [ $MaxSesRepTime -ge 0 -a $MaxSesRepTime -le 2 ] && \
+       [ $ThinkingVusers -ge 0 -a $ThinkingVusers -le 1 ] && \
+       [ $FirstPageMaxTransTime -ge 0 -a $FirstPageMaxTransTime -le 2 ] && \
+       [ $SecondPageMaxTransTime -ge 0 -a $SecondPageMaxTransTime -le 2 ];then
+        log_status_and_exit_ex "PASS" "Smoke_PageThink_Int_Dist Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Smoke_PageThink_Int_Dist Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_PageThink_Spcfc_Page" ];then
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 23 ] && \
+       [ $MaxSesRepTime -ge 5 -a $MaxSesRepTime -le 6 ] && \
+       [ $SpecificPageMaxTransTime -ge 5 -a $SpecificPageMaxTransTime -le 6 ] && \
+       [ $ThinkingVusers -eq 1 ];then
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_PageThink_Overide_Mul" ];then
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 23 ] && \
+       [ $MaxSesRepTime -ge 26 -a $MaxSesRepTime -le 27 ] && \
+       [ $OverrideWithMultiplyValue -ge 1 -a $OverrideWithMultiplyValue -le 2 ] && \
+       [ $ThinkingVusers -eq 1 ];then
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_PageThink_Overide_Random_Pct" ];then
+    smoke_pagethink
+    if [ $SD_TotalSuccURL -eq 23 ] && \
+       [ $MaxSesRepTime -ge 1 -a $MaxSesRepTime -le 3 ] && \
+       [ $OverideRandomPctValue -ge 0 -a $OverideRandomPctValue -le 2 ] && \
+       [ $ThinkingVusers -eq 1 ];then
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+fi
+
+exit 0

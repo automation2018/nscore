@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,85202,1,2,fail,FCU with RampUp in Step mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 1003.691 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 254.204 are having difference of 74.6730816556% which exceeed the tolerance of 5%
+REG-002-001,85203,1,2,fail,FCU with RampUp in Rate mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 1681.802 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 430.49 are having difference of 74.4030510131% which exceeed the tolerance of 5%
+REG-003-001,85204,1,2,fail,FSR  Mode 1 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 916.058 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 234.082 are having difference of 74.446814503% which exceeed the tolerance of 5%
+REG-004-001,85205,1,2,fail,FSR  Mode 2 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 202.845 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 53.129 are having difference of 73.8080800611% which exceeed the tolerance of 5%
+REG-005-001,85206,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.002 and Average Response Time (Secs)(NA) in current testrun is 0.001 are having difference of 50.0% which exceeed the tolerance of 5%
+REG-006-001,85207,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average Page Response Time (Secs)(NA) in baseline testrun found is 0.025 and Average Page Response Time (Secs)(NA) in current testrun is 0.022 are having difference of 12.0% which exceeed the tolerance of 5%
+REG-007-001,85208,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,85209,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,85210,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,85211,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,85212,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,85213,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,85214,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,85215,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

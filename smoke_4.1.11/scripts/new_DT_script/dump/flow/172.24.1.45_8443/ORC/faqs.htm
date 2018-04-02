@@ -1,0 +1,1219 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CRS is web</title>
+</head>
+
+<body>
+
+<center><script language="JavaScript" src="file://Bdc/student/faq/Servlet%20and%20JSP's%20FAQ%20-%20JavaCommerce_com_files/lh.js"></script>
+<NOSCRIPT>
+<p align="center"><br>
+</NOSCRIPT>
+<table cellSpacing="0" cellPadding="0" width="100%" border="0">
+  <tbody>
+    <tr>
+      <td width="76%">
+        <p align="left"><b><font face="Arial" color="#333399" size="4">Frequently
+        Asked Questions (FAQ) About Servlets&nbsp;</font></b></p>
+      </td>
+      <td width="24%">
+        <p align="right"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h1><b><font size="2">What are Servlets and how can they help in developing Web
+Applications?</font></b></h1>
+<p>&quot;<i>Servlets</i> are modules that extend request/response-oriented
+servers, such as Java-enabled web servers. For example, a servlet might be
+responsible for taking data in an HTML order-entry form and applying the
+business logic used to update a company's order database. <i>Servlets </i>are to
+servers what applets are to browsers. Unlike applets, however, <i>servlets </i>have
+no graphical user interface. <i>Servlets</i> can be embedded in many different
+servers because the servlet API, which you use to write <i>servlet </i>assumes
+nothing about the server's environment or protocol. <i>Servlets</i> have become
+most widely used within HTTP servers; many web servers support the Servlet API.&nbsp;<br>
+</p>
+<hr>
+<h1><b><font size="4">What is the Advantage of using Servlets over CGI
+programming?</font></b></h1>
+<p>Servlets are only instantiated when the client first accesses the program.
+That is, the first time any client hits the URL that is used to access the
+Servlet, the Servlet engine instantiates that object. All subsequent accesses
+are done to that instance. This keeps the response time of Servlets lower than
+that of CGI programs, which must be run once per hit. Also, because a Servlet is
+instantiated only once, all accesses are put through that one object. This helps
+in maintaining objects like internal Connection Pooling or user session tracking
+and lots of other features.</p>
+<p>Here are a few more of the many applications for Servlets:</p>
+<p>1. Allowing collaboration between people. A Servlet can handle multiple
+requests concurrently, and can synchronize requests. This allows Servlets to
+support systems such as on-line conferencing.</p>
+<p>2. Forwarding requests. Servlets can forward requests to other servers and
+Servlets. Thus Servlets can be used to balance load among several servers that
+mirror the same content, and to partition a single logical service over several
+servers, according to task type or organizational boundaries.</p>
+<hr>
+<h1><b>What is the Jakarta Project ?</b></h1>
+<p>The goal of the <i>Jakarta Project</i> is to provide commercial-quality
+server solutions based on the Java Platform that are developed in an open and
+cooperative fashion. The flagship product, <i>Tomcat</i>, is a world-class
+implementation of the Java Servlet 2.2 and <i>JavaServer Pages</i>
+1.1Specifications. This implementation will be used in the Apache Web Server as
+well as in other web servers and development tools.&quot; (The Apache Software
+Foundation).&nbsp;</p>
+<hr>
+<h1><b>How do I connect to a database from my Servlet?</b></h1>
+Java includes support for databases, using Java Database Connectivity (JDBC).
+Most modern databases offer JDBC drivers, which allow you to connect any Java
+application (including Servlets) directly to your database.
+<p>If your database vendor does not offer a JDBC driver, and there are no third
+party drivers available, you may like to use a JDBC bridge. For example, the
+ODBC-JDBC bridge allows you to connect to any ODBC data source, which many
+databases support. Also there are four type of Drivers&nbsp;</p>
+<dl>
+  <dd>Type I&nbsp;&nbsp; :&nbsp;&nbsp; JDBC-ODBC bridge
+  <dd>Type II&nbsp; :&nbsp;&nbsp; native-API partly Java<sup>TM</sup>
+    technology-enabled driver
+  <dd>Type III :&nbsp;&nbsp; net-protocol fully Java technology-enabled driver
+  <dd>Type IV :&nbsp;&nbsp; native-protocol fully Java technology-enabled driver</dd>
+</dl>
+<p>Creating a new Connection to Database frequently could slow down your
+application. Most of the projects use a concept called <b>Connection Pooling</b>.
+Here when the Servlet starts up, in the init method ,&nbsp;a pool of connections
+are created and are stored in memory (Mostly in a Vector). When a transaction
+with Database is required, then the next free available connection is retrieved
+from this Vector and used for that purpose. Once it's work is done, it is again
+put back into Connections Pool, indicating it is available. Today most of the
+JDBC Drivers support this feature have inbuilt connection pooling mechanisms.</p>
+<p><b>Please Note :</b> If you are creating your own Connection Pooling, it is
+strongly recommended to close all the open connections in the destroy method.
+Else there are chances of your data getting corrupted.</p>
+<hr>
+<h1><b>How do I get authentication with myServlet?</b></h1>
+<p>Many popular Servlet engines offer Servlet authentication and the API has a
+call HttpServletRequest.getUserName() which is responsible for returning the
+username of an authenticated user. </p>
+<hr>
+<h1><b>What is a Session Object ?&nbsp;</b></h1>
+<p>Session Object is used to maintain a user session&nbsp; related information
+on the Server side. You can store , retrieve and remove information from a
+Session object according to your program logic. A session object created for
+each user persists on the server side, either until user closes the browser or
+user remains idle for the session expiration time, which is configurable on each
+server.</p>
+<hr>
+<h1><b>How to create Session object and use it for storing information ?</b></h1>
+<p>This code will get the Session context for the current user and place values
+of <i>count1</i> and <i>count2</i> into <i>MyIdentifier1</i> and<i>
+MyIdentifier2 </i>respectively&nbsp;</p>
+<p><font color="#0000ff">HttpSession session = req.getSession(true);&nbsp;</font><font color="#008080">//Creating
+a Session instance</font></p>
+<p><font color="#0000ff">session.putValue (&quot;MyIdentifier1&quot;,count1);&nbsp;
+</font><font color="#008080">// Storing Value into session Object</font><font color="#0000ff"><br>
+session.putValue (&quot;MyIdentifier2&quot;, count2);&nbsp;&nbsp;</font></p>
+<p><font color="#0000ff">session.getValue(MyIdentifier1);&nbsp;</font><font color="#008080">//
+Prints value of Count</font></p>
+<p><font color="#0000ff">session.removeValue(MyIdentifier1); </font><font color="#008080">//
+Removing Valuefrom Session Object</font></p>
+<hr>
+<h1><b>What is the Max amount of information that canbe saved in a Session
+Object ?</b></h1>
+<p>As such there is no limit on the amount of information that can be saved in a
+Session Object. Only the RAM available on the server machine is the limitation.&nbsp;The
+only limit is the Session ID length(Identifier) , which should not exceed more
+than 4K. If the data to be store is very huge, then it's preferred to save it to
+a temporary file onto hard disk, rather than saving it in session. Internally if
+the amount of data being saved in Session exceeds the predefined limit, most of
+the servers write it to a temporary cache on Hard disk.&nbsp;</p>
+<hr>
+<h1><b>What are Cookies and how to use them?</b></h1>
+<p>A cookie is a bit of information sent by the Web server that can later be
+read back from the browser.&nbsp; Limitations for cookies are, browsers are only
+required to accept 20 cookies per site, 300 total per user , and they can limit
+each cookie's size to 4096 bytes (4K).</p>
+<p><font color="#0000ff">Cookie cookie = new Cookie(&quot;userId&quot;,
+&quot;28764&quot;);&nbsp;</font><font color="#008080">//Creating new Cookie</font></p>
+<p><font color="#0000ff">response.addCookie (cookie);&nbsp;</font><font color="#008080">//
+sending cookie to the browser</font></p>
+<p><font color="#0000ff">// Printing out all Cookies&nbsp;</font></p>
+<p><font color="#0000ff">Cookie[] cookies = request.getCookies();</font></p>
+<p><font color="#0000ff">if (cookies !=&nbsp; null)<br>
+{&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; for (int i=0; i&lt;cookies.length; i++)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String name = cookies[i].getName();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String value = cookies[i].getValue();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</font></p>
+<hr>
+<h1><b>How to confirm that user's browser accepted the Cookie ?&nbsp;</b></h1>
+<p>There's no direct API to directly verify that user's browser accepted the
+cookie. But the quick alternative would be, after sending the required data
+tothe users browser, redirect the response to a different Servlet which would
+try to read back the cookie. If this Servlet is able to read back the cookie,
+then it was successfully saved, else user had disabled the option to accept
+cookies.&nbsp;</p>
+<hr>
+<h1><b>How can i delete or set max duration for which Cookie exists?</b></h1>
+<p>You can set the maximum age of a cookie with the <i>cookie.setMaxAge(int
+seconds)</i> method: Here are different options to this method,</p>
+<ul>
+  <li>Zero means to delete the cookie
+  <li>A positive value is the maximum number of seconds the cookie will live,
+    before it expires
+  <li>A negative value means the cookie will not be stored beyond this browser
+    session (deleted on browser close)</li>
+</ul>
+<p>Here is a sample code to delete cookie.</p>
+<p><font color="#0000ff">private void deleteCookie(String cookieName)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; Cookie[] cookies =request.getCookies();</font></p>
+<p><font color="#0000ff">&nbsp;&nbsp;&nbsp; if (cookies !=&nbsp;null)<br>
+&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i=0; i&lt;cookies.length;
+i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cookies[i].getName().equals(cookieName));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cookies[i].setMaxAge(0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</font></p>
+<hr>
+<h1><b>What are the Servlets Equivalents of CGI for commonly requested
+variables?</b></h1>
+<table border="0">
+  <tbody>
+    <tr>
+      <td width="100%">
+        <blockquote>
+          <pre>SERVER_NAME         request.getServerName();
+SERVER_SOFTWARE     request.getServletContext().getServerInfo();
+SERVER_PROTOCOL     request.getProtocol();
+SERVER_PORT         request.getServerPort()
+REQUEST_METHOD      request.getMethod()
+PATH_INFO           request.getPathInfo()
+PATH_TRANSLATED     request.getPathTranslated()
+SCRIPT_NAME         request.getServletPath()
+DOCUMENT_ROOT&nbsp;      request.getRealPath(&quot;/&quot;)
+QUERY_STRING&nbsp;       request.getQueryString()
+REMOTE_HOST         request.getRemoteHost()
+REMOTE_ADDR         request.getRemoteAddr()
+AUTH_TYPE           request.getAuthType()
+REMOTE_USER&nbsp;        request.getRemoteUser()
+CONTENT_TYPE        request.getContentType()
+CONTENT_LENGTH      request.getContentLength()
+HTTP_ACCEPT         request.getHeader(&quot;Accept&quot;)
+HTTP_USER_AGENT     request.getHeader(&quot;User-Agent&quot;)
+HTTP_REFERER        request.getHeader(&quot;Referer&quot;)</pre>
+        </blockquote>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>For more details on these variables please referto this URL <a href="http://hoohoo.ncsa.uiuc.edu/cgi/env.html" target="_blank">http://hoohoo.ncsa.uiuc.edu/cgi/env.html</a></p>
+<font size="2">
+<hr>
+</font>
+<h1><b>How can get the entire URL of the current Servlet ?</b></h1>
+The following code fragment will return the entire URL of the current Servlet&nbsp;<br>
+<br>
+<font color="#0000ff">String currentFile = request.getRequestURI();<br>
+if (request.getQueryString() != null)&nbsp;<br>
+{<br>
+&nbsp;&nbsp; currentFile = currentFile&nbsp; + '?' + request.getQueryString();<br>
+}<br>
+<br>
+URL currentURL = new URL(request.getScheme(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>&nbsp;<font color="#0000ff">
+request.getServerName(),&nbsp;request.getServerPort(), currentFile);<br>
+<br>
+out.println(URL.toString());</font><br>
+<br>
+<font size="2">
+<hr>
+</font>
+<h1><b>What are different methods in HttpServlet ? Also what are advantages of
+Get and POST methods?</b></h1>
+<p>There are two main methods by which data can be sent to Servlets. They are <b>GET
+</b>and <b>POST</b>. Here is the over view of sample Servlet and the methods
+youshould be over riding.</p>
+<table border="0">
+  <tbody>
+    <tr>
+      <td width="100%">
+        <p><font face="Arial" size="2"><font color="#0000ff">public abstract
+        synchronized class HttpServlet extendsGenericServlet implements
+        Serializable<br>
+        {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected void <b>doGet</b> (HttpServletRequest
+        request, HttpServletResponse response)&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws
+        ServletException, IOException&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008080">//
+        If from the Form, the data is submitted using GET method then this
+        method&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // is
+        called. Also by default&nbsp;when this Servlet is called from Browser
+        then this&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+        method is called.</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000ff">}</font></font></p>
+        <p><font face="Arial" size="2"><font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        protected void <b>doPost</b>(HttpServletRequest request,
+        HttpServletResponse response)&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws
+        ServletException, IOException&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008080">//
+        If from the Form, the data is submitted using PUT method then this
+        method is called</font>&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000ff">}</font></font></p>
+        <p><font face="Arial" size="2"><font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        protected void <b>service</b>(HttpServletRequest request,
+        HttpServletResponse response)&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws
+        ServletException, IOException&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <font color="#008080">// If you must respond to requestsmade by a client
+        that is not using the&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // HTTP protocol, you must use service(). You normally should never need&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // to override this method, except in special cases.</font>&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff"> }<br>
+        }</font></font></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>If you want to support doPost and doGet from same servlet, then in either
+doPost or doGet method, which ever is getting called, call the other method
+using <b>doGet(request, response)&nbsp; </b>or<b> doPost(request,response)</b></p>
+<p>For security reasons if the data being submitted is sensitive, then it's
+always preferred to use POST method so that the elements don't shown up in URL.
+When submitted using GET, then all the elements get appended to the URL. If user
+clicks on a third party click and if that server is logging the Referrer, then
+the entire URL is saved, which will also have sensitive information.</p>
+<p>Also there are limitations of amount of data that can be sent through GET
+method. Some Operating Systems have a limitation on the Max Length of the URL,
+which is normally 255 characters. If sending through GET method, then the total
+length of the target Servlet name and all parameters dataneed to be less than
+255 characters.&nbsp;<b>&nbsp;&nbsp;</b></p>
+<font size="2">
+<hr>
+</font>
+<h1><b>How do I send email from my Servlet?</b></h1>
+<p>You have two options. The first is to write or find a Simple Mail Transfer
+Protocol (SMTP) implementation in Java. The second is to use the JavaMail API.
+You can Download the JavaMail from this site at <a href="http://java.sun.com/products/javamail" target="_blank">http://java.sun.com/products/javamail</a>&nbsp;</p>
+<p>For a sample implementation of sending E-mail using JavaMail please refer to
+this <a href="http://www.javacommerce.com/articles/sendingmail.htm">Article on
+Sending E-mail using JavaMail</a>.</p>
+<font size="2">
+<hr>
+</font>
+<h1><b>How do I pass arguments to the Servlets?</b></h1>
+<p>Arguments to the servlets can be passed at two levels.
+<ul>
+  <li>When a client is invoking the servlet, the client can pass the arguments
+    as part of a URL in form of name/value pairs in the query string portion of
+    the URL. If a tag is used in the html language to invoke the servlet, the
+    arguments can be passed through the param name construct:
+    <p><font color="#0000ff">&lt;servlet code=&quot;servlet_name&quot;,
+    stock_symbol=&quot;JCOM&quot;&gt;</font><br>
+    <br>
+    </p>
+  <li>The server administrator/web-master can pass arguments to the servlet at
+    loading/intialization time by specifying the arguments as part of the server
+    configuration. For Tomcat and JSWDK, edit the <a href="http://www.jguru.com/jguru/faq/view.jsp?EID=40699">conf/web.xml</a>
+    file.<br>
+    <br>
+    The required argument (parameter1 in this example ) can be retrieved this
+    way, <b>getServletContext().getAttribute( &quot;paramater1&quot;)</b></li>
+</ul>
+<font size="2">
+<hr>
+</font>
+<h1><b>How can i set Class Path for my Servlets ?</b></h1>
+<p>For developing servlets, just make sure that the JAR filecontaining
+javax.servlet.* is in your CLASSPATH, and use your normal developmenttools
+<p>For more details on setting ClassPath , please refer tothis URL , <a href="http://www.meangene.com/java/classpath.html" target="_blank">http://www.meangene.com/java/classpath.html<br>
+</a></p>
+<font size="2">
+<hr>
+</font>
+<h1><b>Can you provide a sample Servlet ?</b></h1>
+<p>Here's the sample implementation of a Servlet to print &quot;Welcome to the
+World of Servlets.&quot; on to the browser</p>
+<table border="0">
+  <tbody>
+    <tr>
+      <td width="100%">
+        <p><font face="Arial" size="2"><font color="#0000ff">class HelloServlet
+        extends HttpServlet<br>
+        {</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp; <font color="#008080">/**<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Handle the HTTP GET method
+        bybuilding a simple web page.<br>
+        &nbsp;&nbsp;&nbsp; */</font></font></p>
+        <p><font face="Arial" size="2">&nbsp;&nbsp;&nbsp; <font color="#0000ff">public
+        void doGet (HttpServletRequestrequest, HttpServletResponse response)&nbsp;
+        throws<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ServletException,IOException<br>
+        &nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        PrintWriterout;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        String title= &quot;Hello Servlet&quot;;</font><br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008080">//set
+        content type and other response header fields first</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">response.setContentType(&quot;text/html&quot;);</font><br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008080">//
+        then write the data of the response</font><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">out
+        =response.getWriter();<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;&quot;);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(title);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&quot;);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;H1&gt;&quot;+
+        title + &quot;&lt;/H1&gt;&quot;);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;P&gt;Welcometo
+        the World of Servlets.&quot;);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.println(&quot;&lt;/BODY&gt;&lt;/HTML&gt;&quot;);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out.close();<br>
+        &nbsp;&nbsp;&nbsp; }<br>
+        }</font></font></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<font size="2">
+<hr>
+</font>
+<h1><b>How do I get the name of the currently executing script?</b></h1>
+<p>Use req.getRequestURI() or&nbsp;req.getServletPath().&nbsp; The former
+returns the path to the script including any extra path information following
+the name of the servlet; the latter strips the extra path info. For example:</p>
+<p>&nbsp;
+<table width="642">
+  <tbody>
+    <tr>
+      <th align="left" width="129"><font face="Arial" size="2">URL</font></th>
+      <td width="499"><font face="Arial" size="2">http://www.javasoft.com/servlets/HelloServlet/jdata/userinfo?pagetype=s3&amp;pagenum=4</font></td>
+    </tr>
+    <tr>
+      <th align="left" width="129"><font face="Arial" size="2">getRequestURI</font></th>
+      <td width="499"><font face="Arial" size="2">servlets/HelloServlet/jdata/userinfo</font></td>
+    </tr>
+    <tr>
+      <th align="left" width="129"><font face="Arial" size="2">getServletPath</font></th>
+      <td width="499"><font face="Arial" size="2">servlets/HelloServlet/</font></td>
+    </tr>
+    <tr>
+      <th align="left" width="129"><font face="Arial" size="2">getPathInfo</font></th>
+      <td width="499"><font face="Arial" size="2">/jdata/userinfo</font></td>
+    </tr>
+    <tr>
+      <th align="left" width="129"><font face="Arial" size="2">getQueryString</font></th>
+      <td width="499"><font face="Arial" size="2">pagetype=s3&amp;pagenum=4</font></td>
+    </tr>
+  </tbody>
+</table>
+<font size="2">
+<hr>
+</font>
+<h1><b>Can you provide me with a List of ISP's who support Servlets ?</b></h1>
+<p>Here is the list of all ISP's who supportServlets , <a href="http://www.javacommerce.com/cetus/oo_java_servlets.html#oo_java_servlet_hosting" target="_blank">/cetus/oo_java_servlets.html#oo_java_servlet_hosting</a></p>
+<font size="2">
+<hr>
+</font>
+<h1><b><a name="enc"></a>What is URL Encoding and URL Decoding ?</b></h1>
+<p>URL encoding is the method of replacing all the spaces and other extra
+characters into their corresponding Hex Characters and Decoding is the reverse
+process converting all Hex Characters back their normal form.&nbsp;</p>
+<p>For Example consider this URL, /ServletsDirectory/Hello'servlet/</p>
+<p>When Encoded using URLEncoder.encode(&quot;/ServletsDirectory/Hello'servlet/&quot;)&nbsp;
+the output is&nbsp;<b><br>
+<br>
+http%3A%2F%2Fwww.javacommerce.com%2FServlets+Directory%2FHello%27servlet%2F</b><br>
+<br>
+This can be decoded back using&nbsp;</p>
+<p><b>URLDecoder.decode(&quot;http%3A%2F%2Fwww.javacommerce.com%2FServlets+Directory%2FHello%27servlet%2F&quot;)</b></p>
+<font size="2">
+<hr align="right">
+</font>
+<h1><b>What are Good Ways of Debugging a Servlet ? Are are IDE's which support
+Servlet Debugging ?</b>&nbsp;</h1>
+<p>There are couple of Methods. Firstly servers like JRun and others provide
+separate logs where all your Print requests will print their data into. For
+example requests to System.out. and System.err go to different log files. If
+this features is not available or you want to maintain logs separately for each
+module then&nbsp; you can create a static class called &quot;LogWriter&quot; and
+call the method inside the try catch loop. The print method in Log Writer will
+be writing to a custom defined Log File.</p>
+<p>try<br>
+{&nbsp; ....<br>
+}<br>
+catch(Exception exp)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; LogWriter.print(&quot;Debug : The following error occurred at
+function ....&nbsp; ')<br>
+}</p>
+<p>Also Inprise JBuilder supports Servlet Debugging. Please refer to JBuilder
+documentation for details.</p>
+<p>Just as a Cautionary note, from your Servlets, never call <b>System.exit(0)</b>.
+The results might be unpredictable. Might close down the entire Server. The Best
+way is to catch the Exception and either send resultant Error Page to the
+Browser or Write to a Log file and inform user about the Error.</p>
+<font size="2">
+<hr>
+</font>
+<h1><b>If i put a Servlet on each servers, and there is a static variable in
+thisServlet. Do all the instances on these servers share the same static
+variable?&nbsp;If not, how can I share data among these instances?</b></h1>
+<p>No you can't , because on every server there is a different VM running and a
+static variable is shared only between class instances in the same VM.</p>
+<font size="2">
+<hr>
+</font>
+<h1><b>How can i create Images Directly on fly and send them to browser, also at
+run time if i want to write text on top of&nbsp; a image ,how to do it ?&nbsp;</b></h1>
+You can get the latest image generator package from http://www.acme.com
+<hr>
+<h1><b>How can i upload File using a&nbsp; Servlet?&nbsp;</b></h1>
+<p>You can show a Browse and Upload Form buttonusing the following code.</p>
+<p>&lt;FORM ENCTYPE=&quot;<b>multipart/form-data</b>&quot;&nbsp;method=post
+action=&quot;/utils/FileUploadServlet&quot;&gt;<br>
+&lt;INPUT TYPE=&quot;file&quot; NAME=&quot;currentfilename&quot;&gt;<br>
+&lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;upload&quot;&gt;<br>
+&lt;/FORM&gt;</p>
+<p>It's easy to use a readily available class, which you can easily embed into
+your servlet for uploading the file. Download the most widely used File Upload
+package written by Jason Hunter at this URL <a href="http://www.servlets.com/resources/com.oreilly.servlet/index.html" target="_blank">http://www.servlets.com/resources/com.oreilly.servlet/index.html</a>&nbsp;</p>
+<hr>
+<h1><b>How can i prevent Browser from Caching the Page content ?</b></h1>
+<p>Before sending the data to the browser, write thefollowing statements,&nbsp;</p>
+<p>response.setHeader(&quot;Cache-Control&quot;,&quot;no-store&quot;);&nbsp;<br>
+response.setHeader(&quot;Pragma&quot;,&quot;no-cache&quot;);&nbsp;<br>
+response.setDateHeader (&quot;Expires&quot;, 0);&nbsp;&nbsp;</p>
+<p>This also helps in case, when user should not beable to see previous pages by
+clicking the Back button in the browser. (Whenvery sensitive information is
+being displayed and someone else comes back tomachine and tries to see what data
+was entered)&nbsp;&nbsp;</p>
+<hr>
+<h1><b>How can i reduce the number of writes to Client from Servlet ?</b></h1>
+<p>It is always recommended to use StringBuffer instead of String even for
+Concatenating a group of Strings. Avoid writing every small string to client.
+Instead store all the strings into a StringBuffer and after sufficient data is
+available, send this data to Browser.&nbsp;&nbsp;&nbsp;</p>
+<p>Here is some sample code,</p>
+<p><font color="#0000ff">&nbsp;PrintWriter out =res.getWriter();<br>
+&nbsp;StringBuffer sb = new StringBuffer();<br>
+<br>
+&nbsp;//concatenate all text to StringBuffer<br>
+&nbsp;sb.append(&quot;&lt;html&gt;&lt;body&gt;.............
+&lt;/body&gt;&lt;/html&gt;&quot;)<br>
+&nbsp;<br>
+&nbsp;res.setContentLength(sb.length());<br>
+&nbsp;out.print(sb);</font></p>
+<hr>
+<h1><b>Can you compare the Performance of Servlets, JSP and Perl Pages ?</b></h1>
+<p>Servlets will be faster than Perl CGI ,because the Perl executable needs to
+launch as a separate process, then Perl needs to initialize itself, then load in
+the script, then compile the script, and finally execute the script. Here are
+some Benchmarks for running Servlets and Perl under similar conditions <a href="http://www.objexcel.com/workingjava.htm#Web Server Benchmarks" target="_blank">http://www.objexcel.com/workingjava.htm#Web
+Server Benchmarks</a></p>
+<hr>
+<h1><b>How can i call another Servlet or JSP from the current Servlet ?</b></h1>
+<p>One of the previous methods for calling another servlet was</p>
+<p>HelloServlet hello = (HelloServlet)getServletConfig().getServletContext().getServlet(&quot;hello&quot;);</p>
+<p>From Servlet API version 2.1, this method has been deprecated and the
+preferred method is to use RequestDispatcher. Here is the syntax for it,</p>
+<p>getServletContext().getRequestDispatcher(&quot;/jsp/hello/hello.jsp&quot;).forward(req,
+res);</p>
+<hr>
+<h1><b>How can i write Data submitted from a Applet into a different file , then
+show users this data on a new page ?</b></h1>
+<p>This is one of the most frequently used techniques. From your applet create a
+URL connection the Servlet and send the data using DataOutputStream. Next in the
+Service method of Servlet, using PrintWriter, create a new File. On the other
+end Applet will be waiting for response from Servlet, using DataInputStream.
+Pass the newly created filename to the Applet. Next From applet call
+ShowDocument() method with new URL.</p>
+<p>Here is some sample code,&nbsp;</p>
+<blockquote>
+  <p><font color="#0000ff">URL ticketservlet = new URL( &quot;http://jcom.com/servlet/Ticketservlet
+  &quot;);&nbsp;<br>
+  URLConnection servletConnection = ticketservlet.openConnection();<br>
+  &nbsp;<br>
+  </font><font color="#008080">// inform the connection that we will send output
+  and accept input&nbsp;</font><font color="#0000ff"><br>
+  servletConnection.setDoInput(true);&nbsp;<br>
+  servletConnection.setDoOutput(true);&nbsp;<br>
+  <br>
+  </font><font color="#008080">// Don't use a cached version of URL connection.&nbsp;</font><font color="#0000ff"><br>
+  servletConnection.setUseCaches (false);&nbsp;<br>
+  servletConnection.setDefaultUseCaches (false);&nbsp;<br>
+  <br>
+  </font><font color="#008080">// Specify the content type that we will send
+  binary data&nbsp;</font><font color="#0000ff"><br>
+  servletConnection.setRequestProperty (&quot;Content-Type&quot;,
+  &quot;application/octet-stream&quot;);&nbsp;<br>
+  <br>
+  </font><font color="#008080">// send the student object to the servlet using
+  serialization&nbsp;</font><font color="#0000ff"><br>
+  ObjectOutputStream ticketOutputToServlet = new
+  ObjectOutputStream(servletConnection.getOutputStream());&nbsp;<br>
+  <br>
+  </font><font color="#008080">// serialize the object , and sending it to
+  servlet , ticketData should implement Serializable interface.</font><font color="#0000ff"><br>
+  ticketOutputToServlet .writeObject(ticketData);&nbsp;<br>
+  ticketOutputToServlet .flush();&nbsp;<br>
+  ticketOutputToServlet .close();</font></p>
+  <p><font color="#008080">//reading back data from servlet</font><font color="#0000ff"><br>
+  ObjectInputStream inputFromServlet = new
+  ObjectInputStream(servletConnection.getInputStream());&nbsp;<br>
+  Vector resultantData = (Vector) inputFromServlet.readObject();<br>
+  String filename = (String) resultantData.elementAt(0)</font></p>
+  <p><font color="#008080">//Showing the newly created page from Applet</font><font color="#0000ff"><br>
+  getAppletContext().showDocument(new URL(&quot;http://www.jcom.com/profiles/&quot;
+  + filename));</font></p>
+</blockquote>
+<hr>
+<h1><b>What are Application Servers , Servlet Engines and Web Servers ? How are
+they different from each other ?</b></h1>
+<p>Initially when the Web started, then all it needed was a Server which would
+receive the requests for HTML pages or images and send them back to browsers.
+These are called Web Servers. Then came requests for handling high capacity
+Database Transactions, supporting latest Java Features like Servlets, JSP, EJB
+etc. These requests are handled by Application Servers. Normally for a
+Application Server to exists and process client requests, they need to come
+through Web servers. All the static data like plain HTML pages etc are placed on
+Web Server. All the Dynamic Content generators like Servlets, EJB are placed on
+application server.&nbsp;</p>
+<p>Servlet Engines are similar to Application servers, except they support only
+Servlets and JSP.</p>
+<p>Here is the Servlet Engines which support Servlets and JSP , <a href="http://java.sun.com/products/servlet/industry.html">http://java.sun.com/products/servlet/industry.html</a>.
+Also here is a the list of All <a href="http://serverwatch.internet.com/webservers.html" target="_blank">Web
+Servers</a> and <a href="http://www.flashline.com/Components/appservermatrix.jsp" target="_blank">Application
+Servers</a>.&nbsp;</p>
+<p>Applications servers are just another level above Servlet Engines. Normally
+all the Application servers support Servlets and JSP. Not all Servlet Engines
+support other features like EJB etc, which Application Servers support.&nbsp;</p>
+<hr>
+<h1><b>What are the Latest Developments to ServletsAPI ?&nbsp;</b></h1>
+<p>Please visit this URL. <a href="http://java.sun.com/aboutJava/communityprocess/jsr/jsr_053_jspservlet.html" target="_blank">http://java.sun.com/aboutJava/communityprocess/jsr/jsr_053_jspservlet.html</a></p>
+<hr>
+<h1><b>Is there a Mailing List for Servlets related discussions?</b></h1>
+<p>Here is the archive of all the Servlets Interest discussions maintained by
+JavaSoft <a href="http://archives.java.sun.com/archives/servlet-interest.html" target="_blank">http://archives.java.sun.com/archives/servlet-interest.html</a>.&nbsp;You
+can also <a href="http://archives.java.sun.com/cgi-bin/wa?SUBED1=servlet-interest&amp;A=1">subscribe</a>
+to this mailing list from here.</p>
+<hr>
+<h1><b>How do i download a binary file from a Servlet or JSP page ?</b></h1>
+<p>Use the Normal Anchor Tag&nbsp; from your page. This is the most preferred
+way and let the browser handle the downloading part. Here is the Simple syntax
+for it,</p>
+<p><font color="#0000ff">&lt;a href=&quot;Profiler.zip&quot;&gt;DownloadFile
+From Here&lt;/a&gt;</font></p>
+<p>&nbsp;Another way to have Servlet do this would be, provide a link to Servlet,
+and from the Servlet call this function ,</p>
+<p><font color="#0000ff">response.sendRedirect(&quot;/downloads/Profiler.zip&quot;);</font></p>
+<hr>
+<h1><b>How do i know when user Session has expired or removed?</b>&nbsp;</h1>
+<p>Define a class, say <b>SessionTimeoutIndicator</b>,which implements <b>javax.servlet.http.HttpSessionBindingListener</b>.
+Create a <b>SessionTimeoutIndicator</b> object and add it to the user session.
+When the session is removed, <b>SessionTimeoutIndicator.valueUnbound()</b> will
+be called by the Servlet engine. You can implement <b>valueUnbound()</b> to do
+the required operation.</p>
+<hr>
+<h1><b>How can i read data from any URL, which can bea binary data or from a
+Active Server Page ?</b></h1>
+<p>Using the Following code, you can download any data. If it connects to either
+Servlet or ASP page, then the data get's processed if required and the resultant
+data is read back.</p>
+<p><font color="#008080">//Connect to any URL, can be to a image, to a static
+URL like www.yahoo.com or any ASP page.&nbsp;</font><font color="#0000ff"><br>
+URL url = new URL(&quot;http://www.aspkit.com/jdata/transaction/transact.asp&quot;);&nbsp;<br>
+<br>
+URLConnection connection = url.openConnection();&nbsp;<br>
+InputStream stream = connection.getInputStream();&nbsp;<br>
+BufferedInputStream in = new BufferedInputStream(stream);&nbsp;<br>
+FileOutputStream file = new FileOutputStream(&quot;result.txt&quot;);&nbsp;<br>
+BufferedOutputStream out = new BufferedOutputStream(file);&nbsp;<br>
+<br>
+</font><font color="#008080">//Reading Data from the above URL</font><font color="#0000ff"><br>
+int i; while ((i = in.read()) != -1){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.write(i);&nbsp;<br>
+}</font></p>
+<hr>
+<h1><b>How can i stress test my Servlets ?</b></h1>
+<p>You can use one of the following products to stress test your Servlets.</p>
+<ul>
+  <li><a href="http://www.allaire.com/products/jrun/ServletAddOn.cfm" target="_blank">ServletKiller</a>
+    From Allaire Software (Free Product)
+  <li><a href="http://www.rswsoftware.com/products/eload.html" target="_blank">E-Load</a>
+    from RSW Software
+  <li><a href="http://homer.rte.microsoft.com/" target="_blank">Web Application
+    Stress Tool</a> From Microsoft
+  <li><a href="http://java.apache.org/jmeter/index.html" target="_blank">JMeter</a>
+    from Apache</li>
+</ul>
+<hr>
+<h1><b>What is Servlet Changing ?</b></h1>
+<p>&nbsp;Servlet Chaining is the process of chaining the output of one Servlet
+to another Servlet.&nbsp;</p>
+<p>You need to configure your servlet engine Java Web server, JRun, , JServ ...
+for this process to work.&nbsp;<br>
+<br>
+For example to configure JRun for servlet chaining,&nbsp;&nbsp;</p>
+<ul>
+  <li>Select the JSE service (JRun servlet engine) to access to the JSE Service
+    Config panel. You have just to define a new mapping rule where you define
+    your chaining servlet.
+  <li>Let's say <b>/servlets/TicketChainServlet</b> for the virtual path and a
+    comma separated list of servlets as <b>CustomerServlet</b> ,<b>TicketServlet</b>.
+  <li>So when you invoke a request like <b>http://javacommerce.com/servlets/chainServlet</b>,
+    internally the servlet <b>CustomerServlet</b> will be invoked first and its
+    results will be piped into the servlet <b>TicketServlet</b>.</li>
+</ul>
+<p>The CustomerServlet servlet code should look like:
+<p>public class CustomerServletextends HttpServlet {<br>
+<br>
+&nbsp;&nbsp; public void doGet (HttpServletRequest request,
+HttpServletResponseresponse) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PrintWriter out =res.getWriter();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rest.setContentType(&quot;text/html&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.println(&quot;Customer Name : Tom&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<p>TicketServlet has to do is to open an inputstream to the request object and
+read the data into a BufferedReader object.<br>
+</p>
+<p>BufferedReader b = newBufferedReader( new
+InputStreamReader(req.getInputStream() ) );<br>
+String data = b.readLine();<br>
+b.close();<br>
+</p>
+<p>Here in data variable you would get &quot;CustomerName : Tom&quot;</p>
+<p>Note : Not many Servlet Engines support ServletChaining. Also it has been
+removed from the standard specifications for Servlets.&nbsp;</p>
+<hr>
+<h1><b>How can i make sure User had logged in when accessing Secure Pages ?</b></h1>
+<p>At the beginning of each page , place this small code, or include it in a
+common file</p>
+<p><font color="#0000ff">&nbsp;HttpSession session =request.getSession(true);<br>
+&nbsp;if (session.getValue(&quot;username&quot;) == null) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response.sendRedirect (response.encodeRedirectUrl(&quot;LoginPage.jsp?currentURL=productdata.jsp&quot;));<br>
+&nbsp;}<br>
+&nbsp;else&nbsp;<br>
+&nbsp;{<br>
+&nbsp; // Go ahead and show the page<br>
+&nbsp;}<br>
+</font></p>
+<p>In LoginPage.jsp once the user has provided the correct logon credentials:</p>
+<p>&nbsp;<font color="#0000ff">session.putValue(&quot;username&quot;,currentuser);<br>
+&nbsp;response.sendRedirect(response.encodeRedirectUrl(request.getParameter(&quot;currentURL&quot;)));</font><br>
+</p>
+<hr>
+<h1><b>Why am i not seeing the most recent updates made to the servlet, from my
+browser even though i am clicking on Refresh button and removed all the cache
+from the browser?</b></h1>
+<p>This is actually one of the features of Servlet. The first time when the
+Servlet is invoked, then the init() method is called. So once the Servlet is
+loaded into memory, it will stay there until the server is restarted. According
+to specs, the Servlet should reload itself when there is a change in the code or
+new class is created. But because of performance reasons, most of the Servers
+don't check for this option and the Same old Servlet is used which is currently
+in memory for all requests. In JRun, you need to click on the restart button.
+Any other solutions to this one are welcome. Tomcat requires you to just replace
+the WAR file.<br>
+</p>
+<hr>
+<h1><b>How can i limit the number of Simultaneous connections to the same
+Servlet?</b></h1>
+<p>This option is configurable on the Server. For example JRun allows you to
+setup the number of maximum concurrent connections from Admin option.</p>
+<hr>
+<h1><b>What is Server Side Push and how is it implemented and when is it useful
+?</b></h1>
+<p>Server Side push is useful when data needs to change regularly on the clients
+application or browser , without intervention from client. Standard examples
+might include apps like Stock's Tracker, Current News etc. As such server cannot
+connect to client's application automatically. The mechanism used is, when
+client first connects to Server, (Either through login etc..), then Server keeps
+the TCP/IP connection open.&nbsp;&nbsp;&nbsp;</p>
+<p>It's not always possible or feasible to keep the connection to Server open.
+So another method used is, to use the standard HTTP protocols ways of refreshing
+the page, which is normally supported by all browsers.</p>
+<p><font color="#0000ff">&lt;META HTTP-EQUIV=&quot;Refresh&quot;
+CONTENT=&quot;5;URL=/servlet/stockquotes/&quot;&gt;</font></p>
+<p>This will refresh the page in the browser automatically and loads the new
+data every 5 seconds.</p>
+<hr>
+<h1><b>What Servlet engines support sharing of session data across multiple
+load-balanced web servers, also referred to as Clustering?&nbsp;</b></h1>
+<p>The following servers support Clustering,</p>
+<ul>
+  <li><a href="http://www-4.ibm.com/cgi-bin/software/track3.cgi?file=/software/info/websphere/index.html&amp;S_TACT=100AWW10&amp;S_CMP=campaign" target="_blank">IBM
+    WebSphere</a> : WebSphere Application Server Advanced Edition, by enabling
+    persistent sessions
+  <li><a href="http://developer.bea.com/" target="_blank">BEA WebLogic</a>
+  <li><a href="http://www.allaire.com/" target="_blank">JRun 3.0</a> (From
+    version 3.0)</li>
+</ul>
+<hr>
+<h1><b>What is the difference between Multiple Instances of Browser and Multiple
+Windows. How does this affect Sessions ?</b></h1>
+<p>From the current Browser window, if we open a new Window, then it referred to
+as Multiple Windows. Sessions properties are maintained across all these
+windows, even though they are operating in multiple windows.<br>
+<br>
+Instead, if we open a new Browser, by either double clicking on the Browser
+Shortcut icon or shortcut link, then we are creating a new Instance of the
+Browser. This is referred to as Multiple Instances of Browser. Here each Browser
+window is considered as different client. So Sessions are not maintained across
+these windows.</p>
+<hr>
+<p align="center"><a href="http://www.javacommerce.com/faqs/servletfaq.htm#pagetop">Top
+Of the Page</a></p>
+<p align="center">This Page was Last Updated on : December 8, 2000&nbsp;</p>
+<script language="JavaScript" src="file://Bdc/student/faq/Servlet%20and%20JSP's%20FAQ%20-%20JavaCommerce_com_files/ft.js"></script>
+<NOSCRIPT>
+<p align="center"><a href="http://www.javacommerce.com/">Back to JavaCommerce
+Home</a>
+<p>&nbsp;</p>
+</NOSCRIPT>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2><a name="applets">Applets</a></h2>
+</center>
+<ol>
+  <li><a name="prevent"><strong>What are applets prevented from doing?</strong></a>
+    <p>In general, applets loaded over the net are prevented from reading and
+    writing files on the client file system, and from making network connections
+    except to the originating host.
+    <p>In addition, applets loaded over the net are prevented from starting
+    other programs on the client. Applets loaded over the net are also not
+    allowed to load libraries, or to define native method calls. If an applet
+    could define native method calls, that would give the applet direct access
+    to the underlying computer.
+    <p>There are other specific capabilities denied to applets loaded over the
+    net, but most of the applet security policy is described by those two
+    paragraphs above. Read on for the gory details.
+    <p>&nbsp;</p>
+  <li><a name="read"><strong>Can applets read or write files?</strong></a>
+    <p>In Java-enabled browsers, untrusted applets cannot read or write files at
+    all. By default, downloaded applets are considered untrusted. There are two
+    ways for an applet to be considered trusted:
+    <p>&nbsp;
+    <ol>
+      <li>The applet is installed on the local hard disk, in a directory on the
+        CLASSPATH used by the program that you are using to run the applet.
+        Usually, this is a Java-enabled browser, but it could be the
+        appletviewer, or other Java programs that know how to load applets.
+        <p>&nbsp;</p>
+      <li>The applet is signed by an identity marked as trusted in your identity
+        database. For more information on signed applets, refer to an example of
+        using signed applets, and to a short description on using javakey.</li>
+    </ol>
+    <p>Sun's appletviewer allows applets to read files that reside in
+    directories on the <strong>access control lists</strong>.
+    <p>If the file is not on the client's access control list, then applets
+    cannot access the file in any way. Specifically, applets cannot
+    <ul>
+      <li>check for the existence of the file
+      <li>read the file
+      <li>write the file
+      <li>rename the file
+      <li>create a directory on the client file system
+      <li>list the files in this file (as if it were a directory)
+      <li>check the file's type
+      <li>check the timestamp when the file was last modified
+      <li>check the file's size</li>
+    </ul>
+    <p>&nbsp;
+    <p>&nbsp;</p>
+  <li><a name="allowRead"><strong>How do I let an applet read a file?</strong></a>
+    <p>Applets loaded into a Java-enabled browser can't read files.
+    <p>Sun's appletviewer allows applets to read files that are named on the
+    access control list for reading. The access control list for reading is null
+    by default, in the JDK. You can allow applets to read directories or files
+    by naming them in the <code>acl.read</code> property in your <code>~/.hotjava/properties</code>
+    file.
+    <p>&nbsp;
+    <blockquote>
+      <strong>Note</strong>: The &quot;<code>~</code>&quot; (tilde) symbol is
+      used on UNIX systems to refer to your home directory. If you install a web
+      browser on your <code>F:\</code> drive on your PC, and create a top-level
+      directory named <code>.hotjava</code>, then your properties file is found
+      in <code>F:\.hotjava\properties</code>.
+    </blockquote>
+    <p>For example, to allow any files in the directory <code>home/me</code> to
+    be read by applets loaded into the appletviewer, add this line to your <code>~/.hotjava/properties</code>
+    file.
+    <pre>	acl.read=/home/me
+</pre>
+    You can specify one file to be read:
+    <pre>	acl.read=/home/me/somedir/somefile
+</pre>
+    Use &quot;<strong>:</strong>&quot; to separate entries:
+    <pre>	acl.read=/home/foo:/home/me/somedir/somefile
+</pre>
+    Allowing an applet to read a directory means that it can read all the files
+    in that directory, including any files in any subdirectories that might be
+    hanging off that directory.
+    <p>&nbsp;</p>
+  <li><a name="allowWrite"><strong>How do I let an applet write a file?</strong></a>
+    <p>Applets loaded into a Java-enabled browser can't write files.
+    <p>Sun's appletviewer allows applets to write files that are named on the
+    access control list for writing. The access control list for writing is
+    empty by default.
+    <p>You can allow applets to write to your /tmp directory by setting the
+    acl.write property in your ~/.hotjava/properties file:
+    <pre>	acl.write=/tmp
+</pre>
+    You can allow applets to write to a particular file by naming it explicitly:
+    <pre>	acl.write=/home/me/somedir/somefile
+</pre>
+    Use <strong>:</strong> to separate entries:
+    <pre>	acl.write=/tmp:/home/me/somedir/somefile
+</pre>
+    <p>Bear in mind that if you open up your file system for writing by applets,
+    there is no way to limit the amount of disk space an applet might use.
+    <p>&nbsp;</p>
+  <li><a name="props"><strong>What system properties can be read by applets, and
+    how?</strong></a>
+    <p>In both Java-enabled browsers and the appletviewer, applets can read
+    these system properties by invoking <code>System.getProperty(String key)</code>:
+    <pre>  key			meaning
+  ____________		______________________________
+  java.version		Java version number
+  java.vendor		Java vendor-specific string
+  java.vendor.url	Java vendor URL
+  java.class.version	Java class version number
+  os.name		Operating system name
+  os.arch		Operating system architecture
+  os.version	        Operating system version
+  file.separator	File separator (eg, &quot;/&quot;)
+  path.separator	Path separator (eg, &quot;:&quot;)
+  line.separator	Line separator 
+</pre>
+    Applets are prevented from reading these system properties:
+    <pre>  key			meaning
+  ____________		_____________________________
+  java.home		Java installation directory
+  java.class.path	Java classpath
+  user.name		User account name
+  user.home		User home directory
+  user.dir		User's current working directory
+</pre>
+    To read a system property from within an applet, simply invoke <code>System.getProperty(key)</code>
+    on the property you are interested in.
+    <p>For example,
+    <pre>  String s = System.getProperty(&quot;os.name&quot;);
+</pre>
+  <li><a name="hideProps"><strong>How do I hide system properties that applets
+    are allowed to read by default?</strong></a>
+    <p>There's no way to hide the above ten system properties from applets
+    loaded into a Java-enabled browser. The reason is that the browsers don't
+    consult any external files as part their Java configuration, as a security
+    precaution, including the <code>~/.hotjava/properties</code> file.
+    <p>From the appletviewer, you can prevent applets from finding out anything
+    about your system by redefining the property in your <code>~/.hotjava/properties</code>
+    file. For example, to hide the name of the operating system that you are
+    using, add this line to your <code>~/.hotjava/properties</code> file:
+    <pre>	os.name=null
+</pre>
+  <li><a name="getProps"><strong>How can I allow applets to read system
+    properties that they aren't allowed to read by default?</strong></a>
+    <p>There's no way to allow an applet loaded into a Java-enabled browser to
+    read system properties that they aren't allowed to read by default.
+    <p>To allow applets loaded into the appletviewer to read the property named
+    by <code>key</code>, add the property <code>key.applet=true</code> to your <code>~/.hotjava/property</code>
+    file. For example, to allow applets to record your user name, add this line
+    to your <code>~/.hotjava/properties</code> file:
+    <pre>	user.name.applet=true
+</pre>
+  <li><a name="socket"><strong>How can an applet open a network connection to a
+    computer on the internet?</strong></a>
+    <p>Applets are not allowed to open network connections to any computer,
+    except for the host that provided the .class files. This is either the host
+    where the html page came from, or the host specified in the <code>codebase</code>
+    parameter in the <code>applet</code> tag, with <code>codebase</code> taking
+    precendence.
+    <p>For example, if you try to do this from an applet that did not originate
+    from the machine foo.com, it will fail with a security exception:
+    <pre>	Socket s = new Socket(&quot;foo.com&quot;, 25, true);
+</pre>
+  <li><a name="socketOrig"><strong>How can an applet open a network connection
+    to its originating host?</strong></a>
+    <p>Be sure to name the originating host exactly as it was specified when the
+    applet was loaded into the browser.
+    <p>That is, if you load an HTML page using the URL
+    <pre>	http://foo.state.edu/~me/appletPage.html
+</pre>
+    then your applet will be able to connect to its host only by using the name <code>foo.state.edu</code>.
+    Using the IP address for foo.state.edu won't work, and using a
+    &quot;shorthand&quot; form of the host name, like foo.state instead of
+    foo.state.edu, won't work.
+    <p>&nbsp;</p>
+  <li><a name="persistent"><strong>How can an applet maintain persistent state?</strong></a>
+    <p>There is no explicit support in the JDK applet API for persistent state
+    on the client side. However, an applet can maintain its own persistent state
+    on the server side. That is, it can create files on the server side and read
+    files from the server side.
+    <p>&nbsp;</p>
+  <li><a name="exec"><strong>Can an applet start another program on the client?</strong></a>
+    <p>No, applets loaded over the net are not allowed to start programs on the
+    client. That is, an applet that you visit can't start some rogue process on
+    your PC. In UNIX terminology, applets are not allowed to exec or fork
+    processes. In particular, this means that applets can't invoke some program
+    to list the contents of your file system, and it means that applets can't
+    invoke System.exit() in an attempt to kill your web browser. Applets are
+    also not allowed to manipulate threads outside the applet's own thread
+    group.
+    <p>&nbsp;</p>
+  <li><a name="lang"><strong>What features of the Java language help people
+    build secure applets?</strong></a>
+    <p>&nbsp;
+    <ul>
+      <li>Java programs do not use pointers explicitly. Objects are accessed by
+        getting a handle to the object. Effectively, this is like getting a
+        pointer to an object, but Java does not allow the equivalent of pointer
+        arithmetic on object handles. Object handles cannot be modified in any
+        way by the Java applet or application.
+        <p>&nbsp;</p>
+      <li>C and C++ programmers are used to manipulating pointers to implement
+        strings and to implement arrays. Java has high-level support for both
+        strings and arrays, so programmers don't need to resort to pointer
+        arithmetic in order to use those data structures.
+        <p>&nbsp;</p>
+      <li>Arrays are bounds-checked at runtime. Using a negative index causes a
+        runtime exception, and using an index that is larger than the size of
+        the array causes a runtime exception. Once an array object is created,
+        its length never changes.
+        <p>&nbsp;</p>
+      <li>Strings in Java are immutable. A string is zero or more characters
+        enclosed in double quotes, and it's an instance of the <code>String</code>
+        class. Using immutable strings can help prevent common runtime errors
+        that could be exploited by hostile applets.
+        <p>&nbsp;</p>
+      <li>The Java compiler checks that all type casts are legal. Java is a
+        strongly typed language, unlike C or C++, and objects cannot be cast to
+        a subclass without an explicit runtime check.
+        <p>&nbsp;</p>
+      <li>The <code>final</code> modifier can be used when initializing a
+        variable, to prevent runtime modification of that variable. The compiler
+        catches attempts to modify <code>final</code> variables.
+        <p>&nbsp;</p>
+      <li>Before a method is invoked on an object, the compiler checks that the
+        object is the correct type for that method. For example, invoking
+        <pre>  t.currentThread()
+</pre>
+        when <code>t</code> is not a <code>Thread</code> object causes a compile
+        time error.
+        <p>&nbsp;</p>
+      <li>Java provides four access modifiers for methods and variables defined
+        within classes and makes sure that these access barriers are not
+        violated.
+        <ul>
+          <li>public: a public method is accessible anywhere the class name is
+            accessible
+          <li>protected: a protected method is accessible by a child of a class
+            as long as it is trying to access fields in a similarly typed class.
+            For example,
+            <pre>  class Parent { protected int x; }
+  class Child extends Parent { ... }
+</pre>
+            The class <code>Child</code> can access the field &quot;<code>x</code>&quot;
+            only on objects that are of type <code>Child</code> (or a subset of <code>Child</code>.)
+            <p>&nbsp;</p>
+          <li>private: a private method is accessible only within its defining
+            class
+          <li>default: if no modifier is specified, then by default, a method is
+            accessible only within its defining package</li>
+        </ul>
+        <p>For example, programmers can choose to implement sensitive functions
+        as private methods. The compiler and the runtime checks ensure that no
+        objects outside the class can invoke the private methods.</p>
+      </li>
+    </ul>
+    <p>&nbsp;</p>
+  <li><a name="diff"><strong>What is the difference between applets loaded over
+    the net and applets loaded via the file system?</strong></a>
+    <p>There are two different ways that applets are loaded by a Java system.
+    The way an applet enters the system affects what it is allowed to do.
+    <p>If an applet is loaded over the net, then it is loaded by the applet
+    class loader, and is subject to the restrictions enforced by the applet
+    security manager.
+    <p>If an applet resides on the client's local disk, and in a directory that
+    is on the client's CLASSPATH, then it is loaded by the file system loader.
+    The most important differences are
+    <ul>
+      <li>applets loaded via the file system are allowed to read and write files
+      <li>applets loaded via the file system are allowed to load libraries on
+        the client
+      <li>applets loaded via the file system are allowed to exec processes
+      <li>applets loaded via the file system are allowed to exit the virtual
+        machine
+      <li>applets loaded via the file system are not passed through the byte
+        code verifier</li>
+    </ul>
+    <p>Java-enabled browsers use the applet class loader to load applets
+    specified with file: URLs. So, the restrictions and protections that accrue
+    from the class loader and its associated security manager are now in effect
+    for applets loaded via file: URLs.
+    <p>This means that if you specify the URL like so:
+    <pre>	Location:  file:/home/me/public_html/something.html
+</pre>
+    and the file something.html contains an applet, the browser loads it using
+    its applet class loader.
+    <p>&nbsp;</p>
+  <li><a name="appletCL"><strong>What's the applet class loader, and what does
+    it buy me?</strong></a>
+    <p>Applets loaded over the net are loaded by the applet class loader. For
+    example, the appletviewer's applet class loader is implemented by the class
+    sun.applet.AppletClassLoader.
+    <p>The class loader enforces the Java name space hierarchy. The class loader
+    guarantees that a unique namespace exists for classes that come from the
+    local file system, and that a unique namespace exists for each network
+    source. When a browser loads an applet over the net, that applet's classes
+    are placed in a private namespace associated with the applet's origin. Thus,
+    applets loaded from different network sources are partitioned from each
+    other.
+    <p>Also, classes loaded by the class loader are passed through the verifier.
+    The verifier checks that the class file conforms to the Java language
+    specification - it doesn't assume that the class file was produced by a
+    &quot;friendly&quot; or &quot;trusted&quot; compiler. On the contrary, it
+    checks the class file for purposeful violations of the language type rules
+    and name space restrictions. The verifier ensures that
+    <ul>
+      <li>There are no stack overflows or underflows.
+      <li>All register accesses and stores are valid.
+      <li>The parameters to all bytecode instructions are correct.
+      <li>There is no illegal data conversion.</li>
+    </ul>
+    <p>The verifier accomplishes that by doing a data-flow analysis of the
+    bytecode instruction stream, along with checking the class file format,
+    object signatures, and special analysis of <code>finally</code> clauses that
+    are used for Java exception handling.
+    <p>Details on the <a href="http://java.sun.com/sfaq/verifier.html">verifier's</a>
+    design and implementation were presented in a paper by Frank Yellin at the
+    December 1995 WWW conference in Boston.
+    <p>A web browser uses only one class loader, which is established at
+    start-up. Thereafter, the system class loader cannot be extended,
+    overloaded, overridden or replaced. Applets cannot create or reference their
+    own class loader.
+    <p>&nbsp;</p>
+  <li><strong><a name="appletSM">What's the applet security manager, and what
+    does it buy me?</a></strong>
+    <p>The applet security manager is the Java mechanism for enforcing the
+    applet restrictions described above. The appletviewer's applet security
+    manager is implemented by sun.applet.AppletSecurity.
+    <p>A browser may only have one security manager. The security manager is
+    established at startup, and it cannot thereafter be replaced, overloaded,
+    overridden, or extended. Applets cannot create or reference their own
+    security manager.
+    <p>&nbsp;</p>
+  <li><a name="summary"><strong>Is there a summary of applet capabilities?</strong></a>
+    <p>The following table is not an exhaustive list of applet capabilities.
+    It's meant to answer the questions we hear most often about what applets can
+    and cannot do.
+    <p>Key:
+    <ul>
+      <li>NN: <strong>N</strong>etscape Navigator 4.x, loading unsigned applets
+        over the <strong>N</strong>et
+      <li>NL: <strong>N</strong>etscape Navigator 4.x, loading unsigned applets
+        from the <strong>L</strong>ocal file system
+      <li>AN: <strong>A</strong>ppletviewer, JDK 1.x, loading applets over the <strong>N</strong>et
+      <li>AL: <strong>A</strong>ppletviewer, JDK 1.x, loading applets from the <strong>L</strong>ocal
+        file system
+      <li>JS: <strong>J</strong>ava <strong>S</strong>tandalone applications</li>
+    </ul>
+    <pre>		 Stricter ------------------------&gt; Less strict
+
+			NN	NL	AN	AL	JS
+
+read file in /home/me,	no	no	no      yes     yes
+acl.read=null
+
+read file in /home/me,	no	no	yes	yes	yes
+acl.read=/home/me
+
+write file in /tmp,	no	no	no	yes	yes
+acl.write=null
+
+write file in /tmp,	no	no	yes	yes 	yes
+acl.write=/tmp
+
+get file info,		no	no	no	yes	yes
+acl.read=null
+acl.write=null
+
+get file info,		no	no	yes	yes	yes
+acl.read=/home/me
+acl.write=/tmp
+
+delete file,		no	no	no	no	yes
+using File.delete()
+
+delete file, 		no	no	no	yes 	yes
+using exec /usr/bin/rm
+
+read the user.name	no	yes	no	yes	yes
+property
+
+connect to port		no	no	no	yes	yes
+on client
+
+connect to port		no	no	no	yes	yes
+on 3rd host
+
+load library		no	yes	no	yes	yes
+
+exit(-1)		no	no	no 	yes	yes
+
+create a popup		no	yes	no	yes	yes
+window without 
+a warning
+
+</pre>
+    <p>&nbsp;</p>
+  <li><a name="otherBytes"><strong>If other languages are compiled to Java
+    bytecodes, how does that affect the applet security model?</strong></a>
+    <p>The verifier is independent of Sun's reference implementation of the Java
+    compiler and the high-level specification of the Java language. It verifies
+    bytecodes generated by other Java compilers. It also verifies bytecodes
+    generated by compiling other languages into the bytecode format. Bytecodes
+    imported over the net that pass the verifier can be trusted to run on the
+    Java virtual machine. In order to pass the verifier, bytecodes have to
+    conform to the strict typing, the object signatures, the class file format,
+    and the predictability of the runtime stack that are all defined by the Java
+    language implementation.</p>
+  </li>
+</ol>
+
+</body>
+
+</html>

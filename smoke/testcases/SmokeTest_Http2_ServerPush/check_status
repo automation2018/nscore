@@ -1,0 +1,341 @@
+#!/usr/bin/env bash
+# Check status written by: Asheesh Kumar Tivaree
+#    Date Time: 09/09/16 10:54:38 AM
+#  Description: Check status to validate cases for smoke
+# 
+# Conventions
+#   1. Two(2) space indentation. No tabs
+#   2. Variables and function starts with snake_case
+#		3. Constants are declared with ALL_CAPS
+
+# Source out required files
+source $NS_WDIR/lib/automation_util
+
+# Default Constants
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR${T_RUN_ID}"
+PARTITION_PATH="${PATH_TO_TEST_RUN}/$(get_test_partition)"
+PROGRESS_REPORT_FILE="${PATH_TO_TEST_RUN}/progress.report"
+DEBUG_LOG_FILE="${PATH_TO_TEST_RUN}/debug.log"
+URL_REQ_FILE="${PATH_TO_TEST_RUN}/2*/ns_logs/req_rep/url_req*"
+URL_REP_FILE="${PATH_TO_TEST_RUN}/2*/ns_logs/req_rep/url_rep*"
+
+#Build 4.1.10 ....
+SCRIPT_FLOW_FILE="${PATH_TO_TEST_RUN}/scripts/*/flow.c"
+
+#Build 4.1.11 ....
+#SCRIPT_FLOW_FILE="${PATH_TO_TEST_RUN}/scripts/*/*/*/flow.c"
+
+T_NAME="$(get_tname)"
+
+# Entry point to check status
+# Add cases to handle your validation
+function main() {
+	case $(get_tname) in
+    "SMOKE-069-001") handle_HTTP2_ServerPush-001 ;;
+    "SMOKE-069-002") handle_HTTP2_ServerPush-002 ;;
+    "SMOKE-069-003") handle_HTTP2_ServerPush-003 ;;
+    "SMOKE-069-004") handle_HTTP2_ServerPush-004 ;;
+    "SMOKE-069-005") handle_HTTP2_ServerPush-005 ;;
+    "SMOKE-069-006") handle_HTTP2_ServerPush-006 ;;
+    "SMOKE-069-007") handle_HTTP2_ServerPush-007 ;;
+    "SMOKE-069-008") handle_HTTP2_ServerPush-008 ;;
+    "SMOKE-069-009") handle_HTTP2_ServerPush-009 ;;
+    "SMOKE-069-010") handle_HTTP2_ServerPush-010 ;;
+# End case def
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+# Helper function to log status
+# Sets additional product id and
+# category id
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_and_exit_ex "FAIL" "Testcase name not found"
+}
+
+# TODO: 
+# 1. Add logic to validate case smoke-001
+# 2. Depending upon evaluation update the status with your own description
+
+function check_stream_id_even()
+{
+ pushed_stream_count=$(grep "promised_stream_id" $DEBUG_LOG_FILE | grep "Pushed Response Headers" | wc -l)
+ pushed_stream=$(grep "promised_stream_id" $DEBUG_LOG_FILE | grep "Pushed Response Headers" | awk '{print $NF}')
+ for((i=1;i<=$pushed_stream_count;i++))
+  {
+  id=$(echo $pushed_stream | cut -d ' ' -f $i)
+  check=$((id%2))
+  if [ $check -eq 0 ];then
+    echo "stream id : $id is even"
+   #debug_log "stream id : $id is even"
+  else
+    echo "stream id is odd"
+    Failure_reason="Pushed stream id is odd"
+  fi
+  }
+}
+
+function get_actual_details()
+{
+ connection_count=$(grep "HTTP TCP Conns" $PROGRESS_REPORT_FILE | cut -d '(' -f3 | awk '{print $1}' | awk -F '=' '{print $2}'|tail -1)
+ get_total_stream_ids=$(grep -c "free->max_stream_id" $DEBUG_LOG_FILE)
+ pushed_resources=$(grep -a "PUSHED RESPONSE" $URL_REP_FILE | wc -l) 
+ cached_requests=$(grep -a "Request is served from Cache" $URL_REQ_FILE | wc -l)
+ total_request_count=$(grep "Url  Report" $PROGRESS_REPORT_FILE | awk -F '/' '{print $1}' | awk -F ':' '{print $3}' | awk '{print $2}')
+ Url_success=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d '/' -f2| awk '{print $2}')
+ Url_completed=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d ':' -f3 | cut -d '/' -f1 | awk '{print $2}')
+ if [ $Url_completed -ne $Url_success ];then
+     Failure_reason=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d '/' -f3 | cut -d ':' -f1)
+ else
+     Failure_reason=0
+     check_stream_id_even
+ fi
+ }
+
+function get_expected_details()
+{
+ url_req=$(grep "URL=http" $SCRIPT_FLOW_FILE | wc -l)
+ expected_url_req_count=$((url_req*4))
+ expected_conn_count=$(grep "URL=http" $SCRIPT_FLOW_FILE | awk -F '//' '{print $2}' | awk -F '/' '{print $1}' | sort -u | wc -l)
+ #Multiply number of recorede host used in script with number of users i.e 2
+ expected_conn_count=$((expected_conn_count*2))
+ }
+
+function handle_HTTP2_ServerPush-001() {
+get_actual_details
+get_expected_details
+echo "case1"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 40 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Autofetch) with Upgrade mode for all group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for all group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for all group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for all group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-002() {
+get_actual_details
+get_expected_details
+debug_log "case 2"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 20 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Autofetch) with Upgrade mode for one group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for one group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for one group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Upgrade mode for one group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-003() {
+get_actual_details
+get_expected_details
+debug_log "case 3"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 40 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for all group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for all group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for all group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for all group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-004() {
+get_actual_details
+get_expected_details
+debug_log "case 4"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 20 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for one group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for one group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for one group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Upgrade mode for one group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-005() {
+get_actual_details
+get_expected_details
+debug_log "case 5"
+debug_log "Cached Requests are : $cached_requests"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ [ $pushed_resources -eq 20 ] && [ $cached_requests -eq 44 ] ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push with Upgrade mode for all group by enabling 100% HTTP Caching passed successfully"
+        else
+            log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Upgrade mode for all group by enabling 100% HTTP Caching failed because expected pushed and cached requests were 20 and 44 respectively but actual is $pushed_resources and $cached_requests"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Upgrade mode for all group by enabling 100% HTTP Caching failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Upgrade mode for all group by enabling 100% HTTP Caching failed due to $Failure_reason"
+fi
+}
+
+
+function handle_HTTP2_ServerPush-006() {
+get_actual_details
+get_expected_details
+echo "case6"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 40 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for all group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for all group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for all group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for all group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-007() {
+get_actual_details
+get_expected_details
+debug_log "case 7"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 20 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for one group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for one group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for one group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Autofetch) with Prior Knowledge mode for one group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-008() {
+get_actual_details
+get_expected_details
+debug_log "case 8"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 40 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for all group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for all group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for all group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for all group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-009() {
+get_actual_details
+get_expected_details
+debug_log "case 9"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ $pushed_resources -eq 20 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for one group passed successfully"
+         else
+             log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for one group failed because expected pushed resources was 40 and actual is $pushed_resources"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for one group failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push(Recorded Inline Resources) with Prior Knowledge mode for one group failed due to $Failure_reason"
+fi
+}
+
+function handle_HTTP2_ServerPush-010() {
+get_actual_details
+get_expected_details
+debug_log "case 10"
+debug_log "Cached Requests are : $cached_requests"
+debug_log "Expected connection count : $expected_conn_count"
+debug_log "Actual Connection count : $connection_count"
+debug_log "Pushed Resources : $pushed_resources"
+debug_log "Failure Reason : $Failure_reason"
+if [ $Failure_reason -eq 0 ];then
+    if [ $connection_count -eq $expected_conn_count ];then
+        if [ [ $pushed_resources -eq 20 ] && [ $cached_requests -eq 44 ] ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Server Push with Prior Knowledge mode for all group by enabling 100% HTTP Caching passed successfully"
+        else
+            log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Prior Knowledge mode for all group by enabling 100% HTTP Caching failed because expected pushed and cached requests were 20 and 44 respectively but actual is $pushed_resources and $cached_requests"
+         fi
+  else
+      log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Prior Knowledge mode for all group by enabling 100% HTTP Caching failed because expected TCP connection count was $expected_conn_count and actual is $connection_count"
+  fi
+else
+    log_status_and_exit_ex "FAIL" "HTTP2 Server Push with Prior Knowledge mode for all group by enabling 100% HTTP Caching failed due to $Failure_reason"
+fi
+}
+
+# Do not override it
+main
+exit 0

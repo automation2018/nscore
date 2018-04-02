@@ -1,0 +1,30 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+REP_FILE="${T_ID_REQ_PATH}/url_rep_0_0_0_0_0_0_0_0_0.dat"
+function main(){
+    case $(get_tname) in
+        "SMOKE-033-001") validate_RR ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_RR(){
+    search=$(grep -o "Payload:" "$REP_FILE")
+    if [ ! -z "${search}" ];then
+        debug_log "$search Header found in response for Reactive Replay"
+        log_status_and_exit_ex "PASS" "$search Header found in response for Reactive Replay"
+    else
+        debug_log "$search Header not found in response for Reactive Replay"
+        log_status_and_exit_ex "FAIL" "Payload Header not found in response for Reactive Replay"
+    fi
+}
+
+main
+exit 0

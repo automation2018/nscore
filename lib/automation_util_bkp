@@ -1,0 +1,299 @@
+#!/bin/bash
+#------------------------------------------------------------
+# Automation utility modules.
+#
+# USAGES:                                                          
+# 1. run_ts.sh files
+# 2. check_status of different testcases
+# 3. pre and post test set up files
+# 4. debug or erro loging
+#
+# TODO
+# 1. Need to add convenient logging modules
+# 2. Need to add module that can work for each test
+# 3. To add new utility modules as per design changes
+#------------------------------------------------------------
+
+WORKBENCH="/home/automation/workbench/automation/nscore"
+D_LOG_FILE="${WORKBENCH}/logs/automation_debug.log"
+E_LOG_FILE="${WORKBENCH}/logs/automation_error.log"
+COMPONENT_ID=$(grep  "CONFIG" /etc/cav.conf  |awk '{print $2}' |cut -d '>' -f1)
+TEST_CYCLE_NUM=$(cat $TEMP_FILE|grep "Test Cycle Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
+TSR_NUM=$(cat $TEMP_FILE|grep "Test Suite Run Number"|cut -d "=" -f2|sed -e 's/^[ \t]*//g')
+TS_LOG_DIR="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/$TSR_NUM/logs"
+SAVED_STRING=$(echo $VAR_VALUE_SUM_RESULT | cut -d "," -f5|sed 's/"//g')
+RELEASE_ID=$(cat $NS_WDIR/etc/version |grep VERSION| cut -d " "  -f2| cut -d . -f1,2,3)
+BUILD_ID=$(cat $NS_WDIR/etc/version | tail -1  | cut -d " " -f2)
+
+
+#Testidx will be passed as second args by ts_run in check status itself
+T_RUN_ID=$2
+
+
+# Returns the current partition of the last ran test
+get_test_partition() {
+	 if [ -f $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition ]; then
+         partition=$(head -1 $NS_WDIR/logs/TR${T_RUN_ID}/.curPartition | cut -d '=' -f2)
+         echo $partition
+     else
+         echo ""
+	 fi
+}
+
+T_ID_REQ_PATH="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/ns_logs/req_rep"
+
+
+#can be called to get testsuite name
+testsuite_name(){
+    testsuitname=$1
+    echo "$testsuitname"
+}
+
+
+#can be called to get recently executed test name
+get_tname(){
+    T_NAME=$(grep -e TNAME $NS_WDIR/logs/TR${T_RUN_ID}/scenario |awk '{print $2}')
+    echo ${T_NAME}
+}
+
+
+#can be called to get recently executed test run number
+get_testidx(){
+    echo "${T_RUN_ID}"
+}
+
+
+# To read testconsole data we need testcase id 
+# Usage : get_testcase_name SmokeTest_API_1_1
+get_testcase_name(){
+    cases=(`ls -tr ${TS_LOG_DIR}/`)
+	echo "${cases[-1]}"
+}
+
+
+#can be called to get log info
+debug_log(){
+    if [ "XX$DEBUG" == "XX0" ];then
+      return
+    else
+      echo "$(date +"%F %X") |TR$(get_testidx)|$(get_tname)| $*" >> $D_LOG_FILE
+    fi
+}
+
+
+#can be called to get log info
+error_log(){
+    debug_log $* >> ${D_LOG_FILE}
+    echo "$(date +"%F %X") | $*" >> ${E_LOG_FILE}
+}
+
+
+#can be called to get log info
+log_msg(){
+    echo -e $*
+    echo -e $* >> ${R_FILE}
+}
+
+
+#can be called to get status log
+log_status_and_exit(){
+    STATUS="$1"
+    msg="$2"
+    if [ "XX${STATUS}" == "XXPASS" ]; then
+        log_msg "TESTRESULT\t\t\t= PASS ,$msg"
+        log_msg "+-----------------------------------------------------+"
+        exit 0
+    else
+        log_msg "TESTRESULT\t\t\t= FAIL , $msg"
+        log_msg "+-----------------------------------------------------+"
+        exit -1
+    fi
+}
+
+
+#can be called to generate report
+#log_status_and_exit(){
+gen_report(){
+    log_msg "Test Case Name\t\t\t= `get_tname`"
+    log_msg "Test Run Number\t\t\t= $T_RUN_ID"
+    log_msg "Duration\t\t\t= $SD_DURATION"
+    log_msg "TCP Connections Total\t\t= $SD_TotalConn"
+    log_msg "TCP Connections Success\t\t= $SD_TotalSuccConn"
+    log_msg "Total Pass Pct\t\t\t= $SD_TotalPassPct"
+    log_msg "Url Total\t\t\t= $SD_TotalURLHits"
+    log_msg "Url Success\t\t\t= $SD_TotalSuccURL"
+    log_msg "URL Failures\t\t\t= $SD_URLFailures"
+    log_msg "URL Hits/Sec\t\t\t= $SD_URLHitsPerSec"
+    log_msg "TCP Tx Throughput(Kbps)\t\t= $SD_TcpTx"
+    log_msg "TCP Rx Throughput(Kbps)\t\t= $SD_TcpRx"
+    log_msg "Ethernet Tx Throughput(Kbps)\t= $SD_EthTx"
+    log_msg "Ethernet Rx Throughput(Kbps)\t= $SD_EthRx"
+    log_msg "Total page fail(count)\t"= $PAGE_FAIL
+}
+
+
+#can be called to generate summary report of entire suite in txt file
+set_test_summary_ex(){
+    PASS_COUNT=$(grep -cw "pass" $R_FILE)
+    FAIL_COUNT=$(grep -cw "fail" $R_FILE)
+    TOTAL_CASES=$(cat $R_FILE| grep -v ^Test| wc -l)
+}
+
+
+#can be called to get number of testcases failed
+get_failed_test_count(){
+    FAIL_COUNT=$(grep -ci ",FAIL," $R_FILE)
+    echo $FAIL_COUNT
+}
+
+
+#can be called to get number of testcases passed
+get_passed_test_count(){
+    PASS_COUNT=$(grep -ci ",PASS," $R_FILE)
+    echo $PASS_COUNT
+}
+
+
+#can be called to get number of total testcases
+get_total_test_count(){
+    TOTAL_COUNT=$(($(get_passed_test_count) + $(get_failed_test_count)))
+    echo $TOTAL_COUNT
+}
+
+
+#can be called to set summary report
+set_test_summary(){
+    COUNT=$(grep -cw "PASS" $R_FILE)
+    TOTAL_CASES=$(grep -c "TESTRESULT" $R_FILE)
+    echo -e "SUMMARY\t\t\t\t= $COUNT/$TOTAL_CASES cases passed" >>$R_FILE
+}
+
+
+#can be called to set testsuite header
+set_results_header(){
+    echo "*-----------------------------------------------------*" >>$R_FILE
+    echo "     Test Executed By  : `whoami`" >> $R_FILE
+    echo "     Date/Time         : `date +%D`/`date +%X`" >> $R_FILE
+    echo "*-----------------------------------------------------*" >>$R_FILE
+}
+
+
+#can be called to set txt result file header
+set_results_header_ex(){
+    echo "#testcaseid,testrun,componentid,catagoryid,status,description" >> $R_FILE
+}
+
+
+#can be called to get test category
+component_name(){
+    T_Name=$(get_tname)
+    TestSuite=$(echo $T_Name |cut -d '-' -f1)
+    echo "$TestSuite"
+}
+
+
+#can be called to log status of a perticular test
+log_status_and_exit_ex(){
+    #name, testrun, componentid, categoryid, status, desc
+    status="${1}"
+    status_show=${status,,}
+    remarks="${2}"
+    
+    if [ "$COMPONENT_ID" == "NS" ];then
+	    COMP=1
+    fi
+    
+    test_type=$(component_name)
+    test_name=${test_type,,}
+    
+    if [ "$test_name" == "smoke" ];then
+	    categoryid=1
+    elif [ "$test_name" == "reg" ];then
+	    categoryid=2
+    else
+	    categoryid=3
+    fi
+    
+    #echo "$(get_tname),$(get_testidx),${RELEASE_ID},${BUILD_ID},${COMP},${status_show},${categoryid},${remarks}" >>$R_FILE
+    echo "$(get_tname),$(get_testidx),${COMP},${categoryid},${status_show},${remarks}" >>${R_FILE}
+    
+    [ "X$status" = "XFAIL" ] && exit 3
+}
+
+
+#can be called to get tsr number
+get_cycle_num()
+{
+    echo "$(date +%m%d%y_%H%M%S)"
+}
+
+
+#can be called to get release;build informations
+get_major_minor_info()
+{
+    MAJOR=$(cat $NS_WDIR/etc/version|head -1|cut -d " " -f2 )
+    MINOR=$(cat $NS_WDIR/etc/version|tail -1|cut -d " " -f2 )
+    echo "${MAJOR}.${MINOR}"
+}
+
+
+#can be called to get average transaction response time of a perticular transactions
+get_avg_trans_resp_time(){
+    transName=$1
+    [ -z $transName ] && transName="ALL"
+
+    responseTime=$(cat $NS_WDIR/logs/TR${T_RUN_ID}/trans_detail.dat | grep "$transName" | cut -d '|' -f 3| sed 's/ //')
+    echo $responseTime
+}
+
+
+#can be called to apply nsu_server_admin command;or remote command execution 
+remote_exec(){
+    svr="${1}"
+    cmd="${2}"
+    nsu_server_admin -i -s "${svr}" -c "${cmd}" 2>/dev/null| grep -v "Making" | sed '/^$/d'
+    RC=$?
+}
+
+
+#can be called to get category wise project or subproject name
+project_name(){
+    testsuitname=$1
+    if [ "X$testsuitname" == "XRegression" ]; then
+         echo "Regression/Regression"
+    fi
+    if [ "X$testsuitname" == "XSmoke" ]; then
+         echo "Smoke/Smoke"
+    fi
+    if [ "X$testsuitname" == "XPerformance" ] || [ "X$testsuitname" == "XPerformance_Cps" ]; then
+         echo "Performance/Performance"
+    fi
+    if [ "X$testsuitname" == "XPerformance_SSL" ]; then
+         echo "Performance/Performance"
+    fi
+    if [ "X$testsuitname" == "Xfunctional" ]; then
+         echo "Functional/Functional"
+    fi
+}
+
+
+#this is a python utility;can be called to remote login
+remote_ssh(){
+    host="$1"
+    cmd="$2"
+
+    default_user="root"
+    default_passwd="C@VAdmin" 
+
+    user=${default_user}
+    passwd=${default_passwd}
+
+    #Safety Checks, If user and password is provided override them
+    [ ! -z $3 ] && user="$3"
+    [ ! -z $4 ] && passwd="$4"
+
+    PYTHON_SSH="python /home/regression/bin/ssh.py"
+
+    ${PYTHON_SSH} ${host} ${user} ${passwd} "${cmd}"
+}
+

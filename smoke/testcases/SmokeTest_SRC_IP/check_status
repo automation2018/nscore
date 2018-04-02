@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+Debug_log_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$T_RUN_ID"
+PAGE_THINK_TIME_FILE="${PATH_TO_TEST_RUN}/page_think_time.dat"
+PATH_TO_TEST_RUN_SCENARIO="${PATH_TO_TEST_RUN}/scenario"
+PATH_TO_DEBUG_TRACE="${PATH_TO_TEST_RUN}/debug_trace.log"
+IP_FILE="$NS_WDIR/ip_file.txt"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-052-001") validate_SRC_IP-001 ;;
+        "SMOKE-052-002") validate_SRC_IP-002 ;;
+        "SMOKE-052-003") validate_SRC_IP-003 ;;
+        "SMOKE-052-004") validate_SRC_IP-004 ;;
+        "SMOKE-052-005") validate_SRC_IP-005 ;;
+        "SMOKE-052-006") validate_SRC_IP-006 ;;
+        "SMOKE-052-007") validate_SRC_IP-007 ;;
+        "SMOKE-052-008") validate_SRC_IP-008 ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+# Need to find proper way to validate Scenario Profile in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+function validate_SRC_IP-001(){
+    debug_log "Checking IP conection between Server and Client when USE_SRC_IP 1 999999999 with 1 User and 5 Session."
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4| uniq))
+    debug_log "ip_addr_for_All_Session: ${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.2" == "${ip_addr_for_All_Session[1]}" ] && [ "199.99.99.3" == "${ip_addr_for_All_Session[2]}" ] && [ "199.99.99.4" == "${ip_addr_for_All_Session[3]}" ] && [ "199.99.99.5" == "${ip_addr_for_All_Session[4]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct ip generated in 1st;2nd;3rd;4th and 5th session"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase Failed due to incorrect ip generated"
+    fi
+}
+
+function validate_SRC_IP-002(){
+    debug_log "Checking IP Conection when USE_SRC_IP 1 4 with 1 User and 5 Session"
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4| uniq))
+    debug_log "ip_addr_for_All_Session: ${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.2" == "${ip_addr_for_All_Session[1]}" ] && [ "199.99.99.3" == "${ip_addr_for_All_Session[2]}" ] && [ "199.99.99.4" == "${ip_addr_for_All_Session[3]}" ] && [ "199.99.99.1" == "${ip_addr_for_All_Session[4]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct ip generated in 1st;2nd;3rd;4th and 5th session"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase Failed due to incorrect ip generated."
+    fi
+}
+
+
+function validate_SRC_IP-003(){
+    debug_log "Checking Client ip addr when USE_SRC_IP 3 /home/netstorm/work/ip_file.txt with 1 User 5 Session."
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4| uniq))
+    debug_log "ip_addr_for_All_Session: ${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.2" == "${ip_addr_for_All_Session[1]}" ] && [ "199.99.99.3" == "${ip_addr_for_All_Session[2]}" ] && [ "199.99.99.4" == "${ip_addr_for_All_Session[3]}" ] && [ "199.99.99.5" == "${ip_addr_for_All_Session[4]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct ip generated in 1st;2nd;3rd;4th and 5th session"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase Failed due to incorrect ip generated in 5th session"
+    fi
+}
+
+function validate_SRC_IP-004(){
+    debug_log "Checking ip addr when USE_SRC_IP 1 0 and SRC_IP_LIST 199.99.99.1 4 with 1 User and 5 Session."
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4| uniq))
+    debug_log "ip_addr_for_All_Session :${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.2" == "${ip_addr_for_All_Session[1]}" ] && [ "199.99.99.3" == "${ip_addr_for_All_Session[2]}" ] && [ "199.99.99.4" == "${ip_addr_for_All_Session[3]}" ] && [ "199.99.99.1" == "${ip_addr_for_All_Session[4]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct ip generated in 1st;2nd;3rd;4th and 5th session"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase Failed due to incorrect ip generated in 5th session"
+    fi
+}
+
+function validate_SRC_IP-005(){
+    debug_log "Checking the IP conection created when USE_SRC_IP 2 999999999 with 5 User and 5 Session."
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4|sort| uniq))
+    debug_log "ip_addr_for_All_Session:${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.3" == "${ip_addr_for_All_Session[1]}" ] && [ "199.99.99.5" == "${ip_addr_for_All_Session[2]}" ] && [ "199.99.99.7" == "${ip_addr_for_All_Session[3]}" ] && [ "199.99.99.9" == "${ip_addr_for_All_Session[4]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct ip generated in 1st;2nd;3rd;4th and 5th user"
+    else
+        log_status_and_exit_ex "FAIL" "TestCase Failed in 5th User conection due to incorrect Source IP Generated"
+    fi
+}
+function validate_SRC_IP-006(){
+    debug_log "Checking the IP Conection when USE_SRC_IP 2 5 with 1 User and 5 Session and G_NEW_USER_ON_SESSION ALL 0."
+    ip_conection_1User_All_Session=$(grep -o "199.99.99.1" $PATH_TO_DEBUG_TRACE | head -1)
+    if [ "199.99.99.1" == "${ip_conection_1User_All_Session}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct source IP generated in all session"
+    else
+        log_status_and_exit_ex "FAIL" "TestCase Failed due to incorrect source IP generated in all session"
+    fi
+}
+
+function validate_SRC_IP-007(){
+    debug_log "Checking the IP Conection when USE_SRC_IP 4 /home/netstorm/work/ip_file.txt with 2 User and 2 Session and G_NEW_USER_ON_SESSION ALL 0."
+    ip_addr_for_All_Session=($(grep -wo "199.99.99.*" $PATH_TO_DEBUG_TRACE | cut -d. -f1,2,3,4| sort |uniq))
+    debug_log "ip_addr_for_All_Session: ${ip_addr_for_All_Session[@]}"
+    if [ "199.99.99.1" == "${ip_addr_for_All_Session[0]}" ] && [ "199.99.99.6" == "${ip_addr_for_All_Session[1]}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct source IP generated in both User"
+    else
+        log_status_and_exit_ex "FAIL" "TestCase Failed in 2nd User conection due to incorrect source IP generated"
+    fi
+}
+
+function validate_SRC_IP-008(){
+    debug_log "Checking the IP Conection when USE_SRC_IP 2 0 and SRC_IP_LIST 199.99.99.1 10 with 1 User and 12 Session G_NEW_USER_ON_SESSION ALL 0."
+    ip_conection_1User_All_Session=$(grep -o "199.99.99.1" $PATH_TO_DEBUG_TRACE | head -1)
+    if [ "199.99.99.1" == "${ip_conection_1User_All_Session}" ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed correct source IP generated in all session."
+    else
+        log_status_and_exit_ex "FAIL" "Testcase Failed due to incorrect source IP generated in all sssion"
+    fi
+}
+
+
+main
+
+exit  0

@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,91074,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,91075,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,91076,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,91077,1,2,fail,FSR  Mode 2 testcase failed because Sessions Started/Minute(NA) in baseline testrun found is 790.8 and Sessions Started/Minute(NA) in current testrun is 830.618 are having difference of -5.03515427415% which exceeed the tolerance of 5%
+REG-005-001,91078,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(http);Service Time (Secs)(NA) in current testrun is 0.001 are having difference of 50.0% which exceeed the tolerance of 5%
+REG-006-001,91079,1,2,pass,NS supported protocols such as POP3 SMTP & FTP Testcase passed
+REG-007-001,91080,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,91081,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,91082,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,91083,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,91084,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,91085,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,91086,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,91087,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

@@ -1,0 +1,136 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+request_file="${T_ID_REQ_PATH}/url_req_*.dat"
+script_file="$NS_WDIR/logs/TR${T_RUN_ID}/runtime_changes/Smoke_RTC_FileParameter:user_param3"
+debug_log="${script_file}"
+script_file2="$NS_WDIR/logs/TR${T_RUN_ID}/runtime_changes/Smoke_RTC_FileParameter_Usemode:user_param3"
+test_case_name=$(get_testcase_name)
+
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-039-001") validate_RTC_fileparameter_001  ;;
+        "SMOKE-039-002") validate_RTC_fileparameter_002 ;;
+        "SMOKE-039-003") valdate_RTC_fileparameter_003 ;;
+        "SMOKE-039-004") valdate_RTC_fileparameter_004 ;;
+        "SMOKE-039-005") valdate_RTC_fileparameter_005 ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+function validate_RTC_fileparameter(){
+#data_append1=$(tail -2 ${script_file}|head -1|grep "vishal")
+#debug_log "data1 : ${data_append1}"
+#data_append2=$( tail -1 ${script_file} | grep "ranjeet")
+#debug_log "data2 : ${data_append2}"
+data_request_file1=$(grep -hR "vishal" ${request_file} )
+data_request_file2=$(grep -hR "ranjeet" ${request_file} )
+
+#if [ ! -z "${data_append1}" ] && [ ! -z "${data_append2}" ]; then
+    if [ ! -z "${data_request_file1}" ] && [ ! -z "${data_request_file2}" ]; then
+        return 0;
+    else
+        return 1;
+    fi
+#else
+#    return 1;
+#fi
+#
+}
+
+function validate_RTC_fileparameter_useMode(){
+#data_append1=$(head -1 ${script_file2} | grep "user1,passwd2")
+#debug_log "data_append1: ${data_append1}"
+data_request_file=$(grep -hR "ranjeet" ${request_file})
+
+#    for i in {1..324}; do
+#        a=`grep -w "ranjeet$i" ${script_file2}`;
+#        if [ -z $a ]; then
+#            log_status_and_exit_ex "FAIL" "Data not appended in given file after applying RTC File parameter use mode";
+#        fi
+#    done
+     if [ ! -z "${data_request_file}" ]; then
+         return 0;
+     else
+         return 1;
+     fi
+
+}
+
+function validate_RTC_fileparameter_001(){
+validate_RTC_fileparameter
+result1=$?
+debug_log "result1: $result1"
+    if [ $result1 -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "validate_RTC_fileparameter when monitor mode =1 and in file parameter mode=sequential"
+    else
+        log_status_and_exit_ex "FAIL" "data not available in req file when monitor mode =1 and in fileparameter mode=sequential"
+    fi
+}
+
+function validate_RTC_fileparameter_002(){
+#data_append3=$(grep -hR "test" ${script_file})
+#debug_log "data2 : ${data_append3}"
+validate_RTC_fileparameter
+result2=$?
+debug_log "result2: $result2"
+    #if [ $result2 -eq 0 ] && [ -z "${data_append3}" ]; then
+    if [ $result2 -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "validate_RTC_fileparameter when monitor mode =2 and in file parameter mode=sequential"
+    else
+        log_status_and_exit_ex "FAIL" "data not available in req file when monitor mode =2 and in fileparameter mode=sequential"
+    fi
+}
+
+function valdate_RTC_fileparameter_003(){
+#data_append1=$(head -1 ${script_file2} | grep "user1,passwd2")
+#debug_log "data_append1: ${data_append1}"
+validate_RTC_fileparameter_useMode
+result_use=$?
+debug_log "reslt_use : $result_use"
+    #if [ $result_use -eq 0 ] && [ ! -z "${data_append1}" ]; then 
+    if [ $result_use -eq 0 ]; then 
+        log_status_and_exit_ex "PASS" "validate_RTC_fileparameter when monitor=1 and in file parameter=param3 and Refresh=Use"
+    else
+        log_status_and_exit_ex "FAIL" "validate_RTC_fileparameter when monitor=1 and in file parameter=param3 and Refresh=Use"
+    fi
+}
+
+function valdate_RTC_fileparameter_004(){
+#data_append1=$(head -1 ${script_file2} | grep "user1,passwd2")
+#debug_log "data_append1: ${data_append1}"
+validate_RTC_fileparameter_useMode
+result_use1=$?
+debug_log "reslt_use1 : $result_use1"
+    #if [ $result_use1 -eq 0 ] && [ -z "${data_append1}" ]; then
+    if [ $result_use1 -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "validate_RTC_fileparameter when monitor=2 and in file parameter=param3 and Refresh=Use"
+    else
+        log_status_and_exit_ex "FAIL" "validate_RTC_fileparameter when monitor=1 and in file parameter=param3 and Refresh=Use"
+    fi
+}
+
+function valdate_RTC_fileparameter_005(){
+sucess_count_tmp=$(grep -w "SUCCESS" /tmp/rtc.log | wc -l)
+debug_log "sucess_count_tmp : ${sucess_count_tmp}"
+monitor_apply_conut=$(grep -w "Check Monitor passed - rtc_file_param" "${TS_LOG_DIR}/${test_case_name}/test_run.report"| wc -l )
+debug_log "monitor_apply_conut : ${monitor_apply_conut}"
+if [ "$monitor_apply_conut" == "$sucess_count_tmp" ]; then 
+        log_status_and_exit_ex "PASS" "validate_RTC_fileparameter when monitor mode=1 and monitor applied in every 20 sec"
+    else
+        log_status_and_exit_ex "FAIL" "validate_RTC_fileparameter when monitor mode=1 and monitor applied in every 20 sec"
+    fi
+}
+
+
+main
+exit 0

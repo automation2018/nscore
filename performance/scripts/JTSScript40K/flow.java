@@ -10,7 +10,7 @@ package com.cavisson.scripts.JTSScript40K;
 import pacJnvmApi.NSApi;
 public class flow implements NsFlow
 {
-    public int execute(NSApi nsApi)
+    public int execute(NSApi nsApi) throws Exception
     {
         int status;
        

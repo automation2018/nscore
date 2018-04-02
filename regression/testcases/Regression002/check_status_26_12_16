@@ -1,0 +1,87 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+Input_File="/home/automation/workbench/automation/nscore/regression/testcases/Regression002/ParamList"
+
+TESTRUN_ID=$(get_testidx)
+Tname=$(get_tname)
+reg_status=1
+
+function get_results(){
+    BaseLine_Tsr_Directory_Regression1="$NS_WDIR/logs/tsr/072815_181628/2335/Regression002_results.csv"
+    Test_Run=`grep -w $Tname $BaseLine_Tsr_Directory_Regression1 |cut -d ',' -f2`
+    echo "$Test_Run"
+
+    calculate_metric_deviation $Test_Run $TESTRUN_ID "ALL" "metric_value" "FCU with RampUp in Rate mode" $Input_File
+    #calculate_multi_filter_result=$(calculate_metric_deviation_multiple_filter $TESTRUN_ID "ALL" "FCU with RampUp in Step mode" $Multi_Input_File)
+    #echo "calculated_multi="$calculate_multi_filter_result
+   # if [ calculate_result ];then
+   # fi
+}
+function calculate_metric_deviation(){
+    baseline_test_run=$1
+    current_test_run=$2
+    param_string=$3
+    param_name=$4  
+    test_case_name=$5
+    ParamListFile=$6
+    #parameter values for baseline and current test run when all parameters are to be matched(param_string =ALL)
+    if [ "XX$3" == "XXALL" ]; then
+        IFS=$'\n'
+        for line in $(cat $ParamListFile); do
+            baseline_param=$(testStats $baseline_test_run 0 "${line}" "$param_name")
+            debug_log "baseline value for ${line}:${baseline_param}"
+            current_param=$(testStats $current_test_run 1 "${line}" "$param_name")
+            debug_log "current value for ${line}:${current_param}"
+            param_change="${line}_change"
+            if [ "${line}" == "Average Response Time (Secs)(NA)" ]; then
+                debug_log "calculating difference but not percentage difference"
+                param_change=$(bc -l<<<"$baseline_param - $current_param")
+            else
+                param_change=$(echo "$baseline_param" "$current_param" | awk '{print ($1-$2)/$1*100}')
+                param_change=$(echo $param_change | awk '{printf "%.0f\n", $1}')
+            fi
+            debug_log "Change in value of ${line}: ${param_change}"
+            get_test_status $param_change "$line" "$test_case_name" "$baseline_param" "$current_param"
+        done
+        if [ $reg_status -eq 1 ]; then
+            log_status_and_exit_ex "PASS" "Regression test for ${test_case} passed"
+        fi
+
+    #parameter values for baseline and current test run when a given parameter is under evaluation(single param_string)
+    else
+        baseline_param=$(testStats $baseline_test_run 0 "${param_string}" "$param_name")
+        current_param=$(testStats $current_test_run 1 "${param_string}" "$param_name")
+        param_change="${param_name}_change"
+        param_change=`echo ${baseline_param} ${current_param}|awk '{print ($1-$2)/$1*100}'`
+        param_change=$(echo $param_change | awk '{printf "%.0f\n", $1}')
+        debug_log "Change in value of ${param_string}:${param_change}"
+        get_test_status $param_change $param_string "$test_case_name" ${baseline_param} ${current_param}
+    fi
+}
+
+
+function get_test_status() {
+    diff=$1
+    param_name=$2
+    test_case=$3
+    baseline_value=$4
+    current_value=$5
+    debug_log "get_test_status()| Diff = $diff"
+    if [ $diff -gt 5 ]; then
+        debug_log "Value inside failure loop is=$param_name"
+        if [ "${param_name}" == "Active Vusers(NA)" ]; then
+            continue
+        else
+            reg_status=0
+            #log_status_and_exit_ex "FAIL" "Regression test for ${test_case} failed;because difference of  baseline and current test metric ${param_name} = ${diff} is more than expected difference 5%"
+            log_status_and_exit_ex "FAIL" "Regression test for ${test_case} failed;For ${param_name} where baseline value: ${baseline_value} current value: ${current_value} and percentage difference is ${diff} which is more than expected difference 5%"
+        fi
+    fi
+}
+
+get_results
+#[ $? -gt 0 ] && exit 3
+
+exit 0

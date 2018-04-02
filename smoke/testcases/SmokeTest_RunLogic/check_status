@@ -41,7 +41,7 @@ function handle_sequence_case(){
 }
 
 function handle_percentage_case(){
-    get_random_value=$(grep get_random_number $NS_WDIR/logs/TR$T_RUN_ID/debug.log | awk 'NR==3' | cut -d '|' -f12 | cut -d ',' -f1 | awk '{print $3}')
+    get_random_value=$(grep -a get_random_number $NS_WDIR/logs/TR$T_RUN_ID/debug.log | awk 'NR==3' | cut -d '|' -f12 | cut -d ',' -f1 | awk '{print $3}')
     per_value_1=$(grep "per1\ =" $NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/scripts/Smoke_RunLogic_Pct/runlogic.c | awk '{print $4}' | cut -d ';' -f1)
     ExecutedTxName=$(cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | awk 'NR==2')
 

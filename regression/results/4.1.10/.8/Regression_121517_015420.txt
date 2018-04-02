@@ -1,0 +1,14 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,19211,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,19212,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,19213,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,19214,1,2,fail,FSR  Mode 2 testcase failed because Sessions Started/Minute(NA) in baseline testrun found is 790.8 and Sessions Started/Minute(NA) in current testrun is 706.556 are having difference of 10.6530096105% which exceeed the tolerance of 5%
+REG-006-001,19216,1,2,pass,NS supported protocols such as POP3 SMTP & FTP Testcase passed
+REG-007-001,19217,1,2,fail,It was expected that at Start0 phase available Vusers present in system should be equal to 10;but actual Vusers count is 19
+REG-007-002,19218,1,2,fail,It was expected that at RampUp0 phase available Vusers present in system should be greater than 10;but actual Vuser count is 3
+REG-007-003,19219,1,2,fail,It was expected that at Stabilize0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 119
+REG-007-004,19220,1,2,fail,It was expected that at Duration0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 119
+REG-007-005,19221,1,2,pass,RTC is being applied for RampDown0 phase;93  have been found in current situation as RTC being applied
+REG-007-006,19222,1,2,fail,Simple scenario RTC testcase where RTC being applied in all phases;failed as ramp_down_users=1190;not same as total users count=200 after applying RTC
+REG-008-001,19223,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,19224,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

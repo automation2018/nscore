@@ -69,7 +69,7 @@
                  command="${command.hpd.restart}" 
                  trust="true"/>
 
-        <sleep seconds="20"/>
+        <sleep seconds="50"/>
 
         <sshexec host="${remote.host}" 
                  username="${remote.user}" 
@@ -91,7 +91,7 @@
                  command="${command.hpd.restart}" 
                  trust="true"/>
         
-        <sleep seconds="20"/>
+        <sleep seconds="50"/>
         
         <sshexec host="${remote.host}" 
                  username="${remote.user}" 
@@ -104,11 +104,16 @@
     </target>
    
     <!--Task: For debugging of performance suite-->
-    <target name="debug" depends="copy" description="initiates debug test">
+    <target name="perf-debug" depends="trigger-hps-test" description="initiates debug test">
+        <!-- <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+         </exec>-->
          <exec executable="/bin/bash" taskname="info">
             <arg value="run_ts.sh"/>
             <arg value="Performance"/>
          </exec>
+
     </target>
     
     <!--Task: This target runs the automation suite for CPS metric-->
@@ -187,10 +192,11 @@
               user="${mail.user}"
               password="${mail.password}" 
               mailport="587" 
+              enableStartTLS="true"
               tolist="${configured.mail.list.to}" 
               cclist="${configured.mail.list.cc}" 
               messageMimeType="text/html" 
-              subject="Performance: NSCore ${curr.release} B${curr.build} - Started" 
+              subject="[UBUNTU16]Performance: NSCore ${curr.release} B${curr.build} - Started" 
               messagefile="${startup.mail.file}"
               failonerror="false">
 	    <from address="automation@cavisson.com"/>
@@ -223,10 +229,11 @@
              user="${mail.user}"
              password="${mail.password}"  
              mailport="587" 
+             enableStartTLS="true"
              tolist="${configured.mail.list.to}" 
              cclist="${configured.mail.list.cc}" 
              messageMimeType="text/html" 
-             subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+             subject="[UBUNTU16]Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
              messagefile="${mail.result.file}"
              failonerror="false">
            <from address="automation@cavisson.com"/>   		   
@@ -263,10 +270,11 @@
               user="automation@cavisson.com"
               password="Cavisson!"
               mailport="587" 
+              enableStartTLS="true"
               tolist="ankur.mishra@cavisson.com" 
-              cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com" 
+              cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com,dl-sup-projmgt@cavisson.com" 
               messageMimeType="text/html" 
-              subject="[NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
+              subject="[UBUNTU16][NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
               messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html"
               failonerror="false">
              <from address="automation@cavisson.com"/>   		   

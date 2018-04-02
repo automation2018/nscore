@@ -24,14 +24,14 @@ function get_perf_metric(){
     
     CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
     HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-    Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-    Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "HTTP Body receive throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    #Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
     CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
     HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
     Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
-    Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    #Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
    
-    echo "SSL:${metric},$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR"  >>$CurrentCSV
+    echo "SSL:${metric},$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR"  >>$CurrentCSV
 }
 
 
@@ -49,15 +49,15 @@ function Compare_Results() {
 function handle_ssl_cps_case() {
     debug_log "Going to copy hps hpd.conf file"
 
-    rmon -h 10.10.30.38 -u root -p abeona -F $HPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -F $HPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
     debug_log "exist status of copy file=$?"
     
     debug_log "Going to restart hpd server"
 
-    rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd restart'
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd restart'
     debug_log "exist status of hpd restart=$?"
     sleep 10
-    rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd show'
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd show'
     debug_log "exist status of hpd restart=$?"
 
     get_perf_metric CPS    
@@ -76,15 +76,15 @@ function handle_ssl_throughput_case() {
     
     debug_log "Going to copy cps hpd file"
     
-    rmon -h 10.10.30.38 -u root -p abeona -F $CPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -F $CPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
     debug_log "exist status of copy file=$?"
     
     debug_log "Going to restart hpd server"
 
-    rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd restart'
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd restart'
     debug_log "exist status of hpd restart=$?"
     sleep 10
-    rmon -h 10.10.30.38 -u root -p abeona -c 'service hpd show'
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd show'
     debug_log "exist status of hpd restart=$?"
     
     log_status_and_exit_ex "PASS" "$(get_tname) Passed"

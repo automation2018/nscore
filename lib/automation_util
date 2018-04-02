@@ -266,7 +266,7 @@ project_name(){
     if [ "X$testsuitname" == "XRegression" ]; then
          echo "Regression/Regression"
     fi
-    if [ "X$testsuitname" == "XSmoke" ]; then
+    if [ "X$testsuitname" == "XSmoke" ] || [ "X$testsuitname" == "XSmoke_Debug" ]; then
          echo "Smoke/Smoke"
     fi
     if [ "X$testsuitname" == "XPerformance" ] || [ "X$testsuitname" == "XPerformance_Cps" ]; then
@@ -286,7 +286,7 @@ remote_ssh(){
     host="$1"
     cmd="$2"
     default_user="root"
-    default_passwd="abeona" 
+    default_passwd="C@VAdmin" 
 
     user=${default_user}
     passwd=${default_passwd}

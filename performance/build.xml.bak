@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+
+<!--Declaring the main project for Perfomance Test. By default this will execute the perf target.-->
+<project name="core-performance" basedir="." default="perf">
+
+
+    <!--Task: Declaring build variable values-->
+    <property file="build.properties"/>
+    
+    <!--Task: Clean the test scenario directories from respective paths-->
+    <target name="clean" 
+            description="cleans workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <delete dir="${scripts.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${scenarios.files.abs.path}" failonerror="false"/>
+        <delete dir="${testcases.dirs.abs.path}" failonerror="false"/>
+        <delete dir="${testsuites.files.abs.path}" failonerror="false"/>
+    </target>
+    
+    <!--Task: Copy and modify the test scenario directories to rescpective locations-->
+    <target name="copy" 
+            depends="clean"
+            description="copies and prepares workbench files such as script, scenarios, testsuites, testcases and libraries">
+        <copy todir="${scripts.dir}">
+            <fileset dir="scripts"/>
+        </copy>
+        <copy todir="${scenarios.dir}">
+            <fileset dir="scenarios"/>
+        </copy>
+        <copy todir="${testcases.dir}">
+            <fileset dir="testcases"/>
+        </copy>
+        <copy todir="${testsuites.dir}">
+            <fileset dir="testsuites"/>
+        </copy>
+        <copy todir="${lib.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <chmod perm="755">
+            <fileset dir="${testcases.dir}">
+                <include name="**/*_test_*"/> 
+                <include name="**/check_status"/>
+            </fileset>
+        </chmod> 
+    </target>
+     
+    <!--Task: Remote copy hpd.conf file to NO server to run CPS metric-->
+    <target name="copy-hpd-file" description="copy hpd file">
+        <scp file="${hpd.conf.perf}" 
+             todir="${remote.user}@${remote.host}:${hpd.conf.no}" 
+             password="${remote.password}" 
+             trust="true"/>
+    </target>
+
+    <!--Task: Remote copy hpd.conf file to NO server to run HPS, Throughput & Concurrency metric-->
+    <target name="copy-hps-file" description="copy hpd file with hps changes">
+        <scp file="${hpd.conf.perf.hps}" 
+             todir="${remote.user}@${remote.host}:${hpd.conf.no}" 
+             password="${remote.password}" 
+             trust="true"/>
+    </target>
+   
+    <!--Task: Restart NO server to run CPS metric--> 
+    <target name="restart-hpd" 
+            depends="copy-hpd-file, copy"
+            description="restart hpd for cps test">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.restart}" 
+                 trust="true"/>
+
+        <sleep seconds="50"/>
+
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.show}" 
+                 trust="true" 
+                 outputproperty="hpd.process"/>
+        
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+
+    <!--Task: Restart NO server to run HPS,  HPS, Throughput & Concurrency metric--> 
+    <target name="restart-hpd-for-hpstest" 
+            depends="copy-hps-file"
+            description="restart hpd file with hps changes">
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.restart}" 
+                 trust="true"/>
+        
+        <sleep seconds="50"/>
+        
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.hpd.show}" 
+                 trust="true" 
+                 outputproperty="hpd.process"/>
+        
+        <fail message="HPD is not running please see hpd_error.log first" unless="hpd.process"/>
+    </target>
+   
+    <!--Task: For debugging of performance suite-->
+    <target name="perf-debug" depends="copy" description="initiates debug test">
+         <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+         </exec>
+    </target>
+    
+    <!--Task: This target runs the automation suite for CPS metric-->
+    <target name="trigger-cps-test" 
+            depends="restart-hpd" 
+            description="initiates cps perf test">
+        <exec executable="/bin/bash" outputproperty="start.time">
+            <arg value="-c"/>
+            <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+        </exec>
+        <echo message="performance automation suite started at: ${start.time}"/>
+        
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance_Cps"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <!--Task: This target runs the automation suite for HPS, Throughput & Concurrency metric-->
+    <target name="trigger-hps-test" 
+            depends="trigger-cps-test, restart-hpd-for-hpstest"
+            description="triggers hps, tput and concurrency perf tests">
+
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance"/>
+            <arg value="0"/>
+        </exec>
+    </target>
+
+    <!-- TODO Need to add module to check netstorm fail cases-->
+    <!--Task: Upload test results to analalytics.db-->
+    <!--<target name="perf" depends="Performance">-->
+	<target 
+        name="perf"
+        depends="trigger-hps-test, trigger-results-mail"
+		description="default target which runs command to store perf results to database after automation completes">
+		<echo message="uploading ctype performance stats"/>
+        <exec executable="python">
+            <arg value="${perf.db_upload}"/>
+            <arg value="${perf.input.file}"/>
+            <arg value="${perf.database}"/>
+            <!--<arg value="/home/automation/workbench/automation/nscore/lib/test/analyticskill.db"/>-->
+            <arg value="True"/>
+            <arg value="NetStorm"/>
+        </exec>
+		
+		<echo message="uploading jts performance stats"/>
+        <exec executable="python">
+            <arg value="${perf.db_upload}"/>
+            <arg value="${jperf.input.file}"/>
+            <arg value="${perf.database}"/>
+            <!--  <arg value="/home/automation/workbench/automation/nscore/lib/test/analyticskill.db"/>-->
+            <arg value="True"/>
+            <arg value="JTS"/>
+        </exec>
+    </target>
+   
+    <!--Task: Update mail.properties prior to Test Start Mail Send--> 
+    <target name="update-welcome-properties" 
+            description="update mail properties for automation welcome acknowledgement">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_presetup"/>
+        </exec>
+    </target>
+
+    <!--Task: Send Performance Automation start mail-->
+    <target name="trigger-welcome-mail" 
+            depends="update-welcome-properties"
+            description="send automation start mail">
+
+        <property file="mail.properties"/>
+        
+        <mail mailhost="websrv.cavisson.com" 
+              user="${mail.user}"
+              password="${mail.password}" 
+              mailport="587" 
+              tolist="${configured.mail.list.to}" 
+              cclist="${configured.mail.list.cc}" 
+              messageMimeType="text/html" 
+              subject="Performance: NSCore ${curr.release} B${curr.build} - Started" 
+              messagefile="${startup.mail.file}"
+              failonerror="false">
+	    <from address="automation@cavisson.com"/>
+        </mail>
+    
+    </target>
+
+   <!--Task: Update mail.properties prior to automation result mail Send--> 
+   <target name="update-results-properties"
+           description="update mail properties for automation test results">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="update_mail_results"/>
+            <arg value="${start.time}"/>
+        </exec>
+    </target>
+   
+   <!--Task: Send Performance Automation Results with attachments-->
+   <target name="trigger-results-mail" 
+           depends="update-results-properties"
+           description="send automation results"> 
+       <property file="mail.properties"/>
+        
+       <exec executable="/bin/bash" outputproperty="end.time">
+          <arg value="-c"/>
+          <arg value="date +'%d/%m/%y %I:%M:%S %p'"/>
+       </exec>
+       <echo message="performance suite executions finished at: ${end.time}"/>
+        
+       <mail mailhost="websrv.cavisson.com"
+             user="${mail.user}"
+             password="${mail.password}"  
+             mailport="587" 
+             tolist="${configured.mail.list.to}" 
+             cclist="${configured.mail.list.cc}" 
+             messageMimeType="text/html" 
+             subject="Performance: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+             messagefile="${mail.result.file}"
+             failonerror="false">
+           <from address="automation@cavisson.com"/>   		   
+           <attachments> <fileset dir="${perf.results.dir}">
+               <include name="${first.attachment}"/>
+               <include name="${second.attachment}"/> </fileset>
+           </attachments>	   
+       </mail>	       
+   </target>	   
+    
+   <!-- Task: This target runs the Performance test for ssl based NS requests handling-->
+   <target name="ssl-perf-test" 
+           depends="restart-hpd"
+           description="Initiates performance test for SSL ciphers">
+        <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Performance_SSL"/>
+            <arg value="0"/>
+        </exec>
+        
+        <exec executable="bash" outputproperty="release.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+        </exec>
+        
+        <exec executable="bash" outputproperty="build.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+        </exec>
+        
+        <echo message="Current Build: R${release.info}.B${build.info}"/>
+       
+        <mail mailhost="websrv.cavisson.com" 
+              user="automation@cavisson.com"
+              password="Cavisson!"
+              mailport="587" 
+              tolist="ankur.mishra@cavisson.com" 
+              cclist="dl-qa-auto@cavisson.com, functionalheads@cavisson.com, dl-qa-nsc@cavisson.com,dl-sup-projmgt@cavisson.com" 
+              messageMimeType="text/html" 
+              subject="[NS Performance SSL Ciphers] R.${release.info}.B${build.info}" 
+              messagefile="/home/automation/workbench/automation/nscore/logs/ssl_perf_result.html"
+              failonerror="false">
+             <from address="automation@cavisson.com"/>   		   
+       </mail>	       
+   
+   </target>
+
+</project>

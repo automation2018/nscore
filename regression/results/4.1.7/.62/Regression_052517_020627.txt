@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,3008,1,2,fail,FCU with RampUp in Step mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 1006.195 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 875.561 are having difference of 12.9829704978% which exceeed the tolerance of 5%
+REG-002-001,3009,1,2,fail,FCU with RampUp in Rate mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 1644.863 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 1433.371 are having difference of 12.8577273609% which exceeed the tolerance of 5%
+REG-003-001,3010,1,2,fail,FSR  Mode 1 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 909.01 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 794.072 are having difference of 12.6443053432% which exceeed the tolerance of 5%
+REG-004-001,3011,1,2,fail,FSR  Mode 2 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 203.341 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 177.079 are having difference of 12.9152507364% which exceeed the tolerance of 5%
+REG-005-001,3012,1,2,fail,Replay Access Logs testcase failed because Running Vusers(NA) in baseline testrun found is 204.465 and Running Vusers(NA) in current testrun is 172.002 are having difference of 15.877044971% which exceeed the tolerance of 5%
+REG-006-001,3013,1,2,pass,NS supported protocols such as POP3 SMTP & FTP Testcase passed
+REG-007-001,3014,1,2,fail,It was expected that at Start0 phase available Vusers present in system should be equal to 10;but actual Vusers count is 0
+REG-007-002,3015,1,2,fail,It was expected that at RampUp0 phase available Vusers present in system should be greater than 10;but actual Vuser count is 3
+REG-007-003,3016,1,2,fail,It was expected that at Stabilize0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 100
+REG-007-004,3017,1,2,fail,It was expected that at Duration0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 100
+REG-007-005,3018,1,2,fail,It was expected that at RampDown0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 77
+REG-007-006,3019,1,2,fail,RTC acknowledgement message is not found in one of the phases where RTC being applied
+REG-008-001,3020,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,3021,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

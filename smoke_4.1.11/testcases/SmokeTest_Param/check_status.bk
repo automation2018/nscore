@@ -1,0 +1,206 @@
+#!/bin/bash -x
+
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PAGE_FAIL=`grep -r "Page Failures" $NS_WDIR/logs/TR$T_RUN_ID/summary.data |awk '{print $2}' | cut -d '|' -f2`
+
+#Cases for search var
+if [ "XX$T_NAME" == "XXSMOKE-009-001" ];then 
+   RESPONSE=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o class2K.html?9`
+   if [ "$RESPONSE" == "class2K.html?9" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_TWOMAIN_URL passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_TWOMAIN_URL failed"
+   fi 
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-002" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o class2K.html?W`
+   if [ "$RESPONSE_SEARCH_FAIL" == "class2K.html?W" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLength failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-003" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o class2K.html?99`
+   if [ "$RESPONSE_SEARCH_FAIL" == "class2K.html?99" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_PASS_TWOMAIN_URL_SaveLengthWihtSaveOffset failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-004" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o class2K.html?98`
+   if [ "$RESPONSE_SEARCH_FAIL" == "class2K.html?98" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset failed"
+   else
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_Fail_TWOMAIN_URL_SaveLengthWihtSaveOffset passed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-005" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o /tours/index.html?ur`
+   if [ "$RESPONSE_SEARCH_FAIL" == "/tours/index.html?ur" ] && [ "XX$SD_TotalSuccURL" == "XX3" ];then
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_Fail_TWOMAIN_URL_TwopagesSearch_SaveLengthWihtSaveOffset failed"
+   fi
+fi
+
+
+if [ "XX$T_NAME" == "XXSMOKE-009-006" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o /tours/index.html?ur` 
+   if [ "$RESPONSE_SEARCH_FAIL" == "/tours/index.html?ur" ] && [ "XX$SD_TotalSuccURL" == "XX3" ];then
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_Fail_TWOMAIN_URL_AllpagesSearch_SaveLengthWihtSaveOffset failed"
+   fi
+fi
+
+
+
+#Cases for Check Point
+
+if [ "XX$T_NAME" == "XXSMOKE-009-007" ];then
+   if [ "XX$PAGE_FAIL" == "XX4" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_FoundFail failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-008" ];then
+   if [ "XX$PAGE_FAIL" == "XX4" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_NotFoundFail failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-009" ];then
+   if [ "XX$PAGE_FAIL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_FoundFail failed"
+   fi
+fi
+
+
+if [ "XX$T_NAME" == "XXSMOKE-009-010" ];then
+   if [ "XX$PAGE_FAIL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" " Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-011" ];then
+   if [ "XX$PAGE_FAIL" == "XX1" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailContinue failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-012" ];then
+   if [ "XX$PAGE_FAIL" == "XX1" ] && [ "XX$SD_TotalSuccURL" == "XX1" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_Prefix_Seffix_NotFoundFail_ActionOnfailStop failed"
+   fi
+fi
+
+
+if [ "XX$T_NAME" == "XXSMOKE-009-013" ];then
+   if [ "XX$PAGE_FAIL" == "XX2" ] && [ "XX$SD_TotalSuccURL" == "XX4" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_FoundFail failed"
+   fi
+fi
+
+
+if [ "XX$T_NAME" == "XXSMOKE-009-014" ];then
+   if [ "XX$PAGE_FAIL" == "XX2" ] && [ "XX$SD_TotalSuccURL" == "XX4" ];then
+       log_status_and_exit_ex "PASS" "Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail  passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_Checkpoint_TWOMAIN_URL_CV_CompareWithFile_NotFoundFail failed"
+   fi
+fi
+
+
+if [ "XX$T_NAME" == "XXSMOKE-009-015" ] && \
+   [ "XX$SD_TotalSuccURL" == "XX5" ];then
+   RESPONSE=`cat $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | grep -o class2K.html?Netstorm`	
+   RESPONSE1=`cat $T_ID_REQ_PATH/url_req_0_0_0_2_0_0_0_2_0.dat | grep -o class2K.html?NetOcean`
+   RESPONSE2=`cat $T_ID_REQ_PATH/url_req_0_0_0_3_0_0_0_3_0.dat | grep -o class2K.html?NetFunction`
+   RESPONSE3=`cat $T_ID_REQ_PATH/url_req_0_0_0_4_0_0_0_4_0.dat | grep -o class2K.html?NetOmni`
+
+   if [ $RESPONSE == "class2K.html?Netstorm" ] && \
+      [ $RESPONSE1 == "class2K.html?NetOcean" ] && \
+      [ $RESPONSE2 == "class2K.html?NetFunction" ] && \
+      [ $RESPONSE3 == "class2K.html?NetOmni" ];then
+       log_status_and_exit_ex "PASS" "Smoke_FileParam_FiveMainURL_ChangeOnUse passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_FileParam_FiveMainURL_ChangeOnUse failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-016" ] && \
+   [ "XX$SD_TotalSuccURL" == "XX20" ];then
+   RESPONSE_1Session=`cat $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | grep -o class2K.html?Netstorm`
+   RESPONSE_2Session=`cat $T_ID_REQ_PATH/url_req_0_0_1_1_0_0_0_1_0.dat | grep -o class2K.html?NetOcean`
+   RESPONSE_3Session=`cat $T_ID_REQ_PATH/url_req_0_0_2_1_0_0_0_1_0.dat | grep -o class2K.html?NetFunction`
+   RESPONSE_4Session=`cat $T_ID_REQ_PATH/url_req_0_0_3_1_0_0_0_1_0.dat | grep -o class2K.html?NetOmni`
+                        
+   if [ $RESPONSE_1Session == "class2K.html?Netstorm" ] && \
+      [ $RESPONSE_2Session == "class2K.html?NetOcean" ] && \
+      [ $RESPONSE_3Session == "class2K.html?NetFunction" ] && \
+      [ $RESPONSE_4Session == "class2K.html?NetOmni" ];then
+       log_status_and_exit_ex "PASS" "Smoke_FileParam_FiveMainURL_ChangeOnSession passed"
+   else
+       log_status_and_exit_ex "FAIL" "Smoke_FileParam_FiveMainURL_ChangeOnSession failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-017" ];then
+    log_status_and_exit_ex "PASS" "FileParam_5Url_ModeWeighted Passed"
+else
+    log_status_and_exit_ex "FAIL" "FileParam_5Url_ModeWeighted Failed"
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-018" ];then
+   RESPONSE_SEARCH_FAIL=`cat $T_ID_REQ_PATH/url_req_0_0_* | grep -o class2K.html?9`
+   echo "T_NAME = $T_NAME"
+   echo "RESPONSE_SEARCH_FAIL=$RESPONSE_SEARCH_FAIL"
+   echo "SD_TotalSuccURL=$SD_TotalSuccURL"
+   if [ "X$RESPONSE_SEARCH_FAIL" == "X" ] && [ "XX$SD_TotalSuccURL" == "XX2" ];then
+       echo "Passing..."
+       log_status_and_exit_ex "PASS" "Smoke_SEARCH_FAIL_TWOMAIN_URL Passed"
+   else
+       echo "Failing..."
+       log_status_and_exit_ex "FAIL" "Smoke_SEARCH_FAIL_TWOMAIN_URL failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-009-019" ];then
+    REQ_QUERY=`grep "GET" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat | cut -d '?' -f2 | cut -d 'H' -f1`
+    REP_MSG=`grep "400 Bad Request" $T_ID_REQ_PATH/url_rep_0_0_0_1_0_0_0_1_0.dat | awk "NR==1" | cut -d ' ' -f2,3,4 | cut -d '' -f1`
+    echo "T_NAME = $T_NAME"
+    echo "REQ_QUERY=$REQ_QUERY"
+    echo "REP_MSG=$REP_MSG"
+    echo "SD_TotalSuccURL=$SD_TotalSuccURL";
+    if [ "$REQ_QUERY" ==  " is  " ] && \
+       [ "$REP_MSG" == "400 Bad Request" ] && \
+       [ $SD_TotalSuccURL -eq 1 ];then
+        echo "Values matched"
+        log_status_and_exit_ex "PASS" "Search_Param5Url_SinglePagesSearch_SaveLengthWihtSaveOffset_ORD_ALL Passed"
+    else
+        echo "Values didnt match"
+       log_status_and_exit_ex "FAIL" "Search_Param5Url_SinglePagesSearch_SaveLengthWihtSaveOffset_ORD_ALL Pailed" 
+    fi
+fi
+exit 0

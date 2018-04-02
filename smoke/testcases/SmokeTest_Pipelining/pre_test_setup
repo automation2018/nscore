@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# To change the hpd.conf and restart hpd.conf
+shellPath="/home/automation/workbench/automation/nscore/smoke/testcases/SmokeTest_Pipelining"
+python ${shellPath}/Change_NO_Fc14.py 10.10.30.96 hpd_pipelining
+
+#nsu_server_admin -i -s 10.10.30.96 -c "cp /var/www/hpd/conf/hpd_pipelining.conf /var/www/hpd/conf/hpd.conf"
+#nsu_server_admin -i -s 10.10.30.96 -c "/etc/init.d/hpd restart"
+#sleep 1m
+
+exit 0

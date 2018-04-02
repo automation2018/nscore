@@ -1,0 +1,16 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-034-001,48099,1,1,pass,Referer not set on request page becasuse referer mode is disable
+SMOKE-034-002,48100,1,1,pass,Referer set on each page according to given condition when mode is enable and change referer on redirect for browser behaviour 
+SMOKE-034-003,48101,1,1,pass,Referer set on each page according to given condition when mode is enable and change referer on redirect for NS behaviour 
+SMOKE-034-004,48102,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser  behaviour
+SMOKE-034-005,48103,1,1,pass,Referer not set on request page becasuse referer mode is disable 
+SMOKE-034-006,48104,1,1,pass,Referer set on each page according to given condition when mode is enable and change referer on redirect for browser behaviour 
+SMOKE-034-007,48105,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser  behaviour
+SMOKE-034-008,48106,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser  behaviour
+SMOKE-034-009,48107,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for NS  behaviour
+SMOKE-034-010,48108,1,1,pass,Referer is  not set on request page 1st Group because referer mode is disable and Referer is set on 2nd Group because referer mode is enable
+SMOKE-034-011,48109,1,1,pass,Referer set on each page according to given condition on both Session when mode is enable and change referer on redirect for browser behaviour
+SMOKE-034-012,48110,1,1,fail,Referer is not set on 1st Session and 2nd Session in 1st MainUrl page on 4th Page
+SMOKE-034-013,48111,1,1,pass,Referer set on each page when mode is enable and change referer on redirect for browser behaviour and Linking from HTTP to HTTPS.
+SMOKE-034-014,48112,1,1,pass,Referer set on each page when mode is enable and change referer on redirect for browser behaviour and Linking from HTTPS to HTTPS.
+SMOKE-034-015,48113,1,1,pass,Referer set on each page when mode is enable and change referer on redirect for browser behaviour and Linking from HTTPS to HTTP. 

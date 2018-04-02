@@ -1,0 +1,95 @@
+#!/bin/bash
+. $NS_WDIR/common_lib
+
+
+
+syn_point_user()
+{
+    Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+    Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+    FirstTrans_Time=`grep -w "hpd_page1_trans1" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+    InBtween_Trans_Time=`grep -w "hpd_page5_trans5" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+}
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_BeforeFirstTrans_10U_alluser_release" ];then
+    syn_point_user 
+        if [ $Sync_Users -eq 9 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] && [ $FirstTrans_Time -le 55 ];then
+                      
+
+        fi
+fi
+
+if [ "xx$TEST_NAME" == "xxSmoke_Sync_Point_BeforeFirstTrans_10U_5user_release" ];then 
+		Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+                Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+                FirstTrans_Time=`grep -w "hpd_page1_trans1" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1` 
+		if [ $Sync_Users -eq 4 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] && [ $FirstTrans_Time -le 35 ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_BeforeFirstTrans_10U_20user_release_TimeOut" ]; then
+		Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+		TimeOut_Info=`grep -w "Vuser inter arrival timeout" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report|awk -F '|' '{print $10}'`
+		FirstTrans_Time=`grep -w "hpd_page1_trans1" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1` 
+		if [ $Sync_Users -eq 10 ] && [ "XX$TimeOut_Info" == "XXVuser inter arrival timeout" ] && [ $FirstTrans_Time -le 115 ]; then
+			STATUS="PASS"
+                            else
+                        STATUS="FAIL"
+                 fi
+fi
+			
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_InBetweenTrans_10U_alluser_release" ];then
+                Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+                Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+                InBtween_Trans_Time=`grep -w "hpd_page5_trans5" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+                 if [ $Sync_Users -eq 9 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] && [ $InBtween_Trans_Time -le 55 ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+
+
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_BeforeFirstPage_10U_alluser_release" ];then
+                Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+                Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+                FirstPage_Time=`grep -w "hpd_page1_trans1" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`        
+		 if [ $Sync_Users -eq 9 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] && [ $FirstPage_Time -le 55 ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_InBtweenPage_10U_5user_release" ];then
+                Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+                Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+                InbtweenPage_Time=`grep -w "hpd_page2_trans2" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+                 if [ $Sync_Users -eq 4 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] && [ $InbtweenPage_Time -le 35 ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+
+if [ "XX$TEST_NAME" == "XXSmoke_Sync_Point_InBtweenPage_10U_50pct_5user_release" ];then
+                Sync_Users=` grep "SyncPoint Vusers" $TESTRUN_WITH_PATH/summary_gdf.data  |awk -F '|' '{print $8}' |cut -d '.' -f1`
+                Succ_Msg=`grep -w "Release target reached" $TESTRUN_WITH_PATH/ready_reports/sync_point_summary.report |awk -F '|' '{print $10}'`
+                InbtweenPage_Time=`grep -w "hpd_page2_trans2" $TESTRUN_WITH_PATH/trans_detail.dat  |awk -F '|' '{print $4}' |cut -d '.' -f1`
+                 if [ $Sync_Users -eq 3 ] && [ $SD_TotalSuccURL -eq 230 ] && [ "xx$Succ_Msg" == "xxRelease target reached." ] ;then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+exit 0

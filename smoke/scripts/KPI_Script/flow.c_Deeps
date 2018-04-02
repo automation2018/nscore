@@ -1,0 +1,202 @@
+/*-----------------------------------------------------------------------------
+    Name: flow
+    Recorded By: netstorm
+    Date of recording: 11/05/2014 01:03:58
+    Flow details:
+    Build details: 4.0.1 (build# 4)
+    Modification History:
+-----------------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <strings.h>
+#include <unistd.h>
+#include <sys/epoll.h>
+#include "ns_string.h"
+
+#define MAX_MSG_SIZE 1024
+int sockfd, newsockfd, portno, clilen;
+struct sockaddr_in serv_addr, cli_addr;
+
+/*char req1[] = "<TRANSACTION><FUNCTION_TYPE>SECURITY</FUNCTION_TYPE><COMMAND>REGISTER_ENCRYPTION</COMMAND><KEY>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArknBJjA4GcrmHXtz4S1y0ZyR6GY+yX+Jctm/MzOSZXzW1FbIhB/mwPa1/reAeS7qocFfK09Y6WOwL5QBRXSEeHoW9CwkcHgxc3YFTNA1NnsaT8alR9UCnxFsEWM7gQZDb4mBCspBHwaoiSrpihxTxE+eulXslSIUAIHnDbpjKptrTW8pMiZg6jW6ENdUiD0FsfSmKiET5lfAc/Q99B2wZ54vhQXoQnsVM86gEasc+XRfzdZml87XoTHR2RYbLIPFqHpDhgkg4uIUgXWvrNFS7lVXnhbDhQCNTyrOofbmvJ9ePbdvkPXC+LgKYy7LIWAI2aByPzrMsrjs+o680wSGfwIDAQAB</KEY></TRANSACTION>";
+
+char req2[] = "<ETRANSACTION><MAC_LABEL>P_320</MAC_LABEL><PAYLOAD>oNrllOiIUQU5rWlctT0yNRSutUZ8rnG2327gzLDOF4J+q08V7q8CtjE8KRHVFk3XmO5KKvCsiTweGw18DXUc3Tn1QXCfFAv8iOCp0qj+e5LOg/BBZ4jdjQz8zo/kPoy4Eg0mu+sA9hMSHpepKrKlnmuMSKMOJPv7re6TQn8+ryeDDkKFPRAHGaGSKN4sQqtan0aC/RqlGdSVOCg8LHR8u6GTASWAYgNaANlvvv9xic0uw7yKIx6dR93b5GX9qPmBzYEfxI5tjf8F2mRdD//F+A==</PAYLOAD></ETRANSACTION>";
+
+char req3[] = "<ETRANSACTION><MAC_LABEL>P_320</MAC_LABEL><PAYLOAD>oNrllOiIUQU5rWlctT0yNYICe3hVwFBesAwehi672Dr1J6L21LbRNFRFdjBmKdUI+Jn9Uq/00dBNg+uXdvp38J7YgBCygXFjKnISadSD8nPsAz8RtpKOFeShzDSRu0KRI1wCf0UsI1BGgdQjYBv3vUcoNTF66txnj4dHVMZD+P05FgnibNO/wgPjcktsI7SwwW6oxGI74PIK0npuhHARHg/TJb+n4fScO2wEN+KIu20C5WninRLaruqCA9bsQHQF45g6MEftopsjvSeonDOEr47tsbE7FLn5in1Y32rpishH83+DJ2Y2UYqm2yY26lx2yfm65ktnCO9w1T6dxgDXjtS6POAZ6ezj6UX34mFT//I0ax88iKc5uQQDjuZ/3HhwuO0wnDThZ1tuEpMB9FAP6vKDG96YvzHSx7qQ0gduWFI=</PAYLOAD></ETRANSACTION>";
+
+char req4[] = "<ETRANSACTION><MAC_LABEL>P_320</MAC_LABEL><PAYLOAD>oNrllOiIUQU5rWlctT0yNcJNf0Vkka6dTpn7NxLeoV95c5Z4woKQNzm7aw4cpPzP24zHd4UvpExpCOui541pvEZNUV2EtiiGr7r7QB4ZaDulaWSzyADU1mwAs73yKVlZLlvUQYDemkQVD7Tg2Rl1jMgZqT8jCtBLdWs07TnSda0fprjw+N9YPjPEAVN0qLIyFFQx1ASNqzfrw+yEFAL7/wuVnIR8odVXKNuhl/J2hLW8r+yY6NcNLIR6mn34ROT7gTNZO22Xt2zcPYWLezXWgCUEyAc4qUJnikrYygPRwnaUPjMVFi9gl7iLQkeUx5sOD6W25gP5iH1VUzG8rHJxt6MHDblU49rb9YKNlmaNkdI=</PAYLOAD></ETRANSACTION>";
+
+char req5[] = "<ETRANSACTION><MAC_LABEL>P_320</MAC_LABEL><PAYLOAD>u+Zs7c0Aq5zeSICBRFYDa9W7tgIp8rUtuOAy3H2OaO7V5AEGgZJG9PZEufBDw18aBPQ0NXub8BSEpqyuO9jvdH5BmrZuwddoeTF4WYS66mBZsrEG4ZU+E1rH2d61MwZrYk2I8djYod+UL7rp4YVTMQqCePZrHDzfdN8xCoozmu+OaxyXsohKaZp81JlB+je4dvGiOkpNA21i92gIt3xcJ7/I3FwV0prNIL5x009ZPuh/gw82ztpVAej7HSou4lYQ/gj/qOXJCyKVkorQ7df6jh2RQzL8hQIYcgKfHE36+lkBpJtsA+6nnGsclTP+em05HzjXY4uQztGgRIjngPxXiytZjTt3Y68/K7/DmPPsIKLQwRoGeTcVcE6ghYLf8pq1VOYpVATl5i6pDp+V5puUKhbmexZZLh+PDGtSLeAbbuW5jbMC0a6EkrqBTE5pbjKgd575cH8M1xQCugjcegetqw==</PAYLOAD></ETRANSACTION>";
+
+char req6[] = "<ETRANSACTION><MAC_LABEL>P_347</MAC_LABEL><PAYLOAD>CpZvHM72jqCTOdXXNB4HDt//4+aPIVY0DZh4HoaMc4HmCgMmcoV3fPOMt7Ktp3GtLCuAJxLpnOBbkcQHHBJPIAEUWm515PQsV1ENVoSxF8QgQ5nCcxBJ18Pb/rLtRs3VGPhQMWNzWlJNcMSMEn8y5y7FnT9mZ8AjdIUadY9g655aq9dk/5FA2I7ry3wiyLY4l4MX/ZeddNW4Yf0d2/gtw8QZIAKW7wHgXboYpLp2y3aIxXVMBXvVuo2riCMvJXjA6nncnYf/JRf2PdGQWBx4pMo4p8hDiCECOQO52nSM8mG4Xm6DjIr3CX2keOn7O+lw8KGOODTzbblfl8NUBq73iaYOg5l4w8m/4TFDXIFsEgMMrQ25QZy1J689/4XepeK6umLE6rbclEIJ6im05N5vjO/y1/QCqqzV36jPiqfvgvXGhKNBgPHQDc8weyEvqF0VZHsn+Wir6YVyPb/O7CSieGv8mJb+ltrjA2TOzQ/rMhU6INtQcHVz5dMAdR3tOnyk</PAYLOAD></ETRANSACTION>";
+*/
+int send_req(const char *file_name, int sock_fd, char *response)
+{
+
+  char *buff;
+  FILE *fp, *buffer;
+  struct stat fstat;
+  int file_size, bytes_write, bytes_read;
+  fp = fopen(file_name, "r");
+  if (fp == NULL) {
+    printf("Error in openning file\n");
+  }
+  else {
+    stat(file_name, &fstat);
+    file_size = fstat.st_size;
+    buffer = malloc(file_size);
+    bytes_read = fread(buffer, 1, file_size, fp);
+//    printf("File = [%s], File_size = [%d], bytes_read = [%d], File data = [%s]\n", file_name, file_size, bytes_read, buffer);
+    bytes_write = write(sock_fd, buffer, file_size);
+    if (bytes_write <= 0)
+      printf("Error: Failed to write.");
+  }
+  sleep(10);
+  bytes_read = read(sock_fd, response, 4096);
+  if (bytes_read == 0){
+    printf("bytes read =0. Hence returning\n");
+    return;
+    //exit(0);
+  }
+  else if(bytes_read < 0){
+    printf("Error = [%s]", strerror(errno));
+
+  }
+  else{
+    response[bytes_read] = 0;
+    printf("read bytes = [%d] content = [%s]\n", bytes_read, response);
+
+  }
+}
+
+//int make_request() 
+//int make_request(char *filename, char *resp) 
+int make_request(char *resp) 
+{
+  struct sockaddr_in client;
+  int sock_fd, i, efd, num_events, bytes_read, j;
+  struct epoll_event ev;
+  struct epoll_event events[10];
+  char *buff, response[4096];
+  FILE *fp, *buffer;
+  struct stat fstat;
+  int file_size, bytes_write;
+  char req_file[1024];
+
+  memset(&client, 0 , sizeof(client));
+  buff = (char*)malloc(1024);
+
+  sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+  if (sock_fd < 0) {
+    perror("ERROR in opening socket");
+    exit(1);
+  }
+
+ // efd = epoll_create(10);
+  client.sin_family = AF_INET;
+  client.sin_addr.s_addr = inet_addr("10.10.30.38");
+  client.sin_port = htons(5003);
+
+  if (connect(sock_fd, (struct sockaddr *)&client, sizeof(client)) == -1) {
+    perror("ERROR in connect");
+    exit(1);
+  }
+  printf("Connection Established Successfully\n\n");
+  for(i = 1; i <= 2; i++)
+  {
+   sprintf(req_file, "/home/netstorm/work/scripts/default/default/kpi_test/req%d", i);
+//   printf("Current file name is %s", i);
+    //sprintf(req_file, "/home/netstorm/work/scripts/default/default/tests/req%d", i);
+    send_req(req_file, sock_fd, resp);
+    printf("Sucessfully entered in for loop and now sending requests one by one\n\n");
+  }
+  return 0;
+}
+
+void flow()
+{
+
+// Sending request for Security and REGISTER_ENCRYPTION command type
+    char resp1 [4096];
+    char search2 [4096];
+  ns_start_transaction("REGISTER_ENCRYPTION");
+  //make_request("/home/netstorm/work/scripts/default/default/kpi_test/req1", resp1);
+  make_request(resp1);
+
+  ns_end_transaction("REGISTER_ENCRYPTION", NS_AUTO_STATUS);
+//  char search1[251] ="SUCCESS";  
+  //char search2[251] = "FAIL";
+  int ret= ns_save_searched_string(NS_ARG_IS_BUF, resp1,  NS_ARG_IS_BUF, search2, "<TERMINATION_STATUS>", "</TERMINATION_STATUS>", 1, NS_FROM_START, NS_SAVE_COMPLETE);  
+  printf("Value present in response is %s\n\n", resp1);
+ if  
+  printf("Value present in response is %s\n\n", search2);
+  printf("ret = %d\n\n\n", ret);
+  if (ret < 0) {
+    // SUCCESS
+    printf("Got failure in the first request\n\n\n");
+  }
+  else
+    printf("getting correct response");
+   
+   if search2 == "SUCEESS"
+/*
+ resp1[0] = '\0'; 
+  ns_start_transaction("req2");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req2", resp1);
+  ns_end_transaction("req2", NS_AUTO_STATUS);
+  int ret2= ns_save_searched_string(NS_ARG_IS_BUF, resp1,  NS_ARG_IS_BUF, search2, "<RESPONSE_TEXT>", "</RESPONSE_TEXT>", 1, NS_FROM_START, NS_SAVE_COMPLETE);
+    printf("Value present in response is %s", resp1);
+    printf("Value present in response is %s\n\n", search2);
+      printf("ret2 = %d\n\n\n", ret);
+        if (ret2 < 0) {
+          // SUCCESS
+           printf("Got failure in the first request\n\n\n");
+            }
+         else
+         printf("getting correct response");
+
+
+
+  ns_start_transaction("req3");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req3");
+  ns_end_transaction("req3", NS_AUTO_STATUS);
+
+
+  ns_start_transaction("req4");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req4");
+  ns_end_transaction("req4", NS_AUTO_STATUS);
+
+
+  ns_start_transaction("req5");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req5");
+  ns_end_transaction("req5", NS_AUTO_STATUS);
+
+
+  ns_start_transaction("req6");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req6");
+  ns_end_transaction("req6", NS_AUTO_STATUS);
+
+
+ make_request("/home/netstorm/work/scripts/default/default/kpi_test/req2");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req3");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req4");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req5");
+  make_request("/home/netstorm/work/scripts/default/default/kpi_test/req6");
+
+  
+  ns_web_url ("login1_html",
+"URL=http://10.10.70.2:9014/tours/index2.html?22retailerUserId%22%3A%22{retailerUserId_FP}%22%2C%22firstName%22%3A%22{firstName_FP}%22%2C%22lastName%22%3A%22{lastName_FP}%22%2C%22email%22%3A%22{email_FP}%22%2C%22checkSum%22%3A%22{checkSum_FP}%22%7D&callback=parseResponseNew&_=1429806685311",
+        "HEADER=Accept-Encoding",
+        "PreSnapshot=webpage_1415172712908",
+        "Snapshot=webpage_1415172715268.png",
+        "BODY=hello "
+
+    ); */
+}

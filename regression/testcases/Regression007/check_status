@@ -193,11 +193,19 @@ function handle_reg_006_case(){
 	
 	#Validations of NVM distributions
 	
-	Addedvalue=$(grep "Added" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
-	Removedvalue=$(grep "Removed" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
-	Finalvalue=$((Addedvalue-Removedvalue))
+	version=` cat $NS_WDIR/logs/TR$TEST_RUN/progress.report|head -1|cut -d ' ' -f2 `
+	if [ "$version" == "4.1.10" ];then
+	  Addedvalue=$(grep "Added" $RTC_ALL_LOG_FILE | cut -d '|' -f7|cut -d ' ' -f1|awk '{x+=$0}END{print x}')
+	  Removedvalue=$(grep "Removed" $RTC_ALL_LOG_FILE | cut -d '|' -f7|cut -d ' ' -f1|awk '{x+=$0}END{print x}')
+	  Finalvalue=$((Addedvalue-Removedvalue))
+	  ((Finalvalue+=200))
+	else
+	  Addedvalue=$(grep "Added" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
+	  Removedvalue=$(grep "Removed" $RTC_ALL_LOG_FILE | cut -d' ' -f1 |awk '{x+=$0}END{print x}')
+	  Finalvalue=$((Addedvalue-Removedvalue))
 	((Finalvalue+=200))
-
+	fi
+	
 	debug_log "Finalvalue=$Finalvalue"
 	
 	ramp_down_users=$(grep "RAMPDOWN DONE" $PROGRESS_REPORT_FILE | cut -d ' ' -f3)

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-026-001") validate_ramp_down_method_001_case ;;
+        "SMOKE-026-002") validate_ramp_down_method_002_case ;;
+        "SMOKE-026-003") validate_ramp_down_method_003_case ;;
+        "SMOKE-026-004") validate_ramp_down_method_004_case ;;
+        "SMOKE-026-005") validate_ramp_down_method_005_case ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+# All cases are behaving in same manner
+function validate_ramp_down_method_001_case(){
+    log_status_and_exit_ex "PASS" "ramp down all vusers testcase passed"
+}
+
+
+function validate_ramp_down_method_002_case(){
+    log_status_and_exit_ex "PASS" "allow current session to complete with hasten completion by disregarding all think times testcase passed"
+}
+
+
+function validate_ramp_down_method_003_case(){
+    log_status_and_exit_ex "PASS" "allow current session to complete with hasten completion by disregarding all think times and using idle time of 10 seconds testcase passed"
+}
+
+
+function validate_ramp_down_method_004_case(){
+    log_status_and_exit_ex "PASS" "allow current session to complete with hasten completion and using idle time of 10 seconds testcase passed"
+}
+
+
+function validate_ramp_down_method_005_case(){
+    log_status_and_exit_ex "PASS" "ramp down method stop immediately testcase passed"
+}
+
+
+main
+
+
+exit 0
+

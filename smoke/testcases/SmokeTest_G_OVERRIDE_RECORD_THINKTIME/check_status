@@ -1,0 +1,210 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+DEBUG_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+TEST_RUN_FILE=$TS_LOG_DIR/$(get_testcase_name)/test_run.report
+PAGE_THINK_TIME_FILE="$NS_WDIR/logs/TR$T_RUN_ID/page_think_time.dat"
+TRANS_DETAIL_FILE="$NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-060-001") validate_override_page_think_time-001 ;;
+        "SMOKE-060-002") validate_override_page_think_time-002 ;;
+        "SMOKE-060-003") validate_override_page_think_time-003 ;;
+        "SMOKE-060-004") validate_override_page_think_time-004 ;;
+        "SMOKE-060-005") validate_override_page_think_time-005 ;;
+        "SMOKE-060-006") validate_override_page_think_time-006 ;;
+        "SMOKE-060-007") validate_override_page_think_time-007 ;;
+        "SMOKE-060-008") validate_override_page_think_time-008 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+function check_trans_think_time(){
+page_think_time=$(egrep "${1}" ${PAGE_THINK_TIME_FILE} | cut -d '|' -f6 )  # Page Name and time in sec
+page_t_time=$( echo $((page_think_time/1000))|awk '{printf("%.3f\n", $1)}')
+trans_detail=$(grep -rhw "${2}" ${TRANS_DETAIL_FILE}| cut -d '|' -f2)  #Transaction Name and time in sec 
+debug_log "page_think_time=${page_think_time}"
+debug_log "page_t_time=${page_t_time}"
+debug_log "trans_detail=${trans_detail} and Passed by user=$3"
+if [ $page_think_time -eq $3 ]; then     #Page think time in second 
+    if [ $(echo "${trans_detail} > ${page_t_time}" | bc -l) -eq 1 ]; then
+        return 0
+    else
+        debug_log "Inside Page think time"
+        log_status_and_exit_ex "FAIL" "Page think time is greater than Transaction time"
+    fi
+else
+    debug_log "Think time"
+    log_status_and_exit_ex "FAIL" "Page think time is not equal to expected time"
+fi
+
+}
+
+function check_trans_think_time_2(){
+page_think_time=$(egrep -rhw "${1}" ${PAGE_THINK_TIME_FILE} | cut -d '|' -f6|head -1)  # Page Name and time in sec
+page_t_time=$( echo $((page_think_time/1000))|awk '{printf("%.3f\n", $1)}')
+trans_detail=$(grep -rhw "${2}" ${TRANS_DETAIL_FILE}| cut -d '|' -f4)  #Transaction Name and time in sec 
+debug_log "page_think_time=${page_think_time}"
+debug_log "page_t_time=${page_t_time}"
+debug_log "trans_detail=${trans_detail} and Passed by user=$3"
+if [ $page_think_time -eq $3 ]; then 
+    if [ $(echo "${trans_detail} > ${page_t_time}" | bc -l ) -eq 1 ]; then 
+        return 0
+    else
+        debug_log "Inside think time"
+        log_status_and_exit_ex "FAIL" "Page think time($page_t_time) is greater than Transaction time($trans_detail)"
+    fi
+else
+    debug_log "think time"
+    log_status_and_exit_ex "FAIL" "Page think time($page_think_time) is not equal to expected time($3)"
+fi
+
+}
+
+function random_think_time(){
+page_think_time=$(egrep -rhw  "${1}" ${PAGE_THINK_TIME_FILE} | cut -d '|' -f6|head -1) 
+page_t_time=$( echo $((page_think_time/1000))|awk '{printf("%.3f\n", $1)}')
+trans_detail_time=$(grep -rhw "${2}" ${TRANS_DETAIL_FILE}| cut -d '|' -f4)  #Transaction Name and time in sec 
+debug_log "page_think_time=${page_think_time}"
+debug_log "page_t_time=${page_t_time}"
+debug_log "trans_detail_time=${trans_detail_time}"
+if [ $(echo "${trans_detail_time} > ${page_t_time}" | bc -l) -eq 1  ]; then 
+    if [ $page_think_time -gt ${3} ] && [ $page_think_time -lt ${4} ]; then
+        return 0 ;
+    else
+        debug_log "Inside think time"
+        log_status_and_exit_ex "FAIL" " random percentage Page think time didn't varry between ${3} or ${4}"
+    fi
+else
+    debug_log "Inside think time"
+    log_status_and_exit_ex "FAIL" "Page think time is greater than Transaction time"
+fi
+
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+
+function validate_override_page_think_time-001(){
+    check_trans_think_time index IndexPage 11000
+    result=$?
+    debug_log $result
+    if [ $result -eq 0 ]; then
+        debug_log "Pass"
+        log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use recorded think time for g1"
+    else
+        debug_log "fail"
+    fi
+}
+
+function validate_override_page_think_time-002(){
+   check_trans_think_time_2 index IndexPage 11000
+   result1=$?
+   debug_log "result1=${result1}"
+   check_trans_think_time_2 login2 login2 7000
+   result2=$?
+   debug_log "result2=${result2}"
+   if [ "${result1}" == "0" ] && [ "${result2}"  ==  "0" ]; then
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use recorded think time for g1 and g2"
+   else
+       debug_log "fail"
+   fi
+}
+
+function validate_override_page_think_time-003(){
+   check_trans_think_time index IndexPage 55000
+   result1=$?
+   if [ $result1 -eq 0 ]; then 
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use multiply by of recorded think time for g1"
+   else
+       debug_log "fail"
+   fi 
+}
+
+function validate_override_page_think_time-004(){
+   check_trans_think_time_2 index IndexPage 55000
+   result1=$?
+   check_trans_think_time_2 login2 login2 35000
+   result2=$?
+   if [ $result1 -eq 0 ] && [ $result2 -eq 0 ]; then
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use multiply by of recorded think time for g1 and g2"
+   else
+       debug_log "fail"
+   fi
+}
+
+function validate_override_page_think_time-005(){
+   check_trans_think_time_2 index IndexPage 55000
+   result1=$?
+   check_trans_think_time_2 login login 28000
+   result2=$?
+   if [ $result1 -eq 0 ] && [ $result2 -eq 0 ]; then
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use multiply by of recorded think time with different pages of same group"
+   else
+       debug_log "fail"
+   fi
+}
+
+function validate_override_page_think_time-006(){
+   check_trans_think_time_2 index IndexPage 55000
+   result1=$?
+   check_trans_think_time_2 login2 login2 21000
+   result2=$?
+   check_trans_think_time_2 reservation2 Reservation2  3000
+   result3=$?
+   debug_log "result1=${result1} result2=${result2} result3=${result3}"
+   if [ $result1 -eq 0 ] && [ $result2 -eq 0 ] && [ $result3 -eq 0 ]; then
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use multiply by of recorded think time with a particular page of a group and all pages of different group"
+   else
+       debug_log "fail"
+   fi
+}
+
+function validate_override_page_think_time-007(){
+   check_trans_think_time_2 index IndexPage 55000
+   result1=$?
+   check_trans_think_time_2 login login 35000
+   result2=$?
+   check_trans_think_time_2 reservation Reservation  5000
+   result3=$?
+   debug_log "result1=${result1} result2=${result2} result3=${result3}"
+   if [ $result1 -eq 0 ] && [ $result2 -eq 0 ] && [ $result3 -eq 0 ]; then
+       debug_log "pass"
+       log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use multiply by of recorded think time with a particular page of a group and all pages of different group"
+   else
+       debug_log "fail"
+   fi
+}
+
+function validate_override_page_think_time-008(){
+    random_think_time index IndexPage 2200 5500
+    result=$?
+    if [ $result -eq 0 ]; then
+        debug_log "pass"
+        log_status_and_exit_ex "PASS" "To check override recorded think time for mode Use random percentage of recorded think time with aparticular page of any group"
+    else
+        debug_log "fail"
+    fi
+}
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+
+main
+
+
+exit  0

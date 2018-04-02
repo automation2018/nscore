@@ -8,7 +8,7 @@ PHASE_DURATION_START = "Starting phase 'Duration'"
 PHASE_DURATION_END = "Phase 'Duration'" 
 KEYWORD_TCP_CONNS = "HTTP TCP Conns"
 KEYWORD_HITS_PER_SEC = "HTTP hit rate (per sec):"
-KEYWORD_THROUGHPUT = "Throughput (Kbits/s)"
+KEYWORD_THROUGHPUT = "HTTP (Kbits/s)"
 
 # Set the local first. We can use this to convert string with comma
 # separated numbers to simple integers
@@ -22,7 +22,8 @@ regexp_cps = re.compile('HTTP TCP Conns: Current=[\d,]+ Rate/s\(Open=([\d,]+) Cl
 regexp_hps = re.compile('HTTP hit rate \(per sec\): Total=([\d,]+) Success=[\d,]+')
 
 # Throughput (Kbits/s): Eth(Rx=194,723.235 Tx=170,336.385)
-regexp_throughput = re.compile('Throughput \(Kbits/s\): Eth\(Rx=([\d,.]+) Tx=[\d,.]+\)')
+#regexp_throughput = re.compile('Throughput \(Kbits/s\): Eth\(Rx=([\d,.]+) Tx=[\d,.]+\)')
+regexp_throughput = re.compile('HTTP \(Kbits/s\) TCP\(Rx=([\d,.]+) Tx=([\d,.]+)\) HTTP Body\(Rx=([\d,.]+)\)')
 
 # List to hold all stats
 stats = []

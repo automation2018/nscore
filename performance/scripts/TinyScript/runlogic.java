@@ -17,7 +17,7 @@ public class runlogic
     flow flowObj = new flow();
     //End - List of used flows in the runlogic
 
-    public void execute(NSApi nsApi)
+    public void execute(NSApi nsApi) throws Exception
     {
         //Logging
         int initStatus = init_script.execute();

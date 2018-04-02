@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-028-001") validate_trace_level_001_case ;;
+        "SMOKE-028-002") validate_trace_level_002_case ;;
+        "SMOKE-028-003") validate_trace_level_003_case ;;
+        "SMOKE-028-004") validate_trace_level_004_case ;;
+        "SMOKE-028-005") validate_trace_level_005_case ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_trace_level_001_case(){
+    log_status_and_exit_ex "PASS" "ns trace level 1 testcase passed"
+}
+
+
+function validate_trace_level_002_case(){
+    log_status_and_exit_ex "PASS" "ns trace level 2 testcase passed"
+}
+
+
+function validate_trace_level_003_case(){
+    log_status_and_exit_ex "PASS" "ns trace level 0 changing to level 1 at runtime  testcase passed"
+}
+
+
+function validate_trace_level_004_case(){
+    log_status_and_exit_ex "PASS" "ns trace level 0 changing to level 2 at runtime  testcase passed"
+}
+
+
+function validate_trace_level_005_case(){
+    log_status_and_exit_ex "PASS" "ns trace level 1 changing to level 2 at runtime  testcase passed"
+}
+
+
+main
+
+
+exit 0
+

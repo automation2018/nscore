@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+TRANSACTION_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat"
+EVENT_LOG_FILE="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/event.log"
+FLOW_FILE="$NS_WDIR/logs/TR$T_RUN_ID/scripts/page_asTrx_tours/flow.c"
+PAGE_NAME_ARRAY=(`grep "^ *ns_web_url (" $FLOW_FILE|cut -d '"' -f2`)
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-041-01") validate_Page_Transaction-001 ;;
+        "SMOKE-041-02") validate_Page_Transaction-002 ;;
+        "SMOKE-041-03") validate_Page_Transaction-003 ;;
+        "SMOKE-041-04") validate_Page_Transaction-004 ;;
+        "SMOKE-041-05") validate_Page_Transaction-005 ;;
+        "SMOKE-041-06") validate_Page_Transaction-006 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+function validate_Page_Transaction-001(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^tx_$i|" $TRANSACTION_REPORT_FILE` ]; then 
+            debug_log "transaction tx_$i found"
+        else 
+            debug_log "transaction tx_$i not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 1 0 failed as all transaction name not found with 'tr_' prefix"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 1 0 passed as all transactions name same as page name with 'tr_' prefix"
+}
+
+function validate_Page_Transaction-002(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^$i|" $TRANSACTION_REPORT_FILE` ]; then 
+            debug_log "transaction $i found"
+        else 
+            debug_log "transaction $i not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 1 1 failed as all transaction name not same as page name"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 1 1 passed as all transactions name same as page name"
+}
+
+function validate_Page_Transaction-003(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^tx_${i}_Success|\|^tx_${i}_Fail|" $TRANSACTION_REPORT_FILE` ]; then 
+            debug_log "transaction tx_${i}_Success or tx_${i}_Fail found"
+        else 
+            debug_log "transaction tx_${i}_Success or tx_${i}_Fail not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 2 0 failed as may be transaction name not start with 'tx_' prefix or exit status not added with transaction at end"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 2 0 passed as all transaction start with 'tx_' prefix and exit status added with all transaction"
+}
+
+function validate_Page_Transaction-004(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^${i}_Success|\|^${i}_Fail|" $TRANSACTION_REPORT_FILE` ]; then 
+            debug_log "transaction ${i}_Success or ${i}_Fail found"
+        else 
+            debug_log "transaction ${i}_Success or ${i}_Fail not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 2 1 failed as may be transaction name starts with 'tx_' prefix or exit status not added with transaction at end"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 2 1 passed as all transactions not start with 'tx_' prefix and exit status added with all transaction"
+}
+
+function validate_Page_Transaction-005(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^tx_${i}_[4-5]xx|\|^tx_${i}_Success|" $TRANSACTION_REPORT_FILE` ]; then 
+            debug_log "transaction tx_${i}_[1-5]xx found"
+        else 
+            debug_log "transaction tx_${i}_[1-5]xx not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 3 0 failed as may be all transaction not start with 'tr_' prefix or error status not added with transaction at end"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 3 0 passed as all transactions start with 'tx_' prefix and error status added with all transaction"
+}
+
+function validate_Page_Transaction-006(){
+    for i in ${PAGE_NAME_ARRAY[@]};do 
+        if [ ! -z `grep -o "^${i}_[4-5]xx|\|${i}_Success|" $TRANSACTION_REPORT_FILE` ]; then
+            debug_log "transaction ${i}_[1-5]xx found"
+        else 
+            debug_log "transaction ${i}_[1-5]xx not found"
+            log_status_and_exit_ex "FAIL" "Page as transaction mode 3 1 failed as may be all transaction start with 'tr_' prefix or error status not added with transaction at end"
+        fi
+    done
+    log_status_and_exit_ex "PASS" "Page as transaction mode 3 1 passed as all transactions not start with 'tx_' prefix and error status added with all transaction"
+}
+
+main
+
+
+exit  0

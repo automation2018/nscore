@@ -79,7 +79,7 @@ def process_perf(perftestresultsfile):
     p = []
     try:
         with open(perftestresultsfile, 'r') as f:
-            case, tid, category, release, version, component, tr, cps, hps, tprx, tptx, cps_avg, hps_avg, tprx_avg = f.readlines()[1].strip().split(",")
+            case, tid, category, release, version, component, tr, cps, hps, tprx, cps_avg, hps_avg, tprx_avg = f.readlines()[1].strip().split(",")
             p.append(TestResultsModelPerf(case, tid, category, release, version, component, tr, cps, hps, tprx, cps_avg, hps_avg, tprx_avg).asDict())
     except IndexError:
         print "Splitting error. Returning"
@@ -172,9 +172,9 @@ def upload_perf_data(infile, testresults, database, scripttype):
     #Reads the input file and collects the values of cps, hps, throughput from the respective testcases
     with open('%s' %infile) as f2:
         lines = f2.readlines()
-        cps = lines[0].split(',')[11]
-        hps = lines[1].split(',')[12]
-        throughput = lines[2].split(',')[13] 
+        cps = lines[0].split(',')[10]
+        hps = lines[1].split(',')[11]
+        throughput = lines[2].split(',')[12] 
     cursor.execute('SELECT id FROM performance WHERE id=(SELECT MAX(id) FROM performance)')
     max_id = cursor.fetchone()
     data = []
@@ -222,11 +222,11 @@ def upload_performance_stats(infile, testresults, database, scripttype):
     #Reads the input file and collects the values of cps, hps, throughput from the respective testcases
     with open('%s' %infile) as f2:
         lines = f2.readlines()
-        cps = lines[0].split(',')[11]
+        cps = lines[0].split(',')[10]
         cps_tr = lines[0].split(',')[6].split('R')[1]
-        hps = lines[1].split(',')[12]
+        hps = lines[1].split(',')[11]
         hps_tr = lines[1].split(',')[6].split('R')[1]
-        throughput = lines[2].split(',')[13] 
+        throughput = lines[2].split(',')[12] 
         throughput_tr = lines[2].split(',')[6].split('R')[1]
     cursor.execute('SELECT id FROM performance_stats WHERE id=(SELECT MAX(id) FROM performance_stats)')
     max_id = cursor.fetchone()

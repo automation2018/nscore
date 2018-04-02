@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-057-001,91159,1,1,fail,HTTP2 upgrade mode for one group failed because expected connection count, stream count and switching protocol count was 1, 37, 1 respectively and actual is 8, 30, 1
+SMOKE-057-002,91160,1,1,pass,HTTP2 prior knowledge mode for one group
+SMOKE-057-003,91161,1,1,fail,HTTP2 upgrade mode for one group and default mode for another group failed because expected connection and stream count was 9 and 37 respectively and actual is 16 and 30
+SMOKE-057-004,91162,1,1,pass,HTTP2 prior knowledge mode for one group and default mode for another group

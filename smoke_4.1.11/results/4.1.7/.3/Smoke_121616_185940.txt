@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-045-001,66425,1,1,pass,1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is disable. So tatal connection should be open/close=5
+SMOKE-045-002,66426,1,1,fail,1 main URL and 4 Inline URL with pipelining depth as 8 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=1 but it didn't seem like expected result
+SMOKE-045-003,66427,1,1,fail,1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=2 but it didn't seem like expected result
+SMOKE-045-004,66428,1,1,fail,1 main URL and 4 Inline URL with pipelining depth as 2 and pipelining is enable giving G_KA_PCT 100 and G_NUM_KA ALL 3 3.So total connection should be open/close=3. but it didn't seem like expected result

@@ -1,0 +1,75 @@
+/*-----------------------------------------------------------------------------
+
+    Name: flow
+    Recorded By: anupam
+    Date of recording: 03/12/2014 02:51:06
+    Flow details:
+    Modification History:
+-----------------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ns_string.h"
+
+
+void flow()
+{
+   ns_start_transaction("redirect_tx1");
+   ns_web_url ("redirectUrl",
+        "URL=http://127.0.0.1/http_referer/Redirection1.html",
+        "HEADER=Accept-Language:en-us,en;q=0.5",
+        "PreSnapshot=webpage_13946124026631.png",
+        "Snapshot=webpage_13946124027021.png",
+        INLINE_URLS,
+            "URL=http://127.0.0.1/ManRedirect/manual_page2.html", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/Smoke_Redirect/url6.html", END_INLINE,
+            "URL=http://127.0.0.1/tours/images/banner_merctur.jpg", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE
+    );
+
+    ns_page_think_time(0.2);
+    ns_end_transaction("redirect_tx1", NS_AUTO_STATUS);
+    
+   ns_start_transaction("t4xx_tx2");
+    ns_web_url ("4xxurl",
+        "URL=http://127.0.0.1/RedirectionCases/Page3067.html",
+        "HEADER=Accept-Language:en-us,en;q=0.5",
+        "PreSnapshot=webpage_13946124046151.png",
+        "Snapshot=webpage_13946124046821.png",
+        INLINE_URLS,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/flights.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/home.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/signoff.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/images/banner_merctur.jpg", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/vep/images/velocigen.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE
+    );
+
+  ns_page_think_time(2.0);
+  ns_end_transaction("t4xx_tx2", NS_AUTO_STATUS);
+   
+  ns_start_transaction("t5xx_tx3");
+  
+  ns_web_url ("5xxurl",
+        "URL=http://127.0.0.1/custom/samples/response_line/test_500.html",
+        "HEADER=Accept-Language:en-us,en;q=0.5",
+        "PreSnapshot=webpage_13946124048461.png",
+        "Snapshot=webpage_13946124049111.png",
+        INLINE_URLS,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/flights.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/home.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/signoff.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/Merc10-dev/images/splash_Findflight.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/images/continue.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
+            "URL=http://127.0.0.1/tours/vep/images/velocigen.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE
+    );
+    ns_page_think_time(1.0);
+
+    ns_end_transaction("t5xx_tx3", NS_AUTO_STATUS);
+   
+
+}

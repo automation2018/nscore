@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,68341,1,2,fail,FCU with RampUp in Step mode testcase failed because Average Response Time (Secs)(NA) in baseline testrun and Simulated Protocol Stats(Overall),Service Time (Secs)(NA) in current testrun do not match
+REG-002-001,68342,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,68343,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,68344,1,2,fail,FSR  Mode 2 testcase failed because Requests Successful/Sec(NA) in baseline testrun and Simulated Protocol Stats(Overall),Request Successful/Sec(NA) in current testrun do not match
+REG-005-001,68345,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun and Simulated Protocol Stats(Overall),Service Time (Secs)(NA) in current testrun do not match
+REG-006-001,68346,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Requests Successful/Sec(NA) in baseline testrun and Simulated Protocol Stats(Overall),Request Successful/Sec(NA) in current testrun do not match
+REG-007-001,68347,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,68348,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,68349,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,68350,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,68351,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,68352,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,68353,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-010-001,68354,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

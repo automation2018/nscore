@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-003-005,36274,1,1,pass,Autofetch Inline Include Domain Passed
+SMOKE-003-006,36275,1,1,pass,Autofetch Inline Exclude Domain Passed
+SMOKE-003-007,36276,1,1,pass,Autofetch Inline Include Url Pattern Passed
+SMOKE-003-008,36277,1,1,pass,Autofetch Inline Exclude Url Pattern Passed
+SMOKE-003-009,36278,1,1,pass,No jsp based url being requested after excluding jsp based pattern
+SMOKE-003-010,36279,1,1,pass,jsp based url being requested after including jsp based pattern
+SMOKE-003-011,36280,1,1,pass,js based url were not requested after excluding js+ based pattern
+SMOKE-003-012,36281,1,1,pass,jsp inlines have been filtered out but js being included for js? pattern
+SMOKE-003-013,36282,1,1,pass,only js and jsp based inlines have been requested for including jsp? pattern
+SMOKE-003-014,36283,1,1,pass,jsp and js both inlines have been included for js* pattern
+SMOKE-003-015,36284,1,1,pass,jsp and js both inlines have been included for j[sp]+ pattern
+SMOKE-003-016,36285,1,1,pass,PostURLCallBack for set embed objects api;mode zero;not implemented
+SMOKE-003-017,36286,1,1,pass,PostURLCallBack for set embd objects api;mode one;not implemented
+SMOKE-003-018,36287,1,1,pass,PostURLCallBack for set embd objects api;url redirection;not implemented

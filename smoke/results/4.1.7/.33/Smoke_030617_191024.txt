@@ -1,0 +1,41 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-020-005,82282,1,1,pass,G_DISABLE_ACCEPT 0 testcase passed
+SMOKE-020-006,82283,1,1,pass,G_DISABLE_ACCEPT 1 testcase passed
+SMOKE-020-007,82284,1,1,pass,G_DISABLE_HOST 0 testcase passed
+SMOKE-020-008,82285,1,1,pass,G_DISABLE_HOST 1 testcase passed
+SMOKE-020-009,82286,1,1,pass,G_DISABLE_REUSEADDR 0 smoke test validation passed
+SMOKE-020-010,82287,1,1,pass,G_DISABLE_REUSEADDR 1 smoke test validation passed
+SMOKE-020-011,82288,1,1,pass,G_DISABLE_USER-AGENT 0 testcase passed
+SMOKE-020-012,82289,1,1,pass,G_DISABLE_USER-AGENT 1 testcase passed
+SMOKE-020-013,82290,1,1,pass,G_DISABLE_CONNECTION 0 testcase passed
+SMOKE-020-014,82291,1,1,pass,G_DISABLE_CONNECTION 1 testcase passed
+SMOKE-020-015,82292,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 0 testcase passed
+SMOKE-020-016,82293,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 1 testcase passed
+SMOKE-020-017,82294,1,1,pass,G_DISABLE_ACCEPT-ENCODING 0 testcase passed
+SMOKE-020-018,82295,1,1,pass,G_DISABLE_ACCEPT-ENCODING 1 testcase passed
+SMOKE-020-019,82296,1,1,pass,G_DISABLE_ALL_HEADER 0 testcase passed
+SMOKE-020-020,82297,1,1,pass,G_DISABLE_ALL_HEADER 1 testcase passed
+SMOKE-020-021,82298,1,1,pass,G_DISABLE_KEEP-ALIVE 0 testcase passed
+SMOKE-020-022,82299,1,1,pass,G_DISABLE_KEEP-ALIVE 1 testcase passed
+SMOKE-020-023,82300,1,1,pass,continue on page error mode 0 validation passed
+SMOKE-020-024,82301,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-025,82302,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-026,82303,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-027,82304,1,1,pass,idle msec testcase validation passed
+SMOKE-020-028,82305,1,1,pass,idle msec testcase validation passed
+SMOKE-020-029,82306,1,1,pass,idle msec testcase validation passed
+SMOKE-020-030,82307,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-031,82308,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-032,82309,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-033,82310,1,1,pass,Virtual user tracing mode G1 0 passed as no vuser_trace directory found in testrun
+SMOKE-020-034,82311,1,1,pass,Virtual user tracing mode ALL 0 passed as no vuser_trace directory found in testrun
+SMOKE-020-035,82312,1,1,pass,Virtual user tracing mode G1 1 passed as no vuser_trace directory found in testrun
+SMOKE-020-036,82313,1,1,pass,Virtual user tracing mode ALL 1 passed as no vuser_trace directory found in testrun
+SMOKE-020-037,82314,1,1,pass,Virtual user tracing mode G1 2 passed as no vuser_trace directory found in testrun
+SMOKE-020-038,82315,1,1,pass,Virtual user tracing mode ALL 2 passed as no vuser_trace directory found in testrun
+SMOKE-020-039,82316,1,1,pass,G_ERR_CODE_OK mode 0 passed as we got 1 url 1xx
+SMOKE-020-040,82317,1,1,pass,G_ERR_CODE_OK mode 1 passed as we got all url success
+SMOKE-020-041,82318,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=16 Reuse Req=0 Reused=0) as expected in progress report
+SMOKE-020-042,82319,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=9 Reuse Req=7 Reused=7) as expected in progress report
+SMOKE-020-043,82320,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=2 Reuse Req=14 Reused=14) as expected in progress report
+SMOKE-020-044,82321,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=2 Reuse Req=14 Reused=14) as expected in progress report

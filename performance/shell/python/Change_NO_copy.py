@@ -42,9 +42,9 @@ def main ():
 #    type = sys.argv[2]
 #    print '%s'% type
     username = 'root'
-    password = 'abeona'
+    password = 'C@VAdmin'
     child = cli_login(username, hostname, password)#Call for login to remote machin
-    child.sendline('scp /tmp/check.bin root@10.10.30.38:/tmp')
+    child.sendline('scp /tmp/check.bin root@10.10.30.96:/tmp')
     child.expect(prompt)
     print child.before, child.after
     return 0

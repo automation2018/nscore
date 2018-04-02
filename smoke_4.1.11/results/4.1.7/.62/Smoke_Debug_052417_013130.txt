@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-023-001,2701,1,1,fail,wan download speed(512000 bps) testcase failed as difference of expected response time(8.192) and actual response time(0.115) is greater than or equals to 1.2
+SMOKE-023-002,2702,1,1,fail,wan download speed(1000000 bps) testcase failed as difference of expected response time(4.194) and actual response time(0.079) is greater than or equals to 1.2
+SMOKE-023-003,2703,1,1,fail,wan download speed(2000000 bps) testcase failed as difference of expected response time(2.097) and actual response time(0.053) is greater than or equals to 1.2
+SMOKE-023-004,2704,1,1,pass,wan download speed(3500000 bps) testcase passed as difference of expected response time(1.198) and actual response time(0.058) is less than or equals to 1.2

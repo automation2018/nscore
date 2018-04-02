@@ -1,0 +1,20 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-010-001,4301,1,1,pass,DNS A type query Passed
+SMOKE-010-002,4302,1,1,pass,DNS AAAA type query Passed
+SMOKE-010-003,4303,1,1,pass,DNS MX type query Passed
+SMOKE-010-004,4304,1,1,pass,DNS NS type query Passed
+SMOKE-010-005,4305,1,1,pass,DNS SOA type query Passed
+SMOKE-010-006,4306,1,1,pass,DNS PTR type query Passed
+SMOKE-010-007,4307,1,1,pass,DNS CNAME type query Passed
+SMOKE-010-009,4308,1,1,pass,Ftp test for text data and passive mode Passed
+SMOKE-010-010,4309,1,1,fail,Ftp testcase failed due to url failure;vsftpd service may be stopped
+SMOKE-010-011,4310,1,1,pass,Ftp test for text data and active mode Passed
+SMOKE-010-012,4311,1,1,fail,Ftp testcase failed due to url failure;vsftpd service may be stopped
+SMOKE-010-013,4312,1,1,pass,SMTP test Passed
+SMOKE-010-014,4313,1,1,pass,IMAP test for FETCH HEADER Passed
+SMOKE-010-015,4314,1,1,pass,IMAP test for FETCH TEXT Passed
+SMOKE-010-016,4315,1,1,pass,IMAP test for FETCH BODY Passed
+SMOKE-010-017,4316,1,1,pass,Hessian Protocol version 1.0 Test Passed
+SMOKE-010-018,4317,1,1,pass,Hessian Protocol version 2.0 Test Passed
+SMOKE-016-001,4318,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-002,4319,1,1,pass,do not filter all events will be logged condition verified

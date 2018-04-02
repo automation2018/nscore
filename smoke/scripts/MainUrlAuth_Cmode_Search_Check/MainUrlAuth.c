@@ -22,8 +22,8 @@ void MainUrlAuth()
  
    ns_web_url ("index_html",
         "URL=http://127.0.0.1/BasicDigest/flower.html?{Pagename}",
-        "HTTPAuthUserName=arun_QA",
-       "HTTPAuthPassword=arun",
+        "HTTPAuthUserName=netstorm",
+       "HTTPAuthPassword=netstorm",
         "BODY={Pagename}"
 );
 

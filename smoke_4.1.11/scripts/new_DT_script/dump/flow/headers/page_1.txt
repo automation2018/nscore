@@ -1,0 +1,278 @@
+--Request 
+GET http://172.24.1.45:8080/ORC/
+Host: 172.24.1.45:8080
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+----
+--Response 
+HTTP/1.1 302
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Cache-Control: private
+Content-Length: 0
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Location: https://172.24.1.45:8443/ORC/
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/
+Host: 172.24.1.45:8443
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"467-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 467
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/title2.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"2501-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 2501
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/left.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"1371-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 1371
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/t1.jpg
+Host: 172.24.1.45:8443
+Referer: https://172.24.1.45:8443/ORC/title2.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Accept: image/webp,image/*,*/*;q=0.8
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"30972-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 30972
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Content-Type: image/jpeg
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/right.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"1731-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 1731
+Date: Tue, 08 Aug 2017 11:03:33 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/login.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/left.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"4841-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 4841
+Date: Tue, 08 Aug 2017 11:03:35 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/seekerlog.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/left.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"4425-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 4425
+Date: Tue, 08 Aug 2017 11:03:37 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/js/login_validation.js
+Host: 172.24.1.45:8443
+Referer: https://172.24.1.45:8443/ORC/seekerlog.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Accept: */*
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"681-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 681
+Date: Tue, 08 Aug 2017 11:03:37 GMT
+Content-Type: application/javascript
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/onlinelogin.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/left.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"3781-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 3781
+Date: Tue, 08 Aug 2017 11:03:39 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/js/ologin_validation.js
+Host: 172.24.1.45:8443
+Referer: https://172.24.1.45:8443/ORC/onlinelogin.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Accept: */*
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"668-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 668
+Date: Tue, 08 Aug 2017 11:03:39 GMT
+Content-Type: application/javascript
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/search11.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/left.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"4683-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 4683
+Date: Tue, 08 Aug 2017 11:03:41 GMT
+Content-Type: text/html
+----
+--Request 
+GET https://172.24.1.45:8443/ORC/faqs.htm
+Host: 172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/left.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"67754-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 67754
+Date: Tue, 08 Aug 2017 11:03:42 GMT
+Content-Type: text/html
+----
+
+--Response 
+HTTP/1.1 200
+Accept-Ranges: bytes
+Cache-Control: private
+ETag: W/\"4683-1502189946000\"
+Expires: Thu, 01 Jan 1970 05:30:00 IST
+Last-Modified: Tue, 08 Aug 2017 10:59:06 GMT
+Content-Length: 4683
+Date: Tue, 08 Aug 2017 11:03:44 GMT
+Content-Type: text/html
+----
+

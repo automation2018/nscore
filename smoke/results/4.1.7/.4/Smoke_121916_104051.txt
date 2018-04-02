@@ -1,0 +1,2 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-042-08,66779,1,1,fail,Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload).while rampUp time 30 Secs for each group , Page Reload time 3 Sec and Service time 5 Sec. but it didn't seem like expected result

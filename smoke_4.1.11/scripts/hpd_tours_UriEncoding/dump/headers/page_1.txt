@@ -1,0 +1,100 @@
+--Request
+GET /tours/index.html HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 2975
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Referer: http://192.168.0.21:8800/tours/index.html
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 16522
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Referer: http://192.168.0.21:8800/tours/index.html
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 4125
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/Merc10-dev/images/login.gif HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Referer: http://192.168.0.21:8800/tours/index.html
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 1323
+Connection: Keep-Alive
+----
+
+--Request
+GET /tours/images/banner_merctur.jpg HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Referer: http://192.168.0.21:8800/tours/index.html
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 22548
+Connection: Keep-Alive
+----
+
+--Request
+GET /favicon.ico HTTP/1.1
+Host: 192.168.0.21:8800
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7
+Accept: image/png,*/*;q=0.5
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Cookie: BUGLIST=7%3A10%3A16%3A20%3A27%3A34%3A36%3A37%3A40%3A42%3A47%3A48%3A49%3A58%3A59%3A63%3A65%3A66%3A67%3A69%3A71%3A72%3A74%3A75%3A77%3A79%3A80%3A82%3A84%3A89%3A90%3A91%3A92%3A101%3A102%3A112%3A113%3A114%3A115%3A116%3A119%3A120%3A121%3A122%3A123%3A124%3A126%3A127%3A128%3A129%3A130%3A131%3A132%3A133%3A134%3A135%3A136%3A137; Bugzilla_logincookie=49; Bugzilla_login=1
+--Response
+HTTP/1.1 200 OK
+Content-length: 1406
+Connection: Keep-Alive
+----
+

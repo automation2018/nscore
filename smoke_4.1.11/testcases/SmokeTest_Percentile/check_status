@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+FLAG=0
+BASELINE_TR=49249
+#CURRENT_TR=${T_RUN_ID}
+CURRENT_TR=51540
+BASELINE_SUMMARY_DATA="${NS_WDIR}/logs/TR${BASELINE_TR}/summary.data"
+CURRENT_SUMMARY_DATA="${NS_WDIR}/logs/TR${CURRENT_TR}/summary.data"
+CSV_PATH="/home/automation/workbench/automation/nscore/logs/percentile_data.csv"
+#########Creating CSV#######
+echo "Report of Percentile Testcase">$CSV_PATH
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-037-001") validate_percentile ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+function percentiledata_from_summary(){
+    echo -e "\n\n $1 Report from Summary_gdf file \n" >> $CSV_PATH
+    echo "$1 Name, Type, Baseline value, Current value, Percentage difference, Status " >> $CSV_PATH
+
+    field=$1
+    debug_log "inside percentiledata_from_summary function"
+    debug_log "field=$field"
+    for pct in {80,90,95,99};do
+        B_percent_data=$(grep "${field} ${pct}th percentile Time" $BASELINE_SUMMARY_DATA | awk -F'|' '{print $NF}')
+        C_percent_data=$(grep "${field} ${pct}th percentile Time" $CURRENT_SUMMARY_DATA | awk -F'|' '{print $NF}')
+        pct_diff_summary=`echo ${B_percent_data} ${C_percent_data}|awk '{print ($1-$2)/$1*100}'`
+        pct_diff_summary=${pct_diff_summary#-}
+        debug_log "B_percent_data=$B_percent_data ; C_percent_data=$C_percent_data ; pct_diff_summary=$pct_diff_summary "
+        [ $(echo "$pct_diff_summary > 10"|bc) -eq 1 ] && debug_log "Percentile testcase Failed: percentage difference of $field ${pct}th percentile Time = $pct_diff_summary" && FLAG=1 &&  STATUS="FAIL" || STATUS="PASS"
+        echo "$txname, $pct, $B_percent_data, $C_percent_data, $pct_diff_summary, $STATUS" >>$CSV_PATH
+
+    done
+}
+
+
+function drill_down_data(){
+    echo -e "\n \n $2 Report from drill down data \n" >> $CSV_PATH
+    echo "$2 Name, Type, Baseline value, Current value, Percentage difference, Status " >> $CSV_PATH
+
+    debug_log ""
+    object=$1
+    B_data=$(nsi_db_get_obj_data --testrun ${BASELINE_TR} --object ${object} --fields 4095 --status -2 --limit 22 --offset 0)
+    C_data=$(nsi_db_get_obj_data --testrun ${CURRENT_TR} --object ${object} --fields 4095 --status -2 --limit 22 --offset 0)
+    debug_log "Baseline TR drill down data for $2"
+    debug_log "$B_data"
+    debug_log "CurrentTR drill down data for $2"
+    debug_log "$C_data"
+}
+
+
+function percentiledata_from_db(){
+    count=0
+    a=$(head -1 <<< "$B_data"| cut -d'|' -f1)
+    if [ "$a" == "URL Name" ];then
+        iter=(9 10 11 12 13 14 15 16)
+    else
+        iter=(8 9 10 11 12 13 14 15)
+    fi
+    txname=$1
+    debug_log "$txname"
+    for i in "${iter[@]}";do
+        B_value=$(echo "$B_data"|grep "$txname" | awk -F'|' "{print \$$i}")
+        C_value=$(echo "$C_data"|grep "$txname" | awk -F'|' "{print \$$i}")
+        pct_diff=`echo ${B_value} ${C_value}|awk '{print ($1-$2)/$1*100}'`
+        pct_diff=${pct_diff#-}
+        debug_log "C_value=$C_value, B_value=$B_value; pct_diff=$pct_diff "
+        d=("Min resp time" "Avg resp time" "Max resp time" "Median resp time" "80%" "90%" "95%" "99%")
+        [ $(echo "$pct_diff > 10"|bc) -eq 1 ] && debug_log "Percentile testcase Failed: percentage difference of ${d[$count]} $txname $2 = $pct_diff" && FLAG=1 && STATUS="FAIL" || STATUS="PASS"
+        echo "$txname, ${d[$count]}, $B_value, $C_value, $pct_diff, $STATUS" >>$CSV_PATH
+        count=$((count+1))
+
+    done
+
+}
+
+
+function validate_percentile(){
+    debug_log "Percentile Data verification"
+
+    ####Drill down data of URL from query
+    drill_down_data 0 "URL"
+    for i in {"HighRespTime","LowRespTime","MedRespTime"};do
+        percentiledata_from_db $i "URL"
+    done
+
+    ####Drill down data of Page from query
+    drill_down_data 1 "Page"
+    for i in {"HighResp","LowResp","MedResp"};do
+        percentiledata_from_db $i "Page"
+    done
+    
+    ####Drill down data of Transaction from query
+    drill_down_data 2 "Transaction"
+    for i in {"HighRespTx","LowRespTx","MedRespTx"};do
+        percentiledata_from_db $i "Transaction"
+    done
+    
+    ####data from summary.data
+    for i in {"Url","Page","Trans\."};do
+        percentiledata_from_summary $i
+    done
+
+    if [ $FLAG -eq 0 ];then
+        log_status_and_exit_ex "PASS" " Percentile testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" " Percentile testcase failed"
+    fi
+}
+
+#validate_percentile
+main
+
+exit  0

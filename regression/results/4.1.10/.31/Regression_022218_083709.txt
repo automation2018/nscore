@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,32988,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,32989,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,32990,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,32991,1,2,pass,FSR  Mode 2 testcase passed
+REG-005-001,32992,1,2,pass,Replay Access Logs testcase passed
+REG-006-001,32993,1,2,pass,NS supported protocols such as POP3 SMTP & FTP Testcase passed
+REG-007-001,32994,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,32995,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,32996,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,32997,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,32998,1,2,pass,RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied
+REG-007-006,32999,1,2,fail,Simple scenario RTC testcase where RTC being applied in all phases;failed as ramp_down_users=335;not same as total users count=200 after applying RTC
+REG-008-001,33000,1,2,pass,Replay Access Logs testcase passed
+REG-010-001,33001,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

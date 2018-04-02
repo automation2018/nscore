@@ -1,0 +1,25 @@
+--Request 
+POST https://172.24.1.45:8443/ORC/search.jsp
+Host: 172.24.1.45:8443
+Origin: https://172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/search11.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Content-Type: application/x-www-form-urlencoded
+----
+ POSTDATA Experience=0-1&Submit=Search
+--Response 
+HTTP/1.1 500
+Transfer-Encoding: chunked
+Connection: close
+Content-Encoding: gzip
+Set-Cookie: JSESSIONID=46137D990B67E7408C727929704C63C6;path=/ORC;Secure;HttpOnly
+Vary: Accept-Encoding
+Content-Language: en
+Date: Tue, 08 Aug 2017 11:03:48 GMT
+Content-Type: text/html;charset=utf-8
+----
+

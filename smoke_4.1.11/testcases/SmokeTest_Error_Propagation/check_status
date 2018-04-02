@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+TRANS_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+SCRIPT="$NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/scripts/Smoke/Smoke/hpd_err_propagation_2"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-029-001") validate_error_propagation "url status success should show in progress report and page and tx and in session report for G_ERR_CODE_OK G1 1" ;;
+        "SMOKE-029-002") validate_error_propagation "test will not stop on url failure and the page will end with CVFail status for G_ERR_CODE_OK G1 and G_CONTINUE_ON_PAGE_ERROR ALL ALL 1" ;;
+        "SMOKE-029-003") handle_error_propagation ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+# number of success transaction count should be 2
+# As url failure will not hamper to transaction status
+function validate_error_propagation(){
+    param="${1}"
+	no_of_success_tx=$(grep "ALL" $TRANS_FILE| awk -F'|' '{print $7}')
+
+	debug_log "no. of success traansactions are $no_of_success_tx"
+
+	if [ $no_of_success_tx -eq 2 ];then
+	   	debug_log " no. of success traansactions is equal to 2"
+		log_status_and_exit_ex "PASS" "smoke error propagation with ${param} testcase passed"
+	else
+		debug_log " no. of success traansactions is not equal to 2"
+        log_status_and_exit_ex "FAIL" "smoke error propagation with ${param} testcase failed"
+	fi
+}
+
+
+# 2. Page copleted count should be 3
+# 3. Tx success 1 & 4xx 1
+function handle_error_propagation(){
+	page_complete=$(grep "Page  Report" $P_FILE |cut -d'/' -f1|awk '{print $NF}')
+	first_tx_name=$(grep "ns_start_transaction" $SCRIPT/flow.c | awk -F'"' '{print $2}'|sed -n 1p)
+	first_tx_succ=$(grep "$first_tx_name" $TRANS_FILE |awk -F'|' '{print $7}')
+	all_tx_succ=$(grep "ALL" $TRANS_FILE| awk -F'|' '{print $7}')
+	fail_tx=$(grep "Transaction Report:.*4xx.*" $P_FILE |cut -d'/' -f3| cut -d' ' -f2)
+	debug_log "page_complete=$page_complete; first_tx_name=$first_tx_name; first_tx_succ=$first_tx_succ; all_tx_succ=$all_tx_succ; fail_tx=$fail_tx"
+	if [ $first_tx_succ -eq 1 ] &&\
+		[ $all_tx_succ -eq 1 ] &&\
+		[ $page_complete -eq 3 ] &&\
+		[ $fail_tx -eq 1 ];then
+		debug_log "handle_error_propagation validation pass"
+		log_status_and_exit_ex "PASS" "smoke error propagation with script with 3 pages;2 transactions first tx(starts from 1st page and ends in 3rd page); second tx(starts and ends in 2nd page and 2nd page should fail with 4xx) testcase passed"
+	else
+		debug_log "handle_error_propagation validation fail"
+        log_status_and_exit_ex "FAIL" "smoke error propagation with script with 3 pages;2 transactions first tx(starts from 1st page and ends in 3rd page); second tx(starts and ends in 2nd page and 2nd page should fail with 4xx) testcase failed"
+	fi
+}
+
+
+main
+
+
+exit 0
+

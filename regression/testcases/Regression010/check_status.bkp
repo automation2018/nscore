@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+BASELINE_TR=5155
+CURRENT_TR=${T_RUN_ID}
+BASELINE_SUMMARY_DATA="${NS_WDIR}/logs/TR${BASELINE_TR}/summary.data"
+CURRENT_SUMMARY_DATA="${NS_WDIR}/logs/TR${CURRENT_TR}/summary.data"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-037-001") validate_percentile ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+function percentiledata_from_summary(){
+    field=$1
+    debug_log "inside percentiledata_from_summary function"
+    debug_log "field=$field"
+    for pct in {80,90,95,99};do
+        B_percent_data=$(grep "${field} ${pct}th percentile Time" $BASELINE_SUMMARY_DATA | awk -F'|' '{print $NF}')
+        C_percent_data=$(grep "${field} ${pct}th percentile Time" $CURRENT_SUMMARY_DATA | awk -F'|' '{print $NF}')
+        pct_diff_summary=`echo ${B_percent_data} ${C_percent_data}|awk '{print ($1-$2)/$1*100}'`
+        pct_diff_summary=${pct_diff_summary#-}
+        debug_log "B_percent_data=$B_percent_data ; C_percent_data=$C_percent_data ; pct_diff_summary=$pct_diff_summary "
+        [ $(echo "$pct_diff_summary > 5"|bc) -eq 1 ] && log_status_and_exit_ex "FAIL" "Percentile testcase: percentage difference of $field ${pct}th percentile Time = $pct_diff_summary"
+    done
+}
+
+
+function percentiledata_from_db(){
+    txname=$1
+    B_data=$(nsi_db_get_obj_data --testrun ${BASELINE_TR} --object 2 --fields 4095 --status -2 --limit 22 --offset 0)
+    C_data=$(nsi_db_get_obj_data --testrun ${CURRENT_TR} --object 2 --fields 4095 --status -2 --limit 22 --offset 0)
+    debug_log "$B_data"
+    debug_log "$C_data"
+    debug_log "$txname"
+    for i in {8,9,10,12,13,14,15};do
+        B_value=$(echo "$B_data"|grep "$txname" | awk -F'|' "{print \$$i}")
+        C_value=$(echo "$C_data"|grep "$txname" | awk -F'|' "{print \$$i}")
+        pct_diff=`echo ${B_value} ${C_value}|awk '{print ($1-$2)/$1*100}'`
+        pct_diff=${pct_diff#-}
+        debug_log "C_value=$C_value, B_value=$B_value; pct_diff=$pct_diff "
+        [ $i -eq 8 ] && a="Min"
+        [ $i -eq 9 ] && a="Avg"
+        [ $i -eq 10 ] && a="Max"
+        [ $i -eq 12 ] && a=80
+        [ $i -eq 13 ] && a=90
+        [ $i -eq 14 ] && a=95
+        [ $i -eq 15 ] && a=99
+
+        [ $(echo "$pct_diff > 5"|bc) -eq 1 ] && log_status_and_exit_ex "FAIL" "Percentile testcase: percentage difference of $a% $txname transaction = $pct_diff"
+
+    done
+
+}
+
+
+function validate_percentile(){
+    for i in {"HighRespTx","LowRespTx","MedRespTx"};do
+        debug_log "$i"
+        percentiledata_from_db $i
+    done
+
+    for i in {"Url","Page","Trans\."};do
+        debug_log "$i"
+        percentiledata_from_summary $i
+    done
+
+    log_status_and_exit_ex "PASS" " Percentile testcase passed"
+}
+
+
+main
+
+exit  0

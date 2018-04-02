@@ -1,0 +1,9 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-042-01,65780,1,1,pass,Page Reload vary between 1 and 3 times. because respone time 5 Sec and Page reload time 0 (Force Reload)
+SMOKE-042-02,65781,1,1,pass,Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec
+SMOKE-042-03,65782,1,1,pass,Page Reload vary between 1 and 3 times. because respone time 5 Sec and Page reload time 0 (Force Reload HTTPS)
+SMOKE-042-04,65783,1,1,pass,Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec(Reload Https)
+SMOKE-042-05,65784,1,1,pass,Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs. Force Reload
+SMOKE-042-06,65785,1,1,pass,Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs. Reload Time Out given(3 Sec)
+SMOKE-042-07,65786,1,1,pass,Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload) because Group Based two group 30 Secs. Force Reload.
+SMOKE-042-08,65787,1,1,pass,Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload) because Group Based two group 30 Secs and Page Reload time 3 Sec and Service time 5 Sec. 

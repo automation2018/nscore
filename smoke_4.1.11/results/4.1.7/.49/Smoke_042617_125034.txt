@@ -1,0 +1,36 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-019-001,4321,1,1,pass,CVar based transaction name  testcase passed as Home matched with C variable value Home
+SMOKE-019-002,4322,1,1,pass,CVar based transaction name  testcase passed as FindFlight matched with C variable value FindFlight
+SMOKE-019-003,4323,1,1,pass,CVar based transaction name  testcase passed as Login matched with C variable value Login
+SMOKE-019-004,4324,1,1,pass,CVar based transaction name  testcase passed as Reservation matched with C variable value Reservation
+SMOKE-021-001,4325,1,1,pass,page as transaction mode 0 testcase passed
+SMOKE-021-002,4326,1,1,pass,page as transaction mode 1 testcase passed
+SMOKE-021-003,4327,1,1,pass,page as transaction mode 1 1 testcase passed
+SMOKE-021-006,4330,1,1,pass,nvm testcase passed
+SMOKE-021-007,4331,1,1,pass,num nvm testcase passed
+SMOKE-021-008,4332,1,1,pass,nvm testcase passed
+SMOKE-021-009,4333,1,1,pass,num nvm testcase passed
+SMOKE-021-010,4334,1,1,pass,disable cookies testcase passed
+SMOKE-021-011,4335,1,1,pass,disable cookies testcase passed
+SMOKE-001-001,4336,1,1,pass,G_TRACING keyword is validated for ALL 4 1 0 0 0 0
+SMOKE-001-002,4337,1,1,pass,G_TRACING keyword is validated for ALL 4 2 0 0 0 0
+SMOKE-001-003,4338,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-001-004,4339,1,1,pass,G_TRACING keyword is validated for ALL 4 0 2 0 0 0
+SMOKE-001-005,4340,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-001-006,4341,1,1,pass,G_TRACING keyword is validated for ALL 4 1 2 0 0 0
+SMOKE-001-007,4342,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-001-008,4343,1,1,pass,G_TRACING keyword is validated for ALL 4 2 2 0 0 0
+SMOKE-001-009,4344,1,1,pass,G_TRACING keyword is validated for ALL 4 0 0 0 1 0
+SMOKE-001-010,4345,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-001-011,4346,1,1,pass,G_TRACING keyword is validated for ALL 4 0 2 0 1 0
+SMOKE-001-012,4347,1,1,pass,G_TRACING keyword is validated for ALL 4 1 0 0 1 0
+SMOKE-001-013,4348,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-001-014,4349,1,1,pass,G_TRACING keyword is validated for ALL 4 1 0 0 1 0
+SMOKE-001-015,4350,1,1,pass,G_TRACING keyword is validated for ALL 4 1 0 0 1 0
+SMOKE-001-016,4351,1,1,fail,Pagedump count missmatch in csv file
+SMOKE-035-001,4358,1,1,pass,validate_nvmFail_001 test passed
+SMOKE-035-002,4359,1,1,fail,validate_nvm_rtc_002 test failed
+SMOKE-036-001,4360,1,1,pass,Testcase smoke-inline-checkpoint-001(Failure condition checked) : Stop the session after string found with CVFail
+SMOKE-036-003,4362,1,1,pass,Testcase smoke-inline-checkpoint-003(Failure condition unchecked) : Continue with the session after string found with no CVFail
+SMOKE-036-004,4363,1,1,pass,Testcase smoke-inline-checkpoint-004(Failure condition unchecked) : Stop the session after string not found with CVFail
+SMOKE-036-005,4364,1,1,pass,Testcase smoke-inline-checkpoint-005(RE case with Failure condition checked) : Stop the session after string found with CVFail

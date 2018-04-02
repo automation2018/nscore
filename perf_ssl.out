@@ -1,0 +1,145 @@
+nohup: ignoring input
+Buildfile: /home/automation/workbench/automation/nscore/build.xml
+
+perf-ssl:
+
+copy-hpd-file:
+      [scp] Connecting to 10.10.30.96:22
+      [scp] done.
+
+clean:
+   [delete] Deleting directory /home/netstorm/work/scripts/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/scenarios/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/testcases/Performance/Performance
+   [delete] Deleting directory /home/netstorm/work/testsuites/Performance/Performance
+
+copy:
+     [copy] Copying 24 files to /home/netstorm/work/scripts/Performance/Performance
+     [copy] Copying 10 files to /home/netstorm/work/scenarios/Performance/Performance
+     [copy] Copying 235 files to /home/netstorm/work/testcases/Performance/Performance
+     [copy] Copying 3 files to /home/netstorm/work/testsuites/Performance/Performance
+     [copy] Copying 1 file to /home/netstorm/work/lib
+
+restart-hpd:
+  [sshexec] Connecting to 10.10.30.96:22
+  [sshexec] cmd : service hpd restart
+  [sshexec] Restarting hpd ... 
+  [sshexec] Stop signal sent to controller successfully
+  [sshexec] Correlation Project = samples
+  [sshexec] Starting processing of URL files. It may take several minutes based on file sizes.
+  [sshexec] Completed processing of URL files.
+  [sshexec] Connecting to 10.10.30.96:22
+  [sshexec] cmd : service hpd show
+  [sshexec] 4 S root     20023     1  4  80   0 - 86221 ep_pol 19:00 ?        00:00:02 /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21327 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21328 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21329 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21330 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21331 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21332 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21333 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21334 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21335 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     21336 20023  0  80   0 - 86318 ep_pol 19:01 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+
+ssl-perf-test:
+     [info] Initializing test environment 
+     [info] Total Cases to test in Performance_SSL suite = 0
+     [info] Starting NSCore performance automation suite using command bin/ts_run
+     [info] Running TestSuite = 'Performance_SSL'
+     [info] IP_ADDR = 10.10.30.37:8011
+     [info] Test Cycle Number = 161119_190143
+     [info] Test Suite Run Number = 5340
+     [info] Starting execution of test case - ECDHE-ECDSA-AES256-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62266
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-AES256-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62267
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-AES256-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62268
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-DES-CBC3-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62269
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-DES-CBC3-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62270
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-DES-CBC3-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62271
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-AES128-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62272
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-AES128-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62273
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-AES128-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62274
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-RC4-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62275
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-RC4-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62276
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - ECDHE-ECDSA-RC4-SHA
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Performance, Subproject: Performance, Scenario is - ssl
+     [info] gui.data file is not present for TestRun=62277
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Test Suite execution is completed!!!
+     [info] NSCore Performance_SSL automation suite has ended
+     [info] Cleaning up temporary files.
+     [echo] Current Build: R4.1.6.B48
+     [mail] Sending email: [NS Performance SSL Ciphers] R.4.1.6.B48
+     [mail] Sent email with 0 attachments
+
+BUILD SUCCESSFUL
+Total time: 44 minutes 2 seconds

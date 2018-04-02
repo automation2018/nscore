@@ -1,0 +1,13 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-040-01,31952,1,1,pass,auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-02,31953,1,1,pass,auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-03,31954,1,1,pass,auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-04,31955,1,1,pass,auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same 
+SMOKE-040-05,31956,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-06,31957,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-07,31958,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-08,31959,1,1,pass,HTTP2 Upgrade Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same 
+SMOKE-040-09,31960,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed
+SMOKE-040-10,31961,1,1,fail,HTTP2 Prior Knowledge Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed .but it didn't seem like expected result
+SMOKE-040-11,31962,1,1,pass,HTTP2 Prior Knowledge Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-12,31963,1,1,fail,HTTP2 Prior Knowledge Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same. but it didn't seem like expected result

@@ -1,0 +1,14 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,69375,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,69376,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,69377,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,69378,1,2,pass,FSR  Mode 2 testcase passed
+REG-005-001,69379,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(Overall);Service Time (Secs)(NA) in current testrun is 0.315 are having difference of -15650.0% which exceeed the tolerance of 5%
+REG-006-001,69380,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average Page Response Time (Secs)(NA) in baseline testrun found is 0.025 and Average Page Response Time (Secs)(NA) in current testrun is 0.023 are having difference of 8.0% which exceeed the tolerance of 5%
+REG-007-001,69381,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,69382,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,69383,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,69384,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,69385,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,69386,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,69387,1,2,fail,Regression test for Replay Access Logs failed;For Average Transaction Response Time (Secs)(NA) where baseline value: 0.001 current value: 0.018 and percentage difference is -1700 which is more than expected difference 5%

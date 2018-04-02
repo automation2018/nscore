@@ -1,0 +1,124 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+#fill_report_summary
+T_NAME=$(get_tname)
+
+function smoke_cookie()
+{
+    Cookie_Name=`grep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name2=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name3=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    Cookie_Name4=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_0_0_0_0_0_0.dat |cut -d "=" -f2`
+    Cookie_Name5=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name6=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name7=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_3_0_0_0_3_0.dat |cut -d "=" -f2`
+}
+
+
+if [ "$T_NAME" == "SMOKE_4UrlT_WOExpCookie_CMode1" ];then 
+    Cookie_Name=`grep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name2=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name3=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    Cookie_Name4=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_0_0_0_0_0_0.dat |cut -d "=" -f2`
+    Cookie_Name5=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name6=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name7=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    if [ "$Cookie_Name" == "arun" ] && \
+       [ "$Cookie_Name2" == "shyam" ] && \
+       [ "$Cookie_Name3" == "netstorm" ] && \
+       [ "$Cookie_Name4" == "nckjansjvnjasnv9090987$%" ] && \
+       [ "$Cookie_Name5" == "alwaysKeepSmiling" ] && \
+       [ "$Cookie_Name6" == "ae$%@09" ] && \
+       [ "$Cookie_Name7" == "there" ];then
+        log_status_and_exit_ex "PASS" "$T_NAME passed"
+     else
+        log_status_and_exit_ex "FAIL" "$T_NAME failed"
+        fi	 
+fi
+
+if [ "$T_NAME" == "SMOKE_4UrlT_WExpCookie_CMode1" ];then
+    Cookie_Name=`grep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name2=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name3=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    Cookie_Name4=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_0_0_0_0_0_0.dat |cut -d "=" -f2`
+    Cookie_Name5=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name6=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name7=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    if [ "$Cookie_Name" == "arun" ] && \
+       [ "$Cookie_Name2" == "shyam" ] && \
+       [ "XX$Cookie_Name3" == "XX" ] && \
+       [ "$Cookie_Name4" == "nckjansjvnjasnv9090987$%" ] && \
+       [ "$Cookie_Name5" == "alwaysKeepSmiling" ] && \
+       [ "$Cookie_Name6" == "ae$%@09" ] && \
+       [ "$Cookie_Name7" == "there" ];then
+        log_status_and_exit_ex "PASS" "$T_NAME passed"
+    else
+	log_status_and_exit_ex "FAIL" "$T_NAME failed"
+     fi
+fi
+
+if [ "$T_NAME" == "SMOKE_4UrlT_ExpCookie_CMode1" ];then
+    Cookie_Name=`grep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name2=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name3=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_0_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    Cookie_Name4=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_0_0_0_0_0_0.dat |cut -d "=" -f2`
+    Cookie_Name5=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_1_0_0_0_1_0.dat |cut -d "=" -f2`
+    Cookie_Name6=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_2_0_0_0_2_0.dat |cut -d "=" -f2`
+    Cookie_Name7=`egrep -e "Cookie: name" $T_ID_REQ_PATH/url_req_0_0_1_3_0_0_0_3_0.dat |cut -d "=" -f2`
+    if [ "XX$Cookie_Name" == "XX" ] && \
+       [ "XX$Cookie_Name2" == "XX" ] && \
+       [ "XX$Cookie_Name3" == "XX" ] && \
+       [ "XX$Cookie_Name4" == "XX" ] && \
+       [ "XX$Cookie_Name5" == "XX" ] && \
+       [ "XX$Cookie_Name6" == "XX" ] && \
+       [ "XX$Cookie_Name7" == "XX" ];then
+        log_status_and_exit_ex "PASS" "$T_NAME passed"
+     else
+        log_status_and_exit_ex "FAIL" "$T_NAME failed"
+     fi
+fi
+
+if [ "$T_NAME" == "SMOKE_2UrlT_ClineCookie_CMode1" ];then
+    cat $T_ID_REQ_PATH/url_req_0_0_1_0_0_0_0_0_0.dat|grep "Cookie:" |cut -d ":" -f2|awk -F";" '{for (i = 0; i <= NF; i++) print $i}' >/tmp/Cookie.txt
+    Line=`cat /tmp/Cookie.txt |wc -l`
+    echo "Line is ="$Line
+    START_LINE=2
+    sed -n $(echo $START_LINE),$(echo $Line)p /tmp/Cookie.txt >/tmp/arun 
+    >/tmp/Cookie.txt
+    cat /tmp/arun |while read line 
+    do
+        echo "Cookie$i"=$line >>/tmp/Cookie.txt
+        i=`expr $i + 1`
+    done
+    Cookie_Name=`grep -w "Cookie" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name2=`grep -w "Cookie1" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name3=`grep -w "Cookie2" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name4=`grep -w "Cookie3" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name5=`grep -w "Cookie4" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name6=`grep -w "Cookie5" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name7=`grep -w "Cookie6" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name8=`grep -w "Cookie7" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name9=`grep -w "Cookie8" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name10=`grep -w "Cookie9" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name11=`grep -w "Cookie10" /tmp/Cookie.txt |cut -d "=" -f2,3`	
+    Cookie_Name12=`grep -w "Cookie11" /tmp/Cookie.txt |cut -d "=" -f2,3,4`	
+ 
+        if [ "$Cookie_Name" == "Cookie_Name=arun" ] && \
+           [ "$Cookie_Name2" == "stop_mobi=yes" ] && \
+           [ "$Cookie_Name3" == "shippingCountry=IN" ] && \
+           [ "$Cookie_Name4" == "SignedIn=0" ] && \
+           [ "$Cookie_Name5" == "PPP=24" ] && \
+           [ "$Cookie_Name6" == "BypassAkamai=false" ] && \
+           [ "$Cookie_Name7" == "GCs=CartItem1_92_03_87_UserName1_92_4_02_" ] && \
+           [ "$Cookie_Name8" == "PlatformName=WI" ] && \
+           [ "$Cookie_Name9" == "BrowserName=IE" ] && \
+           [ "$Cookie_Name10" == "BrowserVersion=6X" ] && \
+           [ "$Cookie_Name11" == "akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq" ] ;then
+            log_status_and_exit_ex "PASS" "$T_NAME passed"
+        else
+            log_status_and_exit_ex "FAIL" "$T_NAME failed"
+        fi
+fi
+
+exit 0

@@ -1,0 +1,398 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+InputFile="/home/automation/workbench/automation/nscore/regression/testcases/Regression003/file"
+NewFileData="/home/automation/workbench/automation/nscore/regression/testcases/Regression003/NewFileData"
+
+TESTRUN_ID=$(get_testidx)
+Tname=$(get_tname)
+
+
+function get_baseline_values(){
+    echo "********************** Data For Baseline TestRun*********************"
+    
+    BaseLine_Tsr_Directory_Regression1="$NS_WDIR/logs/tsr/072815_181628/2335/Regression003_results.csv"
+    Test_Run=`grep -w $Tname $BaseLine_Tsr_Directory_Regression1 |cut -d ',' -f2` 
+    echo "$Test_Run"
+    
+    Avg_Vuser_Running=`grep -w "Running Vusers(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Vuser_Running User in BaseLine is as follows::$Avg_Vuser_Running"
+    
+    Avg_Vuser_Active=`grep -w "Active Vusers(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Vuser_Active User in BaseLine is::$Avg_Vuser_Active"
+    
+    Avg_Vuser_Thinking=`grep -w "Thinking Vusers(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Vuser_Thinking User in BaseLine is::$Avg_Vuser_Thinking"
+
+    Avg_Vuser_Waiting=`grep -w "Waiting Vusers(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Vuser_Waiting User in Baseline is::$Avg_Vuser_Waiting"
+    
+    Avg_Number_Of_Connection=`grep -w "Number Of Connections(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Number_Of_Connection in baseline is::$Avg_Number_Of_Connection"
+
+    Avg_Tcp_Send_throuput=`grep -w "TCP Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Tcp_Send_throuput for Baseline is::$Avg_Tcp_Send_throuput"
+
+    Avg_Tcp_Rcv_throuput=`grep -w "TCP Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Tcp_Rcv_throuput for Baseline is::$Avg_Tcp_Rcv_throuput"
+
+    Avg_Eth_Send_throuput=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Eth_Send_throuput for Baseline is::$Avg_Eth_Send_throuput"        
+
+    Avg_Eth_Rcv_throuput=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Eth_Rcv_throuput for Baseline is::$Avg_Eth_Rcv_throuput"
+
+    Avg_Tcp_Open_Conn_Per_Secd=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Tcp_Open_Conn_Per_Secd for Baseline is::$Avg_Tcp_Open_Conn_Per_Secd"
+
+    Avg_Tcp_Total_Open_Conn=`grep -w "TCP Total Connections Open(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  " Avg_Tcp_Total_Open_Conn for Baseline is::$Avg_Tcp_Total_Open_Conn"
+
+    Avg_Tcp_Close_Conn_Per_Secd=`grep -w "TCP Connections Close/Sec(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Tcp_Close_Conn_Per_Secd for Baseline is::$Avg_Tcp_Close_Conn_Per_Secd"
+
+    Avg_Tcp_Total_Close_Conn=`grep -w "TCP Total Connections Close(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Tcp_Total_Close_Conn for Baseline is::$Avg_Tcp_Total_Close_Conn"
+
+    Avg_SSL_Total_New=`grep -w "SSL Total New Sessions(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_SSL_Total_New for Baseline is::$Avg_SSL_Total_New"
+    
+    Avg_SSL_Total_Reuse_Attempted=`grep -w "SSL Total Reuse attempted(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_SSL_Total_Reuse_Attempted for base line is::$Avg_SSL_Total_Reuse_Attempted"
+
+    Avg_Res_Time=`grep -w "Average Response Time (Secs)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Res_Time for Baseline is::$Avg_Res_Time"
+
+    Avg_Total_Request_Completed=`grep -w "Requests Completed(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Total_Request_Completed for Baseline is::$Avg_Total_Request_Completed"
+
+    Avg_Total_Request_SucessFul=`grep -w "Requests Successful(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Total_Request_SucessFul for Baseline is::$Avg_Total_Request_SucessFul"
+
+    Avg_Transaction_Response_Time=`grep -w "Average Transaction Response Time (Secs)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Transaction_Response_Time for Baseline is::$Avg_Transaction_Response_Time"
+
+    Avg_Page_Response_Time=`grep -w "Average Page Response Time (Secs)(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f6`
+    echo  "Avg_Page_Response_Time for Baseline is::$Avg_Page_Response_Time"
+
+    Max_Sessions_Started_Per_Minute=`grep -w "Sessions Started/Minute(NA)" $NS_WDIR/logs/TR$Test_Run/summary_gdf.data |cut -d '|' -f8`
+	echo "Max_Sessions_Started_Per_Minute for Baseline is =$Max_Sessions_Started_Per_Minute"
+
+}
+
+
+
+function get_current_tr_values(){
+    echo "********************** Data For Current TestRun*********************"
+
+    Avg_Vuser_Running_Current=`grep -w "Running Vusers(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg Running User for current test run is =$Avg_Vuser_Running_Current"
+   
+    Avg_Vuser_Active_Current=`grep -w "Active Vusers(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg Active User for current test run is =$Avg_Vuser_Active_Current"
+
+    Avg_Vuser_Thinking_Current=`grep -w "Thinking Vusers(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg Thinking User for current test run is =$Avg_Vuser_Thinking_Current"
+
+    Avg_Vuser_Waiting_Current=`grep -w "Waiting Vusers(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg Waiting User for current test run is =$Avg_Vuser_Waiting_Current"
+
+    Avg_Number_Of_Connection_Current=`grep -w "Number Of Connections(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg Number_Of_Connection_Current for current test run is =$Avg_Number_Of_Connection_Current" 
+    Avg_Tcp_Send_throuput_Current=`grep -w "TCP Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Tcp_Send_throuput_Current for current test run is =$Avg_Tcp_Send_throuput_Current"
+
+    Avg_Tcp_Rcv_throuput_Current=`grep -w "TCP Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Tcp_Rcv_throuput_Current for current test run is =$Avg_Tcp_Rcv_throuput_Current"
+    Avg_Eth_Send_throuput_Current=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Eth_Send_throuput_Current for current test run is =$Avg_Eth_Send_throuput_Current"
+
+    Avg_Eth_Rcv_throuput_Current=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Eth_Rcv_throuput_Current for current test run is =$Avg_Eth_Rcv_throuput_Current"
+
+    Avg_Tcp_Open_Conn_Per_Secd_Current=`grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Tcp_Open_Conn_Per_Secd_Current for current test run is =$Avg_Tcp_Open_Conn_Per_Secd_Current"
+
+    Avg_Tcp_Total_Open_Conn_Current=`grep -w "TCP Total Connections Open(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Tcp_Total_Open_Conn_Current for current test run is =$Avg_Tcp_Total_Open_Conn_Current"
+
+    Avg_Tcp_Close_Conn_Per_Secd_Current=`grep -w "TCP Connections Close/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo " Avg_Tcp_Close_Conn_Per_Secd_Current for current test run is =$Avg_Tcp_Close_Conn_Per_Secd_Current"
+
+    Avg_Tcp_Total_Close_Conn_Current=`grep -w "TCP Total Connections Close(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Tcp_Total_Close_Conn_Current for current test run is =$Avg_Tcp_Total_Close_Conn_Current"
+
+    Avg_SSL_Total_New_Current=`grep -w "SSL Total New Sessions(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_SSL_Total_New_Current for current test run is =$Avg_SSL_Total_New_Current"
+
+    Avg_SSL_Total_Reuse_Attempted_Current=`grep -w "SSL Total Reuse attempted(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_SSL_Total_Reuse_Attempted_Current for current test run is =$Avg_SSL_Total_Reuse_Attempted_Current"
+
+    Avg_Res_Time_Current=`grep -w "Average Response Time (Secs)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Res_Time_Current for current test run is =$Avg_Res_Time_Current"
+
+    Avg_Total_Request_Completed_Current=`grep -w "Requests Completed(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Total_Request_Completed_Current for current test run is =$Avg_Total_Request_Completed_Current"
+
+    Avg_Total_Request_SucessFul_Current=`grep -w "Requests Successful(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Total_Request_SucessFul_Current for current test run is =$Avg_Total_Request_SucessFul_Current"
+
+    Avg_Transaction_Response_Time_Current=`grep -w "Average Transaction Response Time (Secs)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Transaction_Response_Time_Current for current test run is =$Avg_Transaction_Response_Time_Current"
+
+    Avg_Page_Response_Time_Current=`grep -w "Average Page Response Time (Secs)(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Page_Response_Time_Current for current test run is =$Avg_Page_Response_Time_Current"
+
+    Max_Sessions_Started_Per_Minute_Current=`grep -w "Sessions Started/Minute(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f8`
+	echo "Max_Sessions_Started_Per_Minute_Current for current test run is =$Max_Sessions_Started_Per_Minute_Current"
+
+    Avg_Send_Req_Count=`grep -w "Requests Sent/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+echo "Avg_Send_Req_Count for current test run is::$Avg_Send_Req_Count"
+ 
+    Avg_Received_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Recieved/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Received_Req_Count for current test run is::$Avg_Received_Req_Count"
+ 
+    Avg_Completed_Req_Count=`grep -w "Requests Completed/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Completed_Req_Count for current test run is::$Avg_Completed_Req_Count"
+ 
+    Avg_Processed_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Processed/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Processed_Req_Count for current test run is::$Avg_Processed_Req_Count"
+ 
+    Avg_Successful_Req_Count=`grep -w "Requests Successful/Sec(NA)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |cut -d '|' -f6`
+    echo "Avg_Successful_Req_Count for current test run is::$Avg_Successful_Req_Count"
+
+    Avg_Successful_Simu_Req_Count=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Request Successful/Sec(NA)"| cut -d '|' -f6`
+    echo "Avg_Successful_Simu_Req_Count for current test run is::$Avg_Successful_Simu_Req_Count"
+
+    Avg_Service_Time=`grep -w "Simulated Protocol Stats(Overall)" $NS_WDIR/logs/TR$TESTRUN_ID/summary_gdf.data |grep -w "Service Time (Secs)(NA)"| cut -d '|' -f6`
+    echo "Avg_Service_Time for current test run is::$Avg_Service_Time"
+
+}
+
+
+function get_compared_values(){
+    echo "*********************Compare baseline and current testdata********************"
+
+    Running_User_Change_Pct=`echo "$Avg_Vuser_Running" "$Avg_Vuser_Running_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Running user change before making it int=$Running_User_Change_Pct"
+
+    Running_User_Change_Pct=`echo $Running_User_Change_Pct | awk '{printf "%.0f\n", $1}'`
+    echo "Running user percentage change after making it as int=$Running_User_Change_Pct"
+
+    Active_User_Change_Pct=`echo "$Avg_Vuser_Active" "$Avg_Vuser_Active_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Active user change before making it int=$Active_User_Change_Pct"
+
+    Active_User_Change_Pct=`echo $Active_User_Change_Pct | awk '{printf "%.0f\n", $1}'`
+    echo "Active user percentage change after making it as int=$Active_User_Change_Pct"
+
+    Thinking_User_Change_Pct=`echo "$Avg_Vuser_Thinking" "$Avg_Vuser_Thinking_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Thinking user change before making it int=$Thinking_User_Change_Pct"
+
+    Thinking_User_Change_Pct=`echo $Thinking_User_Change_Pct | awk '{printf "%.0f\n", $1}'`
+    echo "Thinking user percentage change after making it as int=$Thinking_User_Change_Pct"
+
+    Waiting_User_Change_Pct=`echo "$Avg_Vuser_Waiting" "$Avg_Vuser_Waiting_Current" | awk '{print ($1-$2)/$1*100}'`	
+    echo "Waiting user change before making it int=$Waiting_User_Change_Pct"
+
+    Waiting_User_Change_Pct=`echo $Waiting_User_Change_Pct | awk '{printf "%.0f\n", $1}'`
+    echo "Waiting user percentage change after making it as int=$Waiting_User_Change_Pct"
+
+    Connection_Change_Pct=`echo "$Avg_Number_Of_Connection" "$Avg_Number_Of_Connection_Current" | awk '{print ($1-$2)/$1*100}'`	
+     echo "Connection change before making it int=$Connection_Change_Pct"
+
+    Connection_Change_Pct=`echo $Connection_Change_Pct | awk '{printf "%.0f\n", $1}'`
+    echo "Connection_Change_Pct change after making it as int=$Connection_Change_Pct"
+
+    Tcp_Send_throuput_Change=`echo "$Avg_Tcp_Send_throuput" "$Avg_Tcp_Send_throuput_Current" | awk '{print ($1-$2)/$1*100}'`	
+    echo "Tcp_Send_throuput_Change before making it int=$Tcp_Send_throuput_Change"
+
+    Tcp_Send_throuput_Change=`echo $Tcp_Send_throuput_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Send_throuput_Change change after making it as int=$Tcp_Send_throuput_Change"
+
+    Tcp_Rcv_throuput_Change=`echo "$Avg_Tcp_Rcv_throuput" "$Avg_Tcp_Rcv_throuput_Current" | awk '{print ($1-$2)/$1*100}'`	
+    echo "Tcp_Rcv_throuput_Change before making it int=$Tcp_Rcv_throuput_Change"
+
+    Tcp_Rcv_throuput_Change=`echo $Tcp_Rcv_throuput_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Rcv_throuput_Change after making it as int=$Tcp_Rcv_throuput_Change"
+
+    Eth_Send_throuput_Change=`echo "$Avg_Eth_Send_throuput" "$Avg_Eth_Send_throuput_Current" | awk '{print ($1-$2)/$1*100}'`	
+    echo "Eth_Send_throuput_Change before making it int=$Eth_Send_throuput_Change"
+
+    Eth_Send_throuput_Change=`echo $Eth_Send_throuput_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Eth_Send_throuput_Change after making it as int=$Eth_Send_throuput_Change"
+
+    Eth_Rcv_throuput_Change=`echo "$Avg_Eth_Rcv_throuput" "$Avg_Eth_Rcv_throuput_Current" | awk '{print ($1-$2)/$1*100}'`	
+    echo "Eth_Rcv_throuput_Change before making it int=$Eth_Rcv_throuput_Change"
+
+    Eth_Rcv_throuput_Change=`echo $Eth_Rcv_throuput_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Eth_Rcv_throuput_Change change after making it as int=$Eth_Rcv_throuput_Change"
+
+    Tcp_Open_Conn_Per_Secd_Change=`echo "$Avg_Tcp_Open_Conn_Per_Secd" "$Avg_Tcp_Open_Conn_Per_Secd_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Tcp_Open_Conn_Per_Secd_Change before making it int=$Tcp_Open_Conn_Per_Secd_Change"
+
+    Tcp_Open_Conn_Per_Secd_Change=`echo $Tcp_Open_Conn_Per_Secd_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Open_Conn_Per_Secd_Change percentage change after making it as int=$Tcp_Open_Conn_Per_Secd_Change"
+
+    Tcp_Total_Open_Conn_Change=`echo "$Avg_Tcp_Total_Open_Conn" "$Avg_Tcp_Total_Open_Conn_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Tcp_Total_Open_Conn_Change before making it int=$Tcp_Total_Open_Conn_Change"
+
+    Tcp_Total_Open_Conn_Change=`echo $Tcp_Total_Open_Conn_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Total_Open_Conn_Change percentage change after making it as int=$Tcp_Total_Open_Conn_Change"
+
+    Tcp_Close_Conn_Per_Secd_Change=`echo "$Avg_Tcp_Close_Conn_Per_Secd" "$Avg_Tcp_Close_Conn_Per_Secd_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Tcp_Close_Conn_Per_Secd_Change before making it int=$Tcp_Close_Conn_Per_Secd_Change"
+
+    Tcp_Close_Conn_Per_Secd_Change=`echo $Tcp_Close_Conn_Per_Secd_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Close_Conn_Per_Secd_Change percentage change after making it as int=$Tcp_Close_Conn_Per_Secd_Change"
+
+    Tcp_Total_Close_Conn_Change=`echo "$Avg_Tcp_Total_Close_Conn" "$Avg_Tcp_Total_Close_Conn_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Tcp_Total_Close_Conn_Change before making it int=$Tcp_Total_Close_Conn_Change"
+
+    Tcp_Total_Close_Conn_Change=`echo $Tcp_Total_Close_Conn_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Tcp_Total_Close_Conn_Change percentage change after making it as int=$Tcp_Total_Close_Conn_Change"
+
+    SSL_Total_New_Change=`echo "$Avg_SSL_Total_New" "$Avg_SSL_Total_New_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "SSL_Total_New_Change before making it int=$SSL_Total_New_Change"
+
+    SSL_Total_New_Change=`echo $SSL_Total_New_Change | awk '{printf "%.0f\n", $1}'`
+    echo "SSL_Total_New_Change percentage change after making it as int=$SSL_Total_New_Change"
+    SSL_Total_Reuse_Attempted_Change=`echo "$Avg_SSL_Total_Reuse_Attempted" "$Avg_SSL_Total_Reuse_Attempted_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "SSL_Total_Reuse_Attempted_Change before making it int=$SSL_Total_Reuse_Attempted_Change"
+
+    SSL_Total_Reuse_Attempted_Change=`echo $SSL_Total_Reuse_Attempted_Change | awk '{printf "%.0f\n", $1}'`
+    echo "SSL_Total_Reuse_Attempted_Change percentage change after making it as int=$SSL_Total_Reuse_Attempted_Change"
+
+    Res_Time_Change=`echo "$Avg_Res_Time" "$Avg_Res_Time_Current" | awk '{print ($1-$2)*100}'`
+    echo "Res_Time_Change before making it int=$Res_Time_Change"
+
+    Res_Time_Change=`echo $Res_Time_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Res_Time_Change percentage change after making it as int=$Res_Time_Change"
+
+    Total_Request_Completed_Change=`echo "$Avg_Total_Request_Completed" "$Avg_Total_Request_Completed_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Total_Request_Completed_Change before making it int=$Total_Request_Completed_Change"
+
+    Total_Request_Completed_Change=`echo $Total_Request_Completed_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Total_Request_Completed_Change percentage change after making it as int=$Total_Request_Completed_Change"
+
+    Total_Request_SucessFul_Change=`echo "$Avg_Total_Request_SucessFul" "$Avg_Total_Request_SucessFul_Current" | awk '{print ($1-$2)/$1*100}'`
+    echo "Total_Request_SucessFul_Change before making it int=$Total_Request_SucessFul_Change"
+
+    Total_Request_SucessFul_Change=`echo $Total_Request_Completed_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Total_Request_SucessFul_Change percentage change after making it as int=$Total_Request_SucessFul_Change"
+
+    Transaction_Response_Time_Change=`echo "$Avg_Transaction_Response_Time" "$Avg_Transaction_Response_Time_Current" | awk '{print ($1-$2)*100}'`
+    echo "Transaction_Response_Time_Change before making it int=$Transaction_Response_Time_Change"
+
+    Transaction_Response_Time_Change=`echo $Transaction_Response_Time_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Transaction_Response_Time_Change percentage change after making it as int=$Transaction_Response_Time_Change"
+
+    Page_Response_Time_Change=`echo "$Avg_Page_Response_Time" "$Avg_Page_Response_Time_Current" | awk '{print ($1-$2)*100}'`
+    echo "Page_Response_Time_Change before making it int=$Page_Response_Time_Change"
+
+    Page_Response_Time_Change=`echo $Page_Response_Time_Change | awk '{printf "%.0f\n", $1}'`
+    echo "Response time change is=$Page_Response_Time_Change"
+
+    Max_Sessions_Started_Per_Minute_Change_Pct=`echo "$Max_Sessions_Started_Per_Minute" "$Max_Sessions_Started_Per_Minute_Current" | awk '{print ($1-$2)/$1*100}'`
+	echo "Max_Sessions_Started_Per_Minute_Change_Pct before making it int=$Max_Sessions_Started_Per_Minute_Change_Pct"
+
+	Max_Sessions_Started_Per_Minute_Change_Pct=`echo $Max_Sessions_Started_Per_Minute_Change_Pct | awk '{printf "%.0f\n", $1}'`
+	echo "Max_Sessions_Started_Per_Minute_Change_Pct after making it as int=$Max_Sessions_Started_Per_Minute_Change_Pct"
+
+	Avg_Request_Count_Change=`echo "$Avg_Send_Req_Count" "$Avg_Received_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Request_Count_Change is=$Avg_Request_Count_Change"
+
+	Avg_Completed_Request_Count_Change=`echo "$Avg_Completed_Req_Count" "$Avg_Processed_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Completed_Request_Count_Change is=$Avg_Completed_Request_Count_Change"
+
+	Avg_Successful_Request_Count_Change=`echo "$Avg_Successful_Req_Count" "$Avg_Successful_Simu_Req_Count" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+	echo "Avg_Successful_Request_Count_Change is=$Avg_Successful_Request_Count_Change"
+
+
+    Avg_Service_Time_Diff=`echo "$Avg_Res_Time" "$Avg_Service_Time" | awk '{print($1-$2)/$1*100}'| awk '{printf "%.0f\n", $1}'`
+    echo "Avg_Service_Time_Diff is=$Avg_Service_Time_Diff"
+
+}
+
+
+function compare_result_all(){
+    NUM_ARG_ALL=${#opt_array_all[@]}
+    echo "Total Number of Arg are=$NUM_ARG_ALL"
+
+    for((i=0; i < $NUM_ARG_ALL; i++))
+    do
+	echo "Executing count is="$i
+	echo
+	echo "value is as = ${opt_array_all[i]}"
+
+        debug_log "Difference of ${opt_array_all[i]} = ${!opt_array_all[$i]}"
+	
+        if [ ${!opt_array_all[$i]} -gt 5 ]; then
+	    echo "Value inside failure loop is=${opt_array_all[i]}"
+
+            debug_log "Difference of ${opt_array_all[i]} inside failure loop is = ${!opt_array_all[$i]}"
+	    
+            if [ "${opt_array_all[i]}" == "Active_User_Change_Pct" ]; then
+		continue;
+	    else
+		log_status_and_exit_ex "FAIL" "Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric ${opt_array_all[i]} = ${!opt_array_all[$i]} is more than expected difference 5%"
+	    fi
+	fi
+    done
+
+    log_status_and_exit_ex "PASS" "Regression testcase for FSR Mode 1 test Passed"
+}
+
+
+function compare_some_graphs(){
+    NUM_ARG_ALL=${#opt_some_graphs[@]}
+    echo "Inside compare some graphs=$NUM_ARG_ALL"
+
+    for((i=0; i < $NUM_ARG_ALL; i++))
+    do
+	echo "Name of the graphs =${opt_some_graphs[i]}"
+        
+        debug_log "Difference of ${opt_some_graphs[i]} = ${!opt_some_graphs[$i]}"
+
+	if [ ${!opt_some_graphs[$i]} -gt 5 ]; then
+	    echo "Value inside failure loop is=${opt_some_graphs[i]}"
+        
+            debug_log "Difference of ${opt_some_graphs[i]} inside failure loop is = ${!opt_some_graphs[$i]}"
+	    
+            if [ "${opt_some_graphs[i]}" == "Active_User_Change_Pct" ]; then
+		continue;
+	    else
+		log_status_and_exit_ex "FAIL" "Regression test for FSR  Mode 1 failed;because difference of  baseline and current test metric ${opt_some_graphs[i]} = ${!opt_some_graphs[$i]} is more than expected difference 5%"
+	    fi
+	
+        fi
+    done
+
+    log_status_and_exit_ex "PASS" "Regression testcase for FSR Mode 1 test Passed"
+}
+
+
+function get_test_status(){
+    opt_array=(`cat $InputFile | awk -F' ' '{print $1}'`)
+    if [ "${opt_array[0]}" == "ALL" ]; then
+        opt_array_all=(`cat $NewFileData |awk -F' ' '{print $1}'`)	
+        compare_result_all
+    else
+        opt_some_graphs=(`cat $InputFile |awk -F' ' '{print $1}'`) 
+        compare_some_graphs
+    fi
+}
+
+
+function main(){ 
+    get_baseline_values
+    get_current_tr_values   
+    get_compared_values
+    get_test_status
+}
+
+
+main
+
+
+exit 0

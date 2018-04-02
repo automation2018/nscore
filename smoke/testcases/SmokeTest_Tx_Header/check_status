@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+T_NAME=$(get_tname)
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+REQ_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/ns_logs/req_rep"
+tx_array=($(awk -F "|" '{print $1}' $TX_DETAIL_FILE | tail -n +2 | head -n -1))
+debug_log "tx_array=${tx_array[*]}"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-065-001") validate_tx_header-01 ;;
+        "SMOKE-065-002") validate_tx_header-02 ;;
+        "SMOKE-065-003") validate_tx_header-03 ;;
+        "SMOKE-065-004") validate_tx_header-04 ;;
+        "SMOKE-065-005") validate_tx_header-05 ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+function check_tx_in_req(){
+for i in ${tx_array[@]}; do 
+    debug_log "TX=$i"
+    Header_Tx=$(grep -rbwo "CavTxName: $i" $REQ_FILE/url_req_*)
+    debug_log "Header_Tx=$Header_Tx"
+    if [ ! -z "${Header_Tx}" ]; then
+        debug_log "Header found in main URL"
+    else
+        log_status_and_exit_ex "FAIL" "Header CavTxName: $i not passed in main URL while we use G_SEND_NS_TX_HTTP_HEADER $1 1"
+    fi 
+done
+   return 0;
+}
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+function validate_tx_header-01(){
+  for i in ${tx_array[@]}; do
+     Header_Tx=$(grep -rbwo "CavTxName: $i" $REQ_FILE/url_req_*)
+     debug_log "Header_Tx=$Header_Tx"
+      if [  -z "${Header_Tx}" ]; then
+          debug_log "Header Not Found in main URL"
+      else
+          log_status_and_exit_ex "FAIL" "Header CavTxName: $i passed in main URL while we use G_SEND_NS_TX_HTTP_HEADER ALL 0"
+      fi
+  done
+}
+
+function validate_tx_header-02(){
+    check_tx_in_req ALL
+    status=$?
+    debug_log "status=$status"
+    if [ $status -eq 0]; then
+        log_status_and_exit_ex "PASS" "Header CavTxName Passed in main URL while we use G_SEND_NS_TX_HTTP_HEADER ALL 1"
+        
+    fi
+}
+
+function validate_tx_header-03(){
+    check_tx_in_req G1
+    status=$?
+    debug_log "status=$status"
+    if [ $status -eq 0]; then
+        log_status_and_exit_ex "PASS" "Header CavTxName Passed in main URL while we use G_SEND_NS_TX_HTTP_HEADER G1 1"
+        
+    fi
+	   
+}
+function validate_tx_header-04(){
+	for i in ${tx_array[@]}; do
+    Header_Tx=$(grep -rbwo "CavTxName: $i" $REQ_FILE/url_req_*)
+    Inline_Header_Tx=$(grep -rbwo "CavTxName: InLine.$i" $REQ_FILE/url_req_*)
+    debug_log "Header_Tx=$Header_Tx  and Inline_Header_Tx=$Inline_Header_Tx"
+    if [ ! -z "${Header_Tx}" ] && [ ! -z "${Inline_Header_Tx}" ]; then
+        debug_log "Header Found in both main and Inline URL"
+    else
+        log_status_and_exit_ex "FAIL" "Header not Passed CavTxName: $i and CavTxName: InLine.$1 in main URL and Inline url while we use G_SEND_NS_TX_HTTP_HEADER ALL 2"
+      fi
+  done
+	   
+}
+
+function validate_tx_header-05(){
+	for i in ${tx_array[@]}; do
+    Header_Tx=$(grep -rbwo "CavTxName: $i" $REQ_FILE/url_req_*)
+    Inline_Header_Tx=$(grep -rbwo "CavTxName: InLine.$i" $REQ_FILE/url_req_*)
+    debug_log "Header_Tx=$Header_Tx  and Inline_Header_Tx=$Inline_Header_Tx"
+    if [ ! -z "${Header_Tx}" ] && [ ! -z "${Inline_Header_Tx}" ]; then
+        debug_log "Header Found in both main and Inline URL"
+    else
+        log_status_and_exit_ex "FAIL" "Header not Passed CavTxName: $i and CavTxName: InLine.$1 in main URL and Inline url while we use G_SEND_NS_TX_HTTP_HEADER G1 2"
+      fi
+  done
+
+}
+main
+
+
+exit 0

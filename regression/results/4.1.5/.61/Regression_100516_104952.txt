@@ -1,0 +1,14 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,51072,1,2,pass,Reression test for FCU with RampUp in Step mode passed
+REG-002-001,51073,1,2,pass,Reression test for FCU with RampUp in Rate mode passed
+REG-003-001,51076,1,2,pass,Regression testcase for FSR  Mode 1 test Passed
+REG-004-001,51077,1,2,fail,Reression test for FSR Mode 2 failed;because difference of  baseline and current test metric Sessions Started/Minute(NA) = 11 is more than expected difference 5%
+REG-005-001,51078,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-006-001,51079,1,2,pass,Regression testcase for NS supported protocols such as POP3 SMTP & FTP test Passed
+REG-007-001,51080,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,51081,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,51082,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,51083,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,51084,1,2,pass,RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied
+REG-007-006,51085,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,51086,1,2,fail,Reression test for Replay Access Logs failed;because difference of  baseline and current test metric Average Transaction Response Time (Secs)(NA) = 100 is more than expected difference 5%

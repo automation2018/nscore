@@ -1,0 +1,31 @@
+#!/bin/bash
+
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+echo "T_NAME=$T_NAME"
+
+function smoke_keep_alive()
+{
+keep_alive_val_float=`grep "Number Of Connections(NA)" /home/netstorm/work/logs/TR$T_RUN_ID/summary_gdf.data | cut -d '|' -f8`
+keep_alive_val=`printf '%.0f\n' $keep_alive_val_float`
+}
+
+if [ "$T_NAME" == "Smoke_KeepAlive_KA_100" ];then
+    smoke_keep_alive
+    if [ $keep_alive_val -eq 8 ];then
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+fi
+
+if [ "$T_NAME" == "Smoke_KeepAlive_KA_0" ];then
+    smoke_keep_alive
+    if [ $keep_alive_val -eq 0 ];then
+        log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+        log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+fi
+
+exit 0

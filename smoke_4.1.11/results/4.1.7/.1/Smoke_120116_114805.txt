@@ -1,0 +1,3 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-040-05,65232,1,1,fail,auto cookie mode 2 0 failed because it consider the domain and server host didn't match. it enable with name as a Key
+SMOKE-040-06,65233,1,1,pass,auto cookie mode is 0 1 so cookie header shouldn't be added in url_req file 

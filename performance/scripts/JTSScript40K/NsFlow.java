@@ -48,5 +48,5 @@ public interface NsFlow
     public final int TxErr94 = 94;
     public final String INLINE_URLS = "begin_InLine_URLs";
     public final String END_INLINE = "end_InLine_URL";
-    public int execute(NSApi nsApi);
+    public int execute(NSApi nsApi) throws Exception;
 }

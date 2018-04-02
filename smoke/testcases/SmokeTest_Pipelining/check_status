@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+DEBUG_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+function main(){
+    case $(get_tname) in
+        "SMOKE-045-001") validate_Pipelining-001 ;;
+        "SMOKE-045-002") validate_Pipelining-002 ;;
+        "SMOKE-045-003") validate_Pipelining-003 ;;
+        "SMOKE-045-004") validate_Pipelining-004 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+function totalOpen_Close_Connection(){
+expected_Open=$1
+expected_close=$2
+total_Open_Connecttion=$(grep -w "HTTP TCP Conns" ${PROGRESS_REPORT_FILE} | awk -F '=' '{print $5}' | awk '{print $1}')
+total_Close_Connection=$(grep -w "HTTP TCP Conns" ${PROGRESS_REPORT_FILE} | awk -F '=' '{print $6}' | awk -F ')' '{print $1}')
+debug_log "expected_Open:${expected_Open}"
+debug_log "total_Open_Connecttion:${total_Open_Connecttion}"
+debug_log "expected_close:${expected_close}"
+debug_log "total_Close_Connection:${total_Close_Connection}"
+    if [ ${total_Open_Connecttion} -eq ${expected_Open} ] && [ ${total_Close_Connection} -eq ${expected_close} ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
+function validate_Pipelining-001(){
+    totalOpen_Close_Connection 5 5
+    result=$?
+    debug_log "result:${result}"
+    if [ ${result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is disable. So tatal connection should be open/close=5"
+    else
+        log_status_and_exit_ex "FAIL" "1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is disable. So tatal connection should be open/close=5 but it didn't seem like expected result"
+    fi
+}
+
+function validate_Pipelining-002(){
+    totalOpen_Close_Connection 1 1
+    result=$?
+    debug_log "result:${result}"
+    if [ ${result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "1 main URL and 4 Inline URL with pipelining depth as 8 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=1"
+    else
+        log_status_and_exit_ex "FAIL" "1 main URL and 4 Inline URL with pipelining depth as 8 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=1 but it didn't seem like expected result"
+    fi
+
+}
+
+function validate_Pipelining-003(){
+    totalOpen_Close_Connection 2 2
+    result=$?
+    debug_log "result:${result}"
+    if [ ${result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=2."
+    else
+        log_status_and_exit_ex "FAIL" "1 main URL and 4 Inline URL with pipelining depth as 3 and pipelining is enable giving G_KA_PCT 100. So total connection should be open/close=2 but it didn't seem like expected result"
+    fi
+
+}
+
+function validate_Pipelining-004(){
+    totalOpen_Close_Connection 3 3
+    result=$?
+    debug_log "result:${result}"
+    if [ ${result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "1 main URL and 4 Inline URL with pipelining depth as 2 and pipelining is enable giving G_KA_PCT 100 and G_NUM_KA ALL 3 3.So total connection should be open/close=3"
+    else
+        log_status_and_exit_ex "FAIL" "1 main URL and 4 Inline URL with pipelining depth as 2 and pipelining is enable giving G_KA_PCT 100 and G_NUM_KA ALL 3 3.So total connection should be open/close=3. but it didn't seem like expected result"
+    fi
+
+}
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+
+main
+
+
+exit  0

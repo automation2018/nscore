@@ -10,6 +10,11 @@
                  password="${remote.password}" 
                  command="${command.check.conf}"
                  trust="true"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}" 
+                 password="${remote.password}" 
+                 command="${command.correlation.check.conf}"
+                 trust="true"/>
     </target>
 
 
@@ -72,9 +77,10 @@
     </target>
     
     <!-- Task: Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite--> 
-    <target name="copy-hpd-file" 
-             depends="restart-httpd"
-             description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">
+    <!--<target name="copy-hpd-file" depends="restart-httpd" description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">-->
+     <target name="copy-hpd-file"  description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">
+    <!--<target name="copy-hpd-file" description="Copies hpd.conf file to Hpd/NO server to initiate server for smoke suite">-->
+
         <scp file="${hpd.conf.ns}" 
              todir="${remote.user}@${remote.host}:${hpd.conf.no}" 
              password="${remote.password}" trust="true"/>
@@ -99,14 +105,15 @@
     
     <!-- Task: Restarts and check status of NO server--> 
     <target name="hpd-process-restart" 
-            depends="check-conf,check-vsftpd-process,copy-hpd-file, copy" 
+            depends="check-conf,copy-hpd-file, copy, start-apache2" 
             description="Restarts and check status of NO server">
+        <exec command="nsu_server_admin -g -i -s '10.10.30.96' -c '/etc/init.d/hpd restart'"/>
         <sshexec host="${remote.host}"
                  username="${remote.user}" 
                  password="${remote.password}" 
                  command="${command.hpd.restart}" 
                  trust="true"/>
-        <sleep seconds="20"/>
+        <sleep seconds="50"/>
         <sshexec host="${remote.host}"  
                  username="${remote.user}" 
                  password="${remote.password}" 
@@ -139,8 +146,16 @@
         <sshexec host="${remote.host}" 
                  username="${remote.user}"
                  password="${remote.password}"
-                 command="${command.httpd.restart}"
-                 trust="true"/>
+                 command="${command.httpd.stop}"
+                 trust="true"
+                 failonerror="false"/>
+        <sleep seconds="10"/>
+        <sshexec host="${remote.host}" 
+                 username="${remote.user}"
+                 password="${remote.password}"
+                 command="${command.httpd.start}"
+                 trust="true"
+                 failonerror="false"/>
         <sleep seconds="10"/>
         <sshexec host="${remote.host}" 
                  username="${remote.user}" 
@@ -163,7 +178,7 @@
     
     <!-- Task: Initiates excution of Smoke testsuite--> 
     <target name="smoke" 
-            depends="hpd-process-restart, restart-vnc"
+            depends="hpd-process-restart, restart-vnc, trigger-welcome-mail"
             description="Initiates excution of Smoke testsuite">
         <exec executable="/bin/bash" outputproperty="start.time">
             <arg value="-c"/>
@@ -183,7 +198,6 @@
     <!-- Task: Initiates excution of Smoke debug testsuite without sending acknowledgement mails--> 
     <!--<target name="smoke-debug" depends="copy">-->
     <target name="smoke-debug"
-            depends="hpd-process-restart, restart-vnc" 
             description="Initiates excution of Smoke debug testsuite without sending acknowledgement mails">
 
         <exec executable="/bin/bash" taskname="info">
@@ -208,10 +222,10 @@
               user="${mail.user}"
               password="${mail.password}" 
               mailport="587" 
+              enableStartTLS="true"
               tolist="${configured.mail.list.to}" 
-              cclist="${configured.mail.list.cc}"
               messageMimeType="text/html"
-              subject="Smoke: NSCore ${curr.release} B${curr.build} - Started" 
+              subject="[UBUNTU16]Smoke: NSCore ${curr.release} B${curr.build} - Started" 
               messagefile="${startup.mail.file}"
               failonerror="false">
 	    <from address="automation@cavisson.com"/>
@@ -240,26 +254,34 @@
              user="${mail.user}"
              password="${mail.password}" 
              mailport="587" 
-             tolist="${configured.mail.list.to}" 
+             enableStartTLS="true"
              cclist="${configured.mail.list.cc}" 
+             tolist="${configured.mail.list.too}" 
              messageMimeType="text/html"
-             subject="Smoke: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
+             subject="[UBUNTU16]Smoke: NSCore ${curr.release} B${curr.build} - ${buil.status.header}" 
              messagefile="${mail.result.file}"
 			 failonerror="false">
            <from address="automation@cavisson.com"/>   		   
        </mail>	       
-   </target>	   
-  
+   </target>	
+ <!-- Restarting apache2 of 10.10.30.37 for HTTP2 Test cases --> 
+    <target name="start-apache2">
+     <exec command="nsu_server_admin -g -i -s '10.10.30.37' -c '/etc/init.d/apache2 restart'"/>
+    </target>       
+
    <!-- Task: Declaring default target to initiate build--> 
    <target name="run" depends="smoke, trigger-result-mail" description="Declaring default target to initiate build">
    </target>
    
    <!-- Task: Declaring default target to initiate build--> 
-   <target name="debug" depends="smoke-debug" description="Declaring default target to initiate build">
+   <target name="debug" depends="hpd-process-restart, restart-vnc, smoke-debug" description="Declaring default target to initiate build">
    </target>
    
+   <!-- Task: Declaring default target to initiate build without resatrting HTTP,VNC,HTTPD etc--> 
+   <target name="debug-without-restart" depends="copy,smoke-debug" description="Declaring default target to initiate build without resatrting HTTP,VNC,HTTPD etc"/>
+
    <!-- Task: To test standalone mailing processes--> 
    <target name="test" depends="trigger-result-mail" description="To test standalone mailing processes">
    </target>
-
+   
 </project>

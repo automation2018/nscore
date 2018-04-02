@@ -1,0 +1,432 @@
+<?xml version="1.0" ?>
+<project name="NetStorm Core Automation: Master Build File" basedir="." default="start-without-tag">
+
+
+   <!--Task: Declaration of build variables--> 
+   <property name="ns.wdir" value="/home/netstorm/work"/>
+   <property name="smoke.build.file" value="smoke/build.xml"/>
+   <property name="reg.build.file" value="regression/build.xml"/>
+   <property name="perf.build.file" value="performance/build.xml"/>
+   <property name="func.build.file" value="functional/build.xml"/>
+   <property name="mail.config.shell" value="${basedir}/lib/update_mail_properties"/>
+   <property name="mail.config.properties.file" value="${basedir}/lib/mail.properties.file"/>
+   <property name="smoke.trend.start" value="NA"/>
+   <property name="smoke.trend.stop" value="NA"/>
+   <property name="smoke.trend.status" value="ABORT"/>
+   <property name="test.stop.start" value="NA"/>
+   <property name="test.stop.stop" value="NA"/>
+   <property name="test.stop.status" value="ABORT"/>
+   <property name="build.upgrade.start" value="NA"/>
+   <property name="build.upgrade.stop" value="NA"/>
+   <property name="build.upgrade.status" value="ABORT"/>
+   <property name="test.start.start" value="NA"/>
+   <property name="test.start.stop" value="NA"/>
+   <property name="test.start.status" value="ABORT"/>
+   <property name="host.ip" value="on host 216.66.23.194"/>
+   <property name="mail.subject" value="Build upgraded and test started ${host.ip}"/>
+   <property name="nde.mail.out.html" value="/home/automation/workbench/automation/nscore/logs/out.html"/>
+   <property name="netstorm.file" value="netstorm.debug"/>
+
+   <!-- TO use ant conditional following tasks need to be included here-->
+   <taskdef resource="net/sf/antcontrib/antlib.xml">
+	   <classpath>
+		   <fileset dir="/usr/share/ant/lib/ant-contrib"/>
+	   </classpath>
+   </taskdef>
+
+
+   <!--Task: Sleep interval after each suite completion--> 
+   <target name="take-knap" description="This target is called to make system idle for 10 seconds">
+	   <echo message="Idling server for 10 seconds"/>
+	   <sleep seconds="10"/>
+	   <echo message="System is now idle; going to perform next test metric"/>
+   </target>
+
+
+   <!--Task: Invoking smoke automation suite to run--> 
+   <target name="smoke" description="Triggers SMOKE automation suite">
+	   <tstamp>
+		   <format property="smoke.trend.start.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+	   </tstamp>
+	   <var name="smoke.trend.start" value="${smoke.trend.start.t}"/>
+
+	   <ant antfile="${smoke.build.file}" target="run" useNativeBasedir="true"/>
+       <var name="core-subject" value="smoke"/>
+       <var name="netstorm.file" value="netstorm.debug"/>
+       <antcall target="check-cores"/>
+   </target>   
+
+   <!--Task: Invoking smoke debug automation suite to run--> 
+   <target name="smoke-debug" description="Triggers SMOKE DEBUG automation suite" depends="mount_tmpfs">
+	   <ant antfile="${smoke.build.file}" target="debug" useNativeBasedir="true"/>
+       <!--var name="core-subject" value="smoke"/>
+       <var name="netstorm.file" value="netstorm.debug"/>
+       <antcall target="check-cores"/-->
+   </target> 
+
+   <!--Task: Invoking smoke debug automation suite to run without restarting hpd,HTTPD,VNC--> 
+   <target name="smoke-debug-without-restart" description="Triggers SMOKE DEBUG automation suite" depends="mount_tmpfs">
+	   <ant antfile="${smoke.build.file}" target="debug-without-restart" useNativeBasedir="true"/>
+       <!--var name="core-subject" value="smoke"/>
+       <antcall target="check-cores"/-->
+   </target> 
+
+   <!--Task: Invoking regression debug suite to run--> 
+   <target name="reg-debug" description="Triggers REGRESSION DEBUG automation suite">
+	   <ant antfile="${reg.build.file}" target="reg-debug" useNativeBasedir="true"/>
+   </target>   
+   
+   <!--Task: Invoking regression debug suite to run-->
+    <target name="reg-debug-without-hpd" description="Triggers REGRESSION DEBUG automation suite without HPD start">
+        <ant antfile="${reg.build.file}" target="reg-debug-without-HPD-restart" useNativeBasedir="true"/>
+    </target>
+
+
+   <!--Task: Invoking smoke automation suite to run--> 
+   <target name="regression" description="Triggers REGRESSION automation suite">
+	   <ant antfile="${reg.build.file}" target="run" useNativeBasedir="true"/>
+       <var name="core-subject" value="regression"/>
+       <var name="netstorm.file" value="netstorm"/>
+       <antcall target="check-cores"/>
+   </target>
+   
+   <!--Task: Invoking smoke performance suite to run--> 
+   <target name="performance" description="Triggers PERFORMANCE automation suite">
+	   <ant antfile="${perf.build.file}" target="perf" useNativeBasedir="true"/>
+       <var name="core-subject" value="performance"/>
+       <var name="netstorm.file" value="netstorm"/>
+       <antcall target="check-cores"/>
+   </target>
+
+
+   <!-- Task: Run SSL Perf Test--> 
+   <target name="perf-ssl" description="Triggers SSL CIPHER PERF automation suite">
+	   <ant antfile="${perf.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
+   </target>
+
+   
+   <!-- Task: Run functional --> 
+   <target name="functional" description="Triggers functional automation suite">
+	   <ant antfile="${func.build.file}" target="ssl-perf-test" useNativeBasedir="true"/>
+   </target>
+
+
+   <!-- Evaluate smoke test trend and change nde test on remote server-->
+   <target name="eval-smoke-trend">
+	   <echo> smoke start time = ${smoke.trend.start}</echo>
+	   <exec executable="bash" outputproperty="release.info">
+		  <arg value="-c"/>
+		  <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+	   </exec>
+	   
+	   <exec executable="bash" outputproperty="build.info">
+		   <arg value="-c"/>
+		   <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+	   </exec>
+	   
+	   <echo message="Going to evaluate smoke test trend for ${release.info}.B${build.info}"/>
+	   
+	   <exec executable="python" 
+		     failonerror="false" 
+			 resultproperty="smoke.trend" 
+			 outputproperty="smoke.pass.pct">
+		   <arg value="update-nde/get_smoke_trend"/>
+		   <arg value="-c"/>
+		   <arg value="1"/>
+		   <arg value="-r"/>
+		   <arg value="${release.info}"/>
+		   <arg value="-b"/>
+		   <arg value="${build.info}"/>
+	   </exec>
+	   
+	   <tstamp>
+		   <format property="smoke.trend.stop.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+	   </tstamp>
+	   <var name="smoke.trend.stop" value="${smoke.trend.stop.t}"/>
+	   <echo message="smoke trend status is ${smoke.trend}"/>
+	</target>
+
+    <!-- Task :
+         Tag build if smoke test pass percentage is more than or equal to 90%
+    -->
+    <target name="start-tag" depends="eval-smoke-trend">
+		<if>
+			<equals arg1="${smoke.trend}" arg2="0"/>
+			<then>
+            <scp file="lib/tag_build.py" todir="build@10.10.30.19:/tmp" password="bu1ld+" trust="true"/>
+            <sshexec host="10.10.30.19"
+                    username="build"
+                    password="bu1ld+"
+                    command="python /tmp/tag_build.py -r ${release.info}.${build.info}"
+                    trust="true"
+                    output="/tmp/tag_build.log"/>
+            </then>
+        </if>
+    </target>
+
+	<!-- Task : 
+	    1. add server to analytics channnel
+        2. stop nde test
+        3. upgrade server 
+        4. start test again 
+    -->	 
+	<target name="update-nde-test-config" depends="eval-smoke-trend, take-knap">
+		<if>
+			<equals arg1="${smoke.trend}" arg2="0"/>
+			<then>
+				<var name="smoke.trend.status" value="PASS"/>
+				<exec executable="bash" outputproperty="release.info">
+				   <arg value="-c"/>
+				   <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+				</exec>
+				
+				<exec executable="bash" outputproperty="build.info">
+					<arg value="-c"/>
+					<arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+				</exec>
+
+				<property name="upgrade.url" value="http://10.10.30.37/builds/upgrade"/>
+				<property name="upgrade.url.query" value="servers=216.66.23.194&amp;buildname=${release.info}.${build.info}&amp;controller=work"/>
+				
+				<echo message="smoke trend validation passed"/>
+				<echo message="going to copy manage test operations shell to remote server"/>
+				<exec executable="nsu_server_admin" 
+					  resultproperty="shell.ftp.data"
+					  failonerror="true">
+					<arg value="-g"/>
+					<arg value="-i"/>
+					<arg value="-s"/>
+					<arg value="216.66.23.194"/>
+					<arg value="-F"/>
+					<arg value="update-nde/get_running_test_run.sh"/>
+					<arg value="-D"/>
+					<arg value="/tmp"/>
+				</exec>
+				
+				<echo message="agent is ftped successfully as status = ${shell.ftp.data}"/>
+				<echo message="running command to stop test if running...."/>
+				<tstamp>
+					<format property="test.stop.start.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+				</tstamp>
+				<var name="test.stop.start" value="${test.stop.start.t}"/>
+
+				<exec executable="nsu_server_admin" 
+					  resultproperty="test.stop.data"
+					  failonerror="true">
+					<arg value="-g"/>
+					<arg value="-i"/>
+					<arg value="-s"/>
+					<arg value="216.66.23.194"/>
+					<arg value="-c"/>
+					<arg value="/tmp/get_running_test_run.sh stop"/>
+				</exec>
+				<tstamp>
+					<format property="test.stop.stop.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+				</tstamp>
+				<var name="test.stop.stop" value="${test.stop.stop.t}"/>
+				<if>
+					<equals arg1="${test.stop.data}" arg2="0"/>
+					<then>
+						<var name="test.stop.status" value="PASS"/>
+						<echo message="nde test stopped successfully as status= ${test.stop.data}"/>
+						<echo message="adding 216.66.23.194 server to the database....."/>
+
+						<get src="http://10.10.30.37/builds/addsrv?ip=216.66.23.194" 
+							 dest="/tmp/nde_operations.txt"
+							 verbose="true"/>
+						
+						<echo message="216.66.23.194 host is added into analytics system"/>
+						<echo message="driving analytics api to upgrade current build...."/>
+						<tstamp>
+							<format property="build.upgrade.start.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+						</tstamp>
+						<var name="build.upgrade.start" value="${build.upgrade.start.t}"/>
+						
+						<get src="${upgrade.url}?${upgrade.url.query}" 
+							dest="/tmp/nde_operations.txt"
+							verbose="true"/>
+						
+						<echo message="upgrade api is requested OK.going to sleep for a while to complete it"/>
+                        <sleep seconds="600"/>
+                        <echo message="after sleep"/>
+						<tstamp>
+							<format property="build.upgrade.stop.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+						</tstamp>
+                        <echo message="after tstamp"/>
+						<var name="build.upgrade.stop" value="${build.upgrade.stop.t}"/>
+						 
+						<exec executable="bash" outputproperty="server.version">
+							<arg value="-c"/>
+							<arg value="nsu_server_admin -g -i -s 216.66.23.194 -c &apos;cat /home/netstorm/work/etc/version&apos;"/>
+						</exec>
+						<echo> version on 216.66.23.194 machine=${server.version}</echo>
+						<exec executable="cat" outputproperty="local.version">
+							<arg value="/home/netstorm/work/etc/version"/>
+						</exec>
+						<echo> vesrion on 10.10.30.37 machine=${local.version}</echo>
+						<if>
+							<equals arg1="${server.version}" arg2="${local.version}"/>
+							<then>
+								<echo>the version on both machine are same</echo>
+								<var name="build.upgrade.status" value="PASS"/>
+								<tstamp>
+									<format property="test.start.start.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+								</tstamp>
+								<var name="test.start.start" value="${test.start.start.t}"/>
+								<echo message="going to re-start the test after all config changes"/>
+								<exec executable="nsu_server_admin" 
+									  resultproperty="run.nde.test"
+									  output="/tmp/.ndetestupdates">
+									<arg value="-g"/>
+									<arg value="-i"/>
+									<arg value="-s"/>
+									<arg value="216.66.23.194"/>
+									<arg value="-c"/>
+									<arg value="/tmp/get_running_test_run.sh start"/>
+								</exec>
+								<echo message="test start status ${run.nde.test}"/>
+								<tstamp>
+									<format property="test.start.stop.t" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+								</tstamp>
+								<var name="test.start.stop" value="${test.start.stop.t}"/>
+                                <if>
+                                    <resourcecontains resource="/tmp/.ndetestupdates" substring="No test is running.Hence exiting"/>
+									<then>
+										<var name="test.start.status" value="FAIL"/>
+                                        <var name="mail.subject" value="Failed to start test ${host.ip}"/>
+                                        <echo message="Failed to start test ${host.ip}"/>
+									</then>
+									<else>
+                                        <var name="test.start.status" value="PASS"/>
+                                        <echo message="Test start ${host.ip}"/>
+									</else>
+								</if>
+							</then>
+							<else>
+								<var name="build.upgrade.status" value="FAIL"/>
+								<var name="mail.subject" value="Failed to upgrade build ${host.ip}"/>
+							</else>
+						</if>
+					</then>
+					<else>
+						<var name="test.stop.status" value="FAIL"/>
+						<var name="mail.subject" value="Failed to stop test ${host.ip}"/>
+					</else>
+				</if>
+			</then>
+			<else>
+				<var name="smoke.trend.status" value="FAIL"/>
+				<var name="mail.subject" value="Build not upgraded ${host.ip},since Smoke pass percentage(${smoke.pass.pct}) is less than threshold percentage(90) "/>
+			</else>
+		</if>
+		<tstamp>
+			<format property="smoke.end.time" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+        </tstamp>
+        
+        <exec executable="python">
+			<arg value="update-nde/format-mail.py"/>
+			<arg value="${smoke.trend.start}"/>
+			<arg value="${smoke.trend.stop}"/>
+			<arg value="${smoke.trend.status}"/>
+			<arg value="${test.stop.start}"/>
+			<arg value="${test.stop.stop}"/>
+			<arg value="${test.stop.status}"/>
+			<arg value="${build.upgrade.start}"/>
+			<arg value="${build.upgrade.stop}"/> 
+			<arg value="${build.upgrade.status}"/>
+			<arg value="${test.start.start}"/>
+			<arg value="${test.start.stop}"/>
+			<arg value="${test.start.status}"/>
+			<arg value="${smoke.end.time}"/>
+		</exec>
+		
+		<mail mailhost="websrv.cavisson.com" 
+              user="automation@cavisson.com"
+              password="Cavisson!" 
+              mailport="587" 
+			  subject="[NDE Continuous Monitioring] ${mail.subject}"
+              tolist="dl-qa-auto@cavisson.com, dl-qa-nd@cavisson.com"
+              cclist="functionalheads@cavisson.com, neeraj@cavisson.com, dl-sup-projmgt@cavisson.com"
+              messagefile="${nde.mail.out.html}"
+			  messagemimetype="text/html">
+			<from address="automation@cavisson.com"/>   		   
+		</mail>	       
+	</target>
+    <target name="send-core-mail">
+        
+        <mail mailhost="websrv.cavisson.com" 
+            user="automation@cavisson.com"
+            password="Cavisson!" 
+            mailport="587" 
+            subject="[ALERT] Core dump found after ${core-subject} in ${release.info} B${build.info}"
+            tolist="dl-qa-auto@cavisson.com, neeraj@cavisson.com"
+            cclist="functionalheads@cavisson.com, dl-sup-projmgt@cavisson.com"
+            message="${core.mail.html}"
+            messagemimetype="text/html">
+            <from address="automation@cavisson.com"/>   		   
+        </mail>	       
+    </target>
+
+    <target name="check-cores">
+        <exec executable="python" outputproperty="core.mail.html">
+            <arg line="nsi_find_core.py -f ${netstorm.file}" />
+        </exec>
+        <if>
+            <not>
+                <equals arg1="${core.mail.html}" arg2="No core found"/>
+            </not>
+            <then>
+                <exec executable="bash" outputproperty="release.info">
+                    <arg value="-c"/>
+                    <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+                </exec>
+                
+                <exec executable="bash" outputproperty="build.info">
+                    <arg value="-c"/>
+                    <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+                </exec>
+                <antcall target="send-core-mail"/>
+            </then>
+        </if>
+    </target>
+        
+        <!-- Workflow
+         1. Gets idle for 10 second 
+		 2. Runs NS performance automation suite
+         3. Gets idle for 10 second 
+		 4. Runs NS regression automation suite
+	-->
+    <target name="run-reg-and-perf" 
+        depends="take-knap, 
+                 performance,
+                 take-knap, 
+                 regression">
+                 <echo message="all test ran successfully"/>
+             </target>
+
+    <target name="start-without-tag" depends="smoke" 
+        description="Default target which inititates entire automation process and not tag the build">
+                 <!--parallel-->
+                     <echo message="smoke ran successfully"/>
+            <!--antcall target="update-nde-test-config"/-->
+            <antcall target="run-reg-and-perf"/>
+        <!--/parallel-->
+    </target>
+
+    <target name="start-with-tag" depends="smoke" 
+        description="target which start entire automation process and tag entire builld too">
+            <parallel>
+                <echo message="smoke ran successfully"/>
+                <antcall target="start-tag"/>
+                <antcall target="run-reg-and-perf"/>
+            </parallel>
+    </target>
+
+    <target name="mount_tmpfs" description="Mounts tmpfs if not already present">
+        <exec executable="/bin/bash" taskname="mount_tmpfs">
+            <arg value="mount_tmpfs.sh"/>
+        </exec>
+    </target>
+    <target name='run-debug' description="run smoke,performance, regression in debug mode"
+        depends='smoke-debug, reg-debug'/>
+</project>

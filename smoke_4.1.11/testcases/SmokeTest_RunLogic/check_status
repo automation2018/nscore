@@ -1,0 +1,65 @@
+#!/bin/bash
+
+source $NS_WDIR/lib/automation_util
+
+function main(){
+case $(get_tname) in
+    "SMOKE-012-001") handle_percentage_case ;;
+    "SMOKE-012-002") handle_percentage_case ;;
+    "SMOKE-012-003") handle_percentage_case ;;
+    "SMOKE-012-004") handle_sequence_case ;;
+    "SMOKE-012-005") handle_switch_case TxnTours ;;
+    "SMOKE-012-006") handle_switch_case TxnLoginLogout ;;
+    "SMOKE-012-007") handle_switch_case TxnPassenger ;;
+    "SMOKE-012-008") handle_switch_case TxnReservation ;;
+    "SMOKE-012-009") handle_switch_case TxnTours ;;
+    *) log_status_and_exit_ex "FAIL" "No testcase matched" 
+esac
+}
+
+function handle_switch_case(){
+    expectedTxName="$1"
+    executedTxName=$(cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | awk 'NR==2')
+    
+    if [ "$executedTxName" == "$expectedTxName" ];then
+        log_status_and_exit_ex "PASS" "Runlogic for handle_switch_case block test Passed"
+    else
+        log_status_and_exit_ex "FAIL" "Runlogic for handle_switch_case block test Failed"
+    fi
+}
+
+function handle_sequence_case(){
+    TotalSuccTxnCount=$(grep "Trans. Success" $NS_WDIR/logs/TR$T_RUN_ID/summary.data | cut -d '|' -f5)
+    TxnExecutionSequence=$(cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | sed -n '2,5p' | tr '\n' ',' | cut -d ',' -f1,2,3,4)
+    
+    if [ "$TxnExecutionSequence" == "TxnLoginLogout,TxnPassengerDetail,TxnReservation,TxnTours" ] && \
+       [ "$TotalSuccTxnCount" == "4" ];then
+        log_status_and_exit_ex "PASS" "Runlogic for sequence flows test Passed" 
+    else
+	log_status_and_exit_ex "FAIL" "Runlogic for sequence flows test Failed"
+    fi
+}
+
+function handle_percentage_case(){
+    get_random_value=$(grep -a get_random_number $NS_WDIR/logs/TR$T_RUN_ID/debug.log | awk 'NR==3' | cut -d '|' -f12 | cut -d ',' -f1 | awk '{print $3}')
+    per_value_1=$(grep "per1\ =" $NS_WDIR/logs/TR$T_RUN_ID/$(get_test_partition)/scripts/Smoke/Smoke/Smoke_RunLogic_Pct/runlogic.c | awk '{print $4}' | cut -d ';' -f1)
+    ExecutedTxName=$(cat $NS_WDIR/logs/TR$T_RUN_ID/trans_detail.dat | cut -d '|' -f1 | awk 'NR==2')
+
+    if [ $((get_random_value)) -le $((per_value_1)) ];then
+       TxExec=TxnLoginLogout
+    else
+       TxExec=TxnPassenger
+    fi
+    
+    if [ "$ExecutedTxName" == "$TxExec" ];then
+	log_status_and_exit_ex "PASS" "Runlogic for percentaged block flow test Passed"
+    else
+	log_status_and_exit_ex "FAIL" "Runlogic for percentaged block flow test Failed"
+    fi
+}
+
+
+main
+
+
+exit 0

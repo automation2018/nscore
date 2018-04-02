@@ -105,7 +105,7 @@ function copy_logs(){
 
 # Returns count of testcase for current testsuite
 function get_test_case_count() {
-    testcases=$(cat testsuites/${testSuite}.conf |grep -v "#" | cut -d ' ' -f2)
+    testcases=$(cat testsuites/${suite_conf} |grep -v "#" | cut -d ' ' -f2)
     count=0
   
     for testcase in ${testcases}
@@ -211,13 +211,21 @@ function main() {
 
 
 # Permit only 'automation' user to run test
-[ "X${USER}" != "Xautomation" ] && echo "ERROR: You must log in with 'automation' user" && exit -1
+[ "X${USER}" != "Xnetstorm" ] && echo "ERROR: You must log in with 'netstorm' user" && exit -1
 
 
 # Store all command line arguments to shell
 testSuite="${1}"
 debug_opt="${2}"
 
+
+if [ "$testSuite" == "Performance_Cps" ];then
+    suite_conf="Performance_Cps.conf"
+elif [ "$testSuite" == "Performance" ];then
+    suite_conf="Performance.conf"
+else
+    suite_conf="Performance_SSL.conf" 
+fi
 
 # Execution begins from here 
 main

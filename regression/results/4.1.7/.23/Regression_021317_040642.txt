@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,76722,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,76723,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,76724,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,76725,1,2,fail,FSR  Mode 2 testcase failed because Sessions Started/Minute(NA) in baseline testrun found is 790.8 and Sessions Started/Minute(NA) in current testrun is 637.978 are having difference of 19.3249873546% which exceeed the tolerance of 5%
+REG-005-001,76726,1,2,fail,Replay Access Logs testcase failed because TCP Receive Throughput (Kbps)(NA) in baseline testrun found is 2043.384 and TCP Receive Throughput (Kbps)(NA) in current testrun is 1932.991 are having difference of 5.40245984113% which exceeed the tolerance of 5%
+REG-006-001,76727,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average SMTP Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(smtp);Service Time (Secs)(NA) in current testrun is 17.824 are having difference of -891100.0% which exceeed the tolerance of 5%
+REG-007-001,76728,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,76729,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,76730,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,76731,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,76732,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,76733,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,76734,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.001 and Average Response Time (Secs)(NA) in current testrun is 0.019 are having difference of -1800.0% which exceeed the tolerance of 5%
+REG-010-001,76735,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

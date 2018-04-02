@@ -1,0 +1,237 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Smoke/Smoke/Hpd_Tours_PAT/flow.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+test_case_name=$(get_testcase_name)
+test_console_file="${TS_LOG_DIR}/${test_case_name}/test_run.report"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-021-001") validate_page_as_tx_case ;;
+        "SMOKE-021-002") validate_page_as_tx_case ;;
+        "SMOKE-021-003") validate_page_as_tx_case_003 ;;
+        "SMOKE-021-004") validate_page_as_tx_case_004 ;;
+        "SMOKE-021-005") validate_page_as_tx_case_005 ;;
+        "SMOKE-021-006") validate_num_nvm_001_case ;;
+        "SMOKE-021-007") validate_num_nvm_002_case ;;
+        "SMOKE-021-008") validate_num_nvm_003_case ;;
+        "SMOKE-021-009") validate_num_nvm_004_case ;;
+        "SMOKE-021-010") validate_disable_cookie ;;
+        "SMOKE-021-011") validate_disable_cookie ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+
+function validate_page_as_tx_case(){
+    bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
+    page_name=(`grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}'`)
+    search=$(grep "Transaction Report:" "$P_FILE")
+    
+    if [ $bit -eq 0 ] && [ -z "${search}" ];then
+        debug_log "bit=$bit ; No Transaction found for PAGE_AS_TRANSACTION Mode $bit"
+        
+		log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
+    elif [ $bit -eq 1 ] && [ ! -z "${search}" ];then
+        for (( i=0; i<${#page_name[@]} ; i++ ))
+	    do
+		    tx_name=tx_`echo ${page_name[i]}`
+		    tx_search=$(grep "$tx_name" "$P_FILE")
+			if [ ! -z "${tx_search}" ];then
+				debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION Mode $bit"
+			else
+				log_status_and_exit_ex "FAIL" "page as transaction mode $bit testcase failed"
+			fi
+	    done
+        log_status_and_exit_ex "PASS" "page as transaction mode $bit testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode $bit testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 1 1; where transaction names should not start with 'tx_' prefix
+function validate_page_as_tx_case_003(){
+    bit=$(grep "^PAGE_AS_TRANSACTION" "$S_FILE" | awk '{print $NF}')
+    page_name=(`grep "^ *ns_web_url" "$FLOW_FILE" | awk -F'"' '{print $2}'`)
+    search=$(grep "Transaction Report:" "$P_FILE")
+    
+    if [ $bit -eq 1 ] && [ ! -z "${search}" ];then
+        for (( i=0; i<${#page_name[@]}; i++ ))
+	    do
+		tx_name=`echo ${page_name[i]}`
+		tx_search=$(grep "$tx_name" "$P_FILE")
+		    if [ ! -z "${tx_search}" ];then
+		        debug_log "bit=$bit ; Transaction $tx_name found for PAGE_AS_TRANSACTION 1 $bit"
+		    else
+		        log_status_and_exit_ex "FAIL" "page as transaction mode 1 1 testcase failed"
+		    fi
+	    done
+         
+		log_status_and_exit_ex "PASS" "page as transaction mode 1 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 1 1 testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 2 1; grouping pass and fail tx individually(fail tx name as Fail)
+function validate_page_as_tx_case_004(){
+    completed_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "completed [0-9]+" | cut -d ' ' -f2)
+    success_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "succ [0-9]+" | cut -d ' ' -f2)
+    failed_tx=$((completed_tx - success_tx))
+    succ_tx_listed=$(grep -c '_Success' ${TX_DETAIL_FILE})
+    fail_tx_listed=$(grep -c '_Fail' ${TX_DETAIL_FILE})
+    
+    debug_log "completed_tx=$completed_tx;success_tx=$success_tx;failed_tx=$failed_tx;"
+    debug_log "succ_tx_listed=$succ_tx_listed;fail_tx_listed=$fail_tx_listed"
+     
+    if [ $success_tx -eq  $succ_tx_listed ] && [ $fail_tx_listed -eq $failed_tx ]; then
+        log_status_and_exit_ex "PASS" "page as transaction mode 2 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 2 1 testcase failed"
+    fi
+}
+
+
+# Validation for PAGE_AS_TRANSACTION 2 1; grouping pass and fail tx individually(fail tx name with status) 
+function validate_page_as_tx_case_005(){
+    completed_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "completed [0-9]+" | cut -d ' ' -f2)
+    success_tx=$(grep " Transaction Report:" ${P_FILE} | egrep -o "succ [0-9]+" | cut -d ' ' -f2)
+    failed_tx=$((completed_tx - success_tx))
+    fail_tx_reason=$(grep " Transaction Report:" ${P_FILE} | cut -d '/' -f3 | cut -d ':' -f1)
+    succ_tx_listed=$(grep -c '_Success' ${TX_DETAIL_FILE})
+    fail_tx_listed=$(grep -c "_$fail_tx_reason" ${TX_DETAIL_FILE})
+    
+    debug_log "completed_tx=$completed_tx;success_tx=$success_tx;failed_tx=$failed_tx;"
+    debug_log "succ_tx_listed=$succ_tx_listed;fail_tx_listed=$fail_tx_listed"
+     
+    if [ $success_tx -eq  $succ_tx_listed ] && [ $fail_tx_listed -eq $failed_tx ]; then
+        log_status_and_exit_ex "PASS" "page as transaction mode 3 1 testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "page as transaction mode 3 1 testcase failed"
+    fi
+}
+
+
+function validate_num_nvm_001_case(){
+    # Find way to read values from test console
+    total_usr=$(grep "TotalUsers" ${test_console_file} | head -1 |cut -d '=' -f2)
+    groups=($(grep "Group" ${test_console_file} | cut -d '=' -f2 | cut -d ',' -f1))
+    G1=${groups[0]}
+    G2=${groups[1]}
+    G3=${groups[2]}
+    G4=${groups[3]}
+    G5=${groups[4]}
+    group_lenth=${#groups[@]}
+    G_pct_vlus=($(grep "NVM0" ${test_console_file} | cut -d '=' -f3))
+    G1_pct=${G_pct_vlus[0]}
+    G2_pct=${G_pct_vlus[1]}
+    G3_pct=${G_pct_vlus[2]}
+    G4_pct=${G_pct_vlus[3]}
+    G5_pct=${G_pct_vlus[4]}
+    G_pct_vlus_lnth=${#G_pct_vlus[@]}
+    debug_log "G1=${G1}"
+    debug_log "G1_pct=${G_pct_vlus[0]}"
+    debug_log "group_lenth=${group_lenth}"
+    debug_log "groups=`echo ${groups[@]}`"
+    debug_log "Group_pct_values_lenth=${G_pct_vlus_lnth}"
+    debug_log "Group_pct_values=`echo ${G_pct_vlus[@]}`"
+  #  G1_Pct_value=$(grep "NVM0" ${test_console_file} | head -1 | cut -d '=' -f3) #100 output for G1
+    if [ "${G1}" == "G1" ] && [ "${G1_pct}" == "100.00%" ]; then
+        debug_log "Inside first condition"
+        if [ "${G2}" == "G2" ] && [ "${G2_pct}" == "100.00%" ]; then
+            debug_log "Inside second condition"
+            if [ "${G3}" == "G3" ] && [ "${G3_pct}" == "100.00%" ]; then
+                debug_log "Inside third condition"
+                if [ "${G4}" == "G4" ] && [ "${G4_pct}" == "100.00%" ]; then
+                    debug_log "Inside four condition"
+                    if [ "${G5}" == "G5" ] && [ "${G5_pct}" == "100.00%" ]; then
+                        debug_log "Inside five condition"
+                        debug_log "PASSED"
+                        log_status_and_exit_ex "PASS" "nvm testcase passed";
+                    else
+                        debug_log "Failed for G1"
+                        log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G1 ";
+                    fi
+                else
+                    debug_log "Failed for G2"
+                    log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G2 ";
+                fi
+            else
+                debug_log "Failed for G3"
+                log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G3 ";
+            fi
+        else
+            debug_log "Failed for G4"
+            log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G4 ";
+        fi
+    else
+        debug_log "Failed for G5"
+        log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G5 ";
+    fi
+    }
+
+function validate_num_nvm_002_case(){
+    # Find way to read values from test console
+    log_status_and_exit_ex "PASS" "num nvm testcase passed"
+}
+
+function validate_num_nvm_003_case(){
+    # Find way to read values from test console
+    total_usr=$(grep "TotalUsers" ${test_console_file} | head -1 |cut -d '=' -f2)
+    G1_type=$(grep "Group" ${test_console_file} | head -1 | cut -d '=' -f2 | cut -d ',' -f1) #G1 print 
+    G2_type=$(grep "Group" ${test_console_file} | tail -1 | cut -d '=' -f2 | cut -d ',' -f1) #G2 print
+    G1_Pct_value=$(grep "NVM0" ${test_console_file} | head -1 | cut -d '=' -f3) #100 output for G1
+    G2_pct_value=$(grep "NVM1" ${test_console_file}| tail -1 | cut -d '=' -f3)  #100 output for G2
+    debug_log "test console file =${test_console_file}" 
+    debug_log "total user=${total_usr}"
+    debug_log "G1_type=${G1_type}"
+    debug_log "G2_type=${G2_type}"
+    debug_log "G1_Pct_value=${G1_Pct_value}"
+    debug_log "G2_pct_value=${G2_pct_value}"
+    if [ "${total_usr}" == "2" ]; then
+        if [ "${G1_type}" == "G1" ] && [ "${G2_type}" == "G2" ]; then
+            if [ "${G1_Pct_value}" == "100.00%" ] && [ "${G2_pct_value}" == "100.00%" ]; then
+                log_status_and_exit_ex "PASS" "nvm testcase passed";
+            else
+                debug_log "Failed due to pct value"
+                log_status_and_exit_ex "FAIL" "nvm testcase failed due to NVM0 not provide pct=100% for G1 and NVM1 not provide pct=100% for G2";
+            fi
+        else
+            debug_log "Fail due to group type"
+            log_status_and_exit_ex "FAIL" "nvm testcase failed due to Group G1 and Group G2 not found ";
+        fi
+    else
+        debug_log "Fail due to total user"
+        log_status_and_exit_ex "FAIL" "nvm testcase failed due to not getting total user according to define in test case"
+    fi
+}
+
+function validate_num_nvm_004_case(){
+    # Find way to read values from test console
+    log_status_and_exit_ex "PASS" "num nvm testcase passed"
+}
+
+
+function validate_disable_cookie(){
+    log_status_and_exit_ex "PASS" "disable cookies testcase passed"
+}
+
+
+main
+
+
+exit 0
+

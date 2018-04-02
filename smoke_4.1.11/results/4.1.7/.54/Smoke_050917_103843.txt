@@ -1,0 +1,6 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-004-007,10057,1,1,fail,HTTP2 Upgrade Mode- Redirection upto 5 depth without using parent url method for redirected url failed because completed URL is not equal to success due to 4xx error
+SMOKE-004-008,10058,1,1,fail,HTTP2 Upgrade Mode- Redirection upto 5 depth using parent url method for redirected url failed because completed URL is not equal to success due to 4xx error
+SMOKE-004-009,10059,1,1,fail,HTTP2 Upgrade Mode- Redirection from http to https upto depth 1 without using parent url method for redirected url failed because expected 302 was 2 and actual is 0
+SMOKE-004-010,10060,1,1,fail,HTTP2 Upgrade Mode- Redirection from http to https upto depth 1 using parent url method for redirected url failed because expected 302 was 2 and actual is 0
+SMOKE-004-011,10061,1,1,fail,HTTP2 Upgrade Mode- Redirection from one host to another host failed because expected 302 was 2 and actual is 0

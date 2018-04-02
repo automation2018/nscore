@@ -1,0 +1,980 @@
+Starting replay file generation at 02/29/16 16:38:25. It may take time. Please wait ...
+create_file_for_nsu_gen_script:Method Called
+create_file_for_nsu_gen_script:Method called nsu_gen_script_file_name is = /tmp/filename_29394
+open_file:Method Called
+read_config_file_new:Method Called
+open_file:Method Called
+delete_dir:return status of system() is = 0
+delete_dir:Existing Replay directory '/home/netstorm/Controller_Shalu/Replay_wells/replay_data1' deleted as -f option was used.
+create_dir:Creating Replay directory named as :/home/netstorm/Controller_Shalu/Replay_wells/replay_data1.
+
+get_time_from_format_local:Method Called. Time = 1800 
+read_config_file_new:New User Time is 1800  (1800000 milliseconds)
+proj_subproj_script_scenario_validation:Method Called
+proj_subproj_script_scenario_validation:The value of field[0], field[1], field[2] = ns wells_fargo wells_new
+proj_subproj_script_scenario_validation:After validation project_name = ns, subproject_name = wells_fargo
+
+proj_subproj_script_scenario_validation:Method Called
+proj_subproj_script_scenario_validation:The value of field[0], field[1], field[2] = ns wells_fargo wells_new.conf
+proj_subproj_script_scenario_validation:After validation project_name = ns, subproject_name = wells_fargo
+
+init_nvm_data:Method Called
+Starting Step1 - Generate input file list based on INPUT_DIR keyword at 02/29/16 16:38:25
+
+gen_input_file_list:Method called. base_dir = /home/netstorm/Controller_Shalu/Replay_wells/replay_data|replay_data|SOAP.log.1.txt
+gen_input_file_list:ptr = replay_data|SOAP.log.1.txt
+gen_input_file_list:num_tokens = 1
+gen_input_file_list:date format dir is specified using ,. num_tokens = 1
+gen_input_file_list:date_dir_array[i] = replay_data
+gen_input_file_list:date dir listing complte. Going to read files under dir
+gen_input_file_list:num_tokens = 1
+gen_input_file_list:File names is given using ,. num_tokens = 1
+gen_input_file_list:seq_index = 0
+gen_input_file_list:Allocating memory for Malloc seq data file. size = 93
+gen_input_file_list:Total input files = 1
+gen_input_file_list:File 1 , name = /home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt
+Completed Step1 - Generate input file list based on INPUT_DIR keyword at 02/29/16 16:38:25. Time taken = 0 minutes and 0 seconds 
+
+Starting Step2 - Reading input data files and generate sequence data array. Total requests = 0. Estimated Time = 0 minutes and 0 seconds
+
+load_input_data_files:num_seq_files = 1
+load_input_data_files:Seq Dara Array per thread = 20000 (g_msgcount_per_file = 20000)
+  Number of threads to process request files= 1
+
+load_input_data_files:Allocating memory for Thread Arguments. size = 10485872
+load_input_data_files:Allocating memory for threadArgs[i].t_seq_data_arr. size = 1600000
+load_input_data_files:Allocating memory for threadArgs[i].service_counter. size = 0
+  Processing Thread[0] Started
+
+load_input_data_files_t:Processing Thread[0]:file to process = /home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt
+load_input_data_files_t:Processing Thread[0]: processing seq file = /home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt
+
+load_sequence_file_new:****load sequence file method
+load_sequence_file_new:Processing Thread[0]:total # of reqs in service data file 0
+  Processing Thread[0]:Starting processing of log file (/home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt) file at 02/29/16 16:38:25
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 0 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702503.204
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702503), TimeSecsPart = 1450702503, TimeMicroSecPart = 204
+
+load_sequence_file_new:Processing Thread[0]:seq_no 0 relative time_stamp 1450702503000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><messageId>-670c8570:151c5185359:7d9f</messageId><session><sessionId>e78bfe32-9726-475b-bd24-98c027098f9c</sessionId><sessionSequenceNumber>14</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:03.137-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>BROWSER_SAVE_USERNAME</subApplicationId><hostName>al1-corzo-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><ns8:behaviorVersion>1</ns8:behaviorVersion><ns34:credentials><ns34:principal><ns2:userName>sarahbelle3613</ns2:userName><ns2:XACustId>903715904</ns2:XACustId><ns2:custNbr>182618561627</ns2:custNbr><userId>SarahBelle3613</userId><ns33:usernameLastModifiedTimestamp>2004-08-27T20:52:11.521000</ns33:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId><saveUsername>false</saveUsername></ns34:principal><ns34:passwordInfo><assertedPrimaryCredentialIndicator>false</assertedPrimaryCredentialIndicator><ns25:statusCode description="SUSPENDED">SUSPENDED</ns25:statusCode><ns31:effectiveTimestamp>2009-10-11T17:58:09.780000</ns31:effectiveTimestamp></ns34:passwordInfo></ns34:credentials><ns5:serverInfo><serverCaptureDateTime>2015-12-21T07:55:03.137-08:00</serverCaptureDateTime></ns5:serverInfo><ns7:deviceInfo><ipAddress>185.69.144.9</ipAddress><ns7:browserCookie>510824_36b92608b1ac6f8c1e2255c3a485c5b3</ns7:browserCookie><httpHeaderList><ns7:httpHeader><name>Accept-Language</name><value>en-us</value></ns7:httpHeader><ns7:httpHeader><name>Cookie</name><value>MBASESSIONID=lJHzW4fL600MY42vnjvLj2PwVqQQlyXtQz0py09y665ZLsZ4nfSp!2051634833; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; WFBFPCOOKIE=CallUs,fpAltType:MBA; CookiesAreEnabled=yes; DCG_Lang_Intro=N; OB_SO_ORIGIN=source=homepage; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; v1st=56030A37C40E3F0F; wfacookie=11201512210222511489546198; WFBFPAffiliate=MBA</value></ns7:httpHeader><ns7:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Content-Length</name><value>1139</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns7:httpHeader><ns7:httpHeader><name>Referer</name><value>https://m.wellsfargo.com/mba/signOn/browserSignon.action</value></ns7:httpHeader><ns7:httpHeader><name>X-Forwarded-For</name><value>185.69.144.9</value></ns7:httpHeader><ns7:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (iPhone; CPU iPhone OS 8_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12D508 Safari/600.1.4</value></ns7:httpHeader><ns7:httpHeader><name>Origin</name><value>https://m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns7:httpHeader><ns7:httpHeader><name>Connection</name><value>keep-alive</value></ns7:httpHeader><ns7:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns7:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;20030107;undefined;true;;true;iPhone;undefined;Mozilla/5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;en-us;iso-8859-1;m.wellsfargo.com;undefined;undefined;undefined;undefined;false;false;1450713296649;2;7%20June%202005%209%3A33%3A44%20pm%20GMT+2;undefined;undefined;;;;;;;12;-120;-120;21%20December%202015%205%3A54%3A56%20pm%20GMT+2;undefined;undefined;undefined;undefined;undefined;;;;;;;;;;;;;;;;;;;16;</userPrefs></ns7:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 11178
+load_sequence_file_new:Processing Thread[0]:request # 0 line 6 file offset 11372 req start offset 194 size 11178 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 903715904
+
+load_sequence_file_new:Processing Thread[0]:uid = 903715904
+load_sequence_file_new:Processing Thread[0]:uid 903715904 req 0 line 6
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: Service index not found for service name = auth_2012, saving data
+get_and_save_runtime_service_data:Processing Thread[0]: service added, service_index = 0, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '0' size - 11178
+load_sequence_file_new:Processing Thread[0]:seq = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 1 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2@12/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2@12
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2@12
+load_sequence_file_new:Processing Thread[0]:service name = auth_2@12, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2_12, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702503.754
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702503), TimeSecsPart = 1450702503, TimeMicroSecPart = 754
+
+load_sequence_file_new:Processing Thread[0]:seq_no 1 relative time_stamp 1450702503000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><messageId>235592a3:151c5402f06:-7f48</messageId><session><sessionId>0d5f1809-f302-4f7a-81fa-00c310497ba1</sessionId><sessionSequenceNumber>2</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:03.691-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>BROWSER_SAVE_USERNAME</subApplicationId><hostName>al1-elcapo-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><ns8:behaviorVersion>2</ns8:behaviorVersion><ns36:credentials><ns36:principal><saveUsername>false</saveUsername></ns36:principal><ns36:passwordInfo><assertedPrimaryCredentialIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></ns36:passwordInfo></ns36:credentials><ns16:serverInfo><serverCaptureDateTime>2015-12-21T07:55:03.691-08:00</serverCaptureDateTime></ns16:serverInfo><ns17:deviceInfo><ipAddress>45.63.62.114</ipAddress><ns17:browserCookie/><httpHeaderList><ns17:httpHeader><name>Accept-Language</name><value>en-US,en;q=0.5</value></ns17:httpHeader><ns17:httpHeader><name>Cookie</name><value>CookiesAreEnabled=yes; OB_SO_ORIGIN=source=homepage</value></ns17:httpHeader><ns17:httpHeader><name>X-Requested-With</name><value>XMLHttpRequest</value></ns17:httpHeader><ns17:httpHeader><name>Host</name><value>m.wellsfargo.com:443</value></ns17:httpHeader><ns17:httpHeader><name>Content-Length</name><value>1041</value></ns17:httpHeader><ns17:httpHeader><name>Referer</name><value>https://www.wellsfargo.com/</value></ns17:httpHeader><ns17:httpHeader><name>X-Forwarded-For</name><value>45.63.62.114</value></ns17:httpHeader><ns17:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</value></ns17:httpHeader><ns17:httpHeader><name>Keep-Alive</name><value>300</value></ns17:httpHeader><ns17:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns17:httpHeader><ns17:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns17:httpHeader><ns17:httpHeader><name>Connection</name><value>keep-alive</value></ns17:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Windows%20NT%206.1%3B%20WOW64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/45.0.2454.93%20Safari/537.36;20030107;undefined;true;;true;Win32;undefined;Mozilla/5.0%20%28Windows%20NT%206.1%3B%20WOW64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/45.0.2454.93%20Safari/537.36;en-US;windows-1252;m.wellsfargo.com;undefined;undefined;undefined;undefined;true;true;1442529630905;1;6/7/2005%2C%209%3A33%3A44%20PM;undefined;undefined;;18.0;;;;;17;-60;-120;9/18/2015%2C%2012%3A40%3A30%20AM;undefined;undefined;undefined;undefined;undefined;;;;;;Shockwave%20Flash%7CShockwave%20Flash%2018.0%20r0;;;;;;;;;;;;;15;</userPrefs></ns17:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2_12
+get_service_idx:Method Called: service auth_2_12, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 10324
+load_sequence_file_new:Processing Thread[0]:request # 1 line 13 file offset 21898 req start offset 11574 size 10324 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:XACustId not found in request
+load_sequence_file_new:Processing Thread[0]:uid = -1
+load_sequence_file_new:Processing Thread[0]:uid not found at line 13. will continue search on next line if req body continues..
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+    Processing Thread[0]:No uid found in request body at line 14 req 1
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2_12_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2_12_MissingIndex, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: Service index not found for service name = auth_2_12_MissingIndex, saving data
+get_and_save_runtime_service_data:Processing Thread[0]: service added, service_index = 1, service name = auth_2_12_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2_12_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 1, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '1' size - 10324
+load_sequence_file_new:Processing Thread[0]:seq = 1
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 2 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 1
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 1
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702504.365
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702504), TimeSecsPart = 1450702504, TimeMicroSecPart = 365
+
+load_sequence_file_new:Processing Thread[0]:seq_no 2 relative time_stamp 1450702504000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header soapaction="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"><ns2:WFContext xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><messageId>14f19af0-bdcf-473f-9ba6-ed7747199cbf</messageId><session><sessionId>49808266-6145-4acd-a51b-5cb9f0a04e86</sessionId><sessionSequenceNumber>1</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:04.358-08:00</creationTimestamp><invokerId>LoginApp</invokerId><applicationId>LOGIN</applicationId><subApplicationId>BROWSER</subApplicationId><hostName>mn2-neem-ilb-la.wellsfargo.com</hostName><billingAU>00000</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>XA</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>CMAPL</initiatorIdType></initiator></ns2:WFContext></SOAP-ENV:Header>  <SOAP-ENV:Body><ns12:authc2012 xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><ns2:behaviorVersion>1</ns2:behaviorVersion><ns7:credentials><ns7:principal><ns3:userName>wifeofpavlov</ns3:userName><ns3:XACustId>904448476</ns3:XACustId><ns3:custNbr>729109041191278</ns3:custNbr><userId>wifeofpavlov</userId><ns6:usernameLastModifiedTimestamp>2011-09-19T22:12:14.902Z</ns6:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId></ns7:principal><ns7:passwordInfo><assertedPrimaryCredentialIndicator>true</assertedPrimaryCredentialIndicator><ns8:statusCode description="PERMANENT">PERMANENT</ns8:statusCode><ns9:effectiveTimestamp>2011-09-19T22:12:31.777Z</ns9:effectiveTimestamp></ns7:passwordInfo></ns7:credentials><ns10:serverInfo><serverCaptureDateTime>2015-12-21T07:55:04.356-08:00</serverCaptureDateTime></ns10:serverInfo><ns11:deviceInfo><deviceType>Desktop</deviceType><ipAddress>45.79.182.205</ipAddress><ns11:browserCookie/><httpHeaderList><ns11:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns11:httpHeader><ns11:httpHeader><name>cookie</name><value>v1st=EF5982D9C712E2D6; CookiesAreEnabled=yes; OB_SO_ORIGIN=source=homepage; wfacookie=1120151221075503567740023</value></ns11:httpHeader><ns11:httpHeader><name>x-cnection</name><value>close</value></ns11:httpHeader><ns11:httpHeader><name>host</name><value>connect.secure.wellsfargo.com</value></ns11:httpHeader><ns11:httpHeader><name>content-length</name><value>49</value></ns11:httpHeader><ns11:httpHeader><name>user-agent</name><value>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36</value></ns11:httpHeader></httpHeaderList></ns11:deviceInfo></ns12:authc2012></SOAP-ENV:Body></SOAP-ENV:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 5999
+load_sequence_file_new:Processing Thread[0]:request # 2 line 20 file offset 28099 req start offset 22100 size 5999 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 904448476
+
+load_sequence_file_new:Processing Thread[0]:uid = 904448476
+load_sequence_file_new:Processing Thread[0]:uid 904448476 req 2 line 20
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '2' size - 5999
+load_sequence_file_new:Processing Thread[0]:seq = 2
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 3 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702504.575
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702504), TimeSecsPart = 1450702504, TimeMicroSecPart = 575
+
+load_sequence_file_new:Processing Thread[0]:seq_no 3 relative time_stamp 1450702504000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns2:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns13="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns12="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns11="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns9="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns8="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns5="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/"><messageId>-151cdb78:151c5337d52:-424b</messageId><session><sessionId>351c922d-b18f-481e-9a9d-9a8e9a4e361e</sessionId><sessionSequenceNumber>2</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:04.447-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>NATIVE_APP</subApplicationId><hostName>az1-diablo-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns2:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns13="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns12="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns11="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns9="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns8="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns5="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/"><ns2:behaviorVersion>2</ns2:behaviorVersion><ns34:credentials><ns34:principal><saveUsername>true</saveUsername></ns34:principal><ns34:passwordInfo><assertedPrimaryCredentialIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></ns34:passwordInfo></ns34:credentials><ns6:serverInfo><serverCaptureDateTime>2015-12-21T07:55:04.447-08:00</serverCaptureDateTime></ns6:serverInfo><ns7:deviceInfo><ipAddress>166.172.185.212</ipAddress><ns7:browserCookie>503651_45c25101cc6ac57f966290fcd30128b8</ns7:browserCookie><httpHeaderList><ns7:httpHeader><name>Accept-Language</name><value>es-xl</value></ns7:httpHeader><ns7:httpHeader><name>Cookie</name><value>SAVEDANDMASKEDUSERID=vah******; SIMS=503651_45c25101cc6ac57f966290fcd30128b8; WFBFPCOOKIE=fpAltType:MBA; SIMS=503651_45c25101cc6ac57f966290fcd30128b8</value></ns7:httpHeader><ns7:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Content-Length</name><value>1658</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns7:httpHeader><ns7:httpHeader><name>X-Forwarded-For</name><value>166.172.185.212</value></ns7:httpHeader><ns7:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 WFAppId/983858 WFexperience/phone WFVersion/2.65.1-debug_prod</value></ns7:httpHeader><ns7:httpHeader><name>Origin</name><value>null</value></ns7:httpHeader><ns7:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns7:httpHeader><ns7:httpHeader><name>Connection</name><value>keep-alive</value></ns7:httpHeader><ns7:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns7:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%209_2%20like%20Mac%20OS%20X%29%20AppleWebKit/601.1.46%20%28KHTML%2C%20like%20Gecko%29%20Mobile/13C75%20WFAppId/983858%20WFexperience/phone%20WFVersion/2.65.1-debug_prod;20030107;undefined;true;;true;iPhone;undefined;Mozilla/5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%209_2%20like%20Mac%20OS%20X%29%20AppleWebKit/601.1.46%20%28KHTML%2C%20like%20Gecko%29%20Mobile/13C75%20WFAppId/983858%20WFexperience/phone%20WFVersion/2.65.1-debug_prod;es-xl;ISO-8859-1;m.wellsfargo.com;undefined;undefined;undefined;undefined;true;false;1450712208216;-5;7%20de%20junio%20de%202005%2C%209%3A33%3A44%20PM%20EDT;414;736;;;;;;;2;300;240;21%20de%20diciembre%20de%202015%2C%2010%3A36%3A48%20AM%20EST;32;414;716;0;0;;;;;;;;;;;;;;;;;;;20;</userPrefs><authenticationCapabilityIndicator>AA</authenticationCapabilityIndicator><wfAppVersion>2.65</wfAppVersion></ns7:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 10600
+load_sequence_file_new:Processing Thread[0]:request # 3 line 27 file offset 38901 req start offset 28301 size 10600 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:XACustId not found in request
+load_sequence_file_new:Processing Thread[0]:uid = -1
+load_sequence_file_new:Processing Thread[0]:uid not found at line 27. will continue search on next line if req body continues..
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+    Processing Thread[0]:No uid found in request body at line 28 req 3
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: Service index not found for service name = auth_2012_MissingIndex, saving data
+get_and_save_runtime_service_data:Processing Thread[0]: service added, service_index = 2, service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '3' size - 10600
+load_sequence_file_new:Processing Thread[0]:seq = 3
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 4 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702504.879
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702504), TimeSecsPart = 1450702504, TimeMicroSecPart = 879
+
+load_sequence_file_new:Processing Thread[0]:seq_no 4 relative time_stamp 1450702504000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header soapaction="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"><ns2:WFContext xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><messageId>f11cf2f9-a3c7-4828-89df-073a3a68e9e0</messageId><session><sessionId>b1280ca4-891f-4b72-ad7f-3fec6519e9b4</sessionId><sessionSequenceNumber>1</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:04.873-08:00</creationTimestamp><invokerId>LoginApp</invokerId><applicationId>LOGIN</applicationId><subApplicationId>BROWSER</subApplicationId><hostName>mn2-lavender-ilb-la.wellsfargo.com</hostName><billingAU>00000</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>XA</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>CMAPL</initiatorIdType></initiator></ns2:WFContext></SOAP-ENV:Header>  <SOAP-ENV:Body><ns12:authc2012 xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><ns2:behaviorVersion>1</ns2:behaviorVersion><ns7:credentials><ns7:principal><ns3:userName>sakun09</ns3:userName><ns3:XACustId>228361521</ns3:XACustId><ns3:custNbr>721101008504914</ns3:custNbr><userId>sakun09</userId><ns6:usernameLastModifiedTimestamp>2010-09-27T16:57:42.918Z</ns6:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId></ns7:principal><ns7:passwordInfo><assertedPrimaryCredentialIndicator>true</assertedPrimaryCredentialIndicator><ns8:statusCode description="PERMANENT">PERMANENT</ns8:statusCode><ns9:effectiveTimestamp>2015-05-12T17:45:19.536Z</ns9:effectiveTimestamp></ns7:passwordInfo></ns7:credentials><ns10:serverInfo><serverCaptureDateTime>2015-12-21T07:55:04.873-08:00</serverCaptureDateTime></ns10:serverInfo><ns11:deviceInfo><deviceType>Desktop</deviceType><ipAddress>71.56.62.120</ipAddress><ns11:browserCookie>191460_6e89f2087347b7d3b23abcbe70701080</ns11:browserCookie><httpHeaderList><ns11:httpHeader><name>cookie</name><value>TS8adfa450_75=TS8adfa450_rc=1&amp;TS8adfa450_id=2&amp;TS8adfa450_cr=08aa1e3d9cab28009eec73eb2940748a987b646ae739c6d301817893c8b875b83e96c3dac656847c8a1415c71532115a:0895249f8503200066334422ada9def4ffb04b2b2335cdca946c2821cced30747f5718f85112fb81&amp;TS8adfa450_ct=application/x-www-form-urlencoded&amp;TS8adfa450_rf=https%3a%2f%2fwww.wellsfargo.com%2f; v1st=F1E6C885C4DD30A2; SIMSCookie=191460_6e89f2087347b7d3b23abcbe70701080; wfacookie=1120150804191421166812813; hp=12110000100000; CookiesAreEnabled=yes; OB_SO_ORIGIN=source=homepage; utag_main=v_id:014efba35b3600094b3c6a7a94f40606d001b065009dc$_sn:83$_ss:1$_st:1450715097530$_pn:1%3Bexp-session$ses_id:1450713297530%3Bexp-session; TSPD_101=08aa1e3d9cab28009eec73eb2940748a987b646ae739c6d301817893c8b875b83e96c3dac656847c8a1415c71532115a</value></ns11:httpHeader><ns11:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns11:httpHeader><ns11:httpHeader><name>cache-control</name><value>max-age=0</value></ns11:httpHeader><ns11:httpHeader><name>connection</name><value>keep-alive</value></ns11:httpHeader><ns11:httpHeader><name>accept-language</name><value>en-US,en;q=0.8</value></ns11:httpHeader><ns11:httpHeader><name>host</name><value>connect.secure.wellsfargo.com</value></ns11:httpHeader><ns11:httpHeader><name>accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</value></ns11:httpHeader><ns11:httpHeader><name>content-length</name><value>671</value></ns11:httpHeader><ns11:httpHeader><name>origin</name><value>https://connect.secure.wellsfargo.com</value></ns11:httpHeader><ns11:httpHeader><name>user-agent</name><value>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36</value></ns11:httpHeader><ns11:httpHeader><name>referer</name><value>https://www.wellsfargo.com/</value></ns11:httpHeader><ns11:httpHeader><name>upgrade-insecure-requests</name><value>1</value></ns11:httpHeader></httpHeaderList><userPrefs>VGa44j1cclY5BNvcKyAdMUDFBpBeA0fUm0NUbNiqUU8j0OXTA6FL.26y8GGEDd5ihORoVyFGh8cmvSuCKzIlnY6xljQlpRD2AQnJOFAD36hO3f9p_nH1u_eH3BhxUC550ialT0iakA2zGUMnGWFfwMHDCQyFA2wv4qnvtCsABIlNu1k.Nzl998tp7ppfAaZ6m1CdC5MQjGejuTDRNziCvTDfWkOQTPY90OkVxf7_OLgiPFMtrs1OevgzDlSgs1eBevhqvnSwGGO8CuU6DdYejftckuyPBDjaY2ftckkCoq1HACVcIFm_Ha38Tf5.pk6Hb9LarUqUdHz16rgPtFFgScLAeWhYjUcia4WFL1eDJJtG.qvmkjn5UkWy85icCmVWNuVNNW5CfUXtStKjE4PIDxO9sPrsiMTKQnlLZnjxJCjqsGY5DtI25BNkLSbVKTwPIixGUbr9be75wdbtYEsFzoldWrfs.42N</userPrefs></ns11:deviceInfo></ns12:authc2012></SOAP-ENV:Body></SOAP-ENV:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 7840
+load_sequence_file_new:Processing Thread[0]:request # 4 line 34 file offset 46943 req start offset 39103 size 7840 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 228361521
+
+load_sequence_file_new:Processing Thread[0]:uid = 228361521
+load_sequence_file_new:Processing Thread[0]:uid 228361521 req 4 line 34
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '4' size - 7840
+load_sequence_file_new:Processing Thread[0]:seq = 4
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 5 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702505.009
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702505), TimeSecsPart = 1450702505, TimeMicroSecPart = 009
+
+load_sequence_file_new:Processing Thread[0]:seq_no 5 relative time_stamp 1450702505000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><messageId>-7e274972:151c512f55e:60b7</messageId><session><sessionId>5689d2fd-f3a0-4649-a977-eb5157eda9bb</sessionId><sessionSequenceNumber>6</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:04.930-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>NATIVE_APP</subApplicationId><hostName>az1-amp-ilb-mb</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><ns8:behaviorVersion>1</ns8:behaviorVersion><ns36:credentials><ns36:principal><ns10:userName>wpuspa</ns10:userName><ns10:XACustId>208987111</ns10:XACustId><ns10:custNbr>181155051926413</ns10:custNbr><userId>wpuspa</userId><ns35:usernameLastModifiedTimestamp>2006-05-12T22:59:59.639000</ns35:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId><saveUsername>false</saveUsername></ns36:principal><ns36:passwordInfo><assertedPrimaryCredentialIndicator>true</assertedPrimaryCredentialIndicator><ns30:statusCode description="PERMANENT">PERMANENT</ns30:statusCode><ns33:effectiveTimestamp>2013-05-15T20:10:00.008000</ns33:effectiveTimestamp></ns36:passwordInfo></ns36:credentials><ns16:serverInfo><serverCaptureDateTime>2015-12-21T07:55:04.930-08:00</serverCaptureDateTime></ns16:serverInfo><ns18:deviceInfo><ipAddress>23.243.244.154</ipAddress><ns18:browserCookie>370886_2349eb516acdd1c2c0788b8431e6008a</ns18:browserCookie><httpHeaderList><ns18:httpHeader><name>Upgrade-Insecure-Requests</name><value>1</value></ns18:httpHeader><ns18:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns18:httpHeader><ns18:httpHeader><name>Cookie</name><value>wfacookie=14201511300117541622242214; SIMS=370886_2349eb516acdd1c2c0788b8431e6008a; SIMS=370886_2349eb516acdd1c2c0788b8431e6008a; MBACOOKIE=TRUE$$254704$$2e4fc1b4-9cf7-4403-9fda-0e2961b03804; WFBFPCOOKIE=fpAltType:MBA; WFBFPAffiliate=MBA</value></ns18:httpHeader><ns18:httpHeader><name>X-Requested-With</name><value>com.wf.wellsfargomobile</value></ns18:httpHeader><ns18:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns18:httpHeader><ns18:httpHeader><name>Content-Length</name><value>1969</value></ns18:httpHeader><ns18:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (Linux; Android 5.1.1; SM-N920P Build/LMY47X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/46.0.2490.76 Mobile Safari/537.36 WFAppId/254704 WFexperience/phone WFVersion/4.6.1.111_</value></ns18:httpHeader><ns18:httpHeader><name>Origin</name><value>null</value></ns18:httpHeader><ns18:httpHeader><name>Connection</name><value>keep-alive</value></ns18:httpHeader><ns18:httpHeader><name>Cache-Control</name><value>max-age=0</value></ns18:httpHeader><ns18:httpHeader><name>Accept-Language</name><value>en,en-US;q=0.8</value></ns18:httpHeader><ns18:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns18:httpHeader><ns18:httpHeader><name>X-Forwarded-For</name><value>23.243.244.154</value></ns18:httpHeader><ns18:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</value></ns18:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Linux%3B%20Android%205.1.1%3B%20SM-N920P%20Build/LMY47X%3B%20wv%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Version/4.0%20Chrome/46.0.2490.76%20Mobile%20Safari/537.36%20WFAppId/254704%20WFexperience/phone%20WFVersion/4.6.1.111_;20030107;undefined;true;;true;Linux%20aarch64;undefined;Mozilla/5.0%20%28Linux%3B%20Android%205.1.1%3B%20SM-N920P%20Build/LMY47X%3B%20wv%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Version/4.0%20Chrome/46.0.2490.76%20Mobile%20Safari/537.36%20WFAppId/254704%20WFexperience/phone%20WFVersion/4.6.1.111_;en;UTF-8;m.wellsfargo.com;undefined;undefined;undefined;undefined;true;false;1450713290171;-8;6/7/2005%2C%209%3A33%3A44%20PM;412;732;;;;;;;48;480;420;12/21/2015%2C%207%3A54%3A50%20AM;32;412;732;0;0;;;;;;;;;;;;;;;;;;;19;</userPrefs><authenticationCapabilityIndicator>AA</authenticationCapabilityIndicator><wfAppVersion>4.6.1</wfAppVersion></ns18:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 11474
+load_sequence_file_new:Processing Thread[0]:request # 5 line 41 file offset 58619 req start offset 47145 size 11474 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 208987111
+
+load_sequence_file_new:Processing Thread[0]:uid = 208987111
+load_sequence_file_new:Processing Thread[0]:uid 208987111 req 5 line 41
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '5' size - 11474
+load_sequence_file_new:Processing Thread[0]:seq = 5
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 6 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702505.307
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702505), TimeSecsPart = 1450702505, TimeMicroSecPart = 307
+
+load_sequence_file_new:Processing Thread[0]:seq_no 6 relative time_stamp 1450702505000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header soapaction="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"><ns2:WFContext xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><messageId>3cac0ce2-5681-4796-b73d-33d196a1f1de</messageId><session><sessionId>0a5fe4b4-8f0f-439f-969b-8c709f7ec3d8</sessionId><sessionSequenceNumber>1</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:05.243-08:00</creationTimestamp><invokerId>LoginApp</invokerId><applicationId>LOGIN</applicationId><subApplicationId>BROWSER</subApplicationId><hostName>al1-cacao-ilb-la.wellsfargo.com</hostName><billingAU>00000</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>XA</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>CMAPL</initiatorIdType></initiator></ns2:WFContext></SOAP-ENV:Header>  <SOAP-ENV:Body><ns12:authc2012 xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><ns2:behaviorVersion>1</ns2:behaviorVersion><ns7:credentials><ns7:principal><ns3:userName>jerickson721</ns3:userName><ns3:XACustId>312579190</ns3:XACustId><ns3:custNbr>527050492157318</ns3:custNbr><userId>jerickson721</userId><ns6:usernameLastModifiedTimestamp>2007-04-12T23:52:01.155Z</ns6:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId></ns7:principal><ns7:passwordInfo><assertedPrimaryCredentialIndicator>true</assertedPrimaryCredentialIndicator><ns8:statusCode description="PERMANENT">PERMANENT</ns8:statusCode><ns9:effectiveTimestamp>2015-11-13T17:01:14.697Z</ns9:effectiveTimestamp></ns7:passwordInfo></ns7:credentials><ns10:serverInfo><serverCaptureDateTime>2015-12-21T07:55:05.242-08:00</serverCaptureDateTime></ns10:serverInfo><ns11:deviceInfo><deviceType>Desktop</deviceType><ipAddress>206.108.41.108</ipAddress><ns11:browserCookie/><httpHeaderList><ns11:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns11:httpHeader><ns11:httpHeader><name>cookie</name><value>gingerbread_cookie=01B3F82AF41C21B1CBCC8779DB34212B; LOGINORIGIN=intuit; AuthCookie=15d9015e-1d7a-4c8d-bf7e-c1cf80be361e; ISD_LA_COOKIE=Mk+p/BDt86Bg7GUKEgwsSY+QKnMBv426oih9ol3u8OfY/rp3Z8IZKwGzQ68OWCMYagmobttWOLtASqUAAAAB; CookiesAreEnabled=yes</value></ns11:httpHeader><ns11:httpHeader><name>host</name><value>connect.secure.wellsfargo.com</value></ns11:httpHeader><ns11:httpHeader><name>content-length</name><value>138</value></ns11:httpHeader><ns11:httpHeader><name>x-newrelic-id</name><value>XQ8HVFJXGwIDU1NUAQME</value></ns11:httpHeader><ns11:httpHeader><name>user-agent</name><value>Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1</value></ns11:httpHeader><ns11:httpHeader><name>sp-account-id</name><value/></ns11:httpHeader><ns11:httpHeader><name>x-newrelic-transaction</name><value>PxQEB1VXAFIEUwdaDwIGX1RVFB8EBw8RVU4aAQkIDVQHAwsHUwVVVAdTVUNKQQtQUlEAVQQEFTs=</value></ns11:httpHeader></httpHeaderList></ns11:deviceInfo></ns12:authc2012></SOAP-ENV:Body></SOAP-ENV:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 6352
+load_sequence_file_new:Processing Thread[0]:request # 6 line 48 file offset 65173 req start offset 58821 size 6352 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 312579190
+
+load_sequence_file_new:Processing Thread[0]:uid = 312579190
+load_sequence_file_new:Processing Thread[0]:uid 312579190 req 6 line 48
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '6' size - 6352
+load_sequence_file_new:Processing Thread[0]:seq = 6
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 7 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702505.323
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702505), TimeSecsPart = 1450702505, TimeMicroSecPart = 323
+
+load_sequence_file_new:Processing Thread[0]:seq_no 7 relative time_stamp 1450702505000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><messageId>47d3480d:151c5330635:-3d22</messageId><session><sessionId>2abcd1a5-63bf-4e16-989c-8c9876b3423b</sessionId><sessionSequenceNumber>2</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:05.315-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>NATIVE_APP</subApplicationId><hostName>mn2-tesoro-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns40="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns39="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns38="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns37="http://eai-schemas.wellsfargo.com/base/" xmlns:ns36="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns35="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns31="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns30="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns29="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns27="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns26="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns25="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns18="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns15="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns14="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns12="http://service.wellsfargo.com/base/2008/" xmlns:ns11="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns10="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns9="http://service.wellsfargo.com/base/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns6="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns5="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns4="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns3="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/communication/email/2003/"><ns8:behaviorVersion>2</ns8:behaviorVersion><ns36:credentials><ns36:principal><saveUsername>true</saveUsername></ns36:principal><ns36:passwordInfo><assertedPrimaryCredentialIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></ns36:passwordInfo></ns36:credentials><ns16:serverInfo><serverCaptureDateTime>2015-12-21T07:55:05.315-08:00</serverCaptureDateTime></ns16:serverInfo><ns18:deviceInfo><ipAddress>166.172.57.197</ipAddress><ns18:browserCookie>448496_6ffff1e4187d867af4decec50305d77c</ns18:browserCookie><httpHeaderList><ns18:httpHeader><name>Accept-Language</name><value>en-us</value></ns18:httpHeader><ns18:httpHeader><name>Cookie</name><value>SAVEDANDMASKEDUSERID=mad**********; SIMS=448496_6ffff1e4187d867af4decec50305d77c; WFBFPCOOKIE=fpAltType:MBA; SIMS=448496_6ffff1e4187d867af4decec50305d77c</value></ns18:httpHeader><ns18:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns18:httpHeader><ns18:httpHeader><name>Content-Length</name><value>1649</value></ns18:httpHeader><ns18:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns18:httpHeader><ns18:httpHeader><name>X-Forwarded-For</name><value>166.172.57.197</value></ns18:httpHeader><ns18:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13B143 WFAppId/983858 WFexperience/phone WFVersion/2.65.1-debug_prod</value></ns18:httpHeader><ns18:httpHeader><name>Origin</name><value>null</value></ns18:httpHeader><ns18:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns18:httpHeader><ns18:httpHeader><name>Connection</name><value>keep-alive</value></ns18:httpHeader><ns18:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns18:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%209_1%20like%20Mac%20OS%20X%29%20AppleWebKit/601.1.46%20%28KHTML%2C%20like%20Gecko%29%20Mobile/13B143%20WFAppId/983858%20WFexperience/phone%20WFVersion/2.65.1-debug_prod;20030107;undefined;true;;true;iPhone;undefined;Mozilla/5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%209_1%20like%20Mac%20OS%20X%29%20AppleWebKit/601.1.46%20%28KHTML%2C%20like%20Gecko%29%20Mobile/13B143%20WFAppId/983858%20WFexperience/phone%20WFVersion/2.65.1-debug_prod;en-us;ISO-8859-1;m.wellsfargo.com;undefined;undefined;undefined;undefined;true;false;1450713290317;-6;June%207%2C%202005%20at%209%3A33%3A44%20PM%20CDT;375;667;;;;;;;1;360;300;December%2021%2C%202015%20at%209%3A54%3A50%20AM%20CST;32;375;647;0;0;;;;;;;;;;;;;;;;;;;20;</userPrefs><authenticationCapabilityIndicator>AA</authenticationCapabilityIndicator><wfAppVersion>2.65</wfAppVersion></ns18:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 10619
+load_sequence_file_new:Processing Thread[0]:request # 7 line 55 file offset 75994 req start offset 65375 size 10619 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:XACustId not found in request
+load_sequence_file_new:Processing Thread[0]:uid = -1
+load_sequence_file_new:Processing Thread[0]:uid not found at line 55. will continue search on next line if req body continues..
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+    Processing Thread[0]:No uid found in request body at line 56 req 7
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '7' size - 10619
+load_sequence_file_new:Processing Thread[0]:seq = 7
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 8 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702505.338
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702505), TimeSecsPart = 1450702505, TimeMicroSecPart = 338
+
+load_sequence_file_new:Processing Thread[0]:seq_no 8 relative time_stamp 1450702505000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns2:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns13="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns12="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns11="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns9="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns8="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns5="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/"><messageId>4177cdc3:151c5328976:-3dda</messageId><session><sessionId>3585d764-04a4-449c-87dc-6602ab4f1d19</sessionId><sessionSequenceNumber>2</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:05.264-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>NATIVE_APP</subApplicationId><hostName>az1-caramba-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns2:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns13="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns12="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns11="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns9="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns8="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns5="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/"><ns2:behaviorVersion>2</ns2:behaviorVersion><ns34:credentials><ns34:principal><saveUsername>true</saveUsername></ns34:principal><ns34:passwordInfo><assertedPrimaryCredentialIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></ns34:passwordInfo></ns34:credentials><ns6:serverInfo><serverCaptureDateTime>2015-12-21T07:55:05.263-08:00</serverCaptureDateTime></ns6:serverInfo><ns7:deviceInfo><ipAddress>166.172.188.41</ipAddress><ns7:browserCookie>389752_a39c8e7af9b3a504647702bdffa0d951</ns7:browserCookie><httpHeaderList><ns7:httpHeader><name>Upgrade-Insecure-Requests</name><value>1</value></ns7:httpHeader><ns7:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns7:httpHeader><ns7:httpHeader><name>Cookie</name><value>wfacookie=14201505181716321016383554; SIMS=389752_a39c8e7af9b3a504647702bdffa0d951; SIMS=389752_a39c8e7af9b3a504647702bdffa0d951; SAVEDANDMASKEDUSERID=all**********; MBACOOKIE=TRUE$$254704$$1af54364-4478-40d4-a089-966428b154dc; WFBFPCOOKIE=UsernamePasswordHelp,fpAltType:MBA; WFBFPAffiliate=MBA</value></ns7:httpHeader><ns7:httpHeader><name>X-Requested-With</name><value>com.wf.wellsfargomobile</value></ns7:httpHeader><ns7:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Content-Length</name><value>2004</value></ns7:httpHeader><ns7:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG-SM-G925A Build/LMY47X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/46.0.2490.76 Mobile Safari/537.36 WFAppId/254704 WFexperience/phone WFVersion/4.6.1.111_</value></ns7:httpHeader><ns7:httpHeader><name>Origin</name><value>null</value></ns7:httpHeader><ns7:httpHeader><name>Connection</name><value>keep-alive</value></ns7:httpHeader><ns7:httpHeader><name>Cache-Control</name><value>max-age=0</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Language</name><value>en,en-US;q=0.8</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns7:httpHeader><ns7:httpHeader><name>X-Forwarded-For</name><value>166.172.188.41</value></ns7:httpHeader><ns7:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</value></ns7:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Linux%3B%20Android%205.1.1%3B%20SAMSUNG-SM-G925A%20Build/LMY47X%3B%20wv%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Version/4.0%20Chrome/46.0.2490.76%20Mobile%20Safari/537.36%20WFAppId/254704%20WFexperience/phone%20WFVersion/4.6.1.111_;20030107;undefined;true;;true;Linux%20aarch64;undefined;Mozilla/5.0%20%28Linux%3B%20Android%205.1.1%3B%20SAMSUNG-SM-G925A%20Build/LMY47X%3B%20wv%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Version/4.0%20Chrome/46.0.2490.76%20Mobile%20Safari/537.36%20WFAppId/254704%20WFexperience/phone%20WFVersion/4.6.1.111_;en;UTF-8;m.wellsfargo.com;undefined;undefined;undefined;undefined;true;false;1450713299761;-5;6/7/2005%2C%209%3A33%3A44%20PM;360;640;;;;;;;49;300;240;12/21/2015%2C%2010%3A54%3A59%20AM;32;360;640;0;0;;;;;;;;;;;;;;;;;;;19;</userPrefs><authenticationCapabilityIndicator>AA</authenticationCapabilityIndicator><wfAppVersion>4.6.1</wfAppVersion></ns7:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 11134
+load_sequence_file_new:Processing Thread[0]:request # 8 line 62 file offset 87330 req start offset 76196 size 11134 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:XACustId not found in request
+load_sequence_file_new:Processing Thread[0]:uid = -1
+load_sequence_file_new:Processing Thread[0]:uid not found at line 62. will continue search on next line if req body continues..
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+    Processing Thread[0]:No uid found in request body at line 63 req 8
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012_MissingIndex, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '8' size - 11134
+load_sequence_file_new:Processing Thread[0]:seq = 8
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 9 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 2
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450702505.438
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450702505), TimeSecsPart = 1450702505, TimeMicroSecPart = 438
+
+load_sequence_file_new:Processing Thread[0]:seq_no 9 relative time_stamp 1450702505000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header soapaction="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"><ns2:WFContext xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><messageId>44b07d62-7193-46ca-8545-4367b93931ec</messageId><session><sessionId>9e96f9e4-2e78-49ae-8194-5502a0a2c4ce</sessionId><sessionSequenceNumber>1</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:05.422-08:00</creationTimestamp><invokerId>LoginApp</invokerId><applicationId>LOGIN</applicationId><subApplicationId>BROWSER</subApplicationId><hostName>mn2-neem-ilb-la.wellsfargo.com</hostName><billingAU>00000</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>XA</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>CMAPL</initiatorIdType></initiator></ns2:WFContext></SOAP-ENV:Header>  <SOAP-ENV:Body><ns12:authc2012 xmlns:ns12="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns17="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns18="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns19="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns2="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns20="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/accessTokenManagement/getAccessToken/2015/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/authc/profileCredentials/2012/" xmlns:ns3="http://service.wellsfargo.com/entity/party/2003/" xmlns:ns4="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns6="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns8="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns9="http://eai-schemas.wellsfargo.com/entity/authenticationToken/"><ns2:behaviorVersion>1</ns2:behaviorVersion><ns7:credentials><ns7:principal><ns3:userName>joshmyers53</ns3:userName><ns3:XACustId>439595749</ns3:XACustId><ns3:custNbr>730110043661652</ns3:custNbr><userId>joshmyers53</userId><ns6:usernameLastModifiedTimestamp>2012-04-04T20:13:54.659Z</ns6:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId></ns7:principal><ns7:passwordInfo><assertedPrimaryCredentialIndicator>true</assertedPrimaryCredentialIndicator><ns8:statusCode description="PERMANENT">PERMANENT</ns8:statusCode><ns9:effectiveTimestamp>2015-07-18T15:15:18.397Z</ns9:effectiveTimestamp></ns7:passwordInfo></ns7:credentials><ns10:serverInfo><serverCaptureDateTime>2015-12-21T07:55:05.420-08:00</serverCaptureDateTime></ns10:serverInfo><ns11:deviceInfo><deviceType>Desktop</deviceType><ipAddress>45.79.190.205</ipAddress><ns11:browserCookie/><httpHeaderList><ns11:httpHeader><name>content-type</name><value>application/x-www-form-urlencoded</value></ns11:httpHeader><ns11:httpHeader><name>cookie</name><value>v1st=467DF0B013C85F81; CookiesAreEnabled=yes; OB_SO_ORIGIN=source=homepage; wfacookie=1120151221075504233980547</value></ns11:httpHeader><ns11:httpHeader><name>x-cnection</name><value>close</value></ns11:httpHeader><ns11:httpHeader><name>host</name><value>connect.secure.wellsfargo.com</value></ns11:httpHeader><ns11:httpHeader><name>content-length</name><value>43</value></ns11:httpHeader><ns11:httpHeader><name>user-agent</name><value>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36</value></ns11:httpHeader></httpHeaderList></ns11:deviceInfo></ns12:authc2012></SOAP-ENV:Body></SOAP-ENV:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 5997
+load_sequence_file_new:Processing Thread[0]:request # 9 line 69 file offset 93529 req start offset 87532 size 5997 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 439595749
+
+load_sequence_file_new:Processing Thread[0]:uid = 439595749
+load_sequence_file_new:Processing Thread[0]:uid 439595749 req 9 line 69
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '9' size - 5997
+load_sequence_file_new:Processing Thread[0]:seq = 9
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin
+load_sequence_file_new:Processing Thread[0]:seq_no 10 url http://127.0.0.1/simsapp/authentication/authLogin service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = auth_2012
+load_sequence_file_new:Processing Thread[0]:service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450704363.204
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450704363), TimeSecsPart = 1450704363, TimeMicroSecPart = 204
+
+load_sequence_file_new:Processing Thread[0]:seq_no 10 relative time_stamp 1450704363000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><messageId>-670c8570:151c5185359:7d9f</messageId><session><sessionId>e78bfe32-9726-475b-bd24-98c027098f9c</sessionId><sessionSequenceNumber>14</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:03.137-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>BROWSER_SAVE_USERNAME</subApplicationId><hostName>al1-corzo-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><ns8:behaviorVersion>1</ns8:behaviorVersion><ns34:credentials><ns34:principal><ns2:userName>sarahbelle3613</ns2:userName><ns2:XACustId>903715904</ns2:XACustId><ns2:custNbr>182618561627</ns2:custNbr><userId>SarahBelle3613</userId><ns33:usernameLastModifiedTimestamp>2004-08-27T20:52:11.521000</ns33:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId><saveUsername>false</saveUsername></ns34:principal><ns34:passwordInfo><assertedPrimaryCredentialIndicator>false</assertedPrimaryCredentialIndicator><ns25:statusCode description="SUSPENDED">SUSPENDED</ns25:statusCode><ns31:effectiveTimestamp>2009-10-11T17:58:09.780000</ns31:effectiveTimestamp></ns34:passwordInfo></ns34:credentials><ns5:serverInfo><serverCaptureDateTime>2015-12-21T07:55:03.137-08:00</serverCaptureDateTime></ns5:serverInfo><ns7:deviceInfo><ipAddress>185.69.144.9</ipAddress><ns7:browserCookie>510824_36b92608b1ac6f8c1e2255c3a485c5b3</ns7:browserCookie><httpHeaderList><ns7:httpHeader><name>Accept-Language</name><value>en-us</value></ns7:httpHeader><ns7:httpHeader><name>Cookie</name><value>MBASESSIONID=lJHzW4fL600MY42vnjvLj2PwVqQQlyXtQz0py09y665ZLsZ4nfSp!2051634833; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; WFBFPCOOKIE=CallUs,fpAltType:MBA; CookiesAreEnabled=yes; DCG_Lang_Intro=N; OB_SO_ORIGIN=source=homepage; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; v1st=56030A37C40E3F0F; wfacookie=11201512210222511489546198; WFBFPAffiliate=MBA</value></ns7:httpHeader><ns7:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Content-Length</name><value>1139</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns7:httpHeader><ns7:httpHeader><name>Referer</name><value>https://m.wellsfargo.com/mba/signOn/browserSignon.action</value></ns7:httpHeader><ns7:httpHeader><name>X-Forwarded-For</name><value>185.69.144.9</value></ns7:httpHeader><ns7:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (iPhone; CPU iPhone OS 8_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12D508 Safari/600.1.4</value></ns7:httpHeader><ns7:httpHeader><name>Origin</name><value>https://m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns7:httpHeader><ns7:httpHeader><name>Connection</name><value>keep-alive</value></ns7:httpHeader><ns7:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns7:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;20030107;undefined;true;;true;iPhone;undefined;Mozilla/5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;en-us;iso-8859-1;m.wellsfargo.com;undefined;undefined;undefined;undefined;false;false;1450713296649;2;7%20June%202005%209%3A33%3A44%20pm%20GMT+2;undefined;undefined;;;;;;;12;-120;-120;21%20December%202015%205%3A54%3A56%20pm%20GMT+2;undefined;undefined;undefined;undefined;undefined;;;;;;;;;;;;;;;;;;;16;</userPrefs></ns7:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin, service_name - auth_2012
+get_service_idx:Method Called: service auth_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 11178
+load_sequence_file_new:Processing Thread[0]:request # 10 line 76 file offset 104909 req start offset 93731 size 11178 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 903715904
+
+load_sequence_file_new:Processing Thread[0]:uid = 903715904
+load_sequence_file_new:Processing Thread[0]:uid 903715904 req 10 line 76
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin
+get_service_idx:Method Called: service auth_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: service name = auth_2012, url = http://127.0.0.1/simsapp/authentication/authLogin, service_index = 0, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '10' size - 11178
+load_sequence_file_new:Processing Thread[0]:seq = 10
+load_sequence_file_new:Processing Thread[0]:buffer from fgets URL=/simsapp/authentication/authLogin1
+
+
+load_sequence_file_new:Processing Thread[0]:Url found. url = http://127.0.0.1/simsapp/authentication/authLogin1
+load_sequence_file_new:Processing Thread[0]:seq_no 11 url http://127.0.0.1/simsapp/authentication/authLogin1 service_id 0
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_SOAPACTION="http://service.wellsfargo.com/provider/sims/ffiec/au_th/2012/"
+
+
+load_sequence_file_new:Processing Thread[0]:ptr = "http://service.wellsfargo.com/provider/sims/ffiec/au_th/2012
+load_sequence_file_new:Processing Thread[0]:second_last_slash_ptr = au_th_2012
+load_sequence_file_new:Processing Thread[0]:service name = au_th_2012, url = http://127.0.0.1/simsapp/authentication/authLogin1, service_index = 0
+load_sequence_file_new:Processing Thread[0]: ******after service name = au_th_2012, url = http://127.0.0.1/simsapp/authentication/authLogin1, service_index = 0
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_WFSOAPACTION=""
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets HTTP_COOKIE=
+
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets RequestTimeEx=1450706223.204
+
+
+load_sequence_file_new:Processing Thread[0]:RequestTime (Line = RequestTimeEx=1450706223), TimeSecsPart = 1450706223, TimeMicroSecPart = 204
+
+load_sequence_file_new:Processing Thread[0]:seq_no 11 relative time_stamp 1450706223000
+
+load_sequence_file_new:Processing Thread[0]:buffer from fgets xml1=<Request><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns8:WFContext xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><messageId>-670c8570:151c5185359:7d9f</messageId><session><sessionId>e78bfe32-9726-475b-bd24-98c027098f9c</sessionId><sessionSequenceNumber>14</sessionSequenceNumber></session><creationTimestamp>2015-12-21T07:55:03.137-08:00</creationTimestamp><invokerId>APPL_SERVER</invokerId><applicationId>BC</applicationId><subApplicationId>BROWSER_SAVE_USERNAME</subApplicationId><hostName>al1-corzo-ilb-mb.wellsfargo.com</hostName><billingAU>04077</billingAU><originator><originatorId>123456789</originatorId><originatorIdType>UNDEFINED</originatorIdType></originator><initiator><initiatorId>ipad</initiatorId><initiatorIdType>UNDEFINED</initiatorIdType></initiator></ns8:WFContext></S:Header>  <S:Body><ns46:authc2012 xmlns:ns46="http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/" xmlns:ns45="http://service.wellsfargo.com/entity/legalEntity/2003/" xmlns:ns44="http://eai-schemas.wellsfargo.com/annotation/" xmlns:ns43="http://service.wellsfargo.com/base/2008/" xmlns:ns42="http://service.wellsfargo.com/provider/sims/authc/cdi/2010/" xmlns:ns41="http://service.wellsfargo.com/provider/sims/ffiec/confirmSession/2009/" xmlns:ns40="http://service.wellsfargo.com/provider/sims/authc/authenticateWithPassword/2010/" xmlns:ns39="http://service.wellsfargo.com/entity/internalUnit/2003/" xmlns:ns38="http://eai-schemas.wellsfargo.com/wellsfargo/" xmlns:ns37="http://service.wellsfargo.com/provider/sims/ffiec/auth/2009/" xmlns:ns36="http://service.wellsfargo.com/base/2003/" xmlns:ns35="http://eai-schemas.wellsfargo.com/base/" xmlns:ns34="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2012/" xmlns:ns33="http://eai-schemas.wellsfargo.com/entity/customer/" xmlns:ns32="http://service.wellsfargo.com/provider/sims/authorization/shared/response/2013/" xmlns:ns31="http://eai-schemas.wellsfargo.com/entity/authenticationToken/" xmlns:ns30="http://service.wellsfargo.com/entity/communication/email/2003/" xmlns:ns29="http://service.wellsfargo.com/entity/communication/2003/" xmlns:ns28="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2007/" xmlns:ns27="http://service.wellsfargo.com/entity/communication/2003/d1/" xmlns:ns26="http://service.wellsfargo.com/provider/isg/primaryAuthentication/primaryAuthenticationShared/2007/" xmlns:ns25="http://eai-schemas.wellsfargo.com/entity/authenticationToken/d1/" xmlns:ns24="http://service.wellsfargo.com/provider/sims/authc/entity/authentication/2010/" xmlns:ns23="http://service.wellsfargo.com/provider/sims/VRUDelivery/sharedVRUDelivery/2008/" xmlns:ns22="http://service.wellsfargo.com/provider/sims/mandate/2013/" xmlns:ns21="http://service.wellsfargo.com/provider/sims/interdiction/shared/interdictionInfo/2013/" xmlns:ns20="http://service.wellsfargo.com/entity/teamMember/2003/" xmlns:ns19="http://service.wellsfargo.com/entity/account/2003/" xmlns:ns18="http://eai-schemas.wellsfargo.com/entity/account/" xmlns:ns17="http://service.wellsfargo.com/provider/sims/base/" xmlns:ns16="http://service.wellsfargo.com/provider/sims/shared/simpleInfo/2010/" xmlns:ns15="http://service.wellsfargo.com/provider/sims/twoFactorAuthentication/shared/2008/" xmlns:ns14="http://service.wellsfargo.com/provider/sims/provisioning/ocs/customerOnlineAccessStatus/2012/" xmlns:ns13="http://service.wellsfargo.com/entity/communication/phone/2003/" xmlns:ns12="http://service.wellsfargo.com/provider/sims/provisioning/userDeviceBinding/2015/" xmlns:ns11="http://service.wellsfargo.com/provider/sims/provisioning/shared/remediation/2012/" xmlns:ns10="http://service.wellsfargo.com/provider/sims/provisioning/shared/2007/" xmlns:ns9="http://service.wellsfargo.com/entity/message/2003/" xmlns:ns8="http://service.wellsfargo.com/entity/message/2007/" xmlns:ns7="http://service.wellsfargo.com/provider/sims/ffiec/entity/shared/device/2009/" xmlns:ns6="http://service.wellsfargo.com/provider/sims/strengtheningFactors/challengeQuestion/shared/2007/" xmlns:ns5="http://service.wellsfargo.com/provider/sims/ffiec/entity/authentication/2009/" xmlns:ns4="http://service.wellsfargo.com/entity/communication/address/2003/" xmlns:ns3="http://service.wellsfargo.com/entity/wachovia/2009/" xmlns:ns2="http://service.wellsfargo.com/entity/party/2003/"><ns8:behaviorVersion>1</ns8:behaviorVersion><ns34:credentials><ns34:principal><ns2:userName>sarahbelle3613</ns2:userName><ns2:XACustId>903715904</ns2:XACustId><ns2:custNbr>182618561627</ns2:custNbr><userId>SarahBelle3613</userId><ns33:usernameLastModifiedTimestamp>2004-08-27T20:52:11.521000</ns33:usernameLastModifiedTimestamp><sourceApplicationId>NNET</sourceApplicationId><saveUsername>false</saveUsername></ns34:principal><ns34:passwordInfo><assertedPrimaryCredentialIndicator>false</assertedPrimaryCredentialIndicator><ns25:statusCode description="SUSPENDED">SUSPENDED</ns25:statusCode><ns31:effectiveTimestamp>2009-10-11T17:58:09.780000</ns31:effectiveTimestamp></ns34:passwordInfo></ns34:credentials><ns5:serverInfo><serverCaptureDateTime>2015-12-21T07:55:03.137-08:00</serverCaptureDateTime></ns5:serverInfo><ns7:deviceInfo><ipAddress>185.69.144.9</ipAddress><ns7:browserCookie>510824_36b92608b1ac6f8c1e2255c3a485c5b3</ns7:browserCookie><httpHeaderList><ns7:httpHeader><name>Accept-Language</name><value>en-us</value></ns7:httpHeader><ns7:httpHeader><name>Cookie</name><value>MBASESSIONID=lJHzW4fL600MY42vnjvLj2PwVqQQlyXtQz0py09y665ZLsZ4nfSp!2051634833; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; WFBFPCOOKIE=CallUs,fpAltType:MBA; CookiesAreEnabled=yes; DCG_Lang_Intro=N; OB_SO_ORIGIN=source=homepage; SIMS=510824_36b92608b1ac6f8c1e2255c3a485c5b3; v1st=56030A37C40E3F0F; wfacookie=11201512210222511489546198; WFBFPAffiliate=MBA</value></ns7:httpHeader><ns7:httpHeader><name>Host</name><value>m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Content-Length</name><value>1139</value></ns7:httpHeader><ns7:httpHeader><name>Accept-Encoding</name><value>gzip, deflate</value></ns7:httpHeader><ns7:httpHeader><name>Referer</name><value>https://m.wellsfargo.com/mba/signOn/browserSignon.action</value></ns7:httpHeader><ns7:httpHeader><name>X-Forwarded-For</name><value>185.69.144.9</value></ns7:httpHeader><ns7:httpHeader><name>User-Agent</name><value>Mozilla/5.0 (iPhone; CPU iPhone OS 8_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12D508 Safari/600.1.4</value></ns7:httpHeader><ns7:httpHeader><name>Origin</name><value>https://m.wellsfargo.com</value></ns7:httpHeader><ns7:httpHeader><name>Accept</name><value>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</value></ns7:httpHeader><ns7:httpHeader><name>Connection</name><value>keep-alive</value></ns7:httpHeader><ns7:httpHeader><name>Content-Type</name><value>application/x-www-form-urlencoded</value></ns7:httpHeader></httpHeaderList><userPrefs>TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;20030107;undefined;true;;true;iPhone;undefined;Mozilla/5.0%20%28iPhone%3B%20CPU%20iPhone%20OS%208_2%20like%20Mac%20OS%20X%29%20AppleWebKit/600.1.4%20%28KHTML%2C%20like%20Gecko%29%20Version/8.0%20Mobile/12D508%20Safari/600.1.4;en-us;iso-8859-1;m.wellsfargo.com;undefined;undefined;undefined;undefined;false;false;1450713296649;2;7%20June%202005%209%3A33%3A44%20pm%20GMT+2;undefined;undefined;;;;;;;12;-120;-120;21%20December%202015%205%3A54%3A56%20pm%20GMT+2;undefined;undefined;undefined;undefined;undefined;;;;;;;;;;;;;;;;;;;16;</userPrefs></ns7:deviceInfo></ns46:authc2012></S:Body></S:Envelope></Request>
+
+
+load_sequence_file_new:Processing Thread[0]:Request body first line found
+load_sequence_file_new:Processing Thread[0]:setting indexing_tag ,url - http://127.0.0.1/simsapp/authentication/authLogin1, service_name - au_th_2012
+get_service_idx:Method Called: service au_th_2012, total_services = 0
+load_sequence_file_new:Processing Thread[0]:service_idx = -1
+load_sequence_file_new:Processing Thread[0]:req_size = 11178
+load_sequence_file_new:Processing Thread[0]:request # 11 line 83 file offset 116291 req start offset 105113 size 11178 
+
+extract_uid:Method called, cust_id tag = XACustId
+extract_uid:lb_ptr = 903715904
+
+load_sequence_file_new:Processing Thread[0]:uid = 903715904
+load_sequence_file_new:Processing Thread[0]:uid 903715904 req 11 line 83
+load_sequence_file_new:Processing Thread[0]:buffer from fgets *******
+
+
+load_sequence_file_new:Processing Thread[0]:Request Body End
+get_and_save_runtime_service_data:Processing Thread[0]: Method called, service name = au_th_2012, url = http://127.0.0.1/simsapp/authentication/authLogin1
+get_service_idx:Method Called: service au_th_2012, total_services = 0
+get_and_save_runtime_service_data:Processing Thread[0]: Service index not found for service name = au_th_2012, saving data
+get_and_save_runtime_service_data:Processing Thread[0]: service added, service_index = 3, service name = au_th_2012, url = http://127.0.0.1/simsapp/authentication/authLogin1
+get_and_save_runtime_service_data:Processing Thread[0]: service name = au_th_2012, url = http://127.0.0.1/simsapp/authentication/authLogin1, service_index = 3, service_type = RUNTIME_SERVICE_ENTRY
+load_sequence_file_new:Processing Thread[0]:Request '11' size - 11178
+load_sequence_file_new:Processing Thread[0]:seq = 11
+load_sequence_file_new:Processing Thread[0]:Total lines from service file (without header line) = 84
+
+load_sequence_file_new:Processing Thread[0]:Total no of requests found 12 g_msgcount (counted) 12 
+
+    Processing Thread[0]:Request Processed form this file = 12
+    Total request processed = 12. Ignored = 0, Missing custid = 4 (No custid = 4, Empty custid = 0)
+  Processing Thread[0]:Completed processing of log file (/home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt) at 02/29/16 16:38:25
+  Processing Thread[0]:Time taken to process this file 0 minutes and 0 seconds
+
+load_input_data_files_t:Processing Thread[0]: seq file /home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt processed, total msgcount = 12
+load_input_data_files_t:Processing Thread[0]: thread completed, total file processed = 1
+update_service_map_ptr:Method called, Processing Thread[0]: total runtime services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 0
+create_service_entry_and_fill_data:service Index not found for service name = auth_2012, total_services = 0
+create_table_entry:Method Called
+create_service_entry_and_fill_data:service index = 0
+create_service_entry_and_fill_data:Allocating memory for Service name. size = 20
+create_service_entry_and_fill_data:Allocating memory for Service url. size = 50
+create_service_entry_and_fill_data:Allocating memory for soap_action. size = 77
+create_service_entry_and_fill_data:service name auth_2012 service_id = 0, num_service_file = 1
+
+get_service_idx:Method Called: service auth_2_12_MissingIndex, total_services = 1
+create_service_entry_and_fill_data:service Index not found for service name = auth_2_12_MissingIndex, total_services = 1
+create_table_entry:Method Called
+create_service_entry_and_fill_data:service index = 1
+create_service_entry_and_fill_data:Allocating memory for Service name. size = 33
+create_service_entry_and_fill_data:Allocating memory for Service url. size = 50
+create_service_entry_and_fill_data:Allocating memory for soap_action. size = 77
+create_service_entry_and_fill_data:service name auth_2_12_MissingIndex service_id = 1, num_service_file = 2
+
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 2
+create_service_entry_and_fill_data:service Index not found for service name = auth_2012_MissingIndex, total_services = 2
+create_table_entry:Method Called
+create_service_entry_and_fill_data:service index = 2
+create_service_entry_and_fill_data:Allocating memory for Service name. size = 33
+create_service_entry_and_fill_data:Allocating memory for Service url. size = 50
+create_service_entry_and_fill_data:Allocating memory for soap_action. size = 77
+create_service_entry_and_fill_data:service name auth_2012_MissingIndex service_id = 2, num_service_file = 3
+
+get_service_idx:Method Called: service au_th_2012, total_services = 3
+create_service_entry_and_fill_data:service Index not found for service name = au_th_2012, total_services = 3
+create_table_entry:Method Called
+create_service_entry_and_fill_data:service index = 3
+create_service_entry_and_fill_data:Allocating memory for Service name. size = 21
+create_service_entry_and_fill_data:Allocating memory for Service url. size = 51
+create_service_entry_and_fill_data:Allocating memory for soap_action. size = 78
+create_service_entry_and_fill_data:service name au_th_2012 service_id = 3, num_service_file = 4
+
+  Processing Thread[0] Completed
+
+load_input_data_files:Processing Thread[0] Completed
+, valid_msg = 12, invalid_request = 0ignore_request = 0, no_xacustid_messages = 4, empty_xacustid_messages = 0
+load_input_data_files:Number of services after updating from each thread= 4
+load_input_data_files:Allocating memory for seq_data_arr. size = 960
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2_12_MissingIndex, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 4
+get_service_idx:Method Called: service auth_2012_MissingIndex, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service auth_2012, total_services = 4
+get_service_idx:Method Called: service au_th_2012, total_services = 4
+  Summary: Total request processed = 12, Valid request = 12, Ignored = 0, Missing custid = 4 (No custid = 4, Empty custid = 0)
+
+load_input_data_files:Summary: Total request processed = 12, Valid request = 12, Ignored = 0, Missing custid = 4 (No custid = 4, Empty custid = 0)
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 1
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 2
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 2
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 2
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 0
+
+load_input_data_files:------------seq_data_arr[seq_no].service_id = 3
+
+  Log files information:
+    Filename					Total Requests	
+    /home/netstorm/Controller_Shalu/Replay_wells/replay_data/replay_data/extracts/SOAP.log.1.txt		12
+    				Total: 		12
+Completed Step2 - Reading input data files and generate sequence data array.. Total good requests = 12.Time taken = 0 minutes and 0 seconds
+
+Starting Step3 - Sorting of sequence data file. Total requests = 12. Estimated Time = 0 minutes and 0 seconds
+
+sort_seq_array:Method called. total entries = 12
+  Start Sorting of sequence file data using uid/timestamp at 02/29/16 16:38:25
+
+  End Sorting of request file data using uid/timestamp at 02/29/16 16:38:25
+
+  Start Filling parent sequence numbers at 02/29/16 16:38:25
+
+fill_parent_seq:*****g_valid_msgcount = 12*******
+fill_parent_seq:seq_data_arr[i].parent_seq 1
+fill_parent_seq:seq_data_arr[i].parent_seq 3
+fill_parent_seq:seq_data_arr[i].parent_seq 7
+fill_parent_seq:seq_data_arr[i].parent_seq 8
+fill_parent_seq:seq_data_arr[i].parent_seq 5
+fill_parent_seq:seq_data_arr[i].parent_seq 4
+fill_parent_seq:seq_data_arr[i].parent_seq 6
+fill_parent_seq:seq_data_arr[i].parent_seq 9
+fill_parent_seq:seq_data_arr[i].parent_seq 0
+fill_parent_seq:seq_data_arr[i].parent_seq 10
+fill_parent_seq:seq_data_arr[i].parent_seq 11
+fill_parent_seq:seq_data_arr[i].parent_seq 2
+fill_parent_seq:no_parent_seq 12
+  End Filling parent sequence numbers at 02/29/16 16:38:25
+
+  Start Sorting of sequence file data using seq number at 02/29/16 16:38:25
+
+  End Sorting of sequence file data using seq number at 02/29/16 16:38:25
+
+Completed Step3 - Sorting of sequence data file. Total good requests = 12.Time taken = 0 minutes and 0 seconds
+
+rename_service_names:Method called, Total services - 4
+rename_service_names:Allocating memory for Service_map_array_seq. size = 16
+rename_service_names:Successfully renamed the services
+append_all_headers:Method called, num_service_file= 4
+append_all_headers:service_map_ptr[i].url = http://127.0.0.1/simsapp/authentication/authLogin, len = 49, i = 0
+append_all_headers:Allocating memory for All headers. size = 305
+make_method_and_host_header:Method Called. method POST URL = http://127.0.0.1/simsapp/authentication/authLogin header =  service_name = auth_2012
+make_method_and_host_header:Allocating memory for url memory allocation. size = 50
+make_method_and_host_header:HTTP Request line and Host header = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+
+append_all_headers:For service 0, all_headers_len = 142, all_headers = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+SOAPAction: "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+append_all_headers:service_map_ptr[i].url = http://127.0.0.1/simsapp/authentication/authLogin, len = 49, i = 1
+append_all_headers:Allocating memory for All headers. size = 305
+make_method_and_host_header:Method Called. method POST URL = http://127.0.0.1/simsapp/authentication/authLogin header =  service_name = auth_2_12_MissingIndex
+make_method_and_host_header:Allocating memory for url memory allocation. size = 50
+make_method_and_host_header:HTTP Request line and Host header = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+
+append_all_headers:For service 1, all_headers_len = 142, all_headers = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+SOAPAction: "http://service.wellsfargo.com/provider/sims/ffiec/auth/2@12/"
+
+append_all_headers:service_map_ptr[i].url = http://127.0.0.1/simsapp/authentication/authLogin, len = 49, i = 2
+append_all_headers:Allocating memory for All headers. size = 305
+make_method_and_host_header:Method Called. method POST URL = http://127.0.0.1/simsapp/authentication/authLogin header =  service_name = auth_2012_MissingIndex
+make_method_and_host_header:Allocating memory for url memory allocation. size = 50
+make_method_and_host_header:HTTP Request line and Host header = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+
+append_all_headers:For service 2, all_headers_len = 142, all_headers = POST /simsapp/authentication/authLogin HTTP/1.0
+Host: 127.0.0.1
+SOAPAction: "http://service.wellsfargo.com/provider/sims/ffiec/auth/2012/"
+
+append_all_headers:service_map_ptr[i].url = http://127.0.0.1/simsapp/authentication/authLogin1, len = 50, i = 3
+append_all_headers:Allocating memory for All headers. size = 306
+make_method_and_host_header:Method Called. method POST URL = http://127.0.0.1/simsapp/authentication/authLogin1 header =  service_name = au_th_2012
+make_method_and_host_header:Allocating memory for url memory allocation. size = 51
+make_method_and_host_header:HTTP Request line and Host header = POST /simsapp/authentication/authLogin1 HTTP/1.0
+Host: 127.0.0.1
+
+append_all_headers:For service 3, all_headers_len = 144, all_headers = POST /simsapp/authentication/authLogin1 HTTP/1.0
+Host: 127.0.0.1
+SOAPAction: "http://service.wellsfargo.com/provider/sims/ffiec/au_th/2012/"
+
+Starting Step4 - Generate requests to user mapping and create NVM request files. Total requests = 12. Estimated Time = 0 minutes and 0 seconds
+
+update_timestamp_to_relative:Method called
+process_sequence_data_new:Method called
+process_sequence_data_new:g_msgcount = 12
+process_sequence_data_new:parent_seq = 0
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 903715904, page_id = 0, time_stamp = 0. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 4 fdin 10 off 194 size 11167
+
+process_sequence_data_new:parent_seq = 1
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 0, page_id = 1, time_stamp = 0. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 5 fdin 10 off 11574 size 10313
+
+process_sequence_data_new:parent_seq = 2
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 904448476, page_id = 0, time_stamp = 1000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 6 fdin 10 off 22100 size 5988
+
+process_sequence_data_new:parent_seq = 3
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 0, page_id = 2, time_stamp = 1000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 7 fdin 10 off 28301 size 10589
+
+process_sequence_data_new:parent_seq = 4
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 228361521, page_id = 0, time_stamp = 1000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 4 fdin 10 off 39103 size 7829
+
+process_sequence_data_new:parent_seq = 5
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 208987111, page_id = 0, time_stamp = 2000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 5 fdin 10 off 47145 size 11463
+
+process_sequence_data_new:parent_seq = 6
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 312579190, page_id = 0, time_stamp = 2000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 6 fdin 10 off 58821 size 6341
+
+process_sequence_data_new:parent_seq = 7
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 0, page_id = 2, time_stamp = 2000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 7 fdin 10 off 65375 size 10608
+
+process_sequence_data_new:parent_seq = 8
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 0, page_id = 2, time_stamp = 2000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 4 fdin 10 off 76196 size 11123
+
+process_sequence_data_new:parent_seq = 9
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 439595749, page_id = 0, time_stamp = 2000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 5 fdin 10 off 87532 size 5986
+
+process_sequence_data_new:parent_seq = 10
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 903715904, page_id = 0, time_stamp = 1860000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 6 fdin 10 off 93731 size 11167
+
+process_sequence_data_new:parent_seq = 11
+add_user_new:Method Called
+add_user_new:Allocating memory for node memory allocation. size = 48
+get_nvm_id:Method Called
+add_request_new:Method Called, user_id = 903715904, page_id = 3, time_stamp = 3720000. seq_file_fp = 0x7fca8c000b00
+create_table_entry:Method Called
+add_request_new:fdin = 10
+add_request_new:sendfile args: fdout 7 fdin 10 off 105113 size 11167
+
+Request count in Control file = 12, Processed requests = 12, Ignored requests = 0
+
+Completed Step4 - Generate requests to user mapping and create NVM request files.. Total good requests = 12.Time taken = 0 minutes and 0 seconds
+
+# Service Name					Total Requests	URL
+0 auth_2012                     		7		http://127.0.0.1/simsapp/authentication/authLogin
+1 auth_2_12_MissingIndex        		1		http://127.0.0.1/simsapp/authentication/authLogin
+2 auth_2012_MissingIndex        		3		http://127.0.0.1/simsapp/authentication/authLogin
+3 au_th_2012                    		1		http://127.0.0.1/simsapp/authentication/authLogin1
+write_netstorm_index_file:Method Called
+open_file:Method Called
+open_file:Method Called
+open_file:Method Called
+open_file:Method Called
+create_scenario:Method called scenario_name = ns/wells_fargo/wells_new.conf
+create_scenario:Return value of system() is = 0
+Existing Scenario file '/home/netstorm/Controller_Shalu/scenarios/ns/wells_fargo/wells_new.conf' deleted as -f option was used.
+create_scenario:Creating Scenario file '/home/netstorm/Controller_Shalu/scenarios/ns/wells_fargo/wells_new.conf'.
+
+Scenario file creation success.
+create_script:Method Called
+create_script:Method called script_path is = /home/netstorm/Controller_Shalu/scripts/ns/wells_fargo/wells_new
+create_script:Return value of system() is = 256

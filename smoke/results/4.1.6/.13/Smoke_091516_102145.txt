@@ -1,0 +1,247 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-001-001,47501,1,1,pass,ns_save_string() api Passed
+SMOKE-001-002,47502,1,1,pass,ns_eval_string() Passed
+SMOKE-001-003,47503,1,1,pass,ns_adv_param() Passed
+SMOKE-001-004,47504,1,1,pass,ns_adv_param() negative condition Passed
+SMOKE-001-005,47505,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-006,47506,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-007,47507,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-008,47508,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-009,47509,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-010,47510,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-011,47511,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-012,47512,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-013,47513,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-014,47514,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-015,47515,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-016,47516,1,1,pass,save_data_var or save_data_eval or save_dat_ex api Passed
+SMOKE-001-017,47517,1,1,pass,Smoke_SET_INT_VAL_API_TEST Passed
+SMOKE-001-018,47518,1,1,pass,Smoke_GET_INT_VAL_API_TEST Passed
+SMOKE-001-019,47519,1,1,pass,Smoke_GET_RANDOM_STR_API_TEST Passed
+SMOKE-001-020,47520,1,1,pass,Smoke_GETTERS_API_TEST Passed
+SMOKE-001-021,47521,1,1,pass,Smoke_CHK_STR_CPY_API_TEST Passed
+SMOKE-001-024,47522,1,1,pass,Passed for ns_get_url_resp_msg
+SMOKE-002-001,47523,1,1,pass,Http authentication basic for apache main param session Passed
+SMOKE-002-002,47524,1,1,pass,Http authentication basic for apache main param use Passed
+SMOKE-002-003,47525,1,1,pass,Http authentication basic for apache for Page Dump Passed
+SMOKE-002-004,47526,1,1,pass,Http authentication basic main with keep alive Passed
+SMOKE-002-005,47527,1,1,pass,Http authentication basic main cvfail without keepalive Passed
+SMOKE-003-001,47528,1,1,pass,Autofetch one main url five autofetch url Passed
+SMOKE-003-002,47529,1,1,pass,Autofetch disabled Passed
+SMOKE-003-003,47530,1,1,pass,Autofetch enabled two embedded url Passed
+SMOKE-003-004,47531,1,1,pass,Autofetch disabled two embedded url Passed
+SMOKE-003-005,47532,1,1,pass,Autofetch Inline Include Domain Passed
+SMOKE-003-006,47533,1,1,pass,Autofetch Inline Exclude Domain Passed
+SMOKE-003-007,47534,1,1,pass,Autofetch Inline Include Url Pattern Passed
+SMOKE-003-008,47535,1,1,pass,Autofetch Inline Exclude Url Pattern Passed
+SMOKE-003-009,47536,1,1,pass,No jsp based url being requested after excluding jsp based pattern
+SMOKE-003-010,47537,1,1,pass,jsp based url being requested after including jsp based pattern
+SMOKE-003-011,47538,1,1,pass,js based url were not requested after excluding js+ based pattern
+SMOKE-003-012,47539,1,1,pass,jsp inlines have been filtered out but js being included for js? pattern
+SMOKE-003-013,47540,1,1,pass,only js and jsp based inlines have been requested for including jsp? pattern
+SMOKE-003-014,47541,1,1,pass,jsp and js both inlines have been included for js* pattern
+SMOKE-003-015,47542,1,1,pass,jsp and js both inlines have been included for j[sp]+ pattern
+SMOKE-003-016,47543,1,1,pass,PostURLCallBack for set embed objects api;mode zero;not implemented
+SMOKE-003-017,47544,1,1,pass,PostURLCallBack for set embd objects api;mode one;not implemented
+SMOKE-003-018,47545,1,1,pass,PostURLCallBack for set embd objects api;url redirection;not implemented
+SMOKE-004-001,47546,1,1,pass,Auto Redirect 10 Depth Server URL and Scenario 2 Depth Redirection Passed
+SMOKE-004-002,47547,1,1,pass,Auto Redirect One Depth Server URL with relative path Passed
+SMOKE-004-003,47548,1,1,pass,Auto Redirect For Different Host Test Passed
+SMOKE-004-004,47549,1,1,pass,Auto Redirect For Relative To Absolute redirection Passed
+SMOKE-004-005,47550,1,1,pass,Auto Redirect For Different Protocol Url Passed
+SMOKE-004-006,47551,1,1,pass,Validation passed for Manual redirection testcase
+SMOKE-005-003,47552,1,1,pass,Four URL Test with expiry code and cookie mode 1  Passed
+SMOKE-005-004,47553,1,1,pass,Two URL Test with command line cookie and cookie mode 1 Passed
+SMOKE-006-001,47554,1,1,pass,KeepAlive with percentage 100 Passed
+SMOKE-006-002,47555,1,1,pass,KeepAlive with percentage 0 Passed
+SMOKE-007-001,47556,1,1,pass,One Url MultiPart With Boundary Passed
+SMOKE-007-002,47557,1,1,pass,One Url MultiPart Without Boundary Passed
+SMOKE-007-003,47558,1,1,pass,One Url MultiPart Nested Boundries Passed
+SMOKE-008-001,47559,1,1,pass,Page think time with constant mode Passed
+SMOKE-008-002,47560,1,1,pass,Page think time with uniform distribution mode Passed
+SMOKE-008-003,47561,1,1,pass,Page think time with internet type distribution mode Passed
+SMOKE-008-004,47562,1,1,pass,Page think time keyword for specific page Passed
+SMOKE-008-005,47563,1,1,pass,Page think time keyword with overide and multiply values Passed
+SMOKE-008-007,47564,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-008,47565,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-009,47566,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-010,47567,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-011,47568,1,1,pass,page think time mode 4 testcase passed for all groups and all pages
+SMOKE-008-012,47569,1,1,pass,page think time mode 4 testcase passed where function returns a random value from an initalized array
+SMOKE-009-001,47570,1,1,pass,Search in two main url Passed
+SMOKE-009-002,47571,1,1,pass,Search in two main url with savelength mode Passed
+SMOKE-009-003,47572,1,1,pass,Search for two main url with save length and save offset mode  Passed
+SMOKE-009-004,47573,1,1,pass,Search for two main url with save length and save offset mode Passed
+SMOKE-009-005,47574,1,1,pass,Search for two main url with save length and save offset mode in 2 pages Passed
+SMOKE-009-006,47575,1,1,pass,Search for two main url with save length and save offset mode in 2 pages Passed
+SMOKE-009-007,47576,1,1,pass,Checkpoint with two main url check value found Passed
+SMOKE-009-008,47577,1,1,pass,Checkpoint with two main url check value not found Passed
+SMOKE-009-009,47578,1,1,pass,Checkpoint with two main url check value with prefix and suffix found Passed
+SMOKE-009-010,47579,1,1,pass,Checkpoint with two main url check value with prefix and suffix not found Passed
+SMOKE-009-011,47580,1,1,pass,Checkpoint with two main url check value with prefix and suffix found and ActionOnfailContinue Passed
+SMOKE-009-012,47581,1,1,pass,Checkpoint with two main url check value with prefix and suffix not found ActionOnfailStop Passed
+SMOKE-009-013,47582,1,1,pass,Checkpoint with two main url check value with prefix and suffix found comparing from a file Passed
+SMOKE-009-014,47583,1,1,pass,Checkpoint with two main url check value with prefix and suffix not found Passed
+SMOKE-009-015,47584,1,1,pass,File Parameter 5 main url ChangeOnUse Passed
+SMOKE-009-016,47585,1,1,pass,File Parameter 5 main url ChangeOnSession Passed
+SMOKE-009-017,47586,1,1,pass,File Parameter 5 url ModeWeighted Passed
+SMOKE-009-018,47587,1,1,pass,Serach Param for two main url Passed
+SMOKE-009-019,47588,1,1,fail,Search Param for 5 url with single page search savelenght and saveoffset and ORD all Failed
+SMOKE-010-001,47589,1,1,pass,DNS A type query Passed
+SMOKE-010-002,47590,1,1,pass,DNS AAAA type query Passed
+SMOKE-010-003,47591,1,1,pass,DNS MX type query Passed
+SMOKE-010-004,47592,1,1,pass,DNS NS type query Passed
+SMOKE-010-005,47593,1,1,pass,DNS SOA type query Passed
+SMOKE-010-006,47594,1,1,pass,DNS PTR type query Passed
+SMOKE-010-007,47595,1,1,pass,DNS CNAME type query Passed
+SMOKE-010-009,47597,1,1,pass,Ftp test for text data and passive mode Passed
+SMOKE-010-010,47598,1,1,pass,Ftp test for binary data and passive mode Passed
+SMOKE-010-011,47599,1,1,pass,Ftp test for text data and active mode Passed
+SMOKE-010-012,47600,1,1,pass,Ftp test for binary data and active mode Passed
+SMOKE-010-013,47601,1,1,pass,SMTP test Passed
+SMOKE-010-014,47602,1,1,pass,IMAP test for FETCH HEADER Passed
+SMOKE-010-015,47603,1,1,pass,IMAP test for FETCH TEXT Passed
+SMOKE-010-016,47604,1,1,pass,IMAP test for FETCH BODY Passed
+SMOKE-010-017,47605,1,1,pass,Hessian Protocol version 1.0 Test Passed
+SMOKE-010-018,47606,1,1,pass,Hessian Protocol version 2.0 Test Passed
+SMOKE-036-001,47607,1,1,pass,RBU data validation between HAR and CSV Passed
+SMOKE-012-001,47608,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-002,47609,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-003,47610,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-004,47611,1,1,pass,Runlogic for sequence flows test Passed
+SMOKE-012-005,47612,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-006,47613,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-007,47614,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-008,47615,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-009,47616,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-013-001,47617,1,1,pass,SyncPoint Before FirstTrans 10Users all users release Passed
+SMOKE-013-002,47618,1,1,pass,SyncPoint Before FirstTrans 10Users 5 users release  Passed
+SMOKE-013-003,47619,1,1,pass,SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed
+SMOKE-013-004,47620,1,1,pass,SyncPoint In Between Transasctions 10 Users all users release Passed
+SMOKE-013-005,47621,1,1,pass,SyncPoint Before First Page 10 Users all users release Passed
+SMOKE-013-006,47622,1,1,pass,SyncPoint In Between Pages 10Users 5users release Passed
+SMOKE-014-001,47623,1,1,pass,NS add header with Main url Passed
+SMOKE-014-002,47624,1,1,pass,NS add header with Embedded url Passed
+SMOKE-014-003,47625,1,1,pass,NS add header with both Main and Embedded urls Passed
+SMOKE-014-004,47626,1,1,pass,NS auto add header with Main urls Passed
+SMOKE-014-005,47627,1,1,pass,NS auto add header with Embedded urls Passed
+SMOKE-014-006,47628,1,1,pass,NS auto add header with Mix Mode urls Passed
+SMOKE-014-007,47629,1,1,pass,NS clean-up header Passed
+SMOKE-014-008,47630,1,1,pass,NS remove auto header Passed
+SMOKE-014-009,47631,1,1,pass,NS add and remove header combined Passed
+SMOKE-015-001,47632,1,1,fail,NetworkCache test for both cacheable and non-cacheable request Failed
+SMOKE-015-002,47633,1,1,pass,NetworkCache test with NetOcean server having default URL Passed
+SMOKE-015-003,47634,1,1,pass,NetworkCache test with NetOcean server having parameterized requests Passed
+SMOKE-016-001,47635,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-002,47636,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-003,47637,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-004,47638,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-005,47639,1,1,pass,log events as per event definition file with log event as per state change mode(1) tested
+SMOKE-016-006,47640,1,1,fail,no expected timeout events has been logged as; per event definition file with log event as per event counts mode(2)
+SMOKE-016-007,47641,1,1,fail,expected CvFail events is not logged; as per events definition file for events to be logged as per occurence time
+SMOKE-016-008,47642,1,1,pass,log events as per event definition file with no flter(0) mode tested
+SMOKE-016-009,47643,1,1,pass,no events being logged for filter all events;no events will be logged configuration setting
+SMOKE-017-001,47644,1,1,pass,Inline Delay Mode 1 for single group single page;test validation passed
+SMOKE-017-002,47645,1,1,pass,Inline Delay Mode 1 for single group all pages;test validation passed
+SMOKE-017-003,47646,1,1,pass,Inline Delay Mode 1 for all groups all pages;test validation passed
+SMOKE-017-004,47647,1,1,pass,Inline Delay Mode 2 for single group single page ;test validation passed
+SMOKE-017-005,47648,1,1,pass,Inline Delay Mode 2 for single group all pages ;test validation passed
+SMOKE-017-006,47649,1,1,pass,Inline Delay Mode 2 for all groups all pages ;test validation passed
+SMOKE-017-007,47650,1,1,pass,Inline Delay Mode 3 for single group single page ;test validation passed
+SMOKE-017-008,47651,1,1,pass,Inline Delay Mode 3 for single group all pages ;test validation passed
+SMOKE-017-009,47652,1,1,pass,Inline Delay Mode 3 for all groups all pages ;test validation passed
+SMOKE-017-010,47653,1,1,pass,Inline Delay Mode 4 for single group single page;test validation passed
+SMOKE-017-011,47654,1,1,pass,Inline Delay Mode 4 for single group all pages;test validation passed
+SMOKE-017-012,47655,1,1,pass,Inline Delay Mode 4 for all groups all pages;test validation passed
+SMOKE-017-013,47656,1,1,pass,inline min connection reuse delay for single group smoke testcase passed
+SMOKE-017-014,47657,1,1,pass,inline min connection reuse delay for all groups smoke testcase passed
+SMOKE-017-015,47658,1,1,pass,log inline block time smoke testcase passed
+SMOKE-017-016,47659,1,1,pass,enable page based stats testcase passed
+SMOKE-019-001,47660,1,1,pass,CVar based transaction name  testcase passed as Home matched with C variable value Home
+SMOKE-019-002,47661,1,1,pass,CVar based transaction name  testcase passed as FindFlight matched with C variable value FindFlight
+SMOKE-019-003,47662,1,1,pass,CVar based transaction name  testcase passed as Login matched with C variable value Login
+SMOKE-019-004,47663,1,1,pass,CVar based transaction name  testcase passed as Reservation matched with C variable value Reservation
+SMOKE-020-005,47664,1,1,pass,G_DISABLE_ACCEPT 0 testcase passed
+SMOKE-020-006,47665,1,1,pass,G_DISABLE_ACCEPT 1 testcase passed
+SMOKE-020-007,47666,1,1,pass,G_DISABLE_HOST 0 testcase passed
+SMOKE-020-008,47667,1,1,pass,G_DISABLE_HOST 1 testcase passed
+SMOKE-020-009,47668,1,1,pass,G_DISABLE_REUSEADDR 0 smoke test validation passed
+SMOKE-020-010,47669,1,1,pass,G_DISABLE_REUSEADDR 1 smoke test validation passed
+SMOKE-020-011,47670,1,1,pass,G_DISABLE_USER-AGENT 0 testcase passed
+SMOKE-020-012,47671,1,1,pass,G_DISABLE_USER-AGENT 1 testcase passed
+SMOKE-020-013,47672,1,1,pass,G_DISABLE_CONNECTION 0 testcase passed
+SMOKE-020-014,47673,1,1,pass,G_DISABLE_CONNECTION 1 testcase passed
+SMOKE-020-015,47674,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 0 testcase passed
+SMOKE-020-016,47675,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 1 testcase passed
+SMOKE-020-017,47676,1,1,pass,G_DISABLE_ACCEPT-ENCODING 0 testcase passed
+SMOKE-020-018,47677,1,1,pass,G_DISABLE_ACCEPT-ENCODING 1 testcase passed
+SMOKE-020-019,47678,1,1,pass,G_DISABLE_ALL_HEADER 0 testcase passed
+SMOKE-020-020,47679,1,1,pass,G_DISABLE_ALL_HEADER 1 testcase passed
+SMOKE-020-021,47680,1,1,pass,G_DISABLE_KEEP-ALIVE 0 testcase passed
+SMOKE-020-022,47681,1,1,pass,G_DISABLE_KEEP-ALIVE 1 testcase passed
+SMOKE-020-023,47682,1,1,pass,continue on page error mode 0 validation passed
+SMOKE-020-024,47683,1,1,fail,continue on page error mode 1 validation failed
+SMOKE-020-025,47684,1,1,fail,continue on page error mode 1 validation failed
+SMOKE-020-026,47685,1,1,fail,continue on page error mode 1 validation failed
+SMOKE-020-027,47686,1,1,pass,idle msec testcase validation passed
+SMOKE-020-028,47687,1,1,pass,idle msec testcase validation passed
+SMOKE-020-029,47688,1,1,pass,idle msec testcase validation passed
+SMOKE-020-030,47689,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-031,47690,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-032,47691,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-021-001,47692,1,1,pass,page as transaction mode 0 testcase passed
+SMOKE-021-002,47693,1,1,pass,page as transaction mode 1 testcase passed
+SMOKE-021-003,47694,1,1,pass,page as transaction mode 1 1 testcase passed
+SMOKE-021-004,47695,1,1,pass,page as transaction mode 2 1 testcase passed
+SMOKE-021-005,47696,1,1,pass,page as transaction mode 3 1 testcase passed
+SMOKE-021-006,47697,1,1,pass,nvm testcase passed
+SMOKE-021-007,47698,1,1,pass,num nvm testcase passed
+SMOKE-021-008,47699,1,1,pass,nvm testcase passed
+SMOKE-021-009,47700,1,1,pass,num nvm testcase passed
+SMOKE-021-010,47701,1,1,pass,disable cookies testcase passed
+SMOKE-021-011,47702,1,1,pass,disable cookies testcase passed
+SMOKE-022-001,47703,1,1,pass,session pacing mode 0(no pacing i.e as soon as the previous session ends) testcase validation passed
+SMOKE-022-002,47704,1,1,pass,session pacing mode 1 0(fixed delay) testcase validation passed
+SMOKE-022-003,47705,1,1,pass,session pacing mode 1 1(fixed delay with internet random values) testcase validation passed
+SMOKE-022-004,47706,1,1,pass,session pacing mode 1 1(fixed delay within a time range) testcase validation passed
+SMOKE-022-005,47707,1,1,pass,session pacing mode 2 0(once every interval at a fixed interval of) testcase validation passed
+SMOKE-022-006,47708,1,1,pass,session pacing mode 2 1(once every interval with an internet random values) testcase validation passed
+SMOKE-022-007,47709,1,1,pass,session pacing mode 2 2(once every interval within a range of values) testcase validation passed
+SMOKE-022-008,47710,1,1,pass,session pacing keyword with new user on session and first session pacing testcase passed
+SMOKE-023-001,47711,1,1,pass,wan download speed(512000 bps) testcase passed as difference of expected response time(8.192) and actual response time(8.643) is less than or equals to 1.2
+SMOKE-023-002,47712,1,1,pass,wan download speed(1000000 bps) testcase passed as difference of expected response time(4.194) and actual response time(4.227) is less than or equals to 1.2
+SMOKE-023-003,47713,1,1,pass,wan download speed(2000000 bps) testcase passed as difference of expected response time(2.097) and actual response time(2.175) is less than or equals to 1.2
+SMOKE-023-004,47714,1,1,pass,wan download speed(3500000 bps) testcase passed as difference of expected response time(1.198) and actual response time(1.241) is less than or equals to 1.2
+SMOKE-024-001,47715,1,1,pass,inline transaction testcase passed
+SMOKE-024-002,47716,1,1,pass,inline transaction testcase passed
+SMOKE-024-003,47717,1,1,pass,inline transaction testcase passed
+SMOKE-024-004,47718,1,1,pass,inline repeat for transaction passed
+SMOKE-024-005,47719,1,1,pass,inline repeat for transaction passed
+SMOKE-024-006,47720,1,1,pass,inline repeat for transaction passed
+SMOKE-024-007,47721,1,1,pass,inline repeat and transaction testcase passed
+SMOKE-024-008,47722,1,1,pass,ns timer api testcase passed as transaction time is equal to api timer
+SMOKE-024-009,47723,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-010,47724,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-011,47725,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-014,47726,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-015,47727,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-016,47728,1,1,pass,ns decode 3des api testcase passed
+SMOKE-024-017,47729,1,1,pass,ns decode 3des api testcase passed
+SMOKE-025-001,47730,1,1,pass,no caching across session for same user with client freshness;cache hit rate will be 100% of total users testcase is Sucessfully Passed
+SMOKE-025-002,47731,1,1,pass,no caching across session for same user with client freshness;cache hit rate will be 100% of G1 total users testcase passed
+SMOKE-025-003,47732,1,1,pass,no caching across session for same user with client freshness;cache hit rate will be 50% of G1 total users testcase passed
+SMOKE-025-004,47733,1,1,pass,caching across session for same user without client freshness;cache hit rate will be 0% of G1 total users testcase passed
+SMOKE-026-001,47734,1,1,pass,ramp down all vusers testcase passed
+SMOKE-026-002,47735,1,1,pass,allow current session to complete with hasten completion by disregarding all think times testcase passed
+SMOKE-026-003,47736,1,1,pass,allow current session to complete with hasten completion by disregarding all think times and using idle time of 10 seconds testcase passed
+SMOKE-026-004,47737,1,1,pass,allow current session to complete with hasten completion and using idle time of 10 seconds testcase passed
+SMOKE-026-005,47738,1,1,pass,ramp down method stop immediately testcase passed
+SMOKE-027-001,47739,1,1,pass,tracing keyword with mode;G_TRACING ALL 2 0 0 0 0 0 testcase passed
+SMOKE-027-002,47740,1,1,pass,tracing keyword with mode;G_TRACING ALL 4 2 1 0 1 0 testcase passed
+SMOKE-027-003,47741,1,1,pass,tracing for page dump report;same parameter is used multiple times in URL and body and header of page testcase passed
+SMOKE-028-001,47742,1,1,pass,ns trace level 1 testcase passed
+SMOKE-028-002,47743,1,1,pass,ns trace level 2 testcase passed
+SMOKE-028-003,47744,1,1,pass,ns trace level 0 changing to level 1 at runtime  testcase passed
+SMOKE-028-004,47745,1,1,pass,ns trace level 0 changing to level 2 at runtime  testcase passed
+SMOKE-028-005,47746,1,1,pass,ns trace level 1 changing to level 2 at runtime  testcase passed
+SMOKE-029-001,47747,1,1,pass,smoke error propagation with url status success should show in progress report and page and tx and in session report for G_ERR_CODE_OK G1 1 testcase passed

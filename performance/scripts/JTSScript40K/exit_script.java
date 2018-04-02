@@ -10,7 +10,7 @@ package com.cavisson.scripts.JTSScript40K;
 import pacJnvmApi.NSApi;
 public class exit_script
 {
-    public static int execute(NSApi nsApi)
+    public static int execute(NSApi nsApi) throws Exception
     {
         return 0;
     }

@@ -1,0 +1,28 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-013-004,5002,1,1,pass,SyncPoint In Between Transasctions 10 Users all users release Passed
+SMOKE-013-005,5003,1,1,pass,SyncPoint Before First Page 10 Users all users release Passed
+SMOKE-013-006,5004,1,1,fail,SyncPoint In Btween Pages 10Users 5users release Failed
+SMOKE-013-007,5005,1,1,pass,Syncpoint Overall timeout pass
+SMOKE-013-008,5006,1,1,pass,Syncpoint Vuser inter arrival timeout
+SMOKE-014-001,5019,1,1,pass,NS add header with Main url Passed
+SMOKE-014-002,5022,1,1,pass,NS add header with Embedded url Passed
+SMOKE-014-003,5026,1,1,pass,NS add header with both Main and Embedded urls Passed
+SMOKE-014-004,5029,1,1,pass,NS auto add header with Main urls Passed
+SMOKE-014-005,5032,1,1,pass,NS auto add header with Embedded urls Passed
+SMOKE-014-006,5035,1,1,pass,NS auto add header with Mix Mode urls Passed
+SMOKE-014-007,5038,1,1,pass,NS clean-up header Passed
+SMOKE-014-008,5039,1,1,pass,NS remove auto header Passed
+SMOKE-014-009,5043,1,1,pass,NS add and remove header combined Passed
+SMOKE-015-001,5046,1,1,pass,NetworkCache test for both cacheable and non-cacheable request Passed
+SMOKE-015-002,5048,1,1,pass,NetworkCache test with NetOcean server having default URL Passed
+SMOKE-015-003,5050,1,1,pass,NetworkCache test with NetOcean server having parameterized requests Passed
+SMOKE-016-001,5052,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-002,5058,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-003,5063,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-004,5068,1,1,pass,do not filter all events will be logged condition verified
+SMOKE-016-009,5078,1,1,pass,no events being logged for filter all events;no events will be logged configuration setting
+SMOKE-017-001,5082,1,1,pass,Inline Delay Mode 1 for single group single page;test validation passed
+SMOKE-017-002,5083,1,1,pass,Inline Delay Mode 1 for single group all pages;test validation passed
+SMOKE-017-003,5085,1,1,pass,Inline Delay Mode 1 for all groups all pages;test validation passed
+SMOKE-017-004,5091,1,1,pass,Inline Delay Mode 2 for single group single page ;test validation passed
+SMOKE-017-005,5092,1,1,pass,Inline Delay Mode 2 for single group all pages ;test validation passed

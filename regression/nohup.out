@@ -1,0 +1,136 @@
+nohup: ignoring input
+Buildfile: /home/automation/workbench/automation/nscore/regression/build.xml
+
+clean:
+   [delete] Deleting directory /home/netstorm/work/scripts/Regression/Regression
+   [delete] Deleting directory /home/netstorm/work/scenarios/Regression/Regression
+   [delete] Deleting directory /home/netstorm/work/testcases/Regression/Regression
+   [delete] Deleting directory /home/netstorm/work/testsuites/Regression/Regression
+
+copy:
+     [copy] Copying 219 files to /home/netstorm/work/scripts/Regression/Regression
+     [copy] Copying 8 files to /home/netstorm/work/scenarios/Regression/Regression
+     [copy] Copying 64 files to /home/netstorm/work/testcases/Regression/Regression
+     [copy] Copying 1 file to /home/netstorm/work/testsuites/Regression/Regression
+     [copy] Copying 2 files to /home/netstorm/work/lib
+
+copy-hpd-file:
+      [scp] Connecting to 10.10.30.96:22
+      [scp] done.
+
+hpd-process-restart:
+  [sshexec] Connecting to 10.10.30.96:22
+  [sshexec] cmd : service hpd restart
+  [sshexec] Restarting hpd ... 
+  [sshexec] Stop signal sent to controller successfully
+  [sshexec] Correlation Project = samples
+  [sshexec] Starting processing of URL files. It may take several minutes based on file sizes.
+  [sshexec] Completed processing of URL files.
+  [sshexec] Connecting to 10.10.30.96:22
+  [sshexec] cmd : service hpd show
+  [sshexec] 4 S root     23244     1  5  80   0 - 71293 ep_pol 17:12 ?        00:00:02 /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     24195 23244  0  80   0 - 71390 ep_pol 17:12 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     24196 23244  0  80   0 - 71685 ep_pol 17:12 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+  [sshexec] 1 S root     24197 23244  0  80   0 - 71390 ep_pol 17:12 ?        00:00:00  \_ /var/www/hpd/bin/nsu_hpd
+
+debug:
+     [info] Initializing test environment 
+     [info] Total Cases to test in Regression suite = 12
+     [info] Starting NSCore regression automation suite using command bin/ts_run
+     [info] Running TestSuite = 'Regression'
+     [info] IP_ADDR = 10.10.30.37:8011
+     [info] Test Cycle Number = 160917_171252
+     [info] Test Suite Run Number = 4931
+     [info] Starting execution of test case - Regression001
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression1
+     [info] gui.data file is not present for TestRun=48454
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression002
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression2
+     [info] gui.data file is not present for TestRun=48455
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression003
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression3
+     [info] gui.data file is not present for TestRun=48456
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression004
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression4
+     [info] gui.data file is not present for TestRun=48457
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression005
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression5
+     [info] gui.data file is not present for TestRun=48458
+     [info] Checking status
+     [info] /home/netstorm/work/testcases/Regression/Regression/Regression005/check_status failed
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression006
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression6
+     [info] gui.data file is not present for TestRun=48459
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48460
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48461
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48462
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48463
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48464
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Starting execution of test case - Regression007
+     [info] Starting pre_test_setup script
+     [info] Starting scenario
+     [info] Netstorm is starting for Project: Regression, Subproject: Regression, Scenario is - Regression7
+     [info] gui.data file is not present for TestRun=48465
+     [info] Checking status
+     [info] Starting post_test_setup script
+     [info] Test Suite execution is completed!!!
+     [info] NSCore Regression automation suite has ended
+     [info] Cleaning up temporary files.
+
+reg-debug:
+
+BUILD SUCCESSFUL
+Total time: 156 minutes 38 seconds

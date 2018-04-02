@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,71804,1,2,pass,FCU with RampUp in Step mode testcase passed
+REG-002-001,71805,1,2,pass,FCU with RampUp in Rate mode testcase passed
+REG-003-001,71806,1,2,pass,FSR  Mode 1 testcase passed
+REG-004-001,71807,1,2,pass,FSR  Mode 2 testcase passed
+REG-005-001,71808,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.002 and Average Response Time (Secs)(NA) in current testrun is 0.001 are having difference of 50.0% which exceeed the tolerance of 5%
+REG-006-001,71809,1,2,fail,NS supported protocols such as POP3 SMTP & FTP Testcase failed because Average SMTP Response Time (Secs)(NA) in baseline testrun found is 0.002 and Simulated Protocol Stats(smtp);Service Time (Secs)(NA) in current testrun is 22.279 are having difference of -1113850.0% which exceeed the tolerance of 5%
+REG-007-001,71810,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,71811,1,2,pass,RTC is being applied for RampUp0 phase;11  have been found in current situation as RTC being applied
+REG-007-003,71812,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,71813,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,71814,1,2,pass,RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied
+REG-007-006,71815,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,71816,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.001 and Average Response Time (Secs)(NA) in current testrun is 0.007 are having difference of -600.0% which exceeed the tolerance of 5%
+REG-010-001,71817,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

@@ -46,6 +46,7 @@ function run(){
 
     # running test in backend
     Project=$(project_name $testSuite)
+    echo "Project name is=$Project"
     bin/ts_run -n ${Project}/${testSuite} | tee $TEMP_FILE    
 
     #Check return code. If RC=2, automation timed out case. RC=0 Success
@@ -151,13 +152,13 @@ function main() {
 
     # Module called to upload testresults to sqlite database
     echo "Uploading results to remote database"
-    ${DB_UPLOAD} -r ${RELEASE} -v ${MINOR} -f ${R_FILE}
+    #${DB_UPLOAD} -r ${RELEASE} -v ${MINOR} -f ${R_FILE}
     exit 0
 }
 
 
 # Permit only 'automation' user to run test
-[ "X${USER}" != "Xautomation" ] && echo "ERROR: You must log in with 'automation' user" && exit -1
+[ "X${USER}" != "Xnetstorm" ] && echo "ERROR: You must log in with 'netstorm' user" && exit -1
 
 
 # Store all command line arguments to shell

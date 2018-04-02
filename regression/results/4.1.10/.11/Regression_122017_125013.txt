@@ -1,0 +1,6 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-007-001,20535,1,2,fail,It was expected that at Start0 phase available Vusers present in system should be equal to 10;but actual Vusers count is 0
+REG-007-002,20536,1,2,fail,It was expected that at RampUp0 phase available Vusers present in system should be greater than 10;but actual Vuser count is 3
+REG-007-003,20537,1,2,fail,It was expected that at Stabilize0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 100
+REG-007-004,20538,1,2,fail,It was expected that at Duration0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 100
+REG-007-005,20539,1,2,fail,It was expected that at RampDown0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 76

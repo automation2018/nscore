@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+DEBUG_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+function main(){
+    case $(get_tname) in
+        "SMOKE-043-001") validate_user_cleanup-001 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function validate_user_cleanup-001(){
+    user_CleanUP=$(grep -w "user_cleanup" ${DEBUG_LOG})
+    user_CleanUP_Count=$(grep -aw "user_cleanup" ${DEBUG_LOG}|wc -l)
+    debug_log "user_CleanUP:${user_CleanUP}"
+    debug_log "user_CleanUP_Count:${user_CleanUP_Count}"
+    if [ ! -z "${user_CleanUP}" ] && [ ${user_CleanUP_Count} -eq 20 ] ; then
+        log_status_and_exit_ex "PASS" "user_cleanup display in debug log and NUM_NVM 1 Machine then for 1 user 2 user_cleanup"
+    else
+        log_status_and_exit_ex "FAIL" "user_cleanup display in debug log and NUM_NVM 1 Machine then for 1 user 2 user_cleanup"
+    fi
+}
+main
+
+
+exit  0

@@ -1,0 +1,5 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-020-039,82263,1,1,fail,G_ERR_CODE_OK mode 0 failed as we not got 1xxin url report
+SMOKE-020-040,82264,1,1,pass,G_ERR_CODE_OK mode 1 passed as we got all url success
+SMOKE-033-001,82265,1,1,pass,Payload: Header found in response for Reactive Replay
+SMOKE-046-001,82266,1,1,fail,check total_1xx_url

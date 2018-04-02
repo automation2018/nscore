@@ -1,0 +1,13 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,17443,1,2,fail,FCU with RampUp in Step mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 998.237 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 869.916 are having difference of 12.8547629471% which exceeed the tolerance of 5%
+REG-002-001,17444,1,2,fail,FCU with RampUp in Rate mode testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 1611.128 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 1405.395 are having difference of 12.7695006232% which exceeed the tolerance of 5%
+REG-003-001,17445,1,2,fail,FSR  Mode 1 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 897.704 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 785.655 are having difference of 12.481731172% which exceeed the tolerance of 5%
+REG-004-001,17446,1,2,fail,FSR  Mode 2 testcase failed because Requests Successful/Sec(NA) in baseline testrun found is 206.79 and Simulated Protocol Stats(Overall);Request Successful/Sec(NA) in current testrun is 180.088 are having difference of 12.9126166642% which exceeed the tolerance of 5%
+REG-007-001,17449,1,2,fail,It was expected that at Start0 phase available Vusers present in system should be equal to 10;but actual Vusers count is 19
+REG-007-002,17450,1,2,fail,It was expected that at RampUp0 phase available Vusers present in system should be greater than 10;but actual Vuser count is 12
+REG-007-003,17451,1,2,fail,It was expected that at Stabilize0 phase available Vusers present in system should be greater than 10;but actual Vusers count is 100
+REG-007-004,17452,1,2,pass,RTC is being applied for Duration0 phase;100  have been found in current situation as RTC being applied
+REG-007-005,17453,1,2,pass,RTC is being applied for RampDown0 phase;77  have been found in current situation as RTC being applied
+REG-007-006,17454,1,2,fail,Simple scenario RTC testcase where RTC being applied in all phases;failed as ramp_down_users=1245;not same as total users count=200 after applying RTC
+REG-008-001,17455,1,2,fail,Replay Access Logs testcase failed because Average Response Time (Secs)(NA) in baseline testrun found is 0.001 and Average Response Time (Secs)(NA) in current testrun is 0.015 are having difference of -1400.0% which exceeed the tolerance of 5%
+REG-010-001,17456,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

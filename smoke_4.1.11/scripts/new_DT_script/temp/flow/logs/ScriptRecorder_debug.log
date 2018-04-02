@@ -1,0 +1,735 @@
+8/8 4:33:18|ChromeMainFrame|createBrowserWindowWithListener|constructor called.
+8/8 4:33:18|ChromeBrowserConfigurationSettings|EnableDisableBrowserOtions|Setting User Agent=Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+8/8 4:33:31|ChromeBrowserConfigurationSettings|EnableDisableBrowserOtions|method called.
+8/8 4:33:31|ChromeBrowserConfigurationSettings|EnableDisableBrowserOtions|Enabling JavaScript feature.
+8/8 4:33:31|ChromeBrowserConfigurationSettings|EnableDisableBrowserOtions|Enabling ImageDownload feature.
+8/8 4:33:31|ChromeBrowserConfigurationSettings|EnableDisableBrowserOtions|Enabling Plugins feature.
+8/8 4:33:32|ChromeBrowserConfigurationSettings|setSecurityCertificationErrors|Method called.
+8/8 4:33:32|ChromeMainFrame|addStatusAndTitleBrowser|Method called.
+8/8 4:33:32|ChromeMainFrame|addPageNavigationListeners|method called.
+8/8 4:33:32|ChromeBrowserNavigationListener|ChromeBrowserNavigationListener|Constructor Called.
+8/8 4:33:32|ChromeRecordingHttpListener||constructor called.
+8/8 4:33:32|ChromeMainFrame|createinitUI|constructor called.
+8/8 4:33:32|TabContent|createComponents|method called.
+8/8 4:33:32|TabContent|createBrowserContainer|method called.
+8/8 4:33:32|TabContent|createToolBar|method called.
+8/8 4:33:32|ProgressBar|initializeGUI|Method Called
+8/8 4:33:32|ToolBar|createToolBarComponents|method called.
+8/8 4:33:32|ToolBar|createAddressBar|method called.
+8/8 4:33:32|ToolBar|createActionsPane|method called.
+8/8 4:33:33|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=http://172.24.1.45:8080/ORC/
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeBrowserNavigationListener|onStartLoadingFrame|Begin Loading URL == http://172.24.1.45:8080/ORC/  ===== Begin = 1502190213284
+8/8 4:33:33|Utils|getURLTracker|urlString = http://172.24.1.45:8080/ORC/, requestOrResponce = snapShot
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = http://172.24.1.45:8080/ORC/, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213304
+8/8 4:33:33|Utils|convertToSecond method called|time = 14875.0
+8/8 4:33:33|ProgressBar|setVisible|Method Called. bool = true
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|Utils|getURLTracker|urlString = http://172.24.1.45:8080/ORC/, requestOrResponce = response
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213428
+8/8 4:33:33|Utils|convertToSecond method called|time = 14999.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = http://172.24.1.45:8080/ORC/
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213428
+8/8 4:33:33|Utils|convertToSecond method called|time = 14999.0
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213428
+8/8 4:33:33|Utils|convertToSecond method called|time = 14999.0
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213443
+8/8 4:33:33|Utils|convertToSecond method called|time = 15014.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.014999999999998792 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/, requestOrResponce = response
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213769
+8/8 4:33:33|Utils|convertToSecond method called|time = 15340.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.014999999999998792 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213769
+8/8 4:33:33|Utils|convertToSecond method called|time = 15340.0
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213769
+8/8 4:33:33|Utils|convertToSecond method called|time = 15340.0
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/, requestOrResponce = snapShot
+8/8 4:33:33|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:33|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/title2.htm
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/title2.htm, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213841
+8/8 4:33:33|Utils|convertToSecond method called|time = 15412.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.07200000000000095 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/title2.htm, requestOrResponce = response
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213855
+8/8 4:33:33|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/left.htm
+8/8 4:33:33|Utils|convertToSecond method called|time = 15426.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.07200000000000095 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/title2.htm
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213855
+8/8 4:33:33|Utils|convertToSecond method called|time = 15426.0
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213855
+8/8 4:33:33|Utils|convertToSecond method called|time = 15426.0
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/title2.htm, requestOrResponce = snapShot
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/left.htm, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213873
+8/8 4:33:33|Utils|convertToSecond method called|time = 15444.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.018000000000000682 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:33|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/right.htm
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/left.htm, requestOrResponce = response
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213904
+8/8 4:33:33|Utils|convertToSecond method called|time = 15475.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.018000000000000682 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/left.htm
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213904
+8/8 4:33:33|Utils|convertToSecond method called|time = 15475.0
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213904
+8/8 4:33:33|Utils|convertToSecond method called|time = 15475.0
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/left.htm, requestOrResponce = snapShot
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/t1.jpg, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213916
+8/8 4:33:33|Utils|convertToSecond method called|time = 15487.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.012000000000000455 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:33|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/right.htm, requestOrResponce = request
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213934
+8/8 4:33:33|Utils|convertToSecond method called|time = 15505.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.030000000000001137 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/t1.jpg, requestOrResponce = response
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213963
+8/8 4:33:33|Utils|convertToSecond method called|time = 15534.0
+8/8 4:33:33|Utils|isSplit|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:33|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:33|Utils|isSplit|Splitting for time 0.012000000000000455 = false
+8/8 4:33:33|Utils|isSplit|result = false
+8/8 4:33:33|Utils|isSplitForURLType|Method called.
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplitForURLType|value = false
+8/8 4:33:33|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:33|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/t1.jpg
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213963
+8/8 4:33:33|Utils|convertToSecond method called|time = 15534.0
+8/8 4:33:33|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190213963
+8/8 4:33:33|Utils|convertToSecond method called|time = 15534.0
+8/8 4:33:33|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/t1.jpg, requestOrResponce = snapShot
+8/8 4:33:33|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:34|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/right.htm, requestOrResponce = response
+8/8 4:33:34|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190214003
+8/8 4:33:34|Utils|convertToSecond method called|time = 15574.0
+8/8 4:33:34|Utils|isSplit|Method called.
+8/8 4:33:34|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:34|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:34|Utils|isSplit|result = false
+8/8 4:33:34|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:34|Utils|isSplit|Splitting for time -0.028999999999999915 = false
+8/8 4:33:34|Utils|isSplit|result = false
+8/8 4:33:34|Utils|isSplitForURLType|Method called.
+8/8 4:33:34|Utils|isSplitForURLType|value = false
+8/8 4:33:34|Utils|isSplitForURLType|value = false
+8/8 4:33:34|Utils|isSplitForURLType|value = false
+8/8 4:33:34|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:34|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/right.htm
+8/8 4:33:34|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190214003
+8/8 4:33:34|Utils|convertToSecond method called|time = 15574.0
+8/8 4:33:34|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190214003
+8/8 4:33:34|Utils|convertToSecond method called|time = 15574.0
+8/8 4:33:34|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/right.htm, requestOrResponce = snapShot
+8/8 4:33:34|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:34|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/left.htm
+8/8 4:33:34|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/title2.htm
+8/8 4:33:34|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/right.htm
+8/8 4:33:34|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/
+8/8 4:33:34|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/, requestOrResponce = snapShot
+8/8 4:33:34|ProgressBar|setVisible|Method Called. bool = false
+8/8 4:33:34|WebCFormattor||constructor called.
+8/8 4:33:34|ScriptHTMLStart|Recording|Thread state =2
+8/8 4:33:34|ScriptHTMLStart|run|Setting thread state.State of Thread - 2
+8/8 4:33:35|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/login.htm
+8/8 4:33:35|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:35|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:35|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/login.htm, requestOrResponce = request
+8/8 4:33:35|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190215940
+8/8 4:33:35|Utils|convertToSecond method called|time = 17511.0
+8/8 4:33:35|Utils|isSplit|Method called.
+8/8 4:33:35|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:35|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:35|Utils|isSplit|result = false
+8/8 4:33:35|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:35|Utils|isSplit|Splitting for time 1.9369999999999994 = false
+8/8 4:33:35|Utils|isSplit|result = false
+8/8 4:33:35|Utils|isSplitForURLType|Method called.
+8/8 4:33:35|Utils|isSplitForURLType|value = false
+8/8 4:33:35|Utils|isSplitForURLType|value = false
+8/8 4:33:35|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:35|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/login.htm, requestOrResponce = response
+8/8 4:33:35|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190215954
+8/8 4:33:35|Utils|convertToSecond method called|time = 17525.0
+8/8 4:33:35|Utils|isSplit|Method called.
+8/8 4:33:35|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:35|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:35|Utils|isSplit|result = false
+8/8 4:33:35|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:35|Utils|isSplit|Splitting for time 1.9369999999999994 = false
+8/8 4:33:35|Utils|isSplit|result = false
+8/8 4:33:35|Utils|isSplitForURLType|Method called.
+8/8 4:33:35|Utils|isSplitForURLType|value = false
+8/8 4:33:35|Utils|isSplitForURLType|value = false
+8/8 4:33:35|Utils|isSplitForURLType|value = false
+8/8 4:33:35|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:35|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/login.htm
+8/8 4:33:35|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190215954
+8/8 4:33:35|Utils|convertToSecond method called|time = 17525.0
+8/8 4:33:35|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190215954
+8/8 4:33:35|Utils|convertToSecond method called|time = 17525.0
+8/8 4:33:35|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/login.htm, requestOrResponce = snapShot
+8/8 4:33:35|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:36|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/login.htm
+8/8 4:33:37|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/seekerlog.htm
+8/8 4:33:37|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:37|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/seekerlog.htm, requestOrResponce = request
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217579
+8/8 4:33:37|Utils|convertToSecond method called|time = 19150.0
+8/8 4:33:37|Utils|isSplit|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:37|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for time 1.625 = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForURLType|Method called.
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/seekerlog.htm, requestOrResponce = response
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217588
+8/8 4:33:37|Utils|convertToSecond method called|time = 19159.0
+8/8 4:33:37|Utils|isSplit|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:37|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for time 1.625 = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForURLType|Method called.
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:37|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/seekerlog.htm
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217588
+8/8 4:33:37|Utils|convertToSecond method called|time = 19159.0
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217588
+8/8 4:33:37|Utils|convertToSecond method called|time = 19159.0
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/seekerlog.htm, requestOrResponce = snapShot
+8/8 4:33:37|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:37|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:37|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/login_validation.js, requestOrResponce = request
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217620
+8/8 4:33:37|Utils|convertToSecond method called|time = 19191.0
+8/8 4:33:37|Utils|isSplit|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:37|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for time 0.03200000000000003 = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForURLType|Method called.
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/login_validation.js, requestOrResponce = response
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217628
+8/8 4:33:37|Utils|convertToSecond method called|time = 19199.0
+8/8 4:33:37|Utils|isSplit|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:37|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:37|Utils|isSplit|Splitting for time 0.03200000000000003 = false
+8/8 4:33:37|Utils|isSplit|result = false
+8/8 4:33:37|Utils|isSplitForURLType|Method called.
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplitForURLType|value = false
+8/8 4:33:37|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:37|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/js/login_validation.js
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217628
+8/8 4:33:37|Utils|convertToSecond method called|time = 19199.0
+8/8 4:33:37|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190217628
+8/8 4:33:37|Utils|convertToSecond method called|time = 19199.0
+8/8 4:33:37|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/login_validation.js, requestOrResponce = snapShot
+8/8 4:33:37|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/js/
+8/8 4:33:37|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/seekerlog.htm
+8/8 4:33:39|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/onlinelogin.htm
+8/8 4:33:39|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:39|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/onlinelogin.htm, requestOrResponce = request
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219549
+8/8 4:33:39|Utils|convertToSecond method called|time = 21120.0
+8/8 4:33:39|Utils|isSplit|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:39|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for time 1.9209999999999994 = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForURLType|Method called.
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/onlinelogin.htm, requestOrResponce = response
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219560
+8/8 4:33:39|Utils|convertToSecond method called|time = 21131.0
+8/8 4:33:39|Utils|isSplit|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:39|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for time 1.9209999999999994 = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForURLType|Method called.
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:39|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/onlinelogin.htm
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219560
+8/8 4:33:39|Utils|convertToSecond method called|time = 21131.0
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219560
+8/8 4:33:39|Utils|convertToSecond method called|time = 21131.0
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/onlinelogin.htm, requestOrResponce = snapShot
+8/8 4:33:39|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:39|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:39|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/ologin_validation.js, requestOrResponce = request
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219579
+8/8 4:33:39|Utils|convertToSecond method called|time = 21150.0
+8/8 4:33:39|Utils|isSplit|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:39|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for time 0.01899999999999835 = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForURLType|Method called.
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/ologin_validation.js, requestOrResponce = response
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219593
+8/8 4:33:39|Utils|convertToSecond method called|time = 21164.0
+8/8 4:33:39|Utils|isSplit|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:39|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:39|Utils|isSplit|Splitting for time 0.01899999999999835 = false
+8/8 4:33:39|Utils|isSplit|result = false
+8/8 4:33:39|Utils|isSplitForURLType|Method called.
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplitForURLType|value = false
+8/8 4:33:39|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:39|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/js/ologin_validation.js
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219593
+8/8 4:33:39|Utils|convertToSecond method called|time = 21164.0
+8/8 4:33:39|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190219593
+8/8 4:33:39|Utils|convertToSecond method called|time = 21164.0
+8/8 4:33:39|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/js/ologin_validation.js, requestOrResponce = snapShot
+8/8 4:33:39|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/js/
+8/8 4:33:39|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/onlinelogin.htm
+8/8 4:33:41|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search11.htm8/8 4:33:41|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+
+8/8 4:33:41|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:41|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = request
+8/8 4:33:41|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190221100
+8/8 4:33:41|Utils|convertToSecond method called|time = 22671.0
+8/8 4:33:41|Utils|isSplit|Method called.
+8/8 4:33:41|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:41|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:41|Utils|isSplit|result = false
+8/8 4:33:41|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:41|Utils|isSplit|Splitting for time 1.506999999999998 = false
+8/8 4:33:41|Utils|isSplit|result = false
+8/8 4:33:41|Utils|isSplitForURLType|Method called.
+8/8 4:33:41|Utils|isSplitForURLType|value = false
+8/8 4:33:41|Utils|isSplitForURLType|value = false
+8/8 4:33:41|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:41|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = response
+8/8 4:33:41|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190221109
+8/8 4:33:41|Utils|convertToSecond method called|time = 22680.0
+8/8 4:33:41|Utils|isSplit|Method called.
+8/8 4:33:41|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:41|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:41|Utils|isSplit|result = false
+8/8 4:33:41|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:41|Utils|isSplit|Splitting for time 1.506999999999998 = false
+8/8 4:33:41|Utils|isSplit|result = false
+8/8 4:33:41|Utils|isSplitForURLType|Method called.
+8/8 4:33:41|Utils|isSplitForURLType|value = false
+8/8 4:33:41|Utils|isSplitForURLType|value = false
+8/8 4:33:41|Utils|isSplitForURLType|value = false
+8/8 4:33:41|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:41|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:41|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190221109
+8/8 4:33:41|Utils|convertToSecond method called|time = 22680.0
+8/8 4:33:41|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190221109
+8/8 4:33:41|Utils|convertToSecond method called|time = 22680.0
+8/8 4:33:41|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = snapShot
+8/8 4:33:41|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:41|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:42|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/faqs.htm
+8/8 4:33:42|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:42|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:42|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/faqs.htm, requestOrResponce = request
+8/8 4:33:42|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190222566
+8/8 4:33:42|Utils|convertToSecond method called|time = 24137.0
+8/8 4:33:42|Utils|isSplit|Method called.
+8/8 4:33:42|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:42|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:42|Utils|isSplit|result = false
+8/8 4:33:42|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:42|Utils|isSplit|Splitting for time 1.4570000000000007 = false
+8/8 4:33:42|Utils|isSplit|result = false
+8/8 4:33:42|Utils|isSplitForURLType|Method called.
+8/8 4:33:42|Utils|isSplitForURLType|value = false
+8/8 4:33:42|Utils|isSplitForURLType|value = false
+8/8 4:33:42|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:42|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/faqs.htm, requestOrResponce = response
+8/8 4:33:42|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190222572
+8/8 4:33:42|Utils|convertToSecond method called|time = 24143.0
+8/8 4:33:42|Utils|isSplit|Method called.
+8/8 4:33:42|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:42|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:42|Utils|isSplit|result = false
+8/8 4:33:42|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:42|Utils|isSplit|Splitting for time 1.4570000000000007 = false
+8/8 4:33:42|Utils|isSplit|result = false
+8/8 4:33:42|Utils|isSplitForURLType|Method called.
+8/8 4:33:42|Utils|isSplitForURLType|value = false
+8/8 4:33:42|Utils|isSplitForURLType|value = false
+8/8 4:33:42|Utils|isSplitForURLType|value = false
+8/8 4:33:42|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:42|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/faqs.htm
+8/8 4:33:42|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190222572
+8/8 4:33:42|Utils|convertToSecond method called|time = 24143.0
+8/8 4:33:42|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190222572
+8/8 4:33:42|Utils|convertToSecond method called|time = 24143.0
+8/8 4:33:42|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/faqs.htm, requestOrResponce = snapShot
+8/8 4:33:42|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:42|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/faqs.htm
+8/8 4:33:44|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:44|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:44|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:44|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = request
+8/8 4:33:44|ChromeRecordingHttpListener|dumpRequestHeaders|URL is alredy captured. https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:44|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = response
+8/8 4:33:44|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190224609
+8/8 4:33:44|Utils|convertToSecond method called|time = 26180.0
+8/8 4:33:44|Utils|isSplit|Method called.
+8/8 4:33:44|Utils|isSplit|Splitting for method GET = false
+8/8 4:33:44|Utils|isSplit|result = false
+8/8 4:33:44|Utils|isSplitForTimeDiff|Method called.
+8/8 4:33:44|Utils|isSplit|result = false
+8/8 4:33:44|Utils|isSplitForURLType|Method called.
+8/8 4:33:44|Utils|isSplitForURLType|value = false
+8/8 4:33:44|Utils|isSplitForURLType|value = false
+8/8 4:33:44|Utils|isSplit|isSplitForURLType = false
+8/8 4:33:44|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split option not valid for URL = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:44|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190224609
+8/8 4:33:44|Utils|convertToSecond method called|time = 26180.0
+8/8 4:33:44|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190224609
+8/8 4:33:44|Utils|convertToSecond method called|time = 26180.0
+8/8 4:33:44|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search11.htm, requestOrResponce = snapShot
+8/8 4:33:44|ChromeRecordingHttpListener|onCompleted |No URL tracker created for request - https://172.24.1.45:8443/ORC/search11.htm_14
+8/8 4:33:44|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:47|ChromeBrowserNavigationListener|onStartLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:47|ChromeRecordingHttpListener|onBeforeURLRequest|method called.
+8/8 4:33:47|ChromeRecordingHttpListener|dumpPostData|method called.
+8/8 4:33:47|ChromeRecordingHttpListener|dumpRequestHeaders|method called.
+8/8 4:33:47|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search.jsp, requestOrResponce = request
+8/8 4:33:47|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190227919
+8/8 4:33:47|Utils|convertToSecond method called|time = 29490.0
+8/8 4:33:47|Utils|isSplit|Method called.
+8/8 4:33:47|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:47|Utils|isSplit|Splitting for method POST = true
+8/8 4:33:47|Utils|isSplit|result = true
+8/8 4:33:47|ChromeRecordingHttpListener|dumpRequestHeaders|Auto split page url for ajax call or method = https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:48|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search.jsp, requestOrResponce = response
+8/8 4:33:48|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190228344
+8/8 4:33:48|Utils|convertToSecond method called|time = 29915.0
+8/8 4:33:48|Utils|isSplit|Method called.
+8/8 4:33:48|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:48|Utils|isSplit|Splitting for method POST = true
+8/8 4:33:48|Utils|isSplit|result = true
+8/8 4:33:48|ChromeRecordingHttpListener|checkSplitOptionAndCaptureSnapShotForResponse|Auto split page url for header and method = https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:48|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190228344
+8/8 4:33:48|Utils|convertToSecond method called|time = 29915.0
+8/8 4:33:48|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190228344
+8/8 4:33:48|Utils|convertToSecond method called|time = 29915.0
+8/8 4:33:48|Utils|getURLTracker|urlString = https://172.24.1.45:8443/ORC/search.jsp, requestOrResponce = snapShot
+8/8 4:33:48|ChromeRecordingHttpListener|onCompleted |Adding dump diretory with path=/home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow/172.24.1.45_8443/ORC/
+8/8 4:33:48|ChromeBrowserNavigationListener|onFinishLoadingFrame|Method Called for URL=https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:58|ScriptHTMLStart|stopRecording|Method Called.
+8/8 4:33:58|ScriptHTMLStart|stopRecording|Going to stop recording
+8/8 4:33:58|NSChromeBrowser|stopRecord|Method called.
+8/8 4:33:58|ChromeMainFrame|addBrowserDisposeListener|browser disposed called.
+8/8 4:33:58|WebCFormattor|generateScripts|method called.
+8/8 4:33:58|Utils|addLastPageLeftUrlsToInlineUrlsOfLastPage|Method called.
+8/8 4:33:58|Utils|modifyMapForSplit|Method called.
+8/8 4:33:58|Utils|modifyMapForThinkTime|Method called.
+8/8 4:33:58|Utils|getRelativeTimeWithRespectOfStartRecordingTime|Method called.time stamp = 1502190238433
+8/8 4:33:58|Utils|convertToSecond method called|time = 40004.0
+8/8 4:33:58|Utils|modifyMapForThinkTime|Modifying url list for last page=index, startThink=29.915, endThink=40.004
+8/8 4:33:58|Utils|modifyMapForSplit|url = --Request 
+POST https://172.24.1.45:8443/ORC/search.jsp
+Host: 172.24.1.45:8443
+Origin: https://172.24.1.45:8443
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: https://172.24.1.45:8443/ORC/search11.htm
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+Content-Type: application/x-www-form-urlencoded
+----
+ POSTDATA Experience=0-1&Submit=Search
+--Response 
+HTTP/1.1 500
+Transfer-Encoding: chunked
+Connection: close
+Content-Encoding: gzip
+Set-Cookie: JSESSIONID=46137D990B67E7408C727929704C63C6;path=/ORC;Secure;HttpOnly
+Vary: Accept-Encoding
+Content-Language: en
+Date: Tue, 08 Aug 2017 11:03:48 GMT
+Content-Type: text/html;charset=utf-8
+----
+
+8/8 4:33:58|Utils|isSplit|Method called.
+8/8 4:33:58|Utils|isSplit|Splitting for Ajax Header = false
+8/8 4:33:58|Utils|isSplit|Splitting for method POST = true
+8/8 4:33:58|Utils|isSplit|result = true
+8/8 4:33:58|Utils|generateEventDetail|method called.
+8/8 4:33:58|Utils|getTimeStampForPage|Method called.
+8/8 4:33:58|Utils|getTimeStampForPage|Method called.
+8/8 4:33:58|Utils|generateUrlInfoListDetail|method called
+8/8 4:33:58|Utils|getTimeStampForPage|Method called.
+8/8 4:33:58|Utils|generateUrlInfoListDetail|URL = http://172.24.1.45:8080/ORC/
+8/8 4:33:58|Utils|convertToSecond method called|time = 0.12400000000000055
+8/8 4:33:58|Utils|generateUrlInfoListDetail|ScriptparsingData =http://172.24.1.45:8080/ORC/
+8/8 4:33:58|Utils|generateUrlInfoListDetail|Main url dump file is not existing. Dump file Name = index
+8/8 4:33:58|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/
+8/8 4:33:58|Utils|convertToSecond method called|time = 0.3260000000000005
+8/8 4:33:58|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/
+8/8 4:33:58|Utils|generateUrlInfoListDetail|UrlTracker.scriptParsingData.getParsedPath()=172.24.1.45_8443/ORC/, Utils.getDumpPath() = /home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/title2.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.013999999999999346
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/title2.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/left.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.030999999999998806
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/left.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/t1.jpg
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.0470000000000006
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/t1.jpg
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/right.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.06899999999999906
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/right.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/login.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.013999999999999346
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/login.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/seekerlog.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.009000000000000341
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/seekerlog.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/js/login_validation.js
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.008000000000002672
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/js/login_validation.js
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/onlinelogin.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.010999999999999233
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/onlinelogin.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/js/ologin_validation.js
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.014000000000002899
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/js/ologin_validation.js
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.009000000000000341
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/faqs.htm
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.006000000000000227
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/faqs.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|generateUrlInfoListDetail|Setting url info object =https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|filterPath|path = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|getFileName|path = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|getFileName|filename for dump = search11.htm
+8/8 4:33:59|Utils|filterPath|path = https://172.24.1.45:8443/ORC/search11.htm
+8/8 4:33:59|Utils|getTimeStampForPage|Method called.
+8/8 4:33:59|Utils|generateUrlInfoListDetail|URL = https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:59|Utils|convertToSecond method called|time = 0.4250000000000007
+8/8 4:33:59|Utils|generateUrlInfoListDetail|ScriptparsingData =https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:59|Utils|generateUrlInfoListDetail|UrlTracker.scriptParsingData.getParsedPath()=172.24.1.45_8443/ORC/, Utils.getDumpPath() = /home/biswajit/Desktop/recorder/scripts/default/default/new_DT_script/dump/flow
+8/8 4:33:59|WebCFormattor|generateEventsForFlow|method called.
+8/8 4:33:59|WebCGenerator|generate|method called.
+8/8 4:33:59|WebCGenerator|generate|Putting header comments in Buffer.
+8/8 4:33:59|WebCGenerator|generate|Processing URLs with list size=2
+8/8 4:33:59|Utils|getTimeStampForPage|Method called.
+8/8 4:33:59|WebCGenerator|getValidURL|Since this URL is not in filtered list, returning the URL=http://172.24.1.45:8080/ORC/
+8/8 4:33:59|Utils|getTimeStampForPage|Method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendRealBrowserData|method called. The isRealBrowser value = false
+8/8 4:33:59|WebCGenerator|generate|Adding Inline template to the page.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendHeadersAndEndline|method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|Utils|getTimeStampForPage|Method called.
+8/8 4:33:59|WebCGenerator|getValidURL|Since this URL is not in filtered list, returning the URL=https://172.24.1.45:8443/ORC/search.jsp
+8/8 4:33:59|Utils|getTimeStampForPage|Method called.
+8/8 4:33:59|WebCGenerator|generate|Adding Comments to page.search_jsp
+8/8 4:33:59|HttpRequestBodyFormatter|formatReqBody|Method called.
+8/8 4:33:59|HttpRequestBodyFormatter|dumpRequestBody|Method called. curPageName = search_jsp
+8/8 4:33:59|HttpRequestBodyFormatter|getContentType|Method called.
+8/8 4:33:59|HttpRequestBodyFormatter|processRequestBody|Method called.
+8/8 4:33:59|HttpRequestBodyFormatter|createBody|Method called.
+8/8 4:33:59|WebCGenerator|getUrlReqAndResDetails|method called.
+8/8 4:33:59|WebCGenerator|appendRealBrowserData|method called. The isRealBrowser value = false
+8/8 4:33:59|Utils|convertToSecond method called|time = 10.088999999999999
+8/8 4:33:59|ChromeMainFrame|addBrowserDisposeListener|browser disposed Exiting.
+8/8 4:33:59|ScriptHTMLStart|stopRecording|Going to upload script to server.
+8/8 4:34:1|ScriptRecordUtils|saveScriptToServer|method called.

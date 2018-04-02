@@ -1,0 +1,31 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-004-001,31822,1,1,pass,Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-002,31823,1,1,pass,Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-003,31824,1,1,pass,Redirection from http to https upto depth 1 without using parent url method for redirected url
+SMOKE-004-004,31825,1,1,pass,Redirection from http to https upto depth 1 using parent url method for redirected url
+SMOKE-004-005,31826,1,1,fail,Redirection from one host to another host failed due to ConFail error
+SMOKE-004-006,31827,1,1,pass,Redirection restriction after depth 3
+SMOKE-004-007,31828,1,1,pass,HTTP2 Upgrade Mode- Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-008,31829,1,1,pass,HTTP2 Upgrade Mode- Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-009,31830,1,1,pass,HTTP2 Upgrade Mode- Redirection from one host to another host
+SMOKE-004-010,31831,1,1,pass,HTTP2 Upgrade Mode- Redirection restriction after depth 3
+SMOKE-004-011,31832,1,1,pass,HTTP2 Prior knowledge Mode- Redirection upto 5 depth without using parent url method for redirected url
+SMOKE-004-012,31833,1,1,pass,HTTP2 Prior knowledge Mode- Redirection upto 5 depth using parent url method for redirected url
+SMOKE-004-013,31834,1,1,pass,HTTP2 Prior knowledge Mode- Redirection from one host to another host
+SMOKE-004-014,31835,1,1,pass,HTTP2 Prior knowledge Mode- Redirection restriction after depth 3
+SMOKE-040-01,31836,1,1,pass,auto cookie mode 1 0 .So Set_Cookie header set in request file and Cookie header not set in responce file because Server host changed
+SMOKE-040-02,31837,1,1,pass,auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed
+SMOKE-040-03,31838,1,1,pass,auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed 
+SMOKE-040-04,31839,1,1,fail,auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same. but it didn't seem like expected result
+SMOKE-057-002,31841,1,1,fail,HTTP2 Prior Knowledge Mode for one group failed due to 4xx error
+SMOKE-057-004,31842,1,1,fail,HTTP2 prior knowledge Mode for one group and default mode for another group failed due to 4xx error
+SMOKE-057-005,31843,1,1,fail,HTTP2 Upgrade Mode for multiple host failed due to 4xx error
+SMOKE-057-006,31844,1,1,fail,HTTP2 Prior Knowledge Mode for multiple host failed due to 4xx error
+SMOKE-061-001,31845,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch without applying any pattern based filter on embedded URLs
+SMOKE-061-002,31846,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on domain pattern i.e include only same domain of embedded URLs as main URL
+SMOKE-061-003,31847,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on domain pattern i.e exclude specified domain of embedded URLs
+SMOKE-061-004,31848,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.gif type embedded URLs
+SMOKE-061-005,31849,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e include only *.js *.jsp and *.css type embedded URLs
+SMOKE-061-006,31850,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif type embedded URLs
+SMOKE-061-007,31851,1,1,pass,HTTP2 Upgrade Mode- Enable AutoFetch by applying filter on URL pattern i.e exclude *.gif *.js and *.css type embedded URLs
+SMOKE-061-008,31852,1,1,pass,HTTP2 Prior Knowledge Mode- Enable AutoFetch without applying any pattern based filter on embedded URLs

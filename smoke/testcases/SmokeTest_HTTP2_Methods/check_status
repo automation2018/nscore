@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+TRANS_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+SCRIPT_NAME=$(grep SGRP ${S_FILE} | cut -d' ' -f6)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/${SCRIPT_NAME}/flow.c"
+TSR_FILE="$TS_LOG_DIR/$(get_testcase_name)/test_run.report"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-001-001") statuscode_101_validation;;
+        "SMOKE-001-002") statuscode_200_validation;;
+        "SMOKE-001-003") statuscode_204_validation;;
+        "SMOKE-001-004") statuscode_206_validation;;
+        "SMOKE-001-005") statuscode_301_validation;;
+        "SMOKE-001-006") statuscode_302_validation;;
+        "SMOKE-001-007") statuscode_400_validation;;
+        "SMOKE-001-008") statuscode_401_validation;;
+        "SMOKE-001-009") statuscode_403_validation;;
+        "SMOKE-001-010") statuscode_404_validation;;
+        "SMOKE-001-011") statuscode_500_validation;;
+        "SMOKE-001-012") statuscode_504_validation;;
+        "SMOKE-001-013") statuscode_505_validation;;
+         ?) handle_unknown_case ;;
+         *) handle_unknown_case ;;
+    esac
+}
+
+
+function statuscode_101_validation(){
+   status101_txn_attempted=$(grep "status101" progress.report | cut -d '|' -f6 trans_detail.dat | sed -n '2p')
+   status101_txn_success=$(grep "status101" progress.report | cut -d '|' -f7 trans_detail.dat | sed -n '2p')
+
+
+
+    if [ $numer_of_splits == 10 ];then
+    debug_log "number of splits is as per expectations"
+    log_status_and_exit_ex "PASS" "buffer is spiltted into the defined times"
+    else
+    debug_log "number of split is $numer_of_splits while expected was 10"
+    log_status_and_exit_ex "FAIL" "buffer is not spiltted into the defined times"
+    fi
+}
+
+
+
+main
+
+exit 0

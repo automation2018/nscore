@@ -1,0 +1,209 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-042-01") validate_Page_Reload-001 ;;
+        "SMOKE-042-02") validate_Page_Reload-002 ;;
+        "SMOKE-042-03") validate_Page_Reload-003 ;;
+        "SMOKE-042-04") validate_Page_Reload-004 ;;
+        "SMOKE-042-05") validate_Page_Reload-005 ;;
+        "SMOKE-042-06") validate_Page_Reload-006 ;;
+        "SMOKE-042-07") validate_Page_Reload-007 ;;
+        "SMOKE-042-08") validate_Page_Reload-008 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function validate_Reload_Url(){
+    reload_number=$(grep "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $4}')
+    max_reload=$2
+    min_reload=$1
+    debug_log "reload_number:${reload_number}"
+    if [ "${reload_number}" -le "${max_reload}" ] && [ "${reload_number}" -ge "${min_reload}" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function session_report_reload_validation(){
+    session_Complete_Url=$(grep "Session Report:" ${PROGRESS_REPORT_FILE} | awk -F '/' '{print $2}'| cut -d ' ' -f2)
+    debug_log "session_Complete_Url:${session_Complete_Url}"
+    reload_number=$(grep "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $4}')
+    max_reload=$2
+    min_reload=$1
+    reload_count_max=$(( ${session_Complete_Url} * ${max_reload} ))
+    debug_log "reload_count_max:${reload_count_max}"
+    reload_count_min=$(( ${session_Complete_Url} * ${min_reload} ))
+    debug_log "reload_count_min:${reload_count_min}"
+    if [ "${reload_number}" -ge "${reload_count_min}" ] && [ "${reload_number}" -le "${reload_count_max}" ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
+function validate_Complete_Sucess_Url(){
+    sucess_Url=$(grep -w  "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $3}'|cut -d ' ' -f4|cut -d '/' -f1)
+    debug_log "sucess_Url:${sucess_Url}"
+    completed_url=$(grep "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $3}'|cut -d ' ' -f3|cut -d '/' -f1)
+    debug_log "completed_url:${completed_url}"
+    reload_number=$(grep "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $4}')
+    complete_URL=$(( ${sucess_Url}+${reload_number} ))
+    if [ "${complete_URL}" -eq "${completed_url}" ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
+function validate_Expected_Reload_Url(){
+    reload_number=$(grep "Url  Report:" ${PROGRESS_REPORT_FILE}|awk -F ':' '{print $4}')
+    expected_Url=$1
+    if [ "${reload_number}" -eq "${expected_Url}" ]; then
+        return 0;
+    else
+        return 1;
+    fi
+}
+
+function validate_Page_Reload-001(){
+    validate_Reload_Url 1 3
+    result_reload=$?
+    debug_log "result_reload:${result_reload}"
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    if [ "${result_reload}" -eq 0 ] && [ ${result_complete_sucess} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload vary between 1 and 3 times. because respone time 5 Sec and Page reload time 0 (Force Reload)"
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload vary between 1 and 3 times. it's value can't be 0(Zero) . but it seems like 0"
+    fi
+}
+
+function validate_Page_Reload-002(){
+    validate_Reload_Url 1 3
+    result_reload=$?
+    debug_log "result_reload:${result_reload}"
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    validate_Expected_Reload_Url 3
+    expected_Reload=$?
+    debug_log "expected_Reload:${expected_Reload}"
+    if [ "${result_reload}" -eq 0 ] && [ "${result_complete_sucess}" -eq 0 ] && [ ${expected_Reload} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec"
+    else
+        log_status_and_exit_ex "FAIL" "Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec but it not seems like expected value"
+    fi
+}
+
+function validate_Page_Reload-003(){
+    validate_Reload_Url 1 3
+    result_reload=$?
+    debug_log "result_reload:${result_reload}"
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    if [ "${result_reload}" -eq 0 ] && [ ${result_complete_sucess} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload vary between 1 and 3 times. because respone time 5 Sec and Page reload time 0 (Force Reload HTTPS)"
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload vary between 1 and 3 times.because respone time 5 Sec and Page reload time 0 (Force Reload HTTPS). it's value can't be 0(Zero) . but it seems like 0"
+    fi
+}
+
+function validate_Page_Reload-004(){
+    validate_Reload_Url 1 3
+    result_reload=$?
+    debug_log "result_reload:${result_reload}"
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    validate_Expected_Reload_Url 3
+    expected_Reload=$?
+    debug_log "expected_Reload:${expected_Reload}"
+    if [ "${result_reload}" -eq 0 ] && [ "${result_complete_sucess}" -eq 0 ] && [ ${expected_Reload} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec(Reload Https)"
+    else
+        log_status_and_exit_ex "FAIL" "Page Relaod value will be 3 because Max_Reload value is 3. because respone time 5 Sec and Page reload time 3 Sec(Reload Https) but it didn't seems like expected result"
+    fi
+}
+
+function validate_Page_Reload-005(){
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    session_report_reload_validation 2 5
+    expected_Reload=$?
+    debug_log "expected_Reload:${expected_Reload}"
+    if [ "${result_complete_sucess}" -eq 0 ] && [ ${expected_Reload} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs. Force Reload"
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs (Force Reload). but it's not seem like expected result"
+    fi
+}
+function validate_Page_Reload-006(){
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    session_report_reload_validation 1 3
+    session_report_reload_result=$?
+    debug_log "session_report_reload_result:${session_report_reload_result}"
+    validate_Expected_Reload_Url 30
+    expected_Reload=$?
+    debug_log "expected_Reload:${expected_Reload}"
+    if [ ${result_complete_sucess} -eq 0 ] && [ ${session_report_reload_result} -eq 0 ] && [ ${expected_Reload} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs. Reload Time Out given(3 Sec)"
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload). because Simple Scenario Based one group 10 Secs. Reload Time Out given(3 Sec) but it didn't seem like expected value"
+    fi
+}
+
+function validate_Page_Reload-007(){
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    session_report_reload_validation 1 3
+    session_report_reload_result=$?
+    debug_log "session_report_reload_result:${session_report_reload_result}"
+    if [ ${result_complete_sucess} -eq 0 ] && [ ${session_report_reload_result} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload).while rampUp time 30 Secs for each group"
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload).while rampUp time 30 Secs for each group. but it didn't seem like expected result"
+    fi
+}
+
+function validate_Page_Reload-008(){
+    validate_Complete_Sucess_Url
+    result_complete_sucess=$?
+    debug_log "result_complete_sucess:${result_complete_sucess}"
+    session_report_reload_validation 1 3
+    session_report_reload_result=$?
+    debug_log "session_report_reload_result:${session_report_reload_result}"
+    validate_Expected_Reload_Url 9
+    expected_Reload=$?
+    debug_log "expected_Reload:${expected_Reload}"
+    if [ ${result_complete_sucess} -eq 0 ] && [ ${session_report_reload_result} -eq 0 ] && [ ${expected_Reload} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload).while rampUp time 30 Secs for each group. Page Reload time 3 Sec and Service time 5 Sec. "
+    else
+        log_status_and_exit_ex "FAIL" "Page Reload value will vary between (session_completed * min_reload and session_completed * max_reload).while rampUp time 30 Secs for each group. Page Reload time 3 Sec and Service time 5 Sec. but it didn't seem like expected result"
+    fi
+}
+main
+
+
+exit  0

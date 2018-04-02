@@ -1,0 +1,115 @@
+Report of Percentile Testcase
+
+ 
+ URL Report from drill down data 
+
+URL Name, Type, Baseline value, Current value, Percentage difference, Status 
+HighRespTime, Min resp time, , 27, 100, FAIL
+HighRespTime, Avg resp time, , 999, 100, FAIL
+HighRespTime, Max resp time, , 10501, 100, FAIL
+HighRespTime, Median resp time, , 60082, 100, FAIL
+HighRespTime, 80%, , 5999, 100, FAIL
+HighRespTime, 90%, , 8999, 100, FAIL
+HighRespTime, 95%, , 10004, 100, FAIL
+HighRespTime, 99%, , 60000, 100, FAIL
+LowRespTime, Min resp time, , 9, 100, FAIL
+LowRespTime, Avg resp time, , 9, 100, FAIL
+LowRespTime, Max resp time, , 452, 100, FAIL
+LowRespTime, Median resp time, , 1905, 100, FAIL
+LowRespTime, 80%, , 499, 100, FAIL
+LowRespTime, 90%, , 799, 100, FAIL
+LowRespTime, 95%, , 899, 100, FAIL
+LowRespTime, 99%, , 901, 100, FAIL
+MedRespTime, Min resp time, , 20, 100, FAIL
+MedRespTime, Avg resp time, , 999, 100, FAIL
+MedRespTime, Max resp time, , 1451, 100, FAIL
+MedRespTime, Median resp time, , 2905, 100, FAIL
+MedRespTime, 80%, , 1499, 100, FAIL
+MedRespTime, 90%, , 1799, 100, FAIL
+MedRespTime, 95%, , 1899, 100, FAIL
+MedRespTime, 99%, , 1901, 100, FAIL
+
+ 
+ Page Report from drill down data 
+
+Page Name, Type, Baseline value, Current value, Percentage difference, Status 
+HighResp, Min resp time, , 999, 100, FAIL
+HighResp, Avg resp time, , 10501, 100, FAIL
+HighResp, Max resp time, , 60082, 100, FAIL
+HighResp, Median resp time, , 5999, 100, FAIL
+HighResp, 80%, , 8999, 100, FAIL
+HighResp, 90%, , 10004, 100, FAIL
+HighResp, 95%, , 60000, 100, FAIL
+HighResp, 99%, , 60000, 100, FAIL
+LowResp, Min resp time, , 9, 100, FAIL
+LowResp, Avg resp time, , 452, 100, FAIL
+LowResp, Max resp time, , 1905, 100, FAIL
+LowResp, Median resp time, , 499, 100, FAIL
+LowResp, 80%, , 799, 100, FAIL
+LowResp, 90%, , 899, 100, FAIL
+LowResp, 95%, , 901, 100, FAIL
+LowResp, 99%, , 901, 100, FAIL
+MedResp, Min resp time, , 999, 100, FAIL
+MedResp, Avg resp time, , 1451, 100, FAIL
+MedResp, Max resp time, , 2905, 100, FAIL
+MedResp, Median resp time, , 1499, 100, FAIL
+MedResp, 80%, , 1799, 100, FAIL
+MedResp, 90%, , 1899, 100, FAIL
+MedResp, 95%, , 1901, 100, FAIL
+MedResp, 99%, , 1901, 100, FAIL
+
+ 
+ Transaction Report from drill down data 
+
+Transaction Name, Type, Baseline value, Current value, Percentage difference, Status 
+HighRespTx, Min resp time, , 999, 100, FAIL
+HighRespTx, Avg resp time, , 10501, 100, FAIL
+HighRespTx, Max resp time, , 60082, 100, FAIL
+HighRespTx, Median resp time, , 5999, 100, FAIL
+HighRespTx, 80%, , 8999, 100, FAIL
+HighRespTx, 90%, , 10004, 100, FAIL
+HighRespTx, 95%, , 60000, 100, FAIL
+HighRespTx, 99%, , 60001, 100, FAIL
+LowRespTx, Min resp time, , 9, 100, FAIL
+LowRespTx, Avg resp time, , 452, 100, FAIL
+LowRespTx, Max resp time, , 1905, 100, FAIL
+LowRespTx, Median resp time, , 499, 100, FAIL
+LowRespTx, 80%, , 799, 100, FAIL
+LowRespTx, 90%, , 899, 100, FAIL
+LowRespTx, 95%, , 901, 100, FAIL
+LowRespTx, 99%, , 902, 100, FAIL
+MedRespTx, Min resp time, , 999, 100, FAIL
+MedRespTx, Avg resp time, , 1452, 100, FAIL
+MedRespTx, Max resp time, , 2905, 100, FAIL
+MedRespTx, Median resp time, , 1499, 100, FAIL
+MedRespTx, 80%, , 1799, 100, FAIL
+MedRespTx, 90%, , 1899, 100, FAIL
+MedRespTx, 95%, , 1901, 100, FAIL
+MedRespTx, 99%, , 1902, 100, FAIL
+
+
+ Url Report from Summary.data file 
+
+Type, Baseline value, Current value, Percentage difference, Status 
+80, 4010.000, 3010.000, 24.9377, FAIL
+90, 7010.000, 6010.000, 14.2653, FAIL
+95, 8010.000, 8010.000, 0, PASS
+99, 9010.000, 9010.000, 0, PASS
+
+
+ Page Report from Summary.data file 
+
+Type, Baseline value, Current value, Percentage difference, Status 
+80, 4210.000, 5000.000, 18.7648, FAIL
+90, 7210.000, 8000.000, 10.957, FAIL
+95, 9010.000, 9010.000, 0, PASS
+99, 10010.000, 10010.000, 0, PASS
+
+
+ Trans\. Report from Summary.data file 
+
+Type, Baseline value, Current value, Percentage difference, Status 
+80, 4222.000, 5000.000, 18.4273, FAIL
+90, 7254.000, 8000.000, 10.284, FAIL
+95, 9010.000, 9010.000, 0, PASS
+99, 10010.000, 10010.000, 0, PASS

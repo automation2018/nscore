@@ -12,24 +12,17 @@
 #include <string.h>
 #include "ns_string.h"
 
-double custom_delay_single(){
-    double delay_time=8.0;
-    return delay_time;
-}
-
-double custom_delay_all(){
-    double delay_time=5.0;
-    return delay_time;
-}
 
 void flow()
 {
    ns_start_transaction("IndexPage");
-    ns_web_url ("index",
+//   ns_save_string("6","number"); 
+   ns_web_url ("index",
         "URL=http://127.0.0.1/tours/index.html",
         "HEADER=Accept-Language:en-us,en;q=0.5",
         "PreSnapshot=webpage_13946124026631.png",
         "Snapshot=webpage_13946124027021.png",
+  //       "BODY={$CAVREPEAT_BLOCK_START,sep(;),Num(number)}netstorm{$CAVREPEAT_BLOCK_END}",
         INLINE_URLS,
             "URL=http://127.0.0.1/tours/Merc10-dev/images/banner_animated.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
             "URL=http://127.0.0.1/tours/Merc10-dev/images/sun_swede.gif", "HEADER=Accept-Language:en-us,en;q=0.5", END_INLINE,
@@ -43,6 +36,7 @@ void flow()
    ns_start_transaction("login");
     ns_web_url ("login",
         "URL=http://127.0.0.1/cgi-bin/login?userSession=75893.0884568651DQADHfApHDHfcDtccpfAttcf&username=netstorm&password=cavisson&login.x=0&login.y=0&login=Login&JSFormSubmit=off",
+//          "URL=http://127.0.0.1/cgi-bin/login?userSession=75893.0884568651DQADHfApHDHfcDtccpfAttcf&username=netstorm&password=netstorm&login.x=0&login.y=0&login=Login&JSFormSubmit=off", 
         "HEADER=Accept-Language:en-us,en;q=0.5",
         "PreSnapshot=webpage_13946124046151.png",
         "Snapshot=webpage_13946124046821.png",

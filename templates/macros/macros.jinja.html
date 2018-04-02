@@ -12,9 +12,10 @@
             <tr>
                 {% set time = row.split('|') %}
                     <td>{{ time[0] }}</td>
-                {% set core = time[1].split(':') %}
+                {% set core = time[1].split('$$$$') %}
                     <td>{{ core[0] }}</td>
-                    <td>{{ core[1] }}</td>
+                {% set bt = core[1].split('Core was') %}
+                    <td>{{ bt[1:] }}</td>
             </tr>
             {%- endfor %}
         </tbody>

@@ -1,0 +1,7 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-013-001,67258,1,1,pass,SyncPoint Before FirstTrans 10Users all users release Passed
+SMOKE-013-002,67259,1,1,fail,SyncPoint Before FirstTrans 10Users 5 users release  Failed
+SMOKE-013-003,67260,1,1,pass,SyncPoint Before FirstTrans 10Users 20 users release timeout  Passed
+SMOKE-013-004,67261,1,1,fail,SyncPoint In Between Transasctions 10 Users all users release Failed
+SMOKE-013-005,67262,1,1,pass,SyncPoint Before First Page 10 Users all users release Passed
+SMOKE-013-006,67263,1,1,fail,SyncPoint In Btween Pages 10Users 5users release Failed

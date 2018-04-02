@@ -1,0 +1,9 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-022-001,82230,1,1,fail,session pacing mode 0(no pacing i.e as soon as the previous session ends) testcase validation failed
+SMOKE-022-002,82232,1,1,fail,session pacing mode 1 0(fixed delay) testcase validation failed
+SMOKE-022-003,82233,1,1,pass,session pacing mode 1 1(fixed delay with internet random values) testcase validation passed
+SMOKE-022-004,82234,1,1,fail,session pacing mode 1 1(fixed delay within a time range) testcase validation failed
+SMOKE-022-005,82235,1,1,pass,session pacing mode 2 0(once every interval at a fixed interval of) testcase validation passed
+SMOKE-022-006,82236,1,1,pass,session pacing mode 2 1(once every interval with an internet random values) testcase validation passed
+SMOKE-022-007,82237,1,1,fail,session pacing mode 2 2(once every interval within a range of values) testcase validation failed
+SMOKE-022-008,82239,1,1,pass,session pacing keyword with new user on session and first session pacing testcase passed

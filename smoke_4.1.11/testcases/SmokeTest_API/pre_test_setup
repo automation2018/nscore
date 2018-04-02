@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+USER_TEST_TIME_FILE="/home/netstorm/work/users/user_test_times.dat"
+
+NO_OF_TEST_RUN_BEFORE_EXECUTION=$(grep "automation" $USER_TEST_TIME_FILE | awk -F'|' {'print $3'})
+BEFORE_TEST_EXECUTION_TIME=$(grep "automation" $USER_TEST_TIME_FILE | awk -F'|' {'print $2'})
+
+echo -e "\n\n BEFORE_TEST_EXECUTION_TIME=$BEFORE_TEST_EXECUTION_TIME \n\n"
+echo -e "\n\n NO_OF_TEST_RUN_BEFORE_EXECUTION=$NO_OF_TEST_RUN_BEFORE_EXECUTION \n\n "
+
+
+exit 0

@@ -1,0 +1,156 @@
+#!/bin/bash
+
+#For using common functions need to call this library
+. $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+  
+if [ "XX$T_NAME" == "XXSMOKE-014-001" ];then 
+   MainUrlAddedHeader=`grep "Connection" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -2 | tail -1 | cut -d '' -f1`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$MainUrlAddedHeader" == "Connection: Upgrade" ];then
+        log_status_and_exit_ex "PASS" "NS add header with Main url Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS add header with Main url Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-002" ];then
+    InlineUrlAddedHeader=`grep "gzip,deflate" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -1 | cut -d '' -f1`
+    InlineUrlAddedHeaderCount=`grep -c "Accept-Encoding: gzip,deflate" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$InlineUrlAddedHeader" == "Accept-Encoding: gzip,deflate" ] && \
+       [ $InlineUrlAddedHeaderCount -eq 4 ];then
+        log_status_and_exit_ex "PASS" "NS add header with Embedded url Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS add header with Embedded url Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-003" ];then
+    MixedModeAddedHeader=`grep "Cavisson Browser 1.0" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat | head -1 | cut -d '' -f1`
+    MixedModeAddedHeaderCount=`grep -c "Cavisson Browser 1.0" $T_ID_REQ_PATH/url_req_0_0_0_0_0_0_0_0_0.dat`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$MixedModeAddedHeader" == "User-Agent: Cavisson Browser 1.0" ] && \
+       [ $MixedModeAddedHeaderCount -eq 5 ];then
+        log_status_and_exit_ex "PASS" "NS add header with both Main and Embedded urls Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS add header with both Main and Embedded urls Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-004" ];then
+    MainUrlAutoHeader=`grep "Max-Forwards" $T_ID_REQ_PATH/url_req_0_0_0_* | cut -d ':' -f2,3 | head -1 | cut -d '' -f1`
+    MainUrlAutoHeaderCount=`grep "Max-Forwards" $T_ID_REQ_PATH/url_req_0_0_0_* | wc -l`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$MainUrlAutoHeader" == "Max-Forwards: 10" ] && \
+       [ $MainUrlAutoHeaderCount -eq 7 ];then
+        log_status_and_exit_ex "PASS" "NS auto add header with Main urls Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS auto add header with Main urls Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-005" ];then
+    InlineAutoHeader=`grep "Warning:" $T_ID_REQ_PATH/url_req_0_0_0_* | head -1 | cut -d ':' -f2,3 | cut -d '' -f1`
+    InlineAutoHeaderCount=`grep "Warning:" $T_ID_REQ_PATH/url_req_0_0_0_* | wc -l`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$InlineAutoHeader" == "Warning: Checking Add Auto Header API of Netstorm" ] && \
+       [ $InlineAutoHeaderCount -eq 50 ];then
+        log_status_and_exit_ex "PASS" "NS auto add header with Embedded urls Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS auto add header with Embedded urls Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-006" ];then
+    MixedModeAutoAddedHeader=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* | head -1 | cut -d ':' -f2,3 | cut -d '' -f1`
+    MixedModeAutoAddedHeaderCount=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* | wc -l`
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$MixedModeAutoAddedHeader" == "Content-Disposition: attachment; filename = fname.txt" ] && \
+       [ $MixedModeAutoAddedHeaderCount -eq 57 ];then
+        log_status_and_exit_ex "PASS" "NS auto add header with Mix Mode urls Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS auto add header with Mix Mode urls Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-007" ];then
+    AddedAutoHeader=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* |  head -1 | cut -d ':' -f2,3 | cut -d '' -f1`
+    AddedAutoHeadersCount=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* | wc -l`
+    CleanUpHeaderCount=0
+    for i in {3..6}
+        do 
+            result=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_${i}_0_0_0_${i}_0.dat`
+            if [ "XX$result" == "XX" ];then
+                continue
+            else
+                CleanUpHeaderCount=`expr $CleanUpHeaderCount + 1`
+            fi
+        done
+    
+    if [ $SD_TotalSuccURL -eq 57 ] && \
+       [ "$AddedAutoHeader" == "Content-Disposition: attachment; filename = fname.txt" ] && \
+       [ $AddedAutoHeadersCount -eq 22 ]&& \
+       [ $CleanUpHeaderCount -eq 0 ];then
+        log_status_and_exit_ex "PASS" "NS clean-up header Passed"
+    else
+        log_status_and_exit_ex "FAIL" "NS clean-up header Failed"
+    fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-008" ];then
+   AddedAutoHeader=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* | head -1 | cut -d ":" -f2,3 | cut -d "" -f1`
+   CountBeforeRemoveHeader=0
+   CountAfterRemoveHeader=0
+   for i in 0 1 2
+       do
+           count1=`grep -c "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_${i}_0_0_0_${i}_0.dat`
+           CountBeforeRemoveHeader=`expr $CountBeforeRemoveHeader + $count1`
+       done
+   
+    for i in {3..6}
+        do
+            count2=`grep -c "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_${i}_0_0_0_${i}_0.dat`
+            CountAfterRemoveHeader=`expr $CountAfterRemoveHeader + $count2`
+        done
+   if [ $SD_TotalSuccURL -eq 57 ] && \
+      [ "XX$AddedAutoHeader" == "XXContent-Disposition: attachment; filename = fname.txt" ] && \
+      [ $CountBeforeRemoveHeader -eq 22 ] && \
+      [ $CountAfterRemoveHeader -eq 31 ];then
+       log_status_and_exit_ex "PASS" "NS remove auto header Passed"
+   else
+       log_status_and_exit_ex "FAIL" "NS remove auto header Failed"
+   fi
+fi
+
+if [ "XX$T_NAME" == "XXSMOKE-014-009" ];then
+    AddedAutoHeader=`grep "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_* | head -1 | cut -d ":" -f2,3 | cut -d "" -f1`
+    AddedHeader=`grep "Connection" $T_ID_REQ_PATH/url_req_0_0_0_6_0_0_0_6_0.dat | head -2 | tail -1 | cut -d "" -f1`
+    AddedHeaderCount=`grep -c "Connection: Upgrade" $T_ID_REQ_PATH/url_req_0_0_0_6_0_0_0_6_0.dat`
+    CountBeforeRemoveHeader=0
+    CountAfterRemoveHeader=0
+    for i in 0 1 2
+        do
+            count1=`grep -c "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_${i}_0_0_0_${i}_0.dat`
+            CountBeforeRemoveHeader=`expr $CountBeforeRemoveHeader + $count1`
+        done
+
+    for i in {3..6}
+        do
+            count2=`grep -c "Content-Disposition:" $T_ID_REQ_PATH/url_req_0_0_0_${i}_0_0_0_${i}_0.dat`
+            CountAfterRemoveHeader=`expr $CountAfterRemoveHeader + $count2`
+        done
+   if [ $SD_TotalSuccURL -eq 57 ] && \
+      [ "XX$AddedAutoHeader" == "XXContent-Disposition: attachment; filename = fname.txt" ] && 
+      [ $CountBeforeRemoveHeader -eq 22 ] && \
+      [ $CountAfterRemoveHeader -eq 4 ] && \
+      [ "$AddedHeader" == "Connection: Upgrade" ] && \
+      [ $AddedHeaderCount -eq 6 ];then
+       log_status_and_exit_ex "PASS" "NS add and remove header combined Passed"
+   else
+       log_status_and_exit_ex "FAIL" "NS add and remove header combined Failed"
+   fi
+
+fi
+
+exit 0

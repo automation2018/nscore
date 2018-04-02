@@ -66,7 +66,7 @@
                  password="${remote.password}"
                  command="${command.hpd.restart}"
                  trust="true"/>
-        <sleep seconds="20"/>
+        <sleep seconds="50"/>
         <sshexec host="${remote.host}"
                  username="${remote.user}"
                  password="${remote.password}"
@@ -99,7 +99,17 @@
             <arg value="Regression"/>
             <arg value="0"/>
          </exec>
-    </target>
+     </target>
+    
+      <target name="debug-without-HPD" depends="copy"  description="To debug perticular test execution and changes">
+          <exec executable="/bin/bash" taskname="info">
+            <arg value="run_ts.sh"/>
+            <arg value="Regression"/>
+            <arg value="0"/>
+         </exec>
+     </target>
+
+
     
     <!-- Task: Update mail.properties prior to Test Start Mail Send--> 
     <target name="update-welcome-properties"
@@ -117,11 +127,12 @@
         <mail mailhost="websrv.cavisson.com" 
               user="${mail.user}"
               password="${mail.password}" 
+	      enableStartTLS="true"
               mailport="587"
               tolist="${configured.mail.list.to}" 
               cclist="${configured.mail.list.cc}"
               messageMimeType="text/html"
-              subject="Regression: NSCore ${curr.release} B${curr.build} - Started"
+              subject="[UBUNTU16]Regression: NSCore ${curr.release} B${curr.build} - Started"
               messagefile="${startup.mail.file}"
               failonerror="false">
 	    <from address="automation@cavisson.com"/>
@@ -144,12 +155,14 @@
        <property file="mail.properties"/>
        <mail mailhost="websrv.cavisson.com"
              user="${mail.user}"
+             files="/home/automation/workbench/automation/nscore/logs/percentile_data.csv"
              password="${mail.password}" 
+	     enableStartTLS="true"
              mailport="587" 
              tolist="${configured.mail.list.to}"
-             cclist="${configured.mail.list.cc}" 
+             cclist="${configured.mail.list.cc}"
              messageMimeType="text/html" 
-             subject="Regression: NSCore ${curr.release} B${curr.build} - ${buil.status.header}"
+             subject="[UBUNTU16]Regression: NSCore ${curr.release} B${curr.build} - ${buil.status.header}"
              messagefile="${mail.result.file}"
              failonerror="false">
            <from address="automation@cavisson.com"/>   		   
@@ -159,7 +172,10 @@
    <!-- Task: Declaring default target to initiate build--> 
    <target name="run" depends="regression, trigger-result-mail" description="Declaring default target to initiate build">
    </target>
-   
+   <!--Task : Declaring default target to initiate debug build process without HPD start-->
+   <target name="reg-debug-without-HPD-restart" depends="debug-without-HPD" description="Declaring default target to initiate debug build process without HPD start">
+   </target>
+
    <!-- Task: Declaring default target to initiate debug build process--> 
    <target name="reg-debug" depends="debug" description="Declaring default target to initiate debug build process">
    </target>

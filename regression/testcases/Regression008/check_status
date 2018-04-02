@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+
+source $NS_WDIR/lib/automation_util
+
+#PATH_TO_LIB="$NS_WDIR/lib"
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$(get_testidx)"
+#PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$(get_test_idx)"
+#PARTITION_PATH="${PATH_TO_TEST_RUN}/$(get_test_partition)"
+#PROGRESS_REPORT_FILE="${PATH_TO_TEST_RUN}/progress.report"
+SUMMARY_GDF_FILE="${PATH_TO_TEST_RUN}/summary_gdf.data"
+#EVENT_LOG_FILE="${PARTITION_PATH}/event.log"
+#MONITOR_LOG_FILE="${PARTITION_PATH}/monitor.log"
+
+
+function main() {
+	case $(get_tname) in
+    "REG-008-001") handle_reg_008_case ;;
+# End case def
+  esac
+}
+
+function handle_reg_008_case(){
+#    BaseLine_Tsr_Directory_Regression1="$NS_WDIR/logs/tsr/072815_181628/2335/Regression001_results.csv"
+#    Test_Run=`grep -w $Tname $BaseLine_Tsr_Directory_Regression1 |cut -d ',' -f2`
+    Test_Run=67246
+    SUMMARY_GDF_BASELINE="$NS_WDIR/logs/TR${Test_Run}/summary_gdf.data"
+
+    PARAMLIST="/home/automation/workbench/automation/nscore/regression/testcases/Regression008/ParamList"
+    IFS=$'\n'
+    rs=3
+    for line in $(cat $PARAMLIST);do 
+        #Get filters for baseline and current test run from ParamList file
+        baseline_filters=$(echo $line| cut -d '|' -f 1); 
+        current_filters=$(echo $line| cut -d '|' -f 2); 
+        echo "Going to filter baseline TR with $baseline_filters and current TR with $current_filters" 
+    
+        #Call python script to filter out the wanted values from summary_gdfs of the respective test runsa and find their difference
+#        python /home/automation/workbench/automation/nscore/regression/testcases/Regression001/filter.py ${SUMMARY_GDF_BASELINE} ${SUMMARY_GDF_FILE} "${baseline_filters}" "${current_filters}"
+        output=$(python /home/automation/workbench/automation/nscore/regression/testcases/Regression001/filter.py ${SUMMARY_GDF_BASELINE} ${SUMMARY_GDF_FILE} "${baseline_filters}" "${current_filters}")
+        baseline_val=$(echo $output| cut -d ',' -f 1)
+        current_val=$(echo $output|cut -d ',' -f 2)
+        diff_obtained=$(echo $output|cut -d ',' -f 3)
+        echo "Baseline value found: $baseline_val"
+        echo "Current value found: $current_val"
+        echo "Difference found: $diff_obtained"
+
+        if [ 1 -eq "$(echo "${diff_obtained} > 5" | bc)" ] || [ 1 -eq "$(echo "${diff_obtained} < -5" | bc)" ];then
+#        if [ $diff_obtained -lt -5 ] || [ $diff_obtained -gt 5 ];then
+            if [ "$baseline_filters" == "Active Vusers(NA)" -a $rs -ne 1 ];then
+                rs=0
+            elif [[ "$baseline_filters" =~ "Response Time (Secs)(NA)" ]] && \
+                 [ $rs -ne 1 ] && [ "$(echo "${diff_obtained/-/} <= 200" | bc)" -eq 1 ]; then
+                rs=0
+            else
+                if [ $rs -ne 1 ];then
+                    culprit_baseline=$baseline_filters
+                    culprit_current=$current_filters
+                    culprit_baseline_val=$baseline_val
+                    culprit_current_val=$current_val
+                    culprit_diff=$diff_obtained
+                    echo "Culprits updated"
+                fi
+                rs=1
+                echo "Failed"
+            fi
+        elif [ $rs -ne 1 ];then
+            rs=0
+        fi
+    done
+        #Obtaining pass/fail status based on the return value of above called script
+        #Returns 1 - Fail
+        #        0 - Pass
+#        output=$(echo $?)
+#        if [ $output -eq 1 ];then
+#            if [ "$baseline_filters" == "Active Vusers(NA)" -a $rs -ne 1 ];then
+#                rs=0
+#            else
+#                if [ $rs -ne 1 ];then
+#                    culprit_baseline=$baseline_filters
+#                    culprit_current=$current_filters
+#                    echo "Culprits updated"
+#                fi
+#                rs=1
+#                echo "Failed"
+#            fi
+#        elif [ $rs -ne 1 ];then
+#            rs=0
+#        fi
+
+    echo "Result status is: $rs"
+    if [ $rs -eq 0 ];then
+        log_status_and_exit_ex "PASS" "Replay Access Logs testcase passed"
+    else
+        log_status_and_exit_ex "FAIL" "Replay Access Logs testcase failed because $culprit_baseline in baseline testrun found is $culprit_baseline_val and $culprit_current in current testrun is $culprit_current_val are having difference of ${culprit_diff}% which exceeed the tolerance of 5%"
+    fi
+}
+
+
+main

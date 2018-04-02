@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,55812,1,2,pass,Reression test for FCU with RampUp in Step mode passed
+REG-002-001,55813,1,2,pass,Reression test for FCU with RampUp in Rate mode passed
+REG-003-001,55814,1,2,pass,Regression testcase for FSR  Mode 1 test Passed
+REG-004-001,55815,1,2,fail,Reression test for FSR Mode 2 failed;because difference of  baseline and current test metric Sessions Started/Minute(NA) = 7 is more than expected difference 5%
+REG-005-001,55816,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-006-001,55817,1,2,fail,Reression test for NS supported protocols such as POP3 SMTP & FTP failed;because difference of  baseline and current test metric Average Page Response Time (Secs)(NA) = 8 is more than expected difference 5%
+REG-007-001,55818,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,55819,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,55820,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,55821,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,55822,1,2,pass,RTC is being applied for RampDown0 phase;84  have been found in current situation as RTC being applied
+REG-007-006,55823,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,55824,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-010-001,55825,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

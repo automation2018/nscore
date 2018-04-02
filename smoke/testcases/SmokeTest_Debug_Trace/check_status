@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+Debug_log_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$T_RUN_ID"
+PAGE_THINK_TIME_FILE="${PATH_TO_TEST_RUN}/page_think_time.dat"
+PATH_TO_TEST_RUN_SCENARIO="${PATH_TO_TEST_RUN}/scenario"
+PATH_TO_DEBUG_TRACE="${PATH_TO_TEST_RUN}/debug_trace.log"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-050-001") validate_Debug_Trace-001 ;;
+        "SMOKE-050-002") validate_Debug_Trace-002 ;;
+        "SMOKE-050-003") validate_Debug_Trace-003 ;;
+        "SMOKE-050-004") validate_Debug_Trace-004 ;;
+        "SMOKE-050-005") validate_Debug_Trace-005 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+# Need to find proper way to validate Scenario Profile in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function validate_Debug_Trace-001(){
+    open_conection=$(grep -o "Connecting" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "open_conection:$open_conection"
+    close_conection=$(grep -o "closing conection" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "close_conection:$close_conection"
+    if [ $close_conection == $open_conection ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed Expected Closing conection found"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase failed"
+    fi
+
+}
+
+function validate_Debug_Trace-002(){
+    open_conection=$(grep -o "Connecting" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "open_conection:$open_conection"
+    close_conection=$(grep -o "closing conection" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "close_conection:$close_conection"
+    if [ $close_conection == $open_conection ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed Expected Closing conection found"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase failed"
+    fi
+
+}
+
+function validate_Debug_Trace-003(){
+    open_conection=$(grep -o "Connecting" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "open_conection:$open_conection"
+    close_conection=$(grep -o "closing conection" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "close__conection: $close_conection"
+    if [ $close_conection == $open_conection ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed Expected Closing conection found"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase failed"
+    fi
+}
+
+function validate_Debug_Trace-004(){
+    open_conection=$(grep -o "Connecting" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "open_conection:$open_conection"
+    close_conection=$(grep -o "closing conection" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "Close_conection: $close_conection"
+    if [ $close_conection == $open_conection ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed Expected Closing conection found"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase failed"
+    fi
+}
+
+function validate_Debug_Trace-005(){
+    open_conection=$(grep -o "Connecting" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "open_Conection :$open_conection"
+    close_conection=$(grep -o "closing conection" $PATH_TO_DEBUG_TRACE | wc -l)
+    debug_log "Close_conection: $close_conection"
+    if [ $close_conection == $open_conection ];then
+        log_status_and_exit_ex "PASS" "Testcase Passed Expected Closing conection found"
+    else
+        log_status_and_exit_ex "FAIL" "Testcase failed"
+    fi
+}
+
+
+
+main
+
+exit  0

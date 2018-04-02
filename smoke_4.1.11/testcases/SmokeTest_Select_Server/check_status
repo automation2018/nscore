@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-038-001") validate_Server_Select_Mode ;;
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+function validate_Server_Select_Mode(){
+    validate_server_selectmode_session 0 0 $num1;
+    result_session1=$?;
+    debug_log "result validate_server_selectmode_session : $result_session1"
+    validate_server_selectmode_session 1 1 $num2;
+    result_session2=$?
+    debug_log "result validate_server_selectmode_session : $result_session2"
+    validate_server_selectmode_session 2 2 $num3;
+    result_session3=$?
+    debug_log "result validate_server_selectmode_session : $result_session3"
+    validate_server_selectmode_session 3 3 $num4;
+    result_session4=$?
+    debug_log "result validate_server_selectmode_session : $result_session4"
+    validate_server_selectmode_session 4 4 $num5;
+    result_session5=$?
+    debug_log "result validate_server_selectmode_session : $result_session5"
+
+    if [[ $result_session1 -eq 1 ]] && [[ $result_session2 -eq 1 ]] && [[ $result_session3 -eq 1 ]] && [[ $result_session4 -eq 1 ]] && [[ $result_session5 -eq 1 ]] ; then 
+        log_status_and_exit_ex "PASS" "validate server select mode"
+    else
+        log_status_and_exit_ex "FAIL" "Validate server select mode"
+    fi
+}
+
+function validate_server_selectmode_session(){
+    user_id=$1
+    session_id=$2
+    debug_log "User id : $user_id"
+    debug_log "Session id : $session_id"
+    host_value_1stPage_session=$(grep "Host" ${T_ID_REQ_PATH}/url_req_0_"$user_id"_"$session_id"_0_0_0_0_0_0.dat | cut -d ' ' -f2|head -1)
+    debug_log "host value in $user_id user and $session_id in session in 1st page: $host_value_1stPage_session"
+    host_value_all_session=( $(egrep "^Host" ${T_ID_REQ_PATH}/url_req_0_"$user_id"_"$session_id"_*  | cut -d ':' -f3) )
+    flag=0;
+    for i in "${host_value_all_session[@]}";
+    do
+        if [ "${host_value_1stPage_session}" == "$i" ]; then
+            flag=1;
+        else
+            flag=0;
+        fi
+    done
+    return $flag;
+}
+
+main
+
+
+exit  0

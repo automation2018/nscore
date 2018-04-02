@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+CurrentCSV="$NS_WDIR/logs/tsr/$TEST_CYCLE_NUM/CurrentDataCSVData.CSV"
+Component=performance
+SSL_TC_CONF_FILE="$NS_WDIR/testcases/Performance/Performance/sslciphers/testcase.conf"
+CPS_HPD_FILE="/home/automation/workbench/automation/nscore/conf/hpd_cps.conf"
+HPS_HPD_FILE="/home/automation/workbench/automation/nscore/conf/hpd_hps.conf"
+
+
+function main(){ 
+    case $(get_tname) in
+        "ECDHE-ECDSA-AES128-SHA_CPS") handle_ssl_cps_case ;;
+        "ECDHE-ECDSA-AES128-SHA_HPS") handle_ssl_hps_case ;;
+        "ECDHE-ECDSA-AES128-SHA_TPUT") handle_ssl_throughput_case ;;
+    esac
+}
+
+
+function get_perf_metric(){
+    metric=$1
+    echo "T_RUN_ID is =$T_RUN_ID"
+    
+    CPS_MAX_VALUE_CR=$(grep -w "TCP Connections Open/Sec(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "HTTP Body receive throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    #Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+    #Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+   
+    echo "SSL:${metric},$(get_tname),${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR"  >>$CurrentCSV
+}
+
+
+function Compare_Results() {
+    Conn_Perc_Change=`echo "$CPS_MAX_VALUE" "$CPS_MAX_VALUE_CR" | awk '{print ($1-$2)/$1*100}'`
+    echo "Conn_Perc_Change is =$Conn_Perc_Change"
+    if (($(echo "scale=9; $Conn_Perc_Change < 5" |bc)!=0)) ;then	
+	log_status_and_exit_ex "PASS" "$T_NAME Passed"
+    else
+	log_status_and_exit_ex "FAIL" "$T_NAME Failed"
+    fi
+}
+
+
+function handle_ssl_cps_case() {
+    debug_log "Going to copy hps hpd.conf file"
+
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -F $HPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
+    debug_log "exist status of copy file=$?"
+    
+    debug_log "Going to restart hpd server"
+
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd restart'
+    debug_log "exist status of hpd restart=$?"
+    sleep 10
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd show'
+    debug_log "exist status of hpd restart=$?"
+
+    get_perf_metric CPS    
+    log_status_and_exit_ex "PASS" "$(get_tname) Passed"
+}
+
+
+function handle_ssl_hps_case() {
+    get_perf_metric HPS
+    log_status_and_exit_ex "PASS" "$(get_tname) Passed"
+}
+
+
+function handle_ssl_throughput_case() {
+    get_perf_metric ThroughPut
+
+    debug_log "Going to copy cps hpd.conf file"
+
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -F $CPS_HPD_FILE -D /var/www/hpd/conf/hpd.conf
+    debug_log "exist status of copy file=$?"
+    
+    debug_log "Going to restart hpd server"
+
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd restart'
+    debug_log "exist status of hpd restart=$?"
+    sleep 10
+    rmon -h 10.10.30.96 -u root -p C@VAdmin -c 'service hpd show'
+    debug_log "exist status of hpd restart=$?"
+
+    log_status_and_exit_ex "PASS" "$(get_tname) Passed"
+}
+
+
+main
+
+
+exit 0

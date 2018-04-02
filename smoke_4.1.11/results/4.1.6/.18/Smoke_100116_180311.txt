@@ -1,0 +1,13 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-034-001,50114,1,1,pass,Referer not set on request page becasuse referer mode is disable
+SMOKE-034-002,50115,1,1,pass,Referer on each page and change referer on redirect for browser behaviour 
+SMOKE-034-003,50116,1,1,pass,Referer on each page and change referer on redirect for NS behaviour 
+SMOKE-034-004,50117,1,1,pass,Referer on each page in both Session and browser  behaviour
+SMOKE-034-005,50119,1,1,pass,Referer not set on request page becasuse referer mode is disable 
+SMOKE-034-006,50120,1,1,pass,Referer on each pag and change referer on redirect for browser behaviour
+SMOKE-034-007,50121,1,1,pass,Referer set on each page in both session in  browser  behaviour
+SMOKE-034-008,50123,1,1,pass,Referer on each page in both Session and browser behaviour
+SMOKE-034-009,50124,1,1,fail,Referer is not set in both session in  1st Page
+SMOKE-034-013,50125,1,1,pass,Referer on each page and change referer on redirect for browser behaviour and Linking from HTTP to HTTPS.
+SMOKE-034-014,50126,1,1,pass,Referer on each page and change referer on redirect for browser behaviour and Linking from HTTPS to HTTPS.
+SMOKE-034-015,50127,1,1,pass,Referer on each page and change referer on redirect for browser behaviour and Linking from HTTPS to HTTP. 

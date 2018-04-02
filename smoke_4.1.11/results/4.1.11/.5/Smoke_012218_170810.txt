@@ -1,0 +1,78 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+SMOKE-008-001,27567,1,1,pass,Page think time with constant mode Passed
+SMOKE-008-002,27568,1,1,pass,Page think time with uniform distribution mode Passed
+SMOKE-008-003,27569,1,1,pass,Page think time with internet type distribution mode Passed
+SMOKE-008-004,27570,1,1,pass,Page think time keyword for specific page Passed
+SMOKE-008-005,27571,1,1,pass,Page think time keyword with overide and multiply values Passed
+SMOKE-008-007,27572,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-008,27573,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-009,27574,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-008-010,27575,1,1,pass,Page think time custom mode 4 vaidation passed
+SMOKE-010-009,27576,1,1,fail,Ftp testcase failed due to url failure;vsftpd service may be stopped
+SMOKE-010-010,27577,1,1,pass,Ftp test for binary data and passive mode Passed
+SMOKE-010-011,27578,1,1,fail,Ftp testcase failed due to url failure;vsftpd service may be stopped
+SMOKE-010-012,27579,1,1,pass,Ftp test for binary data and active mode Passed
+SMOKE-012-001,27580,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-002,27581,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-003,27582,1,1,pass,Runlogic for percentaged block flow test Passed
+SMOKE-012-004,27583,1,1,pass,Runlogic for sequence flows test Passed
+SMOKE-012-005,27584,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-006,27585,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-007,27586,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-008,27587,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-012-009,27588,1,1,pass,Runlogic for handle_switch_case block test Passed
+SMOKE-020-005,27589,1,1,pass,G_DISABLE_ACCEPT 0 testcase passed
+SMOKE-020-006,27590,1,1,pass,G_DISABLE_ACCEPT 1 testcase passed
+SMOKE-020-007,27591,1,1,pass,G_DISABLE_HOST 0 testcase passed
+SMOKE-020-008,27592,1,1,pass,G_DISABLE_HOST 1 testcase passed
+SMOKE-020-009,27593,1,1,pass,G_DISABLE_REUSEADDR 0 smoke test validation passed
+SMOKE-020-010,27594,1,1,pass,G_DISABLE_REUSEADDR 1 smoke test validation passed
+SMOKE-020-011,27595,1,1,pass,G_DISABLE_USER-AGENT 0 testcase passed
+SMOKE-020-012,27596,1,1,pass,G_DISABLE_USER-AGENT 1 testcase passed
+SMOKE-020-013,27597,1,1,pass,G_DISABLE_CONNECTION 0 testcase passed
+SMOKE-020-014,27598,1,1,pass,G_DISABLE_CONNECTION 1 testcase passed
+SMOKE-020-015,27599,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 0 testcase passed
+SMOKE-020-016,27600,1,1,pass,G_USE_RECORDED_HOST_IN_HOST_HDR 1 testcase passed
+SMOKE-020-017,27601,1,1,pass,G_DISABLE_ACCEPT-ENCODING 0 testcase passed
+SMOKE-020-018,27602,1,1,pass,G_DISABLE_ACCEPT-ENCODING 1 testcase passed
+SMOKE-020-019,27603,1,1,pass,G_DISABLE_ALL_HEADER 0 testcase passed
+SMOKE-020-020,27604,1,1,pass,G_DISABLE_ALL_HEADER 1 testcase passed
+SMOKE-020-021,27605,1,1,pass,G_DISABLE_KEEP-ALIVE 0 testcase passed
+SMOKE-020-022,27606,1,1,pass,G_DISABLE_KEEP-ALIVE 1 testcase passed
+SMOKE-020-023,27607,1,1,pass,continue on page error mode 0 validation passed
+SMOKE-020-024,27608,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-025,27609,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-026,27610,1,1,pass,continue on page error mode 1 validation passed
+SMOKE-020-027,27611,1,1,pass,idle msec testcase validation passed
+SMOKE-020-028,27612,1,1,pass,idle msec testcase validation passed
+SMOKE-020-029,27613,1,1,pass,idle msec testcase validation passed
+SMOKE-020-030,27614,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-031,27615,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-032,27616,1,1,pass,max con per vuser testcase passed;as no of expect connection is equal to the exact no of connection
+SMOKE-020-033,27617,1,1,pass,Virtual user tracing mode G1 0 passed as no vuser_trace directory found in testrun
+SMOKE-020-034,27618,1,1,pass,Virtual user tracing mode ALL 0 passed as no vuser_trace directory found in testrun
+SMOKE-020-035,27619,1,1,pass,Virtual user tracing mode G1 1 passed as no vuser_trace directory found in testrun
+SMOKE-020-036,27620,1,1,pass,Virtual user tracing mode ALL 1 passed as no vuser_trace directory found in testrun
+SMOKE-020-037,27621,1,1,pass,Virtual user tracing mode G1 2 passed as no vuser_trace directory found in testrun
+SMOKE-020-038,27622,1,1,pass,Virtual user tracing mode ALL 2 passed as no vuser_trace directory found in testrun
+SMOKE-020-039,27623,1,1,pass,G_ERR_CODE_OK mode 0 passed as we got 1 url 1xx
+SMOKE-020-040,27624,1,1,pass,G_ERR_CODE_OK mode 1 passed as we got all url success
+SMOKE-020-041,27625,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=16 Reuse Req=0 Reused=0) as expected in progress report
+SMOKE-020-042,27626,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=9 Reuse Req=7 Reused=7) as expected in progress report
+SMOKE-020-043,27627,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=2 Reuse Req=14 Reused=14) as expected in progress report
+SMOKE-020-044,27628,1,1,pass,G_AVG_SSL_REUSE passed: we got (New=2 Reuse Req=14 Reused=14) as expected in progress report
+SMOKE-021-001,27629,1,1,pass,page as transaction mode 0 testcase passed
+SMOKE-021-002,27630,1,1,pass,page as transaction mode 1 testcase passed
+SMOKE-021-003,27631,1,1,pass,page as transaction mode 1 1 testcase passed
+SMOKE-021-004,27632,1,1,pass,page as transaction mode 2 1 testcase passed
+SMOKE-021-005,27633,1,1,pass,page as transaction mode 3 1 testcase passed
+SMOKE-021-006,27634,1,1,pass,nvm testcase passed
+SMOKE-021-007,27635,1,1,pass,num nvm testcase passed
+SMOKE-021-008,27636,1,1,pass,nvm testcase passed
+SMOKE-021-009,27637,1,1,pass,num nvm testcase passed
+SMOKE-021-010,27638,1,1,pass,disable cookies testcase passed
+SMOKE-021-011,27639,1,1,pass,disable cookies testcase passed
+SMOKE-024-001,27640,1,1,pass,inline transaction testcase passed
+SMOKE-024-002,27641,1,1,pass,inline transaction testcase passed
+SMOKE-024-003,27642,1,1,pass,inline transaction testcase passed
+SMOKE-024-004,27643,1,1,pass,inline repeat for transaction passed

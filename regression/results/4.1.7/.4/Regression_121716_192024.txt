@@ -1,0 +1,15 @@
+#testcaseid,testrun,componentid,catagoryid,status,description
+REG-001-001,66765,1,2,pass,Reression test for FCU with RampUp in Step mode passed
+REG-002-001,66766,1,2,pass,Reression test for FCU with RampUp in Rate mode passed
+REG-003-001,66767,1,2,pass,Regression testcase for FSR  Mode 1 test Passed
+REG-004-001,66768,1,2,pass,Regression testcase for FSR Mode 2 test Passed
+REG-005-001,66769,1,2,pass,Regression testcase for Replay Access Logs test Passed
+REG-006-001,66770,1,2,fail,Reression test for NS supported protocols such as POP3 SMTP & FTP failed;For Average Page Response Time (Secs)(NA) where baseline value: 0.025 current value: 0.023 and percentage difference is 8 which is more than expected difference 5%
+REG-007-001,66771,1,2,pass,RTC is being applied for Start0 phase;10  have been found in current situation as RTC being applied
+REG-007-002,66772,1,2,pass,RTC is being applied for RampUp0 phase;12  have been found in current situation as RTC being applied
+REG-007-003,66773,1,2,pass,RTC is being applied for Stabilize0 phase;110  have been found in current situation as RTC being applied
+REG-007-004,66774,1,2,pass,RTC is being applied for Duration0 phase;110  have been found in current situation as RTC being applied
+REG-007-005,66775,1,2,pass,RTC is being applied for RampDown0 phase;85  have been found in current situation as RTC being applied
+REG-007-006,66776,1,2,pass,RTC being applied in all phases correctly;VUSers records were found as expected for each of the phases where RTC applied;Ramp down users count also met to the expected total VUsers count post application of RTC
+REG-008-001,66777,1,2,fail,Reression test for Replay Access Logs failed;For Average Transaction Response Time (Secs)(NA) where baseline value: 0.001 current value: 0.000 and percentage difference is 100 which is more than expected difference 5%
+REG-010-001,66778,1,2,fail, Percentile testcase failed. For more details about percentile data please find the percentile_data.csv attachment

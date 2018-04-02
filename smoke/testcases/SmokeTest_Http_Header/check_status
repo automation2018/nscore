@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+PROGRESS_REPORT_FILE="$NS_WDIR/logs/TR$T_RUN_ID/progress.report"
+Debug_log_LOG="$NS_WDIR/logs/TR$T_RUN_ID/debug.log"
+
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR$T_RUN_ID"
+PAGE_THINK_TIME_FILE="${PATH_TO_TEST_RUN}/page_think_time.dat"
+PROGRESS_REPORT_FILE="${PATH_TO_TEST_RUN}/progress.report"
+SCENARIO_FILE="${PATH_TO_TEST_RUN}/scenario"
+REQ_REP_PATH_FILE="${T_ID_REQ_PATH}"
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-051-001") validate_Http_Header-001 ;;
+        "SMOKE-051-002") validate_Http_Header-002 ;;
+        "SMOKE-051-003") validate_Http_Header-003 ;;
+        "SMOKE-051-004") validate_Http_Header-004 ;;
+        "SMOKE-051-005") validate_Http_Header-005 ;;
+        "SMOKE-051-006") validate_Http_Header-006 ;;
+        "SMOKE-051-007") validate_Http_Header-007 ;;
+        
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+function validate_Http_Header-001(){
+    header_val=($(grep "CavTxName:" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "header_val:${header_val}"
+    if [ ${header_val} == 7 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+}
+function validate_Http_Header-002(){
+    header_val=($(grep "CavTxName:" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "header_val:${header_val}"
+    if [ ${header_val} == 7 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+
+}
+
+function validate_Http_Header-003(){
+    header_val=($(grep "cavisson:" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "header_val: ${header_val}"
+    if [ ${header_val} == 14 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+}
+
+function validate_Http_Header-004(){
+    header_val=($(grep "cavisson: astar" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "header_val:${header_val}"
+    if [ ${header_val} == 14 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+
+}
+
+function validate_Http_Header-005(){
+    mainurl_val=($(grep "CavTxName" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    inlineurl_val=($(grep "CavTxName: InLine." ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "mainurl_val:${mainurl_val} ; inlineurl_val:${inlineurl_val}"
+    if [ ${mainurl_val} == 51 ] && [ ${inlineurl_val} == 44 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+}
+
+function validate_Http_Header-006(){
+    mainurl_val=($(grep "cavisson:" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    inlineurl_val=($(grep "cavisson: InLine." ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "mainurl_val:${mainurl_val}; inlineurl_val:${inlineurl_val}"
+    if [ ${mainurl_val} == 102 ] && [ ${inlineurl_val} == 88 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+}
+
+function validate_Http_Header-007(){
+    mainurl_val=($(grep "cavisson: astar" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    inlineurl_val=($(grep "cavisson: InLine.astar" ${REQ_REP_PATH_FILE}/url_req* | wc -l))
+    debug_log "mainurl_val:${mainurl_val} inlineurl_val:${inlineurl_val}"
+    if [ ${mainurl_val} == 14 ] && [ ${inlineurl_val} == 88 ];then
+        log_status_and_exit_ex "PASS" " condition is passed"
+    else
+        log_status_and_exit_ex "FAIL" "condition is failed"
+    fi
+}
+
+main
+
+exit  0

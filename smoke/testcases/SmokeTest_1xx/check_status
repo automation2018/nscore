@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Source out required files
+source $NS_WDIR/lib/automation_util
+
+# Default Constants
+S_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scenario"
+P_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/progress.report"
+FLOW_FILE="$NS_WDIR/logs/TR${T_RUN_ID}/$(get_test_partition)/scripts/Hpd_Tours_PAT/flow.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+test_case_name=$(get_testcase_name)
+test_console_file="${TS_LOG_DIR}/${test_case_name}/test_run.report"
+
+# Entry point to check status
+# Add cases to handle your validation
+function main() {
+	case $(get_tname) in
+    "SMOKE-046-001") handle_smoke_046_001_case ;;
+# End case def
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+
+function handle_unknown_case() {
+        log_status_and_exit_ex "FAIL" "testcase not found"
+}
+
+# TODO: 
+# 1. Add logic to validate case SMOKE_004_001
+# 2. Depending upon evaluation update the status with your own description
+function handle_smoke_046_001_case() {
+	total_completed_url=$(grep "Url  Report" $P_FILE | awk -F'/' '{print $1}'| awk -F':' '{print $3}')
+	total_success_url=$(grep "Url  Report" $P_FILE | awk -F'/' '{print $2}')
+	total_1xx_url=$(grep "Url  Report" $P_FILE | awk -F'/' '{print $3}')
+
+	debug_log "total_completed_url: $total_completed_url"
+	debug_log "total_success_url: $total_success_url"
+	debug_log "total_1xx_url: $total_1xx_url"
+
+	if [ "$total_completed_url" == " completed 7" ];then
+		if [ "$total_success_url" == "succ 6" ];then
+			if [ "$total_1xx_url" == "1xx: 1" ];then
+				log_status_and_exit_ex "PASS" "ENABLE_EXPECT_100_CONTINUE Keyword is validated successfully"
+			else
+				log_status_and_exit_ex "FAIL" "check total_1xx_url"
+			fi
+		else
+			log_status_and_exit_ex "FAIL" "check total_success_url"
+		fi
+	else
+		log_status_and_exit_ex "FAIL" "check total_completed_url"
+	fi
+
+}
+
+# Call to main function
+# Do not override it
+main
+
+exit 0

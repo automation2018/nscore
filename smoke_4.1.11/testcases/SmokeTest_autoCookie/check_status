@@ -1,0 +1,204 @@
+#!/usr/bin/env bash
+#Updated on 23/May/2017 due to HTTP/2.0 Protocol.
+#Additional added by : Asheesh Kumar Tivaree
+
+source $NS_WDIR/lib/automation_util
+T_NAME=$(get_tname)
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-040-01") validate_Auto_Cookies-001 ;;
+        "SMOKE-040-02") validate_Auto_Cookies-002 ;;
+        "SMOKE-040-03") validate_Auto_Cookies-003 ;;
+        "SMOKE-040-04") validate_Auto_Cookies-004 ;;
+        "SMOKE-040-05") validate_Auto_Cookies-005 ;;
+        "SMOKE-040-06") validate_Auto_Cookies-006 ;;
+        "SMOKE-040-07") validate_Auto_Cookies-007 ;;
+        "SMOKE-040-08") validate_Auto_Cookies-008 ;;
+        "SMOKE-040-09") validate_Auto_Cookies-009 ;;
+        "SMOKE-040-10") validate_Auto_Cookies-010 ;;
+        "SMOKE-040-11") validate_Auto_Cookies-011 ;;
+        "SMOKE-040-12") validate_Auto_Cookies-012 ;;
+
+        *) handle_unknown_case ;;
+        ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+# Need to find proper way to validate Server Select Mode in NS
+# we require to map HOST irrespective of its request type(HTTP or HTTPS) for a particular virtual user
+
+###### This will check Cookie and Set_Cookie header is set or not ######
+function set_Cookie_Header(){
+    Cookie_Header_Displayed=$(grep -iwo "Cookie: cookiename=cookiemodetest" ${T_ID_REQ_PATH}/url_req_*)
+    Set_Cookies_Header_Displayed=$(grep -ai "Set-Cookie" ${T_ID_REQ_PATH}/url_rep_*)
+    debug_log "Cookie_Header_Displayed:"${Cookie_Header_Displayed}
+    debug_log "Set_Cookies_Header_Displayed:"${Set_Cookies_Header_Displayed}
+    if [ ! -z "${Cookie_Header_Displayed}" ] && [  ! -z "${Set_Cookies_Header_Displayed}" ]; then
+        debug_log "if"
+        return 0;
+    else
+        debug_log "else"
+        return 1;
+    fi
+}
+
+function set_Cookie_Header_http2(){
+    Cookie_Header_Displayed=$(grep -wo "cookie cookiename=cookiemodetest" ${T_ID_REQ_PATH}/url_req_*)
+    Set_Cookies_Header_Displayed=$(grep -ai "set-cookie" ${T_ID_REQ_PATH}/url_rep_*)
+    debug_log "Cookie_Header_Displayed:"${Cookie_Header_Displayed}
+    debug_log "Set_Cookies_Header_Displayed:"${Set_Cookies_Header_Displayed}
+    if [ ! -z "${Cookie_Header_Displayed}" ] && [  ! -z "${Set_Cookies_Header_Displayed}" ]; then
+        debug_log "if"
+        return 0;
+    else
+        debug_log "else"
+        return 1;
+    fi
+}
+
+function validate_Auto_Cookies-001(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed but it didn't seem like expected result"
+    fi
+
+}
+
+function validate_Auto_Cookies-002(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed .but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-003(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed "
+    else
+        log_status_and_exit_ex "FAIL" "auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-004(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same "
+    else
+        log_status_and_exit_ex "FAIL" "auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same. but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-005(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed but it didn't seem like expected result"
+    fi
+
+}
+
+function validate_Auto_Cookies-006(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed .but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-007(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed "
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-008(){
+    set_Cookie_Header
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same "
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same. but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-009(){
+    set_Cookie_Header_http2
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode- auto cookie mode 1 0 .So Set_Cookie header set in response file and Cookie header not set in request file because Server host changed but it didn't seem like expected result"
+    fi
+
+}
+
+function validate_Auto_Cookies-010(){
+    set_Cookie_Header_http2
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed"
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode- auto cookie mode is 2 0.Enable auto Cookie with name as Key so Set_Cookie header set in responce file and Cookie header set in request file while server host changed .but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-011(){
+    set_Cookie_Header_http2
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 1 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed "
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode- auto cookie mode is 3 0.Enable auto Cookie with name and path as a key So Set_Cookie header set in responce file and Cookie header not set in request file because Path is changed but it didn't seem like expected result"
+    fi
+}
+
+function validate_Auto_Cookies-012(){
+    set_Cookie_Header_http2
+    return=$?
+    debug_log "return:${return}"
+    if [ ${return} -eq 0 ]; then
+        log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same "
+    else
+        log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode- auto cookie mode is 4 0.Enable auto Cookie with name and domain as a Key So Set_Cookie header set in responce file and Cookie header set in request file because domain and server host are same. but it didn't seem like expected result"
+    fi
+}
+
+main
+
+exit  0

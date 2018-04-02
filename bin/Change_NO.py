@@ -42,7 +42,7 @@ def main ():
     type = sys.argv[2]
     print '%s'% type
     username = 'root'
-    password = 'abeona'
+    password = 'C@VAdmin'
     child = cli_login(username, hostname, password)#Call for login to remote machin
     child.sendline('rm -f /var/www/hpd/conf/hpd.conf')
     child.expect(prompt)

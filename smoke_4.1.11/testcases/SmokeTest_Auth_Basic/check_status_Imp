@@ -1,0 +1,62 @@
+#!/bin/bash
+
+. $NS_WDIR/common_lib
+
+#Cases for Basic Authentication
+
+if [ "XX$TEST_NAME" == "XXHttp_auth_Basic_apache_main_param_session" ];then 
+		 AUTH_HEADER=`grep -w "WWW-Authenticate:" $TESTRUN_WITH_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+		 echo "Auth header is="$AUTH_HEADER
+		 if [ "XX$SD_URLFailures" == "XX0" ] && [ "XX$SD_TotalSuccURL" == "XX6" ] && [ "$AUTH_HEADER" == " Basic realm=\"Basic Authentication\"" ];then
+			    STATUS="PASS"
+			    else
+			    STATUS="FAIL"
+	         fi 
+fi
+
+if [ "XX$TEST_NAME" == "XXHttp_auth_Basic_apache_main_param_use" ];then
+                 AUTH_HEADER=`grep -w "WWW-Authenticate:" $TESTRUN_WITH_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+                 echo "Auth header is="$AUTH_HEADER
+                 if [ "XX$SD_URLFailures" == "XX0" ] && [ "XX$SD_TotalSuccURL" == "XX4" ] && [ "$AUTH_HEADER" == " Basic realm=\"Basic Authentication\"" ];then
+                 #if [ "XX$SD_URLFailures" == "XX0" ] && [ "XX$SD_TotalSuccURL" == "XX4" ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+if [ "XX$TEST_NAME" == "XXHttp_auth_Basic_apache_PageDump" ];then
+                 AUTH_HEADER=`grep -w "WWW-Authenticate:" $TESTRUN_WITH_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+                 echo "Auth header is="$AUTH_HEADER
+                PAGE_DUMP=`grep -o "docs/127.0.0.1/BasicDigest/0:0:Main_apache_PageDump:flower_html:0" $TESTRUN_WITH_PATH/page_dump.txt`	 
+		if [ "XX$SD_URLFailures" == "XX0" ] && [ "XX$SD_TotalSuccURL" == "XX2" ] && [ "$AUTH_HEADER" == " Basic realm=\"Basic Authentication\"" ] && [ "XX$PAGE_DUMP" == "XXdocs/127.0.0.1/BasicDigest/0:0:Main_apache_PageDump:flower_html:0" ]; then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+if [ "XX$TEST_NAME" == "XXHttp_auth_Basic_main_CheckWithKA" ];then
+                 AUTH_HEADER=`grep -w "WWW-Authenticate:" $TESTRUN_WITH_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+                 SEARCH_VAR=`grep -o "?response from 82 serevr for" $TESTRUN_WITH_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |wc -l`
+                if [ "XX$SD_URLFailures" == "XX0" ] && [ "XX$SD_TotalSuccURL" == "XX5" ] && [ "$AUTH_HEADER" == " Basic realm=\"Basic Authentication\"" ] && [ "XX$SEARCH_VAR" == "XX2" ]; then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+
+
+if [ "XX$TEST_NAME" == "XXHttp_auth_Basic_main_CVfailWithOutKA" ];then
+                 AUTH_HEADER=`grep -w "WWW-Authenticate:" $TESTRUN_WITH_PATH/url_rep_0_0_0_0_0_0_0_0_0.dat |cut -d ':' -f2`
+                 SEARCH_VAR=`grep -o "?response from 82 serevr for" $TESTRUN_WITH_PATH/url_req_0_0_0_1_0_0_0_1_0.dat |wc -l`
+                if [ "XX$PAGE_FAIL" == "XX1" ] && [ "XX$SD_TotalSuccURL" == "XX5" ] && [ "$AUTH_HEADER" == " Basic realm=\"Basic Authentication\"" ] && [ "XX$SEARCH_VAR" == "XX2" ]; then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+fill_report_summary
+log_status_and_exit

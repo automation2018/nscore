@@ -10,7 +10,7 @@ Component=performance
 
 
 function BaseLine(){
-    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/031416_115515/3348/throughput_results.csv"
+    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/170425_170922/1263/throughput_results.csv"
     echo  "Test description name is=$T_NAME"
     B_T_RUN_ID=`grep -w $T_NAME $BaseLine_Tsr_Directory_CPSFile |cut -d ',' -f2` 
     
@@ -20,15 +20,15 @@ function BaseLine(){
     CPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 1)
     HPS_MAX_VALUE=`grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     HPS_AVG_VALUE=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 2)
-    Throughput_Rx=`grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
-    Throughput_Tx=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    Throughput_Rx=`grep -w "HTTP Body receive throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
+    #Throughput_Tx=`grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
     Throughput_Rx_Avg=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${B_T_RUN_ID} -m 3)
 
     CPS_MAX_VALUE=`echo $CPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     HPS_MAX_VALUE=`echo $HPS_MAX_VALUE '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
     Throughput_Rx=`echo $Throughput_Rx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    Throughput_Tx=`echo $Throughput_Tx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
-    echo "THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,$Throughput_Tx,${CPS_AVG_VALUE},${HPS_AVG_VALUE},${Throughput_Rx_Avg}" >>$BaseLineCSV
+    #Throughput_Tx=`echo $Throughput_Tx '*1' | bc -l | awk -F '.' '{ print $1; exit; }'`
+    echo "THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR${B_T_RUN_ID},$CPS_MAX_VALUE,$HPS_MAX_VALUE,$Throughput_Rx,${CPS_AVG_VALUE},${HPS_AVG_VALUE},${Throughput_Rx_Avg}" >>$BaseLineCSV
 }
 
 
@@ -39,15 +39,15 @@ function CurrentThroughPut() {
     CPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 1)
 	HPS_MAX_VALUE_CR=$(grep -w "Requests Successful/Sec(NA" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
     HPS_AVG_VALUE_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 2)
-	Throughput_Rx_CR=$(grep -w "Ethernet Receive Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
-	Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+    Throughput_Rx_CR=$(grep -w "HTTP Body receive throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
+	#Throughput_Tx_CR=$(grep -w "Ethernet Send Throughput (Kbps)(NA)" $NS_WDIR/logs/TR$T_RUN_ID/summary_gdf.data |cut -d '|' -f8)
     Throughput_Rx_Avg_CR=$(python /home/automation/workbench/automation/nscore/performance/shell/python/nsi_get_performance_stats.py -t ${T_RUN_ID} -m 3)
 	CPS_MAX_VALUE_CR=$(echo $CPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	HPS_MAX_VALUE_CR=$(echo $HPS_MAX_VALUE_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
 	Throughput_Rx_CR=$(echo $Throughput_Rx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
-	Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
+	#Throughput_Tx_CR=$(echo $Throughput_Tx_CR '*1' | bc -l | awk -F '.' '{ print $1; exit; }')
     
-    echo "THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,$Throughput_Tx_CR,${CPS_AVG_VALUE_CR},${HPS_AVG_VALUE_CR},${Throughput_Rx_Avg_CR}"  >>$CurrentCSV
+    echo "THROUGHPUT,$T_NAME,${Component},${RELEASE_ID},${BUILD_ID},${COMPONENT_ID},TR$T_RUN_ID,$CPS_MAX_VALUE_CR,$HPS_MAX_VALUE_CR,$Throughput_Rx_CR,${CPS_AVG_VALUE_CR},${HPS_AVG_VALUE_CR},${Throughput_Rx_Avg_CR}"  >>$CurrentCSV
 
 }
 
@@ -76,8 +76,14 @@ function main() {
 if [[ "$T_NAME" == "Performance_throughput_java_128User_OEF"* ]]; then
 	debug_log "evaluating perf java results .... t_name is $T_NAME"
 	CurrentThroughPut
+    BaseLine_Tsr_Directory_CPSFile="$NS_WDIR/logs/tsr/170425_170922/1263/throughput_results.csv"
+    echo  "Test description name is=$T_NAME"
+    B_T_RUN_ID=`grep -w $T_NAME $BaseLine_Tsr_Directory_CPSFile |cut -d ',' -f2` 
+    
+    debug_log "BaselineTR for TPUT = ${B_T_RUN_ID}" 
 	
-	JAVA_BASED_TPUT_MAX=1001226
+	#JAVA_BASED_TPUT_MAX=913804
+    JAVA_BASED_TPUT_MAX=`grep -w "HTTP Body receive throughput (Kbps)(NA)" $NS_WDIR/logs/TR${B_T_RUN_ID}/summary_gdf.data |cut -d '|' -f8`
 	Throughput_Perc_Change=$(echo "$JAVA_BASED_TPUT_MAX" "$Throughput_Rx_CR" | awk '{print ($1-$2)/$1*100}')
     
 	debug_log "throughput pct change is = $Throughput_Perc_Change"

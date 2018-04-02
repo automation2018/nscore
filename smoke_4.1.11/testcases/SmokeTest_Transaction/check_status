@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+source $NS_WDIR/lib/automation_util
+
+
+T_NAME=$(get_tname)
+FLOW_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/scripts/Smoke/Smoke/Hpd_tours_txcvarbasedname/TxCVarBasedName.c"
+TX_DETAIL_FILE="/home/netstorm/work/logs/TR${T_RUN_ID}/trans_detail.dat"
+
+
+function main(){
+    case $(get_tname) in
+        "SMOKE-019-001") validate_tx_cvarbased_name ;;
+        "SMOKE-019-002") validate_tx_cvarbased_name ;;
+        "SMOKE-019-003") validate_tx_cvarbased_name ;;
+        "SMOKE-019-004") validate_tx_cvarbased_name ;;
+         *) handle_unknown_case ;;
+         ?) handle_unknown_case ;;
+    esac
+}
+
+
+function handle_unknown_case(){
+    log_status_and_exit_ex "FAIL" "Testcase not found"
+}
+
+
+function validate_tx_cvarbased_name(){
+    if [ $SD_TotalSuccURL -ne 0 ];then
+        debug_log "No fail url found" 
+	
+		tx_id_to_run=$(grep "int TxIdToRun =" ${FLOW_FILE} | awk '{print $NF}' | cut -d';' -f1)
+		tx_name=$(grep "*tx_name${tx_id_to_run}" ${FLOW_FILE} | awk '{print $NF}' | cut -d'"' -f2)
+		tx_hit=$(sed -n 2p ${TX_DETAIL_FILE} | awk -F'|' '{print $1}')
+	 
+		debug_log "tx_id_to_run=${tx_id_to_run};tx_name=${tx_name};tx_hit=${tx_hit}"
+		   
+		if [ $tx_name = $tx_hit ]  ; then
+			log_status_and_exit_ex "PASS" "CVar based transaction name  testcase passed as ${tx_hit} matched with C variable value ${tx_name}"
+		else
+			log_status_and_exit_ex "FAIL" "CVar based transaction name  testcase failed as ${tx_hit} did not match with C variable value ${tx_name}"
+	    fi
+	else
+		debug_log "Fail url found" 
+		log_status_and_exit_ex "FAIL" "CVar based transaction name  testcase failed as due to url failure"
+	fi
+}
+
+
+main
+
+
+exit 0

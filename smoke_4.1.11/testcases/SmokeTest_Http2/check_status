@@ -1,0 +1,269 @@
+#!/usr/bin/env bash
+# Check status written by: Asheesh Kumar Tivaree
+#    Date Time: 09/09/16 10:54:38 AM
+#  Description: Check status to validate cases for smoke
+# 
+# Conventions
+#   1. Two(2) space indentation. No tabs
+#   2. Variables and function starts with snake_case
+#		3. Constants are declared with ALL_CAPS
+
+# Source out required files
+source $NS_WDIR/lib/automation_util
+
+# Default Constants
+PATH_TO_TEST_RUN="$NS_WDIR/logs/TR${T_RUN_ID}"
+PARTITION_PATH="${PATH_TO_TEST_RUN}/$(get_test_partition)"
+PROGRESS_REPORT_FILE="${PATH_TO_TEST_RUN}/progress.report"
+DEBUG_LOG_FILE="${PATH_TO_TEST_RUN}/debug.log"
+URL_REQ_FILE="${PATH_TO_TEST_RUN}/2*/ns_logs/req_rep/url_req*"
+URL_REP_FILE="${PATH_TO_TEST_RUN}/2*/ns_logs/req_rep/url_rep*"
+SCRIPT_FLOW_FILE="${PATH_TO_TEST_RUN}/scripts/Smoke/Smoke/*/flow.c"
+SCRIPT_FLOW_FILE_EX="${PATH_TO_TEST_RUN}/scripts/Smoke/Smoke/Http2_script1/flow.c"
+
+T_NAME="$(get_tname)"
+
+# Entry point to check status
+# Add cases to handle your validation
+function main() {
+	case $(get_tname) in
+    "SMOKE-057-001") handle_HTTP2_Protocol-001 ;;
+    "SMOKE-057-002") handle_HTTP2_Protocol-002 ;;
+    "SMOKE-057-003") handle_HTTP2_Protocol-003 ;;
+    "SMOKE-057-004") handle_HTTP2_Protocol-004 ;;
+    "SMOKE-057-005") handle_HTTP2_Protocol-005 ;;
+    "SMOKE-057-006") handle_HTTP2_Protocol-006 ;;
+# End case def
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+# Helper function to log status
+# Sets additional product id and
+# category id
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_and_exit_ex "FAIL" "Testcase name not found"
+}
+
+# TODO: 
+# 1. Add logic to validate case smoke-001
+# 2. Depending upon evaluation update the status with your own description
+
+function get_actual_details()
+{
+ connection_count=$(grep "HTTP TCP Conns" $PROGRESS_REPORT_FILE | cut -d '(' -f3 | awk '{print $1}' | awk -F '=' '{print $2}'|tail -1)
+ #Previously (backup)
+ #get_total_stream_ids=$(grep -c "stream id" $DEBUG_LOG_FILE)
+ get_total_stream_ids=$(grep -c "free->max_stream_id" $DEBUG_LOG_FILE)
+ total_request_count=$(grep "Url  Report" $PROGRESS_REPORT_FILE | awk -F '/' '{print $1}' | awk -F ':' '{print $3}' | awk '{print $2}')
+ switching_protocol_count=$(grep -a "HTTP/1.1 101 Switching Protocols" $URL_REP_FILE | wc -l)
+ Upgrade_header_count=$(grep -a "Upgrade: h2c" $URL_REQ_FILE | wc -l)
+ Url_success=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d '/' -f2| awk '{print $2}')
+ Url_completed=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d ':' -f3 | cut -d '/' -f1 | awk '{print $2}')
+ if [ $Url_completed -ne $Url_success ];then
+     Failure_reason=$(grep "Url  Report" $PROGRESS_REPORT_FILE | cut -d '/' -f3 | cut -d ':' -f1)
+ else
+     Failure_reason=0
+ fi
+ }
+
+function get_expected_details()
+{
+ url_req=$(grep "URL=http" $SCRIPT_FLOW_FILE | wc -l)
+ expected_url_req_count=$((url_req*2))
+ expected_conn_count=$(grep "URL=http" $SCRIPT_FLOW_FILE | awk -F '//' '{print $2}' | awk -F '/' '{print $1}' | sort -u | wc -l)
+ expected_stream_count_mode0=$((expected_url_req_count-expected_conn_count))
+ expected_stream_count_mode2=$expected_url_req_count
+ expected_switching_protocol_count=$expected_conn_count
+ expected_upgrade_header_count=$expected_switching_protocol_count
+ }
+
+ function get_expected_ex()
+ {
+  get_expected_details
+  conn=$(grep "URL=http" $SCRIPT_FLOW_FILE_EX | awk -F '//' '{print $2}' | awk -F '/' '{print $1}' | sort -u | wc -l)
+  expected_conn_count_ex=$((conn+8))
+  req_count=$(grep "URL=http" $SCRIPT_FLOW_FILE_EX | wc -l)
+  conn_count=$(grep "URL=http" $SCRIPT_FLOW_FILE_EX | awk -F '//' '{print $2}' | awk -F '/' '{print $1}' | sort -u | wc -l)
+  expected_stream_count_mode0_ex=$(((req_count-conn_count)*2))
+  expected_stream_count_mode2_ex=$((req_count*2))
+ }
+
+
+function handle_HTTP2_Protocol-001() {
+get_actual_details
+get_expected_details
+debug_log "case 1"
+debug_log "Actual connection count=$connection_count"
+debug_log "Expected connection count=$expected_conn_count"
+debug_log "Actual total stream ids=$get_total_stream_ids"
+debug_log "Expected stream count=$expected_stream_count_mode0"
+debug_log "Actual total request count=$total_request_count"
+debug_log "Expected total request count=$expected_url_req_count"
+debug_log "Actual switching protocol count=$switching_protocol_count"
+debug_log "Expected switching protocol count=$expected_switching_protocol_count"
+debug_log "Actual upgrade header count=$Upgrade_header_count"
+debug_log "Expected upgrade header count=$expected_upgrade_header_count"
+if [ $Failure_reason -eq 0 ];then
+  if [ $connection_count -eq $expected_conn_count ] ;then
+      if [ $switching_protocol_count -eq $expected_switching_protocol_count ];then
+          if [ $Upgrade_header_count -eq $expected_upgrade_header_count ];then
+              if [ $get_total_stream_ids -eq $expected_stream_count_mode0 ];then
+                  log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode for one group"
+              else
+                  log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group failed because expected stream count was $expected_stream_count_mode0 and actual is $get_total_stream_ids"
+              fi
+        else
+         log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group failed because expected upgrade header count was $expected_upgrade_header_count and actual is $Upgrade_header_count"
+        fi
+      else
+       log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group failed because expected switching protocol count was $expected_switching_protocol_count and actual is $switching_protocol_count"
+   fi
+  else
+   log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group failed because expected connection count was $expected_conn_count and actual is $connection_count"
+   fi
+else
+ log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group failed due to $Failure_reason error"    
+fi
+}
+
+function handle_HTTP2_Protocol-002() {
+get_actual_details
+get_expected_details
+debug_log "case 2"
+debug_log "Actual connection count=$connection_count"
+debug_log "Expected connection count=$expected_conn_count"
+debug_log "Actual total stream ids=$get_total_stream_ids"
+debug_log "Expected stream count=$expected_stream_count_mode2"
+debug_log "Actual total request count=$total_request_count"
+debug_log "Expected total request count=$expected_url_req_count"
+if [ $Failure_reason -eq 0 ];then
+      if [ $connection_count -eq $expected_conn_count ] ;then
+         if [ $get_total_stream_ids -eq $expected_stream_count_mode2 ];then
+            log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode for one group"
+       else
+        log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for one group failed beacause expected stream count was $expected_stream_count_mode2 and actual is $get_total_stream_ids" 
+        fi
+    else
+     log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for one group failed because expected connection count was $expected_conn_count and actual is $connection_count"
+     fi
+else
+ log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for one group failed due to $Failure_reason error"
+fi
+}
+
+function handle_HTTP2_Protocol-003() {
+get_actual_details
+get_expected_ex
+expected_stream_count_mode0_ex=$((expected_stream_count_mode0_ex+1))
+debug_log "case 3"
+debug_log "Actual connection count=$connection_count"
+debug_log "Expected connection count=$expected_conn_count_ex"
+debug_log "Actual total stream ids=$get_total_stream_ids"
+debug_log "Expected stream count=$expected_stream_count_mode0_ex"
+debug_log "Actual total request count=$total_request_count"
+debug_log "Expected total request count=$expected_url_req_count"
+if [ $Failure_reason -eq 0 ];then
+      if [ $connection_count -eq $expected_conn_count_ex ] ;then
+          if [ $get_total_stream_ids -eq $expected_stream_count_mode0_ex ] ;then
+            log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode for one group and default mode for another group"
+         else
+         log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group and default mode for another group failed because expected stream count was $expected_stream_count_mode0_ex and actual is $get_total_stream_ids"
+         fi
+   else 
+    log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group and default mode for another group failed because expected connection count was $expected_conn_count_ex and actual is $connection_count"
+  fi
+else
+ log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for one group and default mode for another group failed due to $Failure_reason error"
+fi
+}
+
+function handle_HTTP2_Protocol-004() {
+get_actual_details
+get_expected_details
+get_expected_ex
+debug_log "case 4"
+debug_log "Actual connection count=$connection_count"
+debug_log "Expected connection count=$expected_conn_count_ex"
+debug_log "Actual total stream ids=$get_total_stream_ids"
+debug_log "Expected stream count=$expected_stream_count_mode2_ex"
+debug_log "Actual total request count=$total_request_count"
+debug_log "Expected total request count=$expected_url_req_count"
+if [ $Failure_reason -eq 0 ];then
+  if [ $connection_count -eq $expected_conn_count_ex ] ;then
+      if [ $get_total_stream_ids -eq $expected_stream_count_mode2_ex ] ;then
+       log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode for one group and default mode for another group"
+      else
+       log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for one group and default mode for another group failed because expected stream count was $expected_stream_count_mode2_ex and actual is $get_total_stream_ids"
+     fi
+ else
+  log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for one group and default mode for another group failed because expected connection count was $expected_conn_count_ex and actual is $connection_count"
+ fi  
+else
+log_status_and_exit_ex "FAIL" "HTTP2 prior knowledge Mode for one group and default mode for another group failed due to $Failure_reason error"
+fi
+}
+
+function handle_HTTP2_Protocol-005() {
+get_actual_details
+get_expected_details
+debug_log "case 5"
+debug_log "Expected connection count= $expected_conn_count"
+debug_log "Actual connection count= $connection_count"
+debug_log "Expected stream count= $expected_stream_count_mode0"
+debug_log "Actual stream count= $get_total_stream_ids"
+debug_log "Actual switching protocol count=$switching_protocol_count"
+debug_log "Expected switching protocol count=$expected_switching_protocol_count"
+debug_log "Actual upgrade header count=$Upgrade_header_count"
+debug_log "Expected upgrade header count=$expected_upgrade_header_count"
+if [ $Failure_reason -eq 0 ];then
+  if [ $connection_count -eq $expected_conn_count ] ;then
+     if [ $switching_protocol_count -eq $expected_switching_protocol_count ] ;then
+        if [ $Upgrade_header_count -eq $expected_upgrade_header_count ] ;then
+            if [ $get_total_stream_ids -eq $expected_stream_count_mode0 ] ;then
+                log_status_and_exit_ex "PASS" "HTTP2 Upgrade Mode for multiple host"
+            else
+                log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for multiple host failed because expected stream count was $expected_stream_count_mode0 and actual is $get_total_stream_ids"
+            fi
+    else
+    log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for multiple host failed because expected upgrade header count was $expected_upgrade_header_count and actual is $Upgrade_header_count"
+    fi
+  else
+   log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for multiple host failed because expected switching protocol count was $expected_switching_protocol_count and actual is $switching_protocol_count"
+  fi
+ else
+  log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for multiple host failed because expected connection count was $expected_conn_count and actual is $connection_count"
+ fi
+else
+log_status_and_exit_ex "FAIL" "HTTP2 Upgrade Mode for multiple host failed due to $Failure_reason error"
+fi
+}
+
+function handle_HTTP2_Protocol-006() {
+get_actual_details
+get_expected_details
+debug_log "case 6"
+debug_log "Expected connection count= $expected_conn_count"
+debug_log "Actual connection count= $connection_count"
+debug_log "Expected stream count= $expected_stream_count_mode2"
+debug_log "Actual stream count= $get_total_stream_ids"
+if [ $Failure_reason -eq 0 ];then
+  if [ $connection_count -eq $expected_conn_count ] ;then
+     if [ $get_total_stream_ids -eq $expected_stream_count_mode2 ] ;then
+         log_status_and_exit_ex "PASS" "HTTP2 Prior Knowledge Mode for multiple host"
+     else
+         log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for multiple host failed because expected stream count was $expected_stream_count_mode2 and actual is $get_total_stream_ids"
+     fi
+ else
+     log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for multiple host failed because expected connection count was $expected_conn_count and actual is $connection_count"
+ fi
+else
+log_status_and_exit_ex "FAIL" "HTTP2 Prior Knowledge Mode for multiple host failed due to $Failure_reason error"
+fi
+}
+
+# Do not override it
+main
+exit 0

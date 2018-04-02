@@ -1,0 +1,66 @@
+--Request 
+GET http://10.10.30.13:85/tours/index.html
+Upgrade-Insecure-Requests: 1
+Accept-Language: en-in
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+----
+--Response 
+Content-Length: 2975
+Content-Type: text/html
+Connection: Keep-Alive
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/banner_animated.gif
+Accept-Language: en-in
+Referer: http://10.10.30.13:85/tours/index.html
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept: image/webp,image/*,*/*;q=0.8
+----
+--Response 
+Content-Length: 16522
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/sun_swede.gif
+Accept-Language: en-in
+Referer: http://10.10.30.13:85/tours/index.html
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept: image/webp,image/*,*/*;q=0.8
+----
+--Response 
+Content-Length: 4125
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/login.gif
+Accept-Language: en-in
+Referer: http://10.10.30.13:85/tours/index.html
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept: image/webp,image/*,*/*;q=0.8
+----
+--Response 
+Content-Length: 1323
+Content-Type: image/gif
+Connection: Keep-Alive
+----
+--Request 
+GET http://10.10.30.13:85/tours/images/banner_merctur.jpg
+Accept-Language: en-in
+Referer: http://10.10.30.13:85/tours/index.html
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept: image/webp,image/*,*/*;q=0.8
+----
+--Response 
+Content-Length: 22548
+Content-Type: image/jpeg
+Connection: Keep-Alive
+----
+

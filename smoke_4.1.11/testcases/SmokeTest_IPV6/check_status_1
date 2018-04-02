@@ -1,0 +1,40 @@
+#!/bin/bash
+
+TESTRUN_ID=$2
+echo "Test Run Number is "=$TESTRUN_ID
+TEST_NAME=`grep -e "TNAME" $NS_WDIR/logs/TR$TESTRUN_ID/scenario |awk '{print $2}'`
+echo "The name of the test"=$TEST_NAME
+TESTRUN_WITH_PATH=$NS_WDIR/logs/TR$TESTRUN_ID
+echo "test run with path"=$TESTRUN_WITH_PATH
+
+if [ "$TEST_NAME" == "FourUrlTest_WithoutExpCookie_CookieMode1" ];then 
+	       Total_Req=`egrep -e "Cookie: name" url_req_0_0_* |wc -l`
+	              
+				
+			    STATUS="FAIL"
+fi
+
+
+if [ "$TEST_NAME" == "SEARCH_FAIL_TWOMAIN_URL" ];then
+         RESPONSE_SEARCH_FAIL=`cat $TESTRUN_WITH_PATH/url_req_0_0_* | grep -o class2K.html?9`
+                 if [ "$RESPONSE_SEARCH_FAIL" == "class2K.html?9" ];then
+                            STATUS="PASS"
+                            else
+                            STATUS="FAIL"
+                 fi
+fi
+
+function log_msg() 
+ {
+  echo $* 
+  echo $* >> $TEST_RESULT_FILE
+}
+
+if [ "XX$STATUS" == "XXFAIL" ]; then
+  log_msg "TESTRESULT           :$STATUS"
+  exit -1 
+  else
+  log_msg "TESTRESULT		:$STATUS" 
+fi 
+exit 0
+

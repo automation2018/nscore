@@ -158,14 +158,14 @@ main() {
 
     # Uploads test results to sqlite database
     echo "Uploading results to remote database"
-    ${DB_UPLOAD} -r ${RELEASE} -v ${MINOR} -f ${R_FILE}
+    #${DB_UPLOAD} -r ${RELEASE} -v ${MINOR} -f ${R_FILE}
     
-    exit 0
+    #exit 0
 }
 
 
 # Permit only 'automation' user to run test
-[ "X${USER}" != "Xautomation" ] && echo "ERROR: You must log in with 'automation' user" && exit -1
+[ "X${USER}" != "Xnetstorm" ] && echo "ERROR: You must log in with 'netstorm' user" && exit -1
 
 
 # Store all command line arguments to shell
